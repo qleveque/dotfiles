@@ -1,0 +1,6 @@
+source ~/.vimrc_base
+
+set surround
+set multiple-cursors
+set commentary
+
