@@ -29,10 +29,14 @@ set laststatus=2
 set undodir=~/.vim/undodir
 set undofile
 
+""""""""""""""""""""""""""""""
+" => Run
+""""""""""""""""""""""""""""""
+nnoremap <F9> :!%:p
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 set runtimepath^=~/.vim/ctrlp.vim
 set runtimepath^=~/.vim/emmet-vim
 set runtimepath^=~/.vim/vim-airline

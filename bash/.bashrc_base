@@ -1,7 +1,5 @@
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 alias clip='xclip -selection c'
 alias c='source c'
-alias gs='git status'
 alias gsu='git status -uno'
-alias ga='git add'
 alias gau='git add -u'
