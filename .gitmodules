@@ -17,3 +17,6 @@
 	path = vim/.vim/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
 
+[submodule "tmux/.tmux/tmux-yank"]
+	path = tmux/.tmux/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
