@@ -20,6 +20,4 @@
 [submodule "tmux/.tmux/tmux-yank"]
 	path = tmux/.tmux/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
-[submodule "tmux/.tmux/gitmux"]
-	path = tmux/.tmux/gitmux
-	url = https://github.com/arl/gitmux
+
