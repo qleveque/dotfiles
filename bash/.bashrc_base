@@ -4,3 +4,5 @@ alias clip='echo -n | xclip -selection c'
 alias c='source c'
 alias gsu='git status -uno'
 alias gau='git add -u'
+alias telnet='telnet -e ^C'
+

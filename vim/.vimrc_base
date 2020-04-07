@@ -134,3 +134,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => New languages
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.aMod set filetype=oberon
+au! Syntax oberon source ~/.vim/oberon2.vim
+
