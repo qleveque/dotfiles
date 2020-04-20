@@ -1,8 +1,25 @@
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 alias xo='xdg-open'
-alias clip='echo -n | xclip -selection c'
 alias c='source c'
 alias gsu='git status -uno'
 alias gau='git add -u'
 alias telnet='telnet -e ^C'
+
+vim() {
+    if [ -z "${@}" ]; then
+        gvim
+    else
+        gvim --remote-tab "${@}"
+    fi
+}
+
+vf()
+{
+    local dst="$(command vifm -c :only --choose-dir - .)"
+    if [ -z "$dst" ]; then
+        echo 'Directory picking cancelled/failed'
+        return 1
+    fi
+    cd "$dst"
+}
 

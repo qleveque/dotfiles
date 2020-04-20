@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-stow bash tmux vim
+stow bash tmux vim vifm
 
