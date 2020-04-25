@@ -6,16 +6,22 @@ alias gau='git add -u'
 alias telnet='telnet -e ^C'
 
 vim() {
+    shopt -s expand_aliases
     if [ -z "${@}" ]; then
         gvim
     else
-        gvim --remote-tab "${@}"
+        gvim --remote-tab-silent "${@}"
     fi
 }
 
 vf()
 {
-    local dst="$(command vifm -c :only --choose-dir - .)"
+    if [ -z "${@}" ]; then
+        local dst="$(command vifm -c :only --choose-dir - .)"
+    else
+        local dst="$(command vifm --choose-dir - . $(d ${@} -e))"
+    fi
+
     if [ -z "$dst" ]; then
         echo 'Directory picking cancelled/failed'
         return 1

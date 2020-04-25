@@ -67,7 +67,6 @@ set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 " Ignore case in search patterns unless it contains at least one uppercase
 " letter
 
-set ignorecase
 set smartcase
 
 " Don't highlight search results automatically
