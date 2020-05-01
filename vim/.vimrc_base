@@ -4,6 +4,7 @@
 set t_ut=
 colorscheme desert
 set nocompatible
+set cursorline
 
 " Sets how many lines of history VIM has to remember
 set history=500
