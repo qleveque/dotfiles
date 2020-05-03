@@ -1,6 +1,10 @@
 # You can edit this file by hand, but it's recommended not to do that.
 
 # Marks:
+'a
+	/mnt/c/Users/qleveque
+	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
+1588499319
 'b
 	/mnt/c/Users/qleveque/bin/
 	..
@@ -19,121 +23,13 @@
 # TUI:
 al
 q0
-v1
-oh
+v2
+ov
 m-1
-l12
+l11,2
 r2
 
 # Left window history (oldest to newest):
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	model
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	model
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/model
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	plugins
-9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/plugins
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	resources
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/resources
-	addMap.png
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	Results
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/Results
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	Results
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/Results
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	tests
-12
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	tools
-13
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tools
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	tests
-12
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests
-	nosetests.xsl
-4
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
-	bin
-1
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/bin
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
-	external
-3
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external
-	Mercator
-1
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	Calibration
-1
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/Calibration
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	QuickScan
-20
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	scipy
-21
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/scipy
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	setuptools
-22
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/setuptools
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	unittest
-24
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/unittest
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	win32com
-25
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/win32com
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	wx
-26
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/wx
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	xml
-27
 d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/xml
 	..
 0
@@ -326,120 +222,117 @@ d/mnt/c/Users/qleveque/Documents/tests
 d/mnt/c/Users/qleveque/Documents
 	tests
 8
+d/mnt/c/Users/qleveque/Documents/macros
+	..
+0
+d/mnt/c/Users/qleveque/AppData/Local/Temp
+	bx22tgk1.wkw
+7
+d/mnt/c/Users/qleveque
+	Roaming
+21
+d/mnt/c/Users
+	qleveque
+4
+d/mnt/c/Users/qleveque
+	ntuser.dat.LOG1
+28
+d/mnt/c/Users/qleveque/Documents/macros/fzf
+	..
+0
+d/mnt/c/Users/qleveque/Documents/macros
+	fzf
+1
+d/mnt/c/Program Files
+	..
+0
+d/mnt/c
+	Program Files (x86)
+21
+d/mnt/c/Program Files (x86)
+	Windows Resource Kits
+4
+d/mnt/c
+	Program Files
+19
+d/mnt/c/Program Files
+	VcXsrv
+30
+d/mnt/c/Program Files/VcXsrv
+	uninstall.exe
+41
+d/usr/share/X11/xkb/rules
+	xorg
+10
+d/usr/share/X11/xkb
+	symbols
+6
+d/usr/share/X11/xkb/symbols
+	tz
+11
+d/mnt/c/Users/qleveque/Documents
+	tools
+4
+d/mnt/c/Users/qleveque/Documents/tools
+	EasyModbus.dll
+1
+d/mnt/c/Users/qleveque/Documents
+	tools
+4
+d/mnt/c/Users/qleveque
+	ntuser.dat.LOG1
+29
+d/mnt/c/Users/qleveque/Documents
+	others
+5
+d/mnt/c/Users/qleveque/Documents/others
+	ANT lite+ User Manual - Min turning circle required changements.docx
+19
+d/mnt/c/Users/qleveque
+	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TMContainer00000000000000000002.regtrans-ms
+28
+d/mnt/c/Users/qleveque/Documents/macros
+	fzf
+5
+d/mnt/c/Users/qleveque
+	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
+26
+d/mnt/c/Users/qleveque/Documents/macros
+	fzf
+5
+d/mnt/c/Users/qleveque
+	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
+26
+d/mnt/c/Users/qleveque/Documents/macros
+	fzf
+5
+d/mnt/c/Users/qleveque/Documents
+	others
+10
+d/mnt/c/Users/qleveque
+	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
+26
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	examples
+13
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/examples
+	check_bootfile.py
+3
+d/mnt/c/Users/qleveque/Documents
+	others
+10
+d/mnt/c/Users/qleveque
+	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
+26
+d/mnt/c/Users/qleveque/dotfiles
+	vim
+4
+d/mnt/c/Users/qleveque/dotfiles/bash
+	..
+0
 d
 
 # Right window history (oldest to newest):
-D/home/whenti
-	Desktop
-1
-D/home/whenti/Desktop
-	..
-0
-D/home/whenti
-	Desktop
-1
-D/home
-	whenti
-1
-D/home/whenti/Dropbox
-	..
-0
-D/home/whenti/Downloads
-	pycharm-community-2019.3.1.tar.gz
-15
-D/home/whenti/Documents
-	macros
-3
-D/home/whenti/Documents/macros
-	pyq.backup
-1
-D/home/whenti/Documents/macros/pyq.backup
-	data
-2
-D/home/whenti/Documents/macros/pyq.backup/data
-	..
-0
-D/home/whenti/Documents/macros/pyq.backup
-	data
-2
-D/home/whenti/Documents/macros
-	pyq.backup
-1
-D/home/whenti/Documents
-	macros
-3
-D/home/whenti
-	Documents
-2
-D/home
-	whenti
-1
-D/
-	dev
-3
-D/dev
-	bsg
-2
-D/dev/bsg
-	..
-0
-D/dev
-	disk
-6
-D/
-	cdrom
-2
-D/cdrom
-	..
-0
-D/
-	bin
-0
-D/bin
-	brltty
-2
-D/
-	cdrom
-2
-D/home/whenti/Documents
-	images
-2
-D/home/whenti/Documents/images
-	photos
-2
-D/home/whenti/Documents/images/photos
-	from_phone
-1
-D/home/whenti/Documents/images/photos/from_phone
-	..
-0
-D/home/whenti/Documents/images/photos
-	from_phone
-1
-D/home/whenti/Documents/images
-	photos
-2
-D/home/whenti/Documents
-	images
-2
-D/home/whenti
-	Documents
-2
-D/home/whenti/Documents
-	images
-2
-D/home/whenti/Documents/images
-	scouts
-3
-D/home/whenti/Documents/images/scouts
-	..
-0
-D/home/whenti/Documents/images
-	photos
-2
-D/home/whenti/Documents/images/photos
-	from_phone
-1
 D/home/whenti/Documents/images
 	scouts
 3
@@ -627,28 +520,122 @@ D/mnt/c/Users/qleveque/Desktop
 	..
 0
 D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Users/qleveque/Documents
+	Modèles Office personnalisés
+1
+D/mnt/c/Users/qleveque
+	Favorites
+9
+D/mnt/c/Users/qleveque/.vim
+	vim-airline
+5
+D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Users/qleveque
+	Links
+11
+D/mnt/c/Users
+	qleveque
+4
+D/mnt/c
+	Program Files
+6
+D/mnt/c/Program Files
+	Notepad++
+16
+D/mnt/c
+	Program Files (x86)
+7
+D/mnt/c/Program Files (x86)
+	IIS Express
+16
+D/mnt/c
+	Program Files (x86)
+7
+D/mnt/c/Program Files (x86)
+	IIS Express
+16
+D/mnt/c
+	Program Files
+6
+D/mnt/c/Program Files
+	VcXsrv
+16
+D/mnt/c/Program Files/VcXsrv
+	xkbdata
+3
+D/mnt/c/Program Files/VcXsrv/xkbdata
+	compat
+1
+D/mnt/c/Program Files/VcXsrv/xkbdata/compat
+	..
+0
+D/mnt/c/Program Files/VcXsrv/xkbdata
+	geometry
+2
+D/mnt/c/Program Files/VcXsrv/xkbdata/geometry
+	..
+0
+D/mnt/c/Program Files/VcXsrv/xkbdata
+	keycodes
+3
+D/mnt/c/Program Files/VcXsrv/xkbdata/keycodes
+	..
+0
+D/mnt/c/Program Files/VcXsrv/xkbdata
+	rules
+4
+D/mnt/c/Program Files/VcXsrv/xkbdata/rules
+	..
+0
+D/mnt/c/Program Files/VcXsrv/xkbdata
+	symbols
+5
+D/mnt/c/Program Files/VcXsrv/xkbdata/symbols
+	..
+0
+D/mnt/c/Users/qleveque/Documents
+	macros
+4
+D/mnt/c/Users/qleveque/Downloads
 	ANTlab-1.20.1.139-Setup-29.04.2020.exe
 1
+D/mnt/c/Users/qleveque
+	Links
+11
+D/mnt/c/Users/qleveque/dotfiles/bash
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	ANTlab-1.20.1.139-Setup-29.04.2020.exe
+1
+D/mnt/c/Users/qleveque/dotfiles/bash
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	ANTlab-1.20.1.139-Setup-29.04.2020.exe
+1
+D/mnt/c/Users/qleveque
+	Downloads
+7
+D/mnt/c/Users/qleveque/Downloads
+	ANTlab-1.20.1.139-Setup-29.04.2020.exe
+1
+D/mnt/c/Users/qleveque/dotfiles/bash
+	..
+0
+D/mnt/c/Users/qleveque/dotfiles
+	tools
+3
+D/mnt/c/Users/qleveque/dotfiles/tools
+	..
+0
 D
 
 # Command line history (oldest to newest):
-:normal t \<C-w>t
-:normal 1 \<C-w>t
-:normal t
-:normal 1 t
-:normal 2 t
-:normal 2 <C-w>t
-:normal 2 \<C-w>t
-:normal 1\<C-w>t
-:normal!1\<C-w>t
-:normal!1\<c-w>t
-:normal! 1\<c-w>t
-:!normal 1\<c-w>t
-: normal 1\<c-w>t
-:normal 1\<c-w>t
-:normal "\<c-w>t"
-:normal "\<C-W>t"
-:normal! \<C-W>t
 :normal! \<C-w>t
 :bp
 :previous
@@ -710,10 +697,8 @@ D
 :cd /mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor/linux-x64-57/binding.node
 :cd /mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor/linux-x64-57/
 :cd /mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor/
-:copy
 ::
 :c antserver
-:move
 :q:q
 :c monitor
 :only
@@ -724,13 +709,32 @@ D
 :ls -a
 :c papers
 :mkdir others
-:c dl
 :c devlab
 :d
 :c wms
 :w
 :c desk
+:cd .vim
+:c prog
+:c progx
+:copy!
+:copy
+:touch wh
+:sudo
+:FZFlocate oui
+:FZFfind
+:FZFlocate
+:history
+:fzf
+:cd ../..
 :c docs
+:open check_bootfile.py
+:o check_bootfile.py
+:run check_bootfile.py
+:cd ~
+:c dl
+:mkdir tools
+:move
 :q
 
 # Search history (oldest to newest):
@@ -789,6 +793,7 @@ D
 /Calib
 /dow
 /lice
+/NTUSER
 
 # Prompt history (oldest to newest):
 pb.py

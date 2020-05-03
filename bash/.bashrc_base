@@ -5,21 +5,18 @@ alias gsu='git status -uno'
 alias gau='git add -u'
 alias telnet='telnet -e ^C'
 
-vim() {
-    shopt -s expand_aliases
-    if [ -z "${@}" ]; then
-        gvim
-    else
-        gvim --remote-tab-silent "${@}"
-    fi
-}
+export FZF_DEFAULT_COMMAND="fd"
+export FZF_CTRL_T_COMMAND="fd"
+export FZF_ALT_C_COMMAND="fd --type d"
+export FZF_DEFAULT_OPTS="--ansi"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 vf()
 {
     if [ -z "${@}" ]; then
         local dst="$(command vifm -c :only --choose-dir - .)"
     else
-        local dst="$(command vifm --choose-dir - . $(d ${@} -e))"
+        local dst="$(command vifm --choose-dir - . ${@})"
     fi
 
     if [ -z "$dst" ]; then

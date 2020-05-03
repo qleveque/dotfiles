@@ -167,6 +167,11 @@ nnoremap A cw
 
 " set syncregs=general
 set confirm-=delete
-command! c :execute 'cd' system('echo -n $(d %a -e)')
+command! c :execute 'cd' system('d %a -e')
 command! q :execute 'winc t' | quit 
+
+command! Cd :execute 'cd ' system('fd --type d | fzf-tmux 2>/dev/tty')
+command! Files :execute '!xdg-open ' system('fd | fzf-tmux 2>/dev/tty')
+nnoremap <C-t> :Files<cr>
+nnoremap <A-c> :Cd<cr>
 

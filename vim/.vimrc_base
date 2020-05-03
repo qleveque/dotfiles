@@ -126,7 +126,6 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,6 +134,20 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Change dirs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
+cnoreabbrev c C
+command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
+    \ {'source': 'find . -type d',
+    \ 'sink': 'cd'}))
+execute "set <M-c>=\ec"
+nnoremap <M-c> :Cd<CR>
+nnoremap <C-t> :Files<CR>
+nnoremap <C-f> :Rg<CR>
+nnoremap <C-w>b :Buffers<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => New languages
