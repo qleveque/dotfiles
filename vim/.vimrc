@@ -25,6 +25,6 @@ set runtimepath^=~/.vim/vim-airline
 set runtimepath^=~/.vim/vim-commentary
 set runtimepath^=~/.vim/vim-surround
 set runtimepath^=~/.vim/vim-tmux-navigator
-set runtimepath^=~/.vim/fzf.vim
 set runtimepath^=~/.vim/fzf
+set runtimepath^=~/.vim/fzf.vim
 

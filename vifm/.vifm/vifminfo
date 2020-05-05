@@ -17,6 +17,10 @@
 	/home/whenti/Documents/macros/pyqo
 	mkreadme.py
 1587326568
+'x
+	/mnt/c/BlueBotics/ANTserver/scripts
+	empty.db
+1588682811
 
 # Bookmarks:
 
@@ -24,369 +28,315 @@
 al
 q0
 v2
-ov
+oh
 m-1
 l11,2
 r2
 
 # Left window history (oldest to newest):
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/xml
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	Calibration
-1
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/Calibration
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	ctypes
-2
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/ctypes
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	curses
-3
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/curses
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	dateutil
-4
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/dateutil
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	distutils
-5
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/distutils
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/bin
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
-	external
-3
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external
-	Mercator
-1
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	QuickScan
-20
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan
-	CalibrationApp.exe
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/CalibrationApp/src
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/CalibrationApp
-	src
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration
-	CalibrationApp
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	Calibration
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration
-	Calibration
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/Calibration
-	src
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/Calibration/src
-	..
-0
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	QuickScan
-20
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan
-	msvcp140.dll
-3
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external
-	Mercator
-1
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
-	QuickScan
-20
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan
-	MappingApp.exe
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Doc
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Doc
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	bin
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/bin
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	bin
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/bin
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	build
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	buildCythonized
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/buildCythonized
-	Lib
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	Results
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/Results
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	build
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	tools
-12
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tools
-	DailyBuilder
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tools/DailyBuilder
-	SimpleBuildCythonized.py
-6
-d/mnt/c/Users/qleveque/Documents
-	tests
-8
-d/mnt/c/Users/qleveque/Documents/tests
-	pb_armand
-2
-d/mnt/c/Users/qleveque/Documents
-	tests
-8
-d/mnt/c/Users/qleveque
-	Favorites
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	ANTnavigation
-4
-d/mnt/c/Users/qleveque/Documents
-	tests
-8
 d/mnt/c/Users/qleveque
 	Documents
-6
-d/mnt/c/Users
-	qleveque
-4
+25
 d/mnt/c/Users/qleveque/Documents
 	codes
-1
-d/mnt/c/Users/qleveque/Documents/codes
-	python
-7
-d/mnt/c/Users/qleveque/Documents/codes/python
-	licenses
-4
-d/mnt/c/Users/qleveque/Documents/codes/python/licenses
-	custom_print.py
+3
+d/mnt/c/Users/qleveque
+	mybin
+22
+d/mnt/c/Users/qleveque/Documents/codes/cpp/testou
+	Debug
 2
-d/mnt/c/Users/qleveque/Documents
-	others
+d/mnt/c/Users/qleveque/Documents/codes/cpp
+	testou
 6
-d/mnt/c/Users/qleveque/Documents/others
-	report
-19
+d/mnt/c/Users/qleveque/Documents/codes
+	js
+5
+d/mnt/c/Users/qleveque/Documents
+	codes
+3
+d/mnt/c/Users/qleveque
+	Documents
+25
 d/mnt/c/Users/qleveque/Documents
 	tests
-8
-d/mnt/c/Users/qleveque/Documents/tests
-	pb_armand
+9
+d/mnt/c/Users/qleveque/Documents/Modèles Office personnalisés
+	testou
+1
+d/mnt/c/Users/qleveque/Documents
+	papers
+6
+d/mnt/c/Users/qleveque
+	OneDrive
+17
+d/mnt/c/Users/qleveque/Documents
+	papers
+6
+d/mnt/c/Users/qleveque/Documents/codes/cpp/testou/Debug
+	python.pdb
+1
+d/mnt/c/Users/qleveque/Documents/codes/cpp/testou
+	Debug
 2
+d/mnt/c/Users/qleveque/Documents/codes/cpp
+	testou
+6
+d/mnt/c/Users/qleveque/Documents/codes
+	cpp
+6
 d/mnt/c/Users/qleveque/Documents
-	tests
-8
+	codes
+3
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	bin
+3
 d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+4
+d/mnt/c/Users/qleveque/Documents
+	macros
+7
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	pyqo.egg-info
+5
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+4
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	pyqo.egg-info
+5
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+4
+d/mnt/c/Users/qleveque/Documents/macros/pyqo/pyqo
+	d.py
+4
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	pyqo
+4
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+4
+d/mnt/c/Users/qleveque/Documents
+	macros
+7
+d/mnt/c/Users/qleveque/Documents/codes/cpp
+	38
+8
+d/mnt/c/Users/qleveque/Documents
+	macros
+7
+d/mnt/c/Users/qleveque/Documents/Modèles Office personnalisés
 	..
 0
-d/mnt/c/Users/qleveque/AppData/Local/Temp
-	bx22tgk1.wkw
+d/mnt/c/Users/qleveque/Documents
+	papers
+6
+d/mnt/c/Users/qleveque
+	Documents
+25
+d/mnt/c/Users/qleveque/Documents
+	others
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040701 15h00 Recherche pourquoi probl de seuils
+	Seuils.wtch
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
+	040701 15h00 Recherche pourquoi probl de seuils
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS
+	Archive
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC
+	USonicS
+28
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	uC
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040701 15h00 Recherche pourquoi probl de seuils
+	Seuils.wtch
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
+7
+d/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
+	040702 13h10 Fonctionne, certains bugs corrigé, TMR0 rampe adapté
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS
+	Archive
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC
+	USonicS
+28
+d/mnt/c/Users/qleveque/Documents
+	others
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/examples
+	graphical_view.py
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	examples
+12
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	ANTlab
+18
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ui/view_widget
+	path_follow_widget.py
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ui
+	view_widget
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
+	ui
+9
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	lib
+5
+d/mnt/c/Users/qleveque/Documents
+	Modèles Office personnalisés
+11
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Lib
+43
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Lib
+	Alerter.aMod
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	resources
+8
+d/mnt/c/Users/qleveque/Documents
+	Modèles Office personnalisés
+11
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	ANTlab
+18
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	examples
+12
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ANTlabCore/Wrapper
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ANTlabCore
+	Wrapper
+9
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
+	ANTlabCore
+11
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	lib
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	ANTlab
+18
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
+7
+d/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	lib
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
+	ANTlabCore
+11
+d/mnt/c/Users/qleveque/Documents
+	macros
+7
+d/mnt/c/Users/qleveque/Documents/macros
+	fzf
+5
+d/mnt/c/Users/qleveque/Documents
+	macros
 7
 d/mnt/c/Users/qleveque
-	Roaming
-21
+	Documents
+24
 d/mnt/c/Users
 	qleveque
 4
-d/mnt/c/Users/qleveque
-	ntuser.dat.LOG1
-28
-d/mnt/c/Users/qleveque/Documents/macros/fzf
-	..
-0
-d/mnt/c/Users/qleveque/Documents/macros
-	fzf
-1
-d/mnt/c/Program Files
-	..
-0
-d/mnt/c
-	Program Files (x86)
-21
-d/mnt/c/Program Files (x86)
-	Windows Resource Kits
-4
-d/mnt/c
-	Program Files
-19
-d/mnt/c/Program Files
-	VcXsrv
-30
-d/mnt/c/Program Files/VcXsrv
-	uninstall.exe
-41
-d/usr/share/X11/xkb/rules
-	xorg
-10
-d/usr/share/X11/xkb
-	symbols
-6
-d/usr/share/X11/xkb/symbols
-	tz
-11
-d/mnt/c/Users/qleveque/Documents
-	tools
-4
-d/mnt/c/Users/qleveque/Documents/tools
-	EasyModbus.dll
-1
-d/mnt/c/Users/qleveque/Documents
-	tools
-4
-d/mnt/c/Users/qleveque
-	ntuser.dat.LOG1
-29
-d/mnt/c/Users/qleveque/Documents
-	others
-5
-d/mnt/c/Users/qleveque/Documents/others
-	ANT lite+ User Manual - Min turning circle required changements.docx
-19
 d/mnt/c/Users/qleveque
 	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TMContainer00000000000000000002.regtrans-ms
 28
-d/mnt/c/Users/qleveque/Documents/macros
-	fzf
-5
-d/mnt/c/Users/qleveque
-	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
-26
-d/mnt/c/Users/qleveque/Documents/macros
-	fzf
-5
-d/mnt/c/Users/qleveque
-	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
-26
-d/mnt/c/Users/qleveque/Documents/macros
-	fzf
-5
 d/mnt/c/Users/qleveque/Documents
-	others
-10
-d/mnt/c/Users/qleveque
-	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
-26
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	examples
-13
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/examples
-	check_bootfile.py
-3
-d/mnt/c/Users/qleveque/Documents
-	others
-10
-d/mnt/c/Users/qleveque
-	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
-26
-d/mnt/c/Users/qleveque/dotfiles
-	vim
-4
-d/mnt/c/Users/qleveque/dotfiles/bash
+	macros
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
+	040702 14h15 Rampes et seuils optimisés
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040326 Implém pot digital en cours
+	usons_n.asm
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
+	040701 15h00 Recherche pourquoi probl de seuils
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040701 15h00 Recherche pourquoi probl de seuils
 	..
 0
+d/mnt/c/Users/qleveque/Documents
+	codes
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	lib
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	ANTlab
+18
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
+7
+d/mnt/c/Users/qleveque/Documents/codes
+	js
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
+	templates
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/templates
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
+	oozelibs.back
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/oozelibs.back
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
+	assets
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/assets
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
+	assets
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unittest
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
+	unittest
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests
+	packages
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	tests
+10
+d/mnt/c/BlueBotics/ANTserver
+	..
+0
+d/mnt/c/BlueBotics/ANTserver/scripts
+	empty.db.backup
+5
 d
 
 # Right window history (oldest to newest):
-D/home/whenti/Documents/images
-	scouts
-3
-D/home/whenti/Documents/images/scouts
-	..
-0
-D/home/whenti/Documents
-	images
-2
-D/home/whenti/Downloads
-	991252188.pdf
-2
-D/home
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	bin
-2
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	wms-app
-2
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	wms
-5
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	resources-navigation
-11
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/resources-navigation
-	bootstrap-simul.json
-2
-D/mnt/c/Users/qleveque/Documents/papers
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	monitor
-3
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	WMS
-17
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	monitor
-3
 D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
 	monitor
 1
@@ -633,108 +583,162 @@ D/mnt/c/Users/qleveque/dotfiles
 D/mnt/c/Users/qleveque/dotfiles/tools
 	..
 0
+D/mnt/c/Users/qleveque/Dropbox/autres/terminal_pop
+	terminal_pop.ahk
+2
+D/mnt/c/Users/qleveque/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup
+	terminal_pop.ahk
+4
+D/mnt/c/Users/qleveque/AppData/Roaming/Microsoft/Windows/Start Menu/Programs
+	Startup
+14
+D/mnt/c/Users/qleveque/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup
+	terminal_pop.ahk
+4
+D/mnt/c/Users/qleveque/Documents
+	Zoom
+2
+D/mnt/c/Users/qleveque/Documents/codes/cpp
+	last
+8
+D/mnt/c/Users/qleveque/Documents/codes
+	cpp
+4
+D/mnt/c/Users/qleveque/Documents
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Users/qleveque
+	Downloads
+7
+D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Users/qleveque
+	MicrosoftEdgeBackups
+12
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs
+	node
+3
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
+	tools
+9
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/tools
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
+	setup-files
+13
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files
+	DB
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files/DB
+	empty.db
+9
 D
 
 # Command line history (oldest to newest):
-:normal! \<C-w>t
-:bp
-:previous
-:brewind
-:next
-:ch
-:switch
-:1
-:0
-:left
-:1 select
-:1select
-:winc t exit
-:exit
-:winc t |:exit
-:winc t|:exit
-:winc t|exit
-:winc t|q
-:winc t | q
-:winc t | restart
-:write | restart
-:write | q
-:write | exit
-:'winc t'|exit
-:'winc t'
-:winc t | exit
-:winc 't' | exit
-:winc t & exit
-:winc t | :exit
-:winc t
-:winc t:exit
-:winc t :exit
-:winc t \| exit
-:winc t <bar> exit
-:winc t<bar> exit
-:winc t<cr>exit
-:winc t<cr> exit
-:winc t<cr> exit<cr>
-:winc t:quit
-:winc t :quit
-:quit
-:'winc t' | quit
-:"winc t" | quit
-:normal :winc t
-:normal :winc t<cr>
-:normal :winc <Space> t<cr>
-:execute 'winc t | quit'
-:execute ':winc t | quit'
-:execute ":winc t | quit"
-:execute "winc t | quit"
-:execute 'winc t | q'
-:execute 'winc t'
-:execute 'winc t' | q
-:execute (winc t)
-:execute 'winc t' | quit
-:c fim
-:c films
-:c macros
-:cd /mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor/linux-x64-57/binding.node
-:cd /mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor/linux-x64-57/
-:cd /mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/node_modules/node-sass/vendor/
-::
-:c antserver
-:q:q
-:c monitor
-:only
-:c dat
-:mkdir tests
-:rdo
-:redo
-:ls -a
-:c papers
-:mkdir others
+:select tools
+:choose examples
+:bmgo tools
+:go tools
+:go "examples"
+:go /mnt/c/Users
+:cds examples
+:cd examples
+:filev tools
+:filter tools
+:filter
+:find model
+:highlight tools
+:locate tools
+:set c = /mnt
+:set c=/mnt
+:set c='mnt'
 :c devlab
-:d
-:c wms
-:w
-:c desk
-:cd .vim
-:c prog
-:c progx
-:copy!
-:copy
-:touch wh
-:sudo
-:FZFlocate oui
-:FZFfind
-:FZFlocate
-:history
-:fzf
-:cd ../..
-:c docs
-:open check_bootfile.py
-:o check_bootfile.py
-:run check_bootfile.py
-:cd ~
+:select /mnt/c
+:goto macros
+:cd macros
+:cd ripgrep_12.0.1_amd64.deb
+:mark /mnt/c
+:mark x /mnt/c
+:mark x /mnt/c/dell.sdr
+:mark x /mnt/c dell.sdr
+:mark x /mnt/c ProgramData
+:print "ok"
+:echo oui
+:echo "oui"
+:echo "%d"
+:echo $d
+:echo %d
+:Testou
+:cd ..
+:run 'x
+:run 
+:goto x
+:go x
+:execute 'x
+:execute '\'x'
+:"'x"
+:type
+:run "'x"
+:press
+:execute
+:exec 1 "'x"
+:exec "1'x"
+:.exec "'x"
+:exec "'x" 1
+:exec 1"'x"
+:exec1 "'x"
+:2,3exec "'x"
+:$exec "'x"
+:1exec "'x"
+:exec "1 'x"
+:exec "'x"1
+:exec "1:'x"
+:exec "'x"
+:exec 'x
+:1 exec "'x"
+:jump x
+:execute "'x" 1
+:execute 1 "'x"
+:execute1 "'x"
+:1 execute "'x"
+:1execute "'x"
+:%execute "'x"
+:%,execute "'x"
+:1,execute "'x"
+:$,execute "'x"
+:,execute "'x"
+:.,$execute "'x"
+:1execute1 "'x"
+:0execute "'x"
+:1 :execute "'x"
+:1 :execute system("'x")
+:execute system("'x")
+:runexec "'x"
+:runexec 'x
+:testou
+:touch testou
+:command 'x
+:command "'x"
+:execute "'x"
+:'x
+:execute command("'x")
+:normal 'x
+:c 
+:cd -
 :c dl
-:mkdir tools
-:move
+:c oberon
+:c docs
+:w
+:c wms
+:mv empty.db.backup
+:mv empty.db{,backup}
+:!mv empty.db{,.backup}
+:copy
 :q
 
 # Search history (oldest to newest):
@@ -754,7 +758,6 @@ D
 /ma
 /to
 /ca
-/Re
 /Up
 /build
 /P-
@@ -794,6 +797,15 @@ D
 /dow
 /lice
 /NTUSER
+/info
+/tools
+//mnt/c
+/Create
+/create
+/Re
+/goto macros
+/empty
+/set
 
 # Prompt history (oldest to newest):
 pb.py
@@ -807,7 +819,7 @@ pterminal_pop.sh
 # Local filter history (oldest to newest):
 
 # Registers:
-""/mnt/c/.vifm-Trash-1000/000_Calib-omni_spirals-20200428-164114.log
+""/mnt/c/.vifm-Trash-1000/000_dev_monitor.py
 
 # Directory stack (oldest to newest):
 
@@ -1006,6 +1018,12 @@ t/mnt/c/.vifm-Trash-1000/000_map2visitor.c
 	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2/map2visitor.c
 t/mnt/c/.vifm-Trash-1000/000_Calib-omni_spirals-20200428-164114.log
 	/mnt/c/Users/qleveque/Downloads/Calib-omni_spirals-20200428-164114.log
+t/mnt/c/.vifm-Trash-1000/000_testou
+	/mnt/c/Users/qleveque/Documents/Modèles Office personnalisés/testou
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-1.20.1.139-Setup-29.04.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-1.20.1.139-Setup-29.04.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_dev_monitor.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/dev_monitor.py
 
 # State:
 f

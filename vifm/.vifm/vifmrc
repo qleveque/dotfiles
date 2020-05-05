@@ -67,6 +67,7 @@ set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
 " Ignore case in search patterns unless it contains at least one uppercase
 " letter
 
+set ignorecase
 set smartcase
 
 " Don't highlight search results automatically
@@ -167,11 +168,10 @@ nnoremap A cw
 
 " set syncregs=general
 set confirm-=delete
-command! c :execute 'cd' system('d %a -e')
+command! c :execute 'cd "'.system('d %a -e').'"'
 command! q :execute 'winc t' | quit 
-
-command! Cd :execute 'cd ' system('fd --type d | fzf-tmux 2>/dev/tty')
-command! Files :execute '!xdg-open ' system('fd | fzf-tmux 2>/dev/tty')
+command! Cd :execute 'cd "./'.system('fd --type d | fzf --height 10 2>/dev/tty').'"' | :restart
+command! Files :execute 'mark x "%d/'.system('fd | fzf --height 10 2>/dev/tty | sed "s/\(.*\)\//\1\" \"/"').'"' | :normal 'x | :restart
 nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
 

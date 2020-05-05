@@ -4,6 +4,9 @@ alias c='source c'
 alias gsu='git status -uno'
 alias gau='git add -u'
 alias telnet='telnet -e ^C'
+alias rg='rg --smart-case'
+alias glog='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" -n15 --graph'
+alias :q='exit'
 
 export FZF_DEFAULT_COMMAND="fd"
 export FZF_CTRL_T_COMMAND="fd"
