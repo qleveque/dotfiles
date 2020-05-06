@@ -2,9 +2,9 @@
 
 # Marks:
 'a
-	/mnt/c/Users/qleveque
-	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TM.blf
-1588499319
+	/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+1588707098
 'b
 	/mnt/c/Users/qleveque/bin/
 	..
@@ -12,277 +12,218 @@
 'h
 	/mnt/c/Users/qleveque/
 	..
-1587371186
+1588705801
+'m
+	/mnt/c/Users/qleveque/Documents
+	macros
+1588707104
 's
 	/home/whenti/Documents/macros/pyqo
 	mkreadme.py
 1587326568
 'x
-	/mnt/c/BlueBotics/ANTserver/scripts
-	empty.db
-1588682811
+	/mnt/c/BlueBotics/ANTserver/scripts/
+	ResetDB.bat
+1588763458
 
 # Bookmarks:
 
 # TUI:
 al
 q0
-v2
-oh
+v1
+ov
 m-1
 l11,2
 r2
 
 # Left window history (oldest to newest):
-d/mnt/c/Users/qleveque
-	Documents
-25
-d/mnt/c/Users/qleveque/Documents
-	codes
-3
-d/mnt/c/Users/qleveque
-	mybin
-22
-d/mnt/c/Users/qleveque/Documents/codes/cpp/testou
-	Debug
-2
-d/mnt/c/Users/qleveque/Documents/codes/cpp
-	testou
-6
-d/mnt/c/Users/qleveque/Documents/codes
-	js
-5
-d/mnt/c/Users/qleveque/Documents
-	codes
-3
-d/mnt/c/Users/qleveque
-	Documents
-25
-d/mnt/c/Users/qleveque/Documents
-	tests
-9
-d/mnt/c/Users/qleveque/Documents/Modèles Office personnalisés
-	testou
-1
-d/mnt/c/Users/qleveque/Documents
-	papers
-6
-d/mnt/c/Users/qleveque
-	OneDrive
-17
-d/mnt/c/Users/qleveque/Documents
-	papers
-6
-d/mnt/c/Users/qleveque/Documents/codes/cpp/testou/Debug
-	python.pdb
-1
-d/mnt/c/Users/qleveque/Documents/codes/cpp/testou
-	Debug
-2
-d/mnt/c/Users/qleveque/Documents/codes/cpp
-	testou
-6
-d/mnt/c/Users/qleveque/Documents/codes
-	cpp
-6
-d/mnt/c/Users/qleveque/Documents
-	codes
-3
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	bin
-3
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-4
-d/mnt/c/Users/qleveque/Documents
-	macros
-7
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	pyqo.egg-info
-5
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-4
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	pyqo.egg-info
-5
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-4
-d/mnt/c/Users/qleveque/Documents/macros/pyqo/pyqo
-	d.py
-4
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	pyqo
-4
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-4
-d/mnt/c/Users/qleveque/Documents
-	macros
-7
-d/mnt/c/Users/qleveque/Documents/codes/cpp
-	38
-8
-d/mnt/c/Users/qleveque/Documents
-	macros
-7
-d/mnt/c/Users/qleveque/Documents/Modèles Office personnalisés
-	..
-0
-d/mnt/c/Users/qleveque/Documents
-	papers
-6
-d/mnt/c/Users/qleveque
-	Documents
-25
-d/mnt/c/Users/qleveque/Documents
-	others
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040701 15h00 Recherche pourquoi probl de seuils
-	Seuils.wtch
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
-	040701 15h00 Recherche pourquoi probl de seuils
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS
-	Archive
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC
-	USonicS
-28
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	uC
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040701 15h00 Recherche pourquoi probl de seuils
-	Seuils.wtch
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-7
-d/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
-	040702 13h10 Fonctionne, certains bugs corrigé, TMR0 rampe adapté
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS
-	Archive
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC
-	USonicS
-28
-d/mnt/c/Users/qleveque/Documents
-	others
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/examples
-	graphical_view.py
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	examples
-12
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
-18
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ui/view_widget
-	path_follow_widget.py
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ui
-	view_widget
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	ui
-9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	lib
-5
-d/mnt/c/Users/qleveque/Documents
-	Modèles Office personnalisés
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Lib
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut/textes
+	oui.pho
 43
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Lib
-	Alerter.aMod
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	resources
-8
-d/mnt/c/Users/qleveque/Documents
-	Modèles Office personnalisés
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
-18
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	examples
-12
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ANTlabCore/Wrapper
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut
+	textes
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot
+	SpeechOut
+15
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX
+	Robot
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut/textes
+	oui.pho
+43
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut
+	textes
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot
+	SpeechOut
+15
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX
+	Robot
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components
 	..
 0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ANTlabCore
-	Wrapper
-9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	ANTlabCore
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	lib
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
-18
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components/ICS/bpl
+	Icsbcb40.map
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components/ICS
+	bpl
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components
+	ICS
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX
+	Components
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects
+	RoboX
+14
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-7
+	Projects
+10
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Airbus
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Airbus
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Movement
+33
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Test
+31
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Movement
+33
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Movement
+33
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Movement
+33
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	Oberon
+9
 d/mnt/c/Users/qleveque/Documents/codes
 	BlueBotics
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	lib
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	ANTlabCore
-11
-d/mnt/c/Users/qleveque/Documents
-	macros
-7
-d/mnt/c/Users/qleveque/Documents/macros
-	fzf
-5
-d/mnt/c/Users/qleveque/Documents
-	macros
-7
-d/mnt/c/Users/qleveque
-	Documents
-24
-d/mnt/c/Users
-	qleveque
-4
-d/mnt/c/Users/qleveque
-	NTUSER.DAT{b2be0532-3495-11e9-a51e-207918663f72}.TMContainer00000000000000000002.regtrans-ms
-28
-d/mnt/c/Users/qleveque/Documents
-	macros
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
-	040702 14h15 Rampes et seuils optimisés
 8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040326 Implém pot digital en cours
-	usons_n.asm
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive
-	040701 15h00 Recherche pourquoi probl de seuils
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/uC/USonicS/Archive/040701 15h00 Recherche pourquoi probl de seuils
-	..
-0
 d/mnt/c/Users/qleveque/Documents
 	codes
 3
+d/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	Oberon
+9
+d/mnt/c/Users/qleveque/Documents/codes
+	python
+6
+d/mnt/c/Users/qleveque/Documents/codes/python
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes
+	js
+5
+d/mnt/c/Users/qleveque/Documents
+	codes
+3
+d/mnt/c/Users/qleveque/Documents/trash
+	release
+2
+d/mnt/c/Users/qleveque/Documents
+	trash
+5
+d/mnt/c/Users/qleveque
+	Documents
+23
+d/mnt/c/Users/qleveque/Documents
+	codes
+3
+d/mnt/c/Users/qleveque
+	Documents
+22
+d/mnt/c/Users/qleveque/Documents
+	papers
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	Oberon
+9
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Meta
+	ConfigurationParameters.yml
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	Oberon
+9
+d/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	Oberon
+9
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
+	Movement
+33
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	Projects
+10
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects
+	NIFTi
+10
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/Stoecklin/GMOS/api/resources
+	insert.sql
+3
+d/mnt/c/Users/qleveque
+	Dropbox
+19
+d/mnt/c/Users/qleveque/Documents
+	papers
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	CreateSetupCythonized.bat
+15
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2/actions/descriptors
+	arguments.py
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2/actions
+	descriptors
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2
+	actions
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model
+	map2
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
+	graphics_view
+11
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ANTlib
+	Component
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
+	bootfile
+8
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
 	lib
 5
@@ -292,120 +233,114 @@ d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
 	App
 7
-d/mnt/c/Users/qleveque/Documents/codes
-	js
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Meta
+	ConfigurationParameters.yml
 5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
-	templates
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	xo2
+8
+d/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+8
+d/mnt/c/Users/qleveque/Documents
+	codes
 3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/templates
+d/mnt/c/Users/qleveque
+	Documents
+22
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
 	..
 0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
-	oozelibs.back
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
+	wms
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	TestSetup
+13
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs
+	bin
 2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/oozelibs.back
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
-	assets
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/assets
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app
-	assets
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unittest
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
-	unittest
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests
-	packages
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	tests
-10
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/bin
+	build-compiler.js
+3
 d/mnt/c/BlueBotics/ANTserver
 	..
 0
-d/mnt/c/BlueBotics/ANTserver/scripts
-	empty.db.backup
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs/0.0.71/examples/textures
+	square-outline.png
+38
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs/0.0.71/examples
+	textures
+8
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs/0.0.71
+	examples
+4
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs
+	0.0.71
+1
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs
+	threejs
+3
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001
+	libs
+3
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath
+	rootprod-001
+1
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module
+	classpath
+1
+d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules
+	monitor-module
+10
+d/mnt/c/BlueBotics/ANTserver/resources-ambient
+	modules
+2
+d/mnt/c/BlueBotics/ANTserver
+	resources-ambient
+6
+d/mnt/c/BlueBotics
+	ANTserver
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	xo2
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Meta
+	ConfigurationParameters.yml
 5
+d/mnt/c/Users/qleveque/Downloads
+	ANTserver-1.20.0.142-Setup-15.04.2020.exe
+3
+d/mnt/c/BlueBotics/ANTserver
+	resources-ambient
+8
+d/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	lib
+5
+d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	..
+0
+d/mnt/c/Program Files (x86)/BlueBotics
+	1.19.0
+7
+d/mnt/c/Program Files (x86)/BlueBotics/1.19.0
+	bin
+1
+d/mnt/c/Program Files (x86)/BlueBotics/1.19.0/bin
+	ANTlab.exe
+19
+d/mnt/c/Users/qleveque
+	Documents
+22
+d/mnt/c/Users/qleveque/Downloads
+	ANTserver-0.0.0.2938-Setup-05.05.2020.exe
+2
 d
 
 # Right window history (oldest to newest):
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	oozejs
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor/oozejs
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	oozejs
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	wms
-5
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	src-navigation
-19
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/src-navigation
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	src-navigation
-19
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/src-navigation
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	src-navigation
-19
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	monitor
-3
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	oozejs
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor/oozejs
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	oozejs
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	monitor
-3
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	monitor
-3
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	wms-app
-2
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor/wms-app
-	dev_monitor.py
-11
 D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
 	wms-app
 2
@@ -635,21 +570,81 @@ D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files
 	DB
 1
 D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files/DB
-	empty.db
+	..
+0
+D/mnt/c/Users/qleveque
+	Favorites
 9
+D/mnt/c/Users/qleveque/ANTlab
+	200505_145118_ANTlab.log
+5
+D/mnt/c/Users/qleveque/Documents
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/examples
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	examples
+7
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	ANTlab
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
+1
+D/mnt/c/Users/qleveque/Documents/codes
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml/QtQuick/Controls/Private
+	ModalPopupBehavior.qml
+33
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml/QtQuick/Controls
+	Private
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml/QtQuick
+	Controls
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml
+	QtQuick
+10
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build
+	qml
+29
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/site-packages/pylint/test/functional
+	abstract_class_instantiated_in_class.py
+4
+D/mnt/c/Users/qleveque/Downloads
+	ANTserver-0.0.0.2935-Setup-05.05.2020.exe
+1
+D/mnt/c/Users/qleveque
+	Downloads
+7
+D/mnt/c/Users/qleveque/Downloads
+	ANTserver-0.0.0.2935-Setup-05.05.2020.exe
+1
+D/mnt/c/Users/qleveque
+	Downloads
+7
+D/mnt/c/Users
+	qleveque
+4
+D/mnt/c/Users/qleveque
+	IntelGraphicsProfiles
+10
+D/mnt/c/Users/qleveque/Documents
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+1
 D
 
 # Command line history (oldest to newest):
-:select tools
-:choose examples
-:bmgo tools
-:go tools
-:go "examples"
-:go /mnt/c/Users
-:cds examples
-:cd examples
-:filev tools
-:filter tools
+:!kill_wms
 :filter
 :find model
 :highlight tools
@@ -657,7 +652,6 @@ D
 :set c = /mnt
 :set c=/mnt
 :set c='mnt'
-:c devlab
 :select /mnt/c
 :goto macros
 :cd macros
@@ -728,20 +722,32 @@ D
 :'x
 :execute command("'x")
 :normal 'x
-:c 
-:cd -
-:c dl
 :c oberon
-:c docs
 :w
-:c wms
 :mv empty.db.backup
 :mv empty.db{,backup}
 :!mv empty.db{,.backup}
 :copy
+:c devlab
+:redraw
+:echo "uoi"
+:move
+:c 
+:c doc
+:c docs
+::q
+:cd -
+:c wms
+:rg var
+:c src
+:c antserver
+:c antalb
+:c antlab
+:c dl
 :q
 
 # Search history (oldest to newest):
+/mark x /mnt/c
 /star
 /buid
 /bui
@@ -806,6 +812,7 @@ D
 /goto macros
 /empty
 /set
+/__init__
 
 # Prompt history (oldest to newest):
 pb.py
@@ -819,7 +826,7 @@ pterminal_pop.sh
 # Local filter history (oldest to newest):
 
 # Registers:
-""/mnt/c/.vifm-Trash-1000/000_dev_monitor.py
+""/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/ANTlab.iml
 
 # Directory stack (oldest to newest):
 

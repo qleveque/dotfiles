@@ -4,24 +4,20 @@ alias c='source c'
 alias gsu='git status -uno'
 alias gau='git add -u'
 alias telnet='telnet -e ^C'
+alias fd='fd -I'
 alias rg='rg --smart-case'
 alias glog='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" -n15 --graph'
 alias :q='exit'
 
-export FZF_DEFAULT_COMMAND="fd"
-export FZF_CTRL_T_COMMAND="fd"
-export FZF_ALT_C_COMMAND="fd --type d"
-export FZF_DEFAULT_OPTS="--ansi"
+export FZF_DEFAULT_COMMAND="fd -I"
+export FZF_CTRL_T_COMMAND="fd -I"
+export FZF_ALT_C_COMMAND="fd --type d -I"
+export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 vf()
 {
-    if [ -z "${@}" ]; then
-        local dst="$(command vifm -c :only --choose-dir - .)"
-    else
-        local dst="$(command vifm --choose-dir - . ${@})"
-    fi
-
+    local dst="$(command vifm -c :only --choose-dir - .)"
     if [ -z "$dst" ]; then
         echo 'Directory picking cancelled/failed'
         return 1

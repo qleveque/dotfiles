@@ -170,8 +170,9 @@ nnoremap A cw
 set confirm-=delete
 command! c :execute 'cd "'.system('d %a -e').'"'
 command! q :execute 'winc t' | quit 
-command! Cd :execute 'cd "./'.system('fd --type d | fzf --height 10 2>/dev/tty').'"' | :restart
-command! Files :execute 'mark x "%d/'.system('fd | fzf --height 10 2>/dev/tty | sed "s/\(.*\)\//\1\" \"/"').'"' | :normal 'x | :restart
+command! Cd :execute 'cd "./'.system('$FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
+command! Files :execute 'mark x "%d/'.system('$FZF_CTRL_T_COMMAND | fzf 2>/dev/tty | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
+
 nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
 
