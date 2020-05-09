@@ -22,9 +22,9 @@
 	mkreadme.py
 1587326568
 'x
-	/mnt/c/BlueBotics/ANTserver/scripts/
-	ResetDB.bat
-1588763458
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/
+	tools
+1588956782
 
 # Bookmarks:
 
@@ -34,379 +34,313 @@ q0
 v1
 ov
 m-1
-l11,2
+l12
 r2
 
 # Left window history (oldest to newest):
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut/textes
-	oui.pho
-43
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut
-	textes
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
+	utils
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
+	gui
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/gui
+	__pycache__
 1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot
-	SpeechOut
-15
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX
-	Robot
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut/textes
-	oui.pho
-43
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot/SpeechOut
-	textes
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
+	gui
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/gui
+	__pycache__
 1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Robot
-	SpeechOut
-15
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX
-	Robot
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components/ICS/bpl
-	Icsbcb40.map
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
+	core
 2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components/ICS
-	bpl
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX/Components
-	ICS
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/RoboX
-	Components
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects
-	RoboX
-14
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Projects
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Airbus
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Airbus
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Movement
-33
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Test
-31
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Movement
-33
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Movement
-33
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Movement
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Movement
-33
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Oberon
-9
-d/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-8
-d/mnt/c/Users/qleveque/Documents
-	codes
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/core
+	test_platforms.py
 3
-d/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Oberon
-9
-d/mnt/c/Users/qleveque/Documents/codes
-	python
-6
-d/mnt/c/Users/qleveque/Documents/codes/python
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes
-	js
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
+	util
 5
-d/mnt/c/Users/qleveque/Documents
-	codes
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/util
+	test_utils.py
 3
-d/mnt/c/Users/qleveque/Documents/trash
-	release
-2
-d/mnt/c/Users/qleveque/Documents
-	trash
-5
-d/mnt/c/Users/qleveque
-	Documents
-23
-d/mnt/c/Users/qleveque/Documents
-	codes
-3
-d/mnt/c/Users/qleveque
-	Documents
-22
-d/mnt/c/Users/qleveque/Documents
-	papers
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Oberon
-9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Meta
-	ConfigurationParameters.yml
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Oberon
-9
-d/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Oberon
-9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon
-	Movement
-33
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	Projects
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects
-	NIFTi
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Projects/Stoecklin/GMOS/api/resources
-	insert.sql
-3
-d/mnt/c/Users/qleveque
-	Dropbox
-19
-d/mnt/c/Users/qleveque/Documents
-	papers
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	CreateSetupCythonized.bat
-15
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2/actions/descriptors
-	arguments.py
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2/actions
-	descriptors
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model/map2
-	actions
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/model
-	map2
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	graphics_view
-11
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/ANTlib
-	Component
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	bootfile
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	lib
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
-18
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Meta
-	ConfigurationParameters.yml
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	xo2
-8
-d/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-8
-d/mnt/c/Users/qleveque/Documents
-	codes
-3
-d/mnt/c/Users/qleveque
-	Documents
-22
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	wms
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	TestSetup
-13
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs
-	bin
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs/bin
-	build-compiler.js
-3
-d/mnt/c/BlueBotics/ANTserver
-	..
-0
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs/0.0.71/examples/textures
-	square-outline.png
-38
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs/0.0.71/examples
-	textures
-8
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs/0.0.71
-	examples
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
+	unit_test
 4
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs/threejs
-	0.0.71
-1
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001/libs
-	threejs
-3
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath/rootprod-001
-	libs
-3
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module/classpath
-	rootprod-001
-1
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules/monitor-module
-	classpath
-1
-d/mnt/c/BlueBotics/ANTserver/resources-ambient/modules
-	monitor-module
-10
-d/mnt/c/BlueBotics/ANTserver/resources-ambient
-	modules
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
+	tests
 2
-d/mnt/c/BlueBotics/ANTserver
-	resources-ambient
-6
-d/mnt/c/BlueBotics
-	ANTserver
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	xo2
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/Meta
-	ConfigurationParameters.yml
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
+	utils
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/utils
+	database.py
 5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
+	tests
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	ANTlabCore
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore
+	Gui
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui
+	Descriptor
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
+	Map
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Map
+	__pycache__
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
+	Vehicle
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Vehicle
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
+	Vehicle
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Vehicle
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
+	Map
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui
+	Descriptor
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
+	Map
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Map
+	__pycache__
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
+	Map
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui
+	Descriptor
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore
+	Gui
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	ANTlabCore
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	bstream
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
+	renderer
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream/renderer
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
+	renderer
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	bstream
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
+	renderer
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream/renderer
+	__init__.py
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
+	renderer
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	connection
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/connection
+	map_synchronization
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/connection/map_synchronization
+	__pycache__
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/connection
+	map_synchronization
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	Core
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
+	Gui
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core/Gui
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
+	Logic
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core/Logic
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
+	Util
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core/Util
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
+	Util
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	graphics_view
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/graphics_view
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	model
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model
+	ambient
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model/ambient
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model
+	server_config_writer_test
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model/server_config_writer_test
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model
+	server_config_writer_test
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	store
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/store
+	upgrades
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/store/upgrades
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/store
+	upgrades
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
+	ui
+9
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ui
+	dialogs
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ui/dialogs
+	ask_to_override_ant_lock
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ui/dialogs/ask_to_override_ant_lock
+	test_case.py
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	..
+0
+d/mnt/c/Users/qleveque/.tmux
+	plugins
+1
+d/mnt/c/Users/qleveque/.tmux/plugins
+	..
+0
 d/mnt/c/Users/qleveque/Downloads
 	ANTserver-1.20.0.142-Setup-15.04.2020.exe
-3
-d/mnt/c/BlueBotics/ANTserver
-	resources-ambient
-8
-d/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
-2
+4
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	lib
-5
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	plugins
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	ANTlab
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
+1
+d/mnt/c/Users/qleveque/Documents/codes
+	BlueBotics
+3
+d/mnt/c/Users/qleveque/Documents
+	tools
+9
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+2
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
 	..
 0
-d/mnt/c/Program Files (x86)/BlueBotics
-	1.19.0
-7
-d/mnt/c/Program Files (x86)/BlueBotics/1.19.0
-	bin
-1
-d/mnt/c/Program Files (x86)/BlueBotics/1.19.0/bin
-	ANTlab.exe
-19
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+2
+d/mnt/c/Users/qleveque/Documents
+	macros
+3
 d/mnt/c/Users/qleveque
 	Documents
-22
-d/mnt/c/Users/qleveque/Downloads
-	ANTserver-0.0.0.2938-Setup-05.05.2020.exe
+6
+d/mnt/c/Users
+	qleveque
+4
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	bin
+1
+d/mnt/c/Users/qleveque/Documents/macros/pyqo/bin
+	c.bat
 2
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	bin
+1
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+2
+d/mnt/c/Users/qleveque/Documents
+	macros
+3
+d/mnt/c/Users/qleveque
+	Documents
+6
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	build
+2
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+2
+d/mnt/c/Users/qleveque/Documents
+	macros
+3
+d/mnt/c/Users/qleveque
+	Documents
+6
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	bin
+1
+d/mnt/c/Users/qleveque/Documents/macros/pyqo/bin
+	c.bat
+2
+d/mnt/c/Users/qleveque/Documents/macros/pyqo
+	bin
+1
+d/mnt/c/Users/qleveque/Documents/macros
+	pyqo
+2
+d/mnt/c/Users/qleveque/Documents
+	Modèles Office personnalisés
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	ANTlab.nsi
+14
 d
 
 # Right window history (oldest to newest):
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	wms-app
-2
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	wms-app
-2
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor/wms-app
-	dev_monitor.py
-11
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/monitor
-	wms-app
-2
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor
-	monitor
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	monitor
-3
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	WMS
-17
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS
-	oozjBs
-4
-D/mnt/c/Users/qleveque/Documents
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c/Users/qleveque/Documents
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c/Users/qleveque/Documents
-	options
-13
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c/Users/qleveque/Documents
-	work
-19
-D/mnt/c/Users/qleveque/Desktop
-	200415 ANT lab lunch.docx
-7
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c/Users/qleveque/Desktop
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
 D/mnt/c/Users/qleveque/Documents
 	Modèles Office personnalisés
 1
@@ -639,36 +573,79 @@ D/mnt/c/Users/qleveque/Documents/codes/BlueBotics
 	..
 0
 D/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-1
+	..
+0
+D/mnt/c/BlueBotics/ANTserver
+	..
+0
+D/mnt/c/BlueBotics/ANTserver/scripts
+	..
+0
+D/mnt/c/BlueBotics/ANTserver
+	scripts
+10
+D/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+D/mnt/c/BlueBotics/ANTserver
+	scripts
+10
+D/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+D/mnt/c/BlueBotics/ANTserver
+	scripts
+10
+D/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+D/mnt/c/BlueBotics/ANTserver
+	scripts
+10
+D/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+D/mnt/c/BlueBotics/ANTserver
+	scripts
+10
+D/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+D/mnt/c/BlueBotics/ANTserver
+	scripts
+10
+D/mnt/c/BlueBotics/ANTserver/scripts
+	ResetDB.bat
+2
+D/mnt/c/BlueBotics/ANTserver
+	..
+0
+D/mnt/c/Users/qleveque/Documents
+	..
+0
+D/mnt/c/Users/qleveque
+	Documents
+6
+D/mnt/c/Users
+	qleveque
+4
+D/mnt/c/Users/qleveque
+	Documents
+6
+D/mnt/c/Users/qleveque/Documents
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Users/qleveque
+	Downloads
+7
 D
 
 # Command line history (oldest to newest):
-:!kill_wms
-:filter
-:find model
-:highlight tools
-:locate tools
-:set c = /mnt
-:set c=/mnt
-:set c='mnt'
-:select /mnt/c
-:goto macros
-:cd macros
-:cd ripgrep_12.0.1_amd64.deb
-:mark /mnt/c
-:mark x /mnt/c
-:mark x /mnt/c/dell.sdr
-:mark x /mnt/c dell.sdr
-:mark x /mnt/c ProgramData
-:print "ok"
-:echo oui
-:echo "oui"
-:echo "%d"
-:echo $d
 :echo %d
 :Testou
-:cd ..
 :run 'x
 :run 
 :goto x
@@ -723,27 +700,49 @@ D
 :execute command("'x")
 :normal 'x
 :c oberon
-:w
 :mv empty.db.backup
 :mv empty.db{,backup}
 :!mv empty.db{,.backup}
 :copy
-:c devlab
 :redraw
 :echo "uoi"
 :move
 :c 
 :c doc
-:c docs
 ::q
-:cd -
 :c wms
 :rg var
-:c src
-:c antserver
 :c antalb
 :c antlab
+:c antserver
+:c src
+:cd -
+:cd ..
+:cd ~
+:cd
+:c
+:c releases
 :c dl
+: pvm-examples
+: sudo apt install <deb name>
+:!rename -n 's/(.*)_tests?\.py/test_$1.py/' *.py'
+:!rename 's/(.*)_tests?\.py/test_$1.py/' *.py'
+:!rename 's/(.*)_tests?\.py/test_$1.py/' *.py
+:cd ~/.tmux
+:mkdir plugins
+:w
+:!echo -n %c | xclip -selection clipboard
+:!echo -n %c:p | xclip -selection clipboard
+:execute '!echo -n %c:p | xclip -selection clipboard'
+:ls
+:c docs
+:c devlab
+:!cmd mspaint
+:echo %a
+:echo '%a'
+:!echo '%a'
+:!echo '%d'
+:!echo '%A'
 :q
 
 # Search history (oldest to newest):
@@ -822,11 +821,21 @@ pd.py
 pb.txt
 pterminal_pop
 pterminal_pop.sh
+pmmand 'tv' from deb treeviewx
+pmmand 'tlf' from deb tlf
+pmmand 'tf' from deb tf
+pmmand 'tf' from deb tf5
+ptests.backup
+putils.backup
+putils
+ptests
+ptests_.py
+ptests_loader.py
+ptest_vehiclescanner
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/ANTlab.iml
 
 # Directory stack (oldest to newest):
 
@@ -1031,6 +1040,10 @@ t/mnt/c/.vifm-Trash-1000/000_ANTlab-1.20.1.139-Setup-29.04.2020.exe
 	/mnt/c/Users/qleveque/Downloads/ANTlab-1.20.1.139-Setup-29.04.2020.exe
 t/mnt/c/.vifm-Trash-1000/000_dev_monitor.py
 	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/dev_monitor.py
+t/mnt/c/.vifm-Trash-1000/000_logic
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/logic
+t/mnt/c/.vifm-Trash-1000/000_image (1).png
+	/mnt/c/Users/qleveque/Downloads/image (1).png
 
 # State:
 f
