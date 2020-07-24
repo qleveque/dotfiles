@@ -1,6 +1,25 @@
 source ~/.vimrc_base
 
+nnoremap [[ ?\v\<class\s<CR>
+nnoremap ]] /\v\<class\s<CR>
+nnoremap [m ?\v\<def\s<CR>
+nnoremap ]m /\v\<def\s<CR>
+
+vnoremap [[ ?\v\<class\s<CR>
+vnoremap ]] /\v\<class\s<CR>
+vnoremap [m ?\v\<def\s<CR>
+vnoremap ]m /\v\<def\s<CR>
+
+nnoremap <C-w>b :action RecentFiles<CR>:
+
+command! Gblame action Annotate
+
+command! Diff action Compare.LastVersion
+command! Diffs action Vcs.Show.Local.Changes
+
+command! Commit action Vcs.ShowTabbedFileHistory
+command! Commits action Vcs.Show.Log
+
 set surround
-set multiple-cursors
 set commentary
 

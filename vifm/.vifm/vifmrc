@@ -123,7 +123,7 @@ command! reload :write | restart
 
 " ------------------------------------------------------------------------------
 
-filetype * xdg-open
+filetype * xdg-open %c %i &
 
 " ------------------------------------------------------------------------------
 
@@ -176,4 +176,5 @@ nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
 nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
+nnoremap <CR> :execute 'winct' | quit <CR>
 
