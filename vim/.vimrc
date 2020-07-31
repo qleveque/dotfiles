@@ -13,11 +13,6 @@ set undodir=~/.vim/undodir
 set undofile
 
 """"""""""""""""""""""""""""""
-" => Run
-""""""""""""""""""""""""""""""
-nnoremap <F9> :!%:p<CR>
-
-""""""""""""""""""""""""""""""
 " => Vim tree
 """"""""""""""""""""""""""""""
 let g:netrw_banner = 0
@@ -38,4 +33,27 @@ set runtimepath^=~/.vim/vim-surround
 set runtimepath^=~/.vim/vim-tmux-navigator
 set runtimepath^=~/.vim/fzf
 set runtimepath^=~/.vim/fzf.vim
+set runtimepath^=~/.vim/fugitive
+
+""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""
+nnoremap <C-f> :Rg 
+
+""""""""""""""""""""""""""""""
+" => Fugitive
+""""""""""""""""""""""""""""""
+command! Diffs :Git difftool -y
+command! Diff :Gdiff
+command! Commit :BCommits
+
+""""""""""""""""""""""""""""""
+" => Tags
+""""""""""""""""""""""""""""""
+command! Ctags :!ctags -f '.tags' -R . 
+cnoreabbrev ctags Ctags
+nnoremap gd <C-]>
+nnoremap gD gd
+set tags=.tags
+set path=.
 

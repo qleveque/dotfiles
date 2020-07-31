@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 sudo dpkg -i ripgrep_11.0.2_amd64.deb
 sudo dpkg -i fd_8.0.0_amd64.deb
-./../vim/.vim/fzf/install
 

@@ -13,6 +13,10 @@
 	/mnt/c/Users/qleveque/
 	..
 1588705801
+'k
+	/mnt/c/Users/qleveque/Desktop/cyt/lib/other/other2
+	..
+1589387924
 'm
 	/mnt/c/Users/qleveque/Documents
 	macros
@@ -22,9 +26,9 @@
 	mkreadme.py
 1587326568
 'x
-	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/
-	tools
-1588956782
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files/
+	Shutdown.bat
+1595946562
 
 # Bookmarks:
 
@@ -34,695 +38,631 @@ q0
 v1
 ov
 m-1
-l12
+l10,2
 r2
 
 # Left window history (oldest to newest):
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
-	utils
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
-	gui
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/gui
-	__pycache__
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
-	gui
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/gui
-	__pycache__
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
-	core
+d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan
+	vcruntime140.dll
+10
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model/map/components/properties
+	position.py
 2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/core
-	test_platforms.py
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
-	util
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/util
-	test_utils.py
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages
-	unit_test
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
-	tests
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model/map/components
+	properties
 2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
-	utils
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/utils
-	database.py
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test
-	tests
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model/map
+	components
 2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	ANTlabCore
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model
+	map
 2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore
-	Gui
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui
-	Descriptor
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
-	Map
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Map
-	__pycache__
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
-	Vehicle
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Vehicle
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
-	Vehicle
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Vehicle
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
-	Map
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui
-	Descriptor
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
-	Map
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor/Map
-	__pycache__
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui/Descriptor
-	Map
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore/Gui
-	Descriptor
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore
-	Gui
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	ANTlabCore
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ANTlabCore
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	bstream
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
-	renderer
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream/renderer
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
-	renderer
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	bstream
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
-	renderer
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream/renderer
-	__init__.py
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/bstream
-	renderer
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	connection
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/connection
-	map_synchronization
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/connection/map_synchronization
-	__pycache__
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/connection
-	map_synchronization
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	Core
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
-	Gui
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core/Gui
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
-	Logic
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core/Logic
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
-	Util
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core/Util
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/Core
-	Util
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	graphics_view
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/graphics_view
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	model
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model
-	ambient
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model/ambient
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model
-	server_config_writer_test
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model/server_config_writer_test
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/model
-	server_config_writer_test
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	store
-8
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/store
-	upgrades
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/store/upgrades
-	..
-0
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/store
-	upgrades
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests
-	ui
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
+	view_model
+16
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	lib
 9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ui
-	dialogs
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ui/dialogs
-	ask_to_override_ant_lock
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/unit_test/tests/ui/dialogs/ask_to_override_ant_lock
-	test_case.py
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	..
-0
-d/mnt/c/Users/qleveque/.tmux
-	plugins
-1
-d/mnt/c/Users/qleveque/.tmux/plugins
-	..
-0
-d/mnt/c/Users/qleveque/Downloads
-	ANTserver-1.20.0.142-Setup-15.04.2020.exe
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	plugins
-8
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
+	Mercator
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator
+	lib
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator/lib
+	Mercator
 1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator/lib/Mercator
+	Bayes.py
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator/lib
+	Mercator
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator
+	lib
+3
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	Mercator
+7
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
 	App
 1
-d/mnt/c/Users/qleveque/Documents/codes
-	BlueBotics
-3
-d/mnt/c/Users/qleveque/Documents
-	tools
-9
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	LidarOffset
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
+	visualization.py
+6
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	my_lidar
 2
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
+	scanning.pyc
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	my_lidar
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
+	scanning.pyc
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	LidarOffset
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
+	statistics.py
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	my_lidar
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
+	test.dat
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	LidarOffset
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
+	statistics.py
+4
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	my_lidar
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
+	test.dat
+2
+d/mnt/c/Users/qleveque/Downloads
 	..
 0
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-2
-d/mnt/c/Users/qleveque/Documents
-	macros
-3
-d/mnt/c/Users/qleveque
-	Documents
-6
-d/mnt/c/Users
-	qleveque
-4
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	bin
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
+	App
 1
-d/mnt/c/Users/qleveque/Documents/macros/pyqo/bin
-	c.bat
-2
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	bin
-1
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-2
-d/mnt/c/Users/qleveque/Documents
-	macros
-3
-d/mnt/c/Users/qleveque
-	Documents
-6
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	build
-2
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-2
-d/mnt/c/Users/qleveque/Documents
-	macros
-3
-d/mnt/c/Users/qleveque
-	Documents
-6
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	bin
-1
-d/mnt/c/Users/qleveque/Documents/macros/pyqo/bin
-	c.bat
-2
-d/mnt/c/Users/qleveque/Documents/macros/pyqo
-	bin
-1
-d/mnt/c/Users/qleveque/Documents/macros
-	pyqo
-2
-d/mnt/c/Users/qleveque/Documents
-	Modèles Office personnalisés
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	ANTlab.nsi
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	Simulator
 14
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Simulator/src/com/bluebotics
+	simulator
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Simulator/src/com/bluebotics/simulator
+	gui
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Simulator/src/com/bluebotics
+	simulator
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Simulator/src/com
+	bluebotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Simulator/src
+	com
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Simulator
+	build.xml
+8
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
+	Simulator
+14
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files
+	Shutdown.bat
+8
+d/mnt/c/Users/qleveque/Documents/others
+	antlab
+5
+d/mnt/c/Users/qleveque/Documents/others/antlab
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	resources
+9
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/resources
+	application.png
+12
+d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	bin
+1
+d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/bin
+	ANTlab.exe
+3
+d/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	bin
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src
+	com
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com
+	bluebotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com/bluebotics
+	tcpportselector
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com/bluebotics/tcpportselector
+	TCPPortSelectorApp.java
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com
+	bluebotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com/bluebotics
+	tcpportselector
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com/bluebotics/tcpportselector
+	TCPPortSelectorApp.java
+7
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com/bluebotics
+	tcpportselector
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src/com
+	bluebotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/src
+	com
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector
+	build
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build
+	jar
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/jar
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build
+	classes
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build
+	classes
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes
+	com
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes/com
+	bluebotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes/com/bluebotics
+	tcpportselector
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes/com/bluebotics/tcpportselector
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes/com/bluebotics
+	tcpportselector
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes/com
+	bluebotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/classes
+	com
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build
+	classes
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector
+	build
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build
+	jar
+2
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Lib/TCPPortSelector/build/jar
+	TCPPortSelector.jar
+1
+d/mnt/t/@Quentin
+	Michelin_wms-backup-20200710_101324.db
+12
+d/mnt/c/Users/qleveque/Documents/others
+	shortcuts
+17
+d/mnt/c/Users/qleveque/Documents/others/shortcuts
+	..
+0
+d/mnt/c/Users/qleveque/Desktop
+	frank_1m_second
+15
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration
+	scripts
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
+	LidarOffset
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
+	test.dat
+12
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/micro/BlueBotics
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/micro
+	BlueBotics
+1
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite
+	mini
+42
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini
+	..
+0
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics
+	miniBlueBotics-21686.xbn
+7
+d/mnt/t/@Alice
+	For Camille
+5
+d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/micro/BlueBotics
+	micro-21686.xbn
+5
+d/mnt/c/Users/qleveque/Desktop
+	laser_offset
+7
+d/mnt/c/Users/qleveque/Desktop/laser_offset
+	banane_80cm.png
+7
+d/mnt/c/Users/qleveque/Desktop
+	laser_offset
+7
+d/mnt/c/Users/qleveque/Desktop/laser_offset
+	images
+1
+d/mnt/c/Users/qleveque/Desktop/laser_offset/images
+	..
+0
+d/mnt/c/Users/qleveque/Desktop/laser_offset
+	images
+1
+d/mnt/c/Users/qleveque/Desktop
+	laser_offset
+7
+d/mnt/c/Users/qleveque/Desktop/laser_offset
+	bootfile
+2
+d/mnt/c/Users/qleveque/Desktop/laser_offset/bootfile
+	..
+0
+d/mnt/c/Users/qleveque/Desktop/laser_offset
+	dat
+3
+d/mnt/c/Users/qleveque/Desktop/laser_offset/dat
+	antibanane_80cm
+3
 d
 
 # Right window history (oldest to newest):
-D/mnt/c/Users/qleveque/Documents
-	Modèles Office personnalisés
-1
-D/mnt/c/Users/qleveque
-	Favorites
-9
-D/mnt/c/Users/qleveque/.vim
-	vim-airline
-5
-D/mnt/c/Users/qleveque/Downloads
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator/licenses
 	..
 0
-D/mnt/c/Users/qleveque
-	Links
-11
-D/mnt/c/Users
-	qleveque
-4
-D/mnt/c
-	Program Files
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator
+	bin
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator/bin
+	imageformats
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator
+	bin
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator/bin
+	win32com.shell.shell.pyd
+46
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator
+	bin
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator/bin
+	win32wnet.pyd
+50
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator
+	bin
+1
+D/mnt/c/Program Files (x86)/BlueBotics
+	ANT report generator
+10
+D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	ANTreportgenerator-1.17.0.100-Setup-13.11.2019.exe
 6
-D/mnt/c/Program Files
-	Notepad++
-16
-D/mnt/c
-	Program Files (x86)
-7
-D/mnt/c/Program Files (x86)
-	IIS Express
-16
-D/mnt/c
-	Program Files (x86)
-7
-D/mnt/c/Program Files (x86)
-	IIS Express
-16
-D/mnt/c
-	Program Files
-6
-D/mnt/c/Program Files
-	VcXsrv
-16
-D/mnt/c/Program Files/VcXsrv
-	xkbdata
-3
-D/mnt/c/Program Files/VcXsrv/xkbdata
-	compat
-1
-D/mnt/c/Program Files/VcXsrv/xkbdata/compat
-	..
-0
-D/mnt/c/Program Files/VcXsrv/xkbdata
-	geometry
-2
-D/mnt/c/Program Files/VcXsrv/xkbdata/geometry
-	..
-0
-D/mnt/c/Program Files/VcXsrv/xkbdata
-	keycodes
-3
-D/mnt/c/Program Files/VcXsrv/xkbdata/keycodes
-	..
-0
-D/mnt/c/Program Files/VcXsrv/xkbdata
-	rules
-4
-D/mnt/c/Program Files/VcXsrv/xkbdata/rules
-	..
-0
-D/mnt/c/Program Files/VcXsrv/xkbdata
-	symbols
-5
-D/mnt/c/Program Files/VcXsrv/xkbdata/symbols
-	..
-0
-D/mnt/c/Users/qleveque/Documents
-	macros
-4
-D/mnt/c/Users/qleveque/Downloads
-	ANTlab-1.20.1.139-Setup-29.04.2020.exe
-1
-D/mnt/c/Users/qleveque
-	Links
-11
-D/mnt/c/Users/qleveque/dotfiles/bash
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	ANTlab-1.20.1.139-Setup-29.04.2020.exe
-1
-D/mnt/c/Users/qleveque/dotfiles/bash
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	ANTlab-1.20.1.139-Setup-29.04.2020.exe
-1
 D/mnt/c/Users/qleveque
 	Downloads
 7
 D/mnt/c/Users/qleveque/Downloads
-	ANTlab-1.20.1.139-Setup-29.04.2020.exe
+	depends22_x64
 1
-D/mnt/c/Users/qleveque/dotfiles/bash
+D/mnt/c/Users/qleveque
+	Downloads
+7
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	build_system
+3
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system
+	dependencies
+2
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies
+	Lib
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib
+	sndhdr.py
+54
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	build_system
+3
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system
+	dependencies
+2
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	build_system
+3
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system
+	dependencies
+2
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	build_system
+3
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system
+	dependencies
+2
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies
+	Lib
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib
+	site-packages
+4
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib/site-packages
+	PyQt5
+2
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib/site-packages/PyQt5
+	Qt
+1
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib/site-packages/PyQt5/Qt
+	plugins
+2
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib/site-packages/PyQt5/Qt/plugins
+	imageformats
+3
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib/site-packages/PyQt5/Qt/plugins/imageformats
 	..
 0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/Lib/site-packages/PyQt5/Qt/plugins
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	bin
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/bin
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	..
+0
+D/mnt/c/Users/qleveque
+	Downloads
+8
+D/mnt/c/Users
+	qleveque
+4
+D/mnt/c
+	Qt
+15
+D/mnt/c/Qt
+	..
+0
+D/mnt/c/Qt/Qt5.7.0/Tools/QtCreator/bin/plugins
+	platforms
+4
+D/mnt/c/Qt/Qt5.7.0/Tools/QtCreator/bin/plugins/platforms
+	qwindows.dll
+3
+D/mnt/c/Qt/Qt5.7.0/Tools/QtCreator/bin/plugins
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	config
+5
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/config
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	ANTlab-1.19.1.120-Setup-25.02.2020.exe
+2
+D/mnt/c/Users/qleveque/Documents
+	others
+11
+D/mnt/c/Users/qleveque/Documents/others
+	antlab
+4
+D/mnt/c/Users/qleveque/Documents/others/antlab
+	..
+0
+D/mnt/c/Users/qleveque/Documents/others
+	andrea
+4
+D/mnt/c/Users/qleveque/Documents/others/andrea
+	..
+0
+D/mnt/c/Program Files (x86)/Python38-32
+	Lib
+2
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	config
+2
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/config
+	..
+0
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	licenses
+4
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/licenses
+	..
+0
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	bin
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/bin
+	Lib
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	config
+2
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/config
+	..
+0
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	external
+3
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external
+	Mercator
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
+	PIL
+5
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/PIL
+	..
+0
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator
+	PIL
+5
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external
+	Mercator
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	licenses
+4
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab/licenses
+	LICENSE-3RD-PARTY.txt
+1
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	..
+0
+D/mnt/c/BlueBotics/ANTserver
+	..
+0
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
+	config
+4
+D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/config
+	..
+0
+D/mnt/c/Users/qleveque/Downloads
+	nsis-3.05-setup.exe
+15
+D/mnt/c/Users/qleveque
+	OneDrive
+15
+D/mnt/c/Users/qleveque/Documents/others
+	projects
+16
+D/mnt/c/Users/qleveque/Documents/others/projects
+	MapSwitcher.al
+3
+D/mnt/c/Users/qleveque/Documents/codes/python
+	e.txt
+18
+D/mnt/c/Users/qleveque/Documents/codes
+	python
+7
+D/mnt/c/Users/qleveque/Documents/codes/python
+	..
+0
+D/mnt/c/Support
+	..
+0
+D/mnt/c/Support/Customers/Oppent
+	Garbagnate
+4
+D/mnt/c/Support/Customers/Oppent/Garbagnate
+	ANT lab
+1
+D/mnt/c/Support/Customers/Oppent/Garbagnate/ANT lab
+	..
+0
+D/mnt/c/Users/qleveque/Documents
+	others
+11
+D/mnt/c/Users/qleveque
+	dotfiles
+22
 D/mnt/c/Users/qleveque/dotfiles
 	tools
 3
 D/mnt/c/Users/qleveque/dotfiles/tools
 	..
 0
-D/mnt/c/Users/qleveque/Dropbox/autres/terminal_pop
-	terminal_pop.ahk
-2
-D/mnt/c/Users/qleveque/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup
-	terminal_pop.ahk
-4
-D/mnt/c/Users/qleveque/AppData/Roaming/Microsoft/Windows/Start Menu/Programs
-	Startup
-14
-D/mnt/c/Users/qleveque/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup
-	terminal_pop.ahk
-4
-D/mnt/c/Users/qleveque/Documents
-	Zoom
-2
-D/mnt/c/Users/qleveque/Documents/codes/cpp
-	last
-8
-D/mnt/c/Users/qleveque/Documents/codes
-	cpp
-4
-D/mnt/c/Users/qleveque/Documents
+D/mnt/c/Users/qleveque/Documents/others
+	projects
+16
+D/mnt/c/Users/qleveque/Desktop
+	..
+0
+D/mnt/c/Users/qleveque/Desktop/calib
+	..
+0
+D/mnt/c/BlueBotics/ANTserver
+	ANTserver.log
+16
+D/mnt/c/BlueBotics
+	ANTserver
+1
+D/mnt/c/BlueBotics/ANTserver
 	..
 0
 D/mnt/c/Users/qleveque/Downloads
 	..
 0
-D/mnt/c/Users/qleveque
-	Downloads
-7
-D/mnt/c/Users/qleveque/Downloads
+D/mnt/c/Users/qleveque/Documents/others
+	shortcuts
+17
+D/mnt/c/Users/qleveque/Documents/others/shortcuts
 	..
 0
-D/mnt/c/Users/qleveque
-	MicrosoftEdgeBackups
-12
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/oozejs
-	node
-3
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	tools
-9
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/tools
+D/mnt/c/Users/qleveque/Desktop
 	..
 0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms
-	setup-files
-13
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files
-	DB
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/setup-files/DB
-	..
-0
-D/mnt/c/Users/qleveque
-	Favorites
-9
-D/mnt/c/Users/qleveque/ANTlab
-	200505_145118_ANTlab.log
-5
-D/mnt/c/Users/qleveque/Documents
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/examples
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	examples
-7
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	ANTlab
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-1
-D/mnt/c/Users/qleveque/Documents/codes
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml/QtQuick/Controls/Private
-	ModalPopupBehavior.qml
-33
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml/QtQuick/Controls
-	Private
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml/QtQuick
-	Controls
-1
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/qml
-	QtQuick
-10
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build
-	qml
-29
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/build_system/to_build/site-packages/pylint/test/functional
-	abstract_class_instantiated_in_class.py
-4
-D/mnt/c/Users/qleveque/Downloads
-	ANTserver-0.0.0.2935-Setup-05.05.2020.exe
-1
-D/mnt/c/Users/qleveque
-	Downloads
-7
-D/mnt/c/Users/qleveque/Downloads
-	ANTserver-0.0.0.2935-Setup-05.05.2020.exe
-1
-D/mnt/c/Users/qleveque
-	Downloads
-7
-D/mnt/c/Users
-	qleveque
-4
-D/mnt/c/Users/qleveque
-	IntelGraphicsProfiles
-10
-D/mnt/c/Users/qleveque/Documents
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	..
-0
-D/mnt/c/Users/qleveque/Documents/codes
-	..
-0
-D/mnt/c/BlueBotics/ANTserver
-	..
-0
-D/mnt/c/BlueBotics/ANTserver/scripts
-	..
-0
-D/mnt/c/BlueBotics/ANTserver
-	scripts
-10
-D/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
+D/mnt/c/Program Files (x86)/BlueBotics/ANT lab
+	config
 2
-D/mnt/c/BlueBotics/ANTserver
-	scripts
-10
-D/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
-2
-D/mnt/c/BlueBotics/ANTserver
-	scripts
-10
-D/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
-2
-D/mnt/c/BlueBotics/ANTserver
-	scripts
-10
-D/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
-2
-D/mnt/c/BlueBotics/ANTserver
-	scripts
-10
-D/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
-2
-D/mnt/c/BlueBotics/ANTserver
-	scripts
-10
-D/mnt/c/BlueBotics/ANTserver/scripts
-	ResetDB.bat
-2
-D/mnt/c/BlueBotics/ANTserver
+D/mnt/c/Program Files (x86)/BlueBotics
 	..
 0
-D/mnt/c/Users/qleveque/Documents
+D/mnt/c/Users/qleveque/Desktop
 	..
 0
-D/mnt/c/Users/qleveque
-	Documents
-6
-D/mnt/c/Users
-	qleveque
-4
-D/mnt/c/Users/qleveque
-	Documents
-6
-D/mnt/c/Users/qleveque/Documents
-	..
-0
-D/mnt/c/Users/qleveque/Downloads
-	..
-0
-D/mnt/c/Users/qleveque
-	Downloads
-7
 D
 
 # Command line history (oldest to newest):
-:echo %d
-:Testou
-:run 'x
-:run 
-:goto x
-:go x
-:execute 'x
-:execute '\'x'
-:"'x"
-:type
-:run "'x"
-:press
-:execute
-:exec 1 "'x"
-:exec "1'x"
-:.exec "'x"
-:exec "'x" 1
-:exec 1"'x"
-:exec1 "'x"
-:2,3exec "'x"
-:$exec "'x"
-:1exec "'x"
-:exec "1 'x"
-:exec "'x"1
-:exec "1:'x"
-:exec "'x"
-:exec 'x
-:1 exec "'x"
-:jump x
-:execute "'x" 1
-:execute 1 "'x"
-:execute1 "'x"
-:1 execute "'x"
-:1execute "'x"
-:%execute "'x"
-:%,execute "'x"
-:1,execute "'x"
-:$,execute "'x"
-:,execute "'x"
-:.,$execute "'x"
-:1execute1 "'x"
-:0execute "'x"
-:1 :execute "'x"
-:1 :execute system("'x")
-:execute system("'x")
-:runexec "'x"
-:runexec 'x
-:testou
-:touch testou
-:command 'x
-:command "'x"
-:execute "'x"
-:'x
-:execute command("'x")
-:normal 'x
 :c oberon
 :mv empty.db.backup
 :mv empty.db{,backup}
 :!mv empty.db{,.backup}
-:copy
 :redraw
 :echo "uoi"
-:move
 :c 
 :c doc
 ::q
 :c wms
 :rg var
-:c antalb
-:c antlab
-:c antserver
-:c src
 :cd -
-:cd ..
 :cd ~
 :cd
-:c
 :c releases
-:c dl
 : pvm-examples
 : sudo apt install <deb name>
 :!rename -n 's/(.*)_tests?\.py/test_$1.py/' *.py'
@@ -730,28 +670,86 @@ D
 :!rename 's/(.*)_tests?\.py/test_$1.py/' *.py
 :cd ~/.tmux
 :mkdir plugins
-:w
 :!echo -n %c | xclip -selection clipboard
 :!echo -n %c:p | xclip -selection clipboard
 :execute '!echo -n %c:p | xclip -selection clipboard'
 :ls
-:c docs
-:c devlab
 :!cmd mspaint
 :echo %a
 :echo '%a'
 :!echo '%a'
 :!echo '%d'
 :!echo '%A'
+:c trash
+:move
+:mkdir build
+:!cp -r c_files/* dependencies/* build/
+:c projects
+:mkdir build_result
+:mkdir config
+:mkdir other2
+:touch __init__.py
+:c :q
+:!./ANTlab.exe
+:!ANTlab.exe
+:93gt:q
+:c pfx
+:copy
+:c antalb
+:mkdir 
+:d!
+:mkdir platforms
+:c monitor
+:c c
+:cd ..
+:touch testou
+:c dat
+:!kill_wms
+:mkdir antlab
+:select
+:!echo %f
+:!gvim %f
+:c python38
+:copy 
+:!gunzip %f
+:!unzip %f
+:project
+:c support
+:c python
+:c svn
+:c src
+:c dotfiles
+:c docs
+:c calibration
+:mkdir my_lidar
+:touch reader.py
+:c antserver
+:c
+:c devlab
+:c dl
+:!javac %f
+:select *.lnk
+:c others
+:mkdir shortcuts
+:!d
+:select .Obx
+:select *.Obx
+:sort
+:desk
+:w
+:c antlab
+:cw
+:c desk
+:mkdir laser_offset
+:select banane_*
+:select antibanane
+:select antibanane*
+:mkdir images
+:mkdir bootfile
+:mkdir dat
 :q
 
 # Search history (oldest to newest):
-/mark x /mnt/c
-/star
-/buid
-/bui
-/pa
-/touch a.txt
 /mdlk
 /sys
 /b
@@ -764,7 +762,6 @@ D
 /to
 /ca
 /Up
-/build
 /P-
 /Fle
 /antli
@@ -797,7 +794,6 @@ D
 /ant
 /vif
 /ANT l
-/calib
 /Calib
 /dow
 /lice
@@ -812,8 +808,53 @@ D
 /empty
 /set
 /__init__
+/.exe
+/cxfre
+/c
+/site
+/\.dat
+/calib
+/cl
+/sc
+/ANTlab
+/main
+/antlab.c
+/antlab.py
+/buil
+/build
+/antlab.obj
+/libb
+/Lib
+/MyData
+/pape
+/dev
+/licen
+/license
+/.ini
+/ini
+/.bat
+/simul
+/bat
+/too
+/ANT
+/gar
+/fu
+/oth
+/merc
+/dotfi
+/mer
+/cali
+/exe
+/select
+/shor
+/se
+/select banane_*
+/banane
 
 # Prompt history (oldest to newest):
+puic.backup
+pplugins.backup
+pplugins
 pb.py
 pa.py
 pc.py
@@ -832,6 +873,22 @@ ptests
 ptests_.py
 ptests_loader.py
 ptest_vehiclescanner
+pbuild.backup
+pc_files
+pdependencies
+pfile3.py
+pcyt.backup
+p__init__.
+p__init__.py
+pNewProjectDamien.al
+pMyDataRecorder
+ploop_manufacturers_new.al
+plicense
+plicense.txt
+pIMPORTANT2
+ptest.dat
+pmicro-offset.xbn
+pbanane_80cm
 
 # Local filter history (oldest to newest):
 
@@ -1044,6 +1101,1294 @@ t/mnt/c/.vifm-Trash-1000/000_logic
 	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/packages/logic
 t/mnt/c/.vifm-Trash-1000/000_image (1).png
 	/mnt/c/Users/qleveque/Downloads/image (1).png
+t/mnt/c/.vifm-Trash-1000/000_build.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build.py
+t/mnt/c/.vifm-Trash-1000/000_NewProject.al
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/NewProject.al
+t/mnt/c/.vifm-Trash-1000/000_ANTlab.rc
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/c_files/ANTlab.rc
+t/mnt/c/.vifm-Trash-1000/000_main.exe
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/build_result/main.exe
+t/mnt/c/.vifm-Trash-1000/000_main.exp
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/build_result/main.exp
+t/mnt/c/.vifm-Trash-1000/000_main.lib
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/build_result/main.lib
+t/mnt/c/.vifm-Trash-1000/000_config
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/build_result/config
+t/mnt/c/.vifm-Trash-1000/001_config
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/config
+t/mnt/c/.vifm-Trash-1000/000_argparse-1.4.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/argparse-1.4.0.dist-info
+t/mnt/c/.vifm-Trash-1000/000_astroid-2.3.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/astroid-2.3.3.dist-info
+t/mnt/c/.vifm-Trash-1000/000_beautifulsoup4-4.8.2-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/beautifulsoup4-4.8.2-py3.8.egg
+t/mnt/c/.vifm-Trash-1000/000_certifi-2019.11.28-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/certifi-2019.11.28-py3.8.egg
+t/mnt/c/.vifm-Trash-1000/000_chardet-3.0.4-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/chardet-3.0.4-py3.8.egg
+t/mnt/c/.vifm-Trash-1000/000_Click-7.0-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/Click-7.0-py3.8.egg
+t/mnt/c/.vifm-Trash-1000/000_colorama-0.4.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/colorama-0.4.3.dist-info
+t/mnt/c/.vifm-Trash-1000/000_comtypes-1.1.7-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/comtypes-1.1.7-py3.8.egg
+t/mnt/c/.vifm-Trash-1000/000_coverage-4.3.4-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/coverage-4.3.4-py3.8.egg-info
+t/mnt/c/.vifm-Trash-1000/000_cycler-0.10.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/cycler-0.10.0.dist-info
+t/mnt/c/.vifm-Trash-1000/000_adodbapi
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/adodbapi
+t/mnt/c/.vifm-Trash-1000/000_astroid
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/astroid
+t/mnt/c/.vifm-Trash-1000/000_colorama
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/colorama
+t/mnt/c/.vifm-Trash-1000/000_coverage
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/coverage
+t/mnt/c/.vifm-Trash-1000/000_dateutil
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/dateutil
+t/mnt/c/.vifm-Trash-1000/000_flake8
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/flake8
+t/mnt/c/.vifm-Trash-1000/000_isapi
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/isapi
+t/mnt/c/.vifm-Trash-1000/000_isort
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/isort
+t/mnt/c/.vifm-Trash-1000/000_lazy_object_proxy
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/lazy_object_proxy
+t/mnt/c/.vifm-Trash-1000/000_pkg_resources
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pkg_resources
+t/mnt/c/.vifm-Trash-1000/000_pip
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pip
+t/mnt/c/.vifm-Trash-1000/000_nose
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/nose
+t/mnt/c/.vifm-Trash-1000/000_pygame
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pygame
+t/mnt/c/.vifm-Trash-1000/000_pylint
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pylint
+t/mnt/c/.vifm-Trash-1000/000_matplotlib
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/matplotlib
+t/mnt/c/.vifm-Trash-1000/000_psutil
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/psutil
+t/mnt/c/.vifm-Trash-1000/000_pyflakes
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pyflakes
+t/mnt/c/.vifm-Trash-1000/000_pytz
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pytz
+t/mnt/c/.vifm-Trash-1000/000_pyximport
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pyximport
+t/mnt/c/.vifm-Trash-1000/000_setuptools
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/setuptools
+t/mnt/c/.vifm-Trash-1000/000_Xlib
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/Xlib
+t/mnt/c/.vifm-Trash-1000/000_kiwisolver.cp38-win32.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/kiwisolver.cp38-win32.pyd
+t/mnt/c/.vifm-Trash-1000/000_matplotlib-3.1.3-py3.8-nspkg.pth
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/matplotlib-3.1.3-py3.8-nspkg.pth
+t/mnt/c/.vifm-Trash-1000/000_mccabe.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/mccabe.py
+t/mnt/c/.vifm-Trash-1000/000_pycodestyle.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pycodestyle.py
+t/mnt/c/.vifm-Trash-1000/000_pylab.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pylab.py
+t/mnt/c/.vifm-Trash-1000/000_easy-install.pth
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/easy-install.pth
+t/mnt/c/.vifm-Trash-1000/000_easy_install.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/easy_install.py
+t/mnt/c/.vifm-Trash-1000/000_cycler.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/cycler.py
+t/mnt/c/.vifm-Trash-1000/000_filelock.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/filelock.py
+t/mnt/c/.vifm-Trash-1000/000_README.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/README.txt
+t/mnt/c/.vifm-Trash-1000/000_pywin32.version.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/pywin32.version.txt
+t/mnt/c/.vifm-Trash-1000/000__QOpenGLFunctions_2_0.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/_QOpenGLFunctions_2_0.pyd
+t/mnt/c/.vifm-Trash-1000/000__QOpenGLFunctions_2_1.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/_QOpenGLFunctions_2_1.pyd
+t/mnt/c/.vifm-Trash-1000/000__QOpenGLFunctions_4_1_Core.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/_QOpenGLFunctions_4_1_Core.pyd
+t/mnt/c/.vifm-Trash-1000/000_QAxContainer.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QAxContainer.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtBluetooth.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtBluetooth.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtDBus.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtDBus.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtDesigner.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtDesigner.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtHelp.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtHelp.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtLocation.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtLocation.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtMultimedia.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtMultimedia.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtMultimediaWidgets.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtMultimediaWidgets.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtNfc.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtNfc.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtNetworkAuth.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtNetworkAuth.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtPositioning.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtPositioning.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtPrintSupport.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtPrintSupport.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtRemoteObjects.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtRemoteObjects.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtSensors.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtSensors.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtSerialPort.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtSerialPort.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtWinExtras.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtWinExtras.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtXmlPatterns.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtXmlPatterns.pyd
+t/mnt/c/.vifm-Trash-1000/000_bindings
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/bindings
+t/mnt/c/.vifm-Trash-1000/000_translations
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/translations
+t/mnt/c/.vifm-Trash-1000/000_qml
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/qml
+t/mnt/c/.vifm-Trash-1000/000_QtQml.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtQml.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtQuick.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtQuick.pyd
+t/mnt/c/.vifm-Trash-1000/000_QtQuickWidgets.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/QtQuickWidgets.pyd
+t/mnt/c/.vifm-Trash-1000/000_concrt140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/concrt140.dll
+t/mnt/c/.vifm-Trash-1000/000_d3dcompiler_47.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/d3dcompiler_47.dll
+t/mnt/c/.vifm-Trash-1000/000_libcrypto-1_1.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/libcrypto-1_1.dll
+t/mnt/c/.vifm-Trash-1000/000_libeay32.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/libeay32.dll
+t/mnt/c/.vifm-Trash-1000/000_libEGL.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/libEGL.dll
+t/mnt/c/.vifm-Trash-1000/000_libGLESv2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/libGLESv2.dll
+t/mnt/c/.vifm-Trash-1000/000_libssl-1_1.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/libssl-1_1.dll
+t/mnt/c/.vifm-Trash-1000/000_msvcp140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/msvcp140.dll
+t/mnt/c/.vifm-Trash-1000/000_opengl32sw.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/opengl32sw.dll
+t/mnt/c/.vifm-Trash-1000/000_ssleay32.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/ssleay32.dll
+t/mnt/c/.vifm-Trash-1000/000_vcruntime140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/vcruntime140.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Bluetooth.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Bluetooth.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5DBus.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5DBus.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Designer.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Designer.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Help.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Help.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Location.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Location.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Multimedia.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Multimedia.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5MultimediaWidgets.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5MultimediaWidgets.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5NetworkAuth.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5NetworkAuth.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Nfc.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Nfc.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Positioning.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Positioning.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5PositioningQuick.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5PositioningQuick.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5PrintSupport.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5PrintSupport.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Qml.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Qml.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Quick.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Quick.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5QuickControls2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickControls2.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5QuickParticles.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickParticles.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5QuickShapes.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickShapes.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5QuickTemplates2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickTemplates2.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5QuickTest.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickTest.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5QuickWidgets.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickWidgets.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5RemoteObjects.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5RemoteObjects.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5Sensors.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5Sensors.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5SerialPort.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5SerialPort.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5WinExtras.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5WinExtras.dll
+t/mnt/c/.vifm-Trash-1000/000_Qt5XmlPatterns.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/Qt/bin/Qt5XmlPatterns.dll
+t/mnt/c/.vifm-Trash-1000/001_venv
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/venv
+t/mnt/c/.vifm-Trash-1000/000_wsgiref
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/wsgiref
+t/mnt/c/.vifm-Trash-1000/000_xmlrpc
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/xmlrpc
+t/mnt/c/.vifm-Trash-1000/000___pycache__
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/__pycache__
+t/mnt/c/.vifm-Trash-1000/000_curses
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/curses
+t/mnt/c/.vifm-Trash-1000/000_dbm
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/dbm
+t/mnt/c/.vifm-Trash-1000/000_distutils
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/distutils
+t/mnt/c/.vifm-Trash-1000/000_ensurepip
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/ensurepip
+t/mnt/c/.vifm-Trash-1000/000_lib2to3
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/lib2to3
+t/mnt/c/.vifm-Trash-1000/000_pydoc_data
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/pydoc_data
+t/mnt/c/.vifm-Trash-1000/000_uic.backup
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou/Lib/site-packages/PyQt5/uic.backup
+t/mnt/c/.vifm-Trash-1000/000_libraries
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/libraries
+t/mnt/c/.vifm-Trash-1000/000_others
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/others
+t/mnt/c/.vifm-Trash-1000/001_testou
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/testou
+t/mnt/c/.vifm-Trash-1000/000_Lib
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/Lib
+t/mnt/c/.vifm-Trash-1000/000__bz2.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_bz2.pyd
+t/mnt/c/.vifm-Trash-1000/000__ctypes.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_ctypes.pyd
+t/mnt/c/.vifm-Trash-1000/000__decimal.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_decimal.pyd
+t/mnt/c/.vifm-Trash-1000/000__hashlib.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_hashlib.pyd
+t/mnt/c/.vifm-Trash-1000/000__lzma.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_lzma.pyd
+t/mnt/c/.vifm-Trash-1000/000__multiprocessing.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_multiprocessing.pyd
+t/mnt/c/.vifm-Trash-1000/000__socket.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_socket.pyd
+t/mnt/c/.vifm-Trash-1000/000__sqlite3.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_sqlite3.pyd
+t/mnt/c/.vifm-Trash-1000/000__ssl.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/_ssl.pyd
+t/mnt/c/.vifm-Trash-1000/001_libcrypto-1_1.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/libcrypto-1_1.dll
+t/mnt/c/.vifm-Trash-1000/001_libeay32.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/libeay32.dll
+t/mnt/c/.vifm-Trash-1000/001_libEGL.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/libEGL.dll
+t/mnt/c/.vifm-Trash-1000/000_libffi-7.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/libffi-7.dll
+t/mnt/c/.vifm-Trash-1000/001_libGLESv2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/libGLESv2.dll
+t/mnt/c/.vifm-Trash-1000/001_libssl-1_1.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/libssl-1_1.dll
+t/mnt/c/.vifm-Trash-1000/000_python3.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/python3.dll
+t/mnt/c/.vifm-Trash-1000/000_python38.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/python38.dll
+t/mnt/c/.vifm-Trash-1000/000_pythoncom38.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/pythoncom38.dll
+t/mnt/c/.vifm-Trash-1000/000_select.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/select.pyd
+t/mnt/c/.vifm-Trash-1000/000_sqlite3.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/sqlite3.dll
+t/mnt/c/.vifm-Trash-1000/000_unicodedata.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build/unicodedata.pyd
+t/mnt/c/.vifm-Trash-1000/000_build
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build
+t/mnt/c/.vifm-Trash-1000/000_other2.c
+	/mnt/c/Users/qleveque/Desktop/cyt/lib/other/other2.c
+t/mnt/c/.vifm-Trash-1000/000_other.c
+	/mnt/c/Users/qleveque/Desktop/cyt/lib/other.c
+t/mnt/c/.vifm-Trash-1000/000_DLLs
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/DLLs
+t/mnt/c/.vifm-Trash-1000/000_include
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/include
+t/mnt/c/.vifm-Trash-1000/000_libs
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/libs
+t/mnt/c/.vifm-Trash-1000/000_man
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/man
+t/mnt/c/.vifm-Trash-1000/000_Scripts
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Scripts
+t/mnt/c/.vifm-Trash-1000/000_src
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/src
+t/mnt/c/.vifm-Trash-1000/000_Tools
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Tools
+t/mnt/c/.vifm-Trash-1000/000_LICENSE.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/LICENSE.txt
+t/mnt/c/.vifm-Trash-1000/000_NEWS.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/NEWS.txt
+t/mnt/c/.vifm-Trash-1000/000_python.exe
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python.exe
+t/mnt/c/.vifm-Trash-1000/000_python.pdb
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python.pdb
+t/mnt/c/.vifm-Trash-1000/001_python3.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python3.dll
+t/mnt/c/.vifm-Trash-1000/000_python3_d.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python3_d.dll
+t/mnt/c/.vifm-Trash-1000/001_python38.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python38.dll
+t/mnt/c/.vifm-Trash-1000/000_python38.pdb
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python38.pdb
+t/mnt/c/.vifm-Trash-1000/000_python38_d.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python38_d.dll
+t/mnt/c/.vifm-Trash-1000/000_python38_d.pdb
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python38_d.pdb
+t/mnt/c/.vifm-Trash-1000/000_python_d.exe
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python_d.exe
+t/mnt/c/.vifm-Trash-1000/000_python_d.pdb
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/python_d.pdb
+t/mnt/c/.vifm-Trash-1000/000_pythonw.exe
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/pythonw.exe
+t/mnt/c/.vifm-Trash-1000/000_pythonw.pdb
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/pythonw.pdb
+t/mnt/c/.vifm-Trash-1000/000_pythonw_d.exe
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/pythonw_d.exe
+t/mnt/c/.vifm-Trash-1000/000_pythonw_d.pdb
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/pythonw_d.pdb
+t/mnt/c/.vifm-Trash-1000/001_vcruntime140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/vcruntime140.dll
+t/mnt/c/.vifm-Trash-0/000_curses
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/curses
+t/mnt/c/.vifm-Trash-0/000_dbm
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/dbm
+t/mnt/c/.vifm-Trash-0/000_distutils
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/distutils
+t/mnt/c/.vifm-Trash-0/000_ensurepip
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/ensurepip
+t/mnt/c/.vifm-Trash-0/000_lib2to3
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/lib2to3
+t/mnt/c/.vifm-Trash-0/000_pydoc_data
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/pydoc_data
+t/mnt/c/.vifm-Trash-0/000_venv
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/venv
+t/mnt/c/.vifm-Trash-0/000_wsgiref
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/wsgiref
+t/mnt/c/.vifm-Trash-0/000_xmlrpc
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/xmlrpc
+t/mnt/c/.vifm-Trash-0/000_Click-7.0-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/Click-7.0-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_Cython-0.29.16.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/Cython-0.29.16.dist-info
+t/mnt/c/.vifm-Trash-0/000_PyQt5-5.12.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5-5.12.3.dist-info
+t/mnt/c/.vifm-Trash-0/000_PyQt5_sip-12.7.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5_sip-12.7.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_Xlib
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/Xlib
+t/mnt/c/.vifm-Trash-0/000___pycache__
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/__pycache__
+t/mnt/c/.vifm-Trash-0/000_adodbapi
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/adodbapi
+t/mnt/c/.vifm-Trash-0/000_argparse-1.4.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/argparse-1.4.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_astroid
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/astroid
+t/mnt/c/.vifm-Trash-0/000_astroid-2.3.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/astroid-2.3.3.dist-info
+t/mnt/c/.vifm-Trash-0/000_beautifulsoup4-4.8.2-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/beautifulsoup4-4.8.2-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_certifi-2019.11.28-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/certifi-2019.11.28-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_chardet-3.0.4-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/chardet-3.0.4-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_colorama
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/colorama
+t/mnt/c/.vifm-Trash-0/000_colorama-0.4.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/colorama-0.4.3.dist-info
+t/mnt/c/.vifm-Trash-0/000_comtypes-1.1.7-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/comtypes-1.1.7-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_coverage
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/coverage
+t/mnt/c/.vifm-Trash-0/000_coverage-4.3.4-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/coverage-4.3.4-py3.8.egg-info
+t/mnt/c/.vifm-Trash-0/000_cycler-0.10.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/cycler-0.10.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_dateutil
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/dateutil
+t/mnt/c/.vifm-Trash-0/000_filelock-3.0.0-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/filelock-3.0.0-py3.8.egg-info
+t/mnt/c/.vifm-Trash-0/000_idna-2.8-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/idna-2.8-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_isapi
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/isapi
+t/mnt/c/.vifm-Trash-0/000_isort
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/isort
+t/mnt/c/.vifm-Trash-0/000_isort-4.3.21.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/isort-4.3.21.dist-info
+t/mnt/c/.vifm-Trash-0/000_jsonpickle-0.9.5-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/jsonpickle-0.9.5-py3.8.egg-info
+t/mnt/c/.vifm-Trash-0/000_kiwisolver-1.1.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/kiwisolver-1.1.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_lazy_object_proxy
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/lazy_object_proxy
+t/mnt/c/.vifm-Trash-0/000_lazy_object_proxy-1.4.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/lazy_object_proxy-1.4.3.dist-info
+t/mnt/c/.vifm-Trash-0/000_matplotlib
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/matplotlib
+t/mnt/c/.vifm-Trash-0/000_matplotlib-3.1.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/matplotlib-3.1.3.dist-info
+t/mnt/c/.vifm-Trash-0/000_mccabe-0.6.1.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/mccabe-0.6.1.dist-info
+t/mnt/c/.vifm-Trash-0/000_mockito-1.0.11-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/mockito-1.0.11-py3.8.egg-info
+t/mnt/c/.vifm-Trash-0/000_nose
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/nose
+t/mnt/c/.vifm-Trash-0/000_nose-1.3.7.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/nose-1.3.7.dist-info
+t/mnt/c/.vifm-Trash-0/000_numpy-1.18.1-py3.8-win32.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/numpy-1.18.1-py3.8-win32.egg
+t/mnt/c/.vifm-Trash-0/000_pip
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pip
+t/mnt/c/.vifm-Trash-0/000_pip-20.1.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pip-20.1.dist-info
+t/mnt/c/.vifm-Trash-0/000_pkg_resources
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pkg_resources
+t/mnt/c/.vifm-Trash-0/000_psutil
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/psutil
+t/mnt/c/.vifm-Trash-0/000_psutil-5.4.3-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/psutil-5.4.3-py3.8.egg-info
+t/mnt/c/.vifm-Trash-0/000_pycodestyle-2.6.0a1.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pycodestyle-2.6.0a1.dist-info
+t/mnt/c/.vifm-Trash-0/000_pyflakes
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pyflakes
+t/mnt/c/.vifm-Trash-0/000_pyflakes-2.2.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pyflakes-2.2.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_pygame
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pygame
+t/mnt/c/.vifm-Trash-0/000_pygame-1.9.6.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pygame-1.9.6.dist-info
+t/mnt/c/.vifm-Trash-0/000_pylint
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pylint
+t/mnt/c/.vifm-Trash-0/000_pylint-2.1.1.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pylint-2.1.1.dist-info
+t/mnt/c/.vifm-Trash-0/000_pyparsing-2.4.6.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pyparsing-2.4.6.dist-info
+t/mnt/c/.vifm-Trash-0/000_python_dateutil-2.8.1.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/python_dateutil-2.8.1.dist-info
+t/mnt/c/.vifm-Trash-0/000_pyttsx3-2.81-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pyttsx3-2.81-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_pytube-9.5.3-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pytube-9.5.3-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_pytz
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pytz
+t/mnt/c/.vifm-Trash-0/000_pytz-2017.3.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pytz-2017.3.dist-info
+t/mnt/c/.vifm-Trash-0/000_pywin32-227.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pywin32-227.dist-info
+t/mnt/c/.vifm-Trash-0/000_pyximport
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pyximport
+t/mnt/c/.vifm-Trash-0/000_qey-0.0.1-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/qey-0.0.1-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_requests-2.22.0-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/requests-2.22.0-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_setuptools
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/setuptools
+t/mnt/c/.vifm-Trash-0/000_setuptools-41.2.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/setuptools-41.2.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_six-1.14.0.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/six-1.14.0.dist-info
+t/mnt/c/.vifm-Trash-0/000_soupsieve-1.9.5-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/soupsieve-1.9.5-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_typing-3.6.2.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/typing-3.6.2.dist-info
+t/mnt/c/.vifm-Trash-0/000_urllib3-1.25.8-py3.8.egg
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/urllib3-1.25.8-py3.8.egg
+t/mnt/c/.vifm-Trash-0/000_wrapt-1.11.2-py3.8.egg-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/wrapt-1.11.2-py3.8.egg-info
+t/mnt/c/.vifm-Trash-0/000_xlib-0.21.dist-info
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/xlib-0.21.dist-info
+t/mnt/c/.vifm-Trash-0/000_README.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/README.txt
+t/mnt/c/.vifm-Trash-0/000_cycler.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/cycler.py
+t/mnt/c/.vifm-Trash-0/000_easy-install.pth
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/easy-install.pth
+t/mnt/c/.vifm-Trash-0/000_easy_install.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/easy_install.py
+t/mnt/c/.vifm-Trash-0/000_filelock.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/filelock.py
+t/mnt/c/.vifm-Trash-0/000_flake8.egg-link
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/flake8.egg-link
+t/mnt/c/.vifm-Trash-0/000_kiwisolver.cp38-win32.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/kiwisolver.cp38-win32.pyd
+t/mnt/c/.vifm-Trash-0/000_matplotlib-3.1.3-py3.8-nspkg.pth
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/matplotlib-3.1.3-py3.8-nspkg.pth
+t/mnt/c/.vifm-Trash-0/000_mccabe.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/mccabe.py
+t/mnt/c/.vifm-Trash-0/000_pycodestyle.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pycodestyle.py
+t/mnt/c/.vifm-Trash-0/000_pylab.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pylab.py
+t/mnt/c/.vifm-Trash-0/000_pywin32.version.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/pywin32.version.txt
+t/mnt/c/.vifm-Trash-0/001___pycache__
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/__pycache__
+t/mnt/c/.vifm-Trash-0/000_audio
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/audio
+t/mnt/c/.vifm-Trash-0/000_bearer
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/bearer
+t/mnt/c/.vifm-Trash-0/000_geometryloaders
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/geometryloaders
+t/mnt/c/.vifm-Trash-0/000_geoservices
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/geoservices
+t/mnt/c/.vifm-Trash-0/000_playlistformats
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/playlistformats
+t/mnt/c/.vifm-Trash-0/000_position
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/position
+t/mnt/c/.vifm-Trash-0/000_printsupport
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/printsupport
+t/mnt/c/.vifm-Trash-0/000_sceneparsers
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/sceneparsers
+t/mnt/c/.vifm-Trash-0/000_sensorgestures
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/sensorgestures
+t/mnt/c/.vifm-Trash-0/000_sensors
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/sensors
+t/mnt/c/.vifm-Trash-0/000_webview
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/plugins/webview
+t/mnt/c/.vifm-Trash-0/000_qml
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/qml
+t/mnt/c/.vifm-Trash-0/000_translations
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/translations
+t/mnt/c/.vifm-Trash-0/000_Qt5Bluetooth.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Bluetooth.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5DBus.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5DBus.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Designer.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Designer.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Help.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Help.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Location.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Location.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Multimedia.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Multimedia.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5MultimediaWidgets.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5MultimediaWidgets.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5NetworkAuth.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5NetworkAuth.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Nfc.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Nfc.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Positioning.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Positioning.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5PositioningQuick.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5PositioningQuick.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5PrintSupport.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5PrintSupport.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Qml.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Qml.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Quick.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Quick.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5QuickControls2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickControls2.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5QuickParticles.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickParticles.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5QuickShapes.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickShapes.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5QuickTemplates2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickTemplates2.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5QuickTest.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickTest.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5QuickWidgets.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5QuickWidgets.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5RemoteObjects.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5RemoteObjects.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5Sensors.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5Sensors.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5SerialPort.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5SerialPort.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5WinExtras.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5WinExtras.dll
+t/mnt/c/.vifm-Trash-0/000_Qt5XmlPatterns.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/Qt5XmlPatterns.dll
+t/mnt/c/.vifm-Trash-0/000_concrt140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/concrt140.dll
+t/mnt/c/.vifm-Trash-0/000_d3dcompiler_47.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/d3dcompiler_47.dll
+t/mnt/c/.vifm-Trash-0/000_libEGL.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/libEGL.dll
+t/mnt/c/.vifm-Trash-0/000_libGLESv2.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/libGLESv2.dll
+t/mnt/c/.vifm-Trash-0/000_libcrypto-1_1.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/libcrypto-1_1.dll
+t/mnt/c/.vifm-Trash-0/000_libeay32.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/libeay32.dll
+t/mnt/c/.vifm-Trash-0/000_libssl-1_1.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/libssl-1_1.dll
+t/mnt/c/.vifm-Trash-0/000_msvcp140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/msvcp140.dll
+t/mnt/c/.vifm-Trash-0/000_opengl32sw.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/opengl32sw.dll
+t/mnt/c/.vifm-Trash-0/000_ssleay32.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/ssleay32.dll
+t/mnt/c/.vifm-Trash-0/000_vcruntime140.dll
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/Qt/bin/vcruntime140.dll
+t/mnt/c/.vifm-Trash-0/000_bindings
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/bindings
+t/mnt/c/.vifm-Trash-0/000_uic
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/uic
+t/mnt/c/.vifm-Trash-0/000_QAxContainer.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QAxContainer.pyd
+t/mnt/c/.vifm-Trash-0/000_QtBluetooth.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtBluetooth.pyd
+t/mnt/c/.vifm-Trash-0/000_QtDBus.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtDBus.pyd
+t/mnt/c/.vifm-Trash-0/000_QtDesigner.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtDesigner.pyd
+t/mnt/c/.vifm-Trash-0/000_QtHelp.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtHelp.pyd
+t/mnt/c/.vifm-Trash-0/000_QtLocation.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtLocation.pyd
+t/mnt/c/.vifm-Trash-0/000_QtMultimedia.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtMultimedia.pyd
+t/mnt/c/.vifm-Trash-0/000_QtMultimediaWidgets.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtMultimediaWidgets.pyd
+t/mnt/c/.vifm-Trash-0/000_QtNetworkAuth.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtNetworkAuth.pyd
+t/mnt/c/.vifm-Trash-0/000_QtNfc.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtNfc.pyd
+t/mnt/c/.vifm-Trash-0/000_QtPositioning.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtPositioning.pyd
+t/mnt/c/.vifm-Trash-0/000_QtPrintSupport.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtPrintSupport.pyd
+t/mnt/c/.vifm-Trash-0/000_QtQml.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtQml.pyd
+t/mnt/c/.vifm-Trash-0/000_QtQuick.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtQuick.pyd
+t/mnt/c/.vifm-Trash-0/000_QtQuickWidgets.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtQuickWidgets.pyd
+t/mnt/c/.vifm-Trash-0/000_QtRemoteObjects.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtRemoteObjects.pyd
+t/mnt/c/.vifm-Trash-0/000_QtSensors.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtSensors.pyd
+t/mnt/c/.vifm-Trash-0/000_QtSerialPort.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtSerialPort.pyd
+t/mnt/c/.vifm-Trash-0/000_QtWinExtras.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtWinExtras.pyd
+t/mnt/c/.vifm-Trash-0/000_QtXmlPatterns.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/QtXmlPatterns.pyd
+t/mnt/c/.vifm-Trash-0/000__QOpenGLFunctions_2_0.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/_QOpenGLFunctions_2_0.pyd
+t/mnt/c/.vifm-Trash-0/000__QOpenGLFunctions_2_1.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/_QOpenGLFunctions_2_1.pyd
+t/mnt/c/.vifm-Trash-0/000__QOpenGLFunctions_4_1_Core.pyd
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/new_dependencies/Lib/site-packages/PyQt5/_QOpenGLFunctions_4_1_Core.pyd
+t/mnt/c/.vifm-Trash-1000/000_test.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/test.txt
+t/mnt/c/.vifm-Trash-1000/000___init__.py
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/__init__.py
+t/mnt/c/.vifm-Trash-1000/001_build
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tools/ANTReportGenerator/build
+t/mnt/c/.vifm-Trash-1000/000_unittest_coverage.bat
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/unittest_coverage.bat
+t/mnt/c/.vifm-Trash-1000/000_unittest_coverage_html.bat
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/unittest_coverage_html.bat
+t/mnt/c/.vifm-Trash-1000/000_unittest_clean.bat
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/tests/unittest_clean.bat
+t/mnt/c/.vifm-Trash-1000/000_Calib-spiral-20200612-203938.dat
+	/mnt/c/Users/qleveque/Documents/Calib-spiral-20200612-203938.dat
+t/mnt/c/.vifm-Trash-1000/000_Calib-spiral-20200612-203938.map2
+	/mnt/c/Users/qleveque/Documents/Calib-spiral-20200612-203938.map2
+t/mnt/c/.vifm-Trash-1000/000_Calib-spiral-20200612-203938.params
+	/mnt/c/Users/qleveque/Documents/Calib-spiral-20200612-203938.params
+t/mnt/c/.vifm-Trash-1000/000_CalibrationApp.log
+	/mnt/c/Users/qleveque/Documents/CalibrationApp.log
+t/mnt/c/.vifm-Trash-1000/000_MapperViewerSnap_0.png
+	/mnt/c/Users/qleveque/Documents/MapperViewerSnap_0.png
+t/mnt/c/.vifm-Trash-1000/000_MapperViewerSnap_1.png
+	/mnt/c/Users/qleveque/Documents/MapperViewerSnap_1.png
+t/mnt/c/.vifm-Trash-1000/000_MappingApp.log
+	/mnt/c/Users/qleveque/Documents/MappingApp.log
+t/mnt/c/.vifm-Trash-1000/000_SpeedICtrl.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/micro/BlueBotics/SpeedICtrl.Obx
+t/mnt/c/.vifm-Trash-1000/000_imageformats
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/build_system/dependencies/imageformats
+t/mnt/c/.vifm-Trash-1000/000_20200528ASERCimcoCoope15.txt
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/server license/20200528ASERCimcoCoope15.txt
+t/mnt/c/.vifm-Trash-1000/000_loop_manufacturers_new.al.lock
+	/mnt/c/Users/qleveque/Documents/others/projects/loop_manufacturers_new.al.lock
+t/mnt/c/.vifm-Trash-1000/000_v-script.py
+	/mnt/c/Python34/Scripts/v-script.py
+t/mnt/c/.vifm-Trash-1000/000_v.exe
+	/mnt/c/Python34/Scripts/v.exe
+t/mnt/c/.vifm-Trash-1000/000_v.exe.manifest
+	/mnt/c/Python34/Scripts/v.exe.manifest
+t/mnt/c/.vifm-Trash-1000/000_qey-script.py
+	/mnt/c/Python34/Scripts/qey-script.py
+t/mnt/c/.vifm-Trash-1000/000_qey.exe
+	/mnt/c/Python34/Scripts/qey.exe
+t/mnt/c/.vifm-Trash-1000/000_qey.exe.manifest
+	/mnt/c/Python34/Scripts/qey.exe.manifest
+t/mnt/c/.vifm-Trash-1000/000_license
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/wms/license
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-0.0.0.2935-Setup-05.05.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-0.0.0.2935-Setup-05.05.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-0.0.0.2938-Setup-05.05.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-0.0.0.2938-Setup-05.05.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-0.0.0.2955-Setup-06.05.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-0.0.0.2955-Setup-06.05.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-0.0.0.3202-Setup-11.06.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-0.0.0.3202-Setup-11.06.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-0.0.0.3273-Setup-26.06.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-0.0.0.3273-Setup-26.06.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-0.0.0.3277-Setup-29.06.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-0.0.0.3277-Setup-29.06.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTserver-1.20.0.142-Setup-15.04.2020(1).exe
+	/mnt/c/Users/qleveque/Downloads/ANTserver-1.20.0.142-Setup-15.04.2020(1).exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-0.0.0.4444-Setup-26.06.2020(1).exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-0.0.0.4444-Setup-26.06.2020(1).exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-0.0.0.4510-Setup-02.07.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-0.0.0.4510-Setup-02.07.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-0.0.0.4519-Setup-02.07.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-0.0.0.4519-Setup-02.07.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-0.0.0.4541-Setup-03.07.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-0.0.0.4541-Setup-03.07.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-0.0.0.4667-Setup-13.07.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-0.0.0.4667-Setup-13.07.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-1.19.1.120-Setup-25.02.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-1.19.1.120-Setup-25.02.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-1.20.2.140-Setup-19.05.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-1.20.2.140-Setup-19.05.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab-1.20.3.145-Setup-11.06.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlab-1.20.3.145-Setup-11.06.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_depends22_x64
+	/mnt/c/Users/qleveque/Downloads/depends22_x64
+t/mnt/c/.vifm-Trash-1000/000_ANTlabMonitor-0.0.0.4542-Setup-03.07.2020.exe
+	/mnt/c/Users/qleveque/Downloads/ANTlabMonitor-0.0.0.4542-Setup-03.07.2020.exe
+t/mnt/c/.vifm-Trash-1000/000_ANTlab_new.py.zip
+	/mnt/c/Users/qleveque/Downloads/ANTlab_new.py.zip
+t/mnt/c/.vifm-Trash-1000/000_ANTreportgenerator-1.17.0.100-Setup-13.11.2019(1).exe
+	/mnt/c/Users/qleveque/Downloads/ANTreportgenerator-1.17.0.100-Setup-13.11.2019(1).exe
+t/mnt/c/.vifm-Trash-1000/000_ANTreportgenerator-1.17.0.100-Setup-13.11.2019.exe
+	/mnt/c/Users/qleveque/Downloads/ANTreportgenerator-1.17.0.100-Setup-13.11.2019.exe
+t/mnt/c/.vifm-Trash-1000/000_CLion-2020.1.2.exe
+	/mnt/c/Users/qleveque/Downloads/CLion-2020.1.2.exe
+t/mnt/c/.vifm-Trash-1000/000_Calib-spiral-20200608-111421.dat
+	/mnt/c/Users/qleveque/Downloads/Calib-spiral-20200608-111421.dat
+t/mnt/c/.vifm-Trash-1000/001_CalibrationApp.log
+	/mnt/c/Users/qleveque/Downloads/CalibrationApp.log
+t/mnt/c/.vifm-Trash-1000/000_myRestaurantWIthIsolated.al
+	/mnt/c/Users/qleveque/Downloads/myRestaurantWIthIsolated.al
+t/mnt/c/.vifm-Trash-1000/000_myRestaurantWIthIsolated.al.lock
+	/mnt/c/Users/qleveque/Downloads/myRestaurantWIthIsolated.al.lock
+t/mnt/c/.vifm-Trash-1000/000_pycharm-community-2020.1.2.exe
+	/mnt/c/Users/qleveque/Downloads/pycharm-community-2020.1.2.exe
+t/mnt/c/.vifm-Trash-1000/000_python-3.8.0-amd64.exe
+	/mnt/c/Users/qleveque/Downloads/python-3.8.0-amd64.exe
+t/mnt/c/.vifm-Trash-1000/000_python-3.8.0.exe
+	/mnt/c/Users/qleveque/Downloads/python-3.8.0.exe
+t/mnt/c/.vifm-Trash-1000/000_received_1173388069342313.jpeg
+	/mnt/c/Users/qleveque/Downloads/received_1173388069342313.jpeg
+t/mnt/c/.vifm-Trash-1000/000_winsdksetup(1).exe
+	/mnt/c/Users/qleveque/Downloads/winsdksetup(1).exe
+t/mnt/c/.vifm-Trash-1000/000_winsdksetup.exe
+	/mnt/c/Users/qleveque/Downloads/winsdksetup.exe
+t/mnt/c/.vifm-Trash-1000/000_Test release 1.21.1-1.docx
+	/mnt/c/Users/qleveque/Downloads/Test release 1.21.1-1.docx
+t/mnt/c/.vifm-Trash-1000/000_depends22_x64.zip
+	/mnt/c/Users/qleveque/Downloads/depends22_x64.zip
+t/mnt/c/.vifm-Trash-1000/000_ConEmuSetup.200615.exe
+	/mnt/c/Users/qleveque/Downloads/ConEmuSetup.200615.exe
+t/mnt/c/.vifm-Trash-1000/000_JetBrains.ReSharperCpp.2020.1.4.web.exe
+	/mnt/c/Users/qleveque/Downloads/JetBrains.ReSharperCpp.2020.1.4.web.exe
+t/mnt/c/.vifm-Trash-1000/000_KeePass-2.45-Setup.exe
+	/mnt/c/Users/qleveque/Downloads/KeePass-2.45-Setup.exe
+t/mnt/c/.vifm-Trash-1000/001_MappingApp.log
+	/mnt/c/Users/qleveque/Downloads/MappingApp.log
+t/mnt/c/.vifm-Trash-1000/000_NewProjecsdffqt.al
+	/mnt/c/Users/qleveque/Downloads/NewProjecsdffqt.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjecsdft.al
+	/mnt/c/Users/qleveque/Downloads/NewProjecsdft.al
+t/mnt/c/.vifm-Trash-1000/001_NewProject.al
+	/mnt/c/Users/qleveque/Downloads/NewProject.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjectBuild.al
+	/mnt/c/Users/qleveque/Downloads/NewProjectBuild.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjectCleanfixDamido.al
+	/mnt/c/Users/qleveque/Downloads/NewProjectCleanfixDamido.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjectLab.al
+	/mnt/c/Users/qleveque/Downloads/NewProjectLab.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjectfdsq.al
+	/mnt/c/Users/qleveque/Downloads/NewProjectfdsq.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjectptuain.al
+	/mnt/c/Users/qleveque/Downloads/NewProjectptuain.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjectsdf.al
+	/mnt/c/Users/qleveque/Downloads/NewProjectsdf.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjecttest.al
+	/mnt/c/Users/qleveque/Downloads/NewProjecttest.al
+t/mnt/c/.vifm-Trash-1000/000_NewProjedsfct.al
+	/mnt/c/Users/qleveque/Downloads/NewProjedsfct.al
+t/mnt/c/.vifm-Trash-1000/000_NewPrsdfoject.al
+	/mnt/c/Users/qleveque/Downloads/NewPrsdfoject.al
+t/mnt/c/.vifm-Trash-1000/000_NewPsdfroject.al
+	/mnt/c/Users/qleveque/Downloads/NewPsdfroject.al
+t/mnt/c/.vifm-Trash-1000/001_ooze
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/ooze
+t/mnt/c/.vifm-Trash-1000/000_ooze.js
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/WMS/monitor/wms-app/ooze.js
+t/mnt/c/.vifm-Trash-1000/000_Garbagnate.al
+	/mnt/c/Users/qleveque/Documents/others/projects/Garbagnate.al
+t/mnt/c/.vifm-Trash-1000/000_Garbagnate.al.lock
+	/mnt/c/Users/qleveque/Documents/others/projects/Garbagnate.al.lock
+t/mnt/c/.vifm-Trash-1000/000_scanning.pyc
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar/scanning.pyc
+t/mnt/c/.vifm-Trash-1000/000_frank_1m_first.map2
+	/mnt/c/Users/qleveque/Desktop/frank_1m_first.map2
+t/mnt/c/.vifm-Trash-1000/000_ANTserverClient.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ANTserverClient.Obx
+t/mnt/c/.vifm-Trash-1000/000_AccessoryController.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/AccessoryController.Obx
+t/mnt/c/.vifm-Trash-1000/000_Actions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Actions.Obx
+t/mnt/c/.vifm-Trash-1000/000_Actuators.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Actuators.Obx
+t/mnt/c/.vifm-Trash-1000/000_AgvControl.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/AgvControl.Obx
+t/mnt/c/.vifm-Trash-1000/000_AgvControlExt.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/AgvControlExt.Obx
+t/mnt/c/.vifm-Trash-1000/000_Alerter.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Alerter.Obx
+t/mnt/c/.vifm-Trash-1000/000_Array.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Array.Obx
+t/mnt/c/.vifm-Trash-1000/000_BaseCtrl.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/BaseCtrl.Obx
+t/mnt/c/.vifm-Trash-1000/000_Basic.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Basic.Obx
+t/mnt/c/.vifm-Trash-1000/000_Battery.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Battery.Obx
+t/mnt/c/.vifm-Trash-1000/000_BootSource.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/BootSource.Obx
+t/mnt/c/.vifm-Trash-1000/000_BrainboxesES5xx.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/BrainboxesES5xx.Obx
+t/mnt/c/.vifm-Trash-1000/000_Bubble.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Bubble.Obx
+t/mnt/c/.vifm-Trash-1000/000_BubbleBand.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/BubbleBand.Obx
+t/mnt/c/.vifm-Trash-1000/000_BubbleFactory.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/BubbleFactory.Obx
+t/mnt/c/.vifm-Trash-1000/000_BubbleList.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/BubbleList.Obx
+t/mnt/c/.vifm-Trash-1000/000_CAN2.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/CAN2.Obx
+t/mnt/c/.vifm-Trash-1000/000_CANopen.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/CANopen.Obx
+t/mnt/c/.vifm-Trash-1000/000_CANopenUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/CANopenUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_Collections.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Collections.Obx
+t/mnt/c/.vifm-Trash-1000/000_CollisionAvoider.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/CollisionAvoider.Obx
+t/mnt/c/.vifm-Trash-1000/000_CollisionAvoiderActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/CollisionAvoiderActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_Common.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Common.Obx
+t/mnt/c/.vifm-Trash-1000/000_Configurable.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Configurable.Obx
+t/mnt/c/.vifm-Trash-1000/000_Control.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Control.Obx
+t/mnt/c/.vifm-Trash-1000/000_ConvexHull.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ConvexHull.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevDC21143.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevDC21143.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevGPIO.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevGPIO.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevInvenSense.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevInvenSense.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevIpEd4.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevIpEd4.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevMonitor.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevMonitor.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevProxy.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevProxy.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevSPI.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevSPI.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevTCP863.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevTCP863.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevTIP102.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevTIP102.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevTPMC810.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevTPMC810.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevTPMC862.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevTPMC862.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevTSEC.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevTSEC.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_DevicesMonitoring.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DevicesMonitoring.Obx
+t/mnt/c/.vifm-Trash-1000/000_DistanceObjective.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DistanceObjective.Obx
+t/mnt/c/.vifm-Trash-1000/000_Dof.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Dof.Obx
+t/mnt/c/.vifm-Trash-1000/000_DofActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DofActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_DualLMS.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DualLMS.Obx
+t/mnt/c/.vifm-Trash-1000/000_DuartMPC8349.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DuartMPC8349.Obx
+t/mnt/c/.vifm-Trash-1000/000_DynCall.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DynCall.Obx
+t/mnt/c/.vifm-Trash-1000/000_DynCallClient.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DynCallClient.Obx
+t/mnt/c/.vifm-Trash-1000/000_DynCallResolvers.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DynCallResolvers.Obx
+t/mnt/c/.vifm-Trash-1000/000_DynamicWindow.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DynamicWindow.Obx
+t/mnt/c/.vifm-Trash-1000/000_DynamicWindowInterface.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/DynamicWindowInterface.Obx
+t/mnt/c/.vifm-Trash-1000/000_ETHrt.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ETHrt.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherCAT.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherCAT.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherCATBeckhoff.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherCATBeckhoff.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherCATProcess.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherCATProcess.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherCATUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherCATUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherNetIP.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherNetIP.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherNetIPDevices.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherNetIPDevices.Obx
+t/mnt/c/.vifm-Trash-1000/000_EtherNetIPDictionaries.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/EtherNetIPDictionaries.Obx
+t/mnt/c/.vifm-Trash-1000/000_Ethernet.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Ethernet.Obx
+t/mnt/c/.vifm-Trash-1000/000_FeatureLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/FeatureLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_FlashUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/FlashUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_GCLog.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/GCLog.Obx
+t/mnt/c/.vifm-Trash-1000/000_GenericList.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/GenericList.Obx
+t/mnt/c/.vifm-Trash-1000/000_GeometryLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/GeometryLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_GlobalPlanner.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/GlobalPlanner.Obx
+t/mnt/c/.vifm-Trash-1000/000_Globals.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Globals.Obx
+t/mnt/c/.vifm-Trash-1000/000_Group.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Group.Obx
+t/mnt/c/.vifm-Trash-1000/000_HeadingObjective.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/HeadingObjective.Obx
+t/mnt/c/.vifm-Trash-1000/000_HokuyoUAM05LP.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/HokuyoUAM05LP.Obx
+t/mnt/c/.vifm-Trash-1000/000_HokuyoURG04LX.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/HokuyoURG04LX.Obx
+t/mnt/c/.vifm-Trash-1000/000_Hull.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Hull.Obx
+t/mnt/c/.vifm-Trash-1000/000_IOBoard.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/IOBoard.Obx
+t/mnt/c/.vifm-Trash-1000/000_IOBoardUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/IOBoardUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_IPrt.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/IPrt.Obx
+t/mnt/c/.vifm-Trash-1000/000_Inertial.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Inertial.Obx
+t/mnt/c/.vifm-Trash-1000/000_IoActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/IoActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_Joystick.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Joystick.Obx
+t/mnt/c/.vifm-Trash-1000/000_Key.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Key.Obx
+t/mnt/c/.vifm-Trash-1000/000_KukaActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/KukaActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_KukaEthernetKRL.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/KukaEthernetKRL.Obx
+t/mnt/c/.vifm-Trash-1000/000_LaserScanner.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LaserScanner.Obx
+t/mnt/c/.vifm-Trash-1000/000_LeuzeRSL4xx.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LeuzeRSL4xx.Obx
+t/mnt/c/.vifm-Trash-1000/000_Level.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Level.Obx
+t/mnt/c/.vifm-Trash-1000/000_Lexer.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Lexer.Obx
+t/mnt/c/.vifm-Trash-1000/000_Lift.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Lift.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocGenerationLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocGenerationLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocMiscLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocMiscLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocTrackingLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocTrackingLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_Localization.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Localization.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocalizationActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocalizationActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocalizationLine.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocalizationLine.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocalizationReflector.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocalizationReflector.Obx
+t/mnt/c/.vifm-Trash-1000/000_LocalizationUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LocalizationUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_LockMgr.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LockMgr.Obx
+t/mnt/c/.vifm-Trash-1000/000_LogFSFiles.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LogFSFiles.Obx
+t/mnt/c/.vifm-Trash-1000/000_LogLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LogLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_Logging.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Logging.Obx
+t/mnt/c/.vifm-Trash-1000/000_LoggingSinks.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LoggingSinks.Obx
+t/mnt/c/.vifm-Trash-1000/000_LoggingUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LoggingUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_Lookup.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Lookup.Obx
+t/mnt/c/.vifm-Trash-1000/000_Los.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Los.Obx
+t/mnt/c/.vifm-Trash-1000/000_LosBStream.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LosBStream.Obx
+t/mnt/c/.vifm-Trash-1000/000_LosClient.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LosClient.Obx
+t/mnt/c/.vifm-Trash-1000/000_LosIntf.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LosIntf.Obx
+t/mnt/c/.vifm-Trash-1000/000_LosServer.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LosServer.Obx
+t/mnt/c/.vifm-Trash-1000/000_LosTypes.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/LosTypes.Obx
+t/mnt/c/.vifm-Trash-1000/000_Map.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Map.Obx
+t/mnt/c/.vifm-Trash-1000/000_Map2.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Map2.Obx
+t/mnt/c/.vifm-Trash-1000/000_Map2Localization.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Map2Localization.Obx
+t/mnt/c/.vifm-Trash-1000/000_Map2Navigation.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Map2Navigation.Obx
+t/mnt/c/.vifm-Trash-1000/000_MapAction.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MapAction.Obx
+t/mnt/c/.vifm-Trash-1000/000_MapActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MapActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_MapNodes.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MapNodes.Obx
+t/mnt/c/.vifm-Trash-1000/000_Maps.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Maps.Obx
+t/mnt/c/.vifm-Trash-1000/000_MathLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MathLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_MatrixLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MatrixLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_MatrixNLib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MatrixNLib.Obx
+t/mnt/c/.vifm-Trash-1000/000_Messenger.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Messenger.Obx
+t/mnt/c/.vifm-Trash-1000/000_Mission.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Mission.Obx
+t/mnt/c/.vifm-Trash-1000/000_ModelsSynchronizer.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ModelsSynchronizer.Obx
+t/mnt/c/.vifm-Trash-1000/000_Monitor.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Monitor.Obx
+t/mnt/c/.vifm-Trash-1000/000_MonitorCond.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MonitorCond.Obx
+t/mnt/c/.vifm-Trash-1000/000_Motion.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Motion.Obx
+t/mnt/c/.vifm-Trash-1000/000_MotionController.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MotionController.Obx
+t/mnt/c/.vifm-Trash-1000/000_MotionPlanner.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MotionPlanner.Obx
+t/mnt/c/.vifm-Trash-1000/000_MotionRecorder.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MotionRecorder.Obx
+t/mnt/c/.vifm-Trash-1000/000_MsgCatalog.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/MsgCatalog.Obx
+t/mnt/c/.vifm-Trash-1000/000_NF1.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NF1.Obx
+t/mnt/c/.vifm-Trash-1000/000_NNSearch.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NNSearch.Obx
+t/mnt/c/.vifm-Trash-1000/000_Named.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Named.Obx
+t/mnt/c/.vifm-Trash-1000/000_NamedAlias.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NamedAlias.Obx
+t/mnt/c/.vifm-Trash-1000/000_NamedDevices.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NamedDevices.Obx
+t/mnt/c/.vifm-Trash-1000/000_NamedPeripherals.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NamedPeripherals.Obx
+t/mnt/c/.vifm-Trash-1000/000_NamedUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NamedUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_NavigationDS.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NavigationDS.Obx
+t/mnt/c/.vifm-Trash-1000/000_NetComPlus213.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NetComPlus213.Obx
+t/mnt/c/.vifm-Trash-1000/000_NetFiles.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NetFiles.Obx
+t/mnt/c/.vifm-Trash-1000/000_NetUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/NetUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_Object.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Object.Obx
+t/mnt/c/.vifm-Trash-1000/000_Objective.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Objective.Obx
+t/mnt/c/.vifm-Trash-1000/000_ObjectsProxy.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ObjectsProxy.Obx
+t/mnt/c/.vifm-Trash-1000/000_Odometry.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Odometry.Obx
+t/mnt/c/.vifm-Trash-1000/000_OdometryOmni.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/OdometryOmni.Obx
+t/mnt/c/.vifm-Trash-1000/000_OmniControllerActiveCaster.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/OmniControllerActiveCaster.Obx
+t/mnt/c/.vifm-Trash-1000/000_OmronOS32CDM.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/OmronOS32CDM.Obx
+t/mnt/c/.vifm-Trash-1000/000_ParamSwitcher.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ParamSwitcher.Obx
+t/mnt/c/.vifm-Trash-1000/000_PathBuilder.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PathBuilder.Obx
+t/mnt/c/.vifm-Trash-1000/000_PathElements.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PathElements.Obx
+t/mnt/c/.vifm-Trash-1000/000_PathFollower.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PathFollower.Obx
+t/mnt/c/.vifm-Trash-1000/000_PathFollowerActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PathFollowerActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_PathFollowerExt.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PathFollowerExt.Obx
+t/mnt/c/.vifm-Trash-1000/000_PathFollowerInterestPoints.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PathFollowerInterestPoints.Obx
+t/mnt/c/.vifm-Trash-1000/000_PepperlFuchsR2000.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PepperlFuchsR2000.Obx
+t/mnt/c/.vifm-Trash-1000/000_Peripherals.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Peripherals.Obx
+t/mnt/c/.vifm-Trash-1000/000_Pipes.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Pipes.Obx
+t/mnt/c/.vifm-Trash-1000/000_PlatformActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/PlatformActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_Pools.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Pools.Obx
+t/mnt/c/.vifm-Trash-1000/000_ProbState.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ProbState.Obx
+t/mnt/c/.vifm-Trash-1000/000_ProbStateMatrix.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ProbStateMatrix.Obx
+t/mnt/c/.vifm-Trash-1000/000_QTClustering.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/QTClustering.Obx
+t/mnt/c/.vifm-Trash-1000/000_Queues.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Queues.Obx
+t/mnt/c/.vifm-Trash-1000/000_Reflection.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Reflection.Obx
+t/mnt/c/.vifm-Trash-1000/000_Rem.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Rem.Obx
+t/mnt/c/.vifm-Trash-1000/000_ReplanHandler.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ReplanHandler.Obx
+t/mnt/c/.vifm-Trash-1000/000_RobotModel.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/RobotModel.Obx
+t/mnt/c/.vifm-Trash-1000/000_Rpn.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Rpn.Obx
+t/mnt/c/.vifm-Trash-1000/000_SICKLMS2xx.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SICKLMS2xx.Obx
+t/mnt/c/.vifm-Trash-1000/000_SICKMicroscan3.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SICKMicroscan3.Obx
+t/mnt/c/.vifm-Trash-1000/000_SICKS300.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SICKS300.Obx
+t/mnt/c/.vifm-Trash-1000/000_SICKS3000.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SICKS3000.Obx
+t/mnt/c/.vifm-Trash-1000/000_SICKSOPAS.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SICKSOPAS.Obx
+t/mnt/c/.vifm-Trash-1000/000_Safety.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Safety.Obx
+t/mnt/c/.vifm-Trash-1000/000_Scan.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Scan.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMatching.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMatching.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMatchingAlgo.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMatchingAlgo.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemory.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemory.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryExt.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryExt.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryHullRegion.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryHullRegion.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryInc.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryInc.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryLs.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryLs.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryScalar.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryScalar.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScanMemoryVirtWall.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScanMemoryVirtWall.Obx
+t/mnt/c/.vifm-Trash-1000/000_Script.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Script.Obx
+t/mnt/c/.vifm-Trash-1000/000_ScriptContext.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ScriptContext.Obx
+t/mnt/c/.vifm-Trash-1000/000_SensorsRecorder.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SensorsRecorder.Obx
+t/mnt/c/.vifm-Trash-1000/000_SerialChannels.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SerialChannels.Obx
+t/mnt/c/.vifm-Trash-1000/000_SharedMemory.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SharedMemory.Obx
+t/mnt/c/.vifm-Trash-1000/000_Shutdown.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Shutdown.Obx
+t/mnt/c/.vifm-Trash-1000/000_SignalProcessing.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SignalProcessing.Obx
+t/mnt/c/.vifm-Trash-1000/000_SimpleMotion.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SimpleMotion.Obx
+t/mnt/c/.vifm-Trash-1000/000_SimpleScan.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SimpleScan.Obx
+t/mnt/c/.vifm-Trash-1000/000_SlidingMean.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SlidingMean.Obx
+t/mnt/c/.vifm-Trash-1000/001_SpeedICtrl.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SpeedICtrl.Obx
+t/mnt/c/.vifm-Trash-1000/000_SpeedObjective.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SpeedObjective.Obx
+t/mnt/c/.vifm-Trash-1000/000_SpeedVectorController.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SpeedVectorController.Obx
+t/mnt/c/.vifm-Trash-1000/000_StatCollector.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/StatCollector.Obx
+t/mnt/c/.vifm-Trash-1000/000_StatLogger.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/StatLogger.Obx
+t/mnt/c/.vifm-Trash-1000/000_Statistics.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Statistics.Obx
+t/mnt/c/.vifm-Trash-1000/000_SysLog.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SysLog.Obx
+t/mnt/c/.vifm-Trash-1000/000_SysUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/SysUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_TargetTracker.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TargetTracker.Obx
+t/mnt/c/.vifm-Trash-1000/000_TargetTrackerActions.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TargetTrackerActions.Obx
+t/mnt/c/.vifm-Trash-1000/000_Tasking.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Tasking.Obx
+t/mnt/c/.vifm-Trash-1000/000_TestLocalization.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TestLocalization.Obx
+t/mnt/c/.vifm-Trash-1000/000_TextUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TextUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_Time.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Time.Obx
+t/mnt/c/.vifm-Trash-1000/000_TimeSync.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TimeSync.Obx
+t/mnt/c/.vifm-Trash-1000/000_TimeUtils.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TimeUtils.Obx
+t/mnt/c/.vifm-Trash-1000/000_TrajectoryControl.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TrajectoryControl.Obx
+t/mnt/c/.vifm-Trash-1000/000_TricycleController.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TricycleController.Obx
+t/mnt/c/.vifm-Trash-1000/000_Turret.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Turret.Obx
+t/mnt/c/.vifm-Trash-1000/000_TypeWrappers.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/TypeWrappers.Obx
+t/mnt/c/.vifm-Trash-1000/000_Users.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Users.Obx
+t/mnt/c/.vifm-Trash-1000/000_Var.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Var.Obx
+t/mnt/c/.vifm-Trash-1000/000_VelocityLimiters.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/VelocityLimiters.Obx
+t/mnt/c/.vifm-Trash-1000/000_VentecIBMS8S.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/VentecIBMS8S.Obx
+t/mnt/c/.vifm-Trash-1000/000_ViaControlPointsBuilder.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ViaControlPointsBuilder.Obx
+t/mnt/c/.vifm-Trash-1000/000_Watchdog.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Watchdog.Obx
+t/mnt/c/.vifm-Trash-1000/000_Wms.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Wms.Obx
+t/mnt/c/.vifm-Trash-1000/000_Zlib.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/Zlib.Obx
+t/mnt/c/.vifm-Trash-1000/000_ZlibBuffers.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ZlibBuffers.Obx
+t/mnt/c/.vifm-Trash-1000/000_ZlibDeflate.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ZlibDeflate.Obx
+t/mnt/c/.vifm-Trash-1000/000_ZlibInflate.Obx
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/mini/BlueBotics/ZlibInflate.Obx
+t/mnt/c/.vifm-Trash-1000/000_micro-offset.xbn
+	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/micro/BlueBotics/micro-offset.xbn
+t/mnt/c/.vifm-Trash-1000/000_banane_inversée.png
+	/mnt/c/Users/qleveque/Desktop/laser_offset/banane_inversée.png
 
 # State:
 f
