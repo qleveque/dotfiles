@@ -47,3 +47,13 @@ command! Diffs :Git difftool -y
 command! Diff :Gdiff
 command! Commit :BCommits
 
+""""""""""""""""""""""""""""""
+" => Tags
+""""""""""""""""""""""""""""""
+command! Ctags :!ctags -f '.tags' -R . 
+cnoreabbrev ctags Ctags
+nnoremap gd <C-]>
+nnoremap gD gd
+set tags=.tags
+set path=.
+

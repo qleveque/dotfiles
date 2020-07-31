@@ -20,6 +20,8 @@ command! Diffs action Vcs.Show.Local.Changes
 command! Commit action Vcs.ShowTabbedFileHistory
 command! Commits action Vcs.Show.Log
 
+set ideamarks
+set ideajoin
 set surround
 set commentary
 

@@ -154,8 +154,15 @@ nnoremap <C-t> :Files<CR>
 nnoremap <C-w>b :Buffers<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => New languages
+" => Language specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.aMod set filetype=oberon
 au! Syntax oberon source ~/.vim/oberon2.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Others
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+command! Json :%!python -m json.tool
+cnoreabbrev json Json
 
