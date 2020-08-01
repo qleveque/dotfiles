@@ -6,13 +6,13 @@
 	pyqo
 1588707098
 'b
-	/mnt/c/Users/qleveque/bin/
+	/home/whenti/bin/
 	..
-1587371186
+1596228874
 'h
-	/mnt/c/Users/qleveque/
+	/home/whenti/
 	..
-1588705801
+1596228874
 'k
 	/mnt/c/Users/qleveque/Desktop/cyt/lib/other/other2
 	..
@@ -42,84 +42,6 @@ l10,2
 r2
 
 # Left window history (oldest to newest):
-d/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan
-	vcruntime140.dll
-10
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model/map/components/properties
-	position.py
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model/map/components
-	properties
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model/map
-	components
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib/view_model
-	map
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab/lib
-	view_model
-16
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/ANTlab
-	lib
-9
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	Mercator
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator
-	lib
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator/lib
-	Mercator
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator/lib/Mercator
-	Bayes.py
-5
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator/lib
-	Mercator
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Mercator
-	lib
-3
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App
-	Mercator
-7
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics
-	App
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
-	LidarOffset
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
-	visualization.py
-6
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
-	my_lidar
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
-	scanning.pyc
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
-	my_lidar
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
-	scanning.pyc
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
-	LidarOffset
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
-	statistics.py
-4
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
-	my_lidar
-2
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/my_lidar
-	test.dat
-1
-d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts
-	LidarOffset
-1
 d/mnt/c/Users/qleveque/Documents/codes/BlueBotics/App/Calibration/scripts/LidarOffset
 	statistics.py
 4
@@ -342,12 +264,87 @@ d/mnt/c/Users/qleveque/Desktop/laser_offset
 d/mnt/c/Users/qleveque/Desktop/laser_offset/dat
 	antibanane_80cm
 3
+d/home/whenti/Documents
+	papers
+3
+d/home/whenti/Documents/papers
+	epfl
+4
+d/home/whenti/Documents/papers/epfl
+	..
+0
+d/home/whenti/Documents/papers
+	epfl
+4
+d/home/whenti/Documents/papers/epfl
+	..
+0
+d/home/whenti/Documents/papers
+	trips
+3
+d/home/whenti/Documents/papers/trips
+	..
+0
+d/home/whenti/Documents/papers
+	trash
+2
+d/home/whenti/Documents/papers/trash
+	..
+0
+d/home/whenti/Documents/papers
+	orthographe
+1
+d/home/whenti/Documents/papers/orthographe
+	..
+0
+d/home/whenti/Documents/papers
+	trips
+3
+d/home/whenti/Documents/papers/trips
+	Screenshot from 2020-02-08 15-26-44.png
+2
+d/home/whenti/Documents/papers
+	trips
+3
+d/home/whenti/Documents/papers/trips
+	BoardingPass.pdf
+1
+d/home/whenti/Documents/papers
+	epfl
+4
+d/home/whenti/Documents/papers/epfl
+	..
+0
+d/home/whenti/Documents/papers
+	orthographe
+1
+d/home/whenti/Documents/papers/orthographe
+	..
+0
+d/home/whenti/Documents/papers
+	orthographe
+1
+d/home/whenti/Documents
+	papers
+7
+d/home/whenti
+	Documents
+3
+d/home
+	whenti
+1
+d/home/whenti
+	Desktop
+4
+d/home/whenti/Documents/macros
+	pyqo
+3
+d/home/whenti/Documents/macros/pyqo
+	dist
+2
 d
 
 # Right window history (oldest to newest):
-D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator/licenses
-	..
-0
 D/mnt/c/Program Files (x86)/BlueBotics/ANT report generator
 	bin
 1
@@ -645,6 +642,9 @@ D/mnt/c/Program Files (x86)/BlueBotics
 D/mnt/c/Users/qleveque/Desktop
 	..
 0
+D/mnt
+	
+0
 D
 
 # Command line history (oldest to newest):
@@ -893,6 +893,10 @@ pbanane_80cm
 # Local filter history (oldest to newest):
 
 # Registers:
+""/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-06-14 22-42-12.png
+""/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-07-13 20-00-52.png
+""/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-07-13 20-04-27.png
+""/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-07-30 21-54-35.png
 
 # Directory stack (oldest to newest):
 
@@ -2389,6 +2393,16 @@ t/mnt/c/.vifm-Trash-1000/000_micro-offset.xbn
 	/mnt/c/Users/qleveque/Documents/codes/BlueBotics/Oberon/ANTlite/micro/BlueBotics/micro-offset.xbn
 t/mnt/c/.vifm-Trash-1000/000_banane_inversée.png
 	/mnt/c/Users/qleveque/Desktop/laser_offset/banane_inversée.png
+t/home/whenti/.local/share/vifm/Trash/000_pour_Alice.txt
+	/home/whenti/Documents/papers/pour_Alice.txt
+t/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-06-14 22-42-12.png
+	/home/whenti/Screenshot from 2020-06-14 22-42-12.png
+t/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-07-13 20-00-52.png
+	/home/whenti/Screenshot from 2020-07-13 20-00-52.png
+t/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-07-13 20-04-27.png
+	/home/whenti/Screenshot from 2020-07-13 20-04-27.png
+t/home/whenti/.local/share/vifm/Trash/000_Screenshot from 2020-07-30 21-54-35.png
+	/home/whenti/Screenshot from 2020-07-30 21-54-35.png
 
 # State:
 f
