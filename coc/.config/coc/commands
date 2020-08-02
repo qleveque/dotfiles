@@ -1,0 +1,5 @@
+python.setLinter
+python.setInterpreter
+python.upgradePythonLanguageServer
+editor.action.organizeImport
+clangd.install

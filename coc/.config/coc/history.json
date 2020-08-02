@@ -1,0 +1,32 @@
+{
+  "symbols": {
+    "%2Fhome%2Fwhenti%2FDocuments%2Fprog%2Fpython%2Fpetitspoissons": [
+      "fishmanar",
+      ":q"
+    ]
+  },
+  "lists": {
+    "%2Fhome%2Fwhenti%2FDocuments%2Fprog%2Fpython%2Fpetitspoissons": [
+      "dia"
+    ],
+    "%2Fhome%2Fwhenti%2FDocuments%2Fprog": [
+      "exte"
+    ]
+  },
+  "extensions": {
+    "%2Fhome%2Fwhenti%2FDocuments%2Fprog": [
+      "jj"
+    ]
+  },
+  "commands": {
+    "%2Fhome%2Fwhenti%2FDocuments%2Fprog%2Fpython%2Fhue": [
+      "linter",
+      "python"
+    ],
+    "%2Fhome%2Fwhenti%2FDocuments%2Fprog%2Fpython%2FGonfletteRacing": [
+      "python",
+      "python set",
+      "linter"
+    ]
+  }
+}
