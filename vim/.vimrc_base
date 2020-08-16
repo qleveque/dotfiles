@@ -1,6 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General settings
 colorscheme desert
 set t_ut=
 set nocompatible
@@ -108,7 +109,6 @@ set nobackup
 set nowb
 set noswapfile
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -149,13 +149,4 @@ command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
     \ 'sink': 'cd'}))
 execute "set <M-c>=\ec"
 nnoremap <M-c> :Cd<CR>
-nnoremap <C-t> :Files<CR>
-nnoremap <C-w>b :Buffers<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Others
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! Json :%!python -m json.tool
-au BufRead,BufNewFile *.aMod set filetype=oberon
-au! Syntax oberon source ~/.vim/oberon2.vim
 
