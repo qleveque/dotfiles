@@ -1,0 +1,94 @@
+{
+    "C_Cpp.updateChannel": "Insiders",
+    "explorer.confirmDelete": false,
+    "workbench.activityBar.visible": false,
+    "workbench.statusBar.visible": true,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "f"],
+            "commands": [
+                "editor.action.formatSelection"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "f"],
+            "after": ["V", "<leader>", "f", "<escape>"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-t>"],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": ["<C-f>"],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": ["g", "d"],
+            "commands": [
+                "editor.action.revealDeclaration"
+            ]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": ["g", "r"],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": ["<C-w>", "b"],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
+            "before": ["<C-w>", "t"],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": ["<leader>", "i"],
+            "commands": [
+                "editor.action.organizeImports"
+            ]
+        },
+        {
+            "before": ["<leader>", "F"],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": ["<leader>", "r", "n"],
+            "commands": [
+                "editor.action.rename"
+            ]
+        }
+    ],
+    "terminal.integrated.shell.linux": "/bin/sh",
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "~/.vimrc_base",
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.editor.showTabs": false,
+    "workbench.editor.limit.value": 1,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.limit.enabled": true,
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "C_Cpp.clang_format_sortIncludes": true
+}
