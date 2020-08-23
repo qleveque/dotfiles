@@ -16,7 +16,6 @@
 [submodule "vim/.vim/vim-tmux-navigator"]
 	path = vim/.vim/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator
-
 [submodule "vim/.vim/fzf"]
 	path = vim/.vim/fzf
 	url = https://github.com/junegunn/fzf
@@ -26,3 +25,6 @@
 [submodule "vim/.vim/fugitive"]
 	path = vim/.vim/fugitive
 	url = https://tpope.io/vim/fugitive.git
+[submodule "vim/.vim/vifm.vim"]
+	path = vim/.vim/vifm.vim
+	url = https://github.com/vifm/vifm.vim
