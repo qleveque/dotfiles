@@ -178,3 +178,8 @@ nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap <CR> :execute 'winct' | quit <CR>
 
+map <C-l> :q<CR>
+map <C-k> :q<CR>
+map <C-j> :q<CR>
+map <C-h> :q<CR>
+

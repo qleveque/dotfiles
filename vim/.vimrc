@@ -13,15 +13,6 @@ set undodir=~/.vim/undodir
 set undofile
 
 """"""""""""""""""""""""""""""
-" => Vim tree
-""""""""""""""""""""""""""""""
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-
-""""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""
 set runtimepath^=~/.vim/emmet-vim
@@ -32,6 +23,15 @@ set runtimepath^=~/.vim/vim-tmux-navigator
 set runtimepath^=~/.vim/fzf
 set runtimepath^=~/.vim/fzf.vim
 set runtimepath^=~/.vim/fugitive
+set runtimepath^=~/.vim/vifm.vim
+
+""""""""""""""""""""""""""""""
+" => Vim tree
+""""""""""""""""""""""""""""""
+let g:vifm_exec_args = '-c :only'
+let g:vifm_embed_split = 1
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 
 """"""""""""""""""""""""""""""
 " => Coc plugin
@@ -122,7 +122,8 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 """"""""""""""""""""""""""""""
 " => Shortcuts
 """"""""""""""""""""""""""""""
-nnoremap <C-w>t :Vexplore<CR>
+nnoremap <C-w>t :vertical 50 Vifm<CR>
+command! Vf :vertical 50 Vifm .
 nnoremap <C-w>b :Buffers<CR>
 nnoremap <C-f> :Rg 
 nnoremap <C-t> :Files<CR>
