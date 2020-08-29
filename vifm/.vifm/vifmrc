@@ -168,6 +168,7 @@ nnoremap A cw
 
 " set syncregs=general
 set confirm-=delete
+set ls!
 command! c :execute 'cd "'.system('d %a -e').'"'
 command! q :execute 'winc t' | quit 
 command! Cd :execute 'cd "./'.system('$FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
