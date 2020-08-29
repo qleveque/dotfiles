@@ -1,7 +1,7 @@
 {
     "C_Cpp.updateChannel": "Insiders",
     "explorer.confirmDelete": false,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -83,12 +83,13 @@
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "~/.vimrc_base",
     "editor.minimap.enabled": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "default",
     "workbench.editor.showTabs": false,
     "workbench.editor.limit.value": 1,
     "workbench.editor.limit.perEditorGroup": true,
     "workbench.editor.limit.enabled": true,
     "editor.lineNumbers": "relative",
     "workbench.colorTheme": "Visual Studio 2019 Dark",
-    "C_Cpp.clang_format_sortIncludes": true
+    "C_Cpp.clang_format_sortIncludes": true,
+    "extensions.ignoreRecommendations": false
 }
