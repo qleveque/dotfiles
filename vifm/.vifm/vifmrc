@@ -166,10 +166,11 @@ nnoremap A cw
 
 " ------------------------------------------------------------------------------
 
-" set syncregs=general
+set syncregs=general
 set confirm-=delete
 set ls!
 command! c :execute 'cd "'.system('d %a -e').'"'
+command! f :execute 'mark x "'.system('f %a -e | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
 command! q :execute 'winc t' | quit 
 command! Cd :execute 'cd "./'.system('$FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
 command! Files :execute 'mark x "%d/'.system('$FZF_CTRL_T_COMMAND | fzf 2>/dev/tty | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x

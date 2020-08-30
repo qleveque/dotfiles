@@ -7,10 +7,24 @@ source ~/.vimrc_base
 set laststatus=2
 
 """"""""""""""""""""""""""""""
-" => Persistent undo
+" => persistent undo
 """"""""""""""""""""""""""""""
 set undodir=~/.vim/undodir
 set undofile
+
+""""""""""""""""""""""""""""""
+" => Pmenu
+""""""""""""""""""""""""""""""
+highlight Pmenu ctermfg=black guifg=black ctermbg=gray guibg=gray
+
+""""""""""""""""""""""""""""""
+" => FZF
+""""""""""""""""""""""""""""""
+command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
+    \ {'source': '$FZF_ALT_C_COMMAND',
+    \ 'sink': 'cd'}))
+execute "set <M-c>=\ec"
+nnoremap <M-c> :Cd<CR>
 
 """"""""""""""""""""""""""""""
 " => Plugins
@@ -32,6 +46,31 @@ let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
+
+""""""""""""""""""""""""""""""
+" => Fugitive
+""""""""""""""""""""""""""""""
+" command! Commits
+" command! Gblame
+command! Diffs :Git difftool -y
+command! Diff :Gdiff
+command! Commit :BCommits
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Others
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! Json :%!python -m json.tool
+au BufRead,BufNewFile *.aMod set filetype=oberon
+au! Syntax oberon source ~/.vim/oberon2.vim
+
+""""""""""""""""""""""""""""""
+" => Shortcuts
+""""""""""""""""""""""""""""""
+nnoremap <C-w>t :vertical 50 Vifm<CR>
+command! Vf :vertical 50 Vifm .
+nnoremap <C-w>b :Buffers<CR>
+nnoremap <C-f> :Rg 
+nnoremap <C-t> :Files<CR>
 
 """"""""""""""""""""""""""""""
 " => Coc plugin
@@ -102,29 +141,4 @@ augroup end
 " nmap <leader>a  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 " nmap <leader>qf  <Plug>(coc-fix-current)
-
-""""""""""""""""""""""""""""""
-" => Fugitive
-""""""""""""""""""""""""""""""
-" command! Commits
-" command! Gblame
-command! Diffs :Git difftool -y
-command! Diff :Gdiff
-command! Commit :BCommits
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Others
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! Json :%!python -m json.tool
-au BufRead,BufNewFile *.aMod set filetype=oberon
-au! Syntax oberon source ~/.vim/oberon2.vim
-
-""""""""""""""""""""""""""""""
-" => Shortcuts
-""""""""""""""""""""""""""""""
-nnoremap <C-w>t :vertical 50 Vifm<CR>
-command! Vf :vertical 50 Vifm .
-nnoremap <C-w>b :Buffers<CR>
-nnoremap <C-f> :Rg 
-nnoremap <C-t> :Files<CR>
 

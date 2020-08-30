@@ -2,7 +2,8 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
-colorscheme desert
+colorscheme torte
+
 set t_ut=
 set nocompatible
 set cursorline
@@ -140,13 +141,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Change dirs
+" => Pyqo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
 cnoreabbrev c C
-command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
-    \ {'source': '$FZF_ALT_C_COMMAND',
-    \ 'sink': 'cd'}))
-execute "set <M-c>=\ec"
-nnoremap <M-c> :Cd<CR>
+command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
+cnoreabbrev f F
 
