@@ -46,6 +46,8 @@ let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
+command! Vf :vertical 50 Vifm .
+cnoreabbrev vf Vf
 
 """"""""""""""""""""""""""""""
 " => Fugitive
@@ -67,7 +69,6 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 " => Shortcuts
 """"""""""""""""""""""""""""""
 nnoremap <C-w>t :vertical 50 Vifm<CR>
-command! Vf :vertical 50 Vifm .
 nnoremap <C-w>b :Buffers<CR>
 nnoremap <C-f> :Rg 
 nnoremap <C-t> :Files<CR>

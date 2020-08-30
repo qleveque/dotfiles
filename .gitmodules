@@ -1,9 +1,6 @@
 [submodule "vim/.vim/vim-surround"]
 	path = vim/.vim/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/.vim/ctrlp.vim"]
-	path = vim/.vim/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/.vim/emmet-vim"]
 	path = vim/.vim/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
