@@ -28,3 +28,9 @@
 [submodule "vim/.vim/vifm.vim"]
 	path = vim/.vim/vifm.vim
 	url = https://github.com/vifm/vifm.vim
+[submodule "tmux/.tmux/tpm"]
+	path = tmux/.tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "tmux/.tmux/tmux-better-mouse-mode"]
+	path = tmux/.tmux/tmux-better-mouse-mode
+	url = https://github.com/NHDaly/tmux-better-mouse-mode
