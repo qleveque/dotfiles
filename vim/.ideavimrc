@@ -20,8 +20,8 @@ nmap <leader>f V<leader>f<esc>
 command! Gblame action Annotate
 command! Diff action Compare.LastVersion
 command! Diffs action Vcs.Show.Local.Changes
-command! Commit action Vcs.ShowTabbedFileHistory
-command! Commits action Vcs.Show.Log
+command! Log action Vcs.ShowTabbedFileHistory
+command! Logs action Vcs.Show.Log
 
 set ideamarks
 set ideajoin

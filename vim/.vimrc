@@ -23,14 +23,13 @@ highlight Pmenu ctermfg=black guifg=black ctermbg=gray guibg=gray
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
     \ {'source': '$FZF_ALT_C_COMMAND',
     \ 'sink': 'cd'}))
-execute "set <M-c>=\ec"
+" execute "set <M-c>=\ec"
 nnoremap <M-c> :Cd<CR>
 
 """"""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""
 set runtimepath^=~/.vim/emmet-vim
-set runtimepath^=~/.vim/vim-airline
 set runtimepath^=~/.vim/vim-commentary
 set runtimepath^=~/.vim/vim-surround
 set runtimepath^=~/.vim/vim-tmux-navigator
@@ -52,11 +51,11 @@ cnoreabbrev vf Vf
 """"""""""""""""""""""""""""""
 " => Fugitive
 """"""""""""""""""""""""""""""
-" command! Commits
 " command! Gblame
 command! Diffs :Git difftool -y
 command! Diff :Gdiff
-command! Commit :BCommits
+command! Log :Git log -p % | wincmd T
+command! Logs :Git log -n20 % | wincmd T
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Others

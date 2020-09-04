@@ -123,10 +123,6 @@ command! reload :write | restart
 
 " ------------------------------------------------------------------------------
 
-filetype * xdg-open %c %i &
-
-" ------------------------------------------------------------------------------
-
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
@@ -178,7 +174,7 @@ nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
 nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap <CR> :execute 'winct' | quit <CR>
+nnoremap <CR> :!/bin/bash -i -c 'xdg-open %f &'<CR>
 
 map <C-l> :q<CR>
 map <C-k> :q<CR>

@@ -21,9 +21,6 @@ export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 
 vf()
 {
-    # vifm -c :only --choose-dir - . > ~/.temp
-    # local dst=$(cat ~/.temp)
-    # rm ~/.temp
     local dst=$(vifm -c :only --choose-dir - .)
     if [ -z "$dst" ]; then
         echo 'Directory picking cancelled/failed'
