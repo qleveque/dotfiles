@@ -2,7 +2,7 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
-colorscheme torte
+colorscheme desert
 
 set t_ut=
 set nocompatible
@@ -80,12 +80,13 @@ set smartcase
 
 " Highlight search results
 set hlsearch
+nnoremap <Enter> :nohl<cr>
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
-" For regular expressions turn magic on
-set magic
+" Turn magic off
+set magic!
 
 " Show matching brackets when text indicator is over them
 set showmatch

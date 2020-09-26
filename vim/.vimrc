@@ -15,7 +15,7 @@ set undofile
 """"""""""""""""""""""""""""""
 " => Pmenu
 """"""""""""""""""""""""""""""
-highlight Pmenu ctermfg=black guifg=black ctermbg=gray guibg=gray
+highlight Pmenu ctermfg=NONE ctermbg=black cterm=NONE guifg=NONE guibg=#64666d gui=NONE
 
 """"""""""""""""""""""""""""""
 " => FZF
@@ -122,11 +122,10 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 " Format current buffer.
-nnoremap <leader>F :call CocAction('format')<CR>
+nnoremap <leader>f :call CocAction('format')<CR>
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).

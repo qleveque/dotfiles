@@ -11,11 +11,10 @@ nnoremap gs :action GotoSuperMethod<CR>
 nnoremap <C-w>b :action RecentFiles<CR>
 nnoremap <C-w>t :action ActivateProjectToolWindow<CR>
 
-nnoremap <leader>F :action ShowReformatFileDialog<CR>
+nnoremap <leader>f :action ShowReformatFileDialog<CR>
 vnoremap <leader>f :action ReformatCode<CR>
 nnoremap <leader>i :action OptimizeImports<CR>
 nnoremap <leader>rn :action RenameElement<CR>
-nmap <leader>f V<leader>f<esc>
 
 command! Gblame action Annotate
 command! Diff action Compare.LastVersion
@@ -25,6 +24,7 @@ command! Logs action Vcs.Show.Log
 
 set ideamarks
 set ideajoin
+
 set surround
 set commentary
 

@@ -11,12 +11,6 @@
             ]
         }
     ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["<leader>", "f"],
-            "after": ["V", "<leader>", "f", "<escape>"]
-        }
-    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<C-t>"],
@@ -67,7 +61,7 @@
             ]
         },
         {
-            "before": ["<leader>", "F"],
+            "before": ["<leader>", "f"],
             "commands": [
                 "editor.action.formatDocument"
             ]
