@@ -1,0 +1,18 @@
+cmd.exe /C rundll32.exe
+
+export DISPLAY=:0.0
+setxkbmap wh
+
+alias xdg-open='cmd.exe /C start ""'
+alias cmd='cmd.exe /C'
+
+for filename in ~/mybats/*; do
+    leaf=$(basename $filename)
+    com=${leaf%.*}
+    repl="cmd.exe /C %HOME%/mybats/${com}.bat"
+    alias "$com=$repl"
+done
+unset leaf
+unset com
+unset repl
+

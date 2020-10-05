@@ -37,4 +37,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 source ~/.zshrc_base
+source ~/.zshrc_win
+
+export PATH="$PATH:$HOME/mybin"
+alias python='"/mnt/c/Python34/python.exe"'
+alias calibration='"/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan/CalibrationApp.exe"'
+alias mapping='"/mnt/c/Program Files (x86)/BlueBotics/ANT lab/external/Mercator/QuickScan/MappingApp.exe"'
 
