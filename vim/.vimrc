@@ -28,7 +28,10 @@ highlight Pmenu ctermfg=black ctermbg=cyan cterm=NONE guifg=NONE guibg=#64666d g
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
     \ {'source': '$FZF_ALT_C_COMMAND',
     \ 'sink': 'cd'}))
-" execute "set <M-c>=\ec"
+
+if !has('nvim')
+    execute "set <M-c>=\ec"
+endif
 nnoremap <M-c> :Cd<CR>
 
 """"""""""""""""""""""""""""""
@@ -42,6 +45,7 @@ set runtimepath^=~/.vim/fzf
 set runtimepath^=~/.vim/fzf.vim
 set runtimepath^=~/.vim/fugitive
 set runtimepath^=~/.vim/vifm.vim
+set runtimepath^=~/.vim/vim-startify
 
 """"""""""""""""""""""""""""""
 " => Vim tree
@@ -63,9 +67,8 @@ command! Log :Git log -p % | wincmd T
 command! Logs :Git log -n20 % | wincmd T
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Others
+" => Oberon
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! Json :%!python -m json.tool
 au BufRead,BufNewFile *.aMod set filetype=oberon
 au! Syntax oberon source ~/.vim/oberon2.vim
 
@@ -73,10 +76,10 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 " => Shortcuts
 """"""""""""""""""""""""""""""
 nnoremap <C-w>t :vertical 50 Vifm<CR>
-nnoremap <C-w><C-w> :Buffers<CR>
-nnoremap <C-w>w :Buffers<CR>
 nnoremap <C-f> :Rg 
 nnoremap <C-t> :Files<CR>
+nnoremap <C-w><C-w> :Buffers<CR>
+nnoremap <C-w>w :Buffers<CR>
 
 """"""""""""""""""""""""""""""
 " => Coc plugin
@@ -139,11 +142,4 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Others
-" nmap <silent> gy <Plug>(coc-type-definition)
-" Remap keys for applying codeAction to the current buffer.
-" nmap <leader>a  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-" nmap <leader>qf  <Plug>(coc-fix-current)
 
