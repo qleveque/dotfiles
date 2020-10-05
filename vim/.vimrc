@@ -1,5 +1,10 @@
 source ~/.vimrc_base
 
+set wrap
+set linebreak
+set showbreak=>\ \ \
+autocmd BufWritePre * %s/\s\+$//e
+
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
@@ -15,7 +20,7 @@ set undofile
 """"""""""""""""""""""""""""""
 " => Pmenu
 """"""""""""""""""""""""""""""
-highlight Pmenu ctermfg=NONE ctermbg=black cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+highlight Pmenu ctermfg=black ctermbg=cyan cterm=NONE guifg=NONE guibg=#64666d gui=NONE
 
 """"""""""""""""""""""""""""""
 " => FZF
@@ -68,7 +73,8 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 " => Shortcuts
 """"""""""""""""""""""""""""""
 nnoremap <C-w>t :vertical 50 Vifm<CR>
-nnoremap <C-w>b :Buffers<CR>
+nnoremap <C-w><C-w> :Buffers<CR>
+nnoremap <C-w>w :Buffers<CR>
 nnoremap <C-f> :Rg 
 nnoremap <C-t> :Files<CR>
 

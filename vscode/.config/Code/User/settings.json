@@ -43,7 +43,13 @@
             ]
         },
         {
-            "before": ["<C-w>", "b"],
+            "before": ["<C-w>", "<C-w>"],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
+            "before": ["<C-w>", "w"],
             "commands": [
                 "workbench.action.openRecent"
             ]

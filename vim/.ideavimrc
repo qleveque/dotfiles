@@ -8,7 +8,8 @@ nnoremap gi :action GotoImplementation<CR>
 
 nnoremap gs :action GotoSuperMethod<CR>
 
-nnoremap <C-w>b :action RecentFiles<CR>
+nnoremap <C-w>w :action RecentFiles<CR>
+nnoremap <C-w><C-w> :action RecentFiles<CR>
 nnoremap <C-w>t :action ActivateProjectToolWindow<CR>
 
 nnoremap <leader>f :action ShowReformatFileDialog<CR>
