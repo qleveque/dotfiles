@@ -75,11 +75,16 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 """"""""""""""""""""""""""""""
 " => Shortcuts
 """"""""""""""""""""""""""""""
-nnoremap <C-w>t :vertical 50 Vifm<CR>
-nnoremap <C-f> :Rg 
+if has('nvim')
+    nnoremap <C-Space> :vertical 50 Vifm<CR>
+else
+    nnoremap <C-@> :vertical 50 Vifm<CR>
+endif
+nnoremap <C-f> :Rg
 nnoremap <C-t> :Files<CR>
 nnoremap <C-w><C-w> :Buffers<CR>
 nnoremap <C-w>w :Buffers<CR>
+nnoremap <C-Tab> :Rg
 
 """"""""""""""""""""""""""""""
 " => Coc plugin

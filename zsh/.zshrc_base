@@ -45,17 +45,22 @@ typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 # Vifm
 vf()
 {
-    local dst=$(vifm -c :only --choose-dir - .)
+    local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
     if [ -z "$dst" ]; then
         echo 'Directory picking cancelled/failed'
         return 1
     fi
     cd "$dst"
+    zle reset-prompt
+    return 0
 }
+zle -N wvf vf
+bindkey ^@ wvf
 
 # FZF
 export FZF_DEFAULT_COMMAND="fd -I --hidden"
 export FZF_CTRL_T_COMMAND="fd -I --hidden"
 export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
 export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

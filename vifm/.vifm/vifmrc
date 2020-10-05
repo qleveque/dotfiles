@@ -167,9 +167,9 @@ set confirm-=delete
 set ls!
 command! c :execute 'cd "'.system('d %a -e').'"'
 command! f :execute 'mark x "'.system('f %a -e | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
-command! q :execute 'winc t' | quit 
-command! Cd :execute 'cd "./'.system('$FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
-command! Files :execute 'mark x "%d/'.system('$FZF_CTRL_T_COMMAND | fzf 2>/dev/tty | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
+command! q :execute 'winc t' | quit
+command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
+command! Files :execute 'mark x "%d/'.system('eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
 nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
 nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
@@ -177,6 +177,7 @@ nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap <CR> :!/bin/bash -i -c 'xdg-open %f &'<CR>
 nnoremap zc zm
 
+map <C-@> :q<CR>
 map <C-l> :q<CR>
 map <C-k> :q<CR>
 map <C-j> :q<CR>
