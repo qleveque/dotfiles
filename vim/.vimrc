@@ -3,6 +3,7 @@ source ~/.vimrc_base
 set wrap
 set linebreak
 set showbreak=>\ \ \
+tnoremap <c-x> <c-\><c-n>
 autocmd BufWritePre * %s/\s\+$//e
 
 """"""""""""""""""""""""""""""
@@ -20,7 +21,7 @@ set undofile
 """"""""""""""""""""""""""""""
 " => Pmenu
 """"""""""""""""""""""""""""""
-highlight Pmenu ctermfg=black ctermbg=cyan cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+highlight Pmenu ctermfg=black ctermbg=white cterm=NONE guifg=NONE guibg=#64666d gui=NONE
 
 """"""""""""""""""""""""""""""
 " => FZF
@@ -54,8 +55,8 @@ let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
-command! Vf :vertical 50 Vifm .
-cnoreabbrev vf Vf
+command! VifmCd :vertical 50 Vifm .
+cnoreabbrev vifm VifmCd
 
 """"""""""""""""""""""""""""""
 " => Fugitive
@@ -75,16 +76,10 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 """"""""""""""""""""""""""""""
 " => Shortcuts
 """"""""""""""""""""""""""""""
-if has('nvim')
-    nnoremap <C-Space> :vertical 50 Vifm<CR>
-else
-    nnoremap <C-@> :vertical 50 Vifm<CR>
-endif
-nnoremap <C-f> :Rg
+nnoremap <C-s> :Rg
 nnoremap <C-t> :Files<CR>
+nmap <C-f> :vertical 50 Vifm<CR>
 nnoremap <C-w><C-w> :Buffers<CR>
-nnoremap <C-w>w :Buffers<CR>
-nnoremap <C-Tab> :Rg
 
 """"""""""""""""""""""""""""""
 " => Coc plugin
@@ -127,7 +122,6 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gs 'Go to super definition'
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

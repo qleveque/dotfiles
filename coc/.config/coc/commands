@@ -1,5 +1,5 @@
+python.setInterpreter
 editor.action.organizeImport
 python.setLinter
-python.setInterpreter
 python.upgradePythonLanguageServer
 clangd.install

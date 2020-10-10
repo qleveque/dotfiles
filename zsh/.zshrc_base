@@ -1,11 +1,12 @@
+# Deactivate flow control
+stty -ixon
+
 # Tmux
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 
 # Aliases
-alias zrcb='nvim ~/.zshrc_base'
-alias zrc='nvim ~/.zshrc'
-alias vrcb='nvim ~/.vimrc_base'
-alias vrc='nvim ~/.vimrc'
+alias vim='nvim'
+alias vi='nvim'
 alias ls='ls --color=auto'
 alias xo='xdg-open'
 alias c='source c'
@@ -21,7 +22,6 @@ alias rg='rg --smart-case'
 alias glog='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" -n15 --graph'
 alias meteo='curl wttr.in/lausanne'
 alias parrot='curl parrot.live'
-alias vim='nvim'
 alias :q='exit'
 
 # Zsh vim mode
@@ -29,6 +29,8 @@ MODE_INDICATOR=""
 KEYTIMEOUT=20
 
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+
 
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
@@ -38,12 +40,10 @@ MODE_CURSOR_VICMD="green block"
 MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
-
-source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 
 # Vifm
-vf()
+vifm-only-choose-dir()
 {
     local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
     if [ -z "$dst" ]; then
@@ -54,8 +54,8 @@ vf()
     zle reset-prompt
     return 0
 }
-zle -N wvf vf
-bindkey ^@ wvf
+zle -N wvf vifm-only-choose-dir
+bindkey "^f" wvf
 
 # FZF
 export FZF_DEFAULT_COMMAND="fd -I --hidden"
@@ -64,3 +64,4 @@ export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
 export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

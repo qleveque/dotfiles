@@ -1,7 +1,8 @@
 source ~/.vimrc_base
 
 nnoremap <C-t> :action GotoFile<CR>
-nnoremap <C-f> :action FindInPath<CR>
+nnoremap <C-s> :action FindInPath<CR>
+nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
@@ -9,8 +10,6 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 
 nnoremap <C-w>w :action RecentFiles<CR>
-nnoremap <C-w><C-w> :action RecentFiles<CR>
-nnoremap <C-w>t :action ActivateProjectToolWindow<CR>
 
 nnoremap <leader>f :action ShowReformatFileDialog<CR>
 vnoremap <leader>f :action ReformatCode<CR>
@@ -28,6 +27,9 @@ set ideajoin
 
 set surround
 set commentary
+
+" MORE OPTIONS
+nnoremap <leader>o :action OverrideMethods<CR>
 
 nnoremap [[ ?\v\<class\s<CR>
 nnoremap ]] /\v\<class\s<CR>

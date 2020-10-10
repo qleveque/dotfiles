@@ -19,7 +19,7 @@
             ]
         },
         {
-            "before": ["<C-f>"],
+            "before": ["<C-s>"],
             "commands": [
                 "workbench.action.findInFiles"
             ]
@@ -43,19 +43,13 @@
             ]
         },
         {
-            "before": ["<C-w>", "<C-w>"],
-            "commands": [
-                "workbench.action.openRecent"
-            ]
-        },
-        {
             "before": ["<C-w>", "w"],
             "commands": [
                 "workbench.action.openRecent"
             ]
         },
         {
-            "before": ["<C-w>", "t"],
+            "before": ["<C-f>"],
             "commands": [
                 "workbench.view.explorer"
             ]
