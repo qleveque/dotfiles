@@ -9,7 +9,7 @@ nnoremap gi :action GotoImplementation<CR>
 
 nnoremap gs :action GotoSuperMethod<CR>
 
-nnoremap <C-w>w :action RecentFiles<CR>
+nnoremap <C-w><C-w> :action RecentFiles<CR>
 
 nnoremap <leader>f :action ShowReformatFileDialog<CR>
 vnoremap <leader>f :action ReformatCode<CR>

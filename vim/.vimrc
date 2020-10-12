@@ -79,7 +79,7 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 nnoremap <C-s> :Rg
 nnoremap <C-t> :Files<CR>
 nmap <C-f> :vertical 50 Vifm<CR>
-nnoremap <C-w><C-w> :Buffers<CR>
+nnoremap <C-w><C-w> :History<CR>
 
 """"""""""""""""""""""""""""""
 " => Coc plugin

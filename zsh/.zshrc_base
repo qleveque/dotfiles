@@ -8,7 +8,7 @@ stty -ixon
 alias vim='nvim'
 alias vi='nvim'
 alias ls='ls --color=auto'
-alias xo='xdg-open'
+alias open='xdg-open'
 alias c='source c'
 alias gsu='git status -uno'
 alias gau='git add -u'
