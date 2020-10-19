@@ -11,6 +11,7 @@ set gdefault
 set mouse=a
 set so=5
 set diffopt+=vertical
+set incsearch
 nnoremap <C-w>w :edit #<CR>
 
 " Sets how many lines of history VIM has to remember
