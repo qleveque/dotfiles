@@ -15,6 +15,7 @@ nnoremap <leader>f :action ShowReformatFileDialog<CR>
 vnoremap <leader>f :action ReformatCode<CR>
 nnoremap <leader>i :action OptimizeImports<CR>
 nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
 
 command! Gblame action Annotate
 command! Diff action Compare.LastVersion

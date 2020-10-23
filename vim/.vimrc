@@ -76,7 +76,7 @@ au! Syntax oberon source ~/.vim/oberon2.vim
 """"""""""""""""""""""""""""""
 " => Shortcuts
 """"""""""""""""""""""""""""""
-nnoremap <C-s> :Rg
+nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nmap <C-f> :vertical 50 Vifm<CR>
 nnoremap <C-w><C-w> :History<CR>
