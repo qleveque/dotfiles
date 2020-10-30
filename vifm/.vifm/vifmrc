@@ -174,7 +174,7 @@ nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
 nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap <CR> :!/bin/zsh -i -c 'xdg-open %f &'<CR>
+nnoremap <CR> :!/bin/zsh -i -c 'xdg-open %f >/dev/null 2>/dev/null &'<CR>
 nnoremap zc zm
 
 map <C-f> :q<CR>

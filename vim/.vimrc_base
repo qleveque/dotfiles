@@ -151,3 +151,9 @@ cnoreabbrev c C
 command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
 cnoreabbrev f F
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Visual mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+xnoremap c "_c
+xnoremap p "_dP
+

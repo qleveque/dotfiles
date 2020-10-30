@@ -61,11 +61,11 @@ cnoreabbrev vifm VifmCd
 """"""""""""""""""""""""""""""
 " => Fugitive
 """"""""""""""""""""""""""""""
-" command! Gblame
+command! Blame :Gblame
 command! Diffs :Git difftool -y
 command! Diff :Gdiff
 command! Log :Git log -p % | wincmd T
-command! Logs :Git log -n20 % | wincmd T
+command! Logs :Git log | wincmd T
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Oberon

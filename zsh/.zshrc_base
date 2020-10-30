@@ -19,10 +19,10 @@ alias grlc='git rev-list --count'
 alias telnet='telnet -e ^C'
 alias fd='fd -I --hidden'
 alias rg='rg --smart-case'
-alias glog='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" -n15 --graph'
 alias meteo='curl wttr.in/lausanne'
 alias parrot='curl parrot.live'
 alias :q='exit'
+alias graph='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" --graph'
 
 # Zsh vim mode
 MODE_INDICATOR=""

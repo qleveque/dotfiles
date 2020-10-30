@@ -1,6 +1,7 @@
 cmd.exe /C rundll32.exe
 
 export DISPLAY=:0.0
+export GDK_DPI_SCALE=1.5
 setxkbmap wh
 
 alias xdg-open='cmd.exe /C start ""'
