@@ -1,10 +1,15 @@
 source ~/.vimrc_base
 
+""""""""""""""""""""""""""""""
+" => Miscellaneous
+""""""""""""""""""""""""""""""
 set wrap
 set linebreak
 set showbreak=>\ \ \
 tnoremap <c-x> <c-\><c-n>
 autocmd BufWritePre * %s/\s\+$//e
+set shortmess=I
+set cmdheight=2
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -19,9 +24,13 @@ set undodir=~/.vim/undodir
 set undofile
 
 """"""""""""""""""""""""""""""
-" => Pmenu
+" => Style
 """"""""""""""""""""""""""""""
 highlight Pmenu ctermfg=black ctermbg=white cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+highlight DiffAdd    cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=2 ctermbg=88 gui=none guifg=bg guibg=Red
 
 """"""""""""""""""""""""""""""
 " => FZF
@@ -44,9 +53,7 @@ set runtimepath^=~/.vim/vim-surround
 set runtimepath^=~/.vim/vim-tmux-navigator
 set runtimepath^=~/.vim/fzf
 set runtimepath^=~/.vim/fzf.vim
-set runtimepath^=~/.vim/fugitive
 set runtimepath^=~/.vim/vifm.vim
-set runtimepath^=~/.vim/vim-startify
 
 """"""""""""""""""""""""""""""
 " => Vim tree
@@ -55,17 +62,15 @@ let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
-command! VifmCd :vertical 50 Vifm .
-cnoreabbrev vifm VifmCd
 
 """"""""""""""""""""""""""""""
-" => Fugitive
+" => Tig
 """"""""""""""""""""""""""""""
-command! Blame :Gblame
-command! Diffs :Git difftool -y
-command! Diff :Gdiff
-command! Log :Git log -p % | wincmd T
-command! Logs :Git log | wincmd T
+command! Blame :execute "!tig blame +" . line(".") . " %"
+command! Diffs :!tig status
+command! Diff :!git difftool --tool=vimdiff --no-prompt %
+command! Log :!tig %
+command! Logs :!tig
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Oberon
@@ -80,6 +85,14 @@ nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nmap <C-f> :vertical 50 Vifm<CR>
 nnoremap <C-w><C-w> :History<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Pyqo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
+cnoreabbrev c C
+command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
+cnoreabbrev f F
 
 """"""""""""""""""""""""""""""
 " => Coc plugin

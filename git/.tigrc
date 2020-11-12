@@ -1,0 +1,20 @@
+bind diff d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)
+bind stage d !>zsh -c "git difftool --tool=vimdiff --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
+
+bind generic l enter
+bind generic h back
+
+bind diff f :/^---
+bind stage f :/^---
+bind generic s view-grep
+
+bind generic S view-status
+bind generic L view-log
+bind generic Y view-stash
+bind generic M view-main
+bind generic H view-help
+
+bind generic g move-first-line
+bind generic G move-last-line
+
+bind status A !?git commit --amend

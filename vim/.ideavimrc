@@ -12,11 +12,11 @@ nnoremap gs :action GotoSuperMethod<CR>
 nnoremap <C-w><C-w> :action RecentFiles<CR>
 
 nnoremap <leader>f :action ShowReformatFileDialog<CR>
-" vnoremap <leader>f :action ReformatCode<CR>
 vnoremap <leader>f :action ShowReformatFileDialog<CR>
 nnoremap <leader>i :action OptimizeImports<CR>
 nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <leader>B :action ViewBreakpoints<CR>
 
 command! Blame action Annotate
 command! Diff action Compare.LastVersion

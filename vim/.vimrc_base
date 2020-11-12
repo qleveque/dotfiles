@@ -1,9 +1,6 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General settings
-colorscheme desert
-
+""""""""""""""""""""""""""""""
+" => Miscellaneous
+""""""""""""""""""""""""""""""
 set t_ut=
 set nocompatible
 set cursorline
@@ -14,6 +11,11 @@ set diffopt+=vertical
 set incsearch
 nnoremap <C-w>w :edit #<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General settings
+colorscheme desert
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -43,7 +45,6 @@ syntax enable
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en'
 set langmenu=en
@@ -104,7 +105,6 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -144,16 +144,9 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Pyqo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
-cnoreabbrev c C
-command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
-cnoreabbrev f F
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Visual mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 xnoremap c "_c
 xnoremap p "_dP
+xnoremap @ :norm! @
 

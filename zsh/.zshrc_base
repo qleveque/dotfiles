@@ -1,3 +1,5 @@
+export TERMINAL='gnome-terminal'
+
 # Deactivate flow control
 stty -ixon
 
@@ -5,8 +7,6 @@ stty -ixon
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 
 # Aliases
-alias vim='nvim'
-alias vi='nvim'
 alias ls='ls --color=auto'
 alias open='xdg-open'
 alias c='source c'

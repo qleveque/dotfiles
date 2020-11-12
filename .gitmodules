@@ -16,15 +16,9 @@
 [submodule "vim/.vim/fzf.vim"]
 	path = vim/.vim/fzf.vim
 	url = https://github.com/junegunn/fzf.vim
-[submodule "vim/.vim/fugitive"]
-	path = vim/.vim/fugitive
-	url = https://tpope.io/vim/fugitive.git
 [submodule "vim/.vim/vifm.vim"]
 	path = vim/.vim/vifm.vim
 	url = https://github.com/vifm/vifm.vim
-[submodule "vim/.vim/vim-startify"]
-	path = vim/.vim/vim-startify
-	url = https://github.com/mhinz/vim-startify
 [submodule "zsh/.zsh/plugins/zsh-vim-mode"]
 	path = zsh/.zsh/plugins/zsh-vim-mode
 	url = https://github.com/softmoth/zsh-vim-mode
