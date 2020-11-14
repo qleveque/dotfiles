@@ -10,16 +10,20 @@ bind generic yy !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
 bind generic Y !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
 bind generic [ none
 bind generic ] none
-bind generic ]c :/^commit
-bind generic [c :?^commit
+bind diff [ none
+bind diff ] none
+bind generic ]c :/^commit\s
+bind generic [c :?^commit\s
+bind generic ]d :/^diff\s--git\s
+bind generic [d :?^diff\s--git\s
 bind generic ]@ :/^@@
 bind generic [@ :?^@@
 
-bind generic f :/\|\s+[0-9]+ [\+-]+
-bind generic F :?\|\s+[0-9]+ [\+-]+
+bind generic f :/\|\s+(0|[0-9]+\s[\+-]+)$
+bind generic F :?\|\s+(0|[0-9]+\s[\+-]+)$
 
 bind generic <Enter> refresh
-color search-result		default	blue
+color search-result default blue
 
 # Diffs
 bind diff d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)
