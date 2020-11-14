@@ -1,3 +1,27 @@
+# Generic
+bind generic l enter
+bind generic h back
+bind generic g  none
+bind generic gg move-first-line
+bind generic G move-last-line
+bind generic y none
+bind generic yc !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
+bind generic yy !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
+bind generic Y !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
+bind generic [ none
+bind generic ] none
+bind generic ]c :/^commit
+bind generic [c :?^commit
+bind generic ]@ :/^@@
+bind generic [@ :?^@@
+
+bind generic f :/\|\s+[0-9]+ [\+-]+
+bind generic F :?\|\s+[0-9]+ [\+-]+
+
+bind generic <Enter> refresh
+color search-result		default	blue
+
+# Diffs
 bind diff d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind tree d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind main d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(fileargs)
@@ -6,16 +30,27 @@ bind log d enter
 bind stage d !>zsh -c "git difftool --tool=vimdiff --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 bind status d !>zsh -c "git difftool --tool=vimdiff --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 
-bind generic l enter
-bind generic h back
-
-bind generic f :/^---
-bind generic F :?^---
-
-bind generic L view-log
-bind generic H view-help
-
-bind generic g move-first-line
-bind generic G move-last-line
-
+# Status
 bind status A !?git commit --amend
+bind status N !?git commit --amend --no-edit
+bind status R !@git reset HEAD %(file)
+
+# Views
+bind generic v  none
+bind generic vm view-main
+bind generic vd view-diff
+bind generic vl view-log
+bind generic vt view-tree
+bind generic vx view-blob
+bind generic vb view-blame
+bind generic vr view-refs
+bind generic vs view-status
+bind generic vu view-stage
+bind generic vy view-stash
+bind generic vg view-grep
+bind generic vp view-pager
+bind generic vh view-help
+
+# Don't show staged and unstaged changes in the main view
+set show-changes = no
+
