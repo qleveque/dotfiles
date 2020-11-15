@@ -1,4 +1,5 @@
 export TERMINAL='gnome-terminal'
+export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
 
 # Deactivate flow control
 stty -ixon
@@ -22,7 +23,7 @@ alias rg='rg --smart-case'
 alias meteo='curl wttr.in/lausanne'
 alias parrot='curl parrot.live'
 alias :q='exit'
-alias graph='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" --graph'
+alias graph='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" --graph -n15'
 
 # Zsh vim mode
 MODE_INDICATOR=""

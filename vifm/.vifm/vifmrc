@@ -177,6 +177,5 @@ nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap <CR> :!/bin/zsh -i -c "xdg-open %f >/dev/null 2>/dev/null &"<CR>
 nnoremap zc zm
 
-map <C-f> :q<CR>
-nnoremap <C-[> :q<CR>
+nnoremap q :q<CR>
 

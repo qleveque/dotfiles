@@ -10,6 +10,7 @@ tnoremap <c-x> <c-\><c-n>
 autocmd BufWritePre * %s/\s\+$//e
 set shortmess=I
 set cmdheight=2
+nnoremap ZA :wqa<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line

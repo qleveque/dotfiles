@@ -1,5 +1,0 @@
-#!/bin/bash
-if [[ -n "$@" ]]
-then
-    /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
-fi

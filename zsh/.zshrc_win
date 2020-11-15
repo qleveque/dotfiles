@@ -4,9 +4,6 @@ export DISPLAY=:0.0
 export GDK_DPI_SCALE=1.5
 setxkbmap wh
 
-alias xdg-open='cmd.exe /C start ""'
-alias cmd='cmd.exe /C'
-
 for filename in ~/mybats/*; do
     leaf=$(basename $filename)
     com=${leaf%.*}
@@ -17,3 +14,10 @@ unset leaf
 unset com
 unset repl
 
+alias cmd='cmd.exe /C'
+xdg-open(){
+    if [[ -n "$@" ]]
+    then
+        /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
+    fi
+}
