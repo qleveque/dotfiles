@@ -32,7 +32,6 @@ KEYTIMEOUT=20
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 
-
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
 MODE_CURSOR_VIINS="#00ff00 blinking bar"
@@ -66,3 +65,7 @@ export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Exit
+exit_zsh() { exit }
+zle -N exit_zsh
+bindkey '^Q' exit_zsh

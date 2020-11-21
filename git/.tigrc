@@ -2,12 +2,9 @@
 bind generic l enter
 bind generic h back
 bind generic g  none
-bind generic gg move-first-line
-bind generic G move-last-line
 bind generic y none
 bind generic yc !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
-bind generic yy !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
-bind generic Y !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
+bind generic yf !>zsh -c "echo %(file) | xclip -i -sel p -f | xclip -i -sel c"
 bind generic [ none
 bind generic ] none
 bind diff [ none
@@ -24,6 +21,8 @@ bind generic F :?\|\s+(0|[0-9]+\s[\+-]+)$
 
 bind generic <Enter> refresh
 color search-result default blue
+
+bind generic <C-q> :quit
 
 # Diffs
 bind diff d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)

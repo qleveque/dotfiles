@@ -10,7 +10,7 @@ tnoremap <c-x> <c-\><c-n>
 autocmd BufWritePre * %s/\s\+$//e
 set shortmess=I
 set cmdheight=2
-nnoremap ZA :wqa<CR>
+nnoremap <C-q> :wqa<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -31,7 +31,7 @@ highlight Pmenu ctermfg=black ctermbg=white cterm=NONE guifg=NONE guibg=#64666d 
 highlight DiffAdd    cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=2 ctermbg=88 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
 
 """"""""""""""""""""""""""""""
 " => FZF
@@ -61,7 +61,7 @@ set runtimepath^=~/.vim/vifm.vim
 """"""""""""""""""""""""""""""
 let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
-let g:loaded_netrw       = 1
+let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
 """"""""""""""""""""""""""""""

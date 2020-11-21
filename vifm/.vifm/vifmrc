@@ -1,4 +1,4 @@
-set vicmd=nvim
+set vicmd=vim
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -113,12 +113,12 @@ mark h ~/
 " %m run the command in a menu window
 
 command! df df -h %m 2> /dev/null
-command! diff nvim -d %f %F
+command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
 command! run !! ./%f
 command! make !!make %a
 command! mkcd :mkdir %a | cd %a
-command! vgrep nvim "+grep %a"
+command! vgrep vim "+grep %a"
 command! reload :write | restart
 
 " ------------------------------------------------------------------------------
@@ -177,5 +177,5 @@ nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap <CR> :!/bin/zsh -i -c "xdg-open %f >/dev/null 2>/dev/null &"<CR>
 nnoremap zc zm
 
-nnoremap q :q<CR>
+nnoremap <C-q> :q<CR>
 
