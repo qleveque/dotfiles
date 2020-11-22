@@ -11,6 +11,8 @@ autocmd BufWritePre * %s/\s\+$//e
 set shortmess=I
 set cmdheight=2
 nnoremap <C-q> :wqa<CR>
+nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
+nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
 """"""""""""""""""""""""""""""
 " => Status line

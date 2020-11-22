@@ -1,4 +1,4 @@
-set vicmd=vim
+set vicmd="vim -c \"%d\""
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -176,6 +176,8 @@ nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap <CR> :!/bin/zsh -i -c "xdg-open %f >/dev/null 2>/dev/null &"<CR>
 nnoremap zc zm
+nnoremap <C-b>s :!tmux split-window -v -c "%d"<CR>
+nnoremap <C-b>v :!tmux split-window -h -c "%d"<CR>
 
 nnoremap <C-q> :q<CR>
 
