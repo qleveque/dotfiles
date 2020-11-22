@@ -73,9 +73,9 @@ command! Diff :!git difftool --tool=vimdiff --no-prompt %
 command! Log :!tig %
 command! Logs :!tig
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " => Oberon
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.aMod set filetype=oberon
 au! Syntax oberon source ~/.vim/oberon2.vim
 
@@ -87,9 +87,9 @@ nnoremap <C-t> :Files<CR>
 nmap <C-f> :vertical 50 Vifm<CR>
 nnoremap <C-w><C-w> :History<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " => Pyqo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
 cnoreabbrev c C
 command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
