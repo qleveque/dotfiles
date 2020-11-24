@@ -40,7 +40,7 @@ highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Re
 """"""""""""""""""""""""""""""
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
     \ {'source': '$FZF_ALT_C_COMMAND',
-    \ 'sink': 'cd'}
+    \ 'sink': 'cd'}))
 
 if !has('nvim')
     execute "set <M-c>=\ec"
