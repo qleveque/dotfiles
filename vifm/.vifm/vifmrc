@@ -1,4 +1,4 @@
-set vicmd="vim -c \"%d\""
+set vicmd=vim
 
 " This makes vifm perform file operations on its own instead of relying on
 " standard utilities like `cp`.  While using `cp` and alike is a more universal
@@ -93,36 +93,6 @@ set statusline="  %A %10u:%-7g %15s %20d  "
 
 " ------------------------------------------------------------------------------
 
-" :mark mark /full/directory/path [filename]
-
-mark b ~/bin/
-mark h ~/
-
-" ------------------------------------------------------------------------------
-
-" :com[mand][!] command_name action
-" The following macros can be used in a command
-" %a is replaced with the user arguments.
-" %c the current file under the cursor.
-" %C the current file under the cursor in the other directory.
-" %f the current selected file, or files.
-" %F the current selected file, or files in the other directory.
-" %b same as %f %F.
-" %d the current directory name.
-" %D the other window directory name.
-" %m run the command in a menu window
-
-command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
-command! zip zip -r %f.zip %f
-command! run !! ./%f
-command! make !!make %a
-command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
-command! reload :write | restart
-
-" ------------------------------------------------------------------------------
-
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
@@ -144,16 +114,14 @@ nnoremap S :sort<cr>
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
-" Open file in existing instance of gvim
-" nnoremap o :!gvim --remote-tab-silent %f<cr>
-" Open file in new instance of gvim
-" nnoremap O :!gvim %f<cr>
-
 " Yank current directory path into the clipboard
 nnoremap yd :!echo %d | xclip %i<cr>
 
 " Yank current file path into the clipboard
 nnoremap yf :!echo %c:p | xclip %i<cr>
+
+" Yank current file name into the clipboard
+nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>
@@ -172,12 +140,10 @@ command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty')
 command! Files :execute 'mark x "%d/'.system('eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
 nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
-nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap <CR> :!/bin/zsh -i -c "xdg-open %f >/dev/null 2>/dev/null &"<CR>
 nnoremap zc zm
-nnoremap <C-b>s :!tmux split-window -v -c "%d"<CR>
-nnoremap <C-b>v :!tmux split-window -h -c "%d"<CR>
+nnoremap <C-b>s :!tmux split-window -v -c %d<CR>
+nnoremap <C-b>v :!tmux split-window -h -c %d<CR>
 
 nnoremap <C-q> :q<CR>
 

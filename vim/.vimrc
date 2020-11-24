@@ -10,7 +10,7 @@ tnoremap <c-x> <c-\><c-n>
 autocmd BufWritePre * %s/\s\+$//e
 set shortmess=I
 set cmdheight=2
-nnoremap <C-q> :wqa<CR>
+nnoremap <C-q> :qa!<CR>
 nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
 nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
@@ -29,7 +29,7 @@ set undofile
 """"""""""""""""""""""""""""""
 " => Style
 """"""""""""""""""""""""""""""
-highlight Pmenu ctermfg=black ctermbg=white cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+highlight Pmenu ctermfg=black ctermbg=gray cterm=NONE guifg=NONE guibg=#64666d gui=NONE
 highlight DiffAdd    cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
@@ -40,7 +40,7 @@ highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Re
 """"""""""""""""""""""""""""""
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
     \ {'source': '$FZF_ALT_C_COMMAND',
-    \ 'sink': 'cd'}))
+    \ 'sink': 'cd'}
 
 if !has('nvim')
     execute "set <M-c>=\ec"
@@ -79,6 +79,7 @@ command! Logs :!tig
 " => Oberon
 """"""""""""""""""""""""""""""
 au BufRead,BufNewFile *.aMod set filetype=oberon
+
 au! Syntax oberon source ~/.vim/oberon2.vim
 
 """"""""""""""""""""""""""""""
@@ -157,4 +158,21 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+" Code action
+if !has('nvim')
+    execute "set <M-CR>=\<esc>\<cr>"
+endif
+nmap <M-CR> :CocFix<CR>
+
+" Refresh auto-completion
+function Beginning_of_line()
+    let c = strcharpart(getline('.')[col('.') - 2:], 0, 1)
+    if (c == '') || (c == ' ')
+        return 1
+    endif
+    return 0
+endfunction
+inoremap <silent><expr> <Tab> Beginning_of_line() ? "<Tab>" : coc#refresh()
+inoremap <silent><expr> <Enter> pumvisible() ? coc#_select_confirm() : "<CR>"
 
