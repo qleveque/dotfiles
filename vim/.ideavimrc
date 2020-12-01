@@ -27,8 +27,13 @@ command! Logs action Vcs.Show.Log
 set ideamarks
 set ideajoin
 
+set easymotion
 set surround
 set commentary
+
+nmap <Tab> <Plug>(easymotion-bd-fn)
+omap <Tab> <Plug>(easymotion-bd-fn)
+xmap <Tab> <Plug>(easymotion-bd-fn)
 
 " MORE OPTIONS
 nnoremap <leader>o :action OverrideMethods<CR>

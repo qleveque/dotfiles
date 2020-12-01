@@ -10,6 +10,7 @@ set so=5
 set diffopt+=vertical
 set incsearch
 nnoremap <C-w>w :edit #<CR>
+nnoremap <C-q> :q<CR>
 
 """"""""""""""""""""""""""""""
 " => General
@@ -138,10 +139,14 @@ set wrap "Wrap lines
 " => Windows
 """"""""""""""""""""""""""""""
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
+imap <C-j> <Esc><C-W>j
+imap <C-k> <Esc><C-W>k
+imap <C-h> <Esc><C-W>h
+imap <C-l> <Esc><C-W>l
 
 """"""""""""""""""""""""""""""
 " => Visual mode

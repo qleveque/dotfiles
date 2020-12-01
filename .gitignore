@@ -1,6 +1,9 @@
 vifm/.vifm/vifm-help.txt
 vifm/.vifm/vifminfo
 vim/.vim/undodir/
+vim/.vim/plugged/
+vim/.vim/autoload/
 coc/.config/coc/history.json
 coc/.config/coc/memos.json
+coc/.config/coc/extensions/coc-python-data
 

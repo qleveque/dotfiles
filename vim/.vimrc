@@ -10,7 +10,18 @@ tnoremap <c-x> <c-\><c-n>
 autocmd BufWritePre * %s/\s\+$//e
 set shortmess=I
 set cmdheight=2
-nnoremap <C-q> :q<CR>
+
+""""""""""""""""""""""""""""""
+" => Execute
+""""""""""""""""""""""""""""""
+autocmd FileType python map <buffer> <leader>r :w<CR>:bo term python3 %<CR>
+autocmd FileType javascript map <buffer> <leader>r :w<CR>:bo term node %<CR>
+autocmd FileType cpp map <buffer> <leader>r :w<CR>:!g++ % && ./a.out<CR>
+set termwinsize=20x0
+
+""""""""""""""""""""""""""""""
+" => Tmux integration
+""""""""""""""""""""""""""""""
 nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
 nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
@@ -21,7 +32,7 @@ nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<
 set laststatus=2
 
 """"""""""""""""""""""""""""""
-" => persistent undo
+" => Persistent undo
 """"""""""""""""""""""""""""""
 set undodir=~/.vim/undodir
 set undofile
@@ -36,6 +47,44 @@ highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
 
 """"""""""""""""""""""""""""""
+" => Oberon
+""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.aMod set filetype=oberon
+au! Syntax oberon source ~/.vim/oberon2.vim
+
+""""""""""""""""""""""""""""""
+" => Pyqo
+""""""""""""""""""""""""""""""
+command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
+cnoreabbrev c C
+command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
+cnoreabbrev f F
+
+""""""""""""""""""""""""""""""
+" => Vim tree
+""""""""""""""""""""""""""""""
+let g:vifm_exec_args = '-c :only'
+let g:vifm_embed_split = 1
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
+""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'vifm/vifm.vim'
+call plug#end()
+
+""""""""""""""""""""""""""""""
 " => FZF
 """"""""""""""""""""""""""""""
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
@@ -48,23 +97,12 @@ endif
 nnoremap <M-c> :Cd<CR>
 
 """"""""""""""""""""""""""""""
-" => Plugins
+" => EasyMotion
 """"""""""""""""""""""""""""""
-set runtimepath^=~/.vim/emmet-vim
-set runtimepath^=~/.vim/vim-commentary
-set runtimepath^=~/.vim/vim-surround
-set runtimepath^=~/.vim/vim-tmux-navigator
-set runtimepath^=~/.vim/fzf
-set runtimepath^=~/.vim/fzf.vim
-set runtimepath^=~/.vim/vifm.vim
-
-""""""""""""""""""""""""""""""
-" => Vim tree
-""""""""""""""""""""""""""""""
-let g:vifm_exec_args = '-c :only'
-let g:vifm_embed_split = 1
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+let g:EasyMotion_do_mapping = 0
+nmap <Tab> <Plug>(easymotion-bd-fn)
+omap <Tab> <Plug>(easymotion-bd-fn)
+xmap <Tab> <Plug>(easymotion-bd-fn)
 
 """"""""""""""""""""""""""""""
 " => Tig
@@ -76,27 +114,12 @@ command! Log :!tig %
 command! Logs :!tig
 
 """"""""""""""""""""""""""""""
-" => Oberon
-""""""""""""""""""""""""""""""
-au BufRead,BufNewFile *.aMod set filetype=oberon
-
-au! Syntax oberon source ~/.vim/oberon2.vim
-
-""""""""""""""""""""""""""""""
 " => Shortcuts
 """"""""""""""""""""""""""""""
 nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nmap <C-f> :vertical 50 Vifm<CR>
 nnoremap <C-w><C-w> :History<CR>
-
-""""""""""""""""""""""""""""""
-" => Pyqo
-""""""""""""""""""""""""""""""
-command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
-cnoreabbrev c C
-command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
-cnoreabbrev f F
 
 """"""""""""""""""""""""""""""
 " => Coc plugin
@@ -150,7 +173,7 @@ nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')
 nnoremap <leader>f :call CocAction('format')<CR>
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -165,14 +188,6 @@ if !has('nvim')
 endif
 nmap <M-CR> :CocFix<CR>
 
-" Refresh auto-completion
-function Beginning_of_line()
-    let c = strcharpart(getline('.')[col('.') - 2:], 0, 1)
-    if (c == '') || (c == ' ')
-        return 1
-    endif
-    return 0
-endfunction
-inoremap <silent><expr> <Tab> Beginning_of_line() ? "<Tab>" : coc#refresh()
+" Validate auto-completion
 inoremap <silent><expr> <Enter> pumvisible() ? coc#_select_confirm() : "<CR>"
 
