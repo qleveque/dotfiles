@@ -5,7 +5,9 @@ export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
 stty -ixon
 
 # Kotlin
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
 
 # Tmux
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
@@ -72,3 +74,4 @@ export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^Q' exit_zsh
+bindkey -M vicmd '^Q' exit_zsh

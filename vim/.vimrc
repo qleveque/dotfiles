@@ -16,7 +16,7 @@ set cmdheight=2
 """"""""""""""""""""""""""""""
 autocmd FileType python nmap <buffer> <leader>b :w<CR>:bo term python3 %<CR>
 autocmd FileType javascript nmap <buffer> <leader>b :w<CR>:bo term node %<CR>
-autocmd FileType cpp nmap <buffer> <leader>b :w<CR>:!g++ % && ./a.out<CR>
+autocmd FileType cpp nmap <buffer> <leader>b :w<CR>:!clear && g++ % && ./a.out<CR>
 autocmd FileType c nmap <buffer> <leader>b :w<CR>:!clear && gcc % && ./a.out<CR>
 autocmd FileType rust nmap <buffer> <leader>b :w<CR>:!clear && rustc % -o a.out && ./a.out<CR>
 autocmd FileType kotlin nmap <buffer> <leader>b :w<CR>:!clear && kotlinc % -include-runtime -d a.jar && java -jar a.jar<CR>
@@ -87,6 +87,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
+Plug 'neoclide/coc.nvim'
 call plug#end()
 
 """"""""""""""""""""""""""""""
