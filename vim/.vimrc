@@ -43,7 +43,7 @@ set undofile
 """"""""""""""""""""""""""""""
 " => Style
 """"""""""""""""""""""""""""""
-highlight Pmenu ctermfg=black ctermbg=gray cterm=NONE guifg=NONE guibg=#64666d gui=NONE
+highlight Pmenu ctermfg=240 ctermbg=255 term=NONE guifg=NONE guibg=#64666d gui=NONE
 highlight DiffAdd    cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
@@ -87,7 +87,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 """"""""""""""""""""""""""""""
