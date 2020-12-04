@@ -130,6 +130,8 @@ nnoremap <C-w><C-w> :History<CR>
 """"""""""""""""""""""""""""""
 " => Coc plugin
 """"""""""""""""""""""""""""""
+command! CocMarket :execute "CocList marketplace"
+
 let g:coc_disable_startup_warning = 1
 
 " TextEdit might fail if hidden is not set.
