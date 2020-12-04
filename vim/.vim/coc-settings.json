@@ -6,6 +6,30 @@
         "kotlin": {
             "command": "~/dotfiles/tools/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
             "filetypes": ["kotlin"]
+        },
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "client": {
+                    "snippetSupport": true
+                }
+            }
         }
     }
 }
