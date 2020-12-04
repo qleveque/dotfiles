@@ -4,6 +4,9 @@ export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
 # Deactivate flow control
 stty -ixon
 
+# Kotlin
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # Tmux
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 

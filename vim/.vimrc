@@ -14,10 +14,13 @@ set cmdheight=2
 """"""""""""""""""""""""""""""
 " => Execute
 """"""""""""""""""""""""""""""
-autocmd FileType python map <buffer> <leader>r :w<CR>:bo term python3 %<CR>
-autocmd FileType javascript map <buffer> <leader>r :w<CR>:bo term node %<CR>
-autocmd FileType cpp map <buffer> <leader>r :w<CR>:!g++ % && ./a.out<CR>
-set termwinsize=20x0
+autocmd FileType python nmap <buffer> <leader>b :w<CR>:bo term python3 %<CR>
+autocmd FileType javascript nmap <buffer> <leader>b :w<CR>:bo term node %<CR>
+autocmd FileType cpp nmap <buffer> <leader>b :w<CR>:!g++ % && ./a.out<CR>
+autocmd FileType c nmap <buffer> <leader>b :w<CR>:!clear && gcc % && ./a.out<CR>
+autocmd FileType rust nmap <buffer> <leader>b :w<CR>:!clear && rustc % -o a.out && ./a.out<CR>
+autocmd FileType kotlin nmap <buffer> <leader>b :w<CR>:!clear && kotlinc % -include-runtime -d a.jar && java -jar a.jar<CR>
+set termwinsize=15x0
 
 """"""""""""""""""""""""""""""
 " => Tmux integration
@@ -49,8 +52,10 @@ highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Re
 """"""""""""""""""""""""""""""
 " => Oberon
 """"""""""""""""""""""""""""""
+autocmd BufReadPost *.kt setlocal filetype=kotlin
+au! Syntax kotline source ~/.vim/syntax/kotlin
 au BufRead,BufNewFile *.aMod set filetype=oberon
-au! Syntax oberon source ~/.vim/oberon2.vim
+au! Syntax oberon source ~/.vim/syntax/oberon2.vim
 
 """"""""""""""""""""""""""""""
 " => Pyqo
