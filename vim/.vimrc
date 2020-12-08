@@ -106,9 +106,9 @@ nnoremap <M-c> :Cd<CR>
 " => EasyMotion
 """"""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0
-nmap <Tab> <Plug>(easymotion-bd-fn)
-omap <Tab> <Plug>(easymotion-bd-fn)
-xmap <Tab> <Plug>(easymotion-bd-fn)
+nmap <Space> <Plug>(easymotion-bd-fn)
+vmap <Space> <Plug>(easymotion-bd-tn)
+omap <Space> <Plug>(easymotion-bd-tn)
 
 """"""""""""""""""""""""""""""
 " => Tig
@@ -168,6 +168,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
 

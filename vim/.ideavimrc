@@ -31,9 +31,9 @@ set easymotion
 set surround
 set commentary
 
-nmap <Tab> <Plug>(easymotion-bd-fn)
-omap <Tab> <Plug>(easymotion-bd-fn)
-xmap <Tab> <Plug>(easymotion-bd-fn)
+nmap <Space> <Plug>(easymotion-bd-fn)
+vmap <Space> <Plug>(easymotion-bd-tn)
+omap <Space> <Plug>(easymotion-bd-tn)
 
 " MORE OPTIONS
 nnoremap <leader>o :action OverrideMethods<CR>
