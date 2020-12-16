@@ -50,7 +50,7 @@ highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
 
 """"""""""""""""""""""""""""""
-" => Oberon
+" => Language specific
 """"""""""""""""""""""""""""""
 autocmd BufReadPost *.kt setlocal filetype=kotlin
 au! Syntax kotline source ~/.vim/syntax/kotlin

@@ -91,18 +91,12 @@ endif
 
 set statusline="  %A %10u:%-7g %15s %20d  "
 
-" ------------------------------------------------------------------------------
-
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
 " Like in vi
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
-
-" ------------------------------------------------------------------------------
-
-" Sample mappings
 
 " Start shell in current directory
 nnoremap s :shell<cr>
@@ -128,8 +122,7 @@ nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 
-" ------------------------------------------------------------------------------
-
+" Custom mappings
 set syncregs=general
 set confirm-=delete
 set ls!

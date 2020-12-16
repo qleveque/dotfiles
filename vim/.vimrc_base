@@ -9,7 +9,6 @@ set mouse=a
 set so=5
 set diffopt+=vertical
 set incsearch
-nnoremap <C-w>w :edit #<CR>
 nnoremap <C-q> :q<CR>
 
 """"""""""""""""""""""""""""""
@@ -84,7 +83,7 @@ set smartcase
 
 " Highlight search results
 set hlsearch
-nnoremap <Enter> :nohl<cr>
+nnoremap <BackSpace> :nohl<cr>
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
