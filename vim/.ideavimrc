@@ -1,15 +1,14 @@
-source ~/.vimrc_base
+source ~/.vimrc
 
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
+nnoremap <C-w><C-w> :action RecentFiles<CR>
 
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
-
 nnoremap gs :action GotoSuperMethod<CR>
-
-nnoremap <C-w><C-w> :action RecentFiles<CR>
+nnoremap gd gd
 
 nnoremap <leader>f :action ShowReformatFileDialog<CR>
 vnoremap <leader>f :action ShowReformatFileDialog<CR>
@@ -24,27 +23,9 @@ command! Diffs action Vcs.Show.Local.Changes
 command! Log action Vcs.ShowTabbedFileHistory
 command! Logs action Vcs.Show.Log
 
-set ideamarks
-set ideajoin
-
-set easymotion
-set surround
-set commentary
-
 nmap <Space> <Plug>(easymotion-bd-fn)
 vmap <Space> <Plug>(easymotion-bd-tn)
 omap <Space> <Plug>(easymotion-bd-tn)
 
-" MORE OPTIONS
 nnoremap <leader>o :action OverrideMethods<CR>
-
-nnoremap [[ ?\v\<class\s<CR>
-nnoremap ]] /\v\<class\s<CR>
-nnoremap [m ?\v\<def\s<CR>
-nnoremap ]m /\v\<def\s<CR>
-
-vnoremap [[ ?\v\<class\s<CR>
-vnoremap ]] /\v\<class\s<CR>
-vnoremap [m ?\v\<def\s<CR>
-vnoremap ]m /\v\<def\s<CR>
 

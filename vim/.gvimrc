@@ -1,3 +1,5 @@
+source ~/.vimrc
+
 set guioptions-=T
 set guioptions-=m
 set guioptions-=e
