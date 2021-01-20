@@ -1,5 +1,6 @@
 " basic.vim
 source ~/.vim/basic.vim
+mapclear
 let mapleader = "\\"
 noremap 0 0
 set stal=1
@@ -45,8 +46,6 @@ xnoremap C "_c
 xnoremap P "_dP
 
 " Search
-nnoremap * *N
-nnoremap # #N
 vnoremap * "xy/<C-R>x<CR>N
 vnoremap # "xy?<C-R>x<CR>N
 onoremap n gn
