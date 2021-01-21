@@ -2,7 +2,6 @@
 source ~/.vim/basic.vim
 mapclear
 let mapleader = "\\"
-noremap 0 0
 set stal=1
 set statusline=\ %<%F\ (%{&ff})%m%=%5l/%L%4v\ "
 
@@ -37,15 +36,19 @@ set termwinsize=15x0
 set clipboard^=unnamed,unnamedplus
 inoremap <C-V> <C-R>"
 
-nnoremap D "_d
-nnoremap DD "_dd
-xnoremap D "_d
-nnoremap CC "_cc
-nnoremap C "_c
-xnoremap C "_c
-xnoremap P "_dP
+nnoremap cc "_cc
+nnoremap c "_c
+xnoremap c "_c
+xnoremap CC cc
+xnoremap C c
+xnoremap C c
+
+xnoremap p "_dP
+xnoremap P p
 
 " Search
+nnoremap * *N
+nnoremap # #N
 vnoremap * "xy/<C-R>x<CR>N
 vnoremap # "xy?<C-R>x<CR>N
 onoremap n gn
@@ -111,9 +114,7 @@ nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-w><C-w> :History<CR>
 
-command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap(
-    \ {'source': '$FZF_ALT_C_COMMAND',
-    \ 'sink': 'cd'}))
+command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap({'source': '$FZF_ALT_C_COMMAND', 'sink': 'cd'}))
 
 if !has('nvim')
     execute "set <M-c>=\ec"
@@ -122,9 +123,10 @@ nnoremap <M-c> :Cd<CR>
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0
-nmap <Space> <Plug>(easymotion-bd-fn)
-vmap <Space> <Plug>(easymotion-bd-tn)
-omap <Space> <Plug>(easymotion-bd-tn)
+
+nmap <silent><nowait> <Space> <Plug>(easymotion-bd-fn)
+vmap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
+omap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
 
 " Tig
 command! Blame :execute "!tig blame +" . line(".") . " %"
@@ -134,8 +136,7 @@ command! Log :!tig %
 command! Logs :!tig
 
 " Plugins
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
