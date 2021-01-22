@@ -36,25 +36,24 @@ set termwinsize=15x0
 set clipboard^=unnamed,unnamedplus
 inoremap <C-V> <C-R>"
 
+nnoremap DD "_dd
+nnoremap D "_d
+xnoremap D "_d
 nnoremap cc "_cc
 nnoremap c "_c
 xnoremap c "_c
 xnoremap CC cc
 xnoremap C c
 xnoremap C c
-
 xnoremap p "_dP
 xnoremap P p
 
 " Search
-nnoremap * *N
-nnoremap # #N
-vnoremap * "xy/<C-R>x<CR>N
-vnoremap # "xy?<C-R>x<CR>N
-onoremap n gn
-onoremap N gN
 nnoremap <BackSpace> :nohl<cr>
+vnoremap / "xy/<C-R>x<CR>N
+vnoremap ? "xy?<C-R>x<CR>N
 nnoremap // /<C-R>"<CR>
+nnoremap ?? ?<C-R>"<CR>
 
 " Remove trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
