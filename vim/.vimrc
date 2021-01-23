@@ -4,33 +4,29 @@ mapclear
 let mapleader = "\\"
 set stal=1
 set statusline=\ %<%F\ (%{&ff})%m%=%5l/%L%4v\ "
+set magic!
 
 " coc.vim
 source ~/.vim/coc.vim
 let g:coc_disable_startup_warning = 1
 nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <leader>f :call CocAction('format')<CR>
-nmap <M-CR> :CocFix<CR>
 if !has('nvim')
     execute "set <M-CR>=\<esc>\<cr>"
 endif
+nmap <M-CR> :CocFix<CR>
 inoremap <silent><expr> <Enter> pumvisible() ? coc#_select_confirm() : "<CR>"
 command! CocMarket :execute "CocList marketplace"
 
 " Miscellaneous
-set t_ut=
 set nocompatible
 set cursorline
 set mouse=a
 set showbreak=►►►
 set shortmess+=I
 set number relativenumber
-set magic!
-set diffopt+=vertical
-
 nnoremap <C-q> :q<CR>
 xnoremap @ :norm! @
-set termwinsize=15x0
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -45,7 +41,7 @@ xnoremap c "_c
 xnoremap CC cc
 xnoremap C c
 xnoremap C c
-xnoremap p "_dP
+xnoremap p pgvy
 xnoremap P p
 
 " Search
@@ -55,14 +51,14 @@ vnoremap ? "xy?<C-R>x<CR>N
 nnoremap // /<C-R>"<CR>
 nnoremap ?? ?<C-R>"<CR>
 
-" Remove trailing spaces
+" Trailing spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 au BufWinEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 au BufWinLeave * call clearmatches()
-nnoremap <leader>tr :call CleanExtraSpaces()<CR>
+nnoremap <leader>s :call CleanExtraSpaces()<CR>
 
 " Persistent undo
 set undodir=~/.vim/undodir
@@ -76,20 +72,14 @@ highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
 
 " Language specific
-autocmd FileType python nmap <buffer> <leader>b :w<CR>:bo term python3 %<CR>
-autocmd FileType javascript nmap <buffer> <leader>b :w<CR>:bo term node %<CR>
-autocmd FileType cpp nmap <buffer> <leader>b :w<CR>:!clear && g++ % && ./a.out<CR>
-autocmd FileType c nmap <buffer> <leader>b :w<CR>:!clear && gcc % && ./a.out<CR>
-autocmd FileType rust nmap <buffer> <leader>b :w<CR>:!clear && rustc % -o a.out && ./a.out<CR>
-autocmd FileType kotlin nmap <buffer> <leader>b :w<CR>:!clear && kotlinc % -include-runtime -d a.jar && java -jar a.jar<CR>
+nmap <leader>r :w<CR>:bo term zsh -ic "run %"<CR>
+
+autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2
 
 autocmd BufReadPost *.kt setlocal filetype=kotlin
 au! Syntax kotline source ~/.vim/syntax/kotlin
-
 au BufRead,BufNewFile *.aMod set filetype=oberon
 au! Syntax oberon source ~/.vim/syntax/oberon2.vim
-
-autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2
 
 " Tmux integration
 nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
@@ -102,7 +92,7 @@ command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
 cnoreabbrev f F
 
 " Vifm
-nnoremap <C-f> :vertical 50 Vifm<CR>
+nnoremap <C-f> :Vifm<CR>
 let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw = 1
@@ -113,16 +103,14 @@ nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-w><C-w> :History<CR>
 
-command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap({'source': '$FZF_ALT_C_COMMAND', 'sink': 'cd'}))
-
 if !has('nvim')
     execute "set <M-c>=\ec"
 endif
+command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap({'source': '$FZF_ALT_C_COMMAND', 'sink': 'cd'}))
 nnoremap <M-c> :Cd<CR>
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0
-
 nmap <silent><nowait> <Space> <Plug>(easymotion-bd-fn)
 vmap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
 omap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
@@ -135,7 +123,6 @@ command! Log :!tig %
 command! Logs :!tig
 
 " Plugins
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'

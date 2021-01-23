@@ -9,6 +9,20 @@ if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
+# Run all program files
+run(){
+    ext=$1:t:e
+    case "$ext" in
+        py) python3 $@;;
+        js) node $@;;
+        cc|cpp) g++ $@ && ./a.out;;
+        c) gcc $@ && ./a.out;;
+        rs) rustc $@ -o a.out && ./a.out;;
+        kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
+        *) echo "Nothing to do";;
+    esac
+}
+
 # Tmux
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 

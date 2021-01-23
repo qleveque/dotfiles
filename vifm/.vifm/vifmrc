@@ -137,6 +137,5 @@ nnoremap <CR> :!/bin/zsh -i -c "xdg-open %f >/dev/null 2>/dev/null &"<CR>
 nnoremap zc zm
 nnoremap <C-b>s :!tmux split-window -v -c %d<CR>
 nnoremap <C-b>v :!tmux split-window -h -c %d<CR>
-
 nnoremap <C-q> :q<CR>
 
