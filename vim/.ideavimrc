@@ -1,5 +1,10 @@
 source ~/.vimrc
 
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
@@ -10,12 +15,13 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 nnoremap gd gd
 
-nnoremap <leader>f :action ShowReformatFileDialog<CR>
-vnoremap <leader>f :action ShowReformatFileDialog<CR>
-nnoremap <leader>i :action OptimizeImports<CR>
-nnoremap <leader>rn :action RenameElement<CR>
-nnoremap <leader>b :action ToggleLineBreakpoint<CR>
-nnoremap <leader>B :action ViewBreakpoints<CR>
+nnoremap \f :action ShowReformatFileDialog<CR>
+vnoremap \f :action ShowReformatFileDialog<CR>
+nnoremap \i :action OptimizeImports<CR>
+nnoremap \rn :action RenameElement<CR>
+nnoremap \b :action ToggleLineBreakpoint<CR>
+nnoremap \B :action ViewBreakpoints<CR>
+nnoremap \o :action OverrideMethods<CR>
 
 command! Blame action Annotate
 command! Diff action Compare.LastVersion
@@ -27,5 +33,14 @@ nmap <Space> <Plug>(easymotion-bd-fn)
 vmap <Space> <Plug>(easymotion-bd-tn)
 omap <Space> <Plug>(easymotion-bd-tn)
 
-nnoremap <leader>o :action OverrideMethods<CR>
+nnoremap [[ ?\v\<class\s<CR>
+nnoremap ]] /\v\<class\s<CR>
+nnoremap [m ?\v\<def\s<CR>
+nnoremap ]m /\v\<def\s<CR>
+
+vnoremap [[ ?\v\<class\s<CR>
+vnoremap ]] /\v\<class\s<CR>
+vnoremap [m ?\v\<def\s<CR>
+vnoremap ]m /\v\<def\s<CR>
+
 

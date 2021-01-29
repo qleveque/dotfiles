@@ -72,7 +72,7 @@ highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
 
 " Language specific
-nmap <leader>r :w<CR>:bo term zsh -ic "run %"<CR>
+nmap <F10> :w<CR>:bo term zsh -ic "run %"<CR>
 
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2
 
