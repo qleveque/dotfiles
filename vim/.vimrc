@@ -122,6 +122,9 @@ command! Diff :!git difftool --tool=vimdiff --no-prompt %
 command! Log :!tig %
 command! Logs :!tig
 
+" Align
+map ga <Plug>(EasyAlign)
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
@@ -133,4 +136,5 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/vim-easy-align'
 call plug#end()
