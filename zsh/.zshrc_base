@@ -1,5 +1,4 @@
 export TERMINAL='gnome-terminal'
-export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
 
 # Deactivate flow control
 stty -ixon
@@ -8,6 +7,9 @@ stty -ixon
 if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
+
+# Rust
+export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
 
 # Run all program files
 run(){
@@ -27,22 +29,22 @@ run(){
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 
 # Aliases
+alias c='source c'
+alias vim='nvim'
 alias ls='ls --color=auto'
 alias open='xdg-open'
-alias c='source c'
+alias telnet='telnet -e ^C'
+alias fd='fd -I --hidden'
+alias rg='rg --smart-case'
+alias meteo='curl wttr.in/lausanne'
+alias parrot='curl parrot.live'
+
 alias gsu='git status -uno'
 alias gau='git add -u'
 alias gcan='git commit --amend --no-edit'
 alias gca='git commit --amend'
 alias grd='git review -d'
 alias grlc='git rev-list --count'
-alias telnet='telnet -e ^C'
-alias fd='fd -I --hidden'
-alias rg='rg --smart-case'
-alias meteo='curl wttr.in/lausanne'
-alias parrot='curl parrot.live'
-alias :q='exit'
-alias graph='git log --pretty=format:"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" --graph -n15'
 
 # Zsh vim mode
 MODE_INDICATOR=""

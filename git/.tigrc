@@ -22,16 +22,16 @@ bind generic F :?\|\s+(0|[0-9]+\s[\+-]+)$
 bind generic <Enter> refresh
 color search-result default blue
 
-bind generic <C-q> :quit
+bind generic <C-q> :q
 
 # Diffs
-bind diff d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)
-bind tree d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(file)
-bind main d !>git difftool --tool=vimdiff --trust-exit-code --no-prompt %(commit)^! -- %(fileargs)
+bind diff d !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
+bind tree d !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
+bind main d !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(fileargs)
 bind log d enter
 
-bind stage d !>zsh -c "git difftool --tool=vimdiff --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
-bind status d !>zsh -c "git difftool --tool=vimdiff --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
+bind stage d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
+bind status d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 
 # Status
 bind status A !git commit --amend

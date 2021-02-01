@@ -4,6 +4,3 @@
 [submodule "zsh/.zsh/plugins/zsh-system-clipboard"]
 	path = zsh/.zsh/plugins/zsh-system-clipboard
 	url = https://github.com/kutsan/zsh-system-clipboard
-[submodule "tools/kotlin-language-server"]
-	path = tools/kotlin-language-server
-	url = https://github.com/fwcd/kotlin-language-server
