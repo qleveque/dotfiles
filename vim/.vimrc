@@ -89,7 +89,7 @@ highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Re
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2
 
 autocmd BufReadPost *.kt setlocal filetype=kotlin
-au! Syntax kotline source ~/.vim/syntax/kotlin
+au! Syntax kotlin source ~/.vim/syntax/kotlin.vim
 au BufRead,BufNewFile *.aMod set filetype=oberon
 au! Syntax oberon source ~/.vim/syntax/oberon2.vim
 
@@ -129,13 +129,19 @@ omap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
 
 " Git
 command! Blame :execute "term tig blame +" . line(".") . " %"
-command! Diffs :term tig status
-command! Log :term tig %
-command! Diff :term git difftool --no-prompt %
 command! Logs :term tig
+command! Log :term tig %
+command! Diffs :term tig status
+command! Diff :term git difftool --no-prompt %
 
 " Align
 map ga <Plug>(EasyAlign)
+
+" Vista
+let g:vista_default_executive = 'coc'
+let g:vista#renderer#enable_icon = 0
+let g:vista_ignore_kinds = ['Property']
+nnoremap <leader>t :Vista<CR>
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -144,6 +150,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'

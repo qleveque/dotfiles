@@ -4,13 +4,14 @@
     "python.linting.flake8Enabled": true,
     "languageserver": {
         "kotlin": {
-            "command": "~/dotfiles/tools/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+            "command": "~/.kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
             "filetypes": ["kotlin"]
         },
         "ccls": {
             "command": "ccls",
             "filetypes": [
                 "c",
+                "cc",
                 "cpp",
                 "objc",
                 "objcpp"
