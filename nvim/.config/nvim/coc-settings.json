@@ -1,7 +1,7 @@
 {
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Enabled": false,
     "languageserver": {
         "kotlin": {
             "command": "~/.kotlin-language-server/server/build/install/server/bin/kotlin-language-server",

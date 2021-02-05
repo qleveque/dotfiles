@@ -18,10 +18,13 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 nnoremap gd gd
 
+nnoremap <F9> <F9>
+
 nnoremap \f :action ShowReformatFileDialog<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \rn :action RenameElement<CR>
+nnoremap \t :action FileStructurePopup<CR>
 nnoremap \b :action ToggleLineBreakpoint<CR>
 nnoremap \B :action ViewBreakpoints<CR>
 nnoremap \o :action OverrideMethods<CR>

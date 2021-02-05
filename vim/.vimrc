@@ -11,9 +11,6 @@ source ~/.vim/coc.vim
 let g:coc_disable_startup_warning = 1
 nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <leader>f :call CocAction('format')<CR>
-if !has('nvim')
-    execute "set <M-CR>=\<esc>\<cr>"
-endif
 nmap <M-CR> :CocFix<CR>
 inoremap <silent><expr> <Enter> pumvisible() ? coc#_select_confirm() : "<CR>"
 command! CocMarket :execute "CocList marketplace"
@@ -26,6 +23,7 @@ set shortmess+=I
 set diffopt+=vertical
 set number relativenumber
 set noro
+set list
 nnoremap <C-q> :q<CR>
 xnoremap @ :norm! @
 
@@ -55,12 +53,6 @@ nnoremap // /<C-R>"<CR>
 nnoremap ?? ?<C-R>"<CR>
 
 " Trailing spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-au BufWinEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
-au BufWinLeave * call clearmatches()
 nnoremap <leader>s :call CleanExtraSpaces()<CR>
 
 " Persistent undo
@@ -115,9 +107,6 @@ nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-w><C-w> :History<CR>
 
-if !has('nvim')
-    execute "set <M-c>=\ec"
-endif
 command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap({'source': '$FZF_ALT_C_COMMAND', 'sink': 'cd'}))
 nnoremap <M-c> :Cd<CR>
 
@@ -156,4 +145,5 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
+Plug 'yggdroot/indentLine'
 call plug#end()
