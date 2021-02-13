@@ -3,7 +3,6 @@ source ~/.vim/basic.vim
 mapclear
 let mapleader = "\\"
 set stal=1
-set statusline=\ %<%F\ (%{&ff})%m%=%5l/%L%4v\ "
 set magic!
 
 " coc.vim
@@ -14,6 +13,8 @@ nnoremap <leader>f :call CocAction('format')<CR>
 nmap <M-CR> :CocFix<CR>
 inoremap <silent><expr> <Enter> pumvisible() ? coc#_select_confirm() : "<CR>"
 command! CocMarket :execute "CocList marketplace"
+set statusline=\ %F%m\ %=%L:%v\ "
+set cmdheight=1
 
 " Miscellaneous
 set cursorline
@@ -24,25 +25,26 @@ set diffopt+=vertical
 set number relativenumber
 set noro
 set list
-nnoremap <C-q> :q<CR>
 xnoremap @ :norm! @
+nnoremap <C-q> :q<CR>
+nnoremap ` '
+nnoremap ' `
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
 inoremap <C-V> <C-R>"
-
-nnoremap DD "_dd
 nnoremap D "_d
 xnoremap D "_d
-nnoremap cc "_cc
-nnoremap c "_c
-xnoremap c "_c
-xnoremap CC cc
+nnoremap DD "_dd
 nnoremap C c
 xnoremap C c
+nnoremap CC cc
+nnoremap c "_c
+xnoremap c "_c
+nnoremap cc "_cc
 nnoremap x "_x
 nnoremap X x
-xnoremap p pgvy
+xnoremap p "_c<C-R>"<Esc>
 xnoremap P p
 
 " Search
@@ -59,27 +61,15 @@ nnoremap <leader>s :call CleanExtraSpaces()<CR>
 set undodir=~/.vim/undodir
 set undofile
 
-" Term
-if has("nvim")
-    tmap <C-a> <C-\><C-n>
-    nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
-
-    autocmd TermOpen * startinsert
-    autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd noruler laststatus=0 noshowcmd cmdheight=1
-    autocmd TermClose * setlocal number relativenumber signcolumn=yes showmode showcmd ruler laststatus=2 noshowcmd cmdheight=2
-    autocmd TermClose * call feedkeys("<CR>")
-endif
-
 " Style
 highlight Pmenu ctermfg=240 ctermbg=255 term=NONE guifg=NONE guibg=#64666d gui=NONE
-highlight DiffAdd    cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
+highlight DiffAdd cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffDelete cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=2 ctermbg=233 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
+highlight DiffText cterm=bold ctermfg=2 ctermbg=88  gui=none guifg=bg guibg=Red
 
 " Language specific
 autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2
-
 autocmd BufReadPost *.kt setlocal filetype=kotlin
 au! Syntax kotlin source ~/.vim/syntax/kotlin.vim
 au BufRead,BufNewFile *.aMod set filetype=oberon
@@ -107,14 +97,16 @@ nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-w><C-w> :History<CR>
 
-command! -nargs=* -complete=dir Cd call fzf#run(fzf#wrap({'source': '$FZF_ALT_C_COMMAND', 'sink': 'cd'}))
-nnoremap <M-c> :Cd<CR>
-
 " EasyMotion
 let g:EasyMotion_do_mapping = 0
 nmap <silent><nowait> <Space> <Plug>(easymotion-bd-fn)
 vmap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
 omap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
+
+" Surround
+nmap s ys
+nmap S ysiw
+vmap s S
 
 " Git
 command! Blame :execute "term tig blame +" . line(".") . " %"
@@ -129,8 +121,17 @@ map ga <Plug>(EasyAlign)
 " Vista
 let g:vista_default_executive = 'coc'
 let g:vista#renderer#enable_icon = 0
-let g:vista_ignore_kinds = ['Property']
 nnoremap <leader>t :Vista<CR>
+
+" Term
+if has("nvim")
+    tmap <C-a> <C-\><C-n>
+    nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd laststatus=0
+    autocmd TermClose * setlocal number relativenumber signcolumn=yes showmode showcmd laststatus=2
+    autocmd TermClose * call feedkeys("<CR>")
+endif
 
 " Plugins
 call plug#begin('~/.vim/plugged')

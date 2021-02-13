@@ -1,5 +1,8 @@
 export TERMINAL='gnome-terminal'
 
+# Completion colors
+zstyle ':completion:::*:default' menu yes select
+
 # Deactivate flow control
 stty -ixon
 
@@ -46,6 +49,7 @@ alias gcan='git commit --amend --no-edit'
 alias gca='git commit --amend'
 alias grd='git review -d'
 alias grlc='git rev-list --count'
+alias gcp='git cherry-pick'
 
 # Zsh vim mode
 MODE_INDICATOR=""

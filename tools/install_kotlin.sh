@@ -5,7 +5,7 @@ sdk install kotlin
 
 # LSP
 git clone https://github.com/fwcd/kotlin-language-server ~/.kotlin-language-server
-cd .kotlin-language-server
+cd ~/.kotlin-language-server
 ./gradlew server:build
 cd ..
 

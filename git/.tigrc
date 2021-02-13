@@ -34,8 +34,6 @@ bind stage d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(statu
 bind status d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 
 # Status
-bind status A !git commit --amend
-bind status N !git commit --amend --no-edit
 bind status R !>git reset HEAD %(file)
 
 # Views
