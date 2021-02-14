@@ -25,6 +25,7 @@ set diffopt+=vertical
 set number relativenumber
 set noro
 set list
+set noequalalways
 xnoremap @ :norm! @
 nnoremap <C-q> :q<CR>
 nnoremap ` '
@@ -54,9 +55,6 @@ vnoremap ? "xy?<C-R>x<CR>N
 nnoremap // /<C-R>"<CR>
 nnoremap ?? ?<C-R>"<CR>
 
-" Trailing spaces
-nnoremap <leader>s :call CleanExtraSpaces()<CR>
-
 " Persistent undo
 set undodir=~/.vim/undodir
 set undofile
@@ -80,8 +78,6 @@ nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<
 nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
 " Pyqo
-command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
-cnoreabbrev c C
 command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
 cnoreabbrev f F
 
@@ -91,6 +87,8 @@ let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
+let g:vifm_replace_netrw = 1
+
 
 " FZF
 nnoremap <C-s> :Rg<Space>
@@ -115,21 +113,26 @@ command! Log :term tig %
 command! Diffs :term tig status
 command! Diff :term git difftool --no-prompt %
 
-" Align
-map ga <Plug>(EasyAlign)
-
 " Vista
 let g:vista_default_executive = 'coc'
 let g:vista#renderer#enable_icon = 0
-nnoremap <leader>t :Vista<CR>
+let g:vista_close_on_jump = 1
+nnoremap <leader>t :Vista show<CR>
+
+" Spaces
+nnoremap <leader>s :call CleanExtraSpaces()<CR>
+map ga <Plug>(EasyAlign)
 
 " Term
 if has("nvim")
     tmap <C-a> <C-\><C-n>
+    tmap <C-h> <C-a><C-h>
+    tmap <C-j> <C-a><C-j>
+    tmap <C-k> <C-a><C-k>
+    tmap <C-l> <C-a><C-l>
     nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
-    autocmd TermOpen * startinsert
     autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd laststatus=0
-    autocmd TermClose * setlocal number relativenumber signcolumn=yes showmode showcmd laststatus=2
+    autocmd TermOpen,BufEnter * if &buftype == 'terminal' | :startinsert | endif
     autocmd TermClose * call feedkeys("<CR>")
 endif
 
