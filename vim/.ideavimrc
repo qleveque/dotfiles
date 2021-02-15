@@ -31,6 +31,7 @@ command! Diff action Compare.LastVersion
 command! Diffs action Vcs.Show.Local.Changes
 command! Log action Vcs.ShowTabbedFileHistory
 command! Logs action Vcs.Show.Log
+command! Merge action Git.ResolveConflicts
 
 nmap <Space> <Plug>(easymotion-bd-fn)
 vmap <Space> <Plug>(easymotion-bd-tn)

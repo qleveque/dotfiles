@@ -1,8 +1,7 @@
 " basic.vim
 source ~/.vim/basic.vim
-mapclear
-let mapleader = "\\"
 set stal=1
+set foldcolumn=0
 set magic!
 
 " coc.vim
@@ -11,7 +10,6 @@ let g:coc_disable_startup_warning = 1
 nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <leader>f :call CocAction('format')<CR>
 nmap <M-CR> :CocFix<CR>
-inoremap <silent><expr> <Enter> pumvisible() ? coc#_select_confirm() : "<CR>"
 command! CocMarket :execute "CocList marketplace"
 set statusline=\ %F%m\ %=%L:%v\ "
 set cmdheight=1
@@ -22,7 +20,8 @@ set mouse=a
 set showbreak=►►►
 set shortmess+=I
 set diffopt+=vertical
-set number relativenumber
+set number
+set relativenumber
 set noro
 set list
 set noequalalways
@@ -30,10 +29,12 @@ xnoremap @ :norm! @
 nnoremap <C-q> :q<CR>
 nnoremap ` '
 nnoremap ' `
+nmap µ *#cgn
+vmap µ /cgn
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
-inoremap <C-V> <C-R>"
+inoremap <C-V> <C-R>+
 nnoremap D "_d
 xnoremap D "_d
 nnoremap DD "_dd
@@ -45,15 +46,15 @@ xnoremap c "_c
 nnoremap cc "_cc
 nnoremap x "_x
 nnoremap X x
-xnoremap p "_c<C-R>"<Esc>
+xnoremap p "_c<C-R>+<Esc>
 xnoremap P p
 
 " Search
 nnoremap <BackSpace> :nohl<cr>
 vnoremap / "xy/<C-R>x<CR>N
 vnoremap ? "xy?<C-R>x<CR>N
-nnoremap // /<C-R>"<CR>
-nnoremap ?? ?<C-R>"<CR>
+nnoremap // /<C-R>+<CR>
+nnoremap ?? ?<C-R>+<CR>
 
 " Persistent undo
 set undodir=~/.vim/undodir
@@ -89,7 +90,6 @@ let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 let g:vifm_replace_netrw = 1
 
-
 " FZF
 nnoremap <C-s> :Rg<Space>
 nnoremap <C-t> :Files<CR>
@@ -112,6 +112,7 @@ command! Logs :term tig
 command! Log :term tig %
 command! Diffs :term tig status
 command! Diff :term git difftool --no-prompt %
+command! Merge :term git mergetool --no-prompt
 
 " Vista
 let g:vista_default_executive = 'coc'
@@ -120,19 +121,15 @@ let g:vista_close_on_jump = 1
 nnoremap <leader>t :Vista show<CR>
 
 " Spaces
-nnoremap <leader>s :call CleanExtraSpaces()<CR>
+nnoremap <leader>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>nohl<CR>
 map ga <Plug>(EasyAlign)
 
 " Term
 if has("nvim")
     tmap <C-a> <C-\><C-n>
-    tmap <C-h> <C-a><C-h>
-    tmap <C-j> <C-a><C-j>
-    tmap <C-k> <C-a><C-k>
-    tmap <C-l> <C-a><C-l>
     nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
     autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd laststatus=0
-    autocmd TermOpen,BufEnter * if &buftype == 'terminal' | :startinsert | endif
+    autocmd TermOpen * startinsert
     autocmd TermClose * call feedkeys("<CR>")
 endif
 
@@ -147,6 +144,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vifm/vifm.vim'
 Plug 'yggdroot/indentLine'
