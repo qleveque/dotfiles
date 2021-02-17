@@ -2,7 +2,7 @@
 source ~/.vim/basic.vim
 set stal=1
 set foldcolumn=0
-set magic!
+set nomagic
 
 " coc.vim
 source ~/.vim/coc.vim
@@ -30,7 +30,7 @@ nnoremap <C-q> :q<CR>
 nnoremap ` '
 nnoremap ' `
 nmap µ *#cgn
-vmap µ /cgn
+vmap µ *cgn
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -51,8 +51,8 @@ xnoremap P p
 
 " Search
 nnoremap <BackSpace> :nohl<cr>
-vnoremap / "xy/<C-R>x<CR>N
-vnoremap ? "xy?<C-R>x<CR>N
+vnoremap * "xy/<C-R>x<CR>N
+vnoremap # "xy?<C-R>x<CR>N
 nnoremap // /<C-R>+<CR>
 nnoremap ?? ?<C-R>+<CR>
 
@@ -113,6 +113,8 @@ command! Log :term tig %
 command! Diffs :term tig status
 command! Diff :term git difftool --no-prompt %
 command! Merge :term git mergetool --no-prompt
+nnoremap ]x /\v^[<>\|=]{7}[ \n]<CR>
+nnoremap [x ?\v^[<>\|=]{7}[ \n]<CR>
 
 " Vista
 let g:vista_default_executive = 'coc'

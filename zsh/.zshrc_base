@@ -55,6 +55,8 @@ alias gcpa='git cherry-pick --abort'
 alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+alias gri='git rebase -i'
+alias gg='git graph -n15'
 
 # Zsh vim mode
 MODE_INDICATOR=""

@@ -5,6 +5,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+nnoremap <C-O> :action Back<CR>
+nnoremap <C-I> :action Forward<CR>
+
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
@@ -21,10 +24,11 @@ nnoremap \f :action ShowReformatFileDialog<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \rn :action RenameElement<CR>
+nnoremap \t :action FileStructurePopup<CR>
+
 nnoremap \b :action ToggleLineBreakpoint<CR>
 nnoremap \B :action ViewBreakpoints<CR>
 nnoremap \o :action OverrideMethods<CR>
-nnoremap \t :action FileStructurePopup<CR>
 
 command! Blame action Annotate
 command! Diff action Compare.LastVersion
@@ -46,5 +50,4 @@ vnoremap [[ ?\v\<class\s<CR>
 vnoremap ]] /\v\<class\s<CR>
 vnoremap [m ?\v\<def\s<CR>
 vnoremap ]m /\v\<def\s<CR>
-
 
