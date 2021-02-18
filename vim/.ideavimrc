@@ -50,4 +50,3 @@ vnoremap [[ ?\v\<class\s<CR>
 vnoremap ]] /\v\<class\s<CR>
 vnoremap [m ?\v\<def\s<CR>
 vnoremap ]m /\v\<def\s<CR>
-

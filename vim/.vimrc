@@ -18,7 +18,7 @@ set cmdheight=1
 set cursorline
 set mouse=a
 set showbreak=►►►
-set shortmess+=I
+set shortmess+=aoOtI
 set diffopt+=vertical
 set number
 set relativenumber
@@ -130,7 +130,7 @@ map ga <Plug>(EasyAlign)
 if has("nvim")
     tmap <C-a> <C-\><C-n>
     nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
-    autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd laststatus=0
+    autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
     autocmd TermOpen * startinsert
     autocmd TermClose * call feedkeys("<CR>")
 endif
