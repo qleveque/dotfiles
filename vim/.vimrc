@@ -25,9 +25,12 @@ set relativenumber
 set noro
 set list
 set noequalalways
-xnoremap @ :norm! @
+
+" Easy life
 nnoremap <C-q> :q<CR>
-nnoremap ` '
+xnoremap @ :norm! @
+nnoremap à @q
+xnoremap à :norm! @q<CR>
 nnoremap ' `
 nmap µ *#cgn
 vmap µ *cgn
