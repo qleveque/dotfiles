@@ -28,10 +28,15 @@ set noequalalways
 
 " Easy life
 nnoremap <C-q> :q<CR>
-xnoremap @ :norm! @
+onoremap w iw
+onoremap W iW
+onoremap p ap
+nnoremap q qq<Esc>
 nnoremap à @q
 xnoremap à :norm! @q<CR>
 nnoremap ' `
+nmap s ys
+vmap s S
 nmap µ *#cgn
 vmap µ *cgn
 
@@ -103,11 +108,6 @@ let g:EasyMotion_do_mapping = 0
 nmap <silent><nowait> <Space> <Plug>(easymotion-bd-fn)
 vmap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
 omap <silent><nowait> <Space> <Plug>(easymotion-bd-tn)
-
-" Surround
-nmap s ys
-nmap S ysiw
-vmap s S
 
 " Git
 command! Blame :execute "term tig blame +" . line(".") . " %"
