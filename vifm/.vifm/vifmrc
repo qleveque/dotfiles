@@ -1,4 +1,5 @@
 " Miscellaneous
+colorscheme Default
 set vicmd=nvim
 set syscalls
 set trash
@@ -8,7 +9,6 @@ set sortnumbers
 set undolevels=100
 set novimhelp
 set norunexec
-colorscheme Default
 set timefmt=%m/%d\ %H:%M
 set wildmenu
 set wildstyle=popup
@@ -30,13 +30,11 @@ set ls!
 set syncregs=general
 set confirm-=delete
 
-" Default shortcuts
-nnoremap s :shell<cr>
-nnoremap S :sort<cr>
+" Shortcuts
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
-nnoremap yp :!echo %d | xclip %i<cr>
-nnoremap yf :!echo %c:p | xclip %i<cr>
+nnoremap yp :execute '!echo -n %d | xclip -i -sel p -f | xclip -i -sel c'<cr>
+nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>

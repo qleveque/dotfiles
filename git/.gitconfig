@@ -1,19 +1,18 @@
 [user]
-	email = qleveque@hotmail.com
-	name = Quentin Leveque
-    eol = lf
+    email = qleveque@hotmail.com
+    name = Quentin Leveque
     autocrlf = false
 [diff]
-	tool = vimdiff3
+    tool = vimdiff3
 [merge]
-	tool = vimdiff3
+    tool = vimdiff3
     conflictstyle = diff3
 [core]
-	editor = nvim
+    editor = nvim
 [difftool "vimdiff3"]
-	path = nvim
+    path = nvim
 [mergetool "vimdiff3"]
-	path = nvim
-	keepBackup = false
+    path = nvim
+    keepBackup = false
 [alias]
     graph = log --pretty=format:\"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s\" --graph
