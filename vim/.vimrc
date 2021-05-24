@@ -16,12 +16,15 @@ source ~/.vim/plugins.vim
 " Colors
 set t_Co=256
 colorscheme desert
-set background=light
 set background=dark
 highlight LineNr ctermfg=grey
 highlight TabLine ctermfg=black ctermbg=grey
 highlight CocErrorFloat ctermfg=black
 highlight CocWarningFloat ctermfg=yellow
+highlight DiffAdd cterm=BOLD ctermfg=253 ctermbg=22
+highlight DiffDelete cterm=BOLD ctermfg=52 ctermbg=52
+highlight DiffChange cterm=BOLD ctermfg=253 ctermbg=23
+highlight DiffText cterm=BOLD ctermfg=253 ctermbg=9
 
 " Standard
 set encoding=utf8
@@ -53,7 +56,6 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 nnoremap <C-w>t :tabnew<CR>
 nnoremap <C-q> :q<CR>
-nnoremap q qq<Esc>
 nnoremap à @q
 xnoremap à :norm! @q<CR>
 nnoremap ' `
@@ -62,9 +64,8 @@ vmap s S
 nmap µ *#cgn
 vmap µ *cgn
 vnoremap v V
-onoremap w iw
-onoremap W iW
-onoremap p ap
+nnoremap V ggVG
+nnoremap Y ggVGy
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -157,3 +158,4 @@ if has("nvim")
     autocmd TermOpen * startinsert
     autocmd TermClose * call feedkeys("<CR>")
 endif
+

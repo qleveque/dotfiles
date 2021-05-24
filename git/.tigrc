@@ -33,9 +33,6 @@ bind log d enter
 bind stage d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 bind status d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 
-# Status
-bind status R !>git reset HEAD %(file)
-
 # Views
 bind generic v  none
 bind generic vm view-main
