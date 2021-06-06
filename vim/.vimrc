@@ -55,6 +55,7 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 nnoremap <C-w>t :tabnew<CR>
+nnoremap <C-w><C-w> :e#<CR>
 nnoremap <C-q> :q<CR>
 nnoremap à @q
 xnoremap à :norm! @q<CR>
