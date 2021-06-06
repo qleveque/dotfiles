@@ -25,6 +25,7 @@ run(){
         rs) rustc $@ -o a.out && ./a.out;;
         kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
         go) go run $@;;
+        sh|bash|zsh) zsh $@;;
         *) echo "Nothing to do";;
     esac
 }
@@ -52,11 +53,13 @@ alias grlc='git rev-list --count'
 alias gcp='git cherry-pick'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
-alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gri='git rebase -i'
 alias gg='git graph -n15'
+alias gs='git switch'
+alias gr='git restore'
+alias grs='git restore --staged'
 
 # Zsh vim mode
 MODE_INDICATOR=""

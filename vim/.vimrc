@@ -7,11 +7,11 @@ nmap <M-CR> :CocFix<CR>
 set statusline=\ %F%m\ %=%v\ %{noscrollbar#statusline()}\ "
 set cmdheight=1
 
-" Language specific
-source ~/.vim/languages.vim
-
 " Plugins
 source ~/.vim/plugins.vim
+
+" Language specific
+source ~/.vim/languages.vim
 
 " Colors
 set t_Co=256
@@ -58,7 +58,6 @@ nnoremap <C-w>t :tabnew<CR>
 nnoremap <C-q> :q<CR>
 nnoremap à @q
 xnoremap à :norm! @q<CR>
-nnoremap ' `
 nmap s ys
 vmap s S
 nmap µ *#cgn
@@ -66,6 +65,7 @@ vmap µ *cgn
 vnoremap v V
 nnoremap V ggVG
 nnoremap Y ggVGy
+nnoremap ' `
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -103,9 +103,10 @@ nnoremap <C-n> :CocList -I symbols<CR>
 nnoremap <C-f> :vert 50 Vifm %:p:h .<CR>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-p> :History<CR>
-nmap <silent><nowait> <Space> <Plug>(easymotion-bd-f2)
-vmap <silent><nowait> <Space> <Plug>(easymotion-bd-t2)
-omap <silent><nowait> <Space> <Plug>(easymotion-bd-t2)
+
+nmap <Space> <Plug>(easymotion-bd-f2)
+vmap <Space> <Plug>(easymotion-bd-t2)
+omap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
 command! Blame :execute "term tig blame +" . line(".") . " %"
@@ -157,5 +158,10 @@ if has("nvim")
     autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
     autocmd TermOpen * startinsert
     autocmd TermClose * call feedkeys("<CR>")
+endif
+
+" Diff
+if &diff
+    set scl=no
 endif
 

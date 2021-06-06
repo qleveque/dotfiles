@@ -75,7 +75,7 @@
     ],
     "terminal.integrated.shell.linux": "/bin/sh",
     "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.vimrc_base",
+    "vim.vimrc.path": "~/.vimrc",
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "default",
     "workbench.editor.showTabs": false,
