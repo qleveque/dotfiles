@@ -16,6 +16,7 @@ source ~/.vim/languages.vim
 " Style
 set background=dark
 set fillchars=eob:█
+hi TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
 highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight CursorLineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight EndOfBuffer cterm=none ctermfg=darkgrey ctermbg=black
