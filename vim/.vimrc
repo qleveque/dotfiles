@@ -13,21 +13,23 @@ source ~/.vim/plugins.vim
 " Language specific
 source ~/.vim/languages.vim
 
-" Colors
-set t_Co=256
-colorscheme desert
+" Style
 set background=dark
-highlight LineNr ctermfg=grey
-highlight TabLine ctermfg=black ctermbg=grey
-highlight CocErrorFloat ctermfg=black
-highlight CocWarningFloat ctermfg=yellow
-highlight DiffAdd cterm=BOLD ctermfg=253 ctermbg=22
-highlight DiffDelete cterm=BOLD ctermfg=52 ctermbg=52
-highlight DiffChange cterm=BOLD ctermfg=253 ctermbg=23
-highlight DiffText cterm=BOLD ctermfg=253 ctermbg=9
+set fillchars=eob:█
+highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey
+highlight CursorLineNr cterm=none ctermfg=white ctermbg=darkgrey
+highlight EndOfBuffer cterm=none ctermfg=darkgrey ctermbg=black
+highlight VertSplit cterm=none ctermfg=darkgrey ctermbg=darkgrey
+highlight StatusLineNC cterm=none ctermfg=white ctermbg=darkgrey
+highlight DiffAdd cterm=none ctermfg=black ctermbg=green
+highlight DiffDelete cterm=none ctermfg=red ctermbg=red
+highlight DiffChange cterm=none ctermfg=black ctermbg=blue
+highlight DiffText cterm=none ctermfg=black ctermbg=darkred
+highlight CocErrorFloat cterm=none ctermfg=black
+highlight CocWarningFloat cterm=none ctermfg=yellow
 
 " Standard
-set encoding=utf8
+set encoding=UTF-8
 set ffs=unix,dos,mac
 set so=4
 set hidden
@@ -37,7 +39,6 @@ set lazyredraw
 set nobackup nowb noswapfile
 set expandtab smarttab shiftwidth=4 tabstop=4
 set ai si wrap
-set cursorline
 set mouse=a
 set showbreak=►►►
 set shortmess+=aoOtI
@@ -47,6 +48,7 @@ set noro
 set list
 set noequalalways
 set nomagic
+set scl=no
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Easy life
@@ -61,12 +63,14 @@ nnoremap à @q
 xnoremap à :norm! @q<CR>
 nmap s ys
 vmap s S
-nmap µ *#cgn
-vmap µ *cgn
 vnoremap v V
 nnoremap V ggVG
 nnoremap Y ggVGy
 nnoremap ' `
+nmap ç *Ncgn
+vmap ç *cgn
+nmap è ]m
+nmap é [m
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -89,8 +93,6 @@ xnoremap P p
 set incsearch nohlsearch
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
-nnoremap // /\V<C-R>+<CR>
-nnoremap ?? ?\V<C-R>+<CR>
 nnoremap ]x /\v^[<>\|=]{7}[ \n]<CR>
 nnoremap [x ?\v^[<>\|=]{7}[ \n]<CR>
 
@@ -159,10 +161,5 @@ if has("nvim")
     autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
     autocmd TermOpen * startinsert
     autocmd TermClose * call feedkeys("<CR>")
-endif
-
-" Diff
-if &diff
-    set scl=no
 endif
 

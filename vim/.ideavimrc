@@ -23,11 +23,12 @@ nnoremap \t :action FileStructurePopup<CR>
 nnoremap \b :action ToggleLineBreakpoint<CR>
 nnoremap \B :action ViewBreakpoints<CR>
 nnoremap \o :action OverrideMethods<CR>
+nnoremap \p :action ParameterInfo<CR>
 
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
-nnoremap gd gd
 nnoremap <F9> :action Resume<CR>
+nnoremap gd gd
 
 nnoremap [[ ?\v\<class\s<CR>
 nnoremap ]] /\v\<class\s<CR>
