@@ -15,7 +15,7 @@ source ~/.vim/languages.vim
 
 " Style
 set background=dark
-set fillchars=eob:█
+set fillchars=eob: 
 hi TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
 highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight CursorLineNr cterm=none ctermfg=white ctermbg=darkgrey
@@ -28,6 +28,7 @@ highlight DiffChange cterm=none ctermfg=black ctermbg=blue
 highlight DiffText cterm=none ctermfg=black ctermbg=darkred
 highlight CocErrorFloat cterm=none ctermfg=black
 highlight CocWarningFloat cterm=none ctermfg=yellow
+highlight EndOfBuffer ctermfg=none ctermbg=none
 
 " Standard
 set encoding=UTF-8
@@ -133,7 +134,6 @@ let g:vifm_replace_netrw = 1
 
 " Vista
 let g:vista_default_executive = 'coc'
-let g:vista#renderer#enable_icon = 0
 let g:vista_close_on_jump = 1
 let g:vista_ignore_kinds = ['Variable']
 nnoremap <leader>t :Vista show<CR>

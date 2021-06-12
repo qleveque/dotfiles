@@ -1,6 +1,13 @@
 font:
     size:
-        9
+        11.5
+    decorations: none
+    normal:
+        family: InconsolataGo NF
+        style: Regular
+    use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: true
 
 # KDE Breeze (Ported from Konsole)
 colors:
