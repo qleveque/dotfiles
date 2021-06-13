@@ -4,7 +4,7 @@ let g:coc_disable_startup_warning = 1
 nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <leader>f :call CocAction('format')<CR>
 nmap <M-CR> :CocFix<CR>
-set statusline=\ %F%m\ %=%v\ %{noscrollbar#statusline()}\ "
+set statusline=\ %F%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
 set cmdheight=1
 
 " Plugins
