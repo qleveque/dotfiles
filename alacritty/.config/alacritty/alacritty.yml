@@ -1,13 +1,14 @@
 font:
     size:
-        11.5
-    decorations: none
+        11
     normal:
         family: InconsolataGo NF
-        style: Regular
-    use_thin_strokes: true
 
-draw_bold_text_with_bright_colors: true
+key_bindings:
+    - { key: Down, mods: Control, action: DecreaseFontSize }
+    - { key: Up, mods: Control, action: IncreaseFontSize }
+    - { key: F, mods: Alt, action: ToggleFullscreen }
+    - { key: Return, mods: Alt, action: None }
 
 # KDE Breeze (Ported from Konsole)
 colors:

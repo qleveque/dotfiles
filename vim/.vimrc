@@ -1,14 +1,24 @@
-" coc.vim
-source ~/.vim/coc.vim
-let g:coc_disable_startup_warning = 1
-nnoremap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
-nnoremap <leader>f :call CocAction('format')<CR>
-nmap <M-CR> :CocFix<CR>
-set statusline=\ %F%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
-set cmdheight=1
-
 " Plugins
-source ~/.vim/plugins.vim
+call plug#begin('~/.vim/plugged')
+Plug 'ap/vim-css-color'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
+Plug 'gcavallanti/vim-noscrollbar'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'liuchengxu/vista.vim'
+Plug 'mattn/emmet-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'udalov/kotlin-vim'
+Plug 'vifm/vifm.vim'
+Plug 'yggdroot/indentLine'
+call plug#end()
 
 " Language specific
 source ~/.vim/languages.vim
@@ -16,11 +26,13 @@ source ~/.vim/languages.vim
 " Style
 set background=dark
 set fillchars=eob: 
-hi TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
+set statusline=\ %F%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
+highlight TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
 highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight CursorLineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight EndOfBuffer cterm=none ctermfg=darkgrey ctermbg=black
 highlight VertSplit cterm=none ctermfg=darkgrey ctermbg=darkgrey
+highlight StatusLine cterm=none ctermfg=black ctermbg=white
 highlight StatusLineNC cterm=none ctermfg=white ctermbg=darkgrey
 highlight DiffAdd cterm=none ctermfg=black ctermbg=green
 highlight DiffDelete cterm=none ctermfg=red ctermbg=red
@@ -31,44 +43,32 @@ highlight CocWarningFloat cterm=none ctermfg=yellow
 highlight EndOfBuffer ctermfg=none ctermbg=none
 
 " Standard
-set encoding=UTF-8
-set ffs=unix,dos,mac
-set so=4
-set hidden
-set wildmenu
+set encoding=UTF-8 ffs=unix,dos,mac
 set ignorecase smartcase
-set lazyredraw
-set nobackup nowb noswapfile
-set expandtab smarttab shiftwidth=4 tabstop=4
-set ai si wrap
-set mouse=a
-set showbreak=►►►
-set shortmess+=aoOtI
-set diffopt+=vertical
+set nobackup nowritebackup noswapfile
 set number relativenumber
-set noro
-set list
-set noequalalways
-set nomagic
-set scl=no
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
+set hidden wildmenu lazyredraw list noro noequalalways nomagic
+set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
+set shortmess+=aoOtI
 
 " Easy life
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+nmap s ys
+vmap s S
 nnoremap <C-w>t :tabnew<CR>
 nnoremap <C-w><C-w> :e#<CR>
 nnoremap <C-q> :q<CR>
-nnoremap à @q
-xnoremap à :norm! @q<CR>
-nmap s ys
-vmap s S
 vnoremap v V
 nnoremap V ggVG
 nnoremap Y ggVGy
 nnoremap ' `
+nnoremap à @q
+xnoremap à :norm! @q<CR>
 nmap ç *Ncgn
 vmap ç *cgn
 nmap è ]m
@@ -121,6 +121,39 @@ command! Diffs :term tig status
 command! Diff :term git difftool --no-prompt %
 command! Merge :term git mergetool --no-prompt
 
+" Term
+tmap <C-a> <C-\><C-n>
+nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
+autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
+autocmd TermOpen * startinsert
+autocmd TermClose * call feedkeys("<CR>")
+
+" Coc
+let g:coc_disable_startup_warning = 1
+autocmd CursorHold * silent call CocActionAsync('highlight')
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <leader>f :call CocAction('format')<CR>
+xmap <leader>f <Plug>(coc-format-selected)
+nmap [g <Plug>(coc-diagnostic-prev)
+nmap ]g <Plug>(coc-diagnostic-next)
+nmap gd <Plug>(coc-definition)
+nmap gy <Plug>(coc-type-definition)
+nmap gi <Plug>(coc-implementation)
+nmap gr <Plug>(coc-references)
+nnoremap K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
 " EasyMotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
@@ -154,13 +187,4 @@ command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
 cnoreabbrev c C
 command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
 cnoreabbrev f F
-
-" Term
-if has("nvim")
-    tmap <C-a> <C-\><C-n>
-    nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
-    autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
-    autocmd TermOpen * startinsert
-    autocmd TermClose * call feedkeys("<CR>")
-endif
 

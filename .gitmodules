@@ -4,3 +4,6 @@
 [submodule "zsh/.zsh/plugins/zsh-system-clipboard"]
 	path = zsh/.zsh/plugins/zsh-system-clipboard
 	url = https://github.com/kutsan/zsh-system-clipboard
+[submodule "vifm/.vifm/vifm_devicons"]
+	path = vifm/.vifm/vifm_devicons
+	url = https://github.com/cirala/vifm_devicons

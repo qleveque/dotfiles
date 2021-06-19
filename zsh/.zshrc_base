@@ -31,6 +31,11 @@ run(){
     esac
 }
 
+# Open function
+open(){
+    xdg-open $1 &
+}
+
 # Tmux
 [ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 
@@ -38,7 +43,6 @@ run(){
 alias c='source c'
 alias vim='nvim'
 alias ls='ls --color=auto'
-alias open='xdg-open'
 alias telnet='telnet -e ^C'
 alias fd='fd -I --hidden'
 alias rg='rg --smart-case'
@@ -89,6 +93,7 @@ vifm-only-choose-dir()
     fi
     cd "$dst"
     zle reset-prompt
+    zle vim-mode-set-cursor-style(DEFAULT)
     return 0
 }
 zle -N wvf vifm-only-choose-dir
@@ -107,3 +112,4 @@ exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^Q' exit_zsh
 bindkey -M vicmd '^Q' exit_zsh
+
