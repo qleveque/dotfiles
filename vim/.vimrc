@@ -4,7 +4,6 @@ Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
 Plug 'gcavallanti/vim-noscrollbar'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -37,7 +36,7 @@ highlight StatusLineNC cterm=none ctermfg=white ctermbg=darkgrey
 highlight DiffAdd cterm=none ctermfg=black ctermbg=green
 highlight DiffDelete cterm=none ctermfg=red ctermbg=red
 highlight DiffChange cterm=none ctermfg=black ctermbg=blue
-highlight DiffText cterm=none ctermfg=black ctermbg=darkred
+highlight DiffText cterm=none ctermfg=black ctermbg=darkblue
 highlight CocErrorFloat cterm=none ctermfg=black
 highlight CocWarningFloat cterm=none ctermfg=yellow
 highlight EndOfBuffer ctermfg=none ctermbg=none
@@ -51,6 +50,8 @@ set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
 set hidden wildmenu lazyredraw list noro noequalalways nomagic
 set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
 set shortmess+=aoOtI
+set autoread
+au FocusGained,BufEnter * :checktime
 
 " Easy life
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -58,11 +59,13 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-nmap s ys
-vmap s S
+noremap <C-y> 5<C-y>
+noremap <C-e> 5<C-e>
 nnoremap <C-w>t :tabnew<CR>
 nnoremap <C-w><C-w> :e#<CR>
 nnoremap <C-q> :q<CR>
+nmap s ys
+vmap s S
 vnoremap v V
 nnoremap V ggVG
 nnoremap Y ggVGy
@@ -176,7 +179,8 @@ nnoremap <leader>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>nohl<CR>
 map ga <Plug>(EasyAlign)
 
 " Emmet
-imap <S-tab> <C-y>,
+let g:user_emmet_leader_key='<C-Z>'
+imap <S-tab> <C-Z>,
 
 " Tmux integration
 nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
