@@ -50,8 +50,6 @@ set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
 set hidden wildmenu lazyredraw list noro noequalalways nomagic
 set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
 set shortmess+=aoOtI
-set autoread
-au FocusGained,BufEnter * :checktime
 
 " Easy life
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -98,8 +96,8 @@ xnoremap P p
 set incsearch nohlsearch
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
-nnoremap ]x /\v^[<>\|=]{7}[ \n]<CR>
-nnoremap [x ?\v^[<>\|=]{7}[ \n]<CR>
+nnoremap ]x /\v^[(<{7})(>{7})(\|{7})(={7})][ \n]<CR>
+nnoremap [x ?\v^[(<{7})(>{7})(\|{7})(={7})][ \n]<CR>
 
 " Persistent undo
 set undodir=~/.vim/undodir

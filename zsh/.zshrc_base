@@ -33,7 +33,7 @@ run(){
 
 # Open function
 open(){
-    xdg-open $1 &
+    xdg-open $1 1>/dev/null 2>/dev/null &
 }
 
 # Tmux
@@ -93,7 +93,7 @@ vifm-only-choose-dir()
     fi
     cd "$dst"
     zle reset-prompt
-    zle vim-mode-set-cursor-style(DEFAULT)
+    vim-mode-set-cursor-style viins
     return 0
 }
 zle -N wvf vifm-only-choose-dir
