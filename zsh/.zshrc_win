@@ -14,7 +14,9 @@ unset leaf
 unset com
 unset repl
 
-alias cmd='cmd.exe /C'
+cmd(){
+    cmd.exe /C $@
+}
 
 unset -f open
 open(){

@@ -10,6 +10,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -23,33 +24,18 @@ call plug#end()
 source ~/.vim/languages.vim
 
 " Style
-set background=dark
-set fillchars=eob: 
-set statusline=\ %F%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
-highlight TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
-highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey
-highlight CursorLineNr cterm=none ctermfg=white ctermbg=darkgrey
-highlight EndOfBuffer cterm=none ctermfg=darkgrey ctermbg=black
-highlight VertSplit cterm=none ctermfg=darkgrey ctermbg=darkgrey
-highlight StatusLine cterm=none ctermfg=black ctermbg=white
-highlight StatusLineNC cterm=none ctermfg=white ctermbg=darkgrey
-highlight DiffAdd cterm=none ctermfg=black ctermbg=green
-highlight DiffDelete cterm=none ctermfg=red ctermbg=red
-highlight DiffChange cterm=none ctermfg=black ctermbg=blue
-highlight DiffText cterm=none ctermfg=black ctermbg=darkblue
-highlight CocErrorFloat cterm=none ctermfg=black
-highlight CocWarningFloat cterm=none ctermfg=yellow
-highlight EndOfBuffer ctermfg=none ctermbg=none
+source ~/.vim/style.vim
 
 " Standard
 set encoding=UTF-8 ffs=unix,dos,mac
-set ignorecase smartcase
 set nobackup nowritebackup noswapfile
 set number relativenumber
 set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
 set hidden wildmenu lazyredraw list noro noequalalways nomagic
 set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
 set shortmess+=aoOtI
+set undodir=~/.vim/undodir
+set undofile
 
 " Easy life
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -66,7 +52,6 @@ nmap s ys
 vmap s S
 vnoremap v V
 nnoremap V ggVG
-nnoremap Y ggVGy
 nnoremap ' `
 nnoremap à @q
 xnoremap à :norm! @q<CR>
@@ -81,27 +66,18 @@ inoremap <C-V> <C-R>+
 nnoremap D "_d
 xnoremap D "_d
 nnoremap DD "_dd
-nnoremap C c
-xnoremap C c
-nnoremap CC cc
-nnoremap c "_c
-xnoremap c "_c
-nnoremap cc "_cc
-nnoremap x "_x
-nnoremap X x
-xnoremap p "_c<C-R>+<Esc>
-xnoremap P p
+nnoremap C "_c
+xnoremap C "_c
+nnoremap CC "_cc
+nnoremap X "_x
+xnoremap P "_c<C-R>+<Esc>
 
 " Search
 set incsearch nohlsearch
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
-nnoremap ]x /\v^[(<{7})(>{7})(\|{7})(={7})][ \n]<CR>
-nnoremap [x ?\v^[(<{7})(>{7})(\|{7})(={7})][ \n]<CR>
-
-" Persistent undo
-set undodir=~/.vim/undodir
-set undofile
+nnoremap ]x /\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
+nnoremap [x ?\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
 
 " Shortcuts
 nnoremap <C-s> :CocSearch<Space>

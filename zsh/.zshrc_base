@@ -25,6 +25,7 @@ run(){
         c) gcc $@ && ./a.out;;
         rs) rustc $@ -o a.out && ./a.out;;
         kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
+        java) javac $@ && java -cp . $(echo "$@" | cut -f 1 -d '.');;
         go) go run $@;;
         sh|bash|zsh) zsh $@;;
         *) echo "Nothing to do";;
