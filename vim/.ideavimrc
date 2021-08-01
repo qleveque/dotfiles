@@ -24,18 +24,8 @@ nnoremap \b :action ToggleLineBreakpoint<CR>
 nnoremap \B :action ViewBreakpoints<CR>
 nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
+nnoremap \h :action TypeHierarchy<CR>
+nnoremap \a :action ActivateAntToolWindow<CR>
 
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-i> :action Forward<CR>
 nnoremap <F9> :action Resume<CR>
 nnoremap gd gd
-
-nnoremap [[ ?\v\<class\s<CR>
-nnoremap ]] /\v\<class\s<CR>
-nnoremap [m ?\v\<def\s<CR>
-nnoremap ]m /\v\<def\s<CR>
-vnoremap [[ ?\v\<class\s<CR>
-vnoremap ]] /\v\<class\s<CR>
-vnoremap [m ?\v\<def\s<CR>
-vnoremap ]m /\v\<def\s<CR>
-

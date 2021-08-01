@@ -50,15 +50,17 @@ nnoremap <C-w><C-w> :e#<CR>
 nnoremap <C-q> :q<CR>
 nmap s ys
 vmap s S
-vnoremap v V
+nnoremap S f,a<CR><Esc>
+nnoremap vv V
 nnoremap V ggVG
 nnoremap ' `
 nnoremap à @q
 xnoremap à :norm! @q<CR>
-nmap ç *Ncgn
-vmap ç *cgn
-nmap è ]m
-nmap é [m
+nnoremap Q qq^
+nmap ç *NCgn
+vmap ç *Cgn
+nmap Ç #NCgn
+vmap Ç #Cgn
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -71,6 +73,14 @@ xnoremap C "_c
 nnoremap CC "_cc
 nnoremap X "_x
 xnoremap P "_c<C-R>+<Esc>
+
+" More text objects
+for s:char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '$' ]
+  execute 'xnoremap i' . s:char . ' :<C-u>normal! T' . s:char . 'vt' . s:char . '<CR>'
+  execute 'onoremap i' . s:char . ' :normal vi' . s:char . '<CR>'
+  execute 'xnoremap a' . s:char . ' :<C-u>normal! F' . s:char . 'vt' . s:char . '<CR>'
+  execute 'onoremap a' . s:char . ' :normal va' . s:char . '<CR>'
+endfor
 
 " Search
 set incsearch nohlsearch

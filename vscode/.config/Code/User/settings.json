@@ -11,6 +11,12 @@
             ]
         }
     ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<space>"],
+            "after": ["<leader>", "<leader>", "2", "t"]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<C-t>"],
@@ -43,7 +49,7 @@
             ]
         },
         {
-            "before": ["<C-w>", "w"],
+            "before": ["<C-w>", "<C-w>"],
             "commands": [
                 "workbench.action.openRecent"
             ]
@@ -73,6 +79,12 @@
             ]
         }
     ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<space>"],
+            "after": ["<leader>", "<leader>", "2", "s"]
+        }
+    ],
     "terminal.integrated.shell.linux": "/bin/sh",
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "~/.vimrc",
@@ -85,5 +97,13 @@
     "editor.lineNumbers": "relative",
     "workbench.colorTheme": "Visual Studio 2019 Dark",
     "C_Cpp.clang_format_sortIncludes": true,
-    "extensions.ignoreRecommendations": false
+    "extensions.ignoreRecommendations": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "vim.easymotion": true
 }
