@@ -15,7 +15,6 @@ command! Merge action Git.ResolveConflicts
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
-nnoremap \f :action ShowReformatFileDialog<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \rn :action RenameElement<CR>

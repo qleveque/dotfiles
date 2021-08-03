@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'vifm/vifm.vim'
 Plug 'yggdroot/indentLine'
+Plug 'vim-scripts/argtextobj.vim'
 call plug#end()
 
 " Language specific
@@ -31,7 +32,7 @@ set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile
 set number relativenumber
 set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
-set hidden wildmenu lazyredraw list noro noequalalways nomagic
+set hidden wildmenu lazyredraw list noro noequalalways nomagic gdefault
 set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
 set shortmess+=aoOtI
 set undodir=~/.vim/undodir
@@ -43,11 +44,11 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-noremap <C-y> 5<C-y>
-noremap <C-e> 5<C-e>
-nnoremap <C-w>t :tabnew<CR>
-nnoremap <C-w><C-w> :e#<CR>
-nnoremap <C-q> :q<CR>
+noremap <C-Y> 5<C-Y>
+noremap <C-E> 5<C-E>
+nnoremap <C-W>t :tabnew<CR>
+nnoremap <C-W><C-W> :e#<CR>
+nnoremap <C-Q> :q<CR>
 nmap s ys
 vmap s S
 nnoremap S f,a<CR><Esc>
@@ -57,10 +58,11 @@ nnoremap ' `
 nnoremap à @q
 xnoremap à :norm! @q<CR>
 nnoremap Q qq^
-nmap ç *NCgn
-vmap ç *Cgn
-nmap Ç #NCgn
-vmap Ç #Cgn
+nnoremap U <C-R>
+nmap ç #NCgn
+vmap ç #Cgn
+nmap Ç #NCgN
+vmap Ç #CgN
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -90,7 +92,7 @@ nnoremap ]x /\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
 nnoremap [x ?\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
 
 " Shortcuts
-nnoremap <C-s> :CocSearch<Space>
+nnoremap <C-s> :Rg<Space>
 nnoremap <C-n> :CocList -I symbols<CR>
 nnoremap <C-f> :vert 50 Vifm %:p:h .<CR>
 nnoremap <C-t> :Files<CR>
@@ -122,7 +124,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
-nmap <leader>f :call CocAction('format')<CR>
 xmap <leader>f <Plug>(coc-format-selected)
 nmap [g <Plug>(coc-diagnostic-prev)
 nmap ]g <Plug>(coc-diagnostic-next)
@@ -140,6 +141,7 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+nmap <leader>f vv<leader>f
 
 " EasyMotion
 let g:EasyMotion_do_mapping = 0
