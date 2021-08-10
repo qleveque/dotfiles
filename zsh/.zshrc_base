@@ -1,3 +1,4 @@
+export DISPLAY=:0.0
 export TERMINAL='gnome-terminal'
 export LANG=en_US.UTF-8
 
@@ -36,9 +37,6 @@ run(){
 open(){
     xdg-open $1 1>/dev/null 2>/dev/null &
 }
-
-# Tmux
-[ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}
 
 # Aliases
 alias c='source c'
@@ -107,10 +105,10 @@ export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
 export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Exit
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^Q' exit_zsh
 bindkey -M vicmd '^Q' exit_zsh
-
