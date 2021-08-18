@@ -5,7 +5,7 @@ cd ~
 apt-get update -y
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-apt-get install -y stow cmake vifm zsh tmux fzf neovim xclip nodejs fontconfig
+apt-get install -y stow cmake vifm zsh tmux fzf neovim xclip nodejs fontconfig default-jdk
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh
@@ -24,8 +24,3 @@ fc-cache -fv
 curl -s https://get.sdkman.io | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install kotlin
-# Kotlin LSP
-git clone https://github.com/fwcd/kotlin-language-server ~/.kotlin-language-server
-cd ~/.kotlin-language-server
-./gradlew server:build
-cd ~

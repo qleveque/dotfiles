@@ -17,8 +17,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'vifm/vifm.vim'
-Plug 'yggdroot/indentLine'
 Plug 'vim-scripts/argtextobj.vim'
+Plug 'yggdroot/indentLine'
 call plug#end()
 
 " Language specific
@@ -59,6 +59,7 @@ nnoremap à @q
 xnoremap à :norm! @q<CR>
 nnoremap Q qq^
 nnoremap U <C-R>
+nnoremap <C-R> :e!<CR>
 nmap ç #NCgn
 vmap ç #Cgn
 nmap Ç #NCgN
@@ -67,6 +68,7 @@ vmap Ç #CgN
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
 inoremap <C-V> <C-R>+
+cnoremap <C-V> <C-R>+
 nnoremap D "_d
 xnoremap D "_d
 nnoremap DD "_dd
@@ -85,7 +87,7 @@ for s:char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%'
 endfor
 
 " Search
-set incsearch nohlsearch
+set incsearch nohlsearch smartcase ignorecase
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
 nnoremap ]x /\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
@@ -112,7 +114,7 @@ command! Merge :term git mergetool --no-prompt
 
 " Term
 tmap <C-a> <C-\><C-n>
-nnoremap <F9> :w! <Bar> let CP=expand('%:p') <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
+nnoremap <S-F9> :w! <Bar> let CP=fnamemodify(expand("%"), ":~:.") <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
 autocmd TermOpen * startinsert
 autocmd TermClose * call feedkeys("<CR>")
