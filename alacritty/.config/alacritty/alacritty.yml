@@ -10,8 +10,8 @@ font:
         family: InconsolataGo NF
 
 key_bindings:
-    - { key: Down, mods: Control, action: DecreaseFontSize }
-    - { key: Up, mods: Control, action: IncreaseFontSize }
+    - { key: Down, mods: Control|Shift, action: DecreaseFontSize }
+    - { key: Up, mods: Control|Shift, action: IncreaseFontSize }
     - { key: F, mods: Alt, action: ToggleFullscreen }
     - { key: Return, mods: Alt, action: None }
 

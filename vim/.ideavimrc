@@ -5,26 +5,40 @@ nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-p> :action RecentFiles<CR>
 
-command! Blame action Annotate
-command! Diff action Compare.LastVersion
-command! Diffs action Vcs.Show.Local.Changes
-command! Log action Vcs.ShowTabbedFileHistory
-command! Logs action Vcs.Show.Log
-command! Merge action Git.ResolveConflicts
+nnoremap \b :action Annotate<CR>
+nnoremap \d :action Compare.LastVersion<CR>
+nnoremap \D :action Vcs.Show.Local.Changes<CR>
+nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap \L :action Vcs.Show.Log<CR>
+nnoremap \m :action Git.ResolveConflicts<CR>
 
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gd gd
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
-nnoremap \rn :action RenameElement<CR>
+nnoremap \r :action RenameElement<CR>
 nnoremap \t :action FileStructurePopup<CR>
-nnoremap \b :action ToggleLineBreakpoint<CR>
-nnoremap \B :action ViewBreakpoints<CR>
 nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 nnoremap \a :action ActivateAntToolWindow<CR>
 
-nnoremap <F9> :action Resume<CR>
-nnoremap gd gd
+nmap è :action Run<CR>
+nmap È :action ChooseRunConfiguration<CR>
+nmap éé :action Debug<CR>
+nmap ÉÉ :action ChooseDebugConfiguration<CR>
+nmap ér :action Resume<CR>
+nmap él :action StepIntoMyCode<CR>
+nmap éh :action StepOut<CR>
+nmap éj :action StepOver<CR>
+nmap éc :action RunToCursor<CR>
+nmap ék :action Stop<CR>
+nmap éb :action ToggleLineBreakpoint<CR>
+nmap éB :action ViewBreakpoints<CR>
+nmap én :action NextOccurence<CR>
+nmap ép :action PreviousOccurence<CR>
+nmap édb :action Debugger.RemoveAllBreakpoints<CR>
+nmap éw :action Debugger.AddToWatch<CR>
+vmap éw :action Debugger.AddToWatch<CR>

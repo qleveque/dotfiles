@@ -15,6 +15,7 @@ bind generic ]d :/^diff\s--git\s
 bind generic [d :?^diff\s--git\s
 bind generic ]@ :/^@@
 bind generic [@ :?^@@
+bind generic gg :0
 
 bind generic f :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind generic F :?\|\s+(0|[0-9]+\s[\+-]+)$
@@ -51,4 +52,3 @@ bind generic vh view-help
 
 # Don't show staged and unstaged changes in the main view
 set show-changes = no
-

@@ -31,6 +31,18 @@
             ]
         },
         {
+            "before": ["<C-f>"],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": ["<C-p>"],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
             "before": ["g", "d"],
             "commands": [
                 "editor.action.revealDeclaration"
@@ -49,18 +61,6 @@
             ]
         },
         {
-            "before": ["<C-w>", "<C-w>"],
-            "commands": [
-                "workbench.action.openRecent"
-            ]
-        },
-        {
-            "before": ["<C-f>"],
-            "commands": [
-                "workbench.view.explorer"
-            ]
-        },
-        {
             "before": ["<leader>", "i"],
             "commands": [
                 "editor.action.organizeImports"
@@ -73,9 +73,75 @@
             ]
         },
         {
-            "before": ["<leader>", "r", "n"],
+            "before": ["<leader>", "r"],
             "commands": [
                 "editor.action.rename"
+            ]
+        },
+        {
+            "before": ["è"],
+            "commands": [
+                "workbench.action.tasks.build"
+            ]
+        },
+        {
+            "before": ["é", "é"],
+            "commands": [
+                "workbench.action.debug.start"
+            ]
+        },
+        {
+            "before": ["É", "É"],
+            "commands": [
+                "workbench.action.debug.selectandstart"
+            ]
+        },
+        {
+            "before": ["é", "r"],
+            "commands": [
+                "workbench.action.debug.continue"
+            ]
+        },
+        {
+            "before": ["é", "l"],
+            "commands": [
+                "workbench.action.debug.stepInto"
+            ]
+        },
+        {
+            "before": ["é", "h"],
+            "commands": [
+                "workbench.action.debug.stepOut"
+            ]
+        },
+        {
+            "before": ["é", "j"],
+            "commands": [
+                "workbench.action.debug.stepOver"
+            ]
+        },
+        {
+            "before": ["é", "b"],
+            "commands": [
+                "editor.debug.action.toggleBreakpoint"
+            ]
+        },
+        {
+            "before": ["é", "c"],
+            "commands": [
+                "editor.debug.action.runToCursor"
+            ]
+        },
+        {
+            "before": ["é", "k"],
+            "commands": [
+                "workbench.action.debug.stop"
+            ]
+        },
+        {
+            "before": ["é", "w"],
+            "commands": [
+                "workbench.debug.viewlet.action.addWatchExpression"
             ]
         }
     ],
@@ -95,7 +161,7 @@
     "workbench.editor.limit.perEditorGroup": true,
     "workbench.editor.limit.enabled": true,
     "editor.lineNumbers": "relative",
-    "workbench.colorTheme": "Visual Studio 2019 Dark",
+    "workbench.colorTheme": "Default Dark+",
     "C_Cpp.clang_format_sortIncludes": true,
     "extensions.ignoreRecommendations": false,
     "workbench.editorAssociations": {

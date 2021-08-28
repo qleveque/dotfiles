@@ -1,6 +1,9 @@
-export DISPLAY=:0.0
+if grep -q Microsoft /proc/version; then
+    export DISPLAY=:0.0
+fi
 export TERMINAL='gnome-terminal'
 export LANG=en_US.UTF-8
+export SHELL='/usr/bin/zsh'
 
 # Completion colors
 zstyle ':completion:::*:default' menu yes select
@@ -48,12 +51,15 @@ alias rg='rg --smart-case'
 alias meteo='curl wttr.in/lausanne'
 alias parrot='curl parrot.live'
 
+alias gs='git status'
 alias gsu='git status -uno'
+alias ga='git add'
 alias gau='git add -u'
-alias gcan='git commit --amend --no-edit'
+alias gw='git switch'
+alias gr='git restore'
+alias grs='git restore --staged'
 alias gca='git commit --amend'
-alias grd='git review -d'
-alias grlc='git rev-list --count'
+alias gcan='git commit --amend --no-edit'
 alias gcp='git cherry-pick'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
@@ -61,9 +67,8 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gri='git rebase -i'
 alias gg='git graph -n15'
-alias gs='git switch'
-alias gr='git restore'
-alias grs='git restore --staged'
+alias grlc='git rev-list --count'
+alias gdt='git diff-tree -r'
 
 # Zsh vim mode
 MODE_INDICATOR=""

@@ -12,6 +12,7 @@ Plug 'mattn/emmet-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'puremourning/vimspector'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -37,6 +38,7 @@ set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
 set shortmess+=aoOtI
 set undodir=~/.vim/undodir
 set undofile
+" set signcolumn=number
 
 " Easy life
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -57,7 +59,6 @@ nnoremap V ggVG
 nnoremap ' `
 nnoremap à @q
 xnoremap à :norm! @q<CR>
-nnoremap Q qq^
 nnoremap U <C-R>
 nnoremap <C-R> :e!<CR>
 nmap ç #NCgn
@@ -105,18 +106,17 @@ vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
-command! Blame :execute "term tig blame +" . line(".") . " %"
-command! Logs :term tig
-command! Log :term tig %
-command! Diffs :term tig status
-command! Diff :term git difftool --no-prompt %
-command! Merge :term git mergetool --no-prompt
+nnoremap <leader>b :execute "term tig blame +" . line(".") . " %" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>l :execute "term tig" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>L :execute "term tig %" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>d :execute "term git difftool --no-prompt %" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>D :execute "term tig status" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>m :execute "term git mergetool --no-prompt" <Bar> exec ':norm! i'<CR>
 
 " Term
 tmap <C-a> <C-\><C-n>
-nnoremap <S-F9> :w! <Bar> let CP=fnamemodify(expand("%"), ":~:.") <Bar> bo 15 new <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'<CR>
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
-autocmd TermOpen * startinsert
+" autocmd TermOpen * startinsert
 autocmd TermClose * call feedkeys("<CR>")
 
 " Coc
@@ -124,7 +124,7 @@ let g:coc_disable_startup_warning = 1
 autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>r <Plug>(coc-rename)
 nmap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 xmap <leader>f <Plug>(coc-format-selected)
 nmap [g <Plug>(coc-diagnostic-prev)
@@ -145,25 +145,11 @@ function! s:show_documentation()
 endfunction
 nmap <leader>f vv<leader>f
 
-" EasyMotion
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-
-" Vifm
-let g:vifm_exec_args = '-c :only'
-let g:vifm_embed_split = 1
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-let g:vifm_replace_netrw = 1
-
 " Vista
-let g:vista_default_executive = 'coc'
-let g:vista_close_on_jump = 1
-let g:vista_ignore_kinds = ['Variable']
 nnoremap <leader>t :Vista show<CR>
 
 " Spaces
-nnoremap <leader>s :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>nohl<CR>
+autocmd BufWritePre * :%s/\s\+$//e
 map ga <Plug>(EasyAlign)
 
 " Emmet
@@ -180,3 +166,35 @@ cnoreabbrev c C
 command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
 cnoreabbrev f F
 
+" Vimspector
+nmap è :w!
+    \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
+    \ <Bar> bo 15 new
+    \ <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'
+    \ <Bar> exec ':norm! i'<CR>
+nmap éé <Plug>VimspectorContinue
+nmap ér <Plug>VimspectorContinue
+nmap él <Plug>VimspectorStepInto
+nmap éh <Plug>VimspectorStepOut
+nmap éj <Plug>VimspectorStepOver
+nmap éb <Plug>VimspectorToggleBreakpoint
+nmap éc <Plug>VimspectorRunToCursor
+nmap én <Plug>VimspectorUpFrame
+nmap ép <Plug>VimspectorDownFrame
+nmap ék :VimspectorReset<CR>
+nmap éw :VimspectorWatch<Space>
+vmap éw "xy:VimspectorWatch <C-R>+<CR>
+nmap és <Plug>VimspectorBalloonEval
+xmap és <Plug>VimspectorBalloonEval
+
+" Plugin specific
+let g:vifm_exec_args = '-c :only'
+let g:vifm_embed_split = 1
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+let g:vifm_replace_netrw = 1
+let g:vista_default_executive = 'coc'
+let g:vista_close_on_jump = 1
+let g:vista_ignore_kinds = ['Variable']
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1

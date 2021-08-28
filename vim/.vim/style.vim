@@ -1,5 +1,5 @@
-set background=dark
 set fillchars=eob: 
+set background=dark
 set statusline=\ %F%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
 highlight TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
 highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey

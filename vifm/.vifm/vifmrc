@@ -39,6 +39,7 @@ nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
+nnoremap zc zm
 
 " Pyqo
 command! c :execute 'cd "'.system('d %a -e').'"'
@@ -56,7 +57,6 @@ nnoremap <C-q> :q<CR>
 
 " Xdg-open
 nnoremap <CR> :!/bin/zsh -i -c "open %f"<CR>
-nnoremap zc zm
 
 " Tmux integration
 nnoremap <C-b>s :!tmux split-window -v -c %d<CR>
@@ -65,3 +65,7 @@ nnoremap <C-b>v :!tmux split-window -h -c %d<CR>
 " Icons
 source ~/.vifm/vifm_devicons/favicons.vifm
 
+" Decompression
+command! unzip :!unzip %f
+command! gunzip :!gunzip %f
+command! tar :!tar -xvf %f
