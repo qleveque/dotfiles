@@ -34,7 +34,7 @@ set nobackup nowritebackup noswapfile
 set number relativenumber
 set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
 set hidden wildmenu lazyredraw list noro noequalalways nomagic gdefault
-set so=4 mouse=a showbreak= diffopt+=vertical scl=no updatetime=300
+set so=4 mouse=a showbreak= diffopt+=vertical signcolumn=no updatetime=300
 set shortmess+=aoOtI
 set undodir=~/.vim/undodir
 set undofile
@@ -115,8 +115,7 @@ nnoremap <leader>m :execute "term git mergetool --no-prompt" <Bar> exec ':norm! 
 
 " Term
 tmap <C-a> <C-\><C-n>
-autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
-" autocmd TermOpen * startinsert
+autocmd TermOpen * setlocal nonumber norelativenumber noshowmode noshowcmd
 autocmd TermClose * call feedkeys("<CR>")
 
 " Coc
