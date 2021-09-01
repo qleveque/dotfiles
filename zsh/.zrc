@@ -1,23 +1,9 @@
-if grep -q Microsoft /proc/version; then
-    export DISPLAY=:0.0
-fi
-export TERMINAL='gnome-terminal'
+# Miscellaneous
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
-
-# Completion colors
 zstyle ':completion:::*:default' menu yes select
-
-# Deactivate flow control
+setopt +o nomatch
 stty -ixon
-
-# Kotlin
-if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
-
-# Rust
-export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
 
 # Run all program files
 run(){
@@ -37,9 +23,18 @@ run(){
 }
 
 # Open function
-open(){
-    xdg-open $1 1>/dev/null 2>/dev/null &
-}
+if grep -q Microsoft /proc/version; then
+    open(){
+        if [[ -n "$@" ]]
+        then
+            /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
+        fi
+    }
+else
+    open(){
+        xdg-open $1 1>/dev/null 2>/dev/null &
+    }
+fi
 
 # Aliases
 alias c='source c'
@@ -73,10 +68,8 @@ alias gdt='git diff-tree -r'
 # Zsh vim mode
 MODE_INDICATOR=""
 KEYTIMEOUT=20
-
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
 MODE_CURSOR_VIINS="#00ff00 blinking bar"
@@ -108,12 +101,26 @@ export FZF_DEFAULT_COMMAND="fd -I --hidden"
 export FZF_CTRL_T_COMMAND="fd -I --hidden"
 export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
 export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Exit
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^Q' exit_zsh
 bindkey -M vicmd '^Q' exit_zsh
+
+# Windows
+if grep -q Microsoft /proc/version; then
+    export DISPLAY=:0.0
+    cmd(){
+        cmd.exe /C $@
+    }
+    for filename in ~/bin/*.bat; do
+        leaf=$(basename $filename)
+        com=${leaf%.*}
+        repl="cmd.exe /C %HOME%/bin/${com}.bat"
+        alias "$com=$repl"
+    done
+    unset leaf; unset com; unset repl
+fi

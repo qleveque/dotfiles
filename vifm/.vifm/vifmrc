@@ -55,7 +55,7 @@ nnoremap <A-c> :Cd<cr>
 command! q :execute 'winc t' | quit
 nnoremap <C-q> :q<CR>
 
-" Xdg-open
+" Open
 nnoremap <CR> :!/bin/zsh -i -c "open %f"<CR>
 
 " Tmux integration

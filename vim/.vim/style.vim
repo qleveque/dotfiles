@@ -5,9 +5,9 @@ highlight TabLineFill cterm=none ctermfg=darkgrey ctermbg=darkgrey
 highlight LineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight CursorLineNr cterm=none ctermfg=white ctermbg=darkgrey
 highlight EndOfBuffer cterm=none ctermfg=darkgrey ctermbg=black
-highlight VertSplit cterm=none ctermfg=darkgrey ctermbg=darkgrey
-highlight StatusLine cterm=none ctermfg=black ctermbg=white
-highlight StatusLineNC cterm=none ctermfg=white ctermbg=darkgrey
+highlight VertSplit cterm=none ctermfg=white ctermbg=none
+highlight StatusLine cterm=bold ctermfg=white ctermbg=darkblue
+highlight StatusLineNC cterm=bold ctermfg=white ctermbg=darkblue
 highlight DiffAdd cterm=none ctermfg=black ctermbg=green
 highlight DiffDelete cterm=none ctermfg=red ctermbg=red
 highlight DiffChange cterm=none ctermfg=black ctermbg=blue

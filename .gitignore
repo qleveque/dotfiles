@@ -1,4 +1,6 @@
 vifm/.vifm/vifminfo
 vim/.vim/undodir/
 vim/.vim/plugged/
-
+vifm/.vifm/scripts/
+vifm/.vifm/vifm-help.txt
+vifm/.vifm/vifminfo.json
