@@ -15,47 +15,31 @@ key_bindings:
     - { key: F, mods: Alt, action: ToggleFullscreen }
     - { key: Return, mods: Alt, action: None }
 
-# KDE Breeze (Ported from Konsole)
+# Colors (Ubuntu)
 colors:
   # Default colors
   primary:
-    background: '0x232627'
-    foreground: '0xfcfcfc'
-
-    dim_foreground: '0xeff0f1'
-    bright_foreground: '0xffffff'
-    dim_background: '0x31363b'
-    bright_background: '0x000000'
+    background: '#300a24'
+    foreground: '#eeeeec'
 
   # Normal colors
   normal:
-    black: '0x232627'
-    red: '0xed1515'
-    green: '0x11d116'
-    yellow: '0xf67400'
-    blue: '0x1d99f3'
-    magenta: '0x9b59b6'
-    cyan: '0x1abc9c'
-    white: '0xfcfcfc'
+    black:   '#2e3436'
+    red:     '#cc0000'
+    green:   '#4e9a06'
+    yellow:  '#c4a000'
+    blue:    '#3465a4'
+    magenta: '#75507b'
+    cyan:    '#06989a'
+    white:   '#d3d7cf'
 
   # Bright colors
   bright:
-    black: '0x7f8c8d'
-    red: '0xc0392b'
-    green: '0x1cdc9a'
-    yellow: '0xfdbc4b'
-    blue: '0x3daee9'
-    magenta: '0x8e44ad'
-    cyan: '0x16a085'
-    white: '0xffffff'
-
-  # Dim colors
-  dim:
-    black: '0x31363b'
-    red: '0x783228'
-    green: '0x17a262'
-    yellow: '0xb65619'
-    blue: '0x1b668f'
-    magenta: '0x614a73'
-    cyan: '0x186c60'
-    white: '0x63686d'
+    black:   '#555753'
+    red:     '#ef2929'
+    green:   '#8ae234'
+    yellow:  '#fce94f'
+    blue:    '#729fcf'
+    magenta: '#ad7fa8'
+    cyan:    '#34e2e2'
+    white:   '#eeeeec'

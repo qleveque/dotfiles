@@ -1,9 +1,11 @@
 # Miscellaneous
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
+export EDITOR='/usr/bin/nvim'
 zstyle ':completion:::*:default' menu yes select
 setopt +o nomatch
 stty -ixon
+LS_COLORS=$LS_COLORS:'ow=37;42:'
 
 # Run all program files
 run(){
@@ -37,8 +39,9 @@ else
 fi
 
 # Aliases
-alias c='source c'
+alias e='nvim'
 alias vim='nvim'
+alias c='source c'
 alias ls='ls --color=auto'
 alias telnet='telnet -e ^C'
 alias fd='fd -I --hidden'

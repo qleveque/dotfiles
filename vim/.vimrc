@@ -49,6 +49,8 @@ map <C-l> <C-W>l
 noremap <C-Y> 5<C-Y>
 noremap <C-E> 5<C-E>
 nnoremap <C-W>t :tabnew<CR>
+nnoremap <C-W>n :bn<CR>
+nnoremap <C-W>p :bp<CR>
 nnoremap <C-W><C-W> :e#<CR>
 nnoremap <C-Q> :q<CR>
 nmap s ys
@@ -107,8 +109,8 @@ omap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
 nnoremap <leader>b :execute "term tig blame +" . line(".") . " %" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>l :execute "term tig" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>L :execute "term tig %" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>l :execute "term tig %" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>L :execute "term tig" <Bar> exec ':norm! i'<CR>
 nnoremap <leader>d :execute "term git difftool --no-prompt %" <Bar> exec ':norm! i'<CR>
 nnoremap <leader>D :execute "term tig status" <Bar> exec ':norm! i'<CR>
 nnoremap <leader>m :execute "term git mergetool --no-prompt" <Bar> exec ':norm! i'<CR>
@@ -116,7 +118,6 @@ nnoremap <leader>m :execute "term git mergetool --no-prompt" <Bar> exec ':norm! 
 " Term
 tmap <C-a> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
-" autocmd TermOpen * startinsert
 autocmd TermClose * call feedkeys("<CR>")
 
 " Coc
@@ -170,7 +171,7 @@ cnoreabbrev f F
 nmap è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
     \ <Bar> bo 15 new
-    \ <Bar> exec ':term zsh -ic "{run \"'.CP.'\"} always {read _\?\"[Done...]\"}"'
+    \ <Bar> exec ':term zsh -ic "{run '.CP.'} always {read _\?\"[Done...]\"}"'
     \ <Bar> exec ':norm! i'<CR>
 nmap éé <Plug>VimspectorContinue
 nmap ér <Plug>VimspectorContinue
