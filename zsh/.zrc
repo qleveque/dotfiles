@@ -68,6 +68,11 @@ alias gg='git graph -n15'
 alias grlc='git rev-list --count'
 alias gdt='git diff-tree -r'
 
+# Pyqo
+ef(){
+    nvim `f $1 -e`
+}
+
 # Zsh vim mode
 MODE_INDICATOR=""
 KEYTIMEOUT=20
