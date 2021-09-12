@@ -34,8 +34,8 @@ set confirm-=delete
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 nnoremap yp :execute '!echo -n %d | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
+nnoremap yF :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
+nnoremap yf :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
@@ -55,7 +55,7 @@ nnoremap <A-c> :Cd<cr>
 command! q :execute 'winc t' | quit
 nnoremap <C-q> :q<CR>
 
-" Xdg-open
+" Open
 nnoremap <CR> :!/bin/zsh -i -c "open %f"<CR>
 
 " Tmux integration

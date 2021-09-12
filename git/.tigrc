@@ -1,41 +1,44 @@
 # Generic
-bind generic l enter
-bind generic h back
-bind generic g  none
+bind generic g none
 bind generic y none
-bind generic yc !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
-bind generic yf !>zsh -c "echo %(file) | xclip -i -sel p -f | xclip -i -sel c"
 bind generic [ none
 bind generic ] none
-bind diff [ none
-bind diff ] none
-bind generic ]c :/^commit\s
-bind generic [c :?^commit\s
-bind generic ]d :/^diff\s--git\s
-bind generic [d :?^diff\s--git\s
-bind generic ]@ :/^@@
-bind generic [@ :?^@@
+bind generic v  none
+bind generic yc !>zsh -c "echo %(commit) | xclip -i -sel p -f | xclip -i -sel c"
+bind generic yf !>zsh -c "echo %(file) | xclip -i -sel p -f | xclip -i -sel c"
 bind generic gg :0
+bind generic ; back
+bind generic <C-q> :q
 
 bind generic f :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind generic F :?\|\s+(0|[0-9]+\s[\+-]+)$
+bind generic c :/^commit\s
+bind generic C :?^commit\s
+bind generic d :/^diff\s--git\s
+bind generic D :?^diff\s--git\s
+bind generic ]@ :/^@@
+bind generic [@ :?^@@
 
-bind generic <Enter> refresh
+# Options
 color search-result default blue
+set show-changes = no
+set log-options = --quiet
+set ignore-case = smart-case
+set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:yes,interval=1 text
 
-bind generic <C-q> :q
+# l remap
+bind log l enter
+bind main l enter
+bind diff l !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
+bind stage l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
+bind status l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 
-# Diffs
-bind diff d !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
-bind tree d !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
-bind main d !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(fileargs)
-bind log d enter
-
-bind stage d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
-bind status d !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
+# Diff
+bind diff z none
+bind diff zo :set file-filter = no
+bind diff zc :set file-filter = yes
 
 # Views
-bind generic v  none
 bind generic vm view-main
 bind generic vd view-diff
 bind generic vl view-log
@@ -49,6 +52,3 @@ bind generic vy view-stash
 bind generic vg view-grep
 bind generic vp view-pager
 bind generic vh view-help
-
-# Don't show staged and unstaged changes in the main view
-set show-changes = no

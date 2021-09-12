@@ -1,23 +1,17 @@
-if grep -q Microsoft /proc/version; then
-    export DISPLAY=:0.0
-fi
-export TERMINAL='gnome-terminal'
+# Base
+setopt histignorealldups sharehistory
+setopt +o nomatch
+stty -ixon
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+PROMPT='%B%K{black}%F{cyan}%S%T%s%f%k%b %B%F{blue}%3~%f%b %# '
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
-
-# Completion colors
-zstyle ':completion:::*:default' menu yes select
-
-# Deactivate flow control
-stty -ixon
-
-# Kotlin
-if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
-
-# Rust
-export PATH=$PATH:$HOME/.cargon/bin:$HOME/mybin
+export EDITOR='/usr/bin/nvim'
+export LESS='-ir'
+export LS_COLORS='ow=30;42'
 
 # Run all program files
 run(){
@@ -33,21 +27,32 @@ run(){
         go) go run $@;;
         sh|bash|zsh) zsh $@;;
         *) echo "Nothing to do";;
-    esac
+        esac
 }
 
 # Open function
+if grep -q Microsoft /proc/version; then
+open(){
+    if [[ -n "$@" ]]
+        then
+            /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
+            fi
+}
+else
 open(){
     xdg-open $1 1>/dev/null 2>/dev/null &
 }
+fi
 
 # Aliases
-alias c='source c'
+alias e='nvim'
 alias vim='nvim'
+alias c='source c'
 alias ls='ls --color=auto'
 alias telnet='telnet -e ^C'
 alias fd='fd -I --hidden'
 alias rg='rg --smart-case'
+alias q='qalc'
 alias meteo='curl wttr.in/lausanne'
 alias parrot='curl parrot.live'
 
@@ -70,13 +75,18 @@ alias gg='git graph -n15'
 alias grlc='git rev-list --count'
 alias gdt='git diff-tree -r'
 
+# Pyqo
+ef(){
+    nvim `f $1 -e`
+}
+
 # Zsh vim mode
 MODE_INDICATOR=""
 KEYTIMEOUT=20
-
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-
+source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+bindkey '^I' fzf_completion
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
 MODE_CURSOR_VIINS="#00ff00 blinking bar"
@@ -86,6 +96,12 @@ MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
+
+# Theme
+theme(){
+    sed -i "\$s/.*/colors: \\*$1/" ~/.config/alacritty/alacritty.yml
+    sed -i "1s/.*/set bg=$1/" ~/.vim/style.vim
+}
 
 # Vifm
 vifm-only-choose-dir()
@@ -108,12 +124,26 @@ export FZF_DEFAULT_COMMAND="fd -I --hidden"
 export FZF_CTRL_T_COMMAND="fd -I --hidden"
 export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
 export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Exit
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^Q' exit_zsh
 bindkey -M vicmd '^Q' exit_zsh
+
+# Windows
+if grep -q Microsoft /proc/version; then
+    export DISPLAY=:0.0
+    cmd(){
+        cmd.exe /C $@
+    }
+    for filename in ~/bin/*.bat; do
+        leaf=$(basename $filename)
+        com=${leaf%.*}
+        repl="cmd.exe /C %HOME%/bin/${com}.bat"
+        alias "$com=$repl"
+    done
+    unset leaf; unset com; unset repl
+fi
