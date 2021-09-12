@@ -1,11 +1,18 @@
-# Miscellaneous
+# Base
+setopt histignorealldups sharehistory
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+PROMPT='%K{white}%F{blue}%S%n%s%f%k %T %F{blue}%3~%f %# '
+
+setopt +o nomatch
+stty -ixon
+
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
-zstyle ':completion:::*:default' menu yes select
-setopt +o nomatch
-stty -ixon
-LS_COLORS=$LS_COLORS:'ow=37;42:'
+export LESS='-ir'
+export LS_COLORS=$'ow=37;42'
 
 # Run all program files
 run(){
@@ -21,21 +28,21 @@ run(){
         go) go run $@;;
         sh|bash|zsh) zsh $@;;
         *) echo "Nothing to do";;
-    esac
+        esac
 }
 
 # Open function
 if grep -q Microsoft /proc/version; then
-    open(){
-        if [[ -n "$@" ]]
+open(){
+    if [[ -n "$@" ]]
         then
             /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
-        fi
-    }
+            fi
+}
 else
-    open(){
-        xdg-open $1 1>/dev/null 2>/dev/null &
-    }
+open(){
+    xdg-open $1 1>/dev/null 2>/dev/null &
+}
 fi
 
 # Aliases
@@ -78,6 +85,7 @@ MODE_INDICATOR=""
 KEYTIMEOUT=20
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+source ~/.zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
 MODE_CURSOR_VIINS="#00ff00 blinking bar"
@@ -87,6 +95,11 @@ MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
+
+# Theme
+theme(){
+    sed -i "\$s/.*/colors: \\*$1/" ~/.config/alacritty/alacritty.yml
+}
 
 # Vifm
 vifm-only-choose-dir()

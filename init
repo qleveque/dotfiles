@@ -5,7 +5,7 @@ cd ~
 apt-get update -y
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-apt-get install -y stow cmake vifm zsh tmux fzf neovim xclip nodejs fontconfig default-jdk
+apt-get install -y stow cmake vifm zsh tmux fzf neovim xclip nodejs fontconfig default-jdk tig
 
 # Rust
 curl https://sh.rustup.rs -sSf | sh

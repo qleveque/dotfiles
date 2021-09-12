@@ -1,45 +1,66 @@
 shell:
-    program: bash
-    args:
-        - -i
+  program: bash
+  args:
+    - -i
 
 font:
-    size:
-        12
-    normal:
-        family: InconsolataGo NF
+  size:
+    12
+  normal:
+    family: InconsolataGo NF
 
 key_bindings:
-    - { key: Down, mods: Control|Shift, action: DecreaseFontSize }
-    - { key: Up, mods: Control|Shift, action: IncreaseFontSize }
-    - { key: F, mods: Alt, action: ToggleFullscreen }
-    - { key: Return, mods: Alt, action: None }
+  - { key: Down, mods: Control|Shift, action: DecreaseFontSize }
+  - { key: Up, mods: Control|Shift, action: IncreaseFontSize }
+  - { key: F, mods: Alt, action: ToggleFullscreen }
+  - { key: Return, mods: Alt, action: None }
 
-# Colors (Ubuntu)
-colors:
-  # Default colors
-  primary:
-    background: '#300a24'
-    foreground: '#eeeeec'
+schemes:
 
-  # Normal colors
-  normal:
-    black:   '#2e3436'
-    red:     '#cc0000'
-    green:   '#4e9a06'
-    yellow:  '#c4a000'
-    blue:    '#3465a4'
-    magenta: '#75507b'
-    cyan:    '#06989a'
-    white:   '#d3d7cf'
+  ubuntu: &dark
+    primary:
+      background: '#300a24'
+      foreground: '#eeeeec'
+    normal:
+      black:   '#2e3436'
+      red:   '#cc0000'
+      green:   '#4e9a06'
+      yellow:  '#c4a000'
+      blue:  '#3465a4'
+      magenta: '#75507b'
+      cyan:  '#06989a'
+      white:   '#d3d7cf'
+    bright:
+      black:   '#555753'
+      red:   '#ef2929'
+      green:   '#8ae234'
+      yellow:  '#fce94f'
+      blue:  '#729fcf'
+      magenta: '#ad7fa8'
+      cyan:  '#34e2e2'
+      white:   '#eeeeec'
 
-  # Bright colors
-  bright:
-    black:   '#555753'
-    red:     '#ef2929'
-    green:   '#8ae234'
-    yellow:  '#fce94f'
-    blue:    '#729fcf'
-    magenta: '#ad7fa8'
-    cyan:    '#34e2e2'
-    white:   '#eeeeec'
+  gruvbox_light: &light
+    primary:
+      background: '#f9f5d7'
+      foreground: '#3c3836'
+    normal:
+      black:   '#fbf1c7'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#7c6f64'
+    bright:
+      black:   '#928374'
+      red:     '#9d0006'
+      green:   '#79740e'
+      yellow:  '#b57614'
+      blue:    '#076678'
+      magenta: '#8f3f71'
+      cyan:    '#427b58'
+      white:   '#3c3836'
+
+colors: *dark

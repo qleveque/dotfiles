@@ -7,3 +7,6 @@
 [submodule "vifm/.vifm/vifm_devicons"]
 	path = vifm/.vifm/vifm_devicons
 	url = https://github.com/cirala/vifm_devicons
+[submodule "zsh/.zsh/plugins/zsh-interactive-cd"]
+	path = zsh/.zsh/plugins/zsh-interactive-cd
+	url = https://github.com/changyuheng/zsh-interactive-cd
