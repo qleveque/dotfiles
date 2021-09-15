@@ -173,6 +173,7 @@ nmap è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
     \ <Bar> bo 15 new
     \ <Bar> exec ':term zsh -ic "{run '.CP.'} always {read _\?\"[Done...]\"}"'
+    \ <Bar> redraw
     \ <Bar> exec ':norm! i'<CR>
 nmap éé <Plug>VimspectorContinue
 nmap ér <Plug>VimspectorContinue

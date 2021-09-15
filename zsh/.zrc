@@ -10,7 +10,7 @@ PROMPT='%B%K{black}%F{cyan}%S%T%s%f%k%b %B%F{blue}%3~%f%b %# '
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
-export LESS='-ir'
+export LESS='-irX'
 export LS_COLORS='ow=30;42'
 
 # Run all program files
@@ -26,22 +26,22 @@ run(){
         java) javac $@ && java -cp . $(echo "$@" | cut -f 1 -d '.');;
         go) go run $@;;
         sh|bash|zsh) zsh $@;;
+        bat|cmd) cd `dirname "$@"` && cmd.exe /C `basename "$@"`;;
         *) echo "Nothing to do";;
         esac
 }
 
 # Open function
 if grep -q Microsoft /proc/version; then
-open(){
-    if [[ -n "$@" ]]
-        then
+    open(){
+        if [[ -n "$@" ]] then
             /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
-            fi
-}
+        fi
+    }
 else
-open(){
-    xdg-open $1 1>/dev/null 2>/dev/null &
-}
+    open(){
+        xdg-open $1 1>/dev/null 2>/dev/null &
+    }
 fi
 
 # Aliases
