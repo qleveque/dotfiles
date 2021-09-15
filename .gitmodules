@@ -10,3 +10,9 @@
 [submodule "zsh/.zsh/plugins/fzf-tab-completion"]
 	path = zsh/.zsh/plugins/fzf-tab-completion
 	url = https://github.com/lincheney/fzf-tab-completion
+[submodule "zsh/.zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/.zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/.zsh/plugins/zsh-autosuggestions"]
+	path = zsh/.zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions

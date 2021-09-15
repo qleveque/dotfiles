@@ -60,6 +60,7 @@ alias gs='git status'
 alias gsu='git status -uno'
 alias ga='git add'
 alias gau='git add -u'
+alias gc='git commit'
 alias gw='git switch'
 alias gr='git restore'
 alias grs='git restore --staged'
@@ -80,13 +81,19 @@ ef(){
     nvim `f $1 -e`
 }
 
+# Zsh autosuggestions
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+
+# Zsh highlighting
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Zsh vim mode
 MODE_INDICATOR=""
 KEYTIMEOUT=20
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-bindkey '^I' fzf_completion
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
 MODE_CURSOR_VIINS="#00ff00 blinking bar"
@@ -95,7 +102,16 @@ MODE_CURSOR_VICMD="green block"
 MODE_CURSOR_SEARCH="#ff00ff steady underline"
 MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
 MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
+# Should be placed after
+bindkey '^[[Z' autosuggest-accept
+
+# Zsh system clipboard
+source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
 typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
+
+# Zsh fzf completion
+source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+bindkey '^I' fzf_completion
 
 # Theme
 theme(){
