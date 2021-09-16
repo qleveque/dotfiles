@@ -163,10 +163,8 @@ nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<
 nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
 " Pyqo
-command! -nargs=1 C :execute 'cd' system('d '.<f-args>.' -e')
-cnoreabbrev c C
-command! -nargs=1 F :execute 'edit' system('f '.<f-args>.' -e')
-cnoreabbrev f F
+command! -nargs=1 EF :execute 'edit' system('f '.<f-args>.' -e')
+cnoreabbrev ef EF
 
 " Vimspector
 nmap è :w!

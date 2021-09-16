@@ -46,10 +46,12 @@ command! c :execute 'cd "'.system('d %a -e').'"'
 command! f :execute 'mark x "'.system('f %a -e | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
 
 " FZF
-command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
 command! Files :execute 'mark x "%d/'.system('eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty | sed "s/\(.*\/\)\?\(.*\)/\1\" \"\2/"').'"' | :redraw | :normal 'x
+command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
+command! Dirs :execute 'cd "'.system('eval $FZF_ALT_P_COMMAND | fzf --no-sort 2>/dev/tty').'"' | :redraw
 nnoremap <C-t> :Files<cr>
 nnoremap <A-c> :Cd<cr>
+nnoremap <A-p> :Dirs<cr>
 
 " Quit
 command! q :execute 'winc t' | quit

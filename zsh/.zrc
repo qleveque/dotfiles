@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 # Base
 setopt histignorealldups sharehistory
 setopt +o nomatch
@@ -92,7 +93,7 @@ source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Zsh vim mode
 MODE_INDICATOR=""
-KEYTIMEOUT=20
+KEYTIMEOUT=2
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
@@ -143,6 +144,20 @@ export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
+# Recent directories
+precmd() {
+    touch ~/.dirhist
+    sed -i "\#^$PWD\$#d" ~/.dirhist
+    echo $PWD >> ~/.dirhist
+}
+export FZF_ALT_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
+go_to_recent_directory() {
+    cd "`eval $FZF_ALT_P_COMMAND | fzf --no-sort`"
+    zle reset-prompt
+}
+zle -N gtrd go_to_recent_directory
+bindkey '^[p' gtrd
+
 # Exit
 exit_zsh() { exit }
 zle -N exit_zsh
@@ -163,3 +178,4 @@ if grep -q Microsoft /proc/version; then
     done
     unset leaf; unset com; unset repl
 fi
+
