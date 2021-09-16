@@ -45,38 +45,6 @@ else
     }
 fi
 
-# Aliases
-alias e='nvim'
-alias vim='nvim'
-alias c='source c'
-alias ls='ls --color=auto'
-alias telnet='telnet -e ^C'
-alias fd='fd -I --hidden'
-alias rg='rg --smart-case'
-alias q='qalc'
-alias meteo='curl wttr.in/lausanne'
-alias parrot='curl parrot.live'
-
-alias gs='git status'
-alias gsu='git status -uno'
-alias ga='git add'
-alias gau='git add -u'
-alias gc='git commit'
-alias gw='git switch'
-alias gr='git restore'
-alias grs='git restore --staged'
-alias gca='git commit --amend'
-alias gcan='git commit --amend --no-edit'
-alias gcp='git cherry-pick'
-alias gcpc='git cherry-pick --continue'
-alias gcpa='git cherry-pick --abort'
-alias grc='git rebase --continue'
-alias gra='git rebase --abort'
-alias gri='git rebase -i'
-alias gg='git graph -n15'
-alias grlc='git rev-list --count'
-alias gdt='git diff-tree -r'
-
 # Pyqo
 ef(){
     nvim `f $1 -e`
@@ -93,16 +61,12 @@ source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Zsh vim mode
 MODE_INDICATOR=""
-KEYTIMEOUT=2
+KEYTIMEOUT=1
 source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
 setopt NO_prompt_subst
 VIM_MODE_TRACK_KEYMAP=no
-MODE_CURSOR_VIINS="#00ff00 blinking bar"
-MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #ff0000"
+MODE_CURSOR_VIINS="green blinking bar"
 MODE_CURSOR_VICMD="green block"
-MODE_CURSOR_SEARCH="#ff00ff steady underline"
-MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady bar"
-MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #00ffff"
 # Should be placed after
 bindkey '^[[Z' autosuggest-accept
 
@@ -171,11 +135,9 @@ if grep -q Microsoft /proc/version; then
         cmd.exe /C $@
     }
     for filename in ~/bin/*.bat; do
-        leaf=$(basename $filename)
-        com=${leaf%.*}
-        repl="cmd.exe /C %HOME%/bin/${com}.bat"
-        alias "$com=$repl"
+        alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
     done
-    unset leaf; unset com; unset repl
 fi
 
+# Aliases
+source ~/.aliases
