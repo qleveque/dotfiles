@@ -10,7 +10,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'tpope/vim-commentary'

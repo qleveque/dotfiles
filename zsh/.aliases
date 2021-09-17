@@ -1,7 +1,6 @@
 #!/usr/bin/zsh
 alias e='nvim'
 alias vim='nvim'
-alias c='source c'
 alias ls='ls --color=auto'
 alias telnet='telnet -e ^C'
 alias fd='fd -I --hidden'

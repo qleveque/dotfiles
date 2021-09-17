@@ -13,6 +13,47 @@ export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
 export LESS='-irX'
 export LS_COLORS='ow=30;42'
+source ~/.aliases
+
+is_wsl(){
+  if grep -q Microsoft /proc/version; then
+    return true
+  else
+    return false
+  fi
+}
+
+# ZSH plugins
+load_zsh_plugins(){
+    # Zsh autosuggestions
+    source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
+    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+
+    # Zsh highlighting
+    source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # Zsh vim mode
+    MODE_INDICATOR=""
+    KEYTIMEOUT=1
+    source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+    setopt NO_prompt_subst
+    VIM_MODE_TRACK_KEYMAP=no
+    MODE_CURSOR_VIINS="green blinking bar"
+    MODE_CURSOR_VICMD="green block"
+    # Should be placed after
+    bindkey '^[[Z' autosuggest-accept
+
+    # Zsh system clipboard
+    source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+    typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
+
+    # Zsh fzf completion
+    source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+    bindkey '^I' fzf_completion
+}
+load_zsh_plugins
 
 # Run all program files
 run(){
@@ -33,7 +74,7 @@ run(){
 }
 
 # Open function
-if grep -q Microsoft /proc/version; then
+if is_wsl; then
     open(){
         if [[ -n "$@" ]] then
             /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
@@ -47,36 +88,21 @@ fi
 
 # Pyqo
 ef(){
-    nvim `f $1 -e`
+    local target_file=`cat ~/.config/pyqo/f.json | jq ".$1" | sed 's/\"//g'`
+    if is_wsl; then
+        nvim "`wslpath $target_file`"
+    else
+        nvim "$target_file"
+    fi
 }
-
-# Zsh autosuggestions
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
-
-# Zsh highlighting
-source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Zsh vim mode
-MODE_INDICATOR=""
-KEYTIMEOUT=1
-source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-setopt NO_prompt_subst
-VIM_MODE_TRACK_KEYMAP=no
-MODE_CURSOR_VIINS="green blinking bar"
-MODE_CURSOR_VICMD="green block"
-# Should be placed after
-bindkey '^[[Z' autosuggest-accept
-
-# Zsh system clipboard
-source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
-
-# Zsh fzf completion
-source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-bindkey '^I' fzf_completion
+c(){
+    local target_dir=`cat ~/.config/pyqo/d.json | jq ".$1" | sed 's/\"//g'`
+    if is_wsl; then
+        cd "`wslpath $target_dir`"
+    else
+        cd "$target_dir"
+    fi
+}
 
 # Theme
 theme(){
@@ -105,14 +131,17 @@ export FZF_DEFAULT_COMMAND="fd -I --hidden"
 export FZF_CTRL_T_COMMAND="fd -I --hidden"
 export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
 export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Recent directories
+export PREV_PWD="$PWD"
 precmd() {
-    touch ~/.dirhist
-    sed -i "\#^$PWD\$#d" ~/.dirhist
-    echo $PWD >> ~/.dirhist
+    if [ "$PWD" != "$PREV_PWD" ]; then
+        PREV_PWD="$PWD"
+        touch ~/.dirhist
+        sed -i "\#^$PWD\$#d" ~/.dirhist
+        echo $PWD >> ~/.dirhist
+    fi
 }
 export FZF_ALT_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
 go_to_recent_directory() {
@@ -129,7 +158,7 @@ bindkey '^Q' exit_zsh
 bindkey -M vicmd '^Q' exit_zsh
 
 # Windows
-if grep -q Microsoft /proc/version; then
+if is_wsl; then
     export DISPLAY=:0.0
     cmd(){
         cmd.exe /C $@
@@ -138,6 +167,3 @@ if grep -q Microsoft /proc/version; then
         alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
     done
 fi
-
-# Aliases
-source ~/.aliases
