@@ -1,10 +1,11 @@
 #!/usr/bin/zsh
-alias e='nvim'
-alias vim='nvim'
-alias ls='ls --color=auto'
-alias telnet='telnet -e ^C'
-alias fd='fd -I --hidden'
+alias e=$EDITOR
+alias ls='exa --icons -s type'
+alias lst='exa --icons -s type -TL 3'
+alias du='dust -r'
+alias fd='fdfind'
 alias rg='rg --smart-case'
+alias telnet='telnet -e ^C'
 alias q='qalc'
 alias meteo='curl wttr.in/lausanne'
 alias parrot='curl parrot.live'

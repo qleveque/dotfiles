@@ -162,7 +162,7 @@ nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<
 nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
 " Pyqo
-command! -nargs=1 EF :execute 'edit' system('f '.<f-args>.' -e')
+command! -nargs=1 EF :execute 'edit '.system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
 cnoreabbrev ef EF
 
 " Vimspector

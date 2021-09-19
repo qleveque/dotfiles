@@ -7,27 +7,26 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-PROMPT='%B%K{black}%F{cyan}%S%T%s%f%k%b %B%F{blue}%3~%f%b %# '
+PROMPT=$'\n%B%K{black}%F{cyan}%S%T%s%f%k%b %B%F{blue}%3~%f%b %# '
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
-export LESS='-irX'
-export LS_COLORS='ow=30;42'
+export LESS='-irFRX'
 source ~/.aliases
 
 is_wsl(){
-  if grep -q Microsoft /proc/version; then
-    return true
-  else
-    return false
-  fi
+    if grep -q Microsoft /proc/version; then
+        return true
+    else
+        return false
+    fi
 }
 
 # ZSH plugins
 load_zsh_plugins(){
     # Zsh autosuggestions
     source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
     ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 
@@ -40,8 +39,8 @@ load_zsh_plugins(){
     source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
     setopt NO_prompt_subst
     VIM_MODE_TRACK_KEYMAP=no
-    MODE_CURSOR_VIINS="green blinking bar"
-    MODE_CURSOR_VICMD="green block"
+    MODE_CURSOR_VIINS='green blinking bar'
+    MODE_CURSOR_VICMD='green block'
     # Should be placed after
     bindkey '^[[Z' autosuggest-accept
 
@@ -69,8 +68,20 @@ run(){
         go) go run $@;;
         sh|bash|zsh) zsh $@;;
         bat|cmd) cd `dirname "$@"` && cmd.exe /C `basename "$@"`;;
-        *) echo "Nothing to do";;
-        esac
+        *) echo 'Nothing to do';;
+    esac
+}
+
+# Unzip universal command
+unzip() {
+    ext=$1:t:e
+    case "$ext" in
+        zip) /usr/bin/unzip $@;;
+        gzip) gunzip $@;;
+        gz) tar -xvf $@;;
+        7z) 7z x $@;;
+        *) echo 'Nothing to do';;
+    esac
 }
 
 # Open function
@@ -87,21 +98,17 @@ else
 fi
 
 # Pyqo
+export PYQO_F_TARGET='cat ~/.config/pyqo/f.json | jq ".$1" | sed "s/\"//g"'
+export PYQO_D_TARGET='cat ~/.config/pyqo/d.json | jq ".$1" | sed "s/\"//g"'
+if is_wsl; then
+    export PYQO_F_TARGET="wslpath \$($PYQO_F_TARGET)"
+    export PYQO_D_TARGET="wslpath \$($PYQO_D_TARGET)"
+fi
 ef(){
-    local target_file=`cat ~/.config/pyqo/f.json | jq ".$1" | sed 's/\"//g'`
-    if is_wsl; then
-        nvim "`wslpath $target_file`"
-    else
-        nvim "$target_file"
-    fi
+    $EDITOR "$(eval $PYQO_F_TARGET)"
 }
 c(){
-    local target_dir=`cat ~/.config/pyqo/d.json | jq ".$1" | sed 's/\"//g'`
-    if is_wsl; then
-        cd "`wslpath $target_dir`"
-    else
-        cd "$target_dir"
-    fi
+    cd "$(eval $PYQO_D_TARGET)"
 }
 
 # Theme
@@ -124,23 +131,24 @@ vifm-only-choose-dir()
     return 0
 }
 zle -N wvf vifm-only-choose-dir
-bindkey "^f" wvf
+bindkey '^f' wvf
 
 # FZF
-export FZF_DEFAULT_COMMAND="fd -I --hidden"
-export FZF_CTRL_T_COMMAND="fd -I --hidden"
-export FZF_ALT_C_COMMAND="fd --type d -I --hidden"
-export FZF_DEFAULT_OPTS="--ansi --height 40% --border"
+export FZF_DEFAULT_COMMAND='fdfind'
+export FZF_CTRL_T_COMMAND='fdfind'
+export FZF_ALT_C_COMMAND='fdfind --type d'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Recent directories
 export PREV_PWD="$PWD"
+export DIR_HIST="~/.dirhist"
 precmd() {
     if [ "$PWD" != "$PREV_PWD" ]; then
         PREV_PWD="$PWD"
-        touch ~/.dirhist
-        sed -i "\#^$PWD\$#d" ~/.dirhist
-        echo $PWD >> ~/.dirhist
+        touch $DIR_HIST
+        sed -i "\#^$PWD\$#d" $DIR_HIST
+        echo $PWD >> $DIR_HIST
     fi
 }
 export FZF_ALT_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
@@ -150,6 +158,13 @@ go_to_recent_directory() {
 }
 zle -N gtrd go_to_recent_directory
 bindkey '^[p' gtrd
+
+# Cheat
+cheat() {
+    language=$1
+    shift
+    curl cheat.sh/$language/${(j:+:)@}
+}
 
 # Exit
 exit_zsh() { exit }
