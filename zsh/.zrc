@@ -142,7 +142,7 @@ export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
 
 # Recent directories
 export PREV_PWD="$PWD"
-export DIR_HIST="~/.dirhist"
+export DIR_HIST=~/.dirhist
 precmd() {
     if [ "$PWD" != "$PREV_PWD" ]; then
         PREV_PWD="$PWD"

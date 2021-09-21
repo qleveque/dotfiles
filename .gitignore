@@ -1,7 +1,10 @@
-vifm/.vifm/vifminfo
-vim/.vim/undodir/
-vim/.vim/plugged/
+nvim/.local/bin/
+nvim/.local/lib/
+nvim/.local/share/qalculate/
+nvim/.local/share/nvim/shada/
 vifm/.vifm/scripts/
 vifm/.vifm/vifm-help.txt
+vifm/.vifm/vifminfo
 vifm/.vifm/vifminfo.json
-nvim/.local/share/nvim/shada/
+vim/.vim/plugged/
+vim/.vim/undodir/
