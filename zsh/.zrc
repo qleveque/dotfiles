@@ -148,7 +148,7 @@ precmd() {
         PREV_PWD="$PWD"
         touch $DIR_HIST
         sed -i "\#^$PWD\$#d" $DIR_HIST
-        echo $PWD >> $DIR_HIST
+        echo "$(cat $DIR_HIST | tail -49)\n$PWD" > $DIR_HIST
     fi
 }
 export FZF_ALT_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
