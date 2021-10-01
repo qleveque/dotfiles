@@ -30,6 +30,7 @@ set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:yes,
 bind log l enter
 bind main l enter
 bind blame l enter
+bind stash l enter
 bind diff l !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind stage l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"
 bind status l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo -- cached` -- '%(file)'"

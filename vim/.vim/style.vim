@@ -10,6 +10,6 @@ highlight CocErrorFloat cterm=none ctermfg=black
 highlight CocWarningFloat cterm=none ctermfg=yellow
 highlight Visual ctermfg=black ctermbg=blue
 highlight DiffAdd cterm=none ctermfg=white ctermbg=darkblue
-highlight DiffDelete cterm=none ctermfg=white ctermbg=darkblue
-highlight DiffChange cterm=none ctermfg=white ctermbg=blue
+highlight DiffDelete cterm=none ctermfg=black ctermbg=none
+highlight DiffChange cterm=none ctermfg=none ctermbg=none
 highlight DiffText cterm=none ctermfg=white ctermbg=darkblue

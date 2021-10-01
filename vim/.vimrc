@@ -117,8 +117,14 @@ nnoremap <leader>m :execute "term git mergetool --no-prompt" <Bar> exec ':norm! 
 
 " Term
 tmap <C-a> <C-\><C-n>
+nnoremap <CR> i
+vnoremap <CR> <Esc>i
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
 autocmd TermClose * call feedkeys("<CR>")
+
+" Cht
+command! -nargs=+ CHT :execute 'bo new|term curl "cheat.sh/'.&filetype.'/'.join([<f-args>], '+').'"'
+cnoreabbrev cht CHT
 
 " Coc
 let g:coc_disable_startup_warning = 1

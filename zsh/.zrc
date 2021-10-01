@@ -11,15 +11,14 @@ PROMPT=$'\n%B%K{black}%F{cyan}%S%T%s%f%k%b %B%F{blue}%3~%f%b %# '
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
+export VISUAL=$EDITOR
 export LESS='-irFRX'
 source ~/.aliases
 
+export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
+
 is_wsl(){
-    if grep -q Microsoft /proc/version; then
-        return true
-    else
-        return false
-    fi
+    return `grep -q Microsoft /proc/version`
 }
 
 # ZSH plugins
@@ -66,7 +65,9 @@ run(){
         kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
         java) javac $@ && java -cp . $(echo "$@" | cut -f 1 -d '.');;
         go) go run $@;;
-        sh|bash|zsh) zsh $@;;
+        zsh) zsh $@;;
+        bash) bash $@;;
+        sh) sh $@;;
         bat|cmd) cd `dirname "$@"` && cmd.exe /C `basename "$@"`;;
         *) echo 'Nothing to do';;
     esac
@@ -118,7 +119,7 @@ theme(){
 }
 
 # Vifm
-vifm-only-choose-dir()
+zle-vifm-only-choose-dir()
 {
     local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
     if [ -z "$dst" ]; then
@@ -130,15 +131,15 @@ vifm-only-choose-dir()
     vim-mode-set-cursor-style viins
     return 0
 }
-zle -N wvf vifm-only-choose-dir
-bindkey '^f' wvf
+zle -N zle-vifm-only-choose-dir
+bindkey '^f' zle-vifm-only-choose-dir
 
 # FZF
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+source ~/.zsh/fzf_config.zsh
 
 # Recent directories
 export PREV_PWD="$PWD"
@@ -151,26 +152,36 @@ precmd() {
         echo "$(cat $DIR_HIST | tail -49)\n$PWD" > $DIR_HIST
     fi
 }
-export FZF_ALT_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
-go_to_recent_directory() {
-    cd "`eval $FZF_ALT_P_COMMAND | fzf --no-sort`"
+export FZF_CTRL_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
+zle-go-to-recent-directory() {
+    cd "`eval $FZF_CTRL_P_COMMAND | fzf --no-sort`"
     zle reset-prompt
 }
-zle -N gtrd go_to_recent_directory
-bindkey '^[p' gtrd
+zle -N zle-go-to-recent-directory
+bindkey '^P' zle-go-to-recent-directory
 
-# Cheat
-cheat() {
+# Ctrl-V
+function zle-clipboard-paste {
+  if ((REGION_ACTIVE)); then
+    zle kill-region
+  fi
+  LBUFFER+="$(xclip -selection clipboard -out)"
+}
+zle -N zle-clipboard-paste
+bindkey '^V' zle-clipboard-paste
+
+# Cht
+cht() {
     language=$1
     shift
     curl cheat.sh/$language/${(j:+:)@}
 }
 
 # Exit
-exit_zsh() { exit }
-zle -N exit_zsh
-bindkey '^Q' exit_zsh
-bindkey -M vicmd '^Q' exit_zsh
+zle-exit-zsh() { exit }
+zle -N zle-exit-zsh
+bindkey '^Q' zle-exit-zsh
+bindkey -M vicmd '^Q' zle-exit-zsh
 
 # Windows
 if is_wsl; then
