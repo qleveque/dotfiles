@@ -1,4 +1,3 @@
-set bg=dark
 set fillchars=vert: ,eob: 
 set statusline=\ %f%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
 highlight LineNr cterm=none ctermfg=white ctermbg=darkcyan
@@ -13,3 +12,4 @@ highlight DiffAdd cterm=none ctermfg=white ctermbg=darkblue
 highlight DiffDelete cterm=none ctermfg=black ctermbg=none
 highlight DiffChange cterm=none ctermfg=none ctermbg=none
 highlight DiffText cterm=none ctermfg=white ctermbg=darkblue
+set bg=dark

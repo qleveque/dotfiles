@@ -57,18 +57,19 @@ load_zsh_plugins
 run(){
     ext=$1:t:e
     case "$ext" in
-        py) python3 $@;;
-        js) node $@;;
-        cc|cpp) g++ $@ && ./a.out;;
-        c) gcc $@ && ./a.out;;
-        rs) rustc $@ -o a.out && ./a.out;;
-        kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
-        java) javac $@ && java -cp . $(echo "$@" | cut -f 1 -d '.');;
-        go) go run $@;;
-        zsh) zsh $@;;
         bash) bash $@;;
-        sh) sh $@;;
         bat|cmd) cd `dirname "$@"` && cmd.exe /C `basename "$@"`;;
+        c) gcc $@ && ./a.out;;
+        cc|cpp) g++ $@ && ./a.out;;
+        go) go run $@;;
+        java) javac $@ && java -cp . $(echo "$@" | cut -f 1 -d '.');;
+        js) node $@;;
+        kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
+        lua) lua $@;;
+        py) python3 $@;;
+        rs) rustc $@ -o a.out && ./a.out;;
+        sh) sh $@;;
+        zsh) zsh $@;;
         *) echo 'Nothing to do';;
     esac
 }
@@ -77,10 +78,10 @@ run(){
 unzip() {
     ext=$1:t:e
     case "$ext" in
-        zip) /usr/bin/unzip $@;;
-        gzip) gunzip $@;;
-        gz) tar -xvf $@;;
-        7z) 7z x $@;;
+        zip) /usr/bin/unzip "$@";;
+        gzip) gunzip "$@";;
+        gz) tar -xvf "$@";;
+        7z) 7z x "$@";;
         *) echo 'Nothing to do';;
     esac
 }
@@ -102,8 +103,8 @@ fi
 export PYQO_F_TARGET='cat ~/.config/pyqo/f.json | jq ".$1" | sed "s/\"//g"'
 export PYQO_D_TARGET='cat ~/.config/pyqo/d.json | jq ".$1" | sed "s/\"//g"'
 if is_wsl; then
-    export PYQO_F_TARGET="wslpath \$($PYQO_F_TARGET)"
-    export PYQO_D_TARGET="wslpath \$($PYQO_D_TARGET)"
+    export PYQO_F_TARGET="wslpath \"\$($PYQO_F_TARGET)\""
+    export PYQO_D_TARGET="wslpath \"\$($PYQO_D_TARGET)\""
 fi
 ef(){
     $EDITOR "$(eval $PYQO_F_TARGET)"
@@ -114,8 +115,10 @@ c(){
 
 # Theme
 theme(){
-    sed -i "\$s/.*/colors: \\*$1/" ~/.config/alacritty/alacritty.yml
-    sed -i "1s/.*/set bg=$1/" ~/.vim/style.vim
+    sed -i "\$s/.*/colors: \\*$1/" ~/dotfiles/alacritty/.config/alacritty/alacritty.yml
+    sed -i "\$s/.*/set bg=$1/" ~/dotfiles/vim/.vim/style.vim
+    sed -i "\$s/.*/set -g window-style \"bg=\$bg_$1\"/" ~/dotfiles/tmux/.tmux.conf
+    tmux source ~/dotfiles/tmux/.tmux.conf
 }
 
 # Vifm
@@ -154,7 +157,7 @@ precmd() {
 }
 export FZF_CTRL_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
 zle-go-to-recent-directory() {
-    cd "`eval $FZF_CTRL_P_COMMAND | fzf --no-sort`"
+    cd "`eval $FZF_CTRL_P_COMMAND | fzf --no-sort --reverse`"
     zle reset-prompt
 }
 zle -N zle-go-to-recent-directory
