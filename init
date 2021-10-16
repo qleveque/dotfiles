@@ -21,6 +21,6 @@ sdk install kotlin
 nvim +PluginInstall +qall
 
 # Nerd fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/InconsolataGo.zip
-unzip InconsolataGo.zip -d ~/.fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+unzip Hack.zip -d ~/.fonts
 fc-cache -fv
