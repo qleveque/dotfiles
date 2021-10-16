@@ -31,9 +31,9 @@ source ~/.vim/style.vim
 set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile
 set number relativenumber
-set expandtab smarttab shiftwidth=4 tabstop=4 ai si wrap
-set hidden wildmenu lazyredraw list noro noequalalways nomagic gdefault
-set so=4 mouse=a showbreak= diffopt+=vertical updatetime=300
+set expandtab smarttab shiftwidth=2 tabstop=2 ai si wrap!
+set hidden wildmenu lazyredraw list noro noequalalways gdefault
+set so=4 mouse=a diffopt+=vertical updatetime=300
 set shortmess+=aoOtI
 set undodir=~/.vim/undodir
 set undofile
@@ -41,11 +41,11 @@ set signcolumn=no
 " set signcolumn=number
 
 " Easy life
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
 noremap <C-Y> 5<C-Y>
 noremap <C-E> 5<C-E>
 nnoremap <C-W>t :tabnew<CR>
@@ -90,11 +90,15 @@ for s:char in [ '_', '-', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+'
 endfor
 
 " Search
-set incsearch nohlsearch smartcase ignorecase
+set incsearch nohlsearch smartcase ignorecase nomagic
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
-nnoremap ]x /\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
-nnoremap [x ?\v[(<{7})(>{7})(\|{7})(\={7})][ \n]<CR>
+nnoremap ]x /\v^[\=<>\|]{7}[ \n]<CR>
+nnoremap [x ?\v^[\=<>\|]{7}[ \n]<CR>
+
+" Vimdiff
+autocmd VimEnter * if &diff | execute 'windo set foldcolumn=0 nofoldenable | norm 1G]c[c' | endif
+autocmd VimEnter * if &diff | nnoremap <C-Q> :qa<CR> | endif
 
 " Shortcuts
 nnoremap <C-s> :Rg<Space>
@@ -108,19 +112,19 @@ vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
-nnoremap <leader>b :execute "term tig blame +" . line(".") . " %" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>l :execute "term tig %" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>L :execute "term tig" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>d :execute "term git difftool --no-prompt %" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>D :execute "term tig status" <Bar> exec ':norm! i'<CR>
-nnoremap <leader>m :execute "term git mergetool --no-prompt" <Bar> exec ':norm! i'<CR>
+nnoremap <leader>b :let f=expand("%") <Bar> let l=line(".") <Bar> tabnew <Bar> execute "term tig blame +".l." ".f<CR>
+nnoremap <leader>l :let f=expand("%") <Bar> tabnew <Bar> execute "term tig ".f<CR>
+nnoremap <leader>L :tabnew <Bar> execute "term tig"<CR>
+nnoremap <leader>d :let f=expand("%") <Bar> tabnew <Bar> execute "term git difftool --no-prompt ".f<CR>
+nnoremap <leader>D :tabnew <Bar> execute "term tig status"<CR>
+nnoremap <leader>m :tabnew <Bar> execute "term git mergetool --no-prompt"<CR>
 
 " Term
 tmap <C-a> <C-\><C-n>
-nnoremap <CR> i
-vnoremap <CR> <Esc>i
+autocmd TermEnter term://* nnoremap <buffer> <CR> i
+autocmd TermEnter term://* vnoremap <buffer> <CR> <Esc>i
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
-autocmd TermClose * call feedkeys("<CR>")
+autocmd TermOpen * startinsert
 
 " Cht
 command! -nargs=+ CHT :execute 'bo new|term curl "cheat.sh/'.&filetype.'/'.join([<f-args>], '+').'"'
@@ -128,7 +132,6 @@ cnoreabbrev cht CHT
 
 " Coc
 let g:coc_disable_startup_warning = 1
-autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <leader>r <Plug>(coc-rename)
@@ -175,7 +178,7 @@ cnoreabbrev ef EF
 nmap è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
     \ <Bar> bo 15 new
-    \ <Bar> exec ':term zsh -ic "{run '.CP.'} always {read _\?\"[Done...]\"}"'
+    \ <Bar> exec ':term zsh -ic "run '.CP.'"'
     \ <Bar> redraw
     \ <Bar> exec ':norm! i'<CR>
 nmap éé <Plug>VimspectorContinue
@@ -193,12 +196,19 @@ vmap éw "xy:VimspectorWatch <C-R>+<CR>
 nmap és <Plug>VimspectorBalloonEval
 xmap és <Plug>VimspectorBalloonEval
 
-" Plugin specific
+" Vifm
+autocmd BufEnter,BufWinEnter,WinEnter vifm* startinsert
+autocmd TermEnter vifm* tnoremap <buffer> <C-L> <C-\><C-n><C-W>l
+autocmd TermEnter vifm* tnoremap <buffer> <C-K> <C-\><C-n><C-W>k
+autocmd TermEnter vifm* tnoremap <buffer> <C-J> <C-\><C-n><C-W>j
+autocmd TermEnter vifm* tnoremap <buffer> <C-H> <C-\><C-n><C-W>h
 let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 let g:vifm_replace_netrw = 1
+
+" Plugin specific
 let g:vista_default_executive = 'coc'
 let g:vista_close_on_jump = 1
 let g:vista_ignore_kinds = ['Variable']

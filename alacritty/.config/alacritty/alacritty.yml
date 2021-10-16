@@ -17,50 +17,96 @@ key_bindings:
 
 schemes:
 
-  ubuntu: &dark
+  ubuntu:         &ubuntu
     primary:
       background: '#300a24'
       foreground: '#eeeeec'
     normal:
-      black:   '#2e3436'
-      red:   '#cc0000'
-      green:   '#4e9a06'
-      yellow:  '#c4a000'
-      blue:  '#3465a4'
-      magenta: '#75507b'
-      cyan:  '#06989a'
-      white:   '#d3d7cf'
+      black:      '#2e3436'
+      red:        '#cc0000'
+      green:      '#4e9a06'
+      yellow:     '#c4a000'
+      blue:       '#3465a4'
+      magenta:    '#75507b'
+      cyan:       '#06989a'
+      white:      '#d3d7cf'
     bright:
-      black:   '#555753'
-      red:   '#ef2929'
-      green:   '#8ae234'
-      yellow:  '#fce94f'
-      blue:  '#729fcf'
-      magenta: '#ad7fa8'
-      cyan:  '#34e2e2'
-      white:   '#eeeeec'
+      black:      '#555753'
+      red:        '#ef2929'
+      green:      '#8ae234'
+      yellow:     '#fce94f'
+      blue:       '#729fcf'
+      magenta:    '#ad7fa8'
+      cyan:       '#34e2e2'
+      white:      '#eeeeec'
 
-  solarized_light: &light
+  xterm:          &xterm
     primary:
-        background: '#fdf6e3'
-        foreground: '#586e75'
+      background: '#000000'
+      foreground: '#ffffff'
     normal:
-      black:   '#073642'
-      red:     '#dc322f'
-      green:   '#859900'
-      yellow:  '#b58900'
-      blue:    '#268bd2'
-      magenta: '#d33682'
-      cyan:    '#2aa198'
-      white:   '#eee8d5'
+      black:      '#000000'
+      red:        '#cd0000'
+      green:      '#00cd00'
+      yellow:     '#cdcd00'
+      blue:       '#0000ee'
+      magenta:    '#cd00cd'
+      cyan:       '#00cdcd'
+      white:      '#e5e5e5'
     bright:
-      black:   '#002b36'
-      red:     '#cb4b16'
-      green:   '#586e75'
-      yellow:  '#657b83'
-      blue:    '#839496'
-      magenta: '#6c71c4'
-      cyan:    '#93a1a1'
-      white:   '#fdf6e3'
+      black:      '#7f7f7f'
+      red:        '#ff0000'
+      green:      '#00ff00'
+      yellow:     '#ffff00'
+      blue:       '#5c5cff'
+      magenta:    '#ff00ff'
+      cyan:       '#00ffff'
+      white:      '#ffffff'
 
-colors: *dark
+  dracula:        &dracula
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+    normal:
+      black:      '#000000'
+      red:        '#ff5555'
+      green:      '#50fa7b'
+      yellow:     '#f1fa8c'
+      blue:       '#bd93f9'
+      magenta:    '#ff79c6'
+      cyan:       '#8be9fd'
+      white:      '#bbbbbb'
+    bright:
+      black:      '#555555'
+      red:        '#ff5555'
+      green:      '#50fa7b'
+      yellow:     '#f1fa8c'
+      blue:       '#caa9fa'
+      magenta:    '#ff79c6'
+      cyan:       '#8be9fd'
+      white:      '#ffffff'
+
+  solarized:      &solarized
+    primary:
+      background: '#fdf6e3'
+      foreground: '#073642'
+    normal:
+      black:      '#eee8d5'
+      red:        '#dc322f'
+      green:      '#859900'
+      yellow:     '#b58900'
+      blue:       '#268bd2'
+      magenta:    '#d33682'
+      cyan:       '#2aa198'
+      white:      '#073642'
+    bright:
+      black:      '#fdf6e3'
+      red:        '#cb4b16'
+      green:      '#586e75'
+      yellow:     '#657b83'
+      blue:       '#839496'
+      magenta:    '#6c71c4'
+      cyan:       '#93a1a1'
+      white:      '#002b36'
+
+colors: *ubuntu

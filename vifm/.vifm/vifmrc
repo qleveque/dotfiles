@@ -55,6 +55,7 @@ nnoremap <C-q> :q<CR>
 
 " Open
 nnoremap <CR> :!/bin/zsh -i -c "open %f"<CR>
+nnoremap i <Esc>
 
 " Tmux integration
 nnoremap <C-b>s :!tmux split-window -v -c %d<CR>

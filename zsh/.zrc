@@ -6,7 +6,6 @@ stty -ixon
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-
 PROMPT=$'\n%B%K{black}%F{cyan}%S%T%s%f%k%b %B%F{blue}%3~%f%b %# '
 export LANG=en_US.UTF-8
 export SHELL='/usr/bin/zsh'
@@ -23,114 +22,159 @@ is_wsl(){
 
 # ZSH plugins
 load_zsh_plugins(){
-    # Zsh autosuggestions
-    source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
-    ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
-    ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+  # Zsh autosuggestions
+  source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
+  ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
+  ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 
-    # Zsh highlighting
-    source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # Zsh highlighting
+  source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-    # Zsh vim mode
-    MODE_INDICATOR=""
-    KEYTIMEOUT=1
-    source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-    setopt NO_prompt_subst
-    VIM_MODE_TRACK_KEYMAP=no
-    MODE_CURSOR_VIINS='green blinking bar'
-    MODE_CURSOR_VICMD='green block'
-    # Should be placed after
-    bindkey '^[[Z' autosuggest-accept
+  # Zsh vim mode
+  MODE_INDICATOR=""
+  KEYTIMEOUT=1
+  source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+  setopt NO_prompt_subst
+  VIM_MODE_TRACK_KEYMAP=no
+  MODE_CURSOR_VIINS='green blinking bar'
+  MODE_CURSOR_VICMD='green block'
+  # Should be placed after
+  bindkey '^[[Z' autosuggest-accept
 
-    # Zsh system clipboard
-    source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-    typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
+  # Zsh system clipboard
+  source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+  typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 
-    # Zsh fzf completion
-    source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-    bindkey '^I' fzf_completion
+  # Zsh fzf completion
+  source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+  bindkey '^I' fzf_completion
 }
 load_zsh_plugins
 
 # Run all program files
 run(){
-    ext=$1:t:e
-    case "$ext" in
-        bash) bash $@;;
-        bat|cmd) cd `dirname "$@"` && cmd.exe /C `basename "$@"`;;
-        c) gcc $@ && ./a.out;;
-        cc|cpp) g++ $@ && ./a.out;;
-        go) go run $@;;
-        java) javac $@ && java -cp . $(echo "$@" | cut -f 1 -d '.');;
-        js) node $@;;
-        kt) kotlinc $@ -include-runtime -d a.jar && java -jar a.jar;;
-        lua) lua $@;;
-        py) python3 $@;;
-        rs) rustc $@ -o a.out && ./a.out;;
-        sh) sh $@;;
-        zsh) zsh $@;;
-        *) echo 'Nothing to do';;
-    esac
+  local ext=${@:t:e}
+  case "$ext" in
+    asm) nasm -f elf64 "$@" && ld -s -o "$@:h"/a.out "$@:r".o && "$@:h"/a.out;;
+    bash) bash "$@";;
+    bat|cmd) cd "$@:h" && cmd.exe /C "$@:t";;
+    c) gcc -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
+    cc|cpp) g++ -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
+    f90|f95|f03) gfortran -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
+    go) go run "$@";;
+    html) open "$@";;
+    java) javac "$@" && java -cp . "$@:t:r";;
+    jl) julia "$@";;
+    js) node "$@";;
+    kt) kotlinc "$@" -include-runtime -d "$@:h"/a.jar && java -jar "$@:h"/a.jar;;
+    lua) lua "$@";;
+    py) python3 "$@";;
+    r) Rscript "$@";;
+    rb) ruby "$@";;
+    rs) rustc "$@" -o "$@:h"/a.out && "$@:h"/a.out;;
+    sh) sh "$@";;
+    ts) tsc "$@" && node "$@:r".js;;
+    zsh) zsh "$@";;
+    *) echo 'Nothing to do';;
+  esac
 }
 
 # Unzip universal command
 unzip() {
-    ext=$1:t:e
-    case "$ext" in
-        zip) /usr/bin/unzip "$@";;
-        gzip) gunzip "$@";;
-        gz) tar -xvf "$@";;
-        7z) 7z x "$@";;
-        *) echo 'Nothing to do';;
-    esac
+  ext=$1:t:e
+  case "$ext" in
+    zip) /usr/bin/unzip "$@";;
+    gzip) gunzip "$@";;
+    gz) tar -xvf "$@";;
+    7z) 7z x "$@";;
+    *) echo 'Nothing to do';;
+  esac
 }
 
 # Open function
 if is_wsl; then
-    open(){
-        if [[ -n "$@" ]] then
-            /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
-        fi
-    }
+  open(){
+    if [[ -n "$@" ]] then
+      /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
+    fi
+  }
 else
-    open(){
-        xdg-open $1 1>/dev/null 2>/dev/null &
-    }
+  open(){
+    xdg-open $1 1>/dev/null 2>/dev/null &
+  }
 fi
 
 # Pyqo
 export PYQO_F_TARGET='cat ~/.config/pyqo/f.json | jq ".$1" | sed "s/\"//g"'
 export PYQO_D_TARGET='cat ~/.config/pyqo/d.json | jq ".$1" | sed "s/\"//g"'
 if is_wsl; then
-    export PYQO_F_TARGET="wslpath \"\$($PYQO_F_TARGET)\""
-    export PYQO_D_TARGET="wslpath \"\$($PYQO_D_TARGET)\""
+  export PYQO_F_TARGET="wslpath \"\$($PYQO_F_TARGET)\""
+  export PYQO_D_TARGET="wslpath \"\$($PYQO_D_TARGET)\""
 fi
 ef(){
-    $EDITOR "$(eval $PYQO_F_TARGET)"
+  $EDITOR "$(eval $PYQO_F_TARGET)"
 }
 c(){
-    cd "$(eval $PYQO_D_TARGET)"
+  cd "$(eval $PYQO_D_TARGET)"
 }
 
 # Theme
 theme(){
-    sed -i "\$s/.*/colors: \\*$1/" ~/.config/alacritty/alacritty.yml
-    sed -i "1s/.*/set bg=$1/" ~/.vim/style.vim
+  local THEME="$1"
+  local ALACRITTY_CONF="$HOME/dotfiles/alacritty/.config/alacritty/alacritty.yml"
+  local TMUX_CONF="$HOME/dotfiles/tmux/.tmux.conf"
+  local BG_COLOR=$(rg --no-filename --multiline -N " *.*: *&$THEME\s*primary:\s*background: *'#(.*)'" $ALACRITTY_CONF -r '$1')
+  local THEMES=($(rg --no-filename -N " *.*: *&(.*)" $ALACRITTY_CONF -r '$1'))
+  if [ -z "$THEME" ] || [ ! ${THEMES[(ie)$THEME]} -le ${#THEMES} ]; then
+    echo $THEMES
+    return
+  fi
+
+  # Alacritty
+  sed -i "\$s/.*/colors: \\*$THEME/" $ALACRITTY_CONF
+
+  # Vim
+  local sum=0
+  local vim_bg=dark
+  local change=14
+  for i in 0 2 4; do
+    sum=$((sum + 0x${BG_COLOR:$i:2}))
+  done
+  if [ $sum -gt $((255 * 3/2)) ]; then
+    vim_bg=light
+    change=$((-$change))
+  fi
+  sed -i "\$s/.*/set bg=$vim_bg/" ~/dotfiles/vim/.vim/style.vim
+
+  # Tmux
+  local comps=()
+  for i in 0 2 4; do
+    local comp=$((0x${BG_COLOR:$i:2} + $change))
+    if [ $comp -lt 0 ]; then
+      comp=0
+    elif [ $comp -gt 255 ]; then
+      comp=255
+    fi
+    comps+=($comp)
+  done
+  local new_color=$(printf "%02X%02X%02X\n" $comps)
+  sed -i "\$s/.*/set -g window-style \"bg=#$new_color\"/" $TMUX_CONF
+  tmux source $TMUX_CONF
 }
 
 # Vifm
 zle-vifm-only-choose-dir()
 {
-    local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
-    if [ -z "$dst" ]; then
-        echo 'Directory picking cancelled/failed'
-        return 1
-    fi
-    cd "$dst"
-    zle reset-prompt
-    vim-mode-set-cursor-style viins
-    return 0
+  local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
+  if [ -z "$dst" ]; then
+    echo 'Directory picking cancelled/failed'
+    return 1
+  fi
+  cd "$dst"
+  zle reset-prompt
+  vim-mode-set-cursor-style viins
+  return 0
 }
 zle -N zle-vifm-only-choose-dir
 bindkey '^f' zle-vifm-only-choose-dir
@@ -146,17 +190,17 @@ source ~/.zsh/fzf_config.zsh
 export PREV_PWD="$PWD"
 export DIR_HIST=~/.dirhist
 precmd() {
-    if [ "$PWD" != "$PREV_PWD" ]; then
-        PREV_PWD="$PWD"
-        touch $DIR_HIST
-        sed -i "\#^$PWD\$#d" $DIR_HIST
-        echo "$(cat $DIR_HIST | tail -49)\n$PWD" > $DIR_HIST
-    fi
+  if [ "$PWD" != "$PREV_PWD" ]; then
+    PREV_PWD="$PWD"
+    touch $DIR_HIST
+    sed -i "\#^$PWD\$#d" $DIR_HIST
+    echo "$(cat $DIR_HIST | tail -49)\n$PWD" > $DIR_HIST
+  fi
 }
 export FZF_CTRL_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
 zle-go-to-recent-directory() {
-    cd "`eval $FZF_CTRL_P_COMMAND | fzf --no-sort --reverse`"
-    zle reset-prompt
+  cd "`eval $FZF_CTRL_P_COMMAND | fzf --no-sort --reverse`"
+  zle reset-prompt
 }
 zle -N zle-go-to-recent-directory
 bindkey '^P' zle-go-to-recent-directory
@@ -173,9 +217,9 @@ bindkey '^V' zle-clipboard-paste
 
 # Cht
 cht() {
-    language=$1
-    shift
-    curl cheat.sh/$language/${(j:+:)@}
+  local language=$1
+  shift
+  curl cheat.sh/$language/${(j:+:)@}
 }
 
 # Exit
@@ -186,11 +230,11 @@ bindkey -M vicmd '^Q' zle-exit-zsh
 
 # Windows
 if is_wsl; then
-    export DISPLAY=:0.0
-    cmd(){
-        cmd.exe /C $@
-    }
-    for filename in ~/bin/*.bat; do
-        alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
-    done
+  export DISPLAY=:0.0
+  cmd(){
+    cmd.exe /C $@
+  }
+  for filename in ~/bin/*.bat; do
+    alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
+  done
 fi

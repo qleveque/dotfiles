@@ -1,4 +1,3 @@
-set bg=dark
 set fillchars=vert: ,eob: 
 set statusline=\ %f%m\ %=%{noscrollbar#statusline(30,'━','◼')} 
 
@@ -13,12 +12,13 @@ highlight DiffDelete cterm=none ctermfg=black ctermbg=none
 highlight DiffChange cterm=none ctermfg=none ctermbg=none
 highlight DiffText cterm=none ctermfg=white ctermbg=darkblue
 
-highlight CocFloating ctermbg=darkgray
+highlight Pmenu ctermfg=black ctermbg=white
+highlight PmenuSel ctermfg=black ctermbg=gray
 
-highlight CocErrorFloat ctermfg=lightred
-highlight CocWarningFloat ctermfg=yellow
-highlight CocHintFloat ctermfg=white
-highlight CocInfoFloat ctermfg=lightblue
+highlight CocErrorFloat ctermbg=white ctermfg=red
+highlight CocWarningFloat ctermbg=white ctermfg=black
+highlight CocHintFloat ctermbg=white ctermfg=black
+highlight CocInfoFloat ctermbg=white ctermfg=black
 
 highlight CocErrorSign ctermbg=red
 highlight CocWarningSign ctermbg=yellow
@@ -29,3 +29,5 @@ highlight CocErrorHighlight cterm=bold,underline
 highlight CocWarningHighlight cterm=bold,underline
 highlight CocHintHighlight cterm=bold,underline
 highlight CocInfoHighlight cterm=bold,underline
+
+set bg=dark
