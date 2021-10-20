@@ -30,4 +30,6 @@ highlight CocWarningHighlight cterm=bold,underline
 highlight CocHintHighlight cterm=bold,underline
 highlight CocInfoHighlight cterm=bold,underline
 
+hi FloatermBorder ctermfg=white ctermbg=darkblue
+
 set bg=dark

@@ -8,6 +8,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'liuchengxu/vista.vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -16,8 +17,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
-Plug 'vifm/vifm.vim'
 Plug 'vim-scripts/argtextobj.vim'
+Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
 call plug#end()
 
@@ -31,7 +32,8 @@ source ~/.vim/style.vim
 set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile
 set number relativenumber
-set expandtab smarttab shiftwidth=2 tabstop=2 ai si wrap!
+set expandtab smarttab shiftwidth=2 tabstop=2 ai si
+set wrap linebreak showbreak=>  
 set hidden wildmenu lazyredraw list noro noequalalways gdefault
 set so=4 mouse=a diffopt+=vertical updatetime=300
 set shortmess+=aoOtI
@@ -103,7 +105,7 @@ autocmd VimEnter * if &diff | nnoremap <C-Q> :qa<CR> | endif
 " Shortcuts
 nnoremap <C-s> :Rg<Space>
 nnoremap <C-n> :CocList -I symbols<CR>
-nnoremap <C-f> :vert 50 Vifm %:p:h .<CR>
+nnoremap <silent> <C-f> :execute 'FloatermNew --title=Vifm vifm -c :only "%:p:h" .'<CR>
 nnoremap <C-t> :Files<CR>
 nnoremap <C-p> :History<CR>
 
@@ -112,22 +114,23 @@ vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
-nnoremap <leader>b :let f=expand("%") <Bar> let l=line(".") <Bar> tabnew <Bar> execute "term tig blame +".l." ".f<CR>
-nnoremap <leader>l :let f=expand("%") <Bar> tabnew <Bar> execute "term tig ".f<CR>
-nnoremap <leader>L :tabnew <Bar> execute "term tig"<CR>
-nnoremap <leader>d :let f=expand("%") <Bar> tabnew <Bar> execute "term git difftool --no-prompt ".f<CR>
-nnoremap <leader>D :tabnew <Bar> execute "term tig status"<CR>
-nnoremap <leader>m :tabnew <Bar> execute "term git mergetool --no-prompt"<CR>
+let fullscreen_floaterm_options='--height=&lines+1 --width=&columns+2'
+nnoremap <silent> <leader>b :execute "FloatermNew ".fullscreen_floaterm_options." tig blame +".line(".")." %"<CR>
+nnoremap <silent> <leader>l :execute "FloatermNew ".fullscreen_floaterm_options." tig %"<CR>
+nnoremap <silent> <leader>L :execute "FloatermNew ".fullscreen_floaterm_options." tig"<CR>
+nnoremap <silent> <leader>d :execute "FloatermNew ".fullscreen_floaterm_options." git difftool --no-prompt %"<CR>
+nnoremap <silent> <leader>D :execute "FloatermNew ".fullscreen_floaterm_options." tig status"<CR>
+nnoremap <silent> <leader>m :execute "FloatermNew ".fullscreen_floaterm_options." git mergetool --no-prompt"<CR>
 
 " Term
 tmap <C-a> <C-\><C-n>
-autocmd TermEnter term://* nnoremap <buffer> <CR> i
-autocmd TermEnter term://* vnoremap <buffer> <CR> <Esc>i
+autocmd TermEnter * nnoremap <buffer> <CR> i
 autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
 autocmd TermOpen * startinsert
 
 " Cht
-command! -nargs=+ CHT :execute 'bo new|term curl "cheat.sh/'.&filetype.'/'.join([<f-args>], '+').'"'
+command! -nargs=+ CHT :execute 'FloatermNew --title=Cht.sh '
+    \.'zsh -ic "cht '.&filetype.' '.join([<f-args>],' ').'"'
 cnoreabbrev cht CHT
 
 " Coc
@@ -179,8 +182,7 @@ nmap è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
     \ <Bar> bo 15 new
     \ <Bar> exec ':term zsh -ic "run '.CP.'"'
-    \ <Bar> redraw
-    \ <Bar> exec ':norm! i'<CR>
+    \ <Bar> redraw <CR>
 nmap éé <Plug>VimspectorContinue
 nmap ér <Plug>VimspectorContinue
 nmap él <Plug>VimspectorStepInto
@@ -197,16 +199,18 @@ nmap és <Plug>VimspectorBalloonEval
 xmap és <Plug>VimspectorBalloonEval
 
 " Vifm
-autocmd BufEnter,BufWinEnter,WinEnter vifm* startinsert
-autocmd TermEnter vifm* tnoremap <buffer> <C-L> <C-\><C-n><C-W>l
-autocmd TermEnter vifm* tnoremap <buffer> <C-K> <C-\><C-n><C-W>k
-autocmd TermEnter vifm* tnoremap <buffer> <C-J> <C-\><C-n><C-W>j
-autocmd TermEnter vifm* tnoremap <buffer> <C-H> <C-\><C-n><C-W>h
 let g:vifm_exec_args = '-c :only'
 let g:vifm_embed_split = 1
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 let g:vifm_replace_netrw = 1
+
+" Floaterm
+let g:floaterm_opener='edit'
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_borderchars='        '
+let g:floaterm_autoclose=2
 
 " Plugin specific
 let g:vista_default_executive = 'coc'

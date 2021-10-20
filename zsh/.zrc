@@ -216,10 +216,26 @@ zle -N zle-clipboard-paste
 bindkey '^V' zle-clipboard-paste
 
 # Cht
-cht() {
+export cht(){
+  local idx=0
+  local reply=0
+
   local language=$1
   shift
-  curl cheat.sh/$language/${(j:+:)@}
+
+  while true; do
+    clear
+    curl cheat.sh/$language/${(j:+:)@}/${idx}
+    read -k reply
+    if [[ "$reply" =~ "^[qQ]$" || "$reply" =~ "^\\s*$" ]]; then
+      clear
+      return
+    elif [[ "$reply" =~ "^[jJ]$" ]]; then
+      idx=$((idx+1))
+    elif [[ "$reply" =~ "^[kK]$" && $idx -ge 1 ]]; then
+      idx=$((idx-1))
+    fi
+  done
 }
 
 # Exit
