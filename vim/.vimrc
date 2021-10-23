@@ -3,23 +3,23 @@ call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
-Plug 'gcavallanti/vim-noscrollbar'
+Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'liuchengxu/vista.vim'
-Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'udalov/kotlin-vim'
-Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
+
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 
 " Language specific
@@ -34,7 +34,7 @@ set nobackup nowritebackup noswapfile
 set number relativenumber
 set expandtab smarttab shiftwidth=2 tabstop=2 ai si
 set wrap linebreak showbreak=>  
-set hidden wildmenu lazyredraw list noro noequalalways gdefault
+set hidden wildmenu lazyredraw list noro equalalways gdefault
 set so=4 mouse=a diffopt+=vertical updatetime=300
 set shortmess+=aoOtI
 set undodir=~/.vim/undodir
@@ -54,6 +54,7 @@ nnoremap <C-W>t :tabnew<CR>
 nnoremap <C-W>n :bn<CR>
 nnoremap <C-W>p :bp<CR>
 nnoremap <C-W><C-W> :e#<CR>
+nnoremap <C-W>z <C-W>_<C-W><Bar>
 nnoremap <C-Q> :q<CR>
 nmap s ys
 vmap s S
@@ -69,6 +70,7 @@ nmap ç #NCgn
 vmap ç #Cgn
 nmap Ç #NCgN
 vmap Ç #CgN
+nnoremap ! :!
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -102,6 +104,10 @@ nnoremap [x ?\v^[\=<>\|]{7}[ \n]<CR>
 autocmd VimEnter * if &diff | execute 'windo set foldcolumn=0 nofoldenable | norm 1G]c[c' | endif
 autocmd VimEnter * if &diff | nnoremap <C-Q> :qa<CR> | endif
 
+" Term
+tmap <C-a> <C-\><C-n>
+autocmd TermEnter * nnoremap <buffer> <CR> i
+
 " Shortcuts
 nnoremap <C-s> :Rg<Space>
 nnoremap <C-n> :CocList -I symbols<CR>
@@ -121,12 +127,6 @@ nnoremap <silent> <leader>L :execute "FloatermNew ".fullscreen_floaterm_options.
 nnoremap <silent> <leader>d :execute "FloatermNew ".fullscreen_floaterm_options." git difftool --no-prompt %"<CR>
 nnoremap <silent> <leader>D :execute "FloatermNew ".fullscreen_floaterm_options." tig status"<CR>
 nnoremap <silent> <leader>m :execute "FloatermNew ".fullscreen_floaterm_options." git mergetool --no-prompt"<CR>
-
-" Term
-tmap <C-a> <C-\><C-n>
-autocmd TermEnter * nnoremap <buffer> <CR> i
-autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no noshowmode noshowcmd
-autocmd TermOpen * startinsert
 
 " Cht
 command! -nargs=+ CHT :execute 'FloatermNew --title=Cht.sh '
@@ -178,11 +178,9 @@ command! -nargs=1 EF :execute 'edit '.system('set '.<f-args>.' && echo $(eval $P
 cnoreabbrev ef EF
 
 " Vimspector
-nmap è :w!
+nmap <silent> è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
-    \ <Bar> bo 15 new
-    \ <Bar> exec ':term zsh -ic "run '.CP.'"'
-    \ <Bar> redraw <CR>
+    \ <Bar> exec ':FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
 nmap éé <Plug>VimspectorContinue
 nmap ér <Plug>VimspectorContinue
 nmap él <Plug>VimspectorStepInto
@@ -209,7 +207,6 @@ let g:vifm_replace_netrw = 1
 let g:floaterm_opener='edit'
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
-let g:floaterm_borderchars='        '
 let g:floaterm_autoclose=2
 
 " Plugin specific

@@ -123,20 +123,21 @@ c(){
 theme(){
   local THEME="$1"
   local ALACRITTY_CONF="$HOME/dotfiles/alacritty/.config/alacritty/alacritty.yml"
+  local VIM_STYLE="$HOME/dotfiles/vim/.vim/style.vim"
   local TMUX_CONF="$HOME/dotfiles/tmux/.tmux.conf"
   local BG_COLOR=$(rg --no-filename --multiline -N " *.*: *&$THEME\s*primary:\s*background: *'#(.*)'" $ALACRITTY_CONF -r '$1')
   local THEMES=($(rg --no-filename -N " *.*: *&(.*)" $ALACRITTY_CONF -r '$1'))
+
+  # List themes if no or incorrect theme
   if [ -z "$THEME" ] || [ ! ${THEMES[(ie)$THEME]} -le ${#THEMES} ]; then
     echo $THEMES
     return
   fi
 
-  # Alacritty
-  sed -i "\$s/.*/colors: \\*$THEME/" $ALACRITTY_CONF
-
-  # Vim
+  # Computations
   local sum=0
   local vim_bg=dark
+  local comps=()
   local change=14
   for i in 0 2 4; do
     sum=$((sum + 0x${BG_COLOR:$i:2}))
@@ -145,22 +146,31 @@ theme(){
     vim_bg=light
     change=$((-$change))
   fi
-  sed -i "\$s/.*/set bg=$vim_bg/" ~/dotfiles/vim/.vim/style.vim
-
-  # Tmux
-  local comps=()
   for i in 0 2 4; do
     local comp=$((0x${BG_COLOR:$i:2} + $change))
+    if [ $comp -gt 255 ]; then
+      comp=255
+    fi
     if [ $comp -lt 0 ]; then
       comp=0
-    elif [ $comp -gt 255 ]; then
-      comp=255
     fi
     comps+=($comp)
   done
-  local new_color=$(printf "%02X%02X%02X\n" $comps)
-  sed -i "\$s/.*/set -g window-style \"bg=#$new_color\"/" $TMUX_CONF
-  tmux source $TMUX_CONF
+  local light_bg=$(printf "%02X%02X%02X\n" $comps)
+
+  # Alacritty
+  sed -i '$ d' "$ALACRITTY_CONF"
+  echo "colors: *$THEME" >> "$ALACRITTY_CONF"
+
+  # Vim
+  sed -i '1,3 d' "$VIM_STYLE"
+  sed -i "1iset bg=$vim_bg" "$VIM_STYLE"
+  sed -i "1ilet BG=\"#$BG_COLOR\"\nlet LIGHT_BG=\"#$light_bg\"" "$VIM_STYLE"
+
+  # Tmux
+  sed -i '1,2 d' "$TMUX_CONF"
+  sed -i "1iBG=#$BG_COLOR\nLIGHT_BG=#$light_bg" "$TMUX_CONF"
+  tmux source "$TMUX_CONF"
 }
 
 # Vifm
@@ -183,7 +193,7 @@ bindkey '^f' zle-vifm-only-choose-dir
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
-export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
+export FZF_DEFAULT_OPTS='--no-bold --ansi --height 40% --border'
 source ~/.zsh/fzf_config.zsh
 
 # Recent directories
