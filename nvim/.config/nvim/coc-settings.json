@@ -2,6 +2,7 @@
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": true,
     "coc.preferences.rootPatterns": [],
+    "coc.preferences.useQuickfixForLocations": true,
     "python.pythonPath": "/usr/bin/python3",
     "languageserver": {
         "ccls": {

@@ -2,8 +2,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dstein64/nvim-scrollview'
 Plug 'easymotion/vim-easymotion'
-Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -11,11 +11,13 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
+Plug 'dyng/ctrlsf.vim'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -32,18 +34,18 @@ source ~/.vim/style.vim
 set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile
 set number relativenumber
-set expandtab smarttab shiftwidth=2 tabstop=2 ai si
-set wrap linebreak showbreak=>  
+set expandtab smarttab shiftwidth=2 tabstop=2 autoindent smartindent
 set hidden wildmenu lazyredraw list noro equalalways gdefault
-set so=4 mouse=a diffopt+=vertical updatetime=300
+set so=4 mouse=a diffopt+=vertical wrap! updatetime=300
 set shortmess+=aoOtI
-set undodir=~/.vim/undodir
+set signcolumn=number
 set undofile
-set signcolumn=no
-" set signcolumn=number
+let &undodir=expand('$HOME/.vim/undodir')
 
 " Easy life
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
+      \ exe "normal! g'\"" |
+      \ endif
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
@@ -53,7 +55,6 @@ noremap <C-E> 5<C-E>
 nnoremap <C-W>t :tabnew<CR>
 nnoremap <C-W>n :bn<CR>
 nnoremap <C-W>p :bp<CR>
-nnoremap <C-W><C-W> :e#<CR>
 nnoremap <C-W>z <C-W>_<C-W><Bar>
 nnoremap <C-Q> :q<CR>
 nmap s ys
@@ -71,6 +72,7 @@ vmap ç #Cgn
 nmap Ç #NCgN
 vmap Ç #CgN
 nnoremap ! :!
+nnoremap <Esc> :nohl<CR>
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -85,31 +87,22 @@ nnoremap CC "_cc
 nnoremap X "_x
 xnoremap P "_c<C-R>+<Esc>
 
-" More text objects
-for s:char in [ '_', '-', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '$' ]
-  execute 'xnoremap i' . s:char . ' :<C-u>normal! T' . s:char . 'vt' . s:char . '<CR>'
-  execute 'onoremap i' . s:char . ' :normal vi' . s:char . '<CR>'
-  execute 'xnoremap a' . s:char . ' :<C-u>normal! F' . s:char . 'vt' . s:char . '<CR>'
-  execute 'onoremap a' . s:char . ' :normal va' . s:char . '<CR>'
-endfor
-
 " Search
-set incsearch nohlsearch smartcase ignorecase nomagic
+set incsearch smartcase ignorecase nomagic
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
 nnoremap ]x /\v^[\=<>\|]{7}[ \n]<CR>
 nnoremap [x ?\v^[\=<>\|]{7}[ \n]<CR>
 
 " Vimdiff
-autocmd VimEnter * if &diff | execute 'windo set foldcolumn=0 nofoldenable | norm 1G]c[c' | endif
-autocmd VimEnter * if &diff | nnoremap <C-Q> :qa<CR> | endif
-
-" Term
-tmap <C-a> <C-\><C-n>
-autocmd TermEnter * nnoremap <buffer> <CR> i
+autocmd VimEnter * if &diff |
+  \ execute 'windo set foldcolumn=0 nofoldenable wrap linebreak showbreak=>  ' |
+  \ execute 'norm 1G]c[c' |
+  \ execute 'nnoremap <C-Q> :qa<CR>' |
+  \ endif
 
 " Shortcuts
-nnoremap <C-s> :Rg<Space>
+nnoremap <C-s> :CtrlSF<Space>
 nnoremap <C-n> :CocList -I symbols<CR>
 nnoremap <silent> <C-f> :execute 'FloatermNew --title=Vifm vifm -c :only "%:p:h" .'<CR>
 nnoremap <C-t> :Files<CR>
@@ -119,14 +112,20 @@ nmap <Space> <Plug>(easymotion-bd-f2)
 vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
 
+" Term
+autocmd TermEnter * nnoremap <buffer> <CR> i
+autocmd TermEnter * tnoremap <buffer> <C-W><C-W> <C-\><C-N>:FloatermToggle<CR>
+tmap <C-A> <C-\><C-N>
+nnoremap <C-W><C-W> :FloatermToggle<CR>
+
 " Git
-let fullscreen_floaterm_options='--height=&lines+1 --width=&columns+2'
-nnoremap <silent> <leader>b :execute "FloatermNew ".fullscreen_floaterm_options." tig blame +".line(".")." %"<CR>
-nnoremap <silent> <leader>l :execute "FloatermNew ".fullscreen_floaterm_options." tig %"<CR>
-nnoremap <silent> <leader>L :execute "FloatermNew ".fullscreen_floaterm_options." tig"<CR>
-nnoremap <silent> <leader>d :execute "FloatermNew ".fullscreen_floaterm_options." git difftool --no-prompt %"<CR>
-nnoremap <silent> <leader>D :execute "FloatermNew ".fullscreen_floaterm_options." tig status"<CR>
-nnoremap <silent> <leader>m :execute "FloatermNew ".fullscreen_floaterm_options." git mergetool --no-prompt"<CR>
+let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
+nnoremap <silent> <leader>b :execute floaterm_full." tig blame +".line(".")." %"<CR>
+nnoremap <silent> <leader>l :execute floaterm_full." tig %"<CR>
+nnoremap <silent> <leader>L :execute floaterm_full." tig"<CR>
+nnoremap <silent> <leader>d :execute floaterm_full." git difftool --no-prompt %"<CR>
+nnoremap <silent> <leader>D :execute floaterm_full." tig status"<CR>
+nnoremap <silent> <leader>m :execute floaterm_full." git mergetool --no-prompt"<CR>
 
 " Cht
 command! -nargs=+ CHT :execute 'FloatermNew --title=Cht.sh '
@@ -174,7 +173,8 @@ nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<
 nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
 " Pyqo
-command! -nargs=1 EF :execute 'edit '.system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
+command! -nargs=1 EF :execute 'edit '
+      \ .system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
 cnoreabbrev ef EF
 
 " Vimspector
@@ -215,3 +215,4 @@ let g:vista_close_on_jump = 1
 let g:vista_ignore_kinds = ['Variable']
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
+let g:ctrlsf_mapping = {"openb": "<Enter>", "next": "n", "prev": "N"}

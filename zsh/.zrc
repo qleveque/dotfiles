@@ -120,6 +120,36 @@ c(){
 }
 
 # Theme
+alter_color(){
+  local COLOR="$1"
+  local DELTA="$2"
+  local components=()
+  for i in 0 2 4; do
+    local component=$((0x${COLOR:$i:2} + $DELTA))
+    if [ $component -gt 255 ]; then
+      component=255
+    fi
+    if [ $component -lt 0 ]; then
+      component=0
+    fi
+    components+=($component)
+  done
+  printf "%02X%02X%02X\n" $components
+}
+
+compute_vim_bg(){
+  local BG_COLOR="$1"
+  local sum=0
+  for i in 0 2 4; do
+    sum=$((sum + 0x${BG_COLOR:$i:2}))
+  done
+  if [ $sum -gt $((255 * 3/2)) ]; then
+    echo light
+  else
+    echo dark
+  fi
+}
+
 theme(){
   local THEME="$1"
   local ALACRITTY_CONF="$HOME/dotfiles/alacritty/.config/alacritty/alacritty.yml"
@@ -135,41 +165,30 @@ theme(){
   fi
 
   # Computations
-  local sum=0
-  local vim_bg=dark
-  local comps=()
-  local change=14
-  for i in 0 2 4; do
-    sum=$((sum + 0x${BG_COLOR:$i:2}))
-  done
-  if [ $sum -gt $((255 * 3/2)) ]; then
-    vim_bg=light
-    change=$((-$change))
+  local VIM_BG=$(compute_vim_bg $BG_COLOR)
+  local delta=14
+  if [ "$VIM_BG" = "light" ]; then
+    delta=$((-$delta))
   fi
-  for i in 0 2 4; do
-    local comp=$((0x${BG_COLOR:$i:2} + $change))
-    if [ $comp -gt 255 ]; then
-      comp=255
-    fi
-    if [ $comp -lt 0 ]; then
-      comp=0
-    fi
-    comps+=($comp)
-  done
-  local light_bg=$(printf "%02X%02X%02X\n" $comps)
+  local LIGHT_BG=$(alter_color $BG_COLOR $delta)
+  local LIGHTER_BG=$(alter_color $BG_COLOR $((delta * 3)))
 
   # Alacritty
   sed -i '$ d' "$ALACRITTY_CONF"
   echo "colors: *$THEME" >> "$ALACRITTY_CONF"
 
   # Vim
-  sed -i '1,3 d' "$VIM_STYLE"
-  sed -i "1iset bg=$vim_bg" "$VIM_STYLE"
-  sed -i "1ilet BG=\"#$BG_COLOR\"\nlet LIGHT_BG=\"#$light_bg\"" "$VIM_STYLE"
+  sed -i '1,4 d' "$VIM_STYLE"
+  sed -i "1iset bg=$VIM_BG" "$VIM_STYLE"
+  sed -i "1ilet BG=\"#$BG_COLOR\"" "$VIM_STYLE"
+  sed -i "1ilet LIGHT_BG=\"#$LIGHT_BG\"" "$VIM_STYLE"
+  sed -i "1ilet LIGHTER_BG=\"#$LIGHTER_BG\"" "$VIM_STYLE"
 
   # Tmux
-  sed -i '1,2 d' "$TMUX_CONF"
-  sed -i "1iBG=#$BG_COLOR\nLIGHT_BG=#$light_bg" "$TMUX_CONF"
+  sed -i '1,3 d' "$TMUX_CONF"
+  sed -i "1iBG=#$BG_COLOR" "$TMUX_CONF"
+  sed -i "1iLIGHT_BG=#$LIGHT_BG" "$TMUX_CONF"
+  sed -i "1iLIGHTER_BG=#$LIGHTER_BG" "$TMUX_CONF"
   tmux source "$TMUX_CONF"
 }
 

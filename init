@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 cd ~
 
+# Neovim unstable
+sudo add-apt-repository ppa:neovim-ppa/unstable
+
 # Common packages
 apt-get update -y
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
