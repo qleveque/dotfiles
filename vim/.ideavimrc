@@ -1,10 +1,17 @@
-source ~/.vimrc
+source ~/dotfiles/vim/.vimrc
+
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>
 nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-p> :action RecentFiles<CR>
 
+nnoremap <A-,> :action PreviousTab<CR>
+nnoremap <A-;> :action NextTab<CR>
+nnoremap <C-q> :q<CR>
+nnoremap ZZ :action CloseAllEditors<CR>
+
+nnoremap \a :action ShowIntentionActions<CR>
 nnoremap \b :action Annotate<CR>
 nnoremap \d :action Compare.LastVersion<CR>
 nnoremap \D :action Vcs.Show.Local.Changes<CR>
@@ -12,10 +19,10 @@ nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap \L :action Vcs.Show.Log<CR>
 nnoremap \m :action Git.ResolveConflicts<CR>
 
+nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
-nnoremap gd gd
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \r :action RenameElement<CR>
@@ -23,7 +30,6 @@ nnoremap \t :action FileStructurePopup<CR>
 nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
-nnoremap \a :action ActivateAntToolWindow<CR>
 
 nmap è :action Run<CR>
 nmap È :action ChooseRunConfiguration<CR>

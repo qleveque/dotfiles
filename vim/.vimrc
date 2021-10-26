@@ -3,7 +3,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
+Plug 'dyng/ctrlsf.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -11,13 +13,13 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'puremourning/vimspector'
+Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
-Plug 'dyng/ctrlsf.vim'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -52,11 +54,7 @@ nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 noremap <C-Y> 5<C-Y>
 noremap <C-E> 5<C-E>
-nnoremap <C-W>t :tabnew<CR>
-nnoremap <C-W>n :bn<CR>
-nnoremap <C-W>p :bp<CR>
-nnoremap <C-W>z <C-W>_<C-W><Bar>
-nnoremap <C-Q> :q<CR>
+nnoremap <C-Q> :BufferClose<CR>
 nmap s ys
 vmap s S
 nnoremap S f,a<CR><Esc>
@@ -112,6 +110,11 @@ nmap <Space> <Plug>(easymotion-bd-f2)
 vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
 
+nnoremap <silent> <A-,> :BufferPrevious<CR>
+nnoremap <silent> <A-;> :BufferNext<CR>
+nnoremap <silent> <A-?> :BufferMovePrevious<CR>
+nnoremap <silent> <A-.> :BufferMoveNext<CR>
+
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i
 autocmd TermEnter * tnoremap <buffer> <C-W><C-W> <C-\><C-N>:FloatermToggle<CR>
@@ -139,6 +142,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nmap <leader>r <Plug>(coc-rename)
 nmap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>a <Plug>(coc-codeaction-cursor)
 nmap [g <Plug>(coc-diagnostic-prev)
 nmap ]g <Plug>(coc-diagnostic-next)
 nmap gd <Plug>(coc-definition)
@@ -208,6 +212,12 @@ let g:floaterm_opener='edit'
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
 let g:floaterm_autoclose=2
+
+" Barbar
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.auto_hide = v:true
+let bufferline.icons = v:false
+let bufferline.closable = v:false
 
 " Plugin specific
 let g:vista_default_executive = 'coc'

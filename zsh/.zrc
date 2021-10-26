@@ -64,6 +64,7 @@ run(){
     f90|f95|f03) gfortran -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
     go) go run "$@";;
     html) open "$@";;
+    hs) ghc "$@" && ./"$@:r";;
     java) javac "$@" && java -cp . "$@:t:r";;
     jl) julia "$@";;
     js) node "$@";;
@@ -73,6 +74,7 @@ run(){
     r) Rscript "$@";;
     rb) ruby "$@";;
     rs) rustc "$@" -o "$@:h"/a.out && "$@:h"/a.out;;
+    scala) scalac "$@" && scala "$@:t:r";;
     sh) sh "$@";;
     ts) tsc "$@" && node "$@:r".js;;
     zsh) zsh "$@";;
