@@ -7,12 +7,13 @@ nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-p> :action RecentFiles<CR>
 
-nnoremap <A-,> :action PreviousTab<CR>
-nnoremap <A-;> :action NextTab<CR>
-nnoremap <C-q> :q<CR>
-nnoremap ZZ :action CloseAllEditors<CR>
+nnoremap <Left> :action PreviousTab<CR>
+nnoremap <Right> :action NextTab<CR>
+nnoremap <Down> :q<CR>
+nnoremap <A-,> :action PreviousOccurence<CR>
+nnoremap <A-;> :action NextOccurence<CR>
+nnoremap <C-q> :action CloseAllEditors<CR>
 
-nnoremap \a :action ShowIntentionActions<CR>
 nnoremap \b :action Annotate<CR>
 nnoremap \d :action Compare.LastVersion<CR>
 nnoremap \D :action Vcs.Show.Local.Changes<CR>
@@ -24,6 +25,7 @@ nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+nnoremap \a :action ShowIntentionActions<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \r :action RenameElement<CR>

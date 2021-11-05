@@ -47,8 +47,7 @@ load_zsh_plugins(){
   typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 
   # Zsh fzf completion
-  source ~/.zsh/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-  bindkey '^I' fzf_completion
+  source ~/.zsh/plugins/fzf-tab/fzf-tab.zsh
 }
 load_zsh_plugins
 

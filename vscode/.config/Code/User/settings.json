@@ -130,7 +130,7 @@
     {
       "before": [
         "<leader>",
-        "<leader>"
+        "a"
       ],
       "commands": [
         "editor.action.quickFix"

@@ -6,7 +6,7 @@ set bg=dark
 set cursorline!
 set fillchars=eob: 
 set termguicolors
-set statusline=%1*\ %{WebDevIconsGetFileTypeSymbol()}\ %f%m\ %0*\%= 
+set statusline=%1*\ %{WebDevIconsGetFileTypeSymbol()}\%m\ \%f\ %0*\%= 
 
 execute 'highlight StatusLine gui=underline guifg='.LIGHTER_BG.' guibg='.BG
 execute 'highlight StatusLineNC gui=underline guifg='.LIGHTER_BG.' guibg='.LIGHT_BG
@@ -25,7 +25,7 @@ execute 'highlight DiffDelete gui=none guifg=none guibg='.LIGHTER_BG
 execute 'highlight DiffChange gui=none guifg=none guibg=none'
 
 execute 'highlight BufferCurrent guibg='.BG
-execute 'highlight BufferTabpageFill guibg='.LIGHT_BG
+execute 'highlight BufferTabpageFill guibg='.LIGHTER_BG
 execute 'highlight BufferInactive guibg='.LIGHTER_BG
 execute 'highlight BufferInactiveMod guibg='.LIGHTER_BG
 execute 'highlight BufferInactiveIndex guibg='.LIGHTER_BG
@@ -35,15 +35,15 @@ execute 'highlight BufferVisibleMod guibg='.LIGHT_BG
 execute 'highlight BufferVisibleIndex guibg='.LIGHT_BG
 execute 'highlight BufferVisibleSign guibg='.LIGHT_BG
 
-execute 'highlight PmenuSel gui=none guifg=#000000 guibg='.LIGHTER_BG
-execute 'highlight Pmenu gui=none guifg=#000000 guibg=#c4c4c4'
+execute 'highlight PmenuSel gui=none guifg=default guibg='.LIGHT_BG
+execute 'highlight Pmenu gui=none guifg=default guibg='.LIGHTER_BG
 
 execute 'highlight FloatermBorder guibg=none guifg='.LIGHTER_BG
 
-highlight CocErrorFloat guifg=red guibg=#c4c4c4
-highlight CocWarningFloat guifg=black guibg=#c4c4c4
-highlight CocHintFloat guifg=green guibg=#c4c4c4
-highlight CocInfoFloat guifg=blue guibg=#c4c4c4
+highlight CocErrorFloat guifg=default
+highlight CocWarningFloat guifg=default
+highlight CocHintFloat guifg=default
+highlight CocInfoFloat guifg=default
 highlight CocErrorSign guifg=black guibg=red
 highlight CocWarningSign guifg=black guibg=orange
 highlight CocHintSign guifg=black guibg=green

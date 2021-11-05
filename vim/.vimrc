@@ -9,6 +9,7 @@ Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -20,12 +21,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
+Plug 'karb94/neoscroll.nvim'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'udalov/kotlin-vim'
-
-Plug 'github/copilot.vim'
+Plug 'posva/vim-vue'
 call plug#end()
 
 " Language specific
@@ -56,7 +57,7 @@ nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 noremap <C-Y> 5<C-Y>
 noremap <C-E> 5<C-E>
-nnoremap <C-Q> :BufferClose<CR>
+nnoremap <C-Q> ZQ
 nmap s ys
 vmap s S
 nnoremap S f,a<CR><Esc>
@@ -73,6 +74,8 @@ nmap Ç #NCgN
 vmap Ç #CgN
 nnoremap ! :!
 nnoremap <Esc> :nohl<CR>
+nnoremap <A-;> :cnext<CR>
+nnoremap <A-,> :cprev<CR>
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -111,11 +114,6 @@ nnoremap <C-p> :History<CR>
 nmap <Space> <Plug>(easymotion-bd-f2)
 vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
-
-nnoremap <silent> <A-,> :BufferPrevious<CR>
-nnoremap <silent> <A-;> :BufferNext<CR>
-nnoremap <silent> <A-?> :BufferMovePrevious<CR>
-nnoremap <silent> <A-.> :BufferMoveNext<CR>
 
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i
@@ -166,6 +164,9 @@ nmap <leader>f vv<leader>f
 
 " Vista
 nnoremap <leader>t :Vista show<CR>
+let g:vista_default_executive = 'coc'
+let g:vista_close_on_jump = 1
+let g:vista_ignore_kinds = ['Variable']
 
 " Spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -217,15 +218,24 @@ let g:floaterm_height=0.8
 let g:floaterm_autoclose=2
 
 " Barbar
+nnoremap <silent> <Left> :BufferPrevious<CR>
+nnoremap <silent> <Right> :BufferNext<CR>
+nnoremap <silent> <S-Left> :BufferMovePrevious<CR>
+nnoremap <silent> <S-Right> :BufferMoveNext<CR>
+nnoremap <silent> <Down> :BufferClose<CR>
+nnoremap <silent> <Up> :enew<CR>
 let bufferline = get(g:, 'bufferline', {})
+let bufferline.icons = v:true
+let bufferline.closable = v:true
+let bufferline.icon_custom_colors = v:true
 let bufferline.auto_hide = v:true
-let bufferline.icons = v:false
-let bufferline.closable = v:false
+
+" Copilot
+imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 " Plugin specific
-let g:vista_default_executive = 'coc'
-let g:vista_close_on_jump = 1
-let g:vista_ignore_kinds = ['Variable']
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:ctrlsf_mapping = {"openb": "<Enter>", "next": "n", "prev": "N"}
+lua require('neoscroll').setup({easing_function = 'quintic'})
