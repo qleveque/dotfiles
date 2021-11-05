@@ -63,8 +63,9 @@ run(){
     cc|cpp) g++ -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
     f90|f95|f03) gfortran -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
     go) go run "$@";;
-    html) open "$@";;
     hs) ghc "$@" && ./"$@:r";;
+    html) open "$@";;
+    java) javac "$@" && java -cp "$@:h" "$@:t:r";;
     java) javac "$@" && java -cp . "$@:t:r";;
     jl) julia "$@";;
     js) node "$@";;
@@ -242,6 +243,7 @@ function zle-clipboard-paste {
     zle kill-region
   fi
   LBUFFER+="$(xclip -selection clipboard -out)"
+  zle autosuggest-clear
 }
 zle -N zle-clipboard-paste
 bindkey '^V' zle-clipboard-paste

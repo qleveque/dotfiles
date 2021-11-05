@@ -24,6 +24,8 @@ Plug 'yggdroot/indentLine'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'udalov/kotlin-vim'
+
+Plug 'github/copilot.vim'
 call plug#end()
 
 " Language specific
@@ -137,6 +139,7 @@ cnoreabbrev cht CHT
 
 " Coc
 let g:coc_disable_startup_warning = 1
+map <leader><leader> <Plug>(coc-codeaction-cursor)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <leader>r <Plug>(coc-rename)

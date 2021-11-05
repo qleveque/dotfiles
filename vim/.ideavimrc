@@ -1,4 +1,5 @@
 source ~/dotfiles/vim/.vimrc
+sethandler n:vim i:ide
 
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>

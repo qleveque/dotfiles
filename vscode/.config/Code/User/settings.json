@@ -1,175 +1,249 @@
 {
-    "C_Cpp.updateChannel": "Insiders",
-    "explorer.confirmDelete": false,
-    "workbench.activityBar.visible": true,
-    "workbench.statusBar.visible": true,
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<leader>", "f"],
-            "commands": [
-                "editor.action.formatSelection"
-            ]
-        }
-    ],
-    "vim.visualModeKeyBindings": [
-        {
-            "before": ["<space>"],
-            "after": ["<leader>", "<leader>", "2", "t"]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["<C-t>"],
-            "commands": [
-                "workbench.action.quickOpen"
-            ]
-        },
-        {
-            "before": ["<C-s>"],
-            "commands": [
-                "workbench.action.findInFiles"
-            ]
-        },
-        {
-            "before": ["<C-f>"],
-            "commands": [
-                "workbench.view.explorer"
-            ]
-        },
-        {
-            "before": ["<C-p>"],
-            "commands": [
-                "workbench.action.openRecent"
-            ]
-        },
-        {
-            "before": ["g", "d"],
-            "commands": [
-                "editor.action.revealDeclaration"
-            ]
-        },
-        {
-            "before": ["g", "i"],
-            "commands": [
-                "editor.action.revealDefinition"
-            ]
-        },
-        {
-            "before": ["g", "r"],
-            "commands": [
-                "editor.action.goToReferences"
-            ]
-        },
-        {
-            "before": ["<leader>", "i"],
-            "commands": [
-                "editor.action.organizeImports"
-            ]
-        },
-        {
-            "before": ["<leader>", "f"],
-            "commands": [
-                "editor.action.formatDocument"
-            ]
-        },
-        {
-            "before": ["<leader>", "r"],
-            "commands": [
-                "editor.action.rename"
-            ]
-        },
-        {
-            "before": ["è"],
-            "commands": [
-                "workbench.action.tasks.build"
-            ]
-        },
-        {
-            "before": ["é", "é"],
-            "commands": [
-                "workbench.action.debug.start"
-            ]
-        },
-        {
-            "before": ["É", "É"],
-            "commands": [
-                "workbench.action.debug.selectandstart"
-            ]
-        },
-        {
-            "before": ["é", "r"],
-            "commands": [
-                "workbench.action.debug.continue"
-            ]
-        },
-        {
-            "before": ["é", "l"],
-            "commands": [
-                "workbench.action.debug.stepInto"
-            ]
-        },
-        {
-            "before": ["é", "h"],
-            "commands": [
-                "workbench.action.debug.stepOut"
-            ]
-        },
-        {
-            "before": ["é", "j"],
-            "commands": [
-                "workbench.action.debug.stepOver"
-            ]
-        },
-        {
-            "before": ["é", "b"],
-            "commands": [
-                "editor.debug.action.toggleBreakpoint"
-            ]
-        },
-        {
-            "before": ["é", "c"],
-            "commands": [
-                "editor.debug.action.runToCursor"
-            ]
-        },
-        {
-            "before": ["é", "k"],
-            "commands": [
-                "workbench.action.debug.stop"
-            ]
-        },
-        {
-            "before": ["é", "w"],
-            "commands": [
-                "workbench.debug.viewlet.action.addWatchExpression"
-            ]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-        {
-            "before": ["<space>"],
-            "after": ["<leader>", "<leader>", "2", "s"]
-        }
-    ],
-    "terminal.integrated.shell.linux": "/bin/sh",
-    "vim.vimrc.enable": true,
-    "vim.vimrc.path": "~/.vimrc",
-    "editor.minimap.enabled": false,
-    "window.menuBarVisibility": "default",
-    "workbench.editor.showTabs": false,
-    "workbench.editor.limit.value": 1,
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.limit.enabled": true,
-    "editor.lineNumbers": "relative",
-    "workbench.colorTheme": "Default Dark+",
-    "C_Cpp.clang_format_sortIncludes": true,
-    "extensions.ignoreRecommendations": false,
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": true,
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "relative",
+  "extensions.ignoreRecommendations": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "C_Cpp.updateChannel": "Insiders",
+  "C_Cpp.clang_format_sortIncludes": true,
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "~/.vimrc",
+  "vim.easymotion": true,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "<space>"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "2",
+        "t"
+      ]
     },
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatSelection"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-s>"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<C-t>"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
-    "vim.easymotion": true
+    {
+      "before": [
+        "<C-f>"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
+    },
+    {
+      "before": [
+        "<C-s>"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<C-p>"
+      ],
+      "commands": [
+        "workbench.action.openRecent"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "i"
+      ],
+      "commands": [
+        "editor.action.organizeImports"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "<leader>"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "è"
+      ],
+      "commands": [
+        "workbench.action.tasks.build"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "é"
+      ],
+      "commands": [
+        "workbench.action.debug.start"
+      ]
+    },
+    {
+      "before": [
+        "É",
+        "É"
+      ],
+      "commands": [
+        "workbench.action.debug.selectandstart"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "r"
+      ],
+      "commands": [
+        "workbench.action.debug.continue"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.debug.stepInto"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.debug.stepOut"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.debug.stepOver"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "b"
+      ],
+      "commands": [
+        "editor.debug.action.toggleBreakpoint"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "c"
+      ],
+      "commands": [
+        "editor.debug.action.runToCursor"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.debug.stop"
+      ]
+    },
+    {
+      "before": [
+        "é",
+        "w"
+      ],
+      "commands": [
+        "workbench.debug.viewlet.action.addWatchExpression"
+      ]
+    },
+    {
+      "before": [
+        "<space>"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "2",
+        "s"
+      ]
+    }
+  ]
 }
