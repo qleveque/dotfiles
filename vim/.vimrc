@@ -5,7 +5,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'dyng/ctrlsf.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -21,7 +21,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
-Plug 'karb94/neoscroll.nvim'
+Plug 'psliwka/vim-smoothie'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -74,8 +74,10 @@ nmap Ç #NCgN
 vmap Ç #CgN
 nnoremap ! :!
 nnoremap <Esc> :nohl<CR>
-nnoremap <A-;> :cnext<CR>
-nnoremap <A-,> :cprev<CR>
+nnoremap - :cprev<CR>
+nnoremap + :cnext<CR>
+nnoremap [c <A-,>
+nnoremap ]c <A-;>
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -115,6 +117,12 @@ nmap <Space> <Plug>(easymotion-bd-f2)
 vmap <Space> <Plug>(easymotion-bd-t2)
 omap <Space> <Plug>(easymotion-bd-t2)
 
+nnoremap <silent> ( :BufferPrevious<CR>
+nnoremap <silent> ) :BufferNext<CR>
+nnoremap <silent>   :BufferMovePrevious<CR>
+nnoremap <silent> ° :BufferMoveNext<CR>
+nnoremap <silent> _ :BufferClose<CR>
+
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i
 autocmd TermEnter * tnoremap <buffer> <C-W><C-W> <C-\><C-N>:FloatermToggle<CR>
@@ -124,7 +132,7 @@ nnoremap <C-W><C-W> :FloatermToggle<CR>
 " Git
 let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
 nnoremap <silent> <leader>b :execute floaterm_full." tig blame +".line(".")." %"<CR>
-nnoremap <silent> <leader>l :execute floaterm_full." tig %"<CR>
+nnoremap <silent> <leader>l :execute floaterm_full." tig --follow %"<CR>
 nnoremap <silent> <leader>L :execute floaterm_full." tig"<CR>
 nnoremap <silent> <leader>d :execute floaterm_full." git difftool --no-prompt %"<CR>
 nnoremap <silent> <leader>D :execute floaterm_full." tig status"<CR>
@@ -189,20 +197,20 @@ cnoreabbrev ef EF
 nmap <silent> è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
     \ <Bar> exec ':FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
-nmap éé <Plug>VimspectorContinue
-nmap ér <Plug>VimspectorContinue
-nmap él <Plug>VimspectorStepInto
-nmap éh <Plug>VimspectorStepOut
-nmap éj <Plug>VimspectorStepOver
-nmap éb <Plug>VimspectorToggleBreakpoint
-nmap éc <Plug>VimspectorRunToCursor
-nmap én <Plug>VimspectorUpFrame
-nmap ép <Plug>VimspectorDownFrame
-nmap ék :VimspectorReset<CR>
-nmap éw :VimspectorWatch<Space>
-vmap éw "xy:VimspectorWatch <C-R>+<CR>
-nmap és <Plug>VimspectorBalloonEval
-xmap és <Plug>VimspectorBalloonEval
+nmap é <Plug>VimspectorContinue
+nmap Ⓡ <Plug>VimspectorContinue
+nmap ¦ <Plug>VimspectorStepInto
+nmap œ <Plug>VimspectorStepOut
+nmap € <Plug>VimspectorStepOver
+nmap ß <Plug>VimspectorToggleBreakpoint
+nmap © <Plug>VimspectorRunToCursor
+nmap ¶ <Plug>VimspectorUpFrame
+nmap ñ <Plug>VimspectorDownFrame
+nmap × :VimspectorReset<CR>
+nmap ω :VimspectorWatch<Space>
+vmap ω "xy:VimspectorWatch <C-R>+<CR>
+nmap ν <Plug>VimspectorBalloonEval
+xmap ν <Plug>VimspectorBalloonEval
 
 " Vifm
 let g:vifm_exec_args = '-c :only'
@@ -218,12 +226,6 @@ let g:floaterm_height=0.8
 let g:floaterm_autoclose=2
 
 " Barbar
-nnoremap <silent> <Left> :BufferPrevious<CR>
-nnoremap <silent> <Right> :BufferNext<CR>
-nnoremap <silent> <S-Left> :BufferMovePrevious<CR>
-nnoremap <silent> <S-Right> :BufferMoveNext<CR>
-nnoremap <silent> <Down> :BufferClose<CR>
-nnoremap <silent> <Up> :enew<CR>
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.icons = v:true
 let bufferline.closable = v:true
@@ -238,4 +240,4 @@ let g:copilot_no_tab_map = v:true
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:ctrlsf_mapping = {"openb": "<Enter>", "next": "n", "prev": "N"}
-lua require('neoscroll').setup({easing_function = 'quintic'})
+let g:smoothie_speed_linear_factor = 30

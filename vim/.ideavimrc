@@ -7,11 +7,9 @@ nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-p> :action RecentFiles<CR>
 
-nnoremap <Left> :action PreviousTab<CR>
-nnoremap <Right> :action NextTab<CR>
-nnoremap <Down> :q<CR>
-nnoremap <A-,> :action PreviousOccurence<CR>
-nnoremap <A-;> :action NextOccurence<CR>
+nnoremap ( :action PreviousTab<CR>
+nnoremap ) :action NextTab<CR>
+nnoremap _ :q<CR>
 nnoremap <C-q> :action CloseAllEditors<CR>
 
 nnoremap \b :action Annotate<CR>
@@ -36,25 +34,21 @@ nnoremap \h :action TypeHierarchy<CR>
 
 nmap è :action Run<CR>
 nmap È :action ChooseRunConfiguration<CR>
-nmap éé :action Debug<CR>
-nmap ÉÉ :action ChooseDebugConfiguration<CR>
+nmap é :action Debug<CR>
+nmap É :action ChooseDebugConfiguration<CR>
 
-nmap ér :action Resume<CR>
-nmap él :action StepIntoMyCode<CR>
-nmap éh :action StepOut<CR>
-nmap éj :action StepOver<CR>
-nmap éc :action RunToCursor<CR>
-nmap ék :action Stop<CR>
-
-nmap én :action NextOccurence<CR>
-nmap ép :action PreviousOccurence<CR>
-nmap ég :action ShowExecutionPoint<CR>
-
-nmap éb :action ToggleLineBreakpoint<CR>
-nmap éB :action ViewBreakpoints<CR>
-nmap ét :action XDebugger.MuteBreakpoints<CR>
-
-nmap éd :action Debugger.RemoveAllBreakpoints<CR>
-
-nmap éw :action Debugger.AddToWatch<CR>
-vmap éw :action Debugger.AddToWatch<CR>
+nmap Ⓡ :action Resume<CR>
+nmap ¦ :action StepIntoMyCode<CR>
+nmap œ :action StepOut<CR>
+nmap € :action StepOver<CR>
+nmap © :action RunToCursor<CR>
+nmap × :action Stop<CR>
+nmap ñ :action NextOccurence<CR>
+nmap ¶ :action PreviousOccurence<CR>
+nmap æ :action ShowExecutionPoint<CR>
+nmap ß :action ToggleLineBreakpoint<CR>
+nmap ω :action Debugger.AddToWatch<CR>
+vmap ω :action Debugger.AddToWatch<CR>
+" nmap éB :action ViewBreakpoints<CR>
+" nmap ét :action XDebugger.MuteBreakpoints<CR>
+" nmap éd :action Debugger.RemoveAllBreakpoints<CR>

@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
     {
         "key": "ctrl+s",
@@ -6,6 +5,16 @@
     },
     {
         "key": "ctrl+s",
-        "command": "workbench.action.findInFiles"
+        "command": "search.action.openEditor"
+    },
+    {
+      "key": "ctrl+l",
+      "when": "sideBarFocus",
+      "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
+      "key": "ctrl+q",
+      "when": "sideBarFocus",
+      "command": "workbench.action.toggleSidebarVisibility"
     }
 ]

@@ -30,10 +30,10 @@ execute 'highlight BufferInactive guibg='.LIGHTER_BG
 execute 'highlight BufferInactiveMod guibg='.LIGHTER_BG
 execute 'highlight BufferInactiveIndex guibg='.LIGHTER_BG
 execute 'highlight BufferInactiveSign guibg='.LIGHTER_BG
-execute 'highlight BufferVisible guibg='.LIGHT_BG
-execute 'highlight BufferVisibleMod guibg='.LIGHT_BG
-execute 'highlight BufferVisibleIndex guibg='.LIGHT_BG
-execute 'highlight BufferVisibleSign guibg='.LIGHT_BG
+execute 'highlight BufferVisible guibg='.LIGHTER_BG
+execute 'highlight BufferVisibleMod guibg='.LIGHTER_BG
+execute 'highlight BufferVisibleIndex guibg='.LIGHTER_BG
+execute 'highlight BufferVisibleSign guibg='.LIGHTER_BG
 
 execute 'highlight PmenuSel gui=none guifg=default guibg='.LIGHT_BG
 execute 'highlight Pmenu gui=none guifg=default guibg='.LIGHTER_BG

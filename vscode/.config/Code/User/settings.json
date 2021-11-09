@@ -17,6 +17,7 @@
   "vim.vimrc.enable": true,
   "vim.vimrc.path": "~/.vimrc",
   "vim.easymotion": true,
+  "vim.useSystemClipboard": true,
   "vim.visualModeKeyBindings": [
     {
       "before": [
@@ -39,17 +40,18 @@
       ]
     }
   ],
-  "vim.normalModeKeyBindingsNonRecursive": [
+  "vim.normalModeKeyBindings": [
     {
       "before": [
-        "<C-s>"
+        "<space>"
       ],
-      "commands": [
-        "workbench.action.findInFiles"
+      "after": [
+        "<leader>",
+        "<leader>",
+        "2",
+        "s"
       ]
-    }
-  ],
-  "vim.normalModeKeyBindings": [
+    },
     {
       "before": [
         "<C-t>"
@@ -68,10 +70,10 @@
     },
     {
       "before": [
-        "<C-s>"
+        "<C-n>"
       ],
       "commands": [
-        "workbench.action.findInFiles"
+        "workbench.action.showAllSymbols"
       ]
     },
     {
@@ -80,6 +82,14 @@
       ],
       "commands": [
         "workbench.action.openRecent"
+      ]
+    },
+    {
+      "before": [
+        "<C-q>"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
       ]
     },
     {
@@ -138,6 +148,15 @@
     },
     {
       "before": [
+        "<leader>",
+        "t"
+      ],
+      "commands": [
+        "breadcrumbs.focusAndSelect"
+      ]
+    },
+    {
+      "before": [
         "è"
       ],
       "commands": [
@@ -146,7 +165,6 @@
     },
     {
       "before": [
-        "é",
         "é"
       ],
       "commands": [
@@ -155,7 +173,6 @@
     },
     {
       "before": [
-        "É",
         "É"
       ],
       "commands": [
@@ -164,8 +181,7 @@
     },
     {
       "before": [
-        "é",
-        "r"
+        "®"
       ],
       "commands": [
         "workbench.action.debug.continue"
@@ -173,8 +189,7 @@
     },
     {
       "before": [
-        "é",
-        "l"
+        "¦"
       ],
       "commands": [
         "workbench.action.debug.stepInto"
@@ -182,8 +197,7 @@
     },
     {
       "before": [
-        "é",
-        "h"
+        "œ"
       ],
       "commands": [
         "workbench.action.debug.stepOut"
@@ -191,8 +205,7 @@
     },
     {
       "before": [
-        "é",
-        "j"
+        "€"
       ],
       "commands": [
         "workbench.action.debug.stepOver"
@@ -200,8 +213,7 @@
     },
     {
       "before": [
-        "é",
-        "b"
+        "ß"
       ],
       "commands": [
         "editor.debug.action.toggleBreakpoint"
@@ -209,8 +221,7 @@
     },
     {
       "before": [
-        "é",
-        "c"
+        "©"
       ],
       "commands": [
         "editor.debug.action.runToCursor"
@@ -218,8 +229,7 @@
     },
     {
       "before": [
-        "é",
-        "k"
+        "×"
       ],
       "commands": [
         "workbench.action.debug.stop"
@@ -227,8 +237,7 @@
     },
     {
       "before": [
-        "é",
-        "w"
+        "ω"
       ],
       "commands": [
         "workbench.debug.viewlet.action.addWatchExpression"
@@ -236,14 +245,45 @@
     },
     {
       "before": [
-        "<space>"
+        ")"
       ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "2",
-        "s"
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    {
+      "before": [
+        "("
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    {
+      "before": [
+        "°"
+      ],
+      "commands": [
+        "workbench.action.moveEditorRightInGroup"
+      ]
+    },
+    {
+      "before": [
+        " "
+      ],
+      "commands": [
+        "workbench.action.moveEditorLeftInGroup"
+      ]
+    },
+    {
+      "before": [
+        "_"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
       ]
     }
-  ]
+  ],
+  "window.zoomLevel": -1,
+  "editor.inlineSuggest.enabled": true
 }
