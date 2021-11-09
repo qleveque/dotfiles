@@ -21,7 +21,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
-Plug 'karb94/neoscroll.nvim'
+Plug 'psliwka/vim-smoothie'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -238,4 +238,4 @@ let g:copilot_no_tab_map = v:true
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:ctrlsf_mapping = {"openb": "<Enter>", "next": "n", "prev": "N"}
-lua require('neoscroll').setup({easing_function = 'quintic'})
+let g:smoothie_speed_linear_factor = 30
