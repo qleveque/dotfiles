@@ -14,7 +14,6 @@ Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'psliwka/vim-smoothie'
-Plug 'puremourning/vimspector'
 Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
@@ -55,8 +54,7 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
-noremap <C-Y> 5<C-Y>
-noremap <C-E> 5<C-E>
+nnoremap <Esc> :nohl<CR>
 nnoremap <C-Q> ZQ
 nmap s ys
 vmap s S
@@ -72,12 +70,8 @@ nmap ç #NCgn
 vmap ç #Cgn
 nmap Ç #NCgN
 vmap Ç #CgN
-nnoremap ! :!
-nnoremap <Esc> :nohl<CR>
 nnoremap - :cprev<CR>
 nnoremap + :cnext<CR>
-nnoremap <A-,> [c
-nnoremap <A-;> ]c
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -104,6 +98,8 @@ autocmd VimEnter * if &diff |
   \ execute 'windo set foldcolumn=0 nofoldenable wrap linebreak showbreak=>  ' |
   \ execute 'norm 1G]c[c' |
   \ execute 'nnoremap <C-Q> :qa<CR>' |
+  \ execute 'nnoremap <A-,> [c' |
+  \ execute 'nnoremap <A-;> ]c' |
   \ endif
 
 " Shortcuts
@@ -128,6 +124,9 @@ autocmd TermEnter * nnoremap <buffer> <CR> i
 autocmd TermEnter * tnoremap <buffer> <C-W><C-W> <C-\><C-N>:FloatermToggle<CR>
 tmap <C-A> <C-\><C-N>
 nnoremap <C-W><C-W> :FloatermToggle<CR>
+nmap <silent> è :w!
+    \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
+    \ <Bar> exec ':FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
 
 " Git
 let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
@@ -181,8 +180,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 map ga <Plug>(EasyAlign)
 
 " Emmet
-let g:user_emmet_leader_key='<C-Z>'
-imap <S-tab> <C-Z>,
+let g:user_emmet_mode = ''
+imap <S-tab> <plug>(emmet-expand-abbr)
+nmap <S-tab> cst<
 
 " Tmux integration
 nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
@@ -192,25 +192,6 @@ nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<
 command! -nargs=1 EF :execute 'edit '
       \ .system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
 cnoreabbrev ef EF
-
-" Vimspector
-nmap <silent> è :w!
-    \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
-    \ <Bar> exec ':FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
-nmap é <Plug>VimspectorContinue
-nmap Ⓡ <Plug>VimspectorContinue
-nmap ¦ <Plug>VimspectorStepInto
-nmap œ <Plug>VimspectorStepOut
-nmap € <Plug>VimspectorStepOver
-nmap ß <Plug>VimspectorToggleBreakpoint
-nmap © <Plug>VimspectorRunToCursor
-nmap ¶ <Plug>VimspectorUpFrame
-nmap ñ <Plug>VimspectorDownFrame
-nmap × :VimspectorReset<CR>
-nmap ω :VimspectorWatch<Space>
-vmap ω "xy:VimspectorWatch <C-R>+<CR>
-nmap ν <Plug>VimspectorBalloonEval
-xmap ν <Plug>VimspectorBalloonEval
 
 " Vifm
 let g:vifm_exec_args = '-c :only'

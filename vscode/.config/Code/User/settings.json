@@ -157,6 +157,51 @@
     },
     {
       "before": [
+        "<leader>",
+        "b"
+      ],
+      "commands": [
+        "gitlens.toggleFileBlame"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "D"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "git.viewFileHistory"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "L"
+      ],
+      "commands": [
+        "git.viewHistory"
+      ]
+    },
+    {
+      "before": [
         "è"
       ],
       "commands": [
@@ -285,5 +330,7 @@
     }
   ],
   "window.zoomLevel": -1,
-  "editor.inlineSuggest.enabled": true
+  "editor.inlineSuggest.enabled": true,
+  "git.untrackedChanges": "hidden",
+  "timeline.excludeSources": []
 }
