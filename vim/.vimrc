@@ -5,7 +5,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'dyng/ctrlsf.vim'
 Plug 'easymotion/vim-easymotion'
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -13,6 +13,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'psliwka/vim-smoothie'
 Plug 'puremourning/vimspector'
 Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
@@ -21,7 +22,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
-Plug 'psliwka/vim-smoothie'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -76,8 +76,8 @@ nnoremap ! :!
 nnoremap <Esc> :nohl<CR>
 nnoremap - :cprev<CR>
 nnoremap + :cnext<CR>
-nnoremap [c <A-,>
-nnoremap ]c <A-;>
+nnoremap <A-,> [c
+nnoremap <A-;> ]c
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -231,10 +231,6 @@ let bufferline.icons = v:true
 let bufferline.closable = v:true
 let bufferline.icon_custom_colors = v:true
 let bufferline.auto_hide = v:true
-
-" Copilot
-imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
 
 " Plugin specific
 let g:EasyMotion_do_mapping = 0
