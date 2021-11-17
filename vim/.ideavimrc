@@ -32,6 +32,9 @@ nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 
+nnoremap <A-;> :action NextDiff<CR>
+nnoremap <A-,> :action PreviousDiff<CR>
+
 nmap è :action Run<CR>
 nmap È :action ChooseRunConfiguration<CR>
 nmap é :action Debug<CR>

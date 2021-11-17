@@ -18,6 +18,8 @@
   "vim.vimrc.path": "~/.vimrc",
   "vim.easymotion": true,
   "vim.useSystemClipboard": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
   "vim.visualModeKeyBindings": [
     {
       "before": [
@@ -198,6 +200,14 @@
       ],
       "commands": [
         "git.viewHistory"
+      ]
+    },
+    {
+      "before": ["<leader>", "%"],
+      "commands": [
+        {
+          "command": "editor.emmet.action.matchTag"
+        }
       ]
     },
     {
