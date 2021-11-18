@@ -18,16 +18,6 @@
       "command": "workbench.action.toggleSidebarVisibility"
     },
     {
-      "key": "enter",
-      "command": "search.action.focusNextSearchResult",
-      "when": "hasSearchResult || inSearchEditor"
-    },
-    {
-      "key": "shift+enter",
-      "command": "search.action.focusPreviousSearchResult",
-      "when": "hasSearchResult || inSearchEditor"
-    },
-    {
       "key": "shift+tab",
       "command": "editor.emmet.action.updateTag",
       "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
