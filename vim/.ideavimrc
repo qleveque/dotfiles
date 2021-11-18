@@ -17,7 +17,6 @@ nnoremap \d :action Compare.LastVersion<CR>
 nnoremap \D :action Vcs.Show.Local.Changes<CR>
 nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap \L :action Vcs.Show.Log<CR>
-nnoremap \m :action Git.ResolveConflicts<CR>
 
 nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
@@ -32,16 +31,16 @@ nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 
-nnoremap <A-;> :action NextDiff<CR>
-nnoremap <A-,> :action PreviousDiff<CR>
+nnoremap + :action NextDiff<CR>
+nnoremap - :action PreviousDiff<CR>
 
 nmap è :action Run<CR>
 nmap È :action ChooseRunConfiguration<CR>
 nmap é :action Debug<CR>
 nmap É :action ChooseDebugConfiguration<CR>
 
-nmap Ⓡ :action Resume<CR>
-nmap ¦ :action StepIntoMyCode<CR>
+nmap ℝ :action Resume<CR>
+nmap Ⅰ :action StepIntoMyCode<CR>
 nmap œ :action StepOut<CR>
 nmap € :action StepOver<CR>
 nmap © :action RunToCursor<CR>
@@ -52,6 +51,5 @@ nmap æ :action ShowExecutionPoint<CR>
 nmap ß :action ToggleLineBreakpoint<CR>
 nmap ω :action Debugger.AddToWatch<CR>
 vmap ω :action Debugger.AddToWatch<CR>
-" nmap éB :action ViewBreakpoints<CR>
-" nmap ét :action XDebugger.MuteBreakpoints<CR>
-" nmap éd :action Debugger.RemoveAllBreakpoints<CR>
+nmap Β :action ViewBreakpoints<CR>
+nmap … :action XDebugger.MuteBreakpoints<CR>

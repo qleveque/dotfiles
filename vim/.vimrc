@@ -13,7 +13,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'liuchengxu/vista.vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'psliwka/vim-smoothie'
 Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
@@ -70,8 +69,6 @@ nmap ç #NCgn
 vmap ç #Cgn
 nmap Ç #NCgN
 vmap Ç #CgN
-nnoremap - :cprev<CR>
-nnoremap + :cnext<CR>
 
 " Clipboard preferences
 set clipboard^=unnamed,unnamedplus
@@ -96,10 +93,10 @@ nnoremap [x ?\v^[\=<>\|]{7}[ \n]<CR>
 " Vimdiff
 autocmd VimEnter * if &diff |
   \ execute 'windo set foldcolumn=0 nofoldenable wrap linebreak showbreak=>  ' |
-  \ execute 'norm 1G]c[c' |
+  \ execute 'norm 1G]c[czz' |
   \ execute 'nnoremap <C-Q> :qa<CR>' |
-  \ execute 'nnoremap <A-,> [c' |
-  \ execute 'nnoremap <A-;> ]c' |
+  \ execute 'nnoremap - [czz' |
+  \ execute 'nnoremap + ]czz' |
   \ endif
 
 " Shortcuts
@@ -123,7 +120,6 @@ nnoremap <silent> _ :BufferClose<CR>
 autocmd TermEnter * nnoremap <buffer> <CR> i
 autocmd TermEnter * tnoremap <buffer> <C-W><C-W> <C-\><C-N>:FloatermToggle<CR>
 tmap <C-A> <C-\><C-N>
-nnoremap <C-W><C-W> :FloatermToggle<CR>
 nmap <silent> è :w!
     \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
     \ <Bar> exec ':FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
@@ -135,7 +131,6 @@ nnoremap <silent> <leader>l :execute floaterm_full." tig --follow %"<CR>
 nnoremap <silent> <leader>L :execute floaterm_full." tig"<CR>
 nnoremap <silent> <leader>d :execute floaterm_full." git difftool --no-prompt %"<CR>
 nnoremap <silent> <leader>D :execute floaterm_full." tig status"<CR>
-nnoremap <silent> <leader>m :execute floaterm_full." git mergetool --no-prompt"<CR>
 
 " Cht
 command! -nargs=+ CHT :execute 'FloatermNew --title=Cht.sh '
@@ -193,28 +188,21 @@ command! -nargs=1 EF :execute 'edit '
       \ .system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
 cnoreabbrev ef EF
 
-" Vifm
-let g:vifm_exec_args = '-c :only'
-let g:vifm_embed_split = 1
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-let g:vifm_replace_netrw = 1
-
-" Floaterm
-let g:floaterm_opener='edit'
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-let g:floaterm_autoclose=2
-
-" Barbar
+" Plugin specific
 let bufferline = get(g:, 'bufferline', {})
-let bufferline.icons = v:true
+let bufferline.auto_hide = v:true
 let bufferline.closable = v:true
 let bufferline.icon_custom_colors = v:true
-let bufferline.auto_hide = v:true
-
-" Plugin specific
+let bufferline.icons = v:true
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 let g:ctrlsf_mapping = {"openb": "<Enter>", "next": "n", "prev": "N"}
-let g:smoothie_speed_linear_factor = 30
+let g:floaterm_autoclose=2
+let g:floaterm_height=0.8
+let g:floaterm_opener='edit'
+let g:floaterm_width=0.8
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+let g:vifm_embed_split = 1
+let g:vifm_exec_args = '-c :only'
+let g:vifm_replace_netrw = 1

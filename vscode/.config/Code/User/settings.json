@@ -12,8 +12,14 @@
     "default": "right",
     "jupyter-notebook": "left"
   },
+  "editor.inlineSuggest.enabled": true,
+  "git.untrackedChanges": "hidden",
+  "timeline.excludeSources": [],
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
   "C_Cpp.updateChannel": "Insiders",
   "C_Cpp.clang_format_sortIncludes": true,
+  "python.linting.pylintEnabled": true,
   "vim.vimrc.enable": true,
   "vim.vimrc.path": "~/.vimrc",
   "vim.easymotion": true,
@@ -21,326 +27,47 @@
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.visualModeKeyBindings": [
-    {
-      "before": [
-        "<space>"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "2",
-        "t"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "commands": [
-        "editor.action.formatSelection"
-      ]
-    }
+    { "before": [ "<space>" ], "after": [ "<leader>", "<leader>", "2", "t" ] },
+    { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatSelection" ] }
   ],
   "vim.normalModeKeyBindings": [
-    {
-      "before": [
-        "<space>"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "2",
-        "s"
-      ]
-    },
-    {
-      "before": [
-        "<C-t>"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
-    },
-    {
-      "before": [
-        "<C-f>"
-      ],
-      "commands": [
-        "workbench.view.explorer"
-      ]
-    },
-    {
-      "before": [
-        "<C-n>"
-      ],
-      "commands": [
-        "workbench.action.showAllSymbols"
-      ]
-    },
-    {
-      "before": [
-        "<C-p>"
-      ],
-      "commands": [
-        "workbench.action.openRecent"
-      ]
-    },
-    {
-      "before": [
-        "<C-q>"
-      ],
-      "commands": [
-        "workbench.action.closeEditorsInGroup"
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "d"
-      ],
-      "commands": [
-        "editor.action.revealDefinition"
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "i"
-      ],
-      "commands": [
-        "editor.action.revealDefinition"
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "r"
-      ],
-      "commands": [
-        "editor.action.goToReferences"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "i"
-      ],
-      "commands": [
-        "editor.action.organizeImports"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "r"
-      ],
-      "commands": [
-        "editor.action.rename"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "a"
-      ],
-      "commands": [
-        "editor.action.quickFix"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "t"
-      ],
-      "commands": [
-        "breadcrumbs.focusAndSelect"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "b"
-      ],
-      "commands": [
-        "gitlens.toggleFileBlame"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "d"
-      ],
-      "commands": [
-        "workbench.view.scm"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "D"
-      ],
-      "commands": [
-        "workbench.view.scm"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "l"
-      ],
-      "commands": [
-        "git.viewFileHistory"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "L"
-      ],
-      "commands": [
-        "git.viewHistory"
-      ]
-    },
-    {
-      "before": ["<leader>", "%"],
-      "commands": [
-        {
-          "command": "editor.emmet.action.matchTag"
-        }
-      ]
-    },
-    {
-      "before": [
-        "è"
-      ],
-      "commands": [
-        "workbench.action.tasks.build"
-      ]
-    },
-    {
-      "before": [
-        "é"
-      ],
-      "commands": [
-        "workbench.action.debug.start"
-      ]
-    },
-    {
-      "before": [
-        "É"
-      ],
-      "commands": [
-        "workbench.action.debug.selectandstart"
-      ]
-    },
-    {
-      "before": [
-        "®"
-      ],
-      "commands": [
-        "workbench.action.debug.continue"
-      ]
-    },
-    {
-      "before": [
-        "¦"
-      ],
-      "commands": [
-        "workbench.action.debug.stepInto"
-      ]
-    },
-    {
-      "before": [
-        "œ"
-      ],
-      "commands": [
-        "workbench.action.debug.stepOut"
-      ]
-    },
-    {
-      "before": [
-        "€"
-      ],
-      "commands": [
-        "workbench.action.debug.stepOver"
-      ]
-    },
-    {
-      "before": [
-        "ß"
-      ],
-      "commands": [
-        "editor.debug.action.toggleBreakpoint"
-      ]
-    },
-    {
-      "before": [
-        "©"
-      ],
-      "commands": [
-        "editor.debug.action.runToCursor"
-      ]
-    },
-    {
-      "before": [
-        "×"
-      ],
-      "commands": [
-        "workbench.action.debug.stop"
-      ]
-    },
-    {
-      "before": [
-        "ω"
-      ],
-      "commands": [
-        "workbench.debug.viewlet.action.addWatchExpression"
-      ]
-    },
-    {
-      "before": [
-        ")"
-      ],
-      "commands": [
-        "workbench.action.nextEditor"
-      ]
-    },
-    {
-      "before": [
-        "("
-      ],
-      "commands": [
-        "workbench.action.previousEditor"
-      ]
-    },
-    {
-      "before": [
-        "°"
-      ],
-      "commands": [
-        "workbench.action.moveEditorRightInGroup"
-      ]
-    },
-    {
-      "before": [
-        " "
-      ],
-      "commands": [
-        "workbench.action.moveEditorLeftInGroup"
-      ]
-    },
-    {
-      "before": [
-        "_"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
-    }
-  ],
-  "window.zoomLevel": -1,
-  "editor.inlineSuggest.enabled": true,
-  "git.untrackedChanges": "hidden",
-  "timeline.excludeSources": []
+    { "before": [ "<space>" ], "after": [ "<leader>", "<leader>", "2", "s" ] },
+    { "before": [ "<C-t>" ], "commands": [ "workbench.action.quickOpen" ] },
+    { "before": [ "<C-f>" ], "commands": [ "workbench.view.explorer" ] },
+    { "before": [ "<C-n>" ], "commands": [ "workbench.action.showAllSymbols" ] },
+    { "before": [ "<C-p>" ], "commands": [ "workbench.action.openRecent" ] },
+    { "before": [ "<C-q>" ], "commands": [ "workbench.action.closeEditorsInGroup" ] },
+    { "before": [ "g", "d" ], "commands": [ "editor.action.revealDefinition" ] },
+    { "before": [ "g", "i" ], "commands": [ "editor.action.revealDefinition" ] },
+    { "before": [ "g", "r" ], "commands": [ "editor.action.goToReferences" ] },
+    { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
+    { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
+    { "before": [ "<leader>", "a" ], "commands": [ "editor.action.quickFix" ] },
+    { "before": [ "<leader>", "t" ], "commands": [ "breadcrumbs.focusAndSelect" ] },
+    { "before": [ "<leader>", "b" ], "commands": [ "git.viewLineHistory" ] },
+    { "before": [ "<leader>", "d" ], "commands": [ "workbench.view.scm" ] },
+    { "before": [ "<leader>", "D" ], "commands": [ "workbench.view.scm" ] },
+    { "before": [ "<leader>", "l" ], "commands": [ "git.viewFileHistory" ] },
+    { "before": [ "<leader>", "L" ], "commands": [ "git.viewHistory" ] },
+    { "before": [ "<leader>", "% "], "commands": [ "editor.emmet.action.matchTag" ] },
+    { "before": [ "+" ], "commands": [ "workbench.action.compareEditor.nextChange" ] },
+    { "before": [ "-" ], "commands": [ "workbench.action.compareEditor.previousChange" ] },
+    { "before": [ "è" ], "commands": [ "workbench.action.tasks.build" ] },
+    { "before": [ "é" ], "commands": [ "workbench.action.debug.start" ] },
+    { "before": [ "É" ], "commands": [ "workbench.action.debug.selectandstart" ] },
+    { "before": [ ")" ], "commands": [ "workbench.action.nextEditor" ] },
+    { "before": [ "(" ], "commands": [ "workbench.action.previousEditor" ] },
+    { "before": [ "°" ], "commands": [ "workbench.action.moveEditorRightInGroup" ] },
+    { "before": [ " " ], "commands": [ "workbench.action.moveEditorLeftInGroup" ] },
+    { "before": [ "_" ], "commands": [ "workbench.action.closeActiveEditor" ] },
+    { "before": [ "ℝ" ], "commands": [ "workbench.action.debug.continue" ] },
+    { "before": [ "Ⅰ" ], "commands": [ "workbench.action.debug.stepInto" ] },
+    { "before": [ "œ" ], "commands": [ "workbench.action.debug.stepOut" ] },
+    { "before": [ "€" ], "commands": [ "workbench.action.debug.stepOver" ] },
+    { "before": [ "ß" ], "commands": [ "editor.debug.action.toggleBreakpoint" ] },
+    { "before": [ "©" ], "commands": [ "editor.debug.action.runToCursor" ] },
+    { "before": [ "×" ], "commands": [ "workbench.action.debug.stop" ] },
+    { "before": [ "ω" ], "commands": [ "workbench.debug.viewlet.action.addWatchExpression" ] },
+    { "before": [ "…" ], "commands": [ "workbench.debug.viewlet.action.toggleBreakpointsActivatedAction" ] }
+  ]
 }

@@ -8,7 +8,7 @@
         "command": "search.action.openEditor"
     },
     {
-      "key": "ctrl+l",
+      "key": "ctrl+f",
       "when": "sideBarFocus",
       "command": "workbench.action.focusActiveEditorGroup"
     },
@@ -26,14 +26,6 @@
       "key": "shift+enter",
       "command": "search.action.focusPreviousSearchResult",
       "when": "hasSearchResult || inSearchEditor"
-    },
-    {
-      "key": "alt+oem_period",
-      "command": "workbench.action.compareEditor.nextChange"
-    },
-    {
-      "key": "alt+oem_comma",
-      "command": "workbench.action.compareEditor.previousChange"
     },
     {
       "key": "shift+tab",
