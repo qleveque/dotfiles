@@ -109,30 +109,30 @@ schemes:
       cyan:       '#93a1a1'
       white:      '#fdf6e3'
 
-  papercolor: &papercolor
+  google:         &google
     primary:
-      background: '#eeeeee'
-      foreground: '#878787'
+      background: '#ffffff'
+      foreground: '#373b41'
     cursor:
-      text: '#eeeeee'
-      cursor: '#878787'
+      text:       '#ffffff'
+      cursor:     '#373b41'
     normal:
-      black:   '#eeeeee'
-      red:     '#af0000'
-      green:   '#008700'
-      yellow:  '#5f8700'
-      blue:    '#0087af'
-      magenta: '#878787'
-      cyan:    '#005f87'
-      white:   '#444444'
+      black:      '#1d1f21'
+      red:        '#cc342b'
+      green:      '#198844'
+      yellow:     '#fba922'
+      blue:       '#3971ed'
+      magenta:    '#a36ac7'
+      cyan:       '#3971ed'
+      white:      '#c5c8c6'
     bright:
-      black:   '#bcbcbc'
-      red:     '#d70000'
-      green:   '#d70087'
-      yellow:  '#8700af'
-      blue:    '#d75f00'
-      magenta: '#d75f00'
-      cyan:    '#005faf'
-      white:   '#005f87'
+      black:      '#969896'
+      red:        '#cc342b'
+      green:      '#198844'
+      yellow:     '#fba922'
+      blue:       '#3971ed'
+      magenta:    '#a36ac7'
+      cyan:       '#3971ed'
+      white:      '#ffffff'
 
 colors: *dracula

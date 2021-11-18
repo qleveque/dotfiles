@@ -1,70 +1,36 @@
-" Plugins
-call plug#begin('~/.vim/plugged')
-Plug 'ap/vim-css-color'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'dstein64/nvim-scrollview'
-Plug 'dyng/ctrlsf.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'github/copilot.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'liuchengxu/vista.vim'
-Plug 'mattn/emmet-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'romgrk/barbar.nvim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'voldikss/vim-floaterm'
-Plug 'yggdroot/indentLine'
-
-Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'udalov/kotlin-vim'
-Plug 'posva/vim-vue'
-call plug#end()
-
-" Language specific
-source ~/.vim/languages.vim
-
-" Style
+source ~/.vim/plugins.vim
 source ~/.vim/style.vim
+source ~/.vim/languages.vim
 
 " Standard
 set encoding=UTF-8 ffs=unix,dos,mac
-set nobackup nowritebackup noswapfile
-set number relativenumber
+set nobackup nowritebackup noswapfile undofile
 set expandtab smarttab shiftwidth=2 tabstop=2 autoindent smartindent
-set hidden wildmenu lazyredraw list noro equalalways gdefault
-set so=4 mouse=a diffopt+=vertical wrap! updatetime=300
-set shortmess+=aoOtI
-set signcolumn=number
-set undofile
+set hidden wildmenu lazyredraw list noreadonly equalalways wrap number cursorline!
+set scrolloff=4 mouse=a diffopt+=vertical updatetime=300 shortmess+=aoOtI signcolumn=no
 let &undodir=expand('$HOME/.vim/undodir')
 
 " Easy life
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
-      \ exe "normal! g'\"" |
-      \ endif
+au BufReadPost * exe "normal! g'\""
+au VimEnter * if &diff|exe 'norm 1G]c[czz'|exe 'windo set nofen fdc=0'|exe 'nm <C-Q> :qa<CR>'|endif
+nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
-nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
-nnoremap <Esc> :nohl<CR>
-nnoremap <C-Q> ZQ
-nmap s ys
-vmap s S
-nnoremap S f,a<CR><Esc>
-nnoremap vv V
-nnoremap V ggVG
 nnoremap ' `
+nnoremap + ]czz
+nnoremap - [czz
+nnoremap <BS> :nohl<CR>
+nnoremap <C-Q> ZQ
+nnoremap <C-R> :e!<CR>
+nnoremap S f,a<CR><Esc>
+nnoremap U <C-R>
+nnoremap V ggVG
+nnoremap vv V
 nnoremap à @q
 xnoremap à :norm! @q<CR>
-nnoremap U <C-R>
-nnoremap <C-R> :e!<CR>
+nmap s ys
+vmap s S
 nmap ç #NCgn
 vmap ç #Cgn
 nmap Ç #NCgN
@@ -90,119 +56,60 @@ vnoremap # "xy?\V<C-R>x<CR>N
 nnoremap ]x /\v^[\=<>\|]{7}[ \n]<CR>
 nnoremap [x ?\v^[\=<>\|]{7}[ \n]<CR>
 
-" Vimdiff
-autocmd VimEnter * if &diff |
-  \ execute 'windo set foldcolumn=0 nofoldenable wrap linebreak showbreak=>  ' |
-  \ execute 'norm 1G]c[czz' |
-  \ execute 'nnoremap <C-Q> :qa<CR>' |
-  \ execute 'nnoremap - [czz' |
-  \ execute 'nnoremap + ]czz' |
-  \ endif
-
 " Shortcuts
-nnoremap <C-s> :CtrlSF<Space>
+nnoremap <C-f> :exe 'FloatermNew --title=Vifm vifm -c :only "%:p:h" .'<CR>
 nnoremap <C-n> :CocList -I symbols<CR>
-nnoremap <silent> <C-f> :execute 'FloatermNew --title=Vifm vifm -c :only "%:p:h" .'<CR>
-nnoremap <C-t> :Files<CR>
 nnoremap <C-p> :History<CR>
-
-nmap <Space> <Plug>(easymotion-bd-f2)
-vmap <Space> <Plug>(easymotion-bd-t2)
-omap <Space> <Plug>(easymotion-bd-t2)
-
+nnoremap <C-s> :CtrlSF<Space>
+nnoremap <C-t> :Files<CR>
 nnoremap <silent> ( :BufferPrevious<CR>
 nnoremap <silent> ) :BufferNext<CR>
+nnoremap <silent> _ :BufferClose<CR>
 nnoremap <silent>   :BufferMovePrevious<CR>
 nnoremap <silent> ° :BufferMoveNext<CR>
-nnoremap <silent> _ :BufferClose<CR>
-
-" Term
-autocmd TermEnter * nnoremap <buffer> <CR> i
-autocmd TermEnter * tnoremap <buffer> <C-W><C-W> <C-\><C-N>:FloatermToggle<CR>
-tmap <C-A> <C-\><C-N>
-nmap <silent> è :w!
-    \ <Bar> let CP=fnamemodify(expand("%"), ":~:.")
-    \ <Bar> exec ':FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
+nmap ù <Plug>(emmet-expand-abbr)
+nmap <Space> <Plug>(easymotion-bd-f2)
+omap <Space> <Plug>(easymotion-bd-t2)
+vmap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
 let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
-nnoremap <silent> <leader>b :execute floaterm_full." tig blame +".line(".")." %"<CR>
-nnoremap <silent> <leader>l :execute floaterm_full." tig --follow %"<CR>
-nnoremap <silent> <leader>L :execute floaterm_full." tig"<CR>
-nnoremap <silent> <leader>d :execute floaterm_full." git difftool --no-prompt %"<CR>
-nnoremap <silent> <leader>D :execute floaterm_full." tig status"<CR>
+nnoremap <silent> <leader>b :exe floaterm_full." tig blame +".line(".")." %"<CR>
+nnoremap <silent> <leader>l :exe floaterm_full." tig --follow %"<CR>
+nnoremap <silent> <leader>L :exe floaterm_full." tig"<CR>
+nnoremap <silent> <leader>d :exe floaterm_full." git difftool --no-prompt %"<CR>
+nnoremap <silent> <leader>D :exe floaterm_full." tig status"<CR>
 
-" Cht
-command! -nargs=+ CHT :execute 'FloatermNew --title=Cht.sh '
-    \.'zsh -ic "cht '.&filetype.' '.join([<f-args>],' ').'"'
-cnoreabbrev cht CHT
-
-" Coc
-let g:coc_disable_startup_warning = 1
-map <leader><leader> <Plug>(coc-codeaction-cursor)
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-nmap <leader>r <Plug>(coc-rename)
-nmap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
-xmap <leader>f <Plug>(coc-format-selected)
+" Coc shortcuts
+inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <leader>a <Plug>(coc-codeaction-cursor)
-nmap [g <Plug>(coc-diagnostic-prev)
-nmap ]g <Plug>(coc-diagnostic-next)
+nmap <leader>i :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <leader>r <Plug>(coc-rename)
+xmap <leader>f <Plug>(coc-format-selected)
 nmap gd <Plug>(coc-definition)
-nmap gy <Plug>(coc-type-definition)
 nmap gi <Plug>(coc-implementation)
 nmap gr <Plug>(coc-references)
-nnoremap K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-nmap <leader>f vv<leader>f
+nmap gy <Plug>(coc-type-definition)
 
-" Vista
-nnoremap <leader>t :Vista show<CR>
-let g:vista_default_executive = 'coc'
-let g:vista_close_on_jump = 1
-let g:vista_ignore_kinds = ['Variable']
+" Secondary shortcuts
+imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
+nmap <leader>s :%s/\s\+$//e<CR>
+nmap <leader>t :Vista show<CR>
+nmap ga <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
 
-" Spaces
-autocmd BufWritePre * :%s/\s\+$//e
-map ga <Plug>(EasyAlign)
-
-" Emmet
-let g:user_emmet_mode = ''
-imap <S-tab> <plug>(emmet-expand-abbr)
-nmap <S-tab> cst<
+" Term
+au TermEnter * nnoremap <buffer> <CR> i
+tmap <C-A> <C-\><C-N>
+nmap <silent> è :let CP=fnamemodify(expand("%"), ":~:.")
+  \<Bar> exe ':w! <Bar> :FloatermNew --autoclose=0 --title=Zsh zsh -ic "run '.CP.'"'<CR>
 
 " Tmux integration
-nnoremap <C-b>s :execute "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
-nnoremap <C-b>v :execute "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
+nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
+nnoremap <C-b>v :exe "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
-" Pyqo
-command! -nargs=1 EF :execute 'edit '
-      \ .system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
+" Commands
+com -nargs=1 EF :exe 'edit '.system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
+com -nargs=+ CHT :exe 'FloatermNew --title=Cht zsh -ic "cht '.&filetype.' '.join([<f-args>],' ').'"'
 cnoreabbrev ef EF
-
-" Plugin specific
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.auto_hide = v:true
-let bufferline.closable = v:true
-let bufferline.icon_custom_colors = v:true
-let bufferline.icons = v:true
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
-let g:ctrlsf_mapping = {"openb": "<Enter>", "next": "n", "prev": "N"}
-let g:floaterm_autoclose=2
-let g:floaterm_height=0.8
-let g:floaterm_opener='edit'
-let g:floaterm_width=0.8
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-let g:vifm_embed_split = 1
-let g:vifm_exec_args = '-c :only'
-let g:vifm_replace_netrw = 1
+cnoreabbrev cht CHT

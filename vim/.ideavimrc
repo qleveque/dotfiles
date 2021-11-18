@@ -1,15 +1,12 @@
 source ~/dotfiles/vim/.vimrc
 sethandler n:vim i:ide
+set ideajoin
 
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>
 nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-p> :action RecentFiles<CR>
-
-nnoremap ( :action PreviousTab<CR>
-nnoremap ) :action NextTab<CR>
-nnoremap _ :q<CR>
 nnoremap <C-q> :action CloseAllEditors<CR>
 
 nnoremap \b :action Annotate<CR>
@@ -18,10 +15,23 @@ nnoremap \D :action Vcs.Show.Local.Changes<CR>
 nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap \L :action Vcs.Show.Log<CR>
 
+nmap è :action Run<CR>
+nmap È :action ChooseRunConfiguration<CR>
+nmap é :action Debug<CR>
+nmap É :action ChooseDebugConfiguration<CR>
+
+nnoremap ( :action PreviousTab<CR>
+nnoremap ) :action NextTab<CR>
+nnoremap _ :q<CR>
+
+nnoremap + :action NextDiff<CR>
+nnoremap - :action PreviousDiff<CR>
+
 nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+
 nnoremap \a :action ShowIntentionActions<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
@@ -30,14 +40,6 @@ nnoremap \t :action FileStructurePopup<CR>
 nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
-
-nnoremap + :action NextDiff<CR>
-nnoremap - :action PreviousDiff<CR>
-
-nmap è :action Run<CR>
-nmap È :action ChooseRunConfiguration<CR>
-nmap é :action Debug<CR>
-nmap É :action ChooseDebugConfiguration<CR>
 
 nmap ℝ :action Resume<CR>
 nmap Ⅰ :action StepIntoMyCode<CR>
@@ -53,3 +55,4 @@ nmap ω :action Debugger.AddToWatch<CR>
 vmap ω :action Debugger.AddToWatch<CR>
 nmap Β :action ViewBreakpoints<CR>
 nmap … :action XDebugger.MuteBreakpoints<CR>
+nmap α :action Pause<CR>
