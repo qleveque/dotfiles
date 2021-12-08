@@ -1,6 +1,6 @@
 {
-    "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": true,
+    "diagnostic.enableSign": false,
+    "diagnostic.enable": false,
     "coc.preferences.rootPatterns": [],
     "coc.preferences.useQuickfixForLocations": true,
     "python.pythonPath": "/usr/bin/python3",

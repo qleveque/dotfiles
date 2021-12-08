@@ -2,6 +2,7 @@
 alias e=$EDITOR
 alias ls='exa --icons -s type'
 alias lst='exa --icons -s type -TL 3'
+alias cul='cu -s 9600 -l'
 alias du='dust -r'
 alias fd='fdfind'
 alias rg='rg --smart-case'

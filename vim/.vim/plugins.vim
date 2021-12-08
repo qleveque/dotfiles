@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'dyng/ctrlsf.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -14,13 +13,17 @@ Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'yggdroot/indentLine'
+
+if !has('win32')
+  Plug 'romgrk/barbar.nvim'
+endif
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -29,10 +32,7 @@ Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
-let b:coc_enabled = !&diff
 let bufferline = get(g:, 'bufferline', {'auto_hide' : v:true})
-let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
 let g:coc_disable_startup_warning = 1
 let g:copilot_no_tab_map = v:true
 let g:ctrlsf_auto_focus = {"at": "start"}
@@ -49,3 +49,5 @@ let g:user_emmet_leader_key='<C-Z>'
 let g:vista_close_on_jump = 1
 let g:vista_default_executive = 'coc'
 let g:vista_ignore_kinds = ['Variable']
+
+autocmd FileType * let b:coc_suggest_disable = 1

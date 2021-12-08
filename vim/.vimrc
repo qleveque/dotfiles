@@ -6,7 +6,8 @@ source ~/.vim/languages.vim
 set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile undofile
 set expandtab smarttab shiftwidth=2 tabstop=2 autoindent smartindent
-set hidden wildmenu lazyredraw list noreadonly equalalways cursorline number
+set number relativenumber
+set hidden wildmenu lazyredraw list noreadonly equalalways cursorline
 set scrolloff=4 mouse=a diffopt+=vertical updatetime=300 shortmess+=aoOtI signcolumn=no
 let &undodir=expand('$HOME/.vim/undodir')
 
@@ -51,6 +52,8 @@ xnoremap P "_c<C-R>+<Esc>
 
 " Search
 set incsearch smartcase ignorecase nomagic
+map L /\V\C\<
+map H ?\V\C\<
 vnoremap * "xy/\V<C-R>x<CR>N
 vnoremap # "xy?\V<C-R>x<CR>N
 nnoremap ]x /\v^[\=<>\|]{7}[ \n]<CR>
@@ -68,9 +71,6 @@ nnoremap <silent> _ :BufferClose<CR>
 nnoremap <silent>   :BufferMovePrevious<CR>
 nnoremap <silent> ° :BufferMoveNext<CR>
 nmap ù <Plug>(emmet-expand-abbr)
-nmap <Space> <Plug>(easymotion-bd-f2)
-omap <Space> <Plug>(easymotion-bd-t2)
-vmap <Space> <Plug>(easymotion-bd-t2)
 
 " Git
 let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
@@ -81,7 +81,9 @@ nnoremap <silent> <leader>d :exe floaterm_full." git difftool --no-prompt %"<CR>
 nnoremap <silent> <leader>D :exe floaterm_full." tig status"<CR>
 
 " Coc shortcuts
-inoremap <expr> <cr> pumvisible()?coc#_select_confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <Tab> match(getline('.'),'\S')>-1&&match(getline('.'),'\S')+1<col('.')
+      \ ?coc#refresh():"\<Tab>"
 nmap <leader>r <Plug>(coc-rename)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>a <Plug>(coc-codeaction-cursor)

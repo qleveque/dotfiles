@@ -31,6 +31,8 @@ nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+map L /\V\C\\<
+map H ?\V\C\\<
 
 nnoremap \a :action ShowIntentionActions<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
@@ -42,7 +44,7 @@ nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 
 nmap ℝ :action Resume<CR>
-nmap Ⅰ :action StepIntoMyCode<CR>
+nmap Ⅰ :action StepInto<CR>
 nmap œ :action StepOut<CR>
 nmap € :action StepOver<CR>
 nmap © :action RunToCursor<CR>

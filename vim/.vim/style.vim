@@ -1,4 +1,4 @@
-let LIGHTEST_BG="#575965"
+let LIGHTEST_BG="#6E707C"
 let LIGHTER_BG="#3F414D"
 let LIGHT_BG="#31333F"
 let BG="#282a36"
@@ -14,8 +14,8 @@ execute 'highlight StatusLine gui=underline guifg='.LIGHTEST_BG.' guibg='.BG
 execute 'highlight StatusLineNC gui=underline guifg='.LIGHTEST_BG.' guibg='.LIGHT_BG
 execute 'highlight User1 gui=none guifg=default guibg='.LIGHTEST_BG
 
-execute 'highlight LineNr gui=none guifg=gray guibg='.LIGHTER_BG
-execute 'highlight CursorLineNr gui=none guifg=gray guibg='.LIGHTER_BG
+execute 'highlight LineNr gui=none guifg='.LIGHTEST_BG.' guibg='.LIGHTER_BG
+execute 'highlight CursorLineNr gui=none guifg=default guibg='.LIGHTER_BG
 execute 'highlight ActiveWin guibg='.BG
 execute 'highlight InactiveWin guibg='.LIGHT_BG
 execute 'highlight CursorLine gui=none guibg='.LIGHT_BG
@@ -46,19 +46,6 @@ execute 'highlight Pmenu gui=none guifg=default guibg='.LIGHTEST_BG
 execute 'highlight NonText guifg='.LIGHTEST_BG
 
 execute 'highlight FloatermBorder guibg='.BG.' guifg='.LIGHTEST_BG
-
-highlight CocErrorFloat guifg=default
-highlight CocWarningFloat guifg=default
-highlight CocHintFloat guifg=default
-highlight CocInfoFloat guifg=default
-highlight CocErrorHighlight gui=undercurl guisp=red
-highlight CocWarningHighlight gui=undercurl guisp=orange
-highlight CocHintHighlight gui=undercurl guisp=green
-highlight CocInfoHighlight gui=undercurl guisp=blue
-execute 'highlight CocErrorSign guifg=red guibg='.LIGHTEST_BG
-execute 'highlight CocWarningSign guifg=orange guibg='.LIGHTEST_BG
-execute 'highlight CocHintSign guifg=green guibg='.LIGHTEST_BG
-execute 'highlight CocInfoSign guifg=blue guibg='.LIGHTEST_BG
 
 autocmd FocusLost * setlocal winhighlight=Normal:InactiveWin
 autocmd BufNew,BufLeave,BufRead,FocusGained * setlocal
