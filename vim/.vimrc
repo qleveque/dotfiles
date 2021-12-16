@@ -7,17 +7,23 @@ set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile undofile
 set expandtab smarttab shiftwidth=2 tabstop=2 autoindent smartindent
 set number relativenumber
-set hidden wildmenu lazyredraw list noreadonly equalalways cursorline
+set hidden wildmenu lazyredraw list noreadonly equalalways cursorline wrap
 set scrolloff=4 mouse=a diffopt+=vertical updatetime=300 shortmess+=aoOtI signcolumn=no
 let &undodir=expand('$HOME/.vim/undodir')
 
 " Easy life
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")|exe "norm g'\""|endif
-au VimEnter * if &diff|exe 'norm 1G]c[czz'|exe 'windo set nofen fdc=0'|exe 'nm <C-Q> :qa<CR>'|endif
+au VimEnter * if &diff
+  \ | exe 'norm 1G]c[czz'
+  \ | exe 'windo set wrap nofen fdc=0'
+  \ | exe 'nm <C-Q> :qa<CR>'
+  \ | endif
 nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
+nmap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : 'o<Esc>'
+nmap <Space> i<Space><Esc>l
 nnoremap ' `
 nnoremap + ]czz
 nnoremap - [czz
@@ -104,7 +110,8 @@ vmap ga <Plug>(EasyAlign)
 autocmd TermEnter * nnoremap <buffer> <CR> i
 tmap <C-A> <C-\><C-N>
 nmap <silent> è :let CP=fnamemodify(expand("%"), ":~:.")
-    \ <Bar> exec ':w! <Bar> :FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
+  \ <Bar> exec ':w!
+  \ <Bar> :FloatermNew --autoclose=0 --title=Zsh  zsh -ic "run '.CP.'"'<CR>
 
 " Tmux integration
 nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
