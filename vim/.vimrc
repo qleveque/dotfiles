@@ -6,24 +6,20 @@ source ~/.vim/languages.vim
 set encoding=UTF-8 ffs=unix,dos,mac
 set nobackup nowritebackup noswapfile undofile
 set expandtab smarttab shiftwidth=2 tabstop=2 autoindent smartindent
-set number relativenumber
+set number relativenumber signcolumn=no
 set hidden wildmenu lazyredraw list noreadonly equalalways cursorline wrap
-set scrolloff=4 mouse=a diffopt+=vertical updatetime=300 shortmess+=aoOtI signcolumn=no
+set scrolloff=4 mouse=a diffopt+=vertical updatetime=300 shortmess+=aoOtI
 let &undodir=expand('$HOME/.vim/undodir')
 
 " Easy life
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")|exe "norm g'\""|endif
-au VimEnter * if &diff
-  \ | exe 'norm 1G]c[czz'
-  \ | exe 'windo set wrap nofen fdc=0'
-  \ | exe 'nm <C-Q> :qa<CR>'
-  \ | endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+  \ | exe "norm g'\"" | endif
+au VimEnter * if &diff | exe 'norm 1G]c[czz' | exe 'windo set wrap nofen fdc=0'
+  \ | exe 'nm <C-Q> :qa<CR>' | endif
 nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-l> <C-W>l
-nmap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : 'o<Esc>'
-nmap <Space> i<Space><Esc>l
 nnoremap ' `
 nnoremap + ]czz
 nnoremap - [czz
@@ -47,11 +43,9 @@ vmap Ç #CgN
 set clipboard^=unnamed,unnamedplus
 inoremap <C-V> <C-R>+
 cnoremap <C-V> <C-R>+
-nnoremap D "_d
-xnoremap D "_d
+noremap D "_d
+noremap C "_c
 nnoremap DD "_dd
-nnoremap C "_c
-xnoremap C "_c
 nnoremap CC "_cc
 nnoremap X "_x
 xnoremap P "_c<C-R>+<Esc>
@@ -76,20 +70,20 @@ nnoremap <silent> ) :BufferNext<CR>
 nnoremap <silent> _ :BufferClose<CR>
 nnoremap <silent>   :BufferMovePrevious<CR>
 nnoremap <silent> ° :BufferMoveNext<CR>
-nmap ù <Plug>(emmet-expand-abbr)
 
 " Git
-let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
-nnoremap <silent> <leader>b :exe floaterm_full." tig blame +".line(".")." %"<CR>
-nnoremap <silent> <leader>l :exe floaterm_full." tig --follow %"<CR>
-nnoremap <silent> <leader>L :exe floaterm_full." tig"<CR>
-nnoremap <silent> <leader>d :exe floaterm_full." git difftool --no-prompt %"<CR>
-nnoremap <silent> <leader>D :exe floaterm_full." tig status"<CR>
+let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2 '
+nnoremap <silent> <leader>b :exe floaterm_full."tig blame +".line(".")." %"<CR>
+nnoremap <silent> <leader>l :exe floaterm_full."tig --follow %"<CR>
+nnoremap <silent> <leader>L :exe floaterm_full."tig"<CR>
+nnoremap <silent> <leader>d :exe floaterm_full."git difftool --no-prompt %"<CR>
+nnoremap <silent> <leader>D :exe floaterm_full."tig status"<CR>
 
 " Coc shortcuts
-inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <expr> <Tab> match(getline('.'),'\S')>-1&&match(getline('.'),'\S')+1<col('.')
-      \ ?coc#refresh():"\<Tab>"
+inoremap <expr> <CR> pumvisible()?coc#_select_confirm():
+  \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <Tab> match(getline('.'),'\S')>-1
+  \ && match(getline('.'),'\S')+1<col('.') ? coc#refresh():"\<Tab>"
 nmap <leader>r <Plug>(coc-rename)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>a <Plug>(coc-codeaction-cursor)
@@ -103,8 +97,8 @@ nmap gr <Plug>(coc-references)
 imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
 nmap <leader>s :%s/\s\+$//e<CR>
 nmap <leader>t :Vista show<CR>
-nmap ga <Plug>(EasyAlign)
-vmap ga <Plug>(EasyAlign)
+map ga <Plug>(EasyAlign)
+nmap ù <Plug>(emmet-expand-abbr)
 
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i
@@ -118,7 +112,9 @@ nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"" . getcwd() . "\""<CR>
 nnoremap <C-b>v :exe "silent !tmux split-window -h -c \"" . getcwd() . "\""<CR>
 
 " Commands
-com -nargs=1 EF :exe 'edit '.system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
-com -nargs=+ CHT :exe 'FloatermNew --title=Cht zsh -ic "cht '.&filetype.' '.join([<f-args>],' ').'"'
+com -nargs=1 EF :exe 'edit '
+  \ .system('set '.<f-args>.' && echo $(eval $PYQO_F_TARGET)')
+com -nargs=+ CHT :exe 'FloatermNew --title=Cht zsh -ic "cht '
+  \ .&filetype.' '.join([<f-args>],' ').'"'
 cnoreabbrev ef EF
 cnoreabbrev cht CHT

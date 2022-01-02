@@ -33,7 +33,6 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 map L /\V\C\\<
 map H ?\V\C\\<
-nmap <CR> o<Esc>
 
 nnoremap \a :action ShowIntentionActions<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>

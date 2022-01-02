@@ -27,12 +27,9 @@
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.visualModeKeyBindings": [
-    { "before": [ "<space>" ], "after": [ "<leader>", "<leader>", "2", "t" ] },
     { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatSelection" ] }
   ],
   "vim.normalModeKeyBindings": [
-    { "before": [ "<space>" ], "after": [ "<leader>", "<leader>", "2", "s" ] },
-
     { "before": [ "<C-t>" ], "commands": [ "workbench.action.quickOpen" ] },
     { "before": [ "<C-f>" ], "commands": [ "workbench.view.explorer" ] },
     { "before": [ "<C-n>" ], "commands": [ "workbench.action.showAllSymbols" ] },

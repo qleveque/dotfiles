@@ -44,7 +44,6 @@ let g:floaterm_width=0.8
 let g:fzf_preview_window = []
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
-let g:scrollview_current_only = 1
 let g:user_emmet_leader_key='<C-Z>'
 let g:vista_close_on_jump = 1
 let g:vista_default_executive = 'coc'

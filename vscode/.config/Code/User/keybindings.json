@@ -16,15 +16,5 @@
       "key": "ctrl+q",
       "when": "sideBarFocus",
       "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-      "key": "shift+tab",
-      "command": "editor.emmet.action.updateTag",
-      "when": "editorFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
-    },
-    {
-      "key": "shift+tab",
-      "command": "editor.emmet.action.expandAbbreviation",
-      "when": "editorFocus && vim.active && !inDebugRepl && vim.mode == 'Insert'"
     }
 ]
