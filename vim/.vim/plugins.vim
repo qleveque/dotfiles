@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'dyng/ctrlsf.vim'
+Plug 'farmergreg/vim-lastplace'
 Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

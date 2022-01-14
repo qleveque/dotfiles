@@ -1,8 +1,8 @@
-let LIGHTEST_BG="#696B77"
-let LIGHTER_BG="#3F414D"
-let LIGHT_BG="#31333F"
-let BG="#282a36"
+let BG="#282a36"|let BG1="#31333F"|let BG2="#3F414D"|let BG3="#696B77"
 set bg=dark
+set termguicolors
+set statusline=%1*\ \%f\ %0*%= 
+
 exe 'hi ActiveWin guibg='.BG
 exe 'hi BufferTabpageFill guibg='.BG3
 exe 'hi CursorLine gui=none guibg='.BG1
@@ -13,7 +13,7 @@ exe 'hi DiffDelete gui=none guifg=none guibg='.BG3
 exe 'hi DiffText gui=none guifg=none guibg='.BG3
 exe 'hi FloatermBorder guibg='.BG.' guifg=default'
 exe 'hi InactiveWin guibg='.BG1
-exe 'hi LineNr gui=none guifg='.BG3.' guibg='.BG2
+exe 'hi LineNr gui=bold guifg='.BG3.' guibg='.BG2
 exe 'hi NonText guifg='.BG3
 exe 'hi Normal guibg='.BG2
 exe 'hi Pmenu gui=none guifg=default guibg='.BG3
