@@ -61,7 +61,6 @@
 
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
     { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
-    { "before": [ "<leader>", "a" ], "commands": [ "editor.action.quickFix" ] },
     { "before": [ "<leader>", "t" ], "commands": [ "breadcrumbs.focusAndSelect" ] },
     { "before": [ "<leader>", "% "], "commands": [ "editor.emmet.action.matchTag" ] },
 

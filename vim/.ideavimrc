@@ -34,7 +34,6 @@ nnoremap gs :action GotoSuperMethod<CR>
 map L /\V\C\\<
 map H ?\V\C\\<
 
-nnoremap \a :action ShowIntentionActions<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \r :action RenameElement<CR>
