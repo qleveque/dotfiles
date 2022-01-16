@@ -4,7 +4,6 @@ set termguicolors
 set statusline=%1*\ \%f\ %0*%= 
 
 exe 'hi ActiveWin guibg='.BG
-exe 'hi BufferTabpageFill guibg='.BG3
 exe 'hi CursorLine gui=none guibg='.BG1
 exe 'hi CursorLineNr gui=none guifg=default guibg='.BG2
 exe 'hi DiffAdd gui=none guifg=none guibg='.BG3
@@ -24,10 +23,11 @@ exe 'hi User1 gui=none guifg=default guibg='.BG3
 exe 'hi VertSplit gui=none guifg=default guibg='.BG1
 exe 'hi Visual guifg=#000000 guibg=#c4c4c4'
 
+exe 'hi BufferTabpageFill guibg='.BG2
 for v in ["", "Mod","Index","Sign"]
-  exe 'hi BufferCurrent'.v.' guibg='.BG2
+  exe 'hi BufferCurrent'.v.' guibg='.BG3
   for k in ["Inactive", "Visible"]
-    exe 'hi Buffer'.k.v.' guibg='.BG3
+    exe 'hi Buffer'.k.v.' guibg='.BG2
   endfor
 endfor
 
