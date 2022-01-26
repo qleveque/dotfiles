@@ -2,8 +2,9 @@ source ~/.vim/plugins.vim
 source ~/.vim/style.vim
 source ~/.vim/languages.vim
 
-set enc=UTF-8 udir=~/.vim_undo dip+=vertical cb^=unnamed,unnamedplus shm=I so=4
-set ic lz list cul noswf nu rnu udf et si is scs nomagic sts=2 sw=2 ts=2 mouse=a
+set clipboard^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8
+set lz list cul noswf udf si et sts=2 sw=2 ts=2 shm+=aoOtI mouse=a nomagic
+set ignorecase smartcase incsearch number relativenumber scrolloff=4
 
 " Easy life
 nnoremap ' `
@@ -34,9 +35,6 @@ map ç #NCgn
 map Ç #NCgN
 map L /\V\C\<
 map H ?\V\C\<
-nmap s ys
-nmap ss yss
-vmap s S
 
 " Shortcuts
 nnoremap <C-f> :exe 'FloatermNew --title=Vifm vifm -c :only "%:p:h" .'<CR>
@@ -46,8 +44,15 @@ nnoremap <C-s> :CtrlSF<Space>
 nnoremap <C-t> :Files<CR>
 
 " Secondary shortcuts
-imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
+nmap s ys
+nmap ss yss
+vmap s S
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
 nmap <leader>s :%s/\s\+$//e<CR>
+imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
 nmap ù <Plug>(emmet-expand-abbr)
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
@@ -74,7 +79,7 @@ nnoremap <silent> <leader>D :exe floaterm_full." tig status"<CR>
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i
 tnoremap <C-A> <C-\><C-N>
-nnoremap <silent> è :exe run.' "run '.expand("%").'"'<CR>
+nnoremap <silent> é :exe run.' "run '.expand("%").'"'<CR>
 nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
 nnoremap <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
-command -nargs=1 EF :exe 'e '.system('set '.<f-args>.'&&'.pyqo_f)|cabbrev ef EF
+cabbrev ef EF|command -nargs=1 EF :exe 'e '.system('set '.<f-args>.'&&'.pyqo_f)

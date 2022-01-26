@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+if !has('win32')|Plug 'romgrk/barbar.nvim'|endif
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'dyng/ctrlsf.vim'
@@ -10,7 +11,6 @@ Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'romgrk/barbar.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -25,7 +25,8 @@ Plug 'udalov/kotlin-vim'
 call plug#end()
 
 autocmd FileType * let b:coc_suggest_disable = 1
-let bufferline = get(g:,'bufferline',{'auto_hide':v:true,'icons':v:false})
+let bufferline = get(g:,'bufferline',
+  \ {'auto_hide':v:true,'icons':v:false,'exclude_ft':['qf']})
 let g:coc_disable_startup_warning = 1
 let g:copilot_no_tab_map = v:true
 let g:ctrlsf_auto_focus = {"at":"start"}
@@ -39,7 +40,3 @@ let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
 let pyqo_f='echo `eval $PYQO_F_TARGET`'
 let run=':w! | :FloatermNew --autoclose=0 --title=Zsh zsh -ic'
 let tab="\<Tab>"
-nmap <C-h> <C-W>h
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-l> <C-W>l

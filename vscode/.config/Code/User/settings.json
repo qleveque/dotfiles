@@ -42,9 +42,9 @@
     { "before": [ "<leader>", "l" ], "commands": [ "git.viewFileHistory" ] },
     { "before": [ "<leader>", "L" ], "commands": [ "git.viewHistory" ] },
 
-    { "before": [ "è" ], "commands": [ "workbench.action.tasks.build" ] },
-    { "before": [ "é" ], "commands": [ "workbench.action.debug.start" ] },
-    { "before": [ "É" ], "commands": [ "workbench.action.debug.selectandstart" ] },
+    { "before": [ "é" ], "commands": [ "workbench.action.tasks.build" ] },
+    { "before": [ "è" ], "commands": [ "workbench.action.debug.start" ] },
+    { "before": [ "È" ], "commands": [ "workbench.action.debug.selectandstart" ] },
 
     { "before": [ ")" ], "commands": [ "workbench.action.nextEditor" ] },
     { "before": [ "(" ], "commands": [ "workbench.action.previousEditor" ] },

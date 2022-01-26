@@ -172,8 +172,8 @@ theme(){
   if [ "$VIM_BG" = "light" ]; then
     delta=-1
   fi
-  local LIGHT_BG=$(alter_color $BG_COLOR $((delta * 9)))
-  local LIGHTER_BG=$(alter_color $BG_COLOR $((delta * 23)))
+  local LIGHT_BG=$(alter_color $BG_COLOR $((delta * 16)))
+  local LIGHTER_BG=$(alter_color $BG_COLOR $((delta * 33)))
   local LIGHTEST_BG=$(alter_color $BG_COLOR $((delta * 65)))
 
   # Alacritty

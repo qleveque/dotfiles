@@ -15,10 +15,10 @@ nnoremap \D :action Vcs.Show.Local.Changes<CR>
 nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap \L :action Vcs.Show.Log<CR>
 
-nmap è :action Run<CR>
-nmap È :action ChooseRunConfiguration<CR>
-nmap é :action Debug<CR>
-nmap É :action ChooseDebugConfiguration<CR>
+nmap é :action Run<CR>
+nmap É :action ChooseRunConfiguration<CR>
+nmap è :action Debug<CR>
+nmap È :action ChooseDebugConfiguration<CR>
 
 nnoremap ( :action PreviousTab<CR>
 nnoremap ) :action NextTab<CR>

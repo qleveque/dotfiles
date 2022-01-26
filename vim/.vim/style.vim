@@ -1,7 +1,7 @@
-let BG="#282a36"|let BG1="#31333F"|let BG2="#3F414D"|let BG3="#696B77"
+let BG="#282a36"|let BG1="#383A46"|let BG2="#494B57"|let BG3="#696B77"
 set bg=dark
 set termguicolors
-set statusline=%1*\ \%f\ %0*%= 
+set statusline=%1*\ \%f%m\ %0*%= 
 
 exe 'hi ActiveWin guibg='.BG
 exe 'hi CursorLine gui=none guibg='.BG1
@@ -25,9 +25,9 @@ exe 'hi Visual guifg=#000000 guibg=#c4c4c4'
 
 exe 'hi BufferTabpageFill guibg='.BG2
 for v in ["", "Mod","Index","Sign"]
-  exe 'hi BufferCurrent'.v.' guibg='.BG3
+  exe 'hi BufferCurrent'.v.' guibg='.BG2
   for k in ["Inactive", "Visible"]
-    exe 'hi Buffer'.k.v.' guibg='.BG2
+    exe 'hi Buffer'.k.v.' guibg='.BG3
   endfor
 endfor
 
