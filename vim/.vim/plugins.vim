@@ -26,7 +26,7 @@ call plug#end()
 
 autocmd FileType * let b:coc_suggest_disable = 1
 let bufferline = get(g:,'bufferline',
-  \ {'auto_hide':v:true,'icons':v:false,'exclude_ft':['qf']})
+  \ {'auto_hide':v:true,'icons':v:false,'exclude_ft':['qf,ctrlsf']})
 let g:coc_disable_startup_warning = 1
 let g:copilot_no_tab_map = v:true
 let g:ctrlsf_auto_focus = {"at":"start"}

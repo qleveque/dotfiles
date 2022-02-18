@@ -60,6 +60,8 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>i :call CocAction('runCommand','editor.action.organizeImport')<CR>
 inor <expr> <Tab> col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():tab
 inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
+nnoremap <silent> <C-W><C-W> :FloatermToggle<CR>
+tnoremap <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
 
 " Buffers
 nnoremap <silent> ( :BufferPrevious<CR>
