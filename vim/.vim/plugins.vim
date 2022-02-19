@@ -40,3 +40,8 @@ let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
 let pyqo_f='echo `eval $PYQO_F_TARGET`'
 let run=':w! | :FloatermNew --autoclose=0 --title=Zsh zsh -ic'
 let tab="\<Tab>"
+
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l

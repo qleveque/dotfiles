@@ -12,7 +12,7 @@ exe 'hi DiffDelete gui=none guifg=none guibg='.BG3
 exe 'hi DiffText gui=none guifg=none guibg='.BG3
 exe 'hi FloatermBorder guibg='.BG.' guifg=default'
 exe 'hi InactiveWin guibg='.BG1
-exe 'hi LineNr gui=bold guifg='.BG3.' guibg='.BG2
+exe 'hi LineNr guifg=darkgray guibg='.BG2
 exe 'hi NonText guifg='.BG3
 exe 'hi Normal guibg='.BG2
 exe 'hi Pmenu gui=none guifg=default guibg='.BG3

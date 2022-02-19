@@ -128,7 +128,7 @@ c(){
 alter_color(){
   local components=()
   for i in 0 2 4; do
-    local component=$((0x${$1:$i:2} + $2))
+    local component=$((0x${1:$i:2} + $2))
     [[ $component -gt 255 ]] && component=255
     [[ $component -lt 0 ]] && component=0
     components+=($component)
@@ -195,6 +195,8 @@ export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_DEFAULT_OPTS='--no-bold --ansi --height 40% --border'
 source ~/.zsh/fzf_config.zsh
+bindkey '^N' fzf-file-widget
+bindkey '^T' fzf-cd-widget
 
 # Recent directories
 export PREV_PWD="$PWD"
@@ -225,13 +227,6 @@ function zle-clipboard-paste {
 }
 zle -N zle-clipboard-paste
 bindkey '^V' zle-clipboard-paste
-
-# Cht
-export cht(){
-  local language=$1
-  shift
-  open "https://stackoverflow.com/search?q=[[$language]]+${(j:+:)@}"
-}
 
 # Exit
 zle-exit-zsh() { exit }

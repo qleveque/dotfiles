@@ -47,10 +47,6 @@ nnoremap <C-t> :Files<CR>
 nmap s ys
 nmap ss yss
 vmap s S
-nmap <C-h> <C-W>h
-nmap <C-j> <C-W>j
-nmap <C-k> <C-W>k
-nmap <C-l> <C-W>l
 nmap <leader>s :%s/\s\+$//e<CR>
 imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
 nmap ù <Plug>(emmet-expand-abbr)
@@ -60,8 +56,6 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>i :call CocAction('runCommand','editor.action.organizeImport')<CR>
 inor <expr> <Tab> col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():tab
 inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
-nnoremap <silent> <C-W><C-W> :FloatermToggle<CR>
-tnoremap <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
 
 " Buffers
 nnoremap <silent> ( :BufferPrevious<CR>
@@ -81,7 +75,9 @@ nnoremap <silent> <leader>D :exe floaterm_full." tig status"<CR>
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i
 tnoremap <C-A> <C-\><C-N>
+nnoremap <silent> <C-W><C-W> :FloatermToggle<CR>
+tnoremap <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
 nnoremap <silent> é :exe run.' "run '.expand("%").'"'<CR>
 nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
 nnoremap <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
-cabbrev ef EF|command -nargs=1 EF :exe 'e '.system('set '.<f-args>.'&&'.pyqo_f)
+cabbrev ef EF|com -nargs=1 EF :exe 'e '.system('set '.<f-args>.'&&'.pyqo_f)
