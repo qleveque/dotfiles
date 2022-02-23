@@ -19,6 +19,7 @@ nnoremap V ggVG
 nnoremap vv V
 nnoremap à @q
 xnoremap à :norm! @q<CR>
+vnoremap . :normal .<CR>
 inoremap <C-V> <C-R>+
 cnoremap <C-V> <C-R>+
 noremap D "_d
