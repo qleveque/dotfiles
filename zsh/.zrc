@@ -195,8 +195,6 @@ export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_DEFAULT_OPTS='--no-bold --ansi --height 40% --border'
 source ~/.zsh/fzf_config.zsh
-bindkey '^N' fzf-file-widget
-bindkey '^T' fzf-cd-widget
 
 # Recent directories
 export PREV_PWD="$PWD"

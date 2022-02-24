@@ -44,11 +44,11 @@ nnoremap V ggvG
 
 " FZF
 command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
-nnoremap <C-t> :Cd<cr>
+nnoremap <M-c> :Cd<cr>
 command! Dirs :execute 'cd "'.system('eval $FZF_CTRL_P_COMMAND | fzf --no-sort 2>/dev/tty').'"' | :redraw
 nnoremap <C-p> :Dirs<cr>
 command! Files :execute 'mark x  '.system('a=$(eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty) && echo \"%d/$a:h\" \"$a:t\"') | :redraw | :normal 'x
-nnoremap <C-n> :Files<cr>
+nnoremap <C-t> :Files<cr>
 
 " Quit
 command! q :execute 'winc t' | quit
