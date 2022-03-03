@@ -69,7 +69,6 @@ run(){
     js) node "$@";;
     kt) kotlinc "$@" -include-runtime -d "$@:h"/a.jar && java -jar "$@:h"/a.jar;;
     lua) lua "$@";;
-    m4) make all;;
     ps1) powershell.exe ".\\$@";;
     py) python3 "$@";;
     r) Rscript "$@";;
@@ -79,7 +78,7 @@ run(){
     sh) sh "$@";;
     ts) tsc "$@" && node "$@:r".js;;
     zsh) zsh "$@";;
-    *) echo 'Nothing to do';;
+    *) cd "$@:h"; if [ -f Makefile ]; then make all; else echo 'Nothing to do'; fi;;
   esac
 }
 
@@ -173,6 +172,13 @@ theme(){
   tmux source "$TMUX_CONF"
 }
 
+# FZF
+export FZF_DEFAULT_COMMAND='fdfind'
+export FZF_CTRL_T_COMMAND='fdfind'
+export FZF_ALT_C_COMMAND='fdfind --type d'
+export FZF_DEFAULT_OPTS='--no-bold --ansi --height 40% --border'
+source ~/.zsh/fzf_config.zsh
+
 # Vifm
 zle-vifm-only-choose-dir()
 {
@@ -188,13 +194,6 @@ zle-vifm-only-choose-dir()
 }
 zle -N zle-vifm-only-choose-dir
 bindkey '^f' zle-vifm-only-choose-dir
-
-# FZF
-export FZF_DEFAULT_COMMAND='fdfind'
-export FZF_CTRL_T_COMMAND='fdfind'
-export FZF_ALT_C_COMMAND='fdfind --type d'
-export FZF_DEFAULT_OPTS='--no-bold --ansi --height 40% --border'
-source ~/.zsh/fzf_config.zsh
 
 # Recent directories
 export PREV_PWD="$PWD"

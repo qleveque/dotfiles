@@ -13,7 +13,7 @@ apt-get install -y stow cmake vifm zsh tmux fzf neovim xclip nodejs fontconfig d
 # Rust
 rustup install stable
 rustup default stable
-cargo install sd exa du-dust
+cargo install sd exa du-dust hyperfine tokei
 
 # Kotlin
 curl -s https://get.sdkman.io | bash
