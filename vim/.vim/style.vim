@@ -1,4 +1,4 @@
-let BG="#282a36"|let BG1="#383A46"|let BG2="#494B57"|let BG3="#696B77"
+let BG="#282a36"|let BG1="#3A3C48"|let BG2="#494B57"|let BG3="#696B77"
 set bg=dark
 set termguicolors
 set statusline=%1*\ \%f%m\ %0*%= 

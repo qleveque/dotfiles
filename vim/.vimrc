@@ -38,10 +38,10 @@ map L /\V\C\<
 map H ?\V\C\<
 
 " Shortcuts
-nnoremap <C-f> :exe 'FloatermNew --title=Vifm vifm -c :only "%:p:h" .'<CR>
+nnoremap <C-f> :exe 'FloatermNew --title=Vifm vifm -c :only "%:p:h"'<CR>
 nnoremap <C-n> :CocList -I symbols<CR>
 nnoremap <C-p> :History<CR>
-nnoremap <C-s> :CtrlSF<Space>
+nnoremap <C-s> :CtrlSF -R<Space>
 nnoremap <C-t> :Files<CR>
 
 " Secondary shortcuts
@@ -66,6 +66,7 @@ nnoremap <silent>   :BufferMovePrevious<CR>
 nnoremap <silent> ° :BufferMoveNext<CR>
 
 " Git
+cabbrev diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
 au VimEnter * if &diff|exe 'norm 1G+-'|exe 'windo set wrap nofen fdc=0'|endif
 nnoremap <silent> <leader>b :exe floaterm_full." tig blame +".line(".")." %"<CR>
 nnoremap <silent> <leader>l :exe floaterm_full." tig --follow %"<CR>

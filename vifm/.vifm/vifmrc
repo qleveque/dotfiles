@@ -31,24 +31,26 @@ set syncregs=general
 set confirm-=delete
 
 " Shortcuts
-nnoremap w :view<cr>
-vnoremap w :view<cr>gv
-nnoremap yp :execute '!echo -n %d | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<cr>
-nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<cr>
+nnoremap w :view<CR>
+vnoremap w :view<CR>gv
+nnoremap yp :execute '!echo -n %d | xclip -i -sel p -f | xclip -i -sel c'<CR>
+nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<CR>
+nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<CR>
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 nnoremap zc zm
 nnoremap V ggvG
+nnoremap s :sort<CR>
+map <C-i> :histnext<CR>
 
 " FZF
 command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
-nnoremap <M-c> :Cd<cr>
+nnoremap <M-c> :Cd<CR>
 command! Dirs :execute 'cd "'.system('eval $FZF_CTRL_P_COMMAND | fzf --no-sort 2>/dev/tty').'"' | :redraw
-nnoremap <C-p> :Dirs<cr>
+nnoremap <C-p> :Dirs<CR>
 command! Files :execute 'mark x  '.system('a=$(eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty) && echo \"%d/$a:h\" \"$a:t\"') | :redraw | :normal 'x
-nnoremap <C-t> :Files<cr>
+nnoremap <C-t> :Files<CR>
 
 " Quit
 command! q :execute 'winc t' | quit
