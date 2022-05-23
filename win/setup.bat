@@ -5,7 +5,6 @@ mklink "%APPDATA%\Code\User\settings.json" "%USERPROFILE%\dotfiles\vscode\.confi
 mklink "%APPDATA%\Code\User\keybindings.json" "%USERPROFILE%\dotfiles\vscode\.config\Code\User\keybindings.json"
 mklink "%APPDATA%\ConEmu.xml" "%USERPROFILE%\dotfiles\win\ConEmu.xml"
 mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\conemu.bat" "%USERPROFILE%\dotfiles\win\conemu.bat"
-mklink /D "%APPDATA%\alacritty" "%USERPROFILE%\dotfiles\alacritty\.config\alacritty"
 
 cd %USERPROFILE%
 bash -e ./dotfiles/setup

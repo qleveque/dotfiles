@@ -127,7 +127,7 @@ c(){
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
-export FZF_DEFAULT_OPTS='--no-bold --ansi --height 40% --border'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
 source ~/.zsh/fzf_config.zsh
 
 # Vifm
@@ -195,34 +195,3 @@ if is_wsl; then
     alias "${filename:t:r}=powershell.exe -c \~/bin/${filename:t:r}.ps1"
   done
 fi
-
-# Theme
-theme(){
-  local THEME="$1"
-  local ALACRITTY="$HOME/dotfiles/alacritty/.config/alacritty/alacritty.yml"
-  local VIM="$HOME/dotfiles/vim/.vim/style.vim"
-  local TMUX="$HOME/dotfiles/tmux/.tmux.conf"
-  # List themes if no or incorrect theme
-  local THEMES=($(rg --no-filename -N " *.*: *&(.*)" $ALACRITTY -r '$1'))
-  if [ -z "$THEME" ] || [ ! ${THEMES[(ie)$THEME]} -le ${#THEMES} ]; then echo $THEMES; return; fi
-  # Computations
-  local BG=$(rg -IUN " *.*: *&$THEME\s*primary:\s*background: *'#(.*)'" $ALACRITTY -r '$1')
-  local sum=0; for i in 0 2 4; do sum=$((sum + 0x${BG:$i:2})); done
-  [[ $sum -gt $((255 * 3/2)) ]] && local VBG="light" || local VBG="dark"
-  [[ "$VBG" = "light" ]] && local d=-1 || local d=1
-  local L=$(alter_color $BG $((d * 18)))
-  local LER=$(alter_color $BG $((d * 33)))
-  local LEST=$(alter_color $BG $((d * 65)))
-  # Update configurations
-  sed -i '$ d' $ALACRITTY; sed -i '1,2 d' $VIM; sed -i '1,3 d' $TMUX
-  echo "colors: *$THEME" >> $ALACRITTY
-  sed -i "1ilet BG=\"#$BG\"|let BG1=\"#$L\"|let BG2=\"#$LER\"|let BG3=\"#$LEST\"\nset bg=$VBG" $VIM
-  sed -i "1iBG=#$BG\nLIGHT_BG=#$L\nLIGHTEST_BG=#$LEST" $TMUX; tmux source $TMUX
-}
-alter_color(){
-  local cs=()
-  for i in 0 2 4; do
-    local c=$((0x${1:$i:2} + $2)); ([[ $c -gt 255 ]] && c=255) || ([[ $c -lt 0 ]] && c=0); cs+=($c)
-  done
-  printf "%02X%02X%02X\n" $cs
-}

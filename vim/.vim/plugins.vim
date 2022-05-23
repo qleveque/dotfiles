@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-if !has('win32')|Plug 'romgrk/barbar.nvim'|endif
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'dyng/ctrlsf.vim'
@@ -11,6 +10,7 @@ Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'romgrk/barbar.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
