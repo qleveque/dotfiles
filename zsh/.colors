@@ -1,0 +1,6 @@
+export BLACK="#000000"
+export GREY="#C4C4C4"
+export BG="#111133"
+export LIGHT_BG="#222244"
+export LIGHTER_BG="#333355"
+export LIGHTEST_BG="#444466"

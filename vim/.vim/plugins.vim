@@ -16,12 +16,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
-Plug 'yggdroot/indentLine'
 
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'posva/vim-vue'
 Plug 'udalov/kotlin-vim'
+Plug 'peterhoeg/vim-qml'
 call plug#end()
 
 autocmd FileType * let b:coc_suggest_disable = 1

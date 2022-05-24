@@ -68,6 +68,6 @@ nnoremap <C-b>v :!tmux split-window -h -c %d<CR>
 source ~/.vifm/vifm_devicons/favicons.vifm
 
 " Commands
-command! unzip :!zsh -ic '{unzip "%f"} always {read _\?[Done...]}'
+command! unzip :!zsh -ic unzip "%f"
 command! c :execute 'cd "'.system('set %a && echo $(eval $PYQO_D_TARGET)').'"'
 command! f :execute 'mark x '.system('set %a && a=$(eval $PYQO_F_TARGET) && echo \"$a:h\" \"$a:t\"') | :redraw | :normal 'x
