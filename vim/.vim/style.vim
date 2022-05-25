@@ -2,12 +2,9 @@ set bg=dark
 set termguicolors
 set statusline=%1*\ \%f%m\ %0*%= 
 
-exe 'let BG=$BG'
-exe 'let BLACK=$BLACK'
-exe 'let GREY=$GREY'
-exe 'let LIGHTER_BG=$LIGHTER_BG'
-exe 'let LIGHTEST_BG=$LIGHTEST_BG'
-exe 'let LIGHT_BG=$LIGHT_BG'
+for c in ["BG", "LIGHT_BG", "LIGHTER_BG", "LIGHTEST_BG"]
+  exe 'if !empty($'.c.')|let '.c.'=$'.c.'|else|let '.c.'="black"|endif'
+endfor
 
 exe 'hi ActiveWin guibg='.BG
 exe 'hi CursorLine gui=none guibg='.LIGHT_BG
@@ -27,7 +24,7 @@ exe 'hi StatusLine gui=underline guifg=default guibg='.BG
 exe 'hi StatusLineNC gui=underline guifg=default guibg='.LIGHT_BG
 exe 'hi User1 gui=none guifg=default guibg='.LIGHTEST_BG
 exe 'hi VertSplit gui=none guifg=default guibg='.LIGHT_BG
-exe 'hi Visual guifg='.BLACK.' guibg='.GREY
+exe 'hi Visual guifg=black guibg=lightgrey'
 
 exe 'hi BufferTabpageFill guibg='.LIGHTER_BG
 for v in ["", "Mod","Index","Sign"]
