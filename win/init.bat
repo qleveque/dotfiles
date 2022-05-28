@@ -5,8 +5,7 @@ call cmd.exe /C wsl -u root
 cd %USERPROFILE%
 bash -e ./dotfiles/init
 
-echo DOWNLOAD InconsolataGo from "https://www.nerdfonts.com/font-downloads"
-pause
+start "" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
 
 echo DONE
 pause

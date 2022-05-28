@@ -1,5 +1,4 @@
 " Miscellaneous
-colorscheme Default
 set vicmd=$EDITOR
 set syscalls
 set trash
@@ -71,3 +70,27 @@ source ~/.vifm/vifm_devicons/favicons.vifm
 command! unzip :!zsh -ic unzip "%f"
 command! c :execute 'cd "'.system('set %a && echo $(eval $PYQO_D_TARGET)').'"'
 command! f :execute 'mark x '.system('set %a && a=$(eval $PYQO_F_TARGET) && echo \"$a:h\" \"$a:t\"') | :redraw | :normal 'x
+
+" Colors
+highlight clear
+highlight Win cterm=none ctermfg=default ctermbg=default
+highlight Directory cterm=bold ctermfg=green ctermbg=default
+highlight Link cterm=bold ctermfg=yellow ctermbg=default
+highlight BrokenLink cterm=bold ctermfg=red ctermbg=default
+highlight Socket cterm=bold ctermfg=magenta ctermbg=default
+highlight Device cterm=bold ctermfg=red ctermbg=default
+highlight Fifo cterm=bold ctermfg=green ctermbg=default
+highlight Executable cterm=none ctermfg=default ctermbg=default
+highlight Selected cterm=bold ctermfg=magenta ctermbg=default
+highlight StatusLine cterm=none ctermfg=default ctermbg=default
+highlight WildMenu cterm=underline,reverse ctermfg=default ctermbg=default
+highlight CmdLine cterm=none ctermfg=default ctermbg=default
+highlight ErrorMsg cterm=none ctermfg=red ctermbg=default
+highlight Border cterm=none ctermfg=black ctermbg=default
+highlight JobLine cterm=bold,reverse ctermfg=default ctermbg=default
+highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
+highlight CmpMismatch cterm=bold ctermfg=default ctermbg=red
+highlight AuxWin cterm=underline,bold,reverse,standout ctermfg=default ctermbg=default
+highlight CurrLine cterm=none,reverse ctermbg=black
+highlight TopLine cterm=none ctermfg=default ctermbg=default
+highlight TopLineSel cterm=none ctermfg=default ctermbg=default

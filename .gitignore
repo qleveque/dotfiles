@@ -1,10 +1,8 @@
-nvim/.local/bin/
-nvim/.local/lib/
-nvim/.local/share/qalculate/
-nvim/.local/share/nvim/shada/
+nvim/.local/
 vifm/.vifm/scripts/
 vifm/.vifm/vifm-help.txt
 vifm/.vifm/vifminfo
 vifm/.vifm/vifminfo.json
+vifm/.vifm/colors/
 vim/.vim/plugged/
 vim/.vim/undodir/

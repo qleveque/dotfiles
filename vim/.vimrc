@@ -6,6 +6,10 @@ set clipboard^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8
 set lz list cul noswf udf si et sts=2 sw=2 ts=2 shm+=aoOtI mouse=a nomagic
 set ignorecase smartcase incsearch number relativenumber scrolloff=4
 
+let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
+let pyqo_f='echo `eval $PYQO_F_TARGET`'
+let run=':w! | :FloatermNew --autoclose=0 --title=Zsh zsh -ic'
+
 " Easy life
 nnoremap ' `
 nnoremap + ]czz
@@ -55,7 +59,8 @@ nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>i :call CocAction('runCommand','editor.action.organizeImport')<CR>
-inor <expr> <Tab> col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():tab
+inoremap <expr> <Tab>
+  \ col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
 inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
 
 " Buffers

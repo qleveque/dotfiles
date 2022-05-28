@@ -130,7 +130,11 @@ export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
-source ~/.zsh/fzf_config.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+# Vim-tmux-navigator
+source ~/.vim/plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 
 # Vifm
 zle-vifm-only-choose-dir()

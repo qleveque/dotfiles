@@ -1,6 +1,11 @@
-set bg=dark
-set termguicolors
-set statusline=%1*\ \%f%m\ %0*%= 
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'posva/vim-vue'
+Plug 'udalov/kotlin-vim'
+Plug 'peterhoeg/vim-qml'
+call plug#end()
+
+set termguicolors bg=dark statusline=%1*\ \%f%m\ %0*%= 
 
 for c in ["BG", "LIGHT_BG", "LIGHTER_BG", "LIGHTEST_BG"]
   exe 'if !empty($'.c.')|let '.c.'=$'.c.'|else|let '.c.'="black"|endif'
