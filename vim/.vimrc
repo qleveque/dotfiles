@@ -5,10 +5,7 @@ source ~/.vim/languages.vim
 set clipboard^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8
 set lz list cul noswf udf si et sts=2 sw=2 ts=2 shm+=aoOtI mouse=a nomagic
 set ignorecase smartcase incsearch number relativenumber scrolloff=4
-
-let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
-let pyqo_f='echo `eval $PYQO_F_TARGET`'
-let run=':w! | :FloatermNew --autoclose=0 --title=Zsh zsh -ic'
+set shada='1000,<50,s10,h,rA:,rB:
 
 " Easy life
 nnoremap ' `
@@ -73,6 +70,7 @@ nnoremap <silent> ° :BufferMoveNext<CR>
 " Git
 cabbrev diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
 au VimEnter * if &diff|exe 'norm 1G+-'|exe 'windo set wrap nofen fdc=0'|endif
+let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
 nnoremap <silent> <leader>b :exe floaterm_full." tig blame +".line(".")." %"<CR>
 nnoremap <silent> <leader>l :exe floaterm_full." tig --follow %"<CR>
 nnoremap <silent> <leader>L :exe floaterm_full." tig"<CR>
@@ -84,7 +82,7 @@ autocmd TermEnter * nnoremap <buffer> <CR> i
 tnoremap <C-A> <C-\><C-N>
 nnoremap <silent> <C-W><C-W> :FloatermToggle<CR>
 tnoremap <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
+let run=':w! | :FloatermNew --autoclose=0 --title=Zsh zsh -ic'
 nnoremap <silent> é :exe run.' "run '.expand("%").'"'<CR>
 nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
 nnoremap <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
-cabbrev ef EF|com -nargs=1 EF :exe 'e '.system('set '.<f-args>.'&&'.pyqo_f)

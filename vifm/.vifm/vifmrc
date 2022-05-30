@@ -46,10 +46,12 @@ map <C-i> :histnext<CR>
 " FZF
 command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
 nnoremap <M-c> :Cd<CR>
-command! Dirs :execute 'cd "'.system('eval $FZF_CTRL_P_COMMAND | fzf --no-sort 2>/dev/tty').'"' | :redraw
-nnoremap <C-p> :Dirs<CR>
-command! Files :execute 'mark x  '.system('a=$(eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty) && echo \"%d/$a:h\" \"$a:t\"') | :redraw | :normal 'x
+command! Files :execute 'mark x '.system('a=$(eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty) && echo \"%d/$a:h\" \"$a:t\"') | :redraw | :normal 'x
 nnoremap <C-t> :Files<CR>
+command! GoDirs :execute 'cd "'.system('eval $FZF_P_COMMAND | fzf --exact 2>/dev/tty').'"' | :redraw
+nnoremap <M-p> :GoDirs<CR>
+command! Dirs :execute 'mark x '.system('a=$(eval $FZF_P_COMMAND | fzf --exact 2>/dev/tty) && echo \"$a:h\" \"$a:t\"') | :redraw | :normal 'x
+nnoremap <C-p> :Dirs<CR>
 
 " Quit
 command! q :execute 'winc t' | quit
@@ -68,8 +70,7 @@ source ~/.vifm/vifm_devicons/favicons.vifm
 
 " Commands
 command! unzip :!zsh -ic unzip "%f"
-command! c :execute 'cd "'.system('set %a && echo $(eval $PYQO_D_TARGET)').'"'
-command! f :execute 'mark x '.system('set %a && a=$(eval $PYQO_F_TARGET) && echo \"$a:h\" \"$a:t\"') | :redraw | :normal 'x
+command! c :execute 'cd "'.system('set %a && eval $JUMP_TARGET').'"'
 
 " Colors
 highlight clear

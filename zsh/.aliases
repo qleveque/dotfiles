@@ -1,5 +1,6 @@
 #!/usr/bin/zsh
 alias e=$EDITOR
+alias o='open'
 
 alias cloc='tokei'
 alias du='dust -r'

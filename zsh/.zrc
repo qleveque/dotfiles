@@ -21,6 +21,10 @@ export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 local is_wsl(){
     return `grep -q Microsoft /proc/version`
 }
+local reset-prompt(){
+  zle reset-prompt
+  zle autosuggest-clear
+}
 
 # ZSH plugins
 load_zsh_plugins(){
@@ -29,6 +33,7 @@ load_zsh_plugins(){
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
   ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
   ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+  ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 
   # Zsh highlighting
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -42,7 +47,7 @@ load_zsh_plugins(){
   MODE_CURSOR_VIINS='green blinking bar'
   MODE_CURSOR_VICMD='green block'
   # Should be placed after
-  bindkey '^[[Z' autosuggest-accept
+  bindkey '^[[Z' forward-word
 
   # Zsh system clipboard
   source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
@@ -50,6 +55,13 @@ load_zsh_plugins(){
 
   # Zsh fzf completion
   source ~/.zsh/plugins/fzf-tab/fzf-tab.zsh
+
+  # Jump
+  alias c='jump'
+  export BOOKMARKS_FILE="$HOME/.bookmarks"
+  export JUMP_TARGET="cat $BOOKMARKS_FILE | rg \"\|\$1$\" | cut -d '|' -f1"
+  touch $BOOKMARKS_FILE
+  source ~/.zsh/plugins/zshmarks/zshmarks.plugin.zsh
 }
 load_zsh_plugins
 
@@ -109,22 +121,6 @@ else
   }
 fi
 
-# Pyqo
-export PYQO_F_TARGET='cat ~/.config/pyqo/f.json | jq ".$1" | sed "s/\"//g"'
-export PYQO_D_TARGET='cat ~/.config/pyqo/d.json | jq ".$1" | sed "s/\"//g"'
-if is_wsl; then
-  export PYQO_F_TARGET="wslpath \"\$($PYQO_F_TARGET)\""
-  export PYQO_D_TARGET="wslpath \"\$($PYQO_D_TARGET)\""
-fi
-ef(){
-  file=$(eval $PYQO_F_TARGET)
-  [[ $file != null ]] && $EDITOR $file || echo "Could not find $1"
-}
-c(){
-  dir="$(eval $PYQO_D_TARGET)"
-  [[ $dir != null ]] && cd $dir || echo "Could not find $1"
-}
-
 # FZF
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
@@ -145,7 +141,7 @@ zle-vifm-only-choose-dir()
     return 1
   fi
   cd "$dst"
-  zle reset-prompt
+  reset-prompt
   vim-mode-set-cursor-style viins
   return 0
 }
@@ -160,24 +156,27 @@ precmd() {
     PREV_PWD="$PWD"
     touch $DIR_HIST
     sed -i "\#^$PWD\$#d" $DIR_HIST
-    echo "$(cat $DIR_HIST | tail -49)\n$PWD" > $DIR_HIST
+    echo "$(cat $DIR_HIST | tail -299)\n$PWD" > $DIR_HIST
   fi
 }
-export FZF_CTRL_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
+export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
+zle-recent-directory() {
+  LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"
+  reset-prompt
+}
+zle -N zle-recent-directory
+bindkey '^P' zle-recent-directory
 zle-go-to-recent-directory() {
-  cd "`eval $FZF_CTRL_P_COMMAND | fzf --no-sort --reverse`"
-  zle reset-prompt
+  cd "`eval $FZF_P_COMMAND | fzf --exact`"
+  reset-prompt
 }
 zle -N zle-go-to-recent-directory
-bindkey '^P' zle-go-to-recent-directory
+bindkey '\ep' zle-go-to-recent-directory
 
 # Ctrl-V
 function zle-clipboard-paste {
-  if ((REGION_ACTIVE)); then
-    zle kill-region
-  fi
   LBUFFER+="$(xclip -selection clipboard -out)"
-  zle autosuggest-clear
+  reset-prompt
 }
 zle -N zle-clipboard-paste
 bindkey '^V' zle-clipboard-paste
