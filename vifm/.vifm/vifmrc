@@ -58,7 +58,7 @@ command! q :execute 'winc t' | quit
 nnoremap <C-q> :q<CR>
 
 " Open
-nnoremap <CR> :!/bin/zsh -i -c "open %f"<CR>
+nnoremap <CR> :!/bin/zsh -i -c "o %f"<CR>
 nnoremap i <Esc>
 
 " Tmux integration
@@ -70,7 +70,8 @@ source ~/.vifm/vifm_devicons/favicons.vifm
 
 " Commands
 command! unzip :!zsh -ic unzip "%f"
-command! c :execute 'cd "'.system('set %a && eval $JUMP_TARGET').'"'
+command! j :execute 'cd "'.system('set %a && eval $JUMP_TARGET').'"'
+command! o :!/bin/zsh -i -c "o %a"
 
 " Colors
 highlight clear

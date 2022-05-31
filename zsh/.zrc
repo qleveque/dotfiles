@@ -57,11 +57,16 @@ load_zsh_plugins(){
   source ~/.zsh/plugins/fzf-tab/fzf-tab.zsh
 
   # Jump
-  alias c='jump'
-  export BOOKMARKS_FILE="$HOME/.bookmarks"
+  source ~/.zsh/plugins/zshmarks/zshmarks.plugin.zsh
   export JUMP_TARGET="cat $BOOKMARKS_FILE | rg \"\|\$1$\" | cut -d '|' -f1"
   touch $BOOKMARKS_FILE
-  source ~/.zsh/plugins/zshmarks/zshmarks.plugin.zsh
+  _mark_expansion() {
+    setopt localoptions extendedglob
+    autoload -U modify-current-argument
+    modify-current-argument '$(set $ARG && eval "$JUMP_TARGET")'
+  }
+  zle -N _mark_expansion
+  bindkey '^G' _mark_expansion
 }
 load_zsh_plugins
 
@@ -77,7 +82,7 @@ run(){
     f90|f95|f03) gfortran -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
     go) go run "$@";;
     hs) ghc "$@" && ./"$@:r";;
-    html) open "$@";;
+    html) o "$@";;
     java) javac "$@" && java -cp "$@:h" "$@:t:r";;
     jl) julia "$@";;
     js) node "$@";;
@@ -110,13 +115,13 @@ unzip() {
 
 # Open function
 if is_wsl; then
-  open(){
+  o(){
     if [[ -n "$@" ]] then
       /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
     fi
   }
 else
-  open(){
+  o(){
     xdg-open $1 1>/dev/null 2>/dev/null &
   }
 fi
