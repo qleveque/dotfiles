@@ -12,40 +12,35 @@ export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
 export VISUAL=$EDITOR
 export LESS='-irFRX'
+export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 
 source ~/.aliases
 source ~/.colors
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
-
-local is_wsl(){
+local is_wsl() {
     return `grep -q Microsoft /proc/version`
 }
-local reset-prompt(){
+local reset-prompt() {
   zle reset-prompt
   zle autosuggest-clear
 }
 
 # ZSH plugins
-load_zsh_plugins(){
+load_zsh_plugins() {
   # Zsh autosuggestions
   source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=magenta'
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$LIGHTEST_BG"
   ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
-  ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
   ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 
   # Zsh highlighting
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
   # Zsh vim mode
-  MODE_INDICATOR=""
   KEYTIMEOUT=1
+  MODE_INDICATOR=''
   source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-  setopt NO_prompt_subst
-  VIM_MODE_TRACK_KEYMAP=no
-  MODE_CURSOR_VIINS='green blinking bar'
-  MODE_CURSOR_VICMD='green block'
+  MODE_CURSOR_VIINS='blinking bar'
   # Should be placed after
   bindkey '^[[Z' forward-word
 
@@ -59,7 +54,6 @@ load_zsh_plugins(){
   # Jump
   source ~/.zsh/plugins/zshmarks/zshmarks.plugin.zsh
   export JUMP_TARGET="cat $BOOKMARKS_FILE | rg \"\|\$1$\" | cut -d '|' -f1"
-  touch $BOOKMARKS_FILE
   _mark_expansion() {
     setopt localoptions extendedglob
     autoload -U modify-current-argument
@@ -71,7 +65,7 @@ load_zsh_plugins(){
 load_zsh_plugins
 
 # Run all program files
-run(){
+run() {
   local ext=${@:t:e}
   case "$ext" in
     asm) nasm -f elf64 "$@" && ld -s -o "$@:h"/a.out "$@:r".o && "$@:h"/a.out;;
@@ -115,13 +109,13 @@ unzip() {
 
 # Open function
 if is_wsl; then
-  o(){
+  o() {
     if [[ -n "$@" ]] then
       /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
     fi
   }
 else
-  o(){
+  o() {
     xdg-open $1 1>/dev/null 2>/dev/null &
   }
 fi
@@ -130,7 +124,6 @@ fi
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
-export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 
@@ -138,17 +131,10 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.vim/plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 
 # Vifm
-zle-vifm-only-choose-dir()
-{
-  local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
-  if [ -z "$dst" ]; then
-    echo 'Directory picking cancelled/failed'
-    return 1
-  fi
-  cd "$dst"
+zle-vifm-only-choose-dir() {
+  cd $(vifm -c :only --choose-dir - . < /dev/tty)
   reset-prompt
   vim-mode-set-cursor-style viins
-  return 0
 }
 zle -N zle-vifm-only-choose-dir
 bindkey '^f' zle-vifm-only-choose-dir
@@ -179,7 +165,7 @@ zle -N zle-go-to-recent-directory
 bindkey '\ep' zle-go-to-recent-directory
 
 # Ctrl-V
-function zle-clipboard-paste {
+zle-clipboard-paste() {
   LBUFFER+="$(xclip -selection clipboard -out)"
   reset-prompt
 }
@@ -195,7 +181,7 @@ bindkey -M vicmd '^Q' zle-exit-zsh
 # Windows
 if is_wsl; then
   export DISPLAY=:0.0
-  cmd(){
+  cmd() {
     cmd.exe /C $@
   }
   for filename in ~/bin/*.bat; do

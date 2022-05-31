@@ -70,7 +70,7 @@ source ~/.vifm/vifm_devicons/favicons.vifm
 
 " Commands
 command! unzip :!zsh -ic unzip "%f"
-command! j :execute 'cd "'.system('set %a && eval $JUMP_TARGET').'"'
+command! g :execute 'cd "'.system('set %a && eval $JUMP_TARGET').'"'
 command! o :!/bin/zsh -i -c "o %a"
 
 " Colors
