@@ -8,12 +8,12 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 apt-get update -y
 sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-apt-get install -y stow cmake vifm zsh tmux fzf neovim xclip nodejs fontconfig default-jdk tig qalc p7zip-full httpie rustup ripgrep fd-find
+apt-get install -y stow cmake vifm zsh tmux fzf neovim nodejs fontconfig default-jdk tig qalc p7zip-full httpie rustup ripgrep fd-find xclip
 
 # Rust
 rustup install stable
 rustup default stable
-cargo install sd exa du-dust hyperfine tokei
+cargo install sd du-dust
 
 # Kotlin
 curl -s https://get.sdkman.io | bash

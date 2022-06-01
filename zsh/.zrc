@@ -40,6 +40,8 @@ load_zsh_plugins() {
   KEYTIMEOUT=1
   MODE_INDICATOR=''
   source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+  setopt NO_prompt_subst
+  VIM_MODE_TRACK_KEYMAP=no
   MODE_CURSOR_VIINS='blinking bar'
   # Should be placed after
   bindkey '^[[Z' forward-word
@@ -112,10 +114,15 @@ if is_wsl; then
   o() {
     if [[ -n "$@" ]] then
       /mnt/c/Windows/System32/cmd.exe /C start "" "$@"
+    else
+      /mnt/c/Windows/System32/cmd.exe /C start "" .
     fi
   }
 else
   o() {
+    if [[ -n "$1" ]] then
+      set .
+    fi
     xdg-open $1 1>/dev/null 2>/dev/null &
   }
 fi
@@ -124,6 +131,7 @@ fi
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_ALT_C_COMMAND='fdfind --type d'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 
@@ -132,9 +140,15 @@ source ~/.vim/plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 
 # Vifm
 zle-vifm-only-choose-dir() {
-  cd $(vifm -c :only --choose-dir - . < /dev/tty)
+  local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
+  if [ -z "$dst" ]; then
+    echo 'Directory picking cancelled/failed'
+    return 1
+  fi
+  cd "$dst"
   reset-prompt
   vim-mode-set-cursor-style viins
+  return 0
 }
 zle -N zle-vifm-only-choose-dir
 bindkey '^f' zle-vifm-only-choose-dir
