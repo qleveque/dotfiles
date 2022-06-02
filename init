@@ -21,6 +21,8 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install kotlin
 
 # Nvim packages
+sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PluginInstall +qall
 
 # Nerd fonts

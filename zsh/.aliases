@@ -1,5 +1,4 @@
 #!/usr/bin/zsh
-alias cloc='tokei'
 alias du='dust -r'
 alias e=$EDITOR
 alias fd='fdfind'
@@ -7,7 +6,6 @@ alias g='jump'
 alias ll='ls -la'
 alias ls='ls --color=auto'
 alias meteo='curl wttr.in/lausanne'
-alias parrot='curl parrot.live'
 alias q='qalc'
 alias rg='rg --smart-case'
 alias telnet='telnet -e ^C'
