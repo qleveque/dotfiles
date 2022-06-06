@@ -199,7 +199,9 @@ if is_wsl; then
     cmd.exe /C $@
   }
   for filename in ~/bin/*.bat; do
-    alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
+    if [ "${filename:t:r}" != "ls" ]; then
+      alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
+    fi
   done
   for filename in ~/bin/*.ps1; do
     alias "${filename:t:r}=powershell.exe -c \~/bin/${filename:t:r}.ps1"
