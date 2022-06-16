@@ -17,7 +17,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
 
-autocmd FileType * let b:coc_suggest_disable = 1
 let bufferline = get(g:,'bufferline',
   \ {'auto_hide':v:true,'icons':v:false,'exclude_ft':['qf','ctrlsf']})
 let g:coc_disable_startup_warning = 1
@@ -29,6 +28,11 @@ let g:floaterm_height=0.8|let g:floaterm_width=0.8
 let g:fzf_preview_window = []
 let g:loaded_netrw = 1|let g:loaded_netrwPlugin = 1
 let g:user_emmet_leader_key='<C-Z>'
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 nmap <C-h> <C-W>h
 nmap <C-j> <C-W>j

@@ -12,7 +12,7 @@ export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
 export VISUAL=$EDITOR
 export LESS='-irFRX'
-export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 source ~/.aliases
 source ~/.colors
@@ -23,32 +23,43 @@ local is_wsl() {
 local reset-prompt() {
   zle reset-prompt
   zle autosuggest-clear
+  zle zle-line-init
 }
+
+# Change cursor shape for different vi modes.
+KEYTIMEOUT=1
+bindkey -v
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q'
+preexec() { echo -ne '\e[5 q' ;}
 
 # ZSH plugins
 load_zsh_plugins() {
   # Zsh autosuggestions
   source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$LIGHTEST_BG"
-  ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode)
+  ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit)
   ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
+  bindkey '^[[Z' forward-word
 
   # Zsh highlighting
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-  # Zsh vim mode
-  KEYTIMEOUT=1
-  MODE_INDICATOR=''
-  source ~/.zsh/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-  setopt NO_prompt_subst
-  VIM_MODE_TRACK_KEYMAP=no
-  MODE_CURSOR_VIINS='blinking bar'
-  # Should be placed after
-  bindkey '^[[Z' forward-word
-
   # Zsh system clipboard
   source ~/.zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
-  typeset -g ZSH_SYSTEM_CLIPBOARD_TMUX_SUPPORT='true'
 
   # Zsh fzf completion
   source ~/.zsh/plugins/fzf-tab/fzf-tab.zsh
@@ -59,7 +70,7 @@ load_zsh_plugins() {
   _mark_expansion() {
     setopt localoptions extendedglob
     autoload -U modify-current-argument
-    modify-current-argument '$(set $ARG && eval "$JUMP_TARGET")'
+    modify-current-argument '\"$(set $ARG && eval "$JUMP_TARGET")\"'
   }
   zle -N _mark_expansion
   bindkey '^G' _mark_expansion
@@ -84,6 +95,7 @@ run() {
     js) node "$@";;
     kt) kotlinc "$@" -include-runtime -d "$@:h"/a.jar && java -jar "$@:h"/a.jar;;
     lua) lua "$@";;
+    nsi) cd "$@:h" && cmd.exe /C "makensis $@:t && $@:t:r.exe";;
     ps1) powershell.exe ".\\$@";;
     py) python3 "$@";;
     r) Rscript "$@";;
@@ -120,8 +132,8 @@ if is_wsl; then
   }
 else
   o() {
-    if [[ -n "$1" ]] then
-      set .
+    if [[ -z "$1" ]] then
+      set $PWD
     fi
     xdg-open $1 1>/dev/null 2>/dev/null &
   }
@@ -147,7 +159,6 @@ zle-vifm-only-choose-dir() {
   fi
   cd "$dst"
   reset-prompt
-  vim-mode-set-cursor-style viins
   return 0
 }
 zle -N zle-vifm-only-choose-dir

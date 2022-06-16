@@ -1,31 +1,22 @@
 #!/usr/bin/env zsh
 cd ~
 
-# Neovim unstable
-sudo add-apt-repository ppa:neovim-ppa/unstable
-
 # Common packages
 apt-get update -y
-sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-apt-get install -y stow cmake vifm zsh tmux fzf neovim nodejs fontconfig default-jdk tig qalc p7zip-full httpie rustup ripgrep fd-find xclip
+apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xclip
 
-# Rust
-rustup install stable
-rustup default stable
-cargo install sd du-dust
-
-# Kotlin
-curl -s https://get.sdkman.io | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install kotlin
+packages=(
+  'https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb'
+  'https://github.com/bootandy/dust/releases/download/v0.8.1-alpha.2/du-dust_0.8.1.alpha.2_amd64.deb'
+)
+for package in "${packages[@]}" ;do
+  TEMP_DEB="$(mktemp)" && wget -O "$TEMP_DEB" $package && sudo dpkg -i "$TEMP_DEB"
+done
 
 # Nvim packages
-sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PluginInstall +qall
 
 # Nerd fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-unzip Hack.zip -d ~/.fonts
+TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d ~/.fonts
 fc-cache -fv

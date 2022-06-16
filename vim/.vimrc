@@ -56,8 +56,9 @@ nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>i :call CocAction('runCommand','editor.action.organizeImport')<CR>
-inoremap <expr> <Tab>
-  \ col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
+
+" Completion
+inoremap <silent><expr> <Tab> pumvisible()?"\<C-n>":CheckBackspace()?"\<Tab>":coc#refresh()
 inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
 
 " Buffers
