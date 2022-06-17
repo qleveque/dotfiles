@@ -56,9 +56,7 @@ nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>i :call CocAction('runCommand','editor.action.organizeImport')<CR>
-
-" Completion
-inoremap <silent><expr> <Tab> pumvisible()?"\<C-n>":CheckBackspace()?"\<Tab>":coc#refresh()
+inoremap <expr> <Tab> pumvisible()?"\<C-n>":CheckBS()?"\<Tab>":coc#refresh()
 inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
 
 " Buffers
@@ -69,14 +67,16 @@ nnoremap <silent>   :BufferMovePrevious<CR>
 nnoremap <silent> ° :BufferMoveNext<CR>
 
 " Git
+let diff_cmds=['norm 1G+-', 'windo set wrap nofen fdc=0', 'nm <C-Q> :qa<CR>']
+autocmd VimEnter * if &diff|for c in diff_cmds|exe c|endfor|endif
 cabbrev diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
-au VimEnter * if &diff|exe 'norm 1G+-'|exe 'windo set wrap nofen fdc=0'|endif
-let floaterm_full='FloatermNew --height=&lines+1 --width=&columns+2'
-nnoremap <silent> <leader>b :exe floaterm_full." tig blame +".line(".")." %"<CR>
-nnoremap <silent> <leader>l :exe floaterm_full." tig --follow %"<CR>
-nnoremap <silent> <leader>L :exe floaterm_full." tig"<CR>
-nnoremap <silent> <leader>d :exe floaterm_full." git difftool --no-prompt %"<CR>
-nnoremap <silent> <leader>D :exe floaterm_full." tig status"<CR>
+let tigc="'FloatermNew --height=&lines+1 --width=&columns+2 '.
+  \'cd '.expand('%:p:h').' && '"
+nnoremap <leader>b :exe eval(tigc)."tig blame +".line(".")." ".expand('%:t')<CR>
+nnoremap <leader>l :exe eval(tigc)."tig --follow ".expand('%:t')<CR>
+nnoremap <leader>L :exe eval(tigc)."tig"<CR>
+nnoremap <leader>d :exe eval(tigc)."git difftool -y ".expand('%:t')<CR>
+nnoremap <leader>D :exe eval(tigc)."tig status"<CR>
 
 " Term
 autocmd TermEnter * nnoremap <buffer> <CR> i

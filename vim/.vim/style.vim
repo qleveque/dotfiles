@@ -33,7 +33,7 @@ exe 'hi Visual guifg=black guibg=lightgrey'
 
 exe 'hi BufferTabpageFill guibg='.LIGHTER_BG
 for v in ["", "Mod","Index","Sign"]
-  exe 'hi BufferCurrent'.v.' guibg='.LIGHTER_BG
+  exe 'hi BufferCurrent'.v.' guibg='.LIGHT_BG
   for k in ["Inactive", "Visible"]
     exe 'hi Buffer'.k.v.' guibg='.LIGHTEST_BG
   endfor

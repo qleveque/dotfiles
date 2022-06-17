@@ -29,7 +29,7 @@ let g:fzf_preview_window = []
 let g:loaded_netrw = 1|let g:loaded_netrwPlugin = 1
 let g:user_emmet_leader_key='<C-Z>'
 
-function! CheckBackspace() abort
+function! CheckBS() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
