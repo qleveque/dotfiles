@@ -12,7 +12,7 @@ export SHELL='/usr/bin/zsh'
 export EDITOR='/usr/bin/nvim'
 export VISUAL=$EDITOR
 export LESS='-irFRX'
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 source ~/.aliases
 source ~/.colors
@@ -105,7 +105,7 @@ run() {
     sh) sh "$@";;
     ts) tsc "$@" && node "$@:r".js;;
     zsh) zsh "$@";;
-    *) cd "$@:h"; if [ -f Makefile ]; then make all; else echo 'Nothing to do'; fi;;
+    *) cd "$@:h"; if [ -f Makefile ]; then make all; fi;;
   esac
 }
 

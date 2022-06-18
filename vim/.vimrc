@@ -1,89 +1,79 @@
-source ~/.vim/plugins.vim
-source ~/.vim/style.vim
-source ~/.vim/languages.vim
-
 set clipboard^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8
-set lz list cul noswf udf si et sts=2 sw=2 ts=2 shm+=aoOtI mouse=a nomagic
-set ignorecase smartcase incsearch number relativenumber scrolloff=4
-set shada='1000,<50,s10,h,rA:,rB:
+set lz list noswf udf si et shm+=aoOtI mouse=a shada='1000,<50,s10,h,rA:,rB:
+set cul nomagic ignorecase smartcase incsearch number relativenumber scrolloff=4
+set sts=2 sw=2 ts=2 scl=no termguicolors bg=dark statusline=%1*\ \%f%m\ %0*%= 
+
+source ~/.vim/style.vim
+source ~/.vim/plugins.vim
+if filereadable("~/.vim/specific.vim")|source ~/.vim/specific.vim|endif
 
 " Easy life
-nnoremap ' `
-nnoremap + ]czz
-nnoremap - [czz
-nnoremap <BS> :nohl<CR>
-nnoremap <C-Q> ZQ
-nnoremap <C-R> :e!<CR>
-nnoremap S f,a<CR><Esc>
-nnoremap U <C-R>
-nnoremap V ggVG
-nnoremap vv V
-nnoremap à @q
-xnoremap à :norm! @q<CR>
-vnoremap . :normal .<CR>
-inoremap <C-V> <C-R>+
-cnoremap <C-V> <C-R>+
-noremap D "_d
-noremap C "_c
-nnoremap DD "_dd
-nnoremap CC "_cc
-nnoremap X "_x
-xnoremap P "_c<C-R>+<Esc>
-vnoremap * "xy/\V<C-R>x<CR>
-vnoremap # "xy?\V<C-R>x<CR>
-nnoremap ]x /\v^[\=<>\|]{7}[ \n]<CR>
-nnoremap [x ?\v^[\=<>\|]{7}[ \n]<CR>
+nn ' `
+nn <BS> :nohl<CR>
+nn <C-Q> ZQ
+nn <C-R> :e!<CR>
+nn S f,a<CR><Esc>
+nn U <C-R>
+nn V ggVG
+nn vv V
+nn à @q
+xno à :norm! @q<CR>
+vno . :normal .<CR>
+ino <C-V> <C-R>+
+cno <C-V> <C-R>+
+no D "_d
+no C "_c
+nn DD "_dd
+nn CC "_cc
+nn X "_x
+xno P "_c<C-R>+<Esc>
+vno * "xy/\V<C-R>x<CR>
+vno # "xy?\V<C-R>x<CR>
 map ç #NCgn
 map Ç #NCgN
 map L /\V\C\<
 map H ?\V\C\<
 
 " Shortcuts
-nnoremap <C-f> :exe 'FloatermNew --title=Vifm vifm -c :only "%:p:h"'<CR>
-nnoremap <C-n> :CocList -I symbols<CR>
-nnoremap <C-p> :History<CR>
-nnoremap <C-s> :CtrlSF -R<Space>
-nnoremap <C-t> :Files<CR>
+nn <C-f> :exe 'FloatermNew --title=─ vifm -c :only "%:p:h"'<CR>
+nn <C-n> :lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<CR>
+nn <C-t> :lua require'telescope.builtin'.find_files()<CR>
+nn <C-s> :lua require'telescope.builtin'.live_grep()<CR>
+nn <C-p> :lua require'telescope.builtin'.oldfiles()<CR>
 
 " Secondary shortcuts
-nmap s ys
-nmap ss yss
-vmap s S
-nmap <leader>s :%s/\s\+$//e<CR>
-imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
-nmap ù <Plug>(emmet-expand-abbr)
-nmap gd <Plug>(coc-definition)
-nmap gr <Plug>(coc-references)
-xmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>i :call CocAction('runCommand','editor.action.organizeImport')<CR>
-inoremap <expr> <Tab> pumvisible()?"\<C-n>":CheckBS()?"\<Tab>":coc#refresh()
-inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
+nm s ys
+nm ss yss
+vm s S
+nm <leader>s :%s/\s\+$//e<CR>
+im <script><expr> <S-Tab> copilot#Accept("\<CR>")
+nm ù <Plug>(emmet-expand-abbr)
+au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|endif
 
 " Buffers
-nnoremap <silent> ( :BufferPrevious<CR>
-nnoremap <silent> ) :BufferNext<CR>
-nnoremap <silent> _ :BufferClose<CR>
-nnoremap <silent>   :BufferMovePrevious<CR>
-nnoremap <silent> ° :BufferMoveNext<CR>
-
-" Git
-let diff_cmds=['norm 1G+-', 'windo set wrap nofen fdc=0', 'nm <C-Q> :qa<CR>']
-autocmd VimEnter * if &diff|for c in diff_cmds|exe c|endfor|endif
-cabbrev diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
-let tigc="'FloatermNew --height=&lines+1 --width=&columns+2 '.
-  \'cd '.expand('%:p:h').' && '"
-nnoremap <leader>b :exe eval(tigc)."tig blame +".line(".")." ".expand('%:t')<CR>
-nnoremap <leader>l :exe eval(tigc)."tig --follow ".expand('%:t')<CR>
-nnoremap <leader>L :exe eval(tigc)."tig"<CR>
-nnoremap <leader>d :exe eval(tigc)."git difftool -y ".expand('%:t')<CR>
-nnoremap <leader>D :exe eval(tigc)."tig status"<CR>
+nn <silent> ( :BufferPrevious<CR>
+nn <silent> ) :BufferNext<CR>
+nn <silent> _ :BufferClose<CR>
+nn <silent>   :BufferMovePrevious<CR>
+nn <silent> ° :BufferMoveNext<CR>
 
 " Term
-autocmd TermEnter * nnoremap <buffer> <CR> i
-tnoremap <C-A> <C-\><C-N>
-nnoremap <silent> <C-W><C-W> :FloatermToggle<CR>
-tnoremap <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
-let run=':w! | :FloatermNew --autoclose=0 --title=Zsh zsh -ic'
-nnoremap <silent> é :exe run.' "run '.expand("%").'"'<CR>
-nnoremap <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
-nnoremap <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
+let run=':w! | :FloatermNew --autoclose=0 --title=─ zsh -ic'
+nn <silent> é :exe run.' "run '.expand("%").'"'<CR>
+tno <C-A> <C-\><C-N>
+nn <silent> <C-W><C-W> :FloatermToggle<CR>
+tno <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
+nn <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
+nn <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
+
+" Git
+let diff_cmds=['norm 1G+-', 'windo set wrap nofen fdc=0', 'nm <C-Q> :qa<CR>',
+              \'map + ]czz', 'map - [czz']
+au VimEnter * if &diff|for c in diff_cmds|exe c|endfor|endif
+com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
+let tc="'FloatermNew --height=&lines+1 --width=&columns+2 cd '.expand('%:p:h')"
+nn <leader>D :exe eval(tc)."&&tig status"<CR>
+nn <leader>L :exe eval(tc)."&&tig"<CR>
+nn <leader>b :exe eval(tc)."&&tig blame +".line(".")." ".expand('%:t')<CR>
+nn <leader>d :exe eval(tc)."&&git difftool -y ".expand('%:t')<CR>
+nn <leader>l :exe eval(tc)."&&tig --follow ".expand('%:t')<CR>
