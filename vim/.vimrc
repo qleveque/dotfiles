@@ -1,11 +1,10 @@
-set clipboard^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8
-set lz list noswf udf si et shm+=aoOtI mouse=a shada='1000,<50,s10,h,rA:,rB:
-set cul nomagic ignorecase smartcase incsearch number relativenumber scrolloff=4
-set sts=2 sw=2 ts=2 scl=no termguicolors bg=dark statusline=%1*\ \%f%m\ %0*%= 
+set cb^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8 shm+=aoOtI
+set so=4 scl=no mouse=a sd='1000,<50,s10,h,rA:,rB: stl=%1*\ \%f%m\ %0*%= 
+set is nu rnu lz list noswf udf et ic scs cul nomagic tgc
 
 source ~/.vim/style.vim
 source ~/.vim/plugins.vim
-if filereadable("~/.vim/specific.vim")|source ~/.vim/specific.vim|endif
+if filereadable(expand("~/.vim/specific.vim"))|source ~/.vim/specific.vim|endif
 
 " Easy life
 nn ' `
@@ -36,7 +35,7 @@ map H ?\V\C\<
 
 " Shortcuts
 nn <C-f> :exe 'FloatermNew --title=─ vifm -c :only "%:p:h"'<CR>
-nn <C-n> :lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<CR>
+nn <C-n> :CocList -I symbols<CR>
 nn <C-t> :lua require'telescope.builtin'.find_files()<CR>
 nn <C-s> :lua require'telescope.builtin'.live_grep()<CR>
 nn <C-p> :lua require'telescope.builtin'.oldfiles()<CR>
@@ -49,6 +48,12 @@ nm <leader>s :%s/\s\+$//e<CR>
 im <script><expr> <S-Tab> copilot#Accept("\<CR>")
 nm ù <Plug>(emmet-expand-abbr)
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|endif
+nmap gd <Plug>(coc-definition)
+nmap gr <Plug>(coc-references)
+xmap <leader>f <Plug>(coc-format-selected)
+inoremap <expr> <Tab> pumvisible()?"\<C-n>":
+  \col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
+inoremap <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
 
 " Buffers
 nn <silent> ( :BufferPrevious<CR>
@@ -70,7 +75,7 @@ nn <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
 let diff_cmds=['norm 1G+-', 'windo set wrap nofen fdc=0', 'nm <C-Q> :qa<CR>',
               \'map + ]czz', 'map - [czz']
 au VimEnter * if &diff|for c in diff_cmds|exe c|endfor|endif
-com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
+ca diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
 let tc="'FloatermNew --height=&lines+1 --width=&columns+2 cd '.expand('%:p:h')"
 nn <leader>D :exe eval(tc)."&&tig status"<CR>
 nn <leader>L :exe eval(tc)."&&tig"<CR>

@@ -6,3 +6,5 @@ vifm/.vifm/vifminfo.json
 vifm/.vifm/colors/
 vim/.vim/plugged/
 vim/.vim/undodir/
+vim/.vim/specific.vim
+vim/.vim/specific/
