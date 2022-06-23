@@ -1,4 +1,3 @@
-" Apply colors
 if !has('win32')
   for [bg, contexts] in items({
     \"BG": ["ActiveWin","FloatermBorder","TelescopeNormal"],
@@ -11,11 +10,10 @@ if !has('win32')
       exe 'hi '.context.' gui=none guifg=none guibg='.eval('$'.bg)
     endfor
   endfor
-  for v in ["","Mod","Index","Sign"]
+  for v in ['','Mod','Index','Sign']
     exe 'hi BufferCurrent'.v.' guibg='.eval('$BG')
-    for k in ["Inactive","Visible"]
-      exe 'hi Buffer'.k.v.' guibg='.eval('$LIGHTEST_BG')
-    endfor
+    exe 'hi BufferInactive'.v.' guibg='.eval('$LIGHTEST_BG')
+    exe 'hi BufferVisible'.v.' guibg='.eval('$LIGHTEST_BG')
   endfor
   exe 'hi Visual guifg=black guibg='.eval('$GREY')
   exe 'hi StatusLine gui=underline guibg='.eval('$BG')

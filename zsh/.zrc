@@ -3,25 +3,21 @@ stty -ixon
 setopt histignorealldups sharehistory nonomatch
 bindkey -v
 bindkey '^[[Z' forward-word
-local reset-prompt() {
-  zle reset-prompt && zle autosuggest-clear && zle zle-line-init
-}
+local reset-prompt() {zle reset-prompt && zle autosuggest-clear && zle zle-line-init}
+export PATH="$HOME/.bin:$HOME/bin:$HOME/.local/bin:$PATH"
+export EDITOR='/usr/bin/nvim'
+alias e=$EDITOR
+source ~/.aliases
+source ~/.colors
 
 export DIR_HIST=~/.dirhist
-export EDITOR='/usr/bin/nvim'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
 export FZF_P_COMMAND='eval "tac $DIR_HIST | grep -v \"^$PWD\$\""'
-export IS_WSL=$(grep -q Microsoft /proc/version)
 export JUMP_TARGET='readlink "$MARKPATH/$1"'
 export LESS='-irFRX'
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-export VISUAL=$EDITOR
-
-source ~/.aliases
-source ~/.colors
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
@@ -30,81 +26,27 @@ PROMPT=$'\n%B%K{bold,white}%F{cyan}%S%n@%M%s%f%k%b %B%F{blue}%3~%f%b %# '
 RPS1= 
 SAVEHIST=1000
 VI_MODE_SET_CURSOR=true
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=40
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$LIGHTEST_BG"
 ZSH_AUTOSUGGEST_MANUAL_REBIND="true"
 
-# Plugins
-source ~/.zplug/init.zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "kutsan/zsh-system-clipboard"
-zplug "Aloxaf/fzf-tab"
-zplug "plugins/jump", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
-zplug "zsh-users/zsh-autosuggestions"
-zplug load
-
-# Other sources
+# Sources
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.vim/plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 
-# Run all program files
-run() {
-  local ext=${@:t:e}
-  case "$ext" in
-    7z) 7z x "$@";;
-    asm) nasm -f elf64 "$@" && ld -s -o "$@:h"/a.out "$@:r".o && "$@:h"/a.out;;
-    bash) bash "$@";;
-    bat|cmd) cd "$@:h" && cmd.exe /C "$@:t";;
-    c) gcc -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
-    cc|cpp) g++ -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
-    f90|f95|f03) gfortran -o "$@:h"/a.out "$@" && "$@:h"/a.out;;
-    go) go run "$@";;
-    gz) tar -xvf "$@";;
-    gzip) gunzip "$@";;
-    hs) ghc "$@" && ./"$@:r";;
-    html) o "$@";;
-    java) javac "$@" && java -cp "$@:h" "$@:t:r";;
-    jl) julia "$@";;
-    js) node "$@";;
-    kt) kotlinc "$@" -include-runtime -d "$@:h"/a.jar && java -jar "$@:h"/a.jar;;
-    lua) lua "$@";;
-    nsi) cd "$@:h" && cmd.exe /C "makensis $@:t && $@:t:r.exe";;
-    ps1) powershell.exe ".\\$@";;
-    py) python3 "$@";;
-    r) Rscript "$@";;
-    rb) ruby "$@";;
-    rs) rustc "$@" -o "$@:h"/a.out && "$@:h"/a.out;;
-    scala) scalac "$@" && scala "$@:t:r";;
-    sh) sh "$@";;
-    ts) tsc "$@" && node "$@:r".js;;
-    zip) /usr/bin/unzip "$@";;
-    zsh) zsh "$@";;
-    *) cd "$@:h"; if [ -f Makefile ]; then make all; else echo 'Nothing to do'; fi;;
-  esac
-}
+# Plugins
+source ~/.zplug/init.zsh
+zplug "Aloxaf/fzf-tab"
+zplug "kutsan/zsh-system-clipboard"
+zplug "plugins/extract", from:oh-my-zsh
+zplug "plugins/jump", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug load
 
-# Open function
-if $IS_WSL; then
-  o() {
-    if [[ -n "$@" ]] then
-      cmd start "" "$@"
-    else
-      cmd start "" .
-    fi
-  }
-else
-  o() {
-    if [[ -z "$1" ]] then
-      set $PWD
-    fi
-    xdg-open $1 1>/dev/null 2>/dev/null &
-  }
-fi
-
-# Vifm
+# Ctrl-F
 zle-vifm-only-choose-dir() {
   local dst=$(vifm -c :only --choose-dir - . < /dev/tty)
   if [ -z "$dst" ]; then
@@ -116,7 +58,7 @@ zle-vifm-only-choose-dir() {
 }
 zle -N zle-vifm-only-choose-dir && bindkey '^f' zle-vifm-only-choose-dir
 
-# Recent directories
+# Ctrl-P
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _stack_new_dir
 _stack_new_dir() {
@@ -125,36 +67,33 @@ _stack_new_dir() {
   echo "$(cat $DIR_HIST | tail -299)\n$PWD" > $DIR_HIST
 }
 zle-recent-directory() {
-  LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`" && reset-prompt
+  LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"
+  reset-prompt
 }
 zle-go-to-recent-directory() {
-  cd "`eval $FZF_P_COMMAND | fzf --exact`" && reset-prompt
+  cd "`eval $FZF_P_COMMAND | fzf --exact`"
+  reset-prompt
 }
 zle -N zle-recent-directory && bindkey '^P' zle-recent-directory
 zle -N zle-go-to-recent-directory && bindkey '\ep' zle-go-to-recent-directory
 
 # Ctrl-V
 zle-clipboard-paste() {
-  LBUFFER+="$(xclip -selection clipboard -out)" && reset-prompt
+  LBUFFER+="$(xclip -selection clipboard -out)"
+  reset-prompt
 }
 zle -N zle-clipboard-paste && bindkey '^V' zle-clipboard-paste
 
-# Exit
-zle-exit-zsh() {
-  exit
-}
+# Ctrl-Q
+zle-exit-zsh() {exit}
 zle -N zle-exit-zsh && bindkey '^Q' zle-exit-zsh && bindkey -M vicmd '^Q' zle-exit-zsh
 
 # Windows
-if $IS_WSL; then
+if $(grep -q Microsoft /proc/version); then
   export DISPLAY=:0.0
-  cmd() {
-    cmd.exe /C $@
-  }
+  cmd() {cmd.exe /C $@}
   for filename in ~/bin/*.bat; do
-    if [ "${filename:t:r}" != "ls" ]; then
-      alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
-    fi
+    alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
   done
   for filename in ~/bin/*.ps1; do
     alias "${filename:t:r}=powershell.exe -c \~/bin/${filename:t:r}.ps1"

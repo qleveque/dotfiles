@@ -1,6 +1,6 @@
 set cb^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8 shm+=aoOtI
 set so=4 scl=no mouse=a sd='1000,<50,s10,h,rA:,rB: stl=%1*\ \%f%m\ %0*%= 
-set is nu rnu lz list noswf udf et ic scs cul nomagic tgc
+set ic scs is nu rnu lz list noswf udf et cul nomagic tgc
 
 source ~/.vim/style.vim
 source ~/.vim/plugins.vim
@@ -63,8 +63,8 @@ nn <silent>   :BufferMovePrevious<CR>
 nn <silent> ° :BufferMoveNext<CR>
 
 " Term
-let run=':w! | :FloatermNew --autoclose=0 --title=─ zsh -ic'
-nn <silent> é :exe run.' "run '.expand("%").'"'<CR>
+let run=':w! | :FloatermNew --autoclose=0 --title=─ run '
+nn <silent> é :exe run.'"'.expand("%").'"'<CR>
 tno <C-A> <C-\><C-N>
 nn <silent> <C-W><C-W> :FloatermToggle<CR>
 tno <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
@@ -76,7 +76,8 @@ let diff_cmds=['norm 1G+-', 'windo set wrap nofen fdc=0', 'nm <C-Q> :qa<CR>',
               \'map + ]czz', 'map - [czz']
 au VimEnter * if &diff|for c in diff_cmds|exe c|endfor|endif
 ca diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
-let tc="'FloatermNew --height=&lines+1 --width=&columns+2 cd '.expand('%:p:h')"
+let floaterm_full="'FloatermNew --height=&lines+1 --width=&columns+2"
+let tc=floaterm_full." cd '.fnamemodify(resolve(expand('%')), ':h')"
 nn <leader>D :exe eval(tc)."&&tig status"<CR>
 nn <leader>L :exe eval(tc)."&&tig"<CR>
 nn <leader>b :exe eval(tc)."&&tig blame +".line(".")." ".expand('%:t')<CR>

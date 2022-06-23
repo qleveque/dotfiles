@@ -5,9 +5,7 @@ mklink "%APPDATA%\Code\User\settings.json" "%USERPROFILE%\dotfiles\vscode\.confi
 mklink "%APPDATA%\Code\User\keybindings.json" "%USERPROFILE%\dotfiles\vscode\.config\Code\User\keybindings.json"
 
 path|find /i "%USERPROFILE%\bin" > nul || setx path "%path%;%USERPROFILE%\bin"
-
-mkdir %USERPROFILE%\bin
-echo dir %%*> %USERPROFILE%\bin\ls.bat
+path|find /i "%USERPROFILE%\.bin" > nul || setx path "%path%;%USERPROFILE%\.bin"
 
 cd %USERPROFILE%
 bash -e ./dotfiles/setup

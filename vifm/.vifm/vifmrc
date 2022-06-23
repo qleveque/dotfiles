@@ -1,93 +1,48 @@
 " Miscellaneous
-set confirm-=delete
-set history=100
-set ignorecase
-set incsearch
-set ls!
-set nofollowlinks
-set nohlsearch
-set norunexec
-set novimhelp
-set scrolloff=4
-set slowfs=curlftpfs
-set smartcase
-set sortnumbers
-set statusline="  %A %10u:%-7g %15s %20d  "
-set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
-set syncregs=general
-set syscalls
-set timefmt=%m/%d\ %H:%M
-set trash
-set undolevels=100
-set vicmd=$EDITOR
+set confirm-=delete history=100 ic is ls! nofollowlinks hls norunexec novimhelp
+set so=4 slowfs=curlftpfs scs sortnumbers wmnu wildstyle=popup syncregs=general
+set stl="  %A %10u:%-7g %15s %20d  " syscalls trash undolevels=100 vicmd=$EDITOR
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
-set wildmenu
-set wildstyle=popup
+set timefmt=%m/%d\ %H:%M
 
 " Shortcuts
-nnoremap w :view<CR>
-vnoremap w :view<CR>gv
 nnoremap yp :execute '!echo -n %d | xclip -i -sel p -f | xclip -i -sel c'<CR>
 nnoremap yW :execute '!echo -n %c:p | xclip -i -sel p -f | xclip -i -sel c'<CR>
 nnoremap yw :execute '!echo -n %c | xclip -i -sel p -f | xclip -i -sel c'<CR>
 nnoremap I cw<c-a>
-nnoremap cc cw<c-u>
 nnoremap A cw
-nnoremap zc zm
+nnoremap cc cw<c-u>
 nnoremap V ggvG
 nnoremap s :sort<CR>
 map <C-i> :histnext<CR>
+nnoremap <C-q> :execute 'winc t' | quit<CR>
+nnoremap <C-w>v <Esc>
+nnoremap <CR> :!o "%f"<CR>
 
 " FZF
-command! Cd :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw
-nnoremap <M-c> :Cd<CR>
-command! Files :execute 'mark x '.system('a=$(eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty) && echo \"%d/$a:h\" \"$a:t\"') | :redraw | :normal 'x
-nnoremap <C-t> :Files<CR>
-command! GoDirs :execute 'cd "'.system('eval $FZF_P_COMMAND | fzf --exact 2>/dev/tty').'"' | :redraw
-nnoremap <M-p> :GoDirs<CR>
-command! Dirs :execute 'mark x '.system('a=$(eval $FZF_P_COMMAND | fzf --exact 2>/dev/tty) && echo \"$a:h\" \"$a:t\"') | :redraw | :normal 'x
-nnoremap <C-p> :Dirs<CR>
-
-" Quit
-command! q :execute 'winc t' | quit
-nnoremap <C-q> :q<CR>
-
-" Open
-nnoremap <CR> :!/bin/zsh -i -c "o %f"<CR>
-nnoremap i <Esc>
+nnoremap <M-c> :execute 'cd "./'.system('eval $FZF_ALT_C_COMMAND | fzf 2>/dev/tty').'"' | :redraw<CR>
+nnoremap <C-t> :execute 'mark x '.system('a=$(eval $FZF_CTRL_T_COMMAND | fzf 2>/dev/tty) && echo \"%d/$a:h\" \"$a:t\"') | :redraw | :normal 'x<CR>
+nnoremap <M-p> :execute 'cd "'.system('eval $FZF_P_COMMAND | fzf --exact 2>/dev/tty').'"' | :redraw<CR>
+nnoremap <C-p> :execute 'mark x '.system('a=$(eval $FZF_P_COMMAND | fzf --exact 2>/dev/tty) && echo \"$a:h\" \"$a:t\"') | :redraw | :normal 'x<CR>
 
 " Tmux integration
 nnoremap <C-b>s :!tmux split-window -v -c %d<CR>
 nnoremap <C-b>v :!tmux split-window -h -c %d<CR>
 
-" Icons
-source ~/.vifm/vifm_devicons/favicons.vifm
-
 " Commands
-command! unzip :!zsh -ic unzip "%f"
 command! g :execute 'cd "'.system('set %a && eval $JUMP_TARGET').'"'
-command! o :!/bin/zsh -i -c "o %a"
+command! o :!o "%a"
+command! run :!run "%f"
 
-" Colors
-highlight clear
+" Style
+source ~/.vifm/vifm_devicons/favicons.vifm
 highlight Win cterm=none ctermfg=default ctermbg=default
 highlight Directory cterm=bold ctermfg=green ctermbg=default
-highlight Link cterm=bold ctermfg=yellow ctermbg=default
-highlight BrokenLink cterm=bold ctermfg=red ctermbg=default
-highlight Socket cterm=bold ctermfg=magenta ctermbg=default
-highlight Device cterm=bold ctermfg=red ctermbg=default
 highlight Fifo cterm=bold ctermfg=green ctermbg=default
 highlight Executable cterm=none ctermfg=default ctermbg=default
-highlight Selected cterm=bold ctermfg=magenta ctermbg=default
 highlight StatusLine cterm=none ctermfg=default ctermbg=default
-highlight WildMenu cterm=underline,reverse ctermfg=default ctermbg=default
 highlight CmdLine cterm=none ctermfg=default ctermbg=default
 highlight ErrorMsg cterm=none ctermfg=red ctermbg=default
 highlight Border cterm=none ctermfg=black ctermbg=default
-highlight JobLine cterm=bold,reverse ctermfg=default ctermbg=default
-highlight SuggestBox cterm=bold ctermfg=default ctermbg=default
-highlight CmpMismatch cterm=bold ctermfg=default ctermbg=red
-highlight AuxWin cterm=underline,bold,reverse,standout ctermfg=default ctermbg=default
-highlight CurrLine cterm=none,reverse ctermbg=black
 highlight TopLine cterm=none ctermfg=default ctermbg=default
 highlight TopLineSel cterm=none ctermfg=default ctermbg=default

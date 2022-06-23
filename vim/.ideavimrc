@@ -2,6 +2,9 @@ source ~/dotfiles/vim/.vimrc
 sethandler n:vim i:ide
 set ideajoin
 
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k

@@ -1,0 +1,29 @@
+#!/usr/bin/zsh
+local ext=${1:t:e}
+case "$ext" in
+  asm) nasm -f elf64 "$1" && ld -s -o "$1:h"/a.out "$1:r".o && "$1:h"/a.out;;
+  bash) bash "$1";;
+  bat|cmd) cd "$1:h" && cmd.exe /C "$1:t";;
+  c) gcc -o "$1:h"/a.out "$1" && "$1:h"/a.out;;
+  cc|cpp) g++ -o "$1:h"/a.out "$1" && "$1:h"/a.out;;
+  f90|f95|f03) gfortran -o "$1:h"/a.out "$1" && "$1:h"/a.out;;
+  go) go run "$1";;
+  hs) ghc "$1" && ./"$1:r";;
+  html) o "$1";;
+  java) javac "$1" && java -cp "$1:h" "$1:t:r";;
+  jl) julia "$1";;
+  js) node "$1";;
+  kt) kotlinc "$1" -include-runtime -d "$1:h"/a.jar && java -jar "$1:h"/a.jar;;
+  lua) lua "$1";;
+  nsi) cd "$1:h" && cmd.exe /C "makensis $1:t && $1:t:r.exe";;
+  ps1) powershell.exe ".\\$1";;
+  py) python3 "$1";;
+  r) Rscript "$1";;
+  rb) ruby "$1";;
+  rs) rustc "$1" -o "$1:h"/a.out && "$1:h"/a.out;;
+  scala) scalac "$1" && scala "$1:t:r";;
+  sh) sh "$1";;
+  ts) tsc "$1" && node "$1:r".js;;
+  zsh) zsh "$1";;
+  *) cd "$1:h"; if [ -f Makefile ]; then make all; else; echo 'Nothing to do'; fi;;
+esac
