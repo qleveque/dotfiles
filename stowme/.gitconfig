@@ -1,7 +1,7 @@
 [user]
   email = quentin.leveque@bluebotics.com
   name = Quentin Leveque
-  autocrlf = true
+  autocrlf = false
 [diff]
   tool = vimdiff3
 [merge]

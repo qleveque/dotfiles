@@ -14,8 +14,9 @@ for package in "${packages[@]}" ;do
   TEMP_DEB="$(mktemp)" && wget -O "$TEMP_DEB" $package && sudo dpkg -i "$TEMP_DEB"
 done
 
-# Zplug
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+# Antigen
+mkdir ~/.antigen
+curl -L git.io/antigen > ~/.antigen/antigen.zsh
 
 # Nvim packages
 sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -25,3 +26,7 @@ nvim '+TSInstall all' +qall
 # Nerd fonts
 TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d ~/.fonts
 fc-cache -fv
+
+echo source "$HOME/.zrc">>$HOME/.zshrc
+cd ~/dotfiles
+stow stowme

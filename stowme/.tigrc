@@ -1,5 +1,3 @@
-
-# Generic
 bind generic g none
 bind generic gg :0
 bind generic G move-last-line
@@ -25,7 +23,6 @@ bind diff l !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind stage l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'"
 bind status l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'"
 
-# Options
 color search-result default blue
 set show-changes = no
 set log-options = --quiet

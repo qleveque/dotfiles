@@ -1,4 +1,5 @@
 #!/usr/bin/zsh
+alias e=$EDITOR
 alias du='dust -r'
 alias fd='fdfind'
 alias g='jump'

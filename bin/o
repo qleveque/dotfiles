@@ -3,7 +3,7 @@ if [[ -z "$1" ]] then
   set $PWD
 fi
 if $(grep -q Microsoft /proc/version); then
-  cmd.exe /C start "" "`wslpath -m """$(readlink -f $1)"""`"
+  cmd.exe /C start '""' "`wslpath -m """$(readlink -f $1)"""`"
 else
   xdg-open $1 1>/dev/null 2>/dev/null &
 fi

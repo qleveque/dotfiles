@@ -23,7 +23,7 @@
   "C_Cpp.clang_format_sortIncludes": true,
   "python.linting.flake8Enabled": true,
   "vim.vimrc.enable": true,
-  "vim.vimrc.path": "~/.vimrc",
+  "vim.vimrc.path": "~/dotfiles/stowme/.vimrc",
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
   "vim.hlsearch": true,

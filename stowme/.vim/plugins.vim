@@ -1,8 +1,7 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim_plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'farmergreg/vim-lastplace'
-" Plug 'github/copilot.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
@@ -21,7 +20,6 @@ Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 let g:coc_disable_startup_warning = 1
-let g:copilot_no_tab_map=v:true
 let g:floaterm_opener='edit'
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1

@@ -1,4 +1,4 @@
-source ~/dotfiles/vim/.vimrc
+source ~/dotfiles/stowme/.vimrc
 sethandler n:vim i:ide
 set ideajoin
 

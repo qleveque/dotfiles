@@ -18,8 +18,7 @@ if !has('win32')
   exe 'hi Visual guifg=black guibg='.eval('$GREY')
   exe 'hi StatusLine gui=underline guibg='.eval('$BG')
   exe 'hi StatusLineNC gui=underline guibg='.eval('$LIGHT_BG')
-
+  hi CocErrorFloat guifg=orange
   au FocusLost * setlocal winhl=Normal:InactiveWin
-  au BufNew,BufLeave,BufRead,FocusGained * setlocal
-    \ winhl=Normal:ActiveWin,NormalNC:InactiveWin
+  au BufNew,BufLeave,BufRead,FocusGained * setlocal winhl=Normal:ActiveWin,NormalNC:InactiveWin
 endif

@@ -1,0 +1,70 @@
+#!/usr/bin/zsh
+stty -ixon
+setopt histignorealldups sharehistory nonomatch promptsubst
+bindkey -v
+bindkey '^[[Z' forward-word
+export EDITOR='/usr/bin/nvim'
+export FZF_ALT_C_COMMAND='fdfind --type d'
+export FZF_CTRL_T_COMMAND='fdfind'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
+export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
+export MYVIFMRC="$HOME/.vifmrc"
+export PATH="$HOME/dotfiles/bin:$HOME/bin:$HOME/.local/bin:$PATH"
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+KEYTIMEOUT=20
+LESS='-irFRX'
+PROMPT=$'\n%B%K{bold,white}%F{cyan}%S%n@%M%s%f%k%b %B%F{blue}%3~%f%b %# '
+SAVEHIST=1000
+VI_MODE_SET_CURSOR=true
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_MANUAL_REBIND="true"
+
+# Sources
+source ~/.aliases
+source ~/.colors
+source ~/.antigen/antigen.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source ~/.vim_plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
+
+# Plugins
+for plugin in extract jump vi-mode; do; antigen bundle ohmyzsh/ohmyzsh plugins/$plugin; done
+antigen bundle Aloxaf/fzf-tab
+antigen bundle kutsan/zsh-system-clipboard
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+
+# Directory history
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _stack_new_dir
+_stack_new_dir() {
+  touch ~/.dirhist
+  sed -i "\#^$PWD\$#d" ~/.dirhist
+  echo "$(cat ~/.dirhist | tail -299)\n$PWD" > ~/.dirhist
+}
+
+# Ctrl-F Ctrl-V Ctrl-Q Ctrl-P
+local reset-prompt() {zle reset-prompt && zle autosuggest-clear && zle zle-line-init}
+zle-recent-directory() {LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"; reset-prompt}
+zle-go-to-recent-directory() {cd $(eval $FZF_P_COMMAND | fzf --exact)&&reset-prompt}
+zle-vifm-only-choose-dir() {cd $(vifm -c :only --choose-dir - . < /dev/tty)&&reset-prompt}
+zle-clipboard-paste() {LBUFFER+=$(xclip -selection clipboard -out);}
+zle-exit-zsh() {exit}
+zle -N zle-recent-directory && bindkey '^P' zle-recent-directory
+zle -N zle-go-to-recent-directory && bindkey '\ep' zle-go-to-recent-directory
+zle -N zle-vifm-only-choose-dir && bindkey '^F' zle-vifm-only-choose-dir
+zle -N zle-clipboard-paste && bindkey '^V' zle-clipboard-paste
+zle -N zle-exit-zsh && bindkey '^Q' zle-exit-zsh && bindkey -M vicmd '^Q' zle-exit-zsh
+
+# Windows
+if $(grep -q Microsoft /proc/version); then
+  export DISPLAY=:0.0
+  cmd() {cmd.exe /C $@}
+  for filename in ~/bin/*.bat; do
+    alias "${filename:t:r}=cmd.exe /C %USERPROFILE%/bin/${filename:t:r}.bat"
+  done
+  for filename in ~/bin/*.ps1; do
+    alias "${filename:t:r}=powershell.exe -c \~/bin/${filename:t:r}.ps1"
+  done
+fi
