@@ -1,6 +1,6 @@
-set cb^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8 shm+=aoOtI
-set so=4 scl=no mouse=a sd='1000,<50,s10,h,rA:,rB: stl=%1*\ \%f%m\ %0*%= 
-set ic scs is nu rnu lz list noswf udf et cul nomagic tgc
+set cb^=unnamed,unnamedplus udir=~/.vim_undo dip+=vertical enc=UTF8 shm+=aI
+set so=4 scl=no sd='1000,<50,s10,h,rA:,rB: stl=%1*\ \%f%m\ %0*%= ch=0
+set ic scs is nu rnu lz list noswf udf et cul tgc
 source ~/.vim/style.vim
 source ~/.vim/plugins.vim
 if filereadable(expand("~/.vim/specific.vim"))|source ~/.vim/specific.vim|endif
@@ -24,12 +24,12 @@ nn DD "_dd
 nn CC "_cc
 nn X "_x
 xno P "_c<C-R>+<Esc>
-vno * "xy/\V<C-R>x<CR>
-vno # "xy?\V<C-R>x<CR>
+vno * "xy/<C-R>x<CR>
+vno # "xy?<C-R>x<CR>
 map ç #NCgn
 map Ç #NCgN
-map L /\V\C\<
-map H ?\V\C\<
+map L /\C\<
+map H ?\C\<
 
 " Shortcuts
 nn <C-f> :exe 'FloatermNew --title=─ vifm -c :only "%:p:h"'<CR>
@@ -42,14 +42,13 @@ nn <C-p> :lua require'telescope.builtin'.oldfiles()<CR>
 nm s ys
 nm ss yss
 vm s S
-nm ù <Plug>(emmet-expand-abbr)
+ino <S-Tab> <Plug>(emmet-expand-abbr)
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|endif
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
 xmap <leader>f <Plug>(coc-format-selected)
-ino <expr> <Tab> pumvisible()?"\<C-n>":col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
-ino <expr> <S-Tab> pumvisible()?"\<C-p>":"\<S-Tab>"
-ino <expr> <CR> pumvisible()?coc#_select_confirm():"\<CR>"
+ino <silent><expr> <CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
 
 " Buffers
 nn <silent> ( :BufferPrevious<CR>
@@ -67,9 +66,9 @@ nn <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
 nn <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
 
 " Git
-let diffs=['norm 1G+-','windo set wrap nofen fdc=0','nm <C-Q> :qa<CR>','map + ]czz','map - [czz']
+let diffs=['windo set wrap nofen fdc=0','nm <C-Q> :qa<CR>','map + ]czz','map - [czz','norm 1G+-']
 au VimEnter * if &diff|for c in diffs|exe c|endfor|endif
-ca diff Diff|com Diff :exe 'windo diffthis|windo set wrap nofen fdc=0'
+ca diff Diff|com Diff :exe 'windo diffthis|for c in diffs|exe c|endfor'
 let tc="'--height=&lines+1 --width=&columns+2 cd '.fnamemodify(resolve(expand('%')),':h')"
 nn <leader>D :exe "FloatermNew ".eval(tc)."&&tig status"<CR>
 nn <leader>L :exe "FloatermNew ".eval(tc)."&&tig"<CR>

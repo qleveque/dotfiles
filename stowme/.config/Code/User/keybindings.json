@@ -5,7 +5,7 @@
     },
     {
         "key": "ctrl+s",
-        "command": "search.action.openEditor"
+        "command": "workbench.action.findInFiles"
     },
     {
       "key": "ctrl+f",
@@ -16,5 +16,15 @@
       "key": "ctrl+q",
       "when": "sideBarFocus",
       "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+      "key": "shift+tab",
+      "command": "editor.emmet.action.expandAbbreviation",
+      "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+    },
+    {
+      "key": "tab",
+      "command": "-editor.emmet.action.expandAbbreviation",
+      "when": "config.emmet.triggerExpansionOnTab && editorTextFocus && !editorReadonly && !editorTabMovesFocus"
     }
 ]

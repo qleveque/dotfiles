@@ -7,8 +7,12 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
+  "html.autoClosingTags": false,
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
   "editor.minimap.enabled": false,
   "editor.lineNumbers": "relative",
+  "editor.formatOnPaste": true,
   "extensions.ignoreRecommendations": false,
   "notebook.cellToolbarLocation": {
     "default": "right",
@@ -17,8 +21,6 @@
   "editor.inlineSuggest.enabled": true,
   "git.untrackedChanges": "hidden",
   "timeline.excludeSources": [],
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
   "C_Cpp.updateChannel": "Insiders",
   "C_Cpp.clang_format_sortIncludes": true,
   "python.linting.flake8Enabled": true,
@@ -28,9 +30,15 @@
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.visualModeKeyBindings": [
+    { "before": [ "<leader>", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatSelection" ] }
   ],
   "vim.normalModeKeyBindings": [
+    { "before": [ "<C-l>" ], "commands": [ "workbench.action.focusRightGroup" ] },
+    { "before": [ "<C-h>" ], "commands": [ "workbench.action.focusLeftGroup" ] },
+    { "before": [ "<C-k>" ], "commands": [ "workbench.action.focusAboveGroup" ] },
+    { "before": [ "<C-j>" ], "commands": [ "workbench.action.focusBelowGroup" ] },
+
     { "before": [ "<C-t>" ], "commands": [ "workbench.action.quickOpen" ] },
     { "before": [ "<C-f>" ], "commands": [ "workbench.view.explorer" ] },
     { "before": [ "<C-n>" ], "commands": [ "workbench.action.showAllSymbols" ] },
@@ -56,14 +64,11 @@
     { "before": [ "+" ], "commands": [ "workbench.action.compareEditor.nextChange" ] },
     { "before": [ "-" ], "commands": [ "workbench.action.compareEditor.previousChange" ] },
 
-    { "before": [ "g", "d" ], "commands": [ "editor.action.revealDefinition" ] },
-    { "before": [ "g", "i" ], "commands": [ "editor.action.revealDefinition" ] },
-    { "before": [ "g", "r" ], "commands": [ "editor.action.goToReferences" ] },
-
+    { "before": [ "<leader>", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
     { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
     { "before": [ "<leader>", "t" ], "commands": [ "breadcrumbs.focusAndSelect" ] },
-    { "before": [ "<leader>", "% "], "commands": [ "editor.emmet.action.matchTag" ] },
+    { "before": [ "g", "r" ], "after": [ "g", "d" ] },
 
     { "before": [ "ℝ" ], "commands": [ "workbench.action.debug.continue" ] },
     { "before": [ "Ⅰ" ], "commands": [ "workbench.action.debug.stepInto" ] },
@@ -74,5 +79,8 @@
     { "before": [ "×" ], "commands": [ "workbench.action.debug.stop" ] },
     { "before": [ "ω" ], "commands": [ "workbench.debug.viewlet.action.addWatchExpression" ] },
     { "before": [ "…" ], "commands": [ "workbench.debug.viewlet.action.toggleBreakpointsActivatedAction" ] }
-  ]
+  ],
+  "editor.autoClosingDelete": "never",
+  "editor.autoClosingOvertype": "never",
+  "html.autoCreateQuotes": false
 }

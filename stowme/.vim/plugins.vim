@@ -17,6 +17,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 let g:coc_disable_startup_warning = 1
@@ -28,7 +29,7 @@ let g:floaterm_height=0.8
 let g:floaterm_width=0.8
 
 lua << EOF
-  require'bufferline'.setup{auto_hide=true,exclude_ft={'qf'}}
+  require'bufferline'.setup{exclude_ft={'qf'}}
   require'nvim-treesitter.configs'.setup{highlight={enable=true}}
   require'telescope'.setup{defaults={mappings={i={
     ['<ESC>']=require('telescope.actions').close,

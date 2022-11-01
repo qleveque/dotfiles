@@ -1,2 +1,2 @@
-@ECHO OFF
-dir %%*
+@ECHO ON
+dir %*

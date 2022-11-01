@@ -15,6 +15,7 @@ case "$ext" in
   js) node "$1";;
   kt) kotlinc "$1" -include-runtime -d "$1:h"/a.jar && java -jar "$1:h"/a.jar;;
   lua) lua "$1";;
+  mod) voc "$1" -M > /dev/null && ./"$1:r";; 
   nsi) cd "$1:h" && cmd.exe /C "makensis $1:t && $1:t:r.exe";;
   ps1) powershell.exe ".\\$1";;
   py) python3 "$1";;

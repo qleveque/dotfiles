@@ -2,20 +2,20 @@
 cd ~
 
 # Common packages
-apt-get update -y
+sudo apt-get update -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xclip
+sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xclip
 
 packages=(
-  'https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb'
-  'https://github.com/bootandy/dust/releases/download/v0.8.1-alpha.2/du-dust_0.8.1.alpha.2_amd64.deb'
+  'https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb'
+  'https://github.com/bootandy/dust/releases/download/v0.8.3/du-dust_0.8.3_amd64.deb'
 )
-for package in "${packages[@]}" ;do
+for package in "${packages[@]}" ; do
   TEMP_DEB="$(mktemp)" && wget -O "$TEMP_DEB" $package && sudo dpkg -i "$TEMP_DEB"
 done
 
 # Antigen
-mkdir ~/.antigen
+mkdir $HOME/.antigen
 curl -L git.io/antigen > ~/.antigen/antigen.zsh
 
 # Nvim packages
@@ -24,9 +24,9 @@ nvim +PluginInstall +qall
 nvim '+TSInstall all' +qall
 
 # Nerd fonts
-TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d ~/.fonts
+TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d $HOME/.fonts
 fc-cache -fv
 
 echo source "$HOME/.zrc">>$HOME/.zshrc
-cd ~/dotfiles
+cd $HOME/dotfiles
 stow stowme
