@@ -14,6 +14,7 @@ nn U <C-R>
 nn V ggVG
 nn vv V
 nn à @q
+nn * *N
 xno à :norm! @q<CR>
 vno . :norm! .<CR>
 ino <C-V> <C-R>+
@@ -24,10 +25,9 @@ nn DD "_dd
 nn CC "_cc
 nn X "_x
 xno P "_c<C-R>+<Esc>
-vno * "xy/<C-R>x<CR>
-vno # "xy?<C-R>x<CR>
-map ç #NCgn
-map Ç #NCgN
+vno * "xy/<C-R>x<CR>N
+map ç *Cgn
+map Ç *CgN
 map L /\C\<
 map H ?\C\<
 
@@ -46,7 +46,6 @@ ino <S-Tab> <Plug>(emmet-expand-abbr)
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|endif
 nmap gd <Plug>(coc-definition)
 nmap gr <Plug>(coc-references)
-xmap <leader>f <Plug>(coc-format-selected)
 ino <silent><expr> <CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
 
@@ -58,8 +57,8 @@ nn <silent>   :BufferMovePrevious<CR>
 nn <silent> ° :BufferMoveNext<CR>
 
 " Term
-nn <silent> é :exe ':w! \| :FloatermNew --autoclose=0 --title=─ run '.'"'.expand("%").'"'<CR>
 tno <C-A> <C-\><C-N>
+nn <silent> é :exe ':w! \| :FloatermNew --autoclose=0 --title=─ run '.'"'.expand("%").'"'<CR>
 nn <silent> <C-W><C-W> :FloatermToggle<CR>
 tno <silent> <C-W><C-W> <C-\><C-n>:FloatermToggle<CR>
 nn <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
