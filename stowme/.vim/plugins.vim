@@ -24,7 +24,6 @@ let g:coc_disable_startup_warning = 1
 let g:floaterm_opener='edit'
 let g:loaded_netrw=1
 let g:loaded_netrwPlugin=1
-let g:user_emmet_leader_key='<C-Z>'
 let g:floaterm_height=0.8
 let g:floaterm_width=0.8
 
