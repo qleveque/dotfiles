@@ -1,4 +1,5 @@
 call plug#begin('~/.vim_plugged')
+Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'farmergreg/vim-lastplace'
@@ -17,7 +18,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
-Plug 'Yggdroot/indentLine'
 call plug#end()
 
 let g:coc_disable_startup_warning = 1

@@ -25,8 +25,8 @@ nn CC "_cc
 nn X "_x
 xno P "_c<C-R>+<Esc>
 vno * "xy/<C-R>x<CR>N
-map ç *Cgn
-map Ç *CgN
+map ç *cgn
+map Ç *Cgn
 map L /\C\<
 map H ?\C\<
 

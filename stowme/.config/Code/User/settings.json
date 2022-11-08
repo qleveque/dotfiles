@@ -20,7 +20,6 @@
   },
   "editor.inlineSuggest.enabled": true,
   "git.untrackedChanges": "hidden",
-  "timeline.excludeSources": [],
   "C_Cpp.updateChannel": "Insiders",
   "C_Cpp.clang_format_sortIncludes": true,
   "python.linting.flake8Enabled": true,
@@ -30,7 +29,7 @@
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.visualModeKeyBindings": [
-    { "before": [ "<leader>", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
+    { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatSelection" ] }
   ],
   "vim.normalModeKeyBindings": [
@@ -64,7 +63,7 @@
     { "before": [ "+" ], "commands": [ "workbench.action.compareEditor.nextChange" ] },
     { "before": [ "-" ], "commands": [ "workbench.action.compareEditor.previousChange" ] },
 
-    { "before": [ "<leader>", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
+    { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
     { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
     { "before": [ "<leader>", "t" ], "commands": [ "breadcrumbs.focusAndSelect" ] },
