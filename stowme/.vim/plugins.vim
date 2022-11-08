@@ -9,7 +9,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'romgrk/barbar.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -22,17 +22,13 @@ call plug#end()
 
 let g:coc_disable_startup_warning = 1
 let g:floaterm_opener='edit'
-let g:loaded_netrw=1
-let g:loaded_netrwPlugin=1
-let g:floaterm_height=0.8
-let g:floaterm_width=0.8
+let g:floaterm_width=0.85
 
 lua << EOF
+  require'colorizer'.setup()
   require'bufferline'.setup{exclude_ft={'qf'}}
   require'nvim-treesitter.configs'.setup{highlight={enable=true}}
-  require'telescope'.setup{defaults={mappings={i={
-    ['<ESC>']=require('telescope.actions').close,
-    ['<C-V>']={'<C-R>+',type="command"},
-  }}}}
-  require'colorizer'.setup()
+  require'telescope'.setup{
+    defaults={mappings={i={['<ESC>']=require('telescope.actions').close,['<C-V>']={'<C-R>+',type="command"}}}}
+  }
 EOF
