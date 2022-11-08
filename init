@@ -27,6 +27,9 @@ nvim '+TSInstall all' +qall
 TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d $HOME/.fonts
 fc-cache -fv
 
+# Config dir
+mkdir ~/.config
+
 echo source "$HOME/.zrc">>$HOME/.zshrc
 cd $HOME/dotfiles
 stow stowme

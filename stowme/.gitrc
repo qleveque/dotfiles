@@ -1,7 +1,7 @@
+# vim: set ft=gitconfig:
 [user]
-  email = quentin.leveque@bluebotics.com
+  email = qleveque@hotmail.com
   name = Quentin Leveque
-  autocrlf = false
 [diff]
   tool = vimdiff3
 [merge]
