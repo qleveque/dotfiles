@@ -4,11 +4,14 @@
   name = Quentin Leveque
 [diff]
   tool = vimdiff3
+[push]
+  autoSetupRemote = true
 [merge]
   tool = vimdiff3
   conflictstyle = diff3
 [core]
   editor = nvim
+  ignorecase = true
 [difftool "vimdiff3"]
   path = nvim
 [mergetool "vimdiff3"]

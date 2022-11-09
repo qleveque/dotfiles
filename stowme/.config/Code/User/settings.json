@@ -7,7 +7,6 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },
-  "html.autoClosingTags": false,
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
   "editor.minimap.enabled": false,
@@ -28,8 +27,11 @@
   "vim.useSystemClipboard": true,
   "vim.incsearch": true,
   "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    { "before": [ "<C-e>" ], "commands": [ "editor.emmet.action.expandAbbreviation" ] }
+  ],
   "vim.visualModeKeyBindings": [
-    { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
+    { "before": [ "<C-e>" ], "commands": [ "editor.emmet.action.wrapWithAbbreviation" ] },
     { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatSelection" ] }
   ],
   "vim.normalModeKeyBindings": [
@@ -67,6 +69,7 @@
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
     { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
     { "before": [ "<leader>", "t" ], "commands": [ "breadcrumbs.focusAndSelect" ] },
+    { "before": [ "<leader>", "f" ], "commands": [ "eslint.executeAutofix" ] },
     { "before": [ "g", "r" ], "after": [ "g", "d" ] },
 
     { "before": [ "ℝ" ], "commands": [ "workbench.action.debug.continue" ] },
@@ -80,6 +83,5 @@
     { "before": [ "…" ], "commands": [ "workbench.debug.viewlet.action.toggleBreakpointsActivatedAction" ] }
   ],
   "editor.autoClosingDelete": "never",
-  "editor.autoClosingOvertype": "never",
-  "html.autoCreateQuotes": false
+  "editor.autoClosingOvertype": "never"
 }

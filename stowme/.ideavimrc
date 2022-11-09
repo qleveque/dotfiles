@@ -1,5 +1,5 @@
 source ~/dotfiles/stowme/.vimrc
-sethandler n:vim i:ide
+sethandler a:vim
 set ideajoin
 
 nmap <C-o> <Action>(Back)
@@ -39,6 +39,7 @@ nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+vnoremap <C-e> :action SurroundWithEmmet<CR>
 map <C-;> :action ShowIntentionActions<CR>
 map L /\V\C\\<
 map H ?\V\C\\<

@@ -20,12 +20,11 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
-let g:coc_disable_startup_warning = 1
 let g:floaterm_opener='edit'
 let g:floaterm_width=0.85
 
 lua << EOF
-  require'colorizer'.setup()
+  require'colorizer'.setup{}
   require'bufferline'.setup{exclude_ft={'qf'}}
   require'nvim-treesitter.configs'.setup{highlight={enable=true}}
   require'telescope'.setup{

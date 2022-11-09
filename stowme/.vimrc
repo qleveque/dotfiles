@@ -1,5 +1,5 @@
 set cb^=unnamed,unnamedplus shm+=aI sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%=
-set so=4 ic scs is nu rnu lz list noswf udf et cul tgc ch=0 dip+=vertical
+set so=4 hls ic scs is nu rnu lz list noswf udf et cul tgc ch=0 dip+=vertical
 source ~/.vim/style.vim
 source ~/.vim/plugins.vim
 if filereadable(expand("~/.vim/specific.vim"))|source ~/.vim/specific.vim|endif
@@ -14,17 +14,17 @@ nn V ggVG
 nn vv V
 nn à @q
 nn * *N
-xno à :norm! @q<CR>
-vno . :norm! .<CR>
-ino <C-V> <C-R>+
-cno <C-V> <C-R>+
 no D "_d
 no C "_c
 nn DD "_dd
 nn CC "_cc
 nn X "_x
-xno P "_c<C-R>+<Esc>
+ino <C-V> <C-R>+
+cno <C-V> <C-R>+
 vno * "xy/<C-R>x<CR>N
+xno P "_c<C-R>+<Esc>
+xno à :norm! @q<CR>
+xno . :norm! .<CR>
 map ç *cgn
 map Ç *Cgn
 map L /\C\<
@@ -40,15 +40,19 @@ nn <C-p> :lua require'telescope.builtin'.oldfiles()<CR>
 " Secondary shortcuts
 nm s ys
 vm s S
-no # <Plug>(emmet-expand-abbr)
-nm gd <Plug>(coc-definition)
-nm gr <Plug>(coc-references)
-ino <silent><expr> <CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
-ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+vm <C-e> <C-y>,
+im <C-e> <C-y>,
 let diffs=['windo set wrap nofen fdc=0','nm <C-Q> :qa<CR>','map + ]czz','map - [czz','norm 1G+-']
 ca diff Diff|com Diff :exe 'windo diffthis|for c in diffs|exe c|endfor'
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|else|for c in diffs|exe c|endfor|endif
+
+" Coc
+nm gd <Plug>(coc-definition)
+nm gr <Plug>(coc-references)
+xm <leader>f <Plug>(coc-format-selected)
+ino <silent><expr> <CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
+ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Buffers
 nn <silent> ( :BufferPrevious<CR>
