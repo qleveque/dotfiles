@@ -1,8 +1,10 @@
 call plug#begin('~/.vim_plugged')
+Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dstein64/nvim-scrollview'
 Plug 'farmergreg/vim-lastplace'
+Plug 'honza/vim-snippets'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
@@ -22,12 +24,17 @@ call plug#end()
 
 let g:floaterm_opener='edit'
 let g:floaterm_width=0.85
+let g:UltiSnipsExpandTrigger="<C-z>"
+let g:UltiSnipsJumpForwardTrigger="<C-z>"
+let g:coc_snippet_next='<TAB>'
+let g:coc_global_extensions= ['coc-marketplace','coc-snippets','coc-json',
+  \ 'coc-tsserver','coc-ccls','coc-html','coc-vetur','coc-pyright','coc-css']
 
 lua << EOF
   require'colorizer'.setup{}
   require'bufferline'.setup{exclude_ft={'qf'}}
   require'nvim-treesitter.configs'.setup{highlight={enable=true}}
-  require'telescope'.setup{
-    defaults={mappings={i={['<ESC>']=require('telescope.actions').close,['<C-V>']={'<C-R>+',type="command"}}}}
+  require'telescope'.setup{defaults={mappings={
+    i={['<ESC>']=require('telescope.actions').close,['<C-V>']={'<C-R>+',type="command"}}}}
   }
 EOF
