@@ -5,7 +5,7 @@ set vicmd=$EDITOR syscalls trash history=100 nofollowlinks sortnumbers undolevel
 map <C-i> :histnext<CR>
 map <C-q> :quit<CR>
 nn <C-v> :exe 'rename' system('xclip -o -r')<CR>
-nn <CR> :!o "%f"<CR>
+nn <CR> :!o %f<CR>
 nn A cw
 nn I cw<c-a>
 nn U <C-R>

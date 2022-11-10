@@ -53,8 +53,7 @@ nm gd <Plug>(coc-definition)
 nm gr <Plug>(coc-references)
 xm <leader>f <Plug>(coc-format-selected)
 ino <silent><expr> <CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-ino <silent><expr> <TAB> coc#jumpable()?"\<C-r>=coc#rpc#request('doKeymap',['snippets-expand-jump',''])\<CR>":
-  \ coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
+ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
 ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Diff
