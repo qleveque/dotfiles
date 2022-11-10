@@ -62,8 +62,8 @@
     { "before": [ " " ], "commands": [ "workbench.action.moveEditorLeftInGroup" ] },
     { "before": [ "_" ], "commands": [ "workbench.action.closeActiveEditor" ] },
 
-    { "before": [ "+" ], "commands": [ "workbench.action.compareEditor.nextChange" ] },
-    { "before": [ "-" ], "commands": [ "workbench.action.compareEditor.previousChange" ] },
+    { "before": [ "+" ], "commands": [ "search.action.focusNextSearchResult" ] },
+    { "before": [ "-" ], "commands": [ "search.action.focusPreviousSearchResult" ] },
 
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },

@@ -16,5 +16,10 @@
       "key": "ctrl+q",
       "when": "sideBarFocus",
       "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+      "key": "enter",
+      "command": "search.action.focusNextSearchResult",
+      "when": "searchInputBoxFocus"
     }
 ]
