@@ -46,11 +46,11 @@
     { "before": [ "<C-p>" ], "commands": [ "workbench.action.openRecent" ] },
     { "before": [ "<C-q>" ], "commands": [ "workbench.action.closeEditorsInGroup" ] },
 
-    { "before": [ "<leader>", "b" ], "commands": [ "git.viewLineHistory" ] },
-    { "before": [ "<leader>", "d" ], "commands": [ "workbench.view.scm" ] },
-    { "before": [ "<leader>", "D" ], "commands": [ "workbench.view.scm" ] },
-    { "before": [ "<leader>", "l" ], "commands": [ "git.viewFileHistory" ] },
-    { "before": [ "<leader>", "L" ], "commands": [ "git.viewHistory" ] },
+    { "before": [ "<leader>", "b" ], "commands": [ "gitlens.toggleFileBlame" ] },
+    { "before": [ "<leader>", "d" ], "commands": [ "git.openChange" ] },
+    { "before": [ "<leader>", "D" ], "commands": [ "workbench.scm.focus" ] },
+    { "before": [ "<leader>", "l" ], "commands": [ "gitlens.openFileHistory" ] },
+    { "before": [ "<leader>", "L" ], "commands": [ "gitlens.showCommitsView" ] },
 
     { "before": [ "é" ], "commands": [ "workbench.action.tasks.build" ] },
     { "before": [ "è" ], "commands": [ "workbench.action.debug.start" ] },
@@ -83,5 +83,7 @@
     { "before": [ "…" ], "commands": [ "workbench.debug.viewlet.action.toggleBreakpointsActivatedAction" ] }
   ],
   "editor.autoClosingDelete": "never",
-  "editor.autoClosingOvertype": "never"
+  "editor.autoClosingOvertype": "never",
+  "gitlens.plusFeatures.enabled": false,
+  "git.showCommitInput": false
 }

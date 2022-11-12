@@ -1,25 +1,35 @@
 [
-    {
-        "key": "ctrl+s",
-        "command": "-workbench.action.files.save"
-    },
-    {
-        "key": "ctrl+s",
-        "command": "workbench.action.findInFiles"
-    },
-    {
-      "key": "ctrl+f",
-      "when": "sideBarFocus",
-      "command": "workbench.action.focusActiveEditorGroup"
-    },
-    {
-      "key": "ctrl+q",
-      "when": "sideBarFocus",
-      "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-      "key": "enter",
-      "command": "search.action.focusNextSearchResult",
-      "when": "searchInputBoxFocus"
-    }
+  {
+    "key": "ctrl+s",
+    "command": "-workbench.action.files.save"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "ctrl+f",
+    "when": "sideBarFocus",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "ctrl+q",
+    "when": "sideBarFocus",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "enter",
+    "command": "search.action.focusNextSearchResult",
+    "when": "searchInputBoxFocus"
+  },
+  {
+    "key": "shift+8",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorVisible && isInDiffEditor"
+  },
+  {
+    "key": "shift+oem_plus",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible && isInDiffEditor"
+  }
 ]

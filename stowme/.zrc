@@ -61,4 +61,5 @@ zle -N zle-exit-zsh && bindkey '^Q' zle-exit-zsh && bindkey -M vicmd '^Q' zle-ex
 if $(grep -q Microsoft /proc/version); then
   export DISPLAY=:0.0
   cmd() {cmd.exe /C $@}
+  admin() {powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/K cd `wslpath -m .`'"}
 fi
