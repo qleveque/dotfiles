@@ -70,7 +70,7 @@ nn <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
 nn <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
 
 " Git
-let tc="'--height=&lines+1 --width=&columns+2 cd '.fnamemodify(resolve(expand('%')),':h')"
+let tc="'--title=Git --height=&lines+1 --width=&columns+2 cd '.fnamemodify(resolve(expand('%')),':h')"
 nn <leader>D :exe "FloatermNew ".eval(tc)."&&tig status"<CR>
 nn <leader>L :exe "FloatermNew ".eval(tc)."&&tig"<CR>
 nn <leader>b :exe "FloatermNew ".eval(tc)."&&tig blame +".line(".")." ".expand('%:t')<CR>

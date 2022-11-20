@@ -22,8 +22,8 @@ call plug#end()
 
 let g:floaterm_opener='edit'
 let g:floaterm_width=0.85
-let g:coc_global_extensions=
-  \ ['coc-marketplace','coc-json','coc-tsserver','coc-ccls','coc-html','coc-vetur','coc-pyright','coc-css']
+let g:coc_global_extensions= ['coc-marketplace','coc-json','coc-tsserver',
+ \ 'coc-ccls','coc-html','coc-vetur','coc-pyright','coc-css']
 
 lua << EOF
   require'colorizer'.setup{}

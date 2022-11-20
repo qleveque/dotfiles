@@ -2,8 +2,8 @@ if !has('win32')
   for [bg, contexts] in items({
     \"BG":["ActiveWin","FloatermBorder","TelescopeNormal"],
     \"LIGHT_BG":["CursorLine","InactiveWin","VertSplit"],
-    \"LIGHTER_BG":["CursorLineNr","DiffChange","PmenuSel","LineNr","BufferTabpageFill","TelescopeSelection"],
-    \"LIGHTEST_BG":["DiffAdd","DiffDelete","DiffText","Pmenu","User1"]})
+    \"LIGHTER_BG":["CursorLineNr","PmenuSel","LineNr","BufferTabpageFill","TelescopeSelection"],
+    \"LIGHTEST_BG":["Pmenu","User1"]})
     for context in contexts
       exe 'hi '.context.' gui=none guifg=none guibg='.eval('$'.bg)
     endfor
