@@ -1,22 +1,23 @@
 # vim: set ft=gitconfig:
+# [include]
+#   path = ~/dotfiles/stowme/.gitrc
 [user]
   email = qleveque@hotmail.com
   name = Quentin Leveque
+[core]
+  editor = nvim
+  ignorecase = true
 [diff]
   tool = vimdiff3
 [push]
   autoSetupRemote = true
+[pull]
+  rebase = true
 [merge]
   tool = vimdiff3
   conflictstyle = diff3
-[core]
-  editor = nvim
-  ignorecase = true
 [difftool "vimdiff3"]
   path = nvim
 [mergetool "vimdiff3"]
   path = nvim
   keepBackup = false
-[alias]
-  graph = log --pretty=format:\"%C(yellow)%h %C(magenta)%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s\" --graph
-  files = show --name-only

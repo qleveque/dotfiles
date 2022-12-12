@@ -1,2 +1,2 @@
-stowme/.vim/specific/
-stowme/.vim/specific.vim
+stowme/.config/nvim/ftdetect
+stowme/.config/nvim/syntax

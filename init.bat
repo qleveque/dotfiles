@@ -17,5 +17,5 @@ path|find /i "%USERPROFILE%\dotfiles\bin" > nul || setx path "%path%;%USERPROFIL
 
 start "" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
 
-echo DONE, now RUN "bash ~/dotfiles/init"
+echo DONE, now RUN "sudo bash ~/dotfiles/init"
 pause

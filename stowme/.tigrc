@@ -7,12 +7,10 @@ bind generic yf !>zsh -c "echo %(file) | xclip -i -sel p -f | xclip -i -sel c"
 bind generic ; back
 bind generic <C-q> :q
 
-bind generic f :/\|\s+(0|[0-9]+\s[\+-]+)$
-bind generic F :?\|\s+(0|[0-9]+\s[\+-]+)$
-bind generic c :/^commit\s
-bind generic C :?^commit\s
-bind generic d :/^diff\s--git\s
-bind generic D :?^diff\s--git\s
+bind diff + :/\|\s+(0|[0-9]+\s[\+-]+)$
+bind diff - :?\|\s+(0|[0-9]+\s[\+-]+)$
+bind status + :/^\S+
+bind status - :?^\S+
 
 bind diff z none
 bind diff zo :set file-filter = no
@@ -21,10 +19,12 @@ bind diff zc :set file-filter = yes
 bind generic l enter
 bind diff l !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind stage l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'"
-bind status l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'"
+bind status l !>zsh -c "if [[ '%(status)' == 'Untracked file changes' ]]; then nvim '%(file)'; else; git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'; fi;"
 
 color search-result default blue
+set log-options = --quiet --follow
 set show-changes = no
-set log-options = --quiet
 set ignore-case = smart-case
 set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:yes,interval=1 text
+set split-view-width = 99%
+set vertical-split = vertical

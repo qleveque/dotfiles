@@ -8,6 +8,42 @@
     "command": "workbench.action.findInFiles"
   },
   {
+    "key": "ctrl+t",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.closeEditorsInGroup"
+  },
+  {
     "key": "ctrl+f",
     "when": "sideBarFocus",
     "command": "workbench.action.focusActiveEditorGroup"
@@ -21,15 +57,5 @@
     "key": "enter",
     "command": "search.action.focusNextSearchResult",
     "when": "searchInputBoxFocus"
-  },
-  {
-    "key": "shift+8",
-    "command": "workbench.action.compareEditor.previousChange",
-    "when": "textCompareEditorVisible && isInDiffEditor"
-  },
-  {
-    "key": "shift+oem_plus",
-    "command": "workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible && isInDiffEditor"
   }
 ]

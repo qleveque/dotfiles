@@ -18,10 +18,6 @@ nnoremap <C-p> :action RecentFiles<CR>
 nnoremap <C-q> :action CloseAllEditors<CR>
 
 nnoremap \b :action Annotate<CR>
-nnoremap \d :action Compare.LastVersion<CR>
-nnoremap \D :action Vcs.Show.Local.Changes<CR>
-nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
-nnoremap \L :action Vcs.Show.Log<CR>
 
 nmap é :action Run<CR>
 nmap É :action ChooseRunConfiguration<CR>
@@ -31,9 +27,6 @@ nmap È :action ChooseDebugConfiguration<CR>
 nnoremap ( :action PreviousTab<CR>
 nnoremap ) :action NextTab<CR>
 nnoremap _ :q<CR>
-
-nnoremap + :action NextDiff<CR>
-nnoremap - :action PreviousDiff<CR>
 
 nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
