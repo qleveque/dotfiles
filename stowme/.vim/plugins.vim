@@ -13,14 +13,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/argtextobj.vim'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 let g:floaterm_opener='edit'
 let g:floaterm_width=0.85
 let g:coc_global_extensions=['coc-marketplace','coc-json','coc-tsserver','coc-ccls','coc-html',
-  \ 'coc-pyright','coc-css','coc-highlight']
+  \ 'coc-pyright','coc-css','coc-highlight','coc-clangd']
 
 lua << EOF
   require'bufferline'.setup{exclude_ft={'qf'}}

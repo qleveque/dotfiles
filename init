@@ -21,7 +21,6 @@ curl -L git.io/antigen > ~/.antigen/antigen.zsh
 # Nvim packages
 sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PluginInstall +qall
-nvim '+TSInstall all' +qall
 
 # Nerd fonts
 TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d $HOME/.fonts
