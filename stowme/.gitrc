@@ -21,3 +21,5 @@
 [mergetool "vimdiff3"]
   path = nvim
   keepBackup = false
+[alias]
+  files = show --name-only

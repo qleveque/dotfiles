@@ -12,10 +12,6 @@ bind diff - :?\|\s+(0|[0-9]+\s[\+-]+)$
 bind status + :/^\S+
 bind status - :?^\S+
 
-bind diff z none
-bind diff zo :set file-filter = no
-bind diff zc :set file-filter = yes
-
 bind generic l enter
 bind diff l !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind stage l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'"

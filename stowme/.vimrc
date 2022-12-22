@@ -56,7 +56,7 @@ ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('
 ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Diff
-let diffs=['windo set wrap nofen fdc=0','nm <C-Q> :qa<CR>','map + ]czt','map - [czt','norm 1G+-']
+let diffs=['set noro','windo set wrap nofen fdc=0','nm <C-Q> :qa<CR>','map + ]czt','map - [czt','norm 1G+-']
 ca diff Diff|com Diff :exe 'windo diffthis|for c in diffs|exe c|endfor'
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|else|for c in diffs|exe c|endfor|endif
 noremap ]x /\v^[\=<>\|]{7}.*<CR>
