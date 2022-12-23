@@ -53,15 +53,12 @@ nm gr <Plug>(coc-references)
 xm <leader>f <Plug>(coc-format-selected)
 ino <silent><expr> <CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 ino <silent><expr> <TAB> coc#pum#visible()?coc#pum#next(1):col('.')-1&&getline('.')[col('.')-2]!~#'\s'?coc#refresh():"\<Tab>"
-ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
 
 " Diff
 let diffs=['set noro','windo set wrap nofen fdc=0','nm <C-Q> :qa<CR>','map + ]czt','map - [czt','norm 1G+-']
 ca diff Diff|com Diff :exe 'windo diffthis|for c in diffs|exe c|endfor'
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|else|for c in diffs|exe c|endfor|endif
-noremap ]x /\v^[\=<>\|]{7}.*<CR>
-noremap [x ?\v^[\=<>\|]{7}.*<CR>
-nmap do [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>DP<BS>
 
 " Term
 tno <C-A> <C-\><C-N>
@@ -72,6 +69,9 @@ nn <C-b>s :exe "silent !tmux split-window -v -c \"".getcwd()."\""<CR>
 nn <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
 
 " Git
+noremap ]x /\v^[\=<>\|]{7}.*<CR>
+noremap [x ?\v^[\=<>\|]{7}.*<CR>
+nmap dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>DP<BS>
 let tc="'--title=Git --height=1.0 --width=1.0 cd '.fnamemodify(resolve(expand('%')),':h')"
 nn <leader>D :exe "FloatermNew ".eval(tc)."&&tig status"<CR>
 nn <leader>L :exe "FloatermNew ".eval(tc)."&&tig"<CR>
