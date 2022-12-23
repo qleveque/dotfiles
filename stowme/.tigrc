@@ -15,7 +15,7 @@ bind status - :?^\S+
 bind generic l enter
 bind diff l !>git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)
 bind stage l !>zsh -c "git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'"
-bind status l !>zsh -c "if [[ '%(status)' == 'Untracked file changes' ]]; then nvim '%(file)'; else; git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'; fi;"
+bind status l !>zsh -c "if [[ '%(status)' =~ '^Untracked file .*' ]]; then nvim '%(file)'; else; git difftool --trust-exit-code --no-prompt `expr '%(status)' : 'Staged changes' > /dev/null && echo --staged` -- '%(file)'; fi;"
 
 color search-result default blue
 set log-options = --quiet --follow

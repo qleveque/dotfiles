@@ -20,5 +20,5 @@ exe 'hi DiffDelete guibg='.eval('$RED').' guifg='.eval('$RED')
 hi CocErrorFloat guifg=orange
 hi DiffChange guibg=none
 au FocusLost * setlocal winhl=Normal:InactiveWin
-au BufEnter,BufRead,BufReadPost * syntax match ConflictMarkers "\v\<{7}.*([\r\n]+[^\>].*$)*[\r\n]+.*"
+au BufEnter,BufRead,BufReadPost * syntax match ConflictMarkers "\v[\<\>\|=]{7}.*"
 au BufNew,BufLeave,BufRead,FocusGained * setlocal winhl=Normal:ActiveWin,NormalNC:InactiveWin

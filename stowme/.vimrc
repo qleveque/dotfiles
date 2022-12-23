@@ -61,6 +61,7 @@ ca diff Diff|com Diff :exe 'windo diffthis|for c in diffs|exe c|endfor'
 au VimEnter * if !&diff|exe 'map - :cprev<CR>'|exe 'map + :cnext<CR>'|else|for c in diffs|exe c|endfor|endif
 noremap ]x /\v^[\=<>\|]{7}.*<CR>
 noremap [x ?\v^[\=<>\|]{7}.*<CR>
+nmap do [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>DP<BS>
 
 " Term
 tno <C-A> <C-\><C-N>
