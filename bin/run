@@ -1,5 +1,17 @@
 #!/usr/bin/zsh
-cd "${1:h}"
+local full_path=$(readlink -f $1)
+local file="${1:t}"
+local name="${1:t:r}"
+cd ${full_path:h}
+
+# Shebang
+local shebang=$(sed -n '1s/^#!//p' $file)
+if [[ -n $shebang ]]; then 
+  $shebang $file
+  return
+fi
+
+# Makefile
 while [[ ! -f Makefile ]] && [[ $PWD != / ]]; do
   cd ..
 done
@@ -8,11 +20,9 @@ if [[ -f Makefile ]]; then
   make
   return
 fi
+cd ${full_path:h}
 
-cd "${1:h}"
-local file="${1:t}"
-local name="${1:t:r}"
-
+# Extension
 case ${1:t:e} in
   asm) nasm -f elf64 $file && ld -s -o $name.out $name.o && ./$name.out;;
   bash) bash $file;;
