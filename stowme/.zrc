@@ -3,8 +3,6 @@ stty -ixon
 setopt histignorealldups sharehistory nonomatch promptsubst
 bindkey -v
 bindkey '^[[Z' forward-word
-cf() {cd "$(dirname $1)"}
-mkcd() {mkdir "$1" && cd "$1"}
 
 # Variables
 export EDITOR='/usr/bin/nvim'
@@ -23,6 +21,11 @@ SAVEHIST=1000
 VI_MODE_SET_CURSOR=true
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit zle-clipboard-paste)
 ZSH_AUTOSUGGEST_MANUAL_REBIND="true"
+
+# Functions
+cf() {cd "$(dirname $1)"}
+mkcd() {mkdir "$1" && cd "$1"}
+t() {$EDITOR $(tempfile $([ -z $1 ] || echo --suffix .$1))}
 
 # Plugins
 source ~/.antigen/antigen.zsh

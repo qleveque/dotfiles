@@ -6,7 +6,7 @@ cd ${full_path:h}
 
 # Shebang
 local shebang=$(sed -n '1s/^#!//p' $file)
-if [[ -n $shebang ]]; then 
+if [[ -n $shebang ]]; then
   $shebang $file
   return
 fi
