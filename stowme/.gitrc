@@ -1,6 +1,4 @@
 # vim: set ft=gitconfig:
-# [include]
-#   path = ~/dotfiles/stowme/.gitrc
 [user]
   email = qleveque@hotmail.com
   name = Quentin Leveque

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-cd ~
+# Install dependencies on a linux environment
 
 # Common packages
+cd ~
 sudo apt-get update -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xclip
@@ -26,9 +27,9 @@ nvim +PluginInstall +qall
 TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d $HOME/.fonts
 fc-cache -fv
 
-# Config dir
+# Finalize
+echo "[include]\n  path = ~/dotfiles/stowme/.gitrc" > ~/.gitconfig
 mkdir ~/.config
-
-echo source "$HOME/.zrc">>$HOME/.zshrc
+echo source "$HOME/.zrc">$HOME/.zshrc
 cd $HOME/dotfiles
 stow stowme

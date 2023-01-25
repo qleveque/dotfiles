@@ -1,7 +1,7 @@
 set cb^=unnamed,unnamedplus shm+=aI sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%=
 set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical
-source ~/.vim/style.vim
-source ~/.vim/plugins.vim
+source ~/dotfiles/stowme/.vim/style.vim
+source ~/dotfiles/stowme/.vim/plugins.vim
 
 " Easy life
 nn ' `

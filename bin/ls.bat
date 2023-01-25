@@ -1,2 +1,3 @@
+:: ls alias for windows
 @ECHO ON
-dir %*
+DIR %*

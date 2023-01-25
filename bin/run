@@ -1,4 +1,6 @@
 #!/usr/bin/zsh
+# Run any source program
+
 local full_path=$(readlink -f $1)
 local file="${1:t}"
 local name="${1:t:r}"
@@ -41,6 +43,7 @@ case ${1:t:e} in
   m4) m4 -I $file > $name;;
   mod|aMod) voc $file -M && echo && ./$name;;
   nsi) cmd.exe /C "makensis $file && $name.exe";;
+  pl) perl $file;;
   ps1) powershell.exe ".\\$file";;
   py) python3 $file;;
   r) Rscript $file;;
