@@ -31,14 +31,17 @@ case ${1:t:e} in
   bat|cmd) cmd.exe /C "$file";;
   c) clang -o $name.out $file && ./$name.out;;
   cc|cpp) clang++ -o $name.out $file && ./$name.out;;
+  cs) csc.exe -out:$name.out $file && ./$name.out;;
   f90|f95|f03) gfortran -o $name.out $file && ./$name.out;;
   go) go run $file;;
+  groovy) groovy $file;;
   hs) ghc $file && ./$name;;
   html) o $file;;
   java) javac $file && java $name;;
   jl) julia $file;;
   js|mjs) node $file;;
   kt) kotlinc $file -include-runtime -d $name.jar && java -jar $name.jar;;
+  lisp) clisp $name;;
   lua) lua $file;;
   m4) m4 -I $file > $name;;
   mod|aMod) voc $file -M && echo && ./$name;;
@@ -51,6 +54,7 @@ case ${1:t:e} in
   rs) rustc $file -o $name.out && ./$name.out;;
   scala) scala $file;;
   sh) sh $file;;
+  sql) sqlite3 $name.db < $file
   ts) tsc $file && node $name.js;;
   zsh) zsh $file;;
   *) echo 'Nothing to do';;
