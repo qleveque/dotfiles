@@ -54,7 +54,7 @@ case ${1:t:e} in
   rs) rustc $file -o $name.out && ./$name.out;;
   scala) scala $file;;
   sh) sh $file;;
-  sql) sqlite3 $name.db < $file
+  sql) sqlite3 $name.db < $file;;
   ts) tsc $file && node $name.js;;
   zsh) zsh $file;;
   *) echo 'Nothing to do';;

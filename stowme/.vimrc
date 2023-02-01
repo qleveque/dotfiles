@@ -1,5 +1,6 @@
 set cb^=unnamed,unnamedplus shm+=aI sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%=
-set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical
+set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical mousescroll=ver:1
+
 source ~/dotfiles/stowme/.vim/style.vim
 source ~/dotfiles/stowme/.vim/plugins.vim
 

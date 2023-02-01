@@ -17,7 +17,7 @@ MKLINK "%USERPROFILE%\_ideavimrc" "%USERPROFILE%\dotfiles\stowme\.ideavimrc"
 
 MKDIR "%APPDATA%\Code\User"
 MKLINK "%APPDATA%\Code\User\settings.json" "%USERPROFILE%\dotfiles\stowme\.config\Code\User\settings.json"
-mklink "%APPDATA%\Code\User\keybindings.json" "%USERPROFILE%\dotfiles\stowme\.config\Code\User\keybindings.json"
+MKLINK "%APPDATA%\Code\User\keybindings.json" "%USERPROFILE%\dotfiles\stowme\.config\Code\User\keybindings.json"
 
 PATH|FIND /i "%USERPROFILE%\bin" >NUL || SETX PATH "%PATH%;%USERPROFILE%\bin"
 PATH|FIND /i "%USERPROFILE%\dotfiles\bin" >NUL || SETX PATH "%PATH%;%USERPROFILE%\dotfiles\bin"
