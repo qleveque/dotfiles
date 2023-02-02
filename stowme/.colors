@@ -1,9 +1,0 @@
-#!/usr/bin/zsh
-export GREY="#C4C4C4"
-export BG="#221122"
-export LIGHT_BG="#332233"
-export LIGHTER_BG="#443344"
-export LIGHTEST_BG="#554455"
-export RED="IndianRed4"
-export GREEN="DarkGreen"
-export BLUE="DarkSlateBlue"

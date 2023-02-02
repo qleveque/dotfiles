@@ -28,7 +28,6 @@ TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-f
 fc-cache -fv
 
 # Finalize
-echo "[include]\n  path = ~/dotfiles/stowme/.gitrc" > ~/.gitconfig
 mkdir ~/.config
 echo source "$HOME/.zrc">$HOME/.zshrc
 cd $HOME/dotfiles

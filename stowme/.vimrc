@@ -1,19 +1,12 @@
-set cb^=unnamed,unnamedplus shm+=aI sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%=
-set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical mousescroll=ver:1
-
-source ~/dotfiles/stowme/.vim/style.vim
-source ~/dotfiles/stowme/.vim/plugins.vim
+set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%= mousescroll=ver:1
+set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical shm+=aI
 
 " Easy life
 nn ' `
 nn <BS> :nohl<CR>
 nn <C-Q> ZQ
 nn S f,a<CR><Esc>
-nn U <C-R>
-nn V ggVG
-nn vv V
 nn à @q
-nn * *Nzz
 no D "_d
 no C "_c
 nn DD "_dd
@@ -21,12 +14,12 @@ nn CC "_cc
 nn X "_x
 ino <C-V> <C-R>+
 cno <C-V> <C-R>+
-vno * "xy/<C-R>x<CR>Nzz
+vno * "xy/<C-R>x<CR>
 xno P "_c<C-R>+<Esc>
 xno à :norm! @q<CR>
 xno . :norm! .<CR>
-map ç *cgn
-map Ç *Cgn
+map ç *Nzzcgn
+map Ç *NzzCgn
 map L /\C\<
 map H ?\C\<
 nm s ys
@@ -72,10 +65,65 @@ nn <C-b>v :exe "silent !tmux split-window -h -c \"".getcwd()."\""<CR>
 " Git
 noremap ]x /\v^[\=<>\|]{7}.*<CR>
 noremap [x ?\v^[\=<>\|]{7}.*<CR>
-nmap dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>DP<BS>
+nmap dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
 let tc="'--title=Git --height=1.0 --width=1.0 cd '.fnamemodify(resolve(expand('%')),':h')"
 nn <leader>D :exe "FloatermNew ".eval(tc)."&&tig status"<CR>
 nn <leader>L :exe "FloatermNew ".eval(tc)."&&tig"<CR>
 nn <leader>b :exe "FloatermNew ".eval(tc)."&&tig blame +".line(".")." ".expand('%:t')<CR>
 nn <leader>d :exe "FloatermNew ".eval(tc)."&&git difftool -y ".expand('%:t')<CR>
 nn <leader>l :exe "FloatermNew ".eval(tc)."&&tig --follow ".expand('%:t')<CR>
+
+" Style
+let RED="IndianRed4"|let GREEN="DarkGreen"|let BLUE="DarkSlateBlue"
+for [bg, contexts] in items({
+    \"$BG":["ActiveWin","FloatermBorder","TelescopeNormal"],
+    \"$LIGHT_BG":["CursorLine","InactiveWin","VertSplit"],
+    \"$LIGHTER_BG":["CursorLineNr","PmenuSel","LineNr","BufferTabpageFill","TelescopeSelection"],
+    \"$LIGHTEST_BG":["Pmenu","User1"],
+    \"RED":["ConflictMarkers"],"GREEN":["DiffAdd"],"BLUE":["DiffText","CurSearch"]})
+  for context in contexts
+    exe 'hi '.context.' gui=none guifg=none guibg='.eval(bg)
+  endfor
+endfor
+for v in ['','Mod','Index','Sign']
+  exe 'hi BufferCurrent'.v.' guibg='.eval('$BG')
+  exe 'hi BufferInactive'.v.' guibg='.eval('$LIGHTEST_BG')
+  exe 'hi BufferVisible'.v.' guibg='.eval('$LIGHTEST_BG')
+endfor
+exe 'hi Visual guifg=black guibg='.eval('$GREY')
+exe 'hi StatusLine gui=underline guibg='.eval('$BG')
+exe 'hi StatusLineNC gui=underline guibg='.eval('$LIGHT_BG')
+exe 'hi DiffDelete guibg='.eval('RED').' guifg='.eval('RED')
+hi CocErrorFloat guifg=orange
+hi DiffChange guibg=none
+au FocusLost * setlocal winhl=Normal:InactiveWin
+au BufEnter,BufRead,BufReadPost * syntax match ConflictMarkers "\v[\<\>\|=]{7}.*"
+au BufNew,BufLeave,BufRead,FocusGained * setlocal winhl=Normal:ActiveWin,NormalNC:InactiveWin
+
+" Plugins
+call plug#begin('~/.vim_plugged')
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'dstein64/nvim-scrollview'
+  Plug 'farmergreg/vim-lastplace'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'mattn/emmet-vim'
+  Plug 'michaeljsmith/vim-indent-object'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'romgrk/barbar.nvim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'voldikss/vim-floaterm'
+call plug#end()
+let g:floaterm_opener='edit'
+let g:floaterm_width=0.85
+let g:coc_global_extensions=['coc-json','coc-highlight','coc-tsserver','coc-html','coc-css','coc-pyright','coc-clangd']
+lua << EOF
+require'bufferline'.setup{exclude_ft={'qf'}}
+require'telescope'.setup{defaults={mappings={
+  i={['<ESC>']=require('telescope.actions').close,['<C-V>']={'<C-R>+',type="command"}}
+}}}
+EOF
