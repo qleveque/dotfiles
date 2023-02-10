@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 alias du='dust -r'
-alias e=$EDITOR
+alias e='nvim'
 alias fd='fdfind'
 alias g='jump'
 alias gau='git add -u'

@@ -1,5 +1,5 @@
 " vim: set ft=vim:
-set vicmd=$EDITOR syscalls trash history=100 nofollowlinks sortnumbers undolevels=100 novimhelp norunexec timefmt=%m/%d\ %H:%M wildmenu wildstyle=popup suggestoptions=normal,visual,view,otherpane,keys,marks,registers ignorecase smartcase nohlsearch incsearch scrolloff=4 vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks syncregs=general trashdir=~/.local/share/Trash statusline=" "
+set vicmd=nvim syscalls trash history=100 nofollowlinks sortnumbers undolevels=100 novimhelp norunexec timefmt=%m/%d\ %H:%M wildmenu wildstyle=popup suggestoptions=normal,visual,view,otherpane,keys,marks,registers ignorecase smartcase nohlsearch incsearch scrolloff=4 vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks syncregs=general trashdir=~/.local/share/Trash statusline=" "
 
 " Shortcuts
 map <C-i> :histnext<CR>

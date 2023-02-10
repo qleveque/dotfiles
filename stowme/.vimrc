@@ -12,6 +12,7 @@ no C "_c
 nn DD "_dd
 nn CC "_cc
 nn X "_x
+nn U <C-R>
 nn V <C-V>
 nn vv V
 vno * "xy/<C-R>x<CR>
