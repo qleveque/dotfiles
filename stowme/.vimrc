@@ -13,8 +13,8 @@ nn DD "_dd
 nn CC "_cc
 nn X "_x
 nn U <C-R>
-nn V <C-V>
-nn vv V
+ino <C-V> <C-R>+
+cno <C-V> <C-R>+
 vno * "xy/<C-R>x<CR>
 xno P "_c<C-R>+<Esc>
 xno à :norm! @q<CR>

@@ -10,6 +10,15 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
+nnoremap gd gd
+nnoremap gr :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+vnoremap <C-e> :action SurroundWithEmmet<CR>
+map <C-;> :action ShowIntentionActions<CR>
+map L /\V\C\\<
+map H ?\V\C\\<
+
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>
 nnoremap <C-s> :action FindInPath<CR>
@@ -27,15 +36,6 @@ nmap È :action ChooseDebugConfiguration<CR>
 nnoremap ( :action PreviousTab<CR>
 nnoremap ) :action NextTab<CR>
 nnoremap _ :q<CR>
-
-nnoremap gd gd
-nnoremap gr :action GotoDeclaration<CR>
-nnoremap gi :action GotoImplementation<CR>
-nnoremap gs :action GotoSuperMethod<CR>
-vnoremap <C-e> :action SurroundWithEmmet<CR>
-map <C-;> :action ShowIntentionActions<CR>
-map L /\V\C\\<
-map H ?\V\C\\<
 
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>
