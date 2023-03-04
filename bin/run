@@ -36,7 +36,7 @@ case ${1:t:e} in
   go) go run $file;;
   groovy) groovy $file;;
   hs) ghc $file && ./$name;;
-  html) o $file;;
+  html|md) o $file;;
   java) javac $file && java $name;;
   jl) julia $file;;
   js|mjs) node $file;;

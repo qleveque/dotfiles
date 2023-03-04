@@ -4,6 +4,7 @@
 [core]
   editor = nvim
   ignorecase = true
+  pager = delta
 [diff]
   tool = vimdiff3
 [push]
@@ -18,3 +19,9 @@
 [mergetool "vimdiff3"]
   path = nvim
   keepBackup = false
+[delta]
+  features = decorations
+[delta "decorations"]
+  commit-decoration-style = bold blue box ul
+  file-decoration-style = blue ol
+  hunk-header-decoration-style = blue ol
