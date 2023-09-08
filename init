@@ -5,24 +5,28 @@
 cd ~
 sudo apt-get update -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel
+sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
 
 packages=(
-  'https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb'
   'https://github.com/bootandy/dust/releases/download/v0.8.3/du-dust_0.8.3_amd64.deb'
-  'https://github.com/dandavison/delta/releases/download/0.15.1/git-delta_0.15.1_amd64.deb'
+  'https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb'
 )
 for package in "${packages[@]}" ; do
-  TEMP_DEB="$(mktemp)" && wget -O "$TEMP_DEB" $package && sudo dpkg -i "$TEMP_DEB"
+  TEMP_DEB="$(mktemp)" && wget -O "$TEMP_DEB" $package && sudo dpkg --force-overwrite -i "$TEMP_DEB"
 done
 
 # Antigen
 mkdir $HOME/.antigen
 curl -L git.io/antigen > ~/.antigen/antigen.zsh
 
-# Nvim packages
+# Nvim
+TEMP_TAR_GZ="$(mktemp)"
+wget -O "$TEMP_TAR_GZ" 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
+tar xvzf "$TEMP_TAR_GZ" -C $HOME
+sudo ln -s ~/nvim-linux64/bin/nvim /usr/bin/nvim
 sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PluginInstall +qall
+nvim -c 'CocInstall -sync coc-json coc-highlight coc-tsserver coc-html coc-css coc-pyright coc-clangd|q'
 
 # Nerd fonts
 TEMP_ZIP="$(mktemp)" && wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip' && unzip "$TEMP_ZIP" -d $HOME/.fonts

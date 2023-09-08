@@ -7,7 +7,7 @@ IF %ERRORlEVEL% NEQ 0 (
   EXIT
 )
 
-ECHO RUN "usermod -d /mnt/c/Users/qleveque qleveque" and EXIT
+ECHO RUN "usermod -d /mnt/c/Users/qleve qleveque" and EXIT
 CALL cmd.exe /C wsl -u root
 
 SET "xconfig=^<?xml version="1.0" encoding="UTF-8"?^>^<XLaunch WindowMode="MultiWindow" ClientMode="NoClient" LocalClient="False" Display="0" LocalProgram="xcalc" RemoteProgram="xterm" RemotePassword="" PrivateKey="" RemoteHost="" RemoteUser="" XDMCPHost="" XDMCPBroadcast="False" XDMCPIndirect="False" Clipboard="True" ClipboardPrimary="True" ExtraParams="-dpi 144" Wgl="True" DisableAC="True" XDMCPTerminate="False"/^>"

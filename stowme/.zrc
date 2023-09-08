@@ -29,8 +29,8 @@ t() {nvim $(tempfile $([ -z $1 ] || echo --suffix .$1))}
 
 # Plugins
 source ~/.antigen/antigen.zsh
-  antigen bundle Aloxaf/fzf-tab
   antigen bundle kutsan/zsh-system-clipboard
+  antigen bundle lincheney/fzf-tab-completion
   antigen bundle ohmyzsh/ohmyzsh plugins/extract
   antigen bundle ohmyzsh/ohmyzsh plugins/git
   antigen bundle ohmyzsh/ohmyzsh plugins/jump
@@ -43,6 +43,7 @@ antigen apply
 source ~/.aliases
 source ~/.vim_plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 
 # Directory history
 autoload -U add-zsh-hook
@@ -53,7 +54,7 @@ _stack_new_dir() {
   echo "$(cat ~/.dirhist | tail -299)\n$PWD" > ~/.dirhist
 }
 
-# Ctrl-F Ctrl-Q Ctrl-P Alt-P
+# Ctrl-F Ctrl-Q Ctrl-P Alt-P Tab
 local reset-prompt() {zle reset-prompt && zle autosuggest-clear && zle zle-line-init}
 zle-recent-directory() {LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"; reset-prompt}
 zle-go-to-recent-directory() {cd "$(eval $FZF_P_COMMAND | fzf --exact)"&&reset-prompt}
@@ -63,6 +64,7 @@ zle -N zle-recent-directory && bindkey '^P' zle-recent-directory
 zle -N zle-go-to-recent-directory && bindkey '\ep' zle-go-to-recent-directory
 zle -N zle-vifm-only-choose-dir && bindkey '^F' zle-vifm-only-choose-dir
 zle -N zle-exit-zsh && bindkey '^Q' zle-exit-zsh && bindkey -M vicmd '^Q' zle-exit-zsh
+bindkey '^I' fzf_completion
 
 # Windows
 if $(grep -q Microsoft /proc/version); then
