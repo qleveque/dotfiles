@@ -20,12 +20,6 @@ SAVEHIST=1000
 VI_MODE_SET_CURSOR=true
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit)
 ZSH_AUTOSUGGEST_MANUAL_REBIND=true
-ZSH_SYSTEM_CLIPBOARD_METHOD='xsc'
-
-# Functions
-cf() {cd "$(dirname $1)"}
-mkcd() {mkdir "$1" && cd "$1"}
-t() {nvim $(tempfile $([ -z $1 ] || echo --suffix .$1))}
 
 # Plugins
 source ~/.antigen/antigen.zsh
@@ -38,6 +32,13 @@ source ~/.antigen/antigen.zsh
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
+
+# Functions
+function cf() {cd "$(dirname $1)"}
+function mkcd() {mkdir "$1" && cd "$1"}
+function t() {nvim $(tempfile $([ -z $1 ] || echo --suffix .$1))}
+function zsh-system-clipboard-set(){c}
+function zsh-system-clipboard-get(){p}
 
 # Sources
 source ~/.aliases
@@ -68,7 +69,6 @@ bindkey '^I' fzf_completion
 
 # Windows
 if $(grep -q Microsoft /proc/version); then
-  export DISPLAY=:0.0
   cmd() {cmd.exe /C $@}
   admin() {powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/K cd `wslpath -m .`'"}
 fi

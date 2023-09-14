@@ -2,8 +2,9 @@ bind generic g none
 bind generic gg :0
 bind generic G move-last-line
 bind generic y none
-bind generic yc !@>zsh -fc "echo -n %(commit) | xsel --input --clipboard"
-bind generic yf !@>zsh -fc "echo -n %(file) | xsel --input --clipboard"
+bind generic yc !@>zsh -fc "echo -n %(commit) | c"
+bind generic yw !@>zsh -fc "echo -n %(file) | c"
+bind generic yf !@>zsh -fc "echo -n %(file) | c"
 bind generic ; back
 bind generic <C-q> :q
 

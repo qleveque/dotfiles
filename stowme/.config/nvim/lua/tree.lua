@@ -26,12 +26,12 @@ vim.api.nvim_exec([[
 ]], false)
 
 require'nvim-tree'.setup{
-  hijack_cursor = true,
   update_focused_file = {
     enable = true
   },
   view={
-    signcolumn='no'
+    signcolumn='no',
+    hide_root_folder = true
   },
   renderer={
     group_empty=true

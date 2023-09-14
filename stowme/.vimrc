@@ -1,4 +1,4 @@
-colorscheme whenti
+colorscheme style
 set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%= mousescroll=ver:2
 set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical shm+=aI noro
 
@@ -64,10 +64,11 @@ no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
 nmap dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
 
-" Others
+" Miscellaneous
 autocmd FileType * set formatoptions-=cro
+im <script><silent><nowait><expr> <S-TAB> codeium#Accept()
 let g:codeium_disable_bindings = 1
-im <script><silent><nowait><expr> <expr><S-TAB> codeium#Accept()
+let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
 
 " Plugins
 call plug#begin('~/.vim_plugged')
