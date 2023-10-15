@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install dependencies on a linux environment
+# Initialize linux environment
 
 # Common packages
 cd ~
@@ -7,15 +7,9 @@ sudo apt-get update -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
 
-packages=(
-  'https://github.com/bootandy/dust/releases/download/v0.8.3/du-dust_0.8.3_amd64.deb'
-  'https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb'
-)
-for package in "${packages[@]}" ; do
-  TEMP_DEB="$(mktemp)"
-  wget -O "$TEMP_DEB" $package
-  sudo dpkg --force-overwrite -i "$TEMP_DEB"
-done
+TEMP_DEB="$(mktemp)"
+wget -O "$TEMP_DEB" 'https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb'
+sudo dpkg --force-overwrite -i "$TEMP_DEB"
 
 # Antigen
 mkdir $HOME/.antigen

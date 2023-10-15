@@ -54,12 +54,12 @@ nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 " Version Control
 let df='windo set wrap nofen fdc=0|nm <C-Q> :qa<CR>|nm + ]czt|nm - [czt|norm +-'
 au VimEnter * if &diff|exe df|end
-let rs="'-window \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-nn \d :exe'sil !tmux new'.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
-nn \D :exe'sil !tmux split'.eval(rs).'tig status"'<CR>
-nn \l :exe'sil !tmux split'.eval(rs).'tig --follow '.expand('%:t').'"'<CR>
-nn \L :exe'sil !tmux split'.eval(rs).'tig"'<CR>
-nn \b :exe'sil !tmux split'.eval(rs).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
+let rs="' new-window -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
+nn \d :exe'sil !tmux'.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
+nn \D :exe'sil !tmux'.eval(rs).'tig status"'<CR>
+nn \l :exe'sil !tmux'.eval(rs).'tig --follow '.expand('%:t').'"'<CR>
+nn \L :exe'sil !tmux'.eval(rs).'tig"'<CR>
+nn \b :exe'sil !tmux'.eval(rs).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
 nmap dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
