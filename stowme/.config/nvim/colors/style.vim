@@ -5,7 +5,8 @@ let BLUE="SlateBlue"
 for [bg, contexts] in items({
     \"$PALETTE_1":["ActiveWin","TelescopeNormal","StatusLine"],
     \"$PALETTE_2":["CursorLine","InactiveWin","VertSplit","StatusLineNC"],
-    \"$PALETTE_3":["CursorLineNr","LineNr","BufferTabpageFill","TelescopeSelection","User1","NvimTreeCursorLine","CocMenuSel","PmenuSel"],
+    \"$PALETTE_3":["CursorLineNr","LineNr","BufferTabpageFill","TelescopeSelection",
+    \    "User1","NvimTreeCursorLine","CocMenuSel","PmenuSel"],
     \"$PALETTE_4":["Visual","Pmenu","CocFloating","CurSearch"],
     \"RED":["ConflictMarkers"],"GREEN":["DiffAdd"],"BLUE":["DiffText"]})
   for context in contexts

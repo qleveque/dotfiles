@@ -43,27 +43,27 @@ nm gd <Plug>(coc-definition)
 nm gr <Plug>(coc-references)
 xm \f <Plug>(coc-format-selected)
 nm \f <Plug>(coc-format)
+nm <M-CR> <Plug>(coc-codeaction-cursor)
 ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-nmap <M-CR> <Plug>(coc-codeaction-cursor)
 
 " Term
-nn <silent> é :w!\|exe'sil !tmux splitw "run \"'.expand("%").'\";read -s $''?\e[36mDone''"'<CR>
+nn é :exe'sil !tmux splitw "run \"'.expand("%").'\";read -s $''?\e[36mDone''"'<CR>
 nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
 " Version Control
 let df='windo set wrap nofen fdc=0|nm <C-Q> :qa<CR>|nm + ]czt|nm - [czt|norm +-'
 au VimEnter * if &diff|exe df|end
-let rs="' new-window -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-nn \d :exe'sil !tmux'.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
-nn \D :exe'sil !tmux'.eval(rs).'tig status"'<CR>
-nn \l :exe'sil !tmux'.eval(rs).'tig --follow '.expand('%:t').'"'<CR>
-nn \L :exe'sil !tmux'.eval(rs).'tig"'<CR>
-nn \b :exe'sil !tmux'.eval(rs).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
+let rs="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
+nn \d :exe'sil '.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
+nn \D :exe'sil '.eval(rs).'tig status"'<CR>
+nn \l :exe'sil '.eval(rs).'tig --follow '.expand('%:t').'"'<CR>
+nn \L :exe'sil '.eval(rs).'tig"'<CR>
+nn \b :exe'sil '.eval(rs).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
-nmap dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
+nm dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
 
 " Miscellaneous
 autocmd FileType * set formatoptions-=cro
@@ -86,11 +86,11 @@ call plug#begin('~/.vim_plugged')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-tree/nvim-tree.lua'
   Plug 'romgrk/barbar.nvim'
+  Plug 'roxma/vim-paste-easy'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
-  Plug 'roxma/vim-paste-easy'
 call plug#end()
 lua require('tree')
 lua require('bar')

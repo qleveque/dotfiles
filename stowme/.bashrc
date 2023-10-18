@@ -5,4 +5,5 @@ for i in {1..4}; do
     eval "export PALETTE_$i=#${COLORS[$i-1]}"
 done
 
-cd ~ && ([ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}) || :
+cd ~
+([ -z "$TMUX" ] && { tmux attach || exec tmux new-session;}) || :

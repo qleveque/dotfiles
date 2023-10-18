@@ -5,8 +5,7 @@ local full_path=$(readlink -f $1)
 if [ ! -f $full_path ]; then
   echo "File does not exist" && return
 fi
-local file="${1:t}"
-local name="${1:t:r}"
+local file="${1:t}" name="${1:t:r}"
 cd ${full_path:h}
 
 # Shebang
@@ -58,6 +57,13 @@ case ${1:t:e} in
   scala) scala $file;;
   sh) sh $file;;
   sql) sqlite3 $name.db < $file;;
+  zig) zig build-exe $file && ./$name;;
+  zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) zsh -ic "x $file";;
   zsh) zsh $file;;
-  *) echo 'Nothing to do';;
+  *) # Executable
+    if [[ -x $file ]]; then
+      ./$file
+      return
+    fi
+    echo 'Nothing to do';;
 esac

@@ -1,5 +1,4 @@
 #!/usr/bin/zsh
-alias du='dust -r'
 alias e='nvim'
 alias fd='fdfind'
 alias g='jump'

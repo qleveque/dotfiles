@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+export HOME= $(dirname $(dirname $(realpath $0)))
+mkdir $HOME/bin $HOME/.config
+echo source "$HOME/.zrc">$HOME/.zshrc
+
+DELTA_URL='https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb'
+HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
+NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
+SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
+VIFM_ICONS_URL='https://raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm'
+VIM_PLUG_URL='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
+
+# OS specific
+if $(grep -q Microsoft /proc/version); then
+  COMMAND="WSL -u root usermod -d $HOME qleveque && "`
+         `'SETX PATH "%USERPROFILE%\bin;%USERPROFILE%\dotfiles\bin;%PATH%" && '`
+         `'PAUSE'
+  powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C $COMMAND'"
+  # Windows dotfiles
+  CODE_DIR="$HOME/AppData/Roaming/Code/User"
+  mkdir -p "$CODE_DIR"
+  ln "$HOME/dotfiles/stowme/.config/Code/User/settings.json" "$CODE_DIR/settings.json"
+  ln "$HOME/dotfiles/stowme/.config/Code/User/keybindings.json" "$CODE_DIR/keybindings.json"
+  ln "$HOME/dotfiles/stowme/.ideavimrc" "$HOME/_ideavimrc"
+  # Win32yank
+  TMP=$(mktemp) && wget -O $TMP $W32Y_URL && unzip $TMP win32yank.exe -d $HOME/bin && chmod +x win32yank.exe
+  # Hack Nerd Font
+  cmd.exe /C START ' ' $HACK_FONT_URL
+else
+  # Hack Nerd Font
+  TMP=$(mktemp) && wget -O $TMP $HACK_FONT_URL && unzip $TMP -d $HOME/.fonts && fc-cache -fv
+fi
+
+# Common packages
+sudo apt-get update -y
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake \
+  vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
+
+# Nvim
+TMP=$(mktemp) && wget -O $TMP $NVIM_URL && tar xvzf $TMP -C $HOME
+sudo ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
+sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dirs $VIM_PLUG_URL'
+nvim +PluginInstall +qall
+nvim -c 'CocInstall -sync coc-json coc-highlight coc-tsserver coc-html coc-css coc-pyright coc-clangd|q'
+# Antigen
+mkdir $HOME/.antigen && curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
+# Sd
+wget -O $HOME/bin/sd $SD_URL
+# Delta
+TMP=$(mktemp) && wget -O $TMP $DELTA_URL && sudo dpkg --force-overwrite -i $TMP
+# Vifm icons
+wget -O $HOME/.favicons.vifm $VIFM_ICONS_URL
+
+# Finalize
+stow -d $HOME/dotfiles -t $HOME stowme

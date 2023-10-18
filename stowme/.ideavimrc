@@ -33,9 +33,9 @@ nmap É :action ChooseRunConfiguration<CR>
 nmap è :action Debug<CR>
 nmap È :action ChooseDebugConfiguration<CR>
 
-nnoremap ( :action PreviousTab<CR>
-nnoremap ) :action NextTab<CR>
-nnoremap _ :q<CR>
+nnoremap <M-j> :action PreviousTab<CR>
+nnoremap <M-k> :action NextTab<CR>
+nnoremap <M-i> :q<CR>
 
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>

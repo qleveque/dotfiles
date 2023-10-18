@@ -49,11 +49,8 @@ source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 # Directory history
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _stack_new_dir
-_stack_new_dir() {
-  touch ~/.dirhist
-  sed -i "\#^$PWD\$#d" ~/.dirhist
-  echo "$(cat ~/.dirhist | tail -299)\n$PWD" > ~/.dirhist
-}
+_stack_new_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
+_stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
 
 # Ctrl-F Ctrl-Q Ctrl-P Alt-P Tab
 local reset-prompt() {zle reset-prompt && zle autosuggest-clear && zle zle-line-init}
