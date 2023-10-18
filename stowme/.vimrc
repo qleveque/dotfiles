@@ -45,6 +45,7 @@ xm \f <Plug>(coc-format-selected)
 nm \f <Plug>(coc-format)
 ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
+nmap <M-CR> <Plug>(coc-codeaction-cursor)
 
 " Term
 nn <silent> é :w!\|exe'sil !tmux splitw "run \"'.expand("%").'\";read -s $''?\e[36mDone''"'<CR>
@@ -69,6 +70,7 @@ autocmd FileType * set formatoptions-=cro
 im <script><silent><nowait><expr> <S-TAB> codeium#Accept()
 let g:codeium_disable_bindings = 1
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
+let g:scrollview_signs_on_startup = []
 
 " Plugins
 call plug#begin('~/.vim_plugged')
@@ -88,6 +90,7 @@ call plug#begin('~/.vim_plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
+  Plug 'roxma/vim-paste-easy'
 call plug#end()
 lua require('tree')
 lua require('bar')

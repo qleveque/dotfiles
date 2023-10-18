@@ -24,20 +24,22 @@ sh -c 'curl -fLo "${HOME}"/.local/share/nvim/site/autoload/plug.vim --create-dir
 nvim +PluginInstall +qall
 nvim -c 'CocInstall -sync coc-json coc-highlight coc-tsserver coc-html coc-css coc-pyright coc-clangd|q'
 
-# Nerd fonts
-TEMP_ZIP="$(mktemp)"
-wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
-unzip "$TEMP_ZIP" -d $HOME/.fonts
-fc-cache -fv
-
 # Bin
 mkdir ~/bin
 wget -O ~/bin/sd https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu
+
 if $(grep -q Microsoft /proc/version); then
+  # win32yank.exe
   TEMP_ZIP="$(mktemp)"
   wget -O "$TEMP_ZIP" https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip
   unzip "$TEMP_ZIP" win32yank.exe -d ~/bin
   chmod +x win32yank.exe
+else
+  # Nerd fonts
+  TEMP_ZIP="$(mktemp)"
+  wget -O "$TEMP_ZIP" 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
+  unzip "$TEMP_ZIP" -d $HOME/.fonts
+  fc-cache -fv
 fi
 
 # Finalize

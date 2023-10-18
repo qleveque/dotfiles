@@ -30,11 +30,11 @@ require'nvim-tree'.setup{
     enable = true
   },
   view={
-    signcolumn='no',
-    hide_root_folder = true
+    signcolumn='no'
   },
   renderer={
-    group_empty=true
+    group_empty=true,
+    root_folder_label=false
   },
   on_attach=tree
 }
