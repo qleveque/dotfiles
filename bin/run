@@ -1,69 +1,78 @@
 #!/usr/bin/zsh
-# Run any source program
+# Run any program
 
-local full_path=$(readlink -f $1)
-if [ ! -f $full_path ]; then
-  echo "File does not exist" && return
-fi
-local file="${1:t}" name="${1:t:r}"
-cd ${full_path:h}
+run() {
+  local full_path=$1
+  if [ ! -f $full_path ]; then
+    echo "File does not exist" && return
+  fi
+  local file="${1:t}" name="${1:t:r}"
+  cd ${full_path:h}
 
-# Shebang
-local shebang=$(sed -n '1s/^#!//p' $file)
-if [[ -n $shebang ]]; then
-  eval "$shebang $file"
-  return
-fi
+  # Shebang
+  local shebang=$(sed -n '1s/^#!//p' $file)
+  if [[ -n $shebang ]]; then
+    eval "$shebang $file"
+    return
+  fi
 
-# Makefile
-while [[ ! -f Makefile ]] && [[ $PWD != / ]]; do
-  cd ..
-done
-if [[ -f Makefile ]]; then
-  echo Running makefile:
-  make
-  return
-fi
-cd ${full_path:h}
+  # Makefile
+  while [[ ! -f Makefile ]] && [[ $PWD != / ]]; do
+    cd ..
+  done
+  if [[ -f Makefile ]]; then
+    echo Running makefile:
+    make
+    return
+  fi
+  cd ${full_path:h}
 
-# Extension
-case ${1:t:e} in
-  asm) nasm -f elf64 $file && ld -s -o $name.out $name.o && ./$name.out;;
-  bash) bash $file;;
-  bat|cmd) cmd.exe /C "$file";;
-  c) clang -o $name.out $file && ./$name.out;;
-  cc|cpp) clang++ -o $name.out $file && ./$name.out;;
-  cs) csc.exe -out:$name.out $file && ./$name.out;;
-  f90|f95|f03) gfortran -o $name.out $file && ./$name.out;;
-  go) go run $file;;
-  groovy) groovy $file;;
-  hs) ghc $file && ./$name;;
-  html|md) o $file;;
-  java) javac $file && java $name;;
-  jl) julia $file;;
-  js|ts|mjs|tsx|jsx) bun run $file;;
-  kt) kotlinc $file -include-runtime -d $name.jar && java -jar $name.jar;;
-  lisp) clisp $name;;
-  lua) lua $file;;
-  m4) m4 -I $file > $name;;
-  mod|aMod) voc $file -M && echo && ./$name;;
-  nsi) cmd.exe /C "makensis $file && $name.exe";;
-  pl) perl $file;;
-  ps1) powershell.exe ".\\$file";;
-  py) python3 $file;;
-  r) Rscript $file;;
-  rb) ruby $file;;
-  rs) rustc $file -o $name.out && ./$name.out;;
-  scala) scala $file;;
-  sh) sh $file;;
-  sql) sqlite3 $name.db < $file;;
-  zig) zig build-exe $file && ./$name;;
-  zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) zsh -ic "x $file";;
-  zsh) zsh $file;;
-  *) # Executable
-    if [[ -x $file ]]; then
-      ./$file
-      return
-    fi
-    echo 'Nothing to do';;
-esac
+  # Extension
+  case ${1:t:e} in
+    asm) nasm -f elf64 $file && ld -s -o $name.out $name.o && ./$name.out;;
+    bash) bash $file;;
+    bat|cmd) cmd.exe /C "$file";;
+    c) clang -o $name.out $file && ./$name.out;;
+    cc|cpp) clang++ -o $name.out $file && ./$name.out;;
+    cs) csc.exe -out:$name.out $file && ./$name.out;;
+    f90|f95|f03) gfortran -o $name.out $file && ./$name.out;;
+    go) go run $file;;
+    groovy) groovy $file;;
+    hs) ghc $file && ./$name;;
+    html|md) o $file;;
+    java) javac $file && java $name;;
+    jl) julia $file;;
+    js|ts|mjs|tsx|jsx) bun run $file;;
+    kt) kotlinc $file -include-runtime -d $name.jar && java -jar $name.jar;;
+    lisp) clisp $name;;
+    lua) lua $file;;
+    m4) m4 -I $file > $name;;
+    mod|aMod) voc $file -M && echo && ./$name;;
+    nsi) cmd.exe /C "makensis $file && $name.exe";;
+    pl) perl $file;;
+    ps1) powershell.exe ".\\$file";;
+    py) python3 $file;;
+    r) Rscript $file;;
+    rb) ruby $file;;
+    rs) rustc $file -o $name.out && ./$name.out;;
+    scala) scala $file;;
+    sh) sh $file;;
+    sql) sqlite3 $name.db < $file;;
+    zig) zig build-exe $file && ./$name;;
+    zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) zsh -ic "x $file";;
+    zsh) zsh $file;;
+    *) # Executable
+      if [[ -x $file ]]; then
+        ./$file
+        return
+      fi
+      echo 'Nothing to do';;
+  esac
+}
+
+start=$(date +%s.%2N)
+run $(readlink -f $1)
+returned=$?
+execution_time=$(echo "$(date +%s.%2N) - $start" | bc)
+echo -n "\e[36m[Returned $returned in $execution_time seconds]\e[0m"
+read

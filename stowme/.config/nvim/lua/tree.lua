@@ -1,6 +1,18 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+local function run()
+  local api=require'nvim-tree.api'
+  local node=api.tree.get_node_under_cursor()
+  vim.cmd('sil !tmux splitw "run '..node.absolute_path..'"')
+end
+
+local function open()
+  local api=require'nvim-tree.api'
+  local node=api.tree.get_node_under_cursor()
+  vim.cmd('sil !o "'..node.absolute_path..'"')
+end
+
 local function tree(bufnr)
   local api=require'nvim-tree.api'
   local arr={
@@ -9,12 +21,14 @@ local function tree(bufnr)
     ['yW']=api.fs.copy.absolute_path,
     ['yw']=api.fs.copy.filename,
     ['yy']=api.fs.copy.node,
-    ['DD']=api.fs.remove,
-    ['dd']=api.fs.cut,
+    ['dd']=api.fs.remove,
+    ['xx']=api.fs.cut,
     ['T']=api.fs.create,
     ['p']=api.fs.paste,
     ['l']=api.node.open.edit,
-    ['h']=api.node.navigate.parent_close
+    ['h']=api.node.navigate.parent_close,
+    ['é']=run,
+    ['<CR>']=open,
   }
   for k, v in pairs(arr) do
     vim.keymap.set('n',k,v,{buffer=bufnr,silent=true,nowait=true})

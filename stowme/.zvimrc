@@ -1,0 +1,76 @@
+#!/usr/bin/zsh
+# vim: set ft=zsh:
+
+VI_MODE_CURSOR_VISUAL=2
+VI_MODE_SET_CURSOR=true
+ZVM_KEYTIMEOUT=1000
+MODE_INDICATOR=""
+
+zvim-put() {
+  local CLIPBOARD=${"$(p; printf '%s' x)"%x}
+  local DELTA=$1
+  BUFFER="${BUFFER:0:$(( ${CURSOR} + ${DELTA} ))}${CLIPBOARD}${BUFFER:$(( ${CURSOR} + ${DELTA} ))}"
+  CURSOR=$(( $#LBUFFER + $#CLIPBOARD + ${DELTA} - 1))
+}
+zvim-put-after(){zvim-put 1}
+zvim-put-before(){zvim-put 0}
+zle -N zvim-put-after
+zle -N zvim-put-before
+
+zvim-replace(){
+  local PUT=${"$(p; printf '%s' x)"%x}
+  zvim-cut
+  local REPLACED=${"$(p; printf '%s' x)"%x}
+  printf '%s' "$PUT" | c
+  zvim-put 0
+  printf '%s' "$REPLACED" | c
+}
+zle -N zvim-replace
+
+zvim-cut(){
+  zle vi-delete
+  printf '%s' "$CUTBUFFER" | c
+}
+zle -N zvim-cut
+
+zvim-yank(){
+  zle vi-yank
+  printf '%s' "$CUTBUFFER" | c
+}
+zle -N zvim-yank
+
+bindkey -M vicmd y zvim-yank
+bindkey -M vicmd p zvim-put-after
+bindkey -M vicmd P zvim-put-before
+bindkey -M vicmd x zvim-cut
+bindkey -M visual x zvim-cut
+bindkey -M visual p zvim-replace
+
+bindkey -M vicmd vv visual-line-mode
+bindkey -M vicmd U redo
+bindkey -M vicmd -r :
+
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd cs change-surround
+bindkey -M vicmd ds delete-surround
+bindkey -M vicmd s add-surround
+bindkey -M visual s add-surround
+
+autoload -U select-bracketed
+zle -N select-bracketed
+for m in visual viopp; do
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $m $c select-bracketed
+  done
+done
+
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+done
