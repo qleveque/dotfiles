@@ -1,5 +1,5 @@
 " vim: set ft=vim:
-set history=100 ul=100 wmnu ic scs nohls ic so=4 stl=" "
+set history=100 ul=100 wmnu is scs nohls ic so=4 stl=" "
 set vicmd=nvim syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.local/share/Trash
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
