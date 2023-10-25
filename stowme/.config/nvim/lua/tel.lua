@@ -1,0 +1,10 @@
+require'telescope'.setup{
+  defaults={
+    mappings={
+      i={
+        ['<ESC>']=require('telescope.actions').close,
+        ['<C-V>']={'<C-R>+',type="command"}
+      }
+    }
+  }
+}

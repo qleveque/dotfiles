@@ -1,6 +1,6 @@
 colorscheme style
 set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%= mousescroll=ver:2
-set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=vertical shm+=aI noro
+set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=iwhite,vertical shm+=aI noro
 
 " No registers
 no c "_c
@@ -50,7 +50,7 @@ ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_en
 ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
 
 " Term
-nn <silent> é :exe'sil !tmux splitw "run \"'.expand("%").'\""'<CR>
+nn <silent> é :exe'sil !tmux splitw "run '.expand("%").'"'<CR>
 nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
@@ -77,7 +77,7 @@ for k in split('abcdefghijklmnopqrstuwxyz','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.
 
 " Plugins
 call plug#begin('~/.vim_plugged')
-  Plug 'Exafunction/codeium.vim'
+  if !exists('$WORK')|Plug 'Exafunction/codeium.vim'|end
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'dstein64/nvim-scrollview'
   Plug 'farmergreg/vim-lastplace'
@@ -97,3 +97,4 @@ call plug#begin('~/.vim_plugged')
 call plug#end()
 lua require('tree')
 lua require('bar')
+lua require('tel')

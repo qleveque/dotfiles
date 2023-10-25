@@ -30,6 +30,7 @@ source ~/.antigen/antigen.zsh
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
+bindkey '^I' fzf_completion
 
 # Functions
 cf() {cd "$(dirname $1)"}
@@ -48,18 +49,6 @@ autoload -U add-zsh-hook
 add-zsh-hook chpwd _stack_new_dir
 _stack_new_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
 _stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
-
-# Ctrl-F Ctrl-Q Ctrl-P Alt-P Tab
-local reset-prompt(){zle reset-prompt && zle autosuggest-clear && zle zle-line-init}
-zle-recent-directory(){LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"; reset-prompt}
-zle-go-to-recent-directory(){cd "$(eval $FZF_P_COMMAND | fzf --exact)"&&reset-prompt}
-zle-vifm-only-choose-dir(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)"&&reset-prompt}
-zle-exit-zsh(){exit}
-zle -N zle-recent-directory && bindkey '^P' zle-recent-directory
-zle -N zle-go-to-recent-directory && bindkey '\ep' zle-go-to-recent-directory
-zle -N zle-vifm-only-choose-dir && bindkey '^F' zle-vifm-only-choose-dir
-zle -N zle-exit-zsh && bindkey '^Q' zle-exit-zsh && bindkey -M vicmd '^Q' zle-exit-zsh
-bindkey '^I' fzf_completion
 
 # Windows
 if $(grep -q Microsoft /proc/version); then

@@ -3,19 +3,25 @@
 
 VI_MODE_CURSOR_VISUAL=2
 VI_MODE_SET_CURSOR=true
-ZVM_KEYTIMEOUT=1000
 MODE_INDICATOR=""
 
-zvim-put() {
-  local CLIPBOARD=${"$(p; printf '%s' x)"%x}
-  local DELTA=$1
-  BUFFER="${BUFFER:0:$(( ${CURSOR} + ${DELTA} ))}${CLIPBOARD}${BUFFER:$(( ${CURSOR} + ${DELTA} ))}"
-  CURSOR=$(( $#LBUFFER + $#CLIPBOARD + ${DELTA} - 1))
+local reset-prompt(){
+  zle reset-prompt
+  zle autosuggest-clear
+  zle zle-line-init
 }
-zvim-put-after(){zvim-put 1}
-zvim-put-before(){zvim-put 0}
+
+zvim-put(){
+  local CLIPBOARD=${"$(p; printf '%s' x)"%x} D1=$1 D2=$2
+  BUFFER="${BUFFER:0:$(( ${CURSOR} + ${D1} ))}${CLIPBOARD}${BUFFER:$(( ${CURSOR} + ${D1} ))}"
+  CURSOR=$(( $#LBUFFER + $#CLIPBOARD + ${D2} ))
+}
+zvim-put-after(){zvim-put 1 0}
+zvim-put-before(){zvim-put 0 -1}
+zvim-put-ins(){zvim-put 0 0}
 zle -N zvim-put-after
 zle -N zvim-put-before
+zle -N zvim-put-ins
 
 zvim-replace(){
   local PUT=${"$(p; printf '%s' x)"%x}
@@ -39,6 +45,40 @@ zvim-yank(){
 }
 zle -N zvim-yank
 
+zvim-recent-dir(){
+  LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"
+  reset-prompt
+}
+zle -N zvim-recent-dir
+
+zvim-goto-recent-dir(){
+  cd "$(eval $FZF_P_COMMAND | fzf --exact)"
+  reset-prompt
+}
+zle -N zvim-goto-recent-dir
+
+zvim-fm(){
+  cd "$(vifm -c :only --choose-dir - . < /dev/tty)"
+  reset-prompt
+}
+zle -N zvim-fm
+
+zvim-exit(){
+  exit
+}
+zle -N zvim-exit
+
+autoload -U select-bracketed
+zle -N select-bracketed
+
+autoload -U select-quoted
+zle -N select-quoted
+
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+
 bindkey -M vicmd y zvim-yank
 bindkey -M vicmd p zvim-put-after
 bindkey -M vicmd P zvim-put-before
@@ -49,28 +89,28 @@ bindkey -M visual p zvim-replace
 bindkey -M vicmd vv visual-line-mode
 bindkey -M vicmd U redo
 bindkey -M vicmd -r :
+bindkey -M viins '^V' zvim-put-ins
+bindkey -M viins '^P' zvim-recent-dir
 
-autoload -Uz surround
-zle -N delete-surround surround
-zle -N add-surround surround
-zle -N change-surround surround
 bindkey -M vicmd cs change-surround
 bindkey -M vicmd ds delete-surround
 bindkey -M vicmd s add-surround
 bindkey -M visual s add-surround
 
-autoload -U select-bracketed
-zle -N select-bracketed
 for m in visual viopp; do
   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
     bindkey -M $m $c select-bracketed
   done
 done
 
-autoload -U select-quoted
-zle -N select-quoted
 for m in visual viopp; do
   for c in {a,i}{\',\",\`}; do
     bindkey -M $m $c select-quoted
   done
+done
+
+for m in visual vicmd viins; do
+  bindkey -M $m '\ep' zvim-goto-recent-dir
+  bindkey -M $m '^F' zvim-fm
+  bindkey -M $m '^Q' zvim-exit
 done

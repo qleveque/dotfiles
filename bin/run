@@ -71,7 +71,7 @@ run() {
 }
 
 start=$(date +%s.%2N)
-run $(readlink -f $1)
+run "$(readlink -f $*)"
 returned=$?
 execution_time=$(echo "$(date +%s.%2N) - $start" | bc)
 echo -n "\e[36m[Returned $returned in $execution_time seconds]\e[0m"
