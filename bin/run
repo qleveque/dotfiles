@@ -39,7 +39,7 @@ run() {
     go) go run $file;;
     groovy) groovy $file;;
     hs) ghc $file && ./$name;;
-    html|md) o $file;;
+    html|md) o $file; exit 0;;
     java) javac $file && java $name;;
     jl) julia $file;;
     js|ts|mjs|tsx|jsx) bun run $file;;
@@ -70,9 +70,9 @@ run() {
   esac
 }
 
-start=$(date +%s.%2N)
+START=$(date +%s.%2N)
 run "$(readlink -f $*)"
-returned=$?
-execution_time=$(echo "$(date +%s.%2N) - $start" | bc)
-echo -n "\e[36m[Returned $returned in $execution_time seconds]\e[0m"
+RC=$?
+ET=$(echo "$(date +%s.%2N) - $START" | bc)
+echo -n "\e[36m[Returned $RC in $ET seconds]\e[0m"
 read

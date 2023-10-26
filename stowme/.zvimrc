@@ -1,116 +1,86 @@
 #!/usr/bin/zsh
 # vim: set ft=zsh:
+bindkey -v
 
-VI_MODE_CURSOR_VISUAL=2
-VI_MODE_SET_CURSOR=true
-MODE_INDICATOR=""
-
-local reset-prompt(){
-  zle reset-prompt
-  zle autosuggest-clear
-  zle zle-line-init
+# Cursor
+function set-vi-cursor-shape() {
+  local shape=0 CURSOR_NORMAL=2 CURSOR_INSERT=6
+  case "${1:-${VI_KEYMAP:-main}}" in
+    main|viins) shape=$CURSOR_INSERT;;
+    *) shape=$CURSOR_NORMAL;;
+  esac
+  printf $'\e[%d q' "${shape}"
 }
+function zle-keymap-select() { set-vi-cursor-shape $KEYMAP }
+function zle-line-init() { set-vi-cursor-shape }
+function zle-line-finish() { set-vi-cursor-shape }
+zle -N zle-keymap-select
+zle -N zle-line-init
+zle -N zle-line-finish
 
-zvim-put(){
-  local CLIPBOARD=${"$(p; printf '%s' x)"%x} D1=$1 D2=$2
-  BUFFER="${BUFFER:0:$(( ${CURSOR} + ${D1} ))}${CLIPBOARD}${BUFFER:$(( ${CURSOR} + ${D1} ))}"
-  CURSOR=$(( $#LBUFFER + $#CLIPBOARD + ${D2} ))
-}
-zvim-put-after(){zvim-put 1 0}
-zvim-put-before(){zvim-put 0 -1}
-zvim-put-ins(){zvim-put 0 0}
-zle -N zvim-put-after
-zle -N zvim-put-before
-zle -N zvim-put-ins
-
-zvim-replace(){
-  local PUT=${"$(p; printf '%s' x)"%x}
-  zvim-cut
-  local REPLACED=${"$(p; printf '%s' x)"%x}
-  printf '%s' "$PUT" | c
-  zvim-put 0
-  printf '%s' "$REPLACED" | c
-}
-zle -N zvim-replace
-
-zvim-cut(){
-  zle vi-delete
-  printf '%s' "$CUTBUFFER" | c
-}
+# Functions
+reset-prompt(){ zle reset-prompt && zle autosuggest-clear && zle zle-line-init }
+zvim-cut(){ zle vi-delete; printf '%s' "$CUTBUFFER" | c }
+zvim-recent-dir(){ LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"; reset-prompt }
+zvim-goto-recent-dir(){ cd "$(eval $FZF_P_COMMAND | fzf --exact)"; reset-prompt }
+zvim-fm(){ cd "$(vifm -c :only --choose-dir - . < /dev/tty)"; reset-prompt }
+zvim-exit(){ exit }
+vi-yank(){ zle .vi-yank; printf '%s' "$CUTBUFFER" | c }
+vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-before }
+vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-after }
 zle -N zvim-cut
-
-zvim-yank(){
-  zle vi-yank
-  printf '%s' "$CUTBUFFER" | c
-}
-zle -N zvim-yank
-
-zvim-recent-dir(){
-  LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"
-  reset-prompt
-}
 zle -N zvim-recent-dir
-
-zvim-goto-recent-dir(){
-  cd "$(eval $FZF_P_COMMAND | fzf --exact)"
-  reset-prompt
-}
 zle -N zvim-goto-recent-dir
-
-zvim-fm(){
-  cd "$(vifm -c :only --choose-dir - . < /dev/tty)"
-  reset-prompt
-}
 zle -N zvim-fm
-
-zvim-exit(){
-  exit
-}
 zle -N zvim-exit
+zle -N vi-yank
+zle -N vi-put-before
+zle -N vi-put-after
 
-autoload -U select-bracketed
+autoload -U select-bracketed select-quoted surround
 zle -N select-bracketed
-
-autoload -U select-quoted
 zle -N select-quoted
-
-autoload -Uz surround
-zle -N delete-surround surround
 zle -N add-surround surround
-zle -N change-surround surround
 
-bindkey -M vicmd y zvim-yank
-bindkey -M vicmd p zvim-put-after
-bindkey -M vicmd P zvim-put-before
+viopp-wrapper(){
+  local k
+  read -k 1 k
+  [ $k = 's' ] && zle add-surround && return
+  zle -U $k && zle .vi-${WIDGET%-wrapper}
+}
+zle -N change-wrapper viopp-wrapper
+zle -N delete-wrapper viopp-wrapper
+
+# Remapping
 bindkey -M vicmd x zvim-cut
 bindkey -M visual x zvim-cut
-bindkey -M visual p zvim-replace
-
-bindkey -M vicmd vv visual-line-mode
+bindkey -M visual v visual-line-mode
 bindkey -M vicmd U redo
 bindkey -M vicmd -r :
-bindkey -M viins '^V' zvim-put-ins
+bindkey -M viins '^V' vi-put-after
 bindkey -M viins '^P' zvim-recent-dir
-
-bindkey -M vicmd cs change-surround
-bindkey -M vicmd ds delete-surround
-bindkey -M vicmd s add-surround
-bindkey -M visual s add-surround
-
-for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-done
-
-for m in visual viopp; do
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  done
-done
+bindkey '^?' backward-delete-char
+bindkey '^[[Z' forward-word
+bindkey '^I' fzf_completion
 
 for m in visual vicmd viins; do
   bindkey -M $m '\ep' zvim-goto-recent-dir
   bindkey -M $m '^F' zvim-fm
   bindkey -M $m '^Q' zvim-exit
 done
+
+for m in visual viopp; do
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $m $c select-bracketed
+  done
+  for c in {a,i}{\',\",\`}; do
+    bindkey -M $m $c select-quoted
+  done
+done
+
+bindkey -M vicmd s add-surround
+bindkey -M visual s add-surround
+bindkey -M vicmd c change-wrapper
+bindkey -M visual c vi-change
+bindkey -M vicmd d delete-wrapper
+bindkey -M visual d vi-delete

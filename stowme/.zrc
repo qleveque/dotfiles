@@ -1,8 +1,6 @@
 #!/usr/bin/zsh
 stty -ixon
 setopt histignorealldups sharehistory nonomatch promptsubst
-bindkey -v
-bindkey '^[[Z' forward-word
 
 # Variables
 export FZF_ALT_C_COMMAND='fdfind --type d'
@@ -14,7 +12,7 @@ export MYVIFMRC="$HOME/.vifmrc"
 export PATH="$HOME/dotfiles/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
-KEYTIMEOUT=20
+KEYTIMEOUT=1
 PROMPT=$'\n%B%F{white}%S%n@%M%s%f %F{blue}%5~%f%b %# '
 SAVEHIST=1000
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit)
@@ -26,11 +24,9 @@ source ~/.antigen/antigen.zsh
   antigen bundle ohmyzsh/ohmyzsh plugins/extract
   antigen bundle ohmyzsh/ohmyzsh plugins/git
   antigen bundle ohmyzsh/ohmyzsh plugins/jump
-  antigen bundle ohmyzsh/ohmyzsh plugins/vi-mode
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
-bindkey '^I' fzf_completion
 
 # Functions
 cf() {cd "$(dirname $1)"}
@@ -38,11 +34,11 @@ mkcd() {mkdir "$1" && cd "$1"}
 t() {nvim $(tempfile $([ -z $1 ] || echo --suffix .$1))}
 
 # Sources
+source ~/.zvimrc
 source ~/.aliases
 source ~/.vim_plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-source ~/.zvimrc
 
 # Directory history
 autoload -U add-zsh-hook

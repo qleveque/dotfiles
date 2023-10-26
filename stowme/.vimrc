@@ -69,15 +69,13 @@ nm dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
 
 " Miscellaneous
 autocmd FileType * set formatoptions-=cro
-im <script><silent><nowait><expr> <S-TAB> codeium#Accept()
 let g:codeium_disable_bindings = 1
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
 let g:scrollview_signs_on_startup = []
-for k in split('abcdefghijklmnopqrstuwxyz','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
+for k in split('jklmftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 
 " Plugins
 call plug#begin('~/.vim_plugged')
-  if !exists('$WORK')|Plug 'Exafunction/codeium.vim'|end
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'dstein64/nvim-scrollview'
   Plug 'farmergreg/vim-lastplace'
