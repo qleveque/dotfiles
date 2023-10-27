@@ -1,5 +1,5 @@
 " vim: set ft=vim:
-set history=100 ul=100 wmnu is scs nohls ic so=4 stl=" "
+set history=100 ul=100 wmnu is scs nohls ic so=4 stl=" " cf=permdelete
 set vicmd=nvim syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.local/share/Trash
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
@@ -18,30 +18,26 @@ nn yw :exe '!echo -n %c | c'<CR>
 nn xx dd
 nn dd DD
 nn é :!tmux splitw "run %f"<CR>
+vn x d
+vn d D
 
 " FZF
 nn <M-c> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
-nn <C-t> :exe 'ma x '.system('a=$(eval $FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)
-  \&&echo \"%d/$a:h\" \"$a:t\"')|:redr|:norm 'x<CR>
-nn <M-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:redr<CR>
-nn <C-p> :exe 'ma x '.system('a=$(eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty)
-  \&&echo \"$a:h\" \"$a:t\"')|:redr|:norm 'x<CR>
+nn <C-t> :exe 'goto "'.system('eval $FZF_CTRL_T_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
+nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:redr<CR>
 
 " Tmux integration
 nn <C-b>s :!tmux split-window -v -c %d<CR>
 nn <C-b>v :!tmux split-window -h -c %d<CR>
 
 " Commands
-command! g :exe 'cd "'.system('set %a && readlink "$MARKPATH/$1"').'"'
-command! o :!o "%a"
-command! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
+com! g :exe 'cd "'.system('set %a && readlink "$MARKPATH/$1"').'"'
+com! o :!o "%a"
+com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
 
 " Style
-hi Win cterm=none ctermfg=none ctermbg=none
-hi Executable cterm=none ctermfg=none ctermbg=none
-hi StatusLine cterm=none ctermfg=none ctermbg=none
-hi CmdLine cterm=none ctermfg=none ctermbg=none
-hi TopLine cterm=none ctermfg=none ctermbg=none
+com! none :exe 'hi %a cterm=none ctermfg=none ctermbg=none'
+none Win|none Executable|none StatusLine|none CmdLine|none TopLine
 hi Border cterm=none ctermfg=black ctermbg=none
 hi Directory cterm=bold ctermfg=green ctermbg=none
 source ~/.favicons.vifm

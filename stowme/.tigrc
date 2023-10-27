@@ -23,17 +23,17 @@ bind status - :?^\S+
 bind generic l enter
 
 bind diff l !@>tmux new-window -a "\
-  git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file)\
+  git difftool --trust-exit-code --no-prompt %(commit)^! -- %(file);\
 "
 bind stage l !@>tmux new-window -a "\
-  EXPR=`expr '%(status)' : 'Staged changes' > /dev/null && echo --staged;`\
-  git difftool --trust-exit-code --no-prompt $EXPR -- '%(file)'\
+  EXPR=`expr '%(status)' : 'Staged changes' > /dev/null && echo --staged`;\
+  git difftool --trust-exit-code --no-prompt $EXPR -- '%(file)';\
 "
 bind status l !@>tmux new-window -a "\
   if [[ '%(status)' =~ '^Untracked file .*' ]]; then\
     nvim '%(file)';\
   else;\
-    EXPR=`expr '%(status)' : 'Staged changes' > /dev/null && echo --staged;`\
+    EXPR=`expr '%(status)' : 'Staged changes' > /dev/null && echo --staged`;\
     git difftool --trust-exit-code --no-prompt $EXPR -- '%(file)';\
   fi;\
 "

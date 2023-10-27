@@ -9,27 +9,35 @@ no d "_d
 nn dd "_dd
 no x d
 
-" Easy life
-map <C-q> ZQ 
-ino <C-v> <C-R>+
-cno <C-v> <C-R>+
-nn <BS> :nohl<CR>
+" Char operations
+nm X xl
+nm D dl
+nm Y yl
+nm C cl
+
+" Vim corrections
 nn ' `
 nn U <C-R>
-no V ggVG
 nn vv V
-nn S f,a<CR><Esc>
+vn $ $h
 nm s ys
 vm s S
+xn . :norm! .<CR>
+
+" Easy life
+nn <BS> :nohl<CR>
+nn <C-q> ZQ
+no V ggVG
+xn à :norm! @q<CR>
+nn à @q
 vm <C-e> <C-y>,
 im <C-e> <C-y>,
-nn à @q
-xno à :norm! @q<CR>
-xno . :norm! .<CR>
-map ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>cgn
-vm ç "xy<Cmd>let @/=@x<bar>set hlsearch<CR>cgn
-nm - :sil cprev<CR>
-nm + :sil cnext<CR>
+ino <C-v> <C-R>+
+cno <C-v> <C-R>+
+nn ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
+vn ç "xy<Cmd>let @/=@x<bar>set hlsearch<CR>"_cgn
+nn - :sil cprev<CR>
+nn + :sil cnext<CR>
 map ( ?\C\<
 map ) /\C\<
 
@@ -41,11 +49,11 @@ map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
 
 " Coc
-nm gd <Plug>(coc-definition)
-nm gr <Plug>(coc-references)
-xm \f <Plug>(coc-format-selected)
-nm \f <Plug>(coc-format)
-nm <M-CR> <Plug>(coc-codeaction-cursor)
+nn gd <Plug>(coc-definition)
+nn gr <Plug>(coc-references)
+xn \f <Plug>(coc-format-selected)
+nn \f <Plug>(coc-format)
+nn <M-CR> <Plug>(coc-codeaction-cursor)
 ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
 
@@ -55,8 +63,7 @@ nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
 " Version Control
-let df='windo set wrap nofen fdc=0|nm <C-Q> :qa<CR>|nm + ]czt|nm - [czt|norm +-'
-au VimEnter * if &diff|exe df|end
+au VimEnter * if &diff|windo set wrap nofen fdc=0|nn <C-Q> :qa<CR>|nn + ]c|nn - [c|norm +-|en
 let rs="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 nn \d :exe'sil '.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
 nn \D :exe'sil '.eval(rs).'tig status"'<CR>
@@ -65,14 +72,13 @@ nn \L :exe'sil '.eval(rs).'tig"'<CR>
 nn \b :exe'sil '.eval(rs).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
-nm dc [xjV]xky?\v\<{7}.*<CR>V/\v\>{7}.*<CR>DP<BS>
+nm dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>dp<BS>
 
 " Miscellaneous
 autocmd FileType * set formatoptions-=cro
-let g:codeium_disable_bindings = 1
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
 let g:scrollview_signs_on_startup = []
-for k in split('jklmftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
+for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 
 " Plugins
 call plug#begin('~/.vim_plugged')
@@ -92,6 +98,7 @@ call plug#begin('~/.vim_plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
+  Plug 'wellle/targets.vim'
 call plug#end()
 lua require('tree')
 lua require('bar')

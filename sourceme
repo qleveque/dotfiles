@@ -37,7 +37,6 @@ sudo apt-get update -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake \
   vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
-
 # Nvim
 TMP=$(mktemp) && wget -O $TMP $NVIM_URL && tar xvzf $TMP -C $HOME
 sudo ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim

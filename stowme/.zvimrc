@@ -1,86 +1,45 @@
 #!/usr/bin/zsh
 # vim: set ft=zsh:
-bindkey -v
-
-# Cursor
-function set-vi-cursor-shape() {
-  local shape=0 CURSOR_NORMAL=2 CURSOR_INSERT=6
-  case "${1:-${VI_KEYMAP:-main}}" in
-    main|viins) shape=$CURSOR_INSERT;;
-    *) shape=$CURSOR_NORMAL;;
-  esac
-  printf $'\e[%d q' "${shape}"
-}
-function zle-keymap-select() { set-vi-cursor-shape $KEYMAP }
-function zle-line-init() { set-vi-cursor-shape }
-function zle-line-finish() { set-vi-cursor-shape }
-zle -N zle-keymap-select
-zle -N zle-line-init
-zle -N zle-line-finish
-
 # Functions
-reset-prompt(){ zle reset-prompt && zle autosuggest-clear && zle zle-line-init }
-zvim-cut(){ zle vi-delete; printf '%s' "$CUTBUFFER" | c }
-zvim-recent-dir(){ LBUFFER+="`eval $FZF_P_COMMAND | fzf --exact`"; reset-prompt }
-zvim-goto-recent-dir(){ cd "$(eval $FZF_P_COMMAND | fzf --exact)"; reset-prompt }
-zvim-fm(){ cd "$(vifm -c :only --choose-dir - . < /dev/tty)"; reset-prompt }
-zvim-exit(){ exit }
-vi-yank(){ zle .vi-yank; printf '%s' "$CUTBUFFER" | c }
+set-cursor() { local c=2;[ "${KEYMAP:-main}" =~ '(main|viins)' ]&&c=6;printf $'\e[%d q' "$c" }
+reset-prompt() { zle reset-prompt && zle autosuggest-clear && zle zle-line-init }
+goto-recent-dir() { cd "$(eval $FZF_P_COMMAND | fzf --exact)"; reset-prompt }
+open-fm() { cd "$(vifm -c :only --choose-dir - . < /dev/tty)"; reset-prompt }
+quit() { exit }
+vi-cut() { zle vi-delete; printf '%s' "$CUTBUFFER" | c }
+vi-yank() { zle .vi-yank; printf '%s' "$CUTBUFFER" | c }
 vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-before }
 vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-after }
-zle -N zvim-cut
-zle -N zvim-recent-dir
-zle -N zvim-goto-recent-dir
-zle -N zvim-fm
-zle -N zvim-exit
-zle -N vi-yank
-zle -N vi-put-before
-zle -N vi-put-after
-
-autoload -U select-bracketed select-quoted surround
-zle -N select-bracketed
-zle -N select-quoted
-zle -N add-surround surround
-
-viopp-wrapper(){
-  local k
-  read -k 1 k
-  [ $k = 's' ] && zle add-surround && return
-  zle -U $k && zle .vi-${WIDGET%-wrapper}
+char-wrapper() { zle -U l && zle ${WIDGET%-char} }
+opp-wrapper() {
+  local k && read -k 1 k
+  if [ $k = 's' ];then zle add-surround;else;zle -U $k&&zle .vi-${WIDGET%-wrapper};fi
 }
-zle -N change-wrapper viopp-wrapper
-zle -N delete-wrapper viopp-wrapper
+
+# Instantiating zle widgets
+autoload -U select-bracketed select-quoted surround
+zle -N add-surround surround
+for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done 
+for w in {change,delete}-wrapper; do zle -N $w opp-wrapper; done
+for w in vi-{delete,cut,change,yank}-char; do zle -N $w char-wrapper; done
+for w in vi-{cut,yank,put-{before,after}}; do zle -N $w; done
+for w in goto-recent-dir open-fm quit select-{bracketed,quoted}; do zle -N $w; done
 
 # Remapping
-bindkey -M vicmd x zvim-cut
-bindkey -M visual x zvim-cut
-bindkey -M visual v visual-line-mode
-bindkey -M vicmd U redo
-bindkey -M vicmd -r :
+bindkey -v
+bindkey '^[[Z' forward-word '^I' fzf_completion '^?' backward-delete-char -r :
 bindkey -M viins '^V' vi-put-after
-bindkey -M viins '^P' zvim-recent-dir
-bindkey '^?' backward-delete-char
-bindkey '^[[Z' forward-word
-bindkey '^I' fzf_completion
-
+bindkey -M vicmd X vi-cut-char D vi-delete-char Y vi-yank-char C vi-change-char
+bindkey -M vicmd s add-surround c change-wrapper d delete-wrapper
+bindkey -M visual s add-surround c vi-change d vi-delete
+bindkey -M vicmd U redo
+bindkey -M vicmd x vi-cut
+bindkey -M visual x vi-cut
+bindkey -M visual v visual-line-mode
 for m in visual vicmd viins; do
-  bindkey -M $m '\ep' zvim-goto-recent-dir
-  bindkey -M $m '^F' zvim-fm
-  bindkey -M $m '^Q' zvim-exit
+  bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^Q' quit
 done
-
 for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-  for c in {a,i}{\',\",\`}; do
-    bindkey -M $m $c select-quoted
-  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do bindkey -M $m $c select-bracketed; done
+  for c in {a,i}{\',\",\`,_,-,\\,/,\,,.,\;,:,\|,\&}; do bindkey -M $m $c select-quoted; done
 done
-
-bindkey -M vicmd s add-surround
-bindkey -M visual s add-surround
-bindkey -M vicmd c change-wrapper
-bindkey -M visual c vi-change
-bindkey -M vicmd d delete-wrapper
-bindkey -M visual d vi-delete
