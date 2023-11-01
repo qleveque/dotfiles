@@ -1,8 +1,10 @@
 #!/usr/bin/zsh
 stty -ixon
 setopt histignorealldups sharehistory nonomatch promptsubst
+zstyle ':completion:*' fzf-search-display true
 
 # Variables
+export EDITOR='nvim'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
@@ -10,13 +12,13 @@ export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
 export LESS='-irFRX --mouse --wheel-lines=1'
 export MYVIFMRC="$HOME/.vifmrc"
 export PATH="$HOME/dotfiles/bin:$HOME/bin:$HOME/.local/bin:$PATH"
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
 KEYTIMEOUT=1
+HISTFILE=~/.zsh_history HISTSIZE=1000 SAVEHIST=1000
 PROMPT=$'\n%B%F{white}%S%n@%M%s%f %F{blue}%5~%f%b %# '
-SAVEHIST=1000
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit)
-ZSH_AUTOSUGGEST_MANUAL_REBIND=true
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit recursive-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c80,)|*
+*"
 
 # Plugins
 source ~/.antigen/antigen.zsh
@@ -24,14 +26,15 @@ source ~/.antigen/antigen.zsh
   antigen bundle ohmyzsh/ohmyzsh plugins/extract
   antigen bundle ohmyzsh/ohmyzsh plugins/git
   antigen bundle ohmyzsh/ohmyzsh plugins/jump
+  antigen bundle thimc/vifm_devicons
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen bundle Whenti/zsh-vi-search
 antigen apply
 
 # Functions
 cf() {cd "$(dirname $1)"}
-mkcd() {mkdir "$1" && cd "$1"}
-t() {nvim $(tempfile $([ -z $1 ] || echo --suffix .$1))}
+t() {nvim $(mktemp $([ -z $1 ] || echo --suffix .$1))}
 
 # Sources
 source ~/.zvimrc
@@ -42,9 +45,9 @@ source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 
 # Directory history
 autoload -U add-zsh-hook
-add-zsh-hook chpwd _stack_new_dir
-_stack_new_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
-_stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
+add-zsh-hook chpwd stack_new_dir
+stack_new_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
+stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
 
 # Windows
 if $(grep -q Microsoft /proc/version); then

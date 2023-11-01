@@ -26,7 +26,6 @@ xn . :norm! .<CR>
 
 " Easy life
 nn <BS> :nohl<CR>
-nn <C-q> ZQ
 no V ggVG
 xn à :norm! @q<CR>
 nn à @q
@@ -47,13 +46,14 @@ map <C-n> :CocList -I symbols<CR>
 map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
 map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
+map <C-q> ZQ
 
 " Coc
 nn gd <Plug>(coc-definition)
 nn gr <Plug>(coc-references)
 xn \f <Plug>(coc-format-selected)
 nn \f <Plug>(coc-format)
-nn <M-CR> <Plug>(coc-codeaction-cursor)
+nn <C-;> <Plug>(coc-codeaction-cursor)
 ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
 ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
 
@@ -63,7 +63,8 @@ nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
 " Version Control
-au VimEnter * if &diff|windo set wrap nofen fdc=0|nn <C-Q> :qa<CR>|nn + ]c|nn - [c|norm +-|en
+let df='windo set wrap nofen fdc=0|nm <C-Q> :qa<CR>|nm + ]c|nm - [c|norm +-'
+au VimEnter * if &diff|exe df|end
 let rs="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 nn \d :exe'sil '.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
 nn \D :exe'sil '.eval(rs).'tig status"'<CR>
@@ -75,15 +76,13 @@ no [x ?\v^[\=<>\|]{7}.*<CR>
 nm dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>dp<BS>
 
 " Miscellaneous
-autocmd FileType * set formatoptions-=cro
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
-let g:scrollview_signs_on_startup = []
 for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
+au FileType * set formatoptions-=cro
 
 " Plugins
 call plug#begin('~/.vim_plugged')
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'dstein64/nvim-scrollview'
   Plug 'farmergreg/vim-lastplace'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'mattn/emmet-vim'
@@ -92,6 +91,8 @@ call plug#begin('~/.vim_plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'petertriho/nvim-scrollbar'
+  Plug 'pocco81/auto-save.nvim'
   Plug 'romgrk/barbar.nvim'
   Plug 'roxma/vim-paste-easy'
   Plug 'sheerun/vim-polyglot'
@@ -100,6 +101,3 @@ call plug#begin('~/.vim_plugged')
   Plug 'tpope/vim-surround'
   Plug 'wellle/targets.vim'
 call plug#end()
-lua require('tree')
-lua require('bar')
-lua require('tel')

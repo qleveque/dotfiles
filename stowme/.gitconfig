@@ -25,3 +25,8 @@
   commit-decoration-style = bold white ol
   file-decoration-style = blue ol
   hunk-header-decoration-style = blue
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

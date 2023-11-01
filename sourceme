@@ -7,7 +7,6 @@ DELTA_URL='https://github.com/dandavison/delta/releases/download/0.16.5/git-delt
 HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
 NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
 SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
-VIFM_ICONS_URL='https://raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm'
 VIM_PLUG_URL='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
 
@@ -49,8 +48,6 @@ mkdir $HOME/.antigen && curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 wget -O $HOME/bin/sd $SD_URL
 # Delta
 TMP=$(mktemp) && wget -O $TMP $DELTA_URL && sudo dpkg --force-overwrite -i $TMP
-# Vifm icons
-wget -O $HOME/.favicons.vifm $VIFM_ICONS_URL
 
 # Finalize
 stow -d $HOME/dotfiles -t $HOME stowme

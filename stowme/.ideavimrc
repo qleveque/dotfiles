@@ -16,8 +16,8 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 vnoremap <C-e> :action SurroundWithEmmet<CR>
 map <C-;> :action ShowIntentionActions<CR>
-map L /\V\C\\<
-map H ?\V\C\\<
+exe "map ) /\V\C\\<"
+exe "map ( ?\V\C\\<"
 
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>
@@ -33,9 +33,9 @@ nmap É :action ChooseRunConfiguration<CR>
 nmap è :action Debug<CR>
 nmap È :action ChooseDebugConfiguration<CR>
 
-nnoremap <M-j> :action PreviousTab<CR>
-nnoremap <M-k> :action NextTab<CR>
-nnoremap <M-i> :q<CR>
+nnoremap <M-h> :action PreviousTab<CR>
+nnoremap <M-l> :action NextTab<CR>
+nnoremap <M-j> :q<CR>
 
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap \i :action OptimizeImports<CR>

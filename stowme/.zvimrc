@@ -1,44 +1,37 @@
 #!/usr/bin/zsh
 # vim: set ft=zsh:
-# Functions
-set-cursor() { local c=2;[ "${KEYMAP:-main}" =~ '(main|viins)' ]&&c=6;printf $'\e[%d q' "$c" }
-reset-prompt() { zle reset-prompt && zle autosuggest-clear && zle zle-line-init }
-goto-recent-dir() { cd "$(eval $FZF_P_COMMAND | fzf --exact)"; reset-prompt }
-open-fm() { cd "$(vifm -c :only --choose-dir - . < /dev/tty)"; reset-prompt }
+set-cursor() {zvs-zle-keymap-select;local c=2;[[ $KEYMAP == main ]]&&c=6;printf $'\e[%d q' $c }
+goto-recent-dir() { cd "$(eval $FZF_P_COMMAND | fzf --exact)";zle reset-prompt;zle zle-line-init }
+open-fm() { cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt;zle zle-line-init }
 quit() { exit }
 vi-cut() { zle vi-delete; printf '%s' "$CUTBUFFER" | c }
 vi-yank() { zle .vi-yank; printf '%s' "$CUTBUFFER" | c }
 vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-before }
 vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-after }
-char-wrapper() { zle -U l && zle ${WIDGET%-char} }
-opp-wrapper() {
-  local k && read -k 1 k
-  if [ $k = 's' ];then zle add-surround;else;zle -U $k&&zle .vi-${WIDGET%-wrapper};fi
-}
+char-wrap() { zle -U l && zle ${WIDGET%-char} }
+opp-wrap() { read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac }
+nohl() { region_highlight=(); _zsh_highlight}
+bsearch() { local ZSH_VI_SEARCH_PREFIX='\<' ZSH_VI_SEARCH_GREP_PARAMETERS=(); zsh-vi-search }
 
 # Instantiating zle widgets
-autoload -U select-bracketed select-quoted surround
+autoload -U select-{bracketed,quoted} surround edit-command-line
 zle -N add-surround surround
-for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done 
-for w in {change,delete}-wrapper; do zle -N $w opp-wrapper; done
-for w in vi-{delete,cut,change,yank}-char; do zle -N $w char-wrapper; done
-for w in vi-{cut,yank,put-{before,after}}; do zle -N $w; done
-for w in goto-recent-dir open-fm quit select-{bracketed,quoted}; do zle -N $w; done
+for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done
+for w in {change,delete}-wrap; do zle -N $w opp-wrap; done
+for w in vi-{delete,cut,change,yank}-char; do zle -N $w char-wrap; done
+for w in goto-recent-dir open-fm quit select-{bracketed,quoted} edit-command-line \
+  vi-{cut,yank,put-{before,after}} nohl; do zle -N $w; done
+for w in bsearch-{forward,backward}; do zle -N $w bsearch; done
 
 # Remapping
-bindkey -v
-bindkey '^[[Z' forward-word '^I' fzf_completion '^?' backward-delete-char -r :
-bindkey -M viins '^V' vi-put-after
-bindkey -M vicmd X vi-cut-char D vi-delete-char Y vi-yank-char C vi-change-char
-bindkey -M vicmd s add-surround c change-wrapper d delete-wrapper
-bindkey -M visual s add-surround c vi-change d vi-delete
-bindkey -M vicmd U redo
-bindkey -M vicmd x vi-cut
-bindkey -M visual x vi-cut
-bindkey -M visual v visual-line-mode
-for m in visual vicmd viins; do
-  bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^Q' quit
-done
+bindkey -v; bindkey -M vicmd -r :
+bindkey -M vicmd X vi-cut-char D vi-delete-char Y vi-yank-char C vi-change-char \
+  s add-surround c change-wrap d delete-wrap x vi-cut U redo '^V' edit-command-line \
+   ')' bsearch-forward '(' bsearch-backward '^?' nohl
+bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-mode
+bindkey -M viins '^[[Z' forward-word '^V' vi-put-after '^I' fzf_completion '^?' \
+  backward-delete-char '^G' _mark_expansion
+for m in visual vicmd viins; do bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^Q' quit; done
 for m in visual viopp; do
   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do bindkey -M $m $c select-bracketed; done
   for c in {a,i}{\',\",\`,_,-,\\,/,\,,.,\;,:,\|,\&}; do bindkey -M $m $c select-quoted; done

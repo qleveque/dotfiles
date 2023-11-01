@@ -40,4 +40,4 @@ com! none :exe 'hi %a cterm=none ctermfg=none ctermbg=none'
 none Win|none Executable|none StatusLine|none CmdLine|none TopLine
 hi Border cterm=none ctermfg=black ctermbg=none
 hi Directory cterm=bold ctermfg=green ctermbg=none
-source ~/.favicons.vifm
+source ~/.antigen/bundles/thimc/vifm_devicons/favicons.vifm
