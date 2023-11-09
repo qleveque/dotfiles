@@ -4,11 +4,15 @@ vim.cmd('source ~/.vimrc')
 -- Scrollbar
 require('scrollbar').setup{}
 
+if vim.api.nvim_win_get_option(0, "diff") then
+  return
+end
+
 -- Bufferline
-local tab_bar_shortcuts = { Previous='h', Next='l', Close='j', Restore='k' }
+local tab_bar_shortcuts = { BufferPrevious='h', BufferNext='l', BufferClose='j' , enew='k'}
 for _, mode in ipairs({'n', 'i'}) do
   for action, shortcut in pairs (tab_bar_shortcuts) do
-    vim.keymap.set(mode,'<M-'..shortcut..'>','<Cmd>Buffer'..action..'<CR>',{})
+    vim.keymap.set(mode,'<M-'..shortcut..'>','<Cmd>'..action..'<CR>',{})
   end
 end
 require('bufferline').setup{
@@ -55,7 +59,12 @@ require('nvim-tree').setup{
 vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
 
 -- Telescope
+local telescope_actions=require("telescope.actions")
 require('telescope').setup{defaults={mappings={i={
-  ['<ESC>']=require('telescope.actions').close,
-  ['<C-V>']={'<C-R>+',type='command'}
+  ['<C-v>']={'<C-R>+',type='command'},
+  ['<C-p>']=telescope_actions.cycle_history_prev,
+  ['<C-n>']=telescope_actions.cycle_history_next,
+  ['<Esc>']=telescope_actions.close,
+  ['<Tab>']=telescope_actions.move_selection_previous,
+  ['<S-Tab>']=telescope_actions.move_selection_next,
 }}}}

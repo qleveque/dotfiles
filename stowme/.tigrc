@@ -12,7 +12,6 @@ bind generic gg :0
 bind generic G move-last-line
 bind generic y none
 bind generic yc !@>zsh -fc "echo -n %(commit) | c"
-bind generic yw !@>zsh -fc "echo -n %(file) | c"
 bind generic yf !@>zsh -fc "echo -n %(file) | c"
 bind generic ; back
 bind generic <C-q> :q
@@ -22,18 +21,26 @@ bind status + :/^\S+
 bind status - :?^\S+
 bind generic l enter
 
+bind log l !@>tmux new-window -a "tig show '%(commit)'"
 bind diff l !@>tmux new-window -a "\
-  git difftool --trust-exit-code --no-prompt %(commit)^! -- '%(file)';\
+  export FILE=\"$(readlink -f '%(file)')\";\
+  PARAMS=('%(commit)^!');\
+  [[ -n '%(stash)' ]] && PARAMS=('%(stash)^' '%(stash)');\
+  git difftool --trust-exit-code --no-prompt ${(@)PARAMS} -- '%(file)';\
 "
 bind stage l !@>tmux new-window -a "\
-  EXPR=`expr '%(status)' : 'Staged changes' > /dev/null && echo --staged`;\
-  git difftool --trust-exit-code --no-prompt $EXPR -- '%(file)';\
+  export FILE=\"$(readlink -f '%(file)')\";\
+  PARAMS=();\
+  [[ '%(status)' =~ 'Staged changes' ]] && PARAMS+=('--staged');\
+  git difftool --trust-exit-code --no-prompt ${(@)PARAMS} -- '%(file)';\
 "
 bind status l !@>tmux new-window -a "\
-  if [[ '%(status)' =~ '^Untracked file .*' ]]; then\
+  if [[ '%(status)' =~ 'Untracked file' ]]; then\
     nvim '%(file)';\
   else;\
-    EXPR=`expr '%(status)' : 'Staged changes' > /dev/null && echo --staged`;\
-    git difftool --trust-exit-code --no-prompt $EXPR -- '%(file)';\
+    export FILE=\"$(readlink -f '%(file)')\";\
+    PARAMS=();\
+    [[ '%(status)' =~ 'Staged changes' ]] && PARAMS+=('--staged');\
+    git difftool --trust-exit-code --no-prompt ${(@)PARAMS} -- '%(file)';\
   fi;\
 "

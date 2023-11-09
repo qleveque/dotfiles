@@ -7,7 +7,8 @@ for [bg, contexts] in items({
     \"$PALETTE_2":["CursorLine","InactiveWin","VertSplit","StatusLineNC"],
     \"$PALETTE_3":["CursorLineNr","LineNr","BufferTabpageFill","TelescopeSelection",
     \    "User1","NvimTreeCursorLine","CocMenuSel","PmenuSel"],
-    \"$PALETTE_4":["Visual","Pmenu","CocFloating","CurSearch"],
+    \"$PALETTE_4":["Visual","Pmenu","CocFloating","CurSearch",
+    \    "CocErrorSign","CocWarningSign","CocInfoSign","CocHintSign"],
     \"RED":["ConflictMarkers"],"GREEN":["DiffAdd"],"BLUE":["DiffText"]})
   for context in contexts
     exe 'hi '.context.' gui=none guifg=none guibg='.eval(bg)

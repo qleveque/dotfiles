@@ -1,6 +1,6 @@
 colorscheme style
 set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%= mousescroll=ver:2
-set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=iwhite,vertical shm+=aI noro
+set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=iwhite,vertical shm+=aI scl=number
 
 " No registers
 no c "_c
@@ -23,9 +23,9 @@ vn $ $h
 nm s ys
 vm s S
 xn . :norm! .<CR>
+nn <Esc> :nohl<CR>
 
 " Easy life
-nn <BS> :nohl<CR>
 no V ggVG
 xn à :norm! @q<CR>
 nn à @q
@@ -37,8 +37,8 @@ nn ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
 vn ç "xy<Cmd>let @/=@x<bar>set hlsearch<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
-map ( ?\C\<
-map ) /\C\<
+map H ?\C\<
+map L /\C\<
 
 " Shortcuts
 map <C-f> :NvimTreeFindFileToggle<CR>
@@ -48,34 +48,46 @@ map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
 map <C-q> ZQ
 
-" Coc
-nn gd <Plug>(coc-definition)
-nn gr <Plug>(coc-references)
-xn \f <Plug>(coc-format-selected)
-nn \f <Plug>(coc-format)
-nn <C-;> <Plug>(coc-codeaction-cursor)
-ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
-ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-
 " Term
 nn <silent> é :exe'sil !tmux splitw "run '.expand("%").'"'<CR>
 nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
+" Coc
+nn gd <Plug>(coc-definition)
+nn gr <Plug>(coc-references)
+nn <silent> [g <Plug>(coc-diagnostic-prev)
+nn <silent> ]g <Plug>(coc-diagnostic-next)
+xn \f <Plug>(coc-format-selected)
+nn <CR> <Plug>(coc-codeaction-cursor)
+ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
+ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
+ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
 " Version Control
-let df='windo set wrap nofen fdc=0|nm <C-Q> :qa<CR>|nm + ]c|nm - [c|norm +-'
-au VimEnter * if &diff|exe df|end
-let rs="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-nn \d :exe'sil '.eval(rs).'git difftool -y '.expand('%:t').'"'<CR>
-nn \D :exe'sil '.eval(rs).'tig status"'<CR>
-nn \l :exe'sil '.eval(rs).'tig --follow '.expand('%:t').'"'<CR>
-nn \L :exe'sil '.eval(rs).'tig"'<CR>
-nn \b :exe'sil '.eval(rs).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
+nn \d :exe'sil '.eval(tmux).'git difftool -y '.expand('%:t').'"'<CR>
+nn \D :exe'sil '.eval(tmux).'tig status"'<CR>
+nn \l :exe'sil '.eval(tmux).'tig --follow '.expand('%:t').'"'<CR>
+nn \L :exe'sil '.eval(tmux).'tig"'<CR>
+nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
 nm dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>dp<BS>
 
+" Diff
+if &diff 
+  set noro
+  nn + ]c
+  nn - [c
+  nn <C-Q> :qa<CR>
+  nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
+  let g:barbar_auto_setup=v:false
+  let g:coc_start_at_startup=0
+  au VimEnter * :windo set wrap nofen fdc=0 | :norm +-
+endif
+
 " Miscellaneous
+let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
 for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set formatoptions-=cro

@@ -3,7 +3,6 @@ export HOME=$(dirname $(dirname $(realpath $0)))
 mkdir $HOME/bin $HOME/.config
 echo source "$HOME/.zrc">$HOME/.zshrc
 
-DELTA_URL='https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb'
 HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
 NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
 SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
@@ -46,8 +45,6 @@ nvim -c 'CocInstall -sync coc-json coc-highlight coc-tsserver coc-html coc-css c
 mkdir $HOME/.antigen && curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 # Sd
 wget -O $HOME/bin/sd $SD_URL
-# Delta
-TMP=$(mktemp) && wget -O $TMP $DELTA_URL && sudo dpkg --force-overwrite -i $TMP
 
 # Finalize
 stow -d $HOME/dotfiles -t $HOME stowme

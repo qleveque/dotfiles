@@ -16,8 +16,8 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
 vnoremap <C-e> :action SurroundWithEmmet<CR>
 map <C-;> :action ShowIntentionActions<CR>
-exe "map ) /\V\C\\<"
-exe "map ( ?\V\C\\<"
+map H ?\V\C\\<
+map L /\V\C\\<
 
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>

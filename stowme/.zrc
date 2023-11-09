@@ -7,9 +7,8 @@ zstyle ':completion:*' fzf-search-display true
 export EDITOR='nvim'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_T_COMMAND='fdfind'
-export FZF_DEFAULT_OPTS='--ansi --height 40% --border'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --border --bind=tab:down,shift-tab:up'
 export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
-export LESS='-irFRX --mouse --wheel-lines=1'
 export MYVIFMRC="$HOME/.vifmrc"
 export PATH="$HOME/dotfiles/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 KEYTIMEOUT=1
