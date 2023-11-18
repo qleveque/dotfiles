@@ -1,62 +1,91 @@
 source ~/dotfiles/stowme/.vimrc
 sethandler a:vim
 set ideajoin
+set argtextobj.vim
+set vim-commentary
 
-nmap <C-o> <Action>(Back)
-nmap <C-i> <Action>(Forward)
-
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
-
-nnoremap gd gd
-nnoremap gr :action GotoDeclaration<CR>
-nnoremap gi :action GotoImplementation<CR>
-nnoremap gs :action GotoSuperMethod<CR>
-vnoremap <C-e> :action SurroundWithEmmet<CR>
-map <C-;> :action ShowIntentionActions<CR>
-map H ?\V\C\\<
-map L /\V\C\\<
-
+" Navigation
 nnoremap <C-t> :action GotoFile<CR>
 nnoremap <C-n> :action GotoSymbol<CR>
 nnoremap <C-s> :action FindInPath<CR>
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-p> :action RecentFiles<CR>
+
+" Panes
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
 nnoremap <C-q> :action CloseAllEditors<CR>
 
-nnoremap \b :action Annotate<CR>
+" Tabs
+nnoremap <M-h> :action PreviousTab<CR>
+nnoremap <M-l> :action NextTab<CR>
+nnoremap <M-k> :action ReopenClosedTab<CR>
+nnoremap <M-j> :q<CR>
 
+" Run
 nmap é :action Run<CR>
 nmap É :action ChooseRunConfiguration<CR>
 nmap è :action Debug<CR>
 nmap È :action ChooseDebugConfiguration<CR>
 
-nnoremap <M-h> :action PreviousTab<CR>
-nnoremap <M-l> :action NextTab<CR>
-nnoremap <M-j> :q<CR>
-
+" Adaptations
+vnoremap <C-e> :action SurroundWithEmmet<CR>
+nnoremap <CR> :action ShowIntentionActions<CR>
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+nnoremap gd gd
+nnoremap gr :action GotoDeclaration<CR>
+map H ?\V\C\\<
+map L /\V\C\\<
 vnoremap \f :action ShowReformatFileDialog<CR>
+nnoremap <Tab> :action FileStructurePopup<CR>
+
+" New
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+
+" Miscellaneous
 nnoremap \i :action OptimizeImports<CR>
 nnoremap \r :action RenameElement<CR>
-nnoremap \t :action FileStructurePopup<CR>
 nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 
-nmap ℝ :action Resume<CR>
-nmap Ⅰ :action StepInto<CR>
-nmap œ :action StepOut<CR>
-nmap € :action StepOver<CR>
-nmap © :action RunToCursor<CR>
-nmap × :action Stop<CR>
-nmap ñ :action NextOccurence<CR>
-nmap ¶ :action PreviousOccurence<CR>
-nmap æ :action ShowExecutionPoint<CR>
-nmap ß :action ToggleLineBreakpoint<CR>
-nmap ω :action Debugger.AddToWatch<CR>
-vmap ω :action Debugger.AddToWatch<CR>
-nmap Β :action ViewBreakpoints<CR>
-nmap … :action XDebugger.MuteBreakpoints<CR>
-nmap α :action Pause<CR>
+" Git
+if has('win32') || has('win64')
+  nmap \d :!bash -c 'tmux neww ''git difftool -y `wslpath %`'''<CR>
+  nmap \l :!bash -c 'tmux neww ''tig --follow `wslpath %`'''<CR>
+  nmap \b :execute '!bash -c tmux\ neww\ ''tig\ blame\ +'.line('.').'\ `wslpath %`'''<CR>
+else
+  nmap \d :!bash -c 'tmux neww ''git difftool -y %'''<CR>
+  nmap \l :!bash -c 'tmux neww ''tig --follow %'''<CR>
+  nmap \b :execute '!bash -c tmux\ neww\ ''tig\ blame\ +'.line('.').'\ %'''<CR>
+endif
+nmap \D :!bash -c 'tmux neww ''tig status'''<CR>
+nmap \L :!bash -c 'tmux neww ''tig'''<CR>
+
+" Debug
+nmap <Up> :action Resume<CR>
+nmap <Right> :action StepInto<CR>
+nmap <Left> :action StepOut<CR>
+nmap <Down> :action StepOver<CR>
+nmap <Space>j :action NextOccurence<CR>
+nmap <Space>k :action PreviousOccurence<CR>
+nmap <Space>a :action ShowExecutionPoint<CR>
+nmap <Space>c :action RunToCursor<CR>
+nmap <Space>p :action Pause<CR>
+nmap <Space>x :action Stop<CR>
+nmap <Space>b :action ToggleLineBreakpoint<CR>
+nmap <Space>B :action ViewBreakpoints<CR>
+nmap <Space>m :action XDebugger.MuteBreakpoints<CR>
+map <Space>w :action Debugger.AddToWatch<CR>
+nmap <Space>W :action XDebugger.RemoveAllWatches<CR>
+
+" Tree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapCloseDir='h'
+let g:NERDTreeMapMenu='m'
+let g:NERDTreeMapQuit='<C-q>'
+set NERDTree

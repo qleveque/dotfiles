@@ -3,11 +3,11 @@ export HOME=$(dirname $(dirname $(realpath $0)))
 mkdir $HOME/bin $HOME/.config
 echo source "$HOME/.zrc">$HOME/.zshrc
 
-HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
-NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
-SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
-VIM_PLUG_URL='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
+local HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
+local NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
+local SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
+local VIM_PLUG_URL='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+local W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
 
 # OS specific
 if $(grep -q Microsoft /proc/version); then
@@ -16,10 +16,10 @@ if $(grep -q Microsoft /proc/version); then
          `'PAUSE'
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C $COMMAND'"
   # Windows dotfiles
-  CODE_DIR="$HOME/AppData/Roaming/Code/User"
-  mkdir -p "$CODE_DIR"
-  ln "$HOME/dotfiles/stowme/.config/Code/User/settings.json" "$CODE_DIR/settings.json"
-  ln "$HOME/dotfiles/stowme/.config/Code/User/keybindings.json" "$CODE_DIR/keybindings.json"
+  local codeDir="$HOME/AppData/Roaming/Code/User" && mkdir -p "$codeDir"
+  local v; for v in settings keybindings tasks; do
+    ln "$HOME/dotfiles/stowme/.config/Code/User/$v.json" "$codeDir/$v.json"
+  done
   ln "$HOME/dotfiles/stowme/.ideavimrc" "$HOME/_ideavimrc"
   # Win32yank
   TMP=$(mktemp) && wget -O $TMP $W32Y_URL && unzip $TMP win32yank.exe -d $HOME/bin && chmod +x win32yank.exe
@@ -35,6 +35,7 @@ sudo apt-get update -y
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake \
   vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
+wget -O $HOME/bin/sd $SD_URL
 # Nvim
 TMP=$(mktemp) && wget -O $TMP $NVIM_URL && tar xvzf $TMP -C $HOME
 sudo ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
@@ -43,8 +44,6 @@ nvim +PluginInstall +qall
 nvim -c 'CocInstall -sync coc-json coc-highlight coc-tsserver coc-html coc-css coc-pyright coc-clangd|q'
 # Antigen
 mkdir $HOME/.antigen && curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
-# Sd
-wget -O $HOME/bin/sd $SD_URL
 
 # Finalize
 stow -d $HOME/dotfiles -t $HOME stowme

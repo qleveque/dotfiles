@@ -20,13 +20,17 @@ nn ' `
 nn U <C-R>
 nn vv V
 vn $ $h
-nm s ys
-vm s S
 xn . :norm! .<CR>
 nn <Esc> :nohl<CR>
+nm s ys
+vm s S
+
+" Underscores
+nm _ v_
+vm _ aIo
 
 " Easy life
-no V ggVG
+nn V ggVG
 xn à :norm! @q<CR>
 nn à @q
 vm <C-e> <C-y>,
@@ -34,19 +38,20 @@ im <C-e> <C-y>,
 ino <C-v> <C-R>+
 cno <C-v> <C-R>+
 nn ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
-vn ç "xy<Cmd>let @/=@x<bar>set hlsearch<CR>"_cgn
+vn ç "xy<Cmd>let @/='\V'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 map H ?\C\<
 map L /\C\<
 
 " Shortcuts
-map <C-f> :NvimTreeFindFileToggle<CR>
+map <C-f> :NvimTreeFindFile<CR>
 map <C-n> :CocList -I symbols<CR>
 map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
 map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
 map <C-q> ZQ
+map <Tab> :AerialOpen<CR>
 
 " Term
 nn <silent> é :exe'sil !tmux splitw "run '.expand("%").'"'<CR>
@@ -56,8 +61,6 @@ nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 " Coc
 nn gd <Plug>(coc-definition)
 nn gr <Plug>(coc-references)
-nn <silent> [g <Plug>(coc-diagnostic-prev)
-nn <silent> ]g <Plug>(coc-diagnostic-next)
 xn \f <Plug>(coc-format-selected)
 nn <CR> <Plug>(coc-codeaction-cursor)
 ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
@@ -77,9 +80,10 @@ nm dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>dp<BS>
 " Diff
 if &diff 
   set noro
+  nn <C-Q> :qa<CR>
+  nn q :qa<CR>
   nn + ]c
   nn - [c
-  nn <C-Q> :qa<CR>
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
   let g:barbar_auto_setup=v:false
   let g:coc_start_at_startup=0
@@ -100,15 +104,17 @@ call plug#begin('~/.vim_plugged')
   Plug 'mattn/emmet-vim'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'neoclide/coc.nvim',{'branch': 'release'}
+  Plug 'numToStr/Comment.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'petertriho/nvim-scrollbar'
   Plug 'pocco81/auto-save.nvim'
   Plug 'romgrk/barbar.nvim'
   Plug 'roxma/vim-paste-easy'
   Plug 'sheerun/vim-polyglot'
-  Plug 'tpope/vim-commentary'
+  Plug 'stevearc/aerial.nvim'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'wellle/targets.vim'

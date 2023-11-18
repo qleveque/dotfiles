@@ -1,3 +1,3 @@
 :: ls alias for windows
-@ECHO ON
+@ECHO OFF
 DIR %*

@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "difftool",
+            "type": "shell",
+            "command": "bash",
+            "windows": { "args": [ "-c", "tmux neww \" git difftool -y $(wslpath ''${file}'') \"" ] },
+            "linux": { "args": [ "-c", "tmux neww \" git difftool -y ''${file}'' \"" ] },
+            "presentation": { "reveal": "never" },
+        },
+        {
+            "label": "tig-status",
+            "type": "shell",
+            "command": "bash",
+            "args": [ "-c", "tmux neww \" tig status \"" ],
+            "presentation": { "reveal": "never" },
+        },
+        {
+            "label": "tig-file",
+            "type": "shell",
+            "command": "bash",
+            "windows": { "args": [ "-c", "tmux neww \" tig --follow $(wslpath ''${file}'') \"" ] },
+            "linux": { "args": [ "-c", "tmux neww \" tig --follow ''${file}'' \"" ] },
+            "presentation": { "reveal": "never" },
+        },
+        {
+            "label": "tig",
+            "type": "shell",
+            "command": "bash",
+            "args": [ "-c", "tmux neww \" tig \"" ],
+            "presentation": { "reveal": "never" },
+        },
+        {
+            "label": "tig-blame",
+            "type": "shell",
+            "command": "bash",
+            "windows": { "args": [ "-c", "tmux neww \" tig blame +${lineNumber} $(wslpath ''${file}'') \"" ] },
+            "linux": { "args": [ "-c", "tmux neww \" tig blame +${lineNumber} ''${file}'' \"" ] },
+            "presentation": { "reveal": "never" },
+        },
+    ],
+}

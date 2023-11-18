@@ -57,6 +57,7 @@ run() {
     scala) scala $file;;
     sh) sh $file;;
     sql) sqlite3 $name.db < $file;;
+    tex) pdflatex -halt-on-error $file && o $name.pdf && exit;;
     zig) zig build-exe $file && ./$name;;
     zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) zsh -ic "x \"$file\"";;
     zsh) zsh $file;;

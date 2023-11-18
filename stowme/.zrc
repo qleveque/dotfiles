@@ -7,7 +7,7 @@ zstyle ':completion:*' fzf-search-display true
 export EDITOR='nvim'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_T_COMMAND='fdfind'
-export FZF_DEFAULT_OPTS='--ansi --height 40% --border --bind=tab:down,shift-tab:up'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --border --bind=tab:down,shift-tab:up --reverse'
 export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
 export MYVIFMRC="$HOME/.vifmrc"
 export PATH="$HOME/dotfiles/bin:$HOME/bin:$HOME/.local/bin:$PATH"
@@ -31,16 +31,17 @@ source ~/.antigen/antigen.zsh
   antigen bundle Whenti/zsh-vi-search
 antigen apply
 
-# Functions
-cf() {cd "$(dirname $1)"}
-t() {nvim $(mktemp $([ -z $1 ] || echo --suffix .$1))}
-
 # Sources
 source ~/.zvimrc
 source ~/.aliases
 source ~/.vim_plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+
+# Functions
+cf() {cd "$(dirname $1)"}
+t() {nvim $(mktemp $([ -z $1 ] || echo --suffix .$1))}
+unalias gd && gd() { [ -z $1 ] && tig status || git difftool -y $1 }
 
 # Directory history
 autoload -U add-zsh-hook
