@@ -5,18 +5,19 @@ set argtextobj.vim
 set vim-commentary
 
 " Navigation
-nnoremap <C-t> :action GotoFile<CR>
-nnoremap <C-n> :action GotoSymbol<CR>
-nnoremap <C-s> :action FindInPath<CR>
+sethandler <C-t> a:ide
+sethandler <C-n> a:ide
+sethandler <C-s> a:ide
+sethandler <C-p> a:ide
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
-nnoremap <C-p> :action RecentFiles<CR>
+nnoremap <C-q> :action CloseAllEditors<CR>
+nnoremap <C-g> :action FileStructurePopup<CR>
 
 " Panes
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
-nnoremap <C-q> :action CloseAllEditors<CR>
 
 " Tabs
 nnoremap <M-h> :action PreviousTab<CR>
@@ -41,6 +42,9 @@ map H ?\V\C\\<
 map L /\V\C\\<
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap <Tab> :action FileStructurePopup<CR>
+nmap _ vv:action EditorSelectWord<CR>
+vmap _ :action EditorSelectWord<CR>
+vmap - :action EditorUnSelectWord<CR>
 
 " New
 nnoremap gi :action GotoImplementation<CR>
@@ -54,17 +58,15 @@ nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 
 " Git
-if has('win32') || has('win64')
-  nmap \d :!bash -c 'tmux neww ''git difftool -y `wslpath %`'''<CR>
-  nmap \l :!bash -c 'tmux neww ''tig --follow `wslpath %`'''<CR>
-  nmap \b :execute '!bash -c tmux\ neww\ ''tig\ blame\ +'.line('.').'\ `wslpath %`'''<CR>
-else
-  nmap \d :!bash -c 'tmux neww ''git difftool -y %'''<CR>
-  nmap \l :!bash -c 'tmux neww ''tig --follow %'''<CR>
-  nmap \b :execute '!bash -c tmux\ neww\ ''tig\ blame\ +'.line('.').'\ %'''<CR>
-endif
-nmap \D :!bash -c 'tmux neww ''tig status'''<CR>
-nmap \L :!bash -c 'tmux neww ''tig'''<CR>
+noremap \d :action Compare.LastVersion<CR>
+nnoremap \D :action Vcs.Show.Local.Changes<CR>
+nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap \L :action Vcs.Show.Log<CR>
+nnoremap \b :action Annotate<CR>
+
+" Diff
+nnoremap do :action Diff.ApplyLeftSide<CR>
+nnoremap gf :action EditSource<CR>
 
 " Debug
 nmap <Up> :action Resume<CR>
@@ -82,10 +84,3 @@ nmap <Space>B :action ViewBreakpoints<CR>
 nmap <Space>m :action XDebugger.MuteBreakpoints<CR>
 map <Space>w :action Debugger.AddToWatch<CR>
 nmap <Space>W :action XDebugger.RemoveAllWatches<CR>
-
-" Tree
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapCloseDir='h'
-let g:NERDTreeMapMenu='m'
-let g:NERDTreeMapQuit='<C-q>'
-set NERDTree

@@ -2,7 +2,7 @@
 # Copy to clipboard
 
 if $(grep -q Microsoft /proc/version); then
-  ~/bin/win32yank.exe -i --crlf
+  win32yank.exe -i --crlf
 else
   xsel --input --clipboard
 fi

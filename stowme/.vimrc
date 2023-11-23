@@ -25,10 +25,6 @@ nn <Esc> :nohl<CR>
 nm s ys
 vm s S
 
-" Underscores
-nm _ v_
-vm _ aIo
-
 " Easy life
 nn V ggVG
 xn à :norm! @q<CR>
@@ -43,6 +39,8 @@ nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 map H ?\C\<
 map L /\C\<
+map _ <Plug>(wildfire-fuel)V
+vm - <Plug>(wildfire-water)V
 
 " Shortcuts
 map <C-f> :NvimTreeFindFile<CR>
@@ -50,8 +48,8 @@ map <C-n> :CocList -I symbols<CR>
 map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
 map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
+map <C-g> :AerialOpen<CR>
 map <C-q> ZQ
-map <Tab> :AerialOpen<CR>
 
 " Term
 nn <silent> é :exe'sil !tmux splitw "run '.expand("%").'"'<CR>
@@ -77,6 +75,15 @@ no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
 nm dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>dp<BS>
 
+" Miscellaneous
+let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
+let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
+for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
+au FileType * set formatoptions-=cro
+let wild = ['a}', 'a]', 'a)', 'at', 'a>', 'ac', 'af']
+let g:wildfire_objects = {'*':wild,'python':wild+['aiv'],'sh,zsh,bash':wild+['aIv']}
+au User targets#mappings#user call targets#mappings#extend({'a': {}})
+
 " Diff
 if &diff 
   set noro
@@ -90,16 +97,11 @@ if &diff
   au VimEnter * :windo set wrap nofen fdc=0 | :norm +-
 endif
 
-" Miscellaneous
-let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
-for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
-au FileType * set formatoptions-=cro
-
 " Plugins
 call plug#begin('~/.vim_plugged')
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'farmergreg/vim-lastplace'
+  Plug 'gcmt/wildfire.vim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'mattn/emmet-vim'
   Plug 'michaeljsmith/vim-indent-object'
@@ -109,6 +111,7 @@ call plug#begin('~/.vim_plugged')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-tree/nvim-tree.lua'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'petertriho/nvim-scrollbar'
   Plug 'pocco81/auto-save.nvim'
   Plug 'romgrk/barbar.nvim'

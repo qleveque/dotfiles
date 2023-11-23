@@ -1,0 +1,78 @@
+[
+  // Grep
+  { "key": "enter", "command": "search.action.focusNextSearchResult", "when": "searchInputBoxFocus" },
+  { "key": "escape", "command": "workbench.action.focusLastEditorGroup", "when": "searchInputBoxFocus" },
+  { "key": "ctrl+s", "command": "workbench.action.findInFiles" },
+  { "key": "ctrl+p", "command": "history.showPrevious", "when": "searchInputBoxFocus" },
+  { "key": "ctrl+n", "command": "history.showNext", "when": "searchInputBoxFocus" },
+  { "key": "tab", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
+  { "key": "shift+tab", "command": "workbench.action.quickOpenNavigatePrevious", "when": "inQuickOpen" },
+  // Search files
+  { "key": "ctrl+t", "command": "workbench.action.quickOpen" },
+  // Search symbols
+  { "key": "ctrl+n", "command": "workbench.action.showAllSymbols", "when": "!searchInputBoxFocus" },
+  // Open recent file
+  { "key": "ctrl+p", "command": "workbench.action.openRecent", "when": "!searchInputBoxFocus" },
+  // Breadcrumbs
+  { "key": "ctrl+g", "command": "breadcrumbs.focusAndSelect" },
+  // Panes
+  { "key": "ctrl+l", "command": "workbench.action.focusRightGroup", "when": "!sideBarFocus" },
+  { "key": "ctrl+l", "command": "workbench.action.focusFirstEditorGroup", "when": "sideBarFocus" },
+  { "key": "ctrl+k", "command": "workbench.action.focusAboveGroup", "when": "!terminalFocus" },
+  { "key": "ctrl+k", "command": "workbench.action.focusFirstEditorGroup", "when": "terminalFocus" },
+  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup", "when": "activeEditorGroupIndex != 1" },
+  { "key": "ctrl+h", "command": "workbench.action.focusSideBar", "when": "activeEditorGroupIndex == 1" },
+  { "key": "ctrl+j", "command": "workbench.action.focusBelowGroup" },
+  { "key": "ctrl+j", "command": "workbench.action.focusBelowGroup" },
+  { "key": "ctrl+q", "command": "workbench.action.closeEditorsInGroup", "when": "!sideBarFocus && !terminalFocus" },
+  { "key": "ctrl+q", "command": "workbench.action.toggleSidebarVisibility", "when": "sideBarFocus" },
+  { "key": "ctrl+q", "command": "workbench.action.togglePanel", "when": "terminalFocus" },
+  // Tabs
+  { "key": "alt+l", "command": "workbench.action.nextEditor" },
+  { "key": "alt+h", "command": "workbench.action.previousEditor" },
+  { "key": "alt+j", "command": "workbench.action.closeActiveEditor" },
+  { "key": "alt+k", "command": "workbench.action.keepEditor" },
+  // Tree
+  { "key": "ctrl+f", "command": "workbench.files.action.showActiveFileInExplorer", "when": "editorFocus" },
+  { "key": "ctrl+f", "command": "workbench.view.explorer", "when": "!editorFocus" },
+  { "key": "d d", "command": "deleteFile", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "x x", "command": "filesExplorer.cut", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "c w", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "shift+a", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "shift+i", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "y shift+w", "command": "copyFilePath", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "y w", "command": "copyRelativeFilePath", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "y y", "command": "filesExplorer.copy", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "p", "command": "filesExplorer.paste", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "shift+t", "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "shift+oem_2", "command": "list.find", "when": "filesExplorerFocus && !inputFocus" },
+  { "key": "shift+oem_comma", "command": "list.find", "when": "filesExplorerFocus && !inputFocus" },
+  // Debug
+  { "key": "d d", "command": "debug.removeWatchExpression", "when": "watchExpressionsFocused && !expressionSelected" },
+  { "key": "c w", "command": "debug.renameWatchExpression", "when": "watchExpressionsFocused  && !expressionSelected" },
+  // Diff
+  { "key": "g f", "command": "gitlens.openWorkingFile", "when": "isInDiffEditor && !operationInProgress" },
+  { "key": "d o", "command": "git.revertSelectedRanges", "when": "isInDiffEditor && !operationInProgress" },
+  { "key": "g g", "command": "cursorTop", "when": "isInDiffEditor && !operationInProgress" },
+  { "key": "shift+oem_plus", "command": "workbench.action.compareEditor.nextChange", "when": "textCompareEditorVisible" },
+  { "key": "shift+8", "command": "workbench.action.compareEditor.previousChange", "when": "textCompareEditorVisible" },
+  // Breadcrumbs
+  {
+    "key": "l",
+    "command": "list.toggleExpand",
+    "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && treeElementCanExpand"
+  },
+  // Suggestions
+  {
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus && (suggestWidgetMultipleSuggestions || !suggestWidgetHasFocusedSuggestion)"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible && textInputFocus && (suggestWidgetMultipleSuggestions || !suggestWidgetHasFocusedSuggestion)"
+  },
+  { "key": "tab", "command": "selectNextCodeAction", "when": "codeActionMenuVisible" },
+  { "key": "shift+tab", "command": "selectPrevCodeAction", "when": "codeActionMenuVisible" }
+]

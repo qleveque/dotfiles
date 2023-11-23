@@ -1,13 +1,13 @@
 #!/usr/bin/zsh
 # vim: set ft=zsh:
-set-cursor() { zvs-zle-keymap-select;local c=2;[[ $KEYMAP == main ]]&&c=6;printf $'\e[%d q' $c }
-goto-recent-dir() { cd "$(eval $FZF_P_COMMAND | fzf --exact)";zle reset-prompt;zle zle-line-init }
+set-cursor() { zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c }
+goto-recent-dir() { cd "$(eval ${FZF_P_COMMAND} | fzf --exact)";zle reset-prompt;zle zle-line-init }
 open-fm() { cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt;zle zle-line-init }
 quit() { exit }
-vi-cut() { zle vi-delete; printf '%s' "$CUTBUFFER" | c }
-vi-yank() { zle .vi-yank; printf '%s' "$CUTBUFFER" | c }
-vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-before }
-vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo $CUTBUFFER)"; zle .vi-put-after }
+vi-cut() { zle vi-delete; printf '%s' "${CUTBUFFER}" | c }
+vi-yank() { zle .vi-yank; printf '%s' "${CUTBUFFER}" | c }
+vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo ${CUTBUFFER})"; zle .vi-put-before }
+vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo ${CUTBUFFER})"; zle .vi-put-after }
 char-wrap() { zle -U l && zle ${WIDGET%-char} }
 opp-wrap() { read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac }
 nohl() { region_highlight=(); _zsh_highlight}

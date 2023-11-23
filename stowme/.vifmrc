@@ -7,6 +7,7 @@ set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,re
 map <C-i> :histnext<CR>
 map <C-q> :quit<CR>
 nn <CR> :!o %f<CR>
+nn U <C-r>
 nn A cw
 nn I cw<c-a>
 nn cw cw<c-u>

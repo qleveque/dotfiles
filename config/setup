@@ -1,0 +1,21 @@
+#!/usr/bin/zsh
+currentDir="${0:h}"
+if $(grep -q Microsoft /proc/version); then
+  appData="${HOME}/AppData/Roaming"
+  # VSCode
+  codeDir="${appData}/Code/User"
+  if [[ -d ${codeDir} ]]; then
+    ln -f "${currentDir}/VSCode/settings.json" "${codeDir}/settings.json"
+    ln -f "${currentDir}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
+  fi
+
+  # JetBrains
+  ln -f "${currentDir}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
+  jetBrainsDir="${appData}/JetBrains"
+
+  # Pycharm
+  pyCharmDir=$(find "${jetBrainsDir}" -maxdepth 1 -type d -name 'PyCharm*' -print -quit)
+  if [[ -d ${pyCharmDir} ]]; then
+    ln -f "${currentDir}/JetBrains/keybindings.xml" "${pyCharmDir}/keymaps/keybindings.xml"
+  fi
+fi

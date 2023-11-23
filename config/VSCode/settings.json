@@ -1,6 +1,5 @@
 {
   "C_Cpp.clang_format_sortIncludes": true,
-  "C_Cpp.updateChannel": "Insiders",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingDelete": "never",
   "editor.autoClosingOvertype": "never",
@@ -8,10 +7,17 @@
   "editor.cursorSurroundingLines": 4,
   "editor.formatOnPaste": true,
   "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "extensions.ignoreRecommendations": false,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
+  "git.showCommitInput": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.statusBar.enabled": false,
   "notebook.cellToolbarLocation": { "default": "right", "jupyter-notebook": "left" },
   "python.linting.flake8Enabled": true,
   "vim-commentary": true,
@@ -21,9 +27,10 @@
   "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
   "vim.vimrc.path": "~/dotfiles/stowme/.vimrc",
+  "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Default Dark+",
   "workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
-  "workbench.statusBar.visible": true,
+
   "vim.insertModeKeyBindings": [
     { "before": [ "<C-e>" ], "commands": [ "editor.emmet.action.expandAbbreviation" ] },
   ],
@@ -39,8 +46,8 @@
     // New
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
     { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
-    { "before": [ "<Tab>" ], "commands": [ "breadcrumbs.focusAndSelect" ] },
-
+    { "before": [ "<leader>", "t" ], "commands": [ "workbench.action.terminal.focus" ] },
+    { "before": [ "<leader>", "w" ], "commands": [ "workbench.debug.action.focusWatchView" ] },
     // Adaptations
     { "before": [ "é" ], "commands": [ "workbench.action.tasks.build" ] },
     { "before": [ "è" ], "commands": [ "workbench.action.debug.start" ] },
@@ -52,18 +59,15 @@
     { "before": [ "g", "r" ], "after": [ "g", "d" ] },
     { "before": [ "g", "c", "c" ], "commands": [ "editor.action.commentLine" ] },
     { "before": [ "c", "s", "t" ], "commands": [ "editor.emmet.action.updateTag" ] },
-
+    { "before": [ "_" ], "after": [ "v", "V", "a", "f" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
-    { "before": [ "_" ], "after": [ "$", "v", "a", "f", "V" ] },
-
     // Git
-    { "before": [ "\\", "d" ], "commands":[{"command":"workbench.action.tasks.runTask","args":"difftool"}] },
-    { "before": [ "\\", "D" ], "commands":[{"command":"workbench.action.tasks.runTask","args":"tig-status"}] },
-    { "before": [ "\\", "l" ], "commands":[{"command":"workbench.action.tasks.runTask","args":"tig-file"}] },
-    { "before": [ "\\", "L" ], "commands":[{"command":"workbench.action.tasks.runTask","args":"tig"}] },
-    { "before": [ "\\", "b" ], "commands":[{"command":"workbench.action.tasks.runTask","args":"tig-blame"}] },
-
+    { "before": [ "<leader>", "b" ], "commands": [ "gitlens.toggleFileBlame" ] },
+    { "before": [ "<leader>", "d" ], "commands": [ "git.openChange" ] },
+    { "before": [ "<leader>", "D" ], "commands": [ "workbench.scm.focus" ] },
+    { "before": [ "<leader>", "l" ], "commands": [ "gitlens.views.fileHistory.focus" ] },
+    { "before": [ "<leader>", "L" ], "commands": [ "gitlens.showCommitsView" ] },
     // Debug
     { "before": [ "<Up>" ], "commands": [ "workbench.action.debug.continue" ] },
     { "before": [ "<Right>" ], "commands": [ "workbench.action.debug.stepInto" ] },

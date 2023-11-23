@@ -4,6 +4,7 @@
 [core]
   editor = nvim
   ignorecase = true
+  whitespace = trailing-space
 [diff]
   tool = vimdiff3
 [push]

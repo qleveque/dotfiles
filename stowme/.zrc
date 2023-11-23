@@ -8,9 +8,9 @@ export EDITOR='nvim'
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --border --bind=tab:down,shift-tab:up --reverse'
-export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^$PWD\$\""'
-export MYVIFMRC="$HOME/.vifmrc"
-export PATH="$HOME/dotfiles/bin:$HOME/bin:$HOME/.local/bin:$PATH"
+export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^${PWD}\$\""'
+export MYVIFMRC="${HOME}/.vifmrc"
+export PATH="${HOME}/dotfiles/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
 KEYTIMEOUT=1
 HISTFILE=~/.zsh_history HISTSIZE=1000 SAVEHIST=1000
 PROMPT=$'\n%B%F{white}%S%n@%M%s%f %F{blue}%5~%f%b %# '
@@ -39,8 +39,8 @@ source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 
 # Functions
-cf() {cd "$(dirname $1)"}
-t() {nvim $(mktemp $([ -z $1 ] || echo --suffix .$1))}
+cf() { cd "$(dirname $1)" }
+t() { nvim $(mktemp $([ -z $1 ] || echo --suffix .$1)) }
 unalias gd && gd() { [ -z $1 ] && tig status || git difftool -y $1 }
 
 # Directory history
@@ -51,6 +51,6 @@ stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
 
 # Windows
 if $(grep -q Microsoft /proc/version); then
-  cmd() {cmd.exe /C $@}
-  admin() {powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/K cd `wslpath -m .`'"}
+  cmd() { cmd.exe /C $@ }
+  admin() { powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/K cd `wslpath -m .`'" }
 fi
