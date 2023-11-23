@@ -30,7 +30,6 @@
   "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Default Dark+",
   "workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
-
   "vim.insertModeKeyBindings": [
     { "before": [ "<C-e>" ], "commands": [ "editor.emmet.action.expandAbbreviation" ] },
   ],
