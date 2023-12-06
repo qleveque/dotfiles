@@ -10,21 +10,14 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
   },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-      },
-      include_surrounding_whitespace = true,
+}
+
+require("wildfire").setup{
+    keymaps = {
+        init_selection = "_",
+        node_incremental = "_",
+        node_decremental = "-",
     },
-  },
 }
 
 -- Scrollbar

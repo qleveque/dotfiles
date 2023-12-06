@@ -9,6 +9,7 @@
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
+  "editor.smartSelect.selectSubwords": false,
   "extensions.ignoreRecommendations": false,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
@@ -39,7 +40,8 @@
     { "before": [ "*" ], "after": [ "\"", "x", "y", "/", "<C-R>", "x", "<CR>" ] },
     { "before": [ "ç" ], "after": [ "\"", "x", "y", "/", "<C-R>", "x", "<CR>", "N", "c", "g", "n" ] },
     { "before": [ " ", "w" ], "commands": [ "editor.debug.action.selectionToWatch" ] },
-    { "before": [ "_" ], "after": [ "a", "f" ] },
+    { "before": [ "_" ], "commands": [ "editor.action.smartSelect.expand" ] },
+    { "before": [ "-" ], "commands": [ "editor.action.smartSelect.shrink" ] },
   ],
   "vim.normalModeKeyBindings": [
     // New
@@ -58,7 +60,7 @@
     { "before": [ "g", "r" ], "after": [ "g", "d" ] },
     { "before": [ "g", "c", "c" ], "commands": [ "editor.action.commentLine" ] },
     { "before": [ "c", "s", "t" ], "commands": [ "editor.emmet.action.updateTag" ] },
-    { "before": [ "_" ], "after": [ "v", "V", "a", "f" ] },
+    { "before": [ "_" ], "commands": [ "editor.action.smartSelect.expand" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     // Git

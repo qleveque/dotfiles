@@ -42,7 +42,7 @@ map H ?\V\C\\<
 map L /\V\C\\<
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap <Tab> :action FileStructurePopup<CR>
-nmap _ vv:action EditorSelectWord<CR>
+nmap _ :action EditorSelectWord<CR>
 vmap _ :action EditorSelectWord<CR>
 vmap - :action EditorUnSelectWord<CR>
 

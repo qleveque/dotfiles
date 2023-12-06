@@ -2,28 +2,22 @@ colorscheme style
 set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%= mousescroll=ver:2
 set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=iwhite,vertical shm+=aI scl=number
 
+" Vim corrections
+nn ' `
+vn v V
+nn U <C-R>
+vn $ $h
+xn . :norm! .<CR>
+nn <Esc> :nohl<CR>
+nm s ys
+vm s S
+
 " No registers
 no c "_c
 nn cc "_cc
 no d "_d
 nn dd "_dd
 no x d
-
-" Char operations
-nm X xl
-nm D dl
-nm Y yl
-nm C cl
-
-" Vim corrections
-nn ' `
-nn U <C-R>
-nn vv V
-vn $ $h
-xn . :norm! .<CR>
-nn <Esc> :nohl<CR>
-nm s ys
-vm s S
 
 " Easy life
 nn V ggVG
@@ -39,8 +33,6 @@ nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 map H ?\C\<
 map L /\C\<
-map _ <Plug>(wildfire-fuel)V
-vm - <Plug>(wildfire-water)V
 
 " Shortcuts
 map <C-f> :NvimTreeFindFile<CR>
@@ -73,16 +65,13 @@ nn \L :exe'sil '.eval(tmux).'tig"'<CR>
 nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 no ]x /\v^[\=<>\|]{7}.*<CR>
 no [x ?\v^[\=<>\|]{7}.*<CR>
-nm dc [xjvv]xky?\v\<{7}.*<CR>vv/\v\>{7}.*<CR>dp<BS>
+nm dc [xjvV]xky?\v\<{7}.*<CR>vV/\v\>{7}.*<CR>dp<BS>
 
 " Miscellaneous
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
 for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set formatoptions-=cro
-let wild = ['a}', 'a]', 'a)', 'at', 'a>', 'ac', 'af']
-let g:wildfire_objects = {'*':wild,'python':wild+['aiv'],'sh,zsh,bash':wild+['aIv']}
-au User targets#mappings#user call targets#mappings#extend({'a': {}})
 
 " Diff
 if &diff 
@@ -99,9 +88,9 @@ endif
 
 " Plugins
 call plug#begin('~/.vim_plugged')
+  Plug 'SUSTech-data/wildfire.nvim'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'farmergreg/vim-lastplace'
-  Plug 'gcmt/wildfire.vim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'mattn/emmet-vim'
   Plug 'michaeljsmith/vim-indent-object'
@@ -111,7 +100,6 @@ call plug#begin('~/.vim_plugged')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-tree/nvim-tree.lua'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'petertriho/nvim-scrollbar'
   Plug 'pocco81/auto-save.nvim'
   Plug 'romgrk/barbar.nvim'

@@ -8,7 +8,6 @@ vi-cut() { zle vi-delete; printf '%s' "${CUTBUFFER}" | c }
 vi-yank() { zle .vi-yank; printf '%s' "${CUTBUFFER}" | c }
 vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo ${CUTBUFFER})"; zle .vi-put-before }
 vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo ${CUTBUFFER})"; zle .vi-put-after }
-char-wrap() { zle -U l && zle ${WIDGET%-char} }
 opp-wrap() { read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac }
 nohl() { region_highlight=(); _zsh_highlight}
 bsearch() { local ZSH_VI_SEARCH_PREFIX='\<' ZSH_VI_SEARCH_GREP_PARAMETERS=(); zsh-vi-search }
@@ -19,7 +18,6 @@ autoload -U select-{bracketed,quoted} surround edit-command-line
 zle -N add-surround surround
 for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done
 for w in {change,delete}-wrap; do zle -N $w opp-wrap; done
-for w in vi-{delete,cut,change,yank}-char; do zle -N $w char-wrap; done
 for w in goto-recent-dir open-fm quit select-{bracketed,quoted} edit-command-line visual-replace\
   vi-{cut,yank,put-{before,after}} nohl; do zle -N $w; done
 for w in bsearch-{forward,backward}; do zle -N $w bsearch; done
@@ -27,9 +25,8 @@ for w in bsearch-{forward,backward}; do zle -N $w bsearch; done
 # Remapping
 bindkey -v
 bindkey -M vicmd -r :
-bindkey -M vicmd X vi-cut-char D vi-delete-char Y vi-yank-char C vi-change-char \
-  s add-surround c change-wrap d delete-wrap x vi-cut U redo '^V' edit-command-line \
-  H bsearch-backward L bsearch-forward '\e' nohl
+bindkey -M vicmd s add-surround c change-wrap d delete-wrap x vi-cut U redo \
+  '^V' edit-command-line H bsearch-backward L bsearch-forward '\e' nohl
 bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-mode P visual-replace
 bindkey -M viins '^[[Z' forward-word '^V' vi-put-after '^I' fzf_completion \
   '^?' backward-delete-char '^G' _mark_expansion
