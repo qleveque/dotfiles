@@ -28,7 +28,7 @@ source ~/.antigen/antigen.zsh
   antigen bundle thimc/vifm_devicons
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle Whenti/zsh-vi-search
+  antigen bundle qleveque/zsh-vi-search
 antigen apply
 
 # Sources

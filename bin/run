@@ -31,8 +31,8 @@ run() {
     asm) nasm -f elf64 $file && ld -s -o $name.out $name.o && ./$name.out;;
     bash) bash $file;;
     bat|cmd) cmd.exe /C $file;;
-    c) clang -o $name.out $file && ./$name.out;;
-    cc|cpp) clang++ -o $name.out $file && ./$name.out;;
+    c) clang-17 -o $name.out $file && ./$name.out;;
+    cc|cpp) clang++-17 -w -std=c++23 -o $name.out $file && ./$name.out;;
     cs) csc.exe -out:$name.out $file && ./$name.out;;
     f90|f95|f03) gfortran -o $name.out $file && ./$name.out;;
     go) go run $file;;
