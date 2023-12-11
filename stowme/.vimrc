@@ -18,6 +18,8 @@ nn cc "_cc
 no d "_d
 nn dd "_dd
 no x d
+xn p P
+xn P p
 
 " Easy life
 nn V ggVG
