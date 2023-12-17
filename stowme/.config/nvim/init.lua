@@ -4,6 +4,11 @@ vim.cmd('source ~/.vimrc')
 -- Comments
 require('Comment').setup()
 
+-- Leap
+local function leap() require('leap').leap { target_windows = { vim.fn.win_getid() } } end
+vim.keymap.set('n', '<Space>', leap)
+vim.keymap.set('v', '<Space>', leap)
+
 -- TreeSitter
 require('nvim-treesitter.configs').setup {
   ensure_installed = "all",

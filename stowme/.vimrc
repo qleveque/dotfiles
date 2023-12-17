@@ -33,8 +33,6 @@ nn ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
-map H ?\C\<
-map L /\C\<
 
 " Shortcuts
 map <C-f> :NvimTreeFindFile<CR>
@@ -111,4 +109,5 @@ call plug#begin('~/.vim_plugged')
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'wellle/targets.vim'
+  Plug 'ggandor/leap.nvim'
 call plug#end()
