@@ -76,7 +76,7 @@ for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set formatoptions-=cro
 
 " Diff
-if &diff 
+if &diff
   set noro
   nn <C-Q> :qa<CR>
   nn q :qa<CR>

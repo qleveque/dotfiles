@@ -38,6 +38,7 @@
     { "before": [ "<C-e>" ], "commands": [ "editor.emmet.action.wrapWithAbbreviation" ] },
     { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatSelection" ] },
     { "before": [ "*" ], "after": [ "\"", "x", "y", "/", "<C-R>", "x", "<CR>" ] },
+    { "before": [ "#" ], "after": [ "\"", "x", "y", "?", "<C-R>", "x", "<CR>" ] },
     { "before": [ "ç" ], "after": [ "\"", "x", "y", "/", "<C-R>", "x", "<CR>", "N", "c", "g", "n" ] },
     { "before": [ " ", "w" ], "commands": [ "editor.debug.action.selectionToWatch" ] },
     { "before": [ "_" ], "commands": [ "editor.action.smartSelect.expand" ] },
