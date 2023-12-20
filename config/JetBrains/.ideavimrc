@@ -1,10 +1,11 @@
 source ~/dotfiles/stowme/.vimrc
 sethandler a:vim
-set ideajoin
-set argtextobj.vim
+set argtextobj
+set commentary
 set easymotion
-let g:EasyMotion_do_mapping=0
-set vim-commentary
+set ideajoin
+set surround
+set textobj-indent
 
 " Navigation
 sethandler <C-t> a:ide
@@ -45,6 +46,7 @@ nnoremap <Tab> :action FileStructurePopup<CR>
 nmap _ :action EditorSelectWord<CR>
 vmap _ :action EditorSelectWord<CR>
 vmap - :action EditorUnSelectWord<CR>
+let g:EasyMotion_do_mapping=0
 nmap <Space> <Plug>(easymotion-bd-f2)
 
 " New
@@ -64,10 +66,6 @@ nnoremap \D :action Vcs.Show.Local.Changes<CR>
 nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap \L :action Vcs.Show.Log<CR>
 nnoremap \b :action Annotate<CR>
-
-" Diff
-nnoremap do :action Diff.ApplyLeftSide<CR>
-nnoremap gf :action EditSource<CR>
 
 " Debug
 nmap <Up> :action Resume<CR>

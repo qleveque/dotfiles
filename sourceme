@@ -7,7 +7,6 @@ echo source "${HOME}/.zrc">"${HOME}/.zshrc"
 HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
 NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
 SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
-VIM_PLUG_URL='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
 WSLGIT_URL='https://github.com/andy-5/wslgit/releases/download/v1.2.0/wslgit.exe'
 
@@ -38,9 +37,6 @@ sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 # Nvim
 TMP=$(mktemp) && wget -O "${TMP}" "${NVIM_URL}" && tar xvzf "${TMP}" -C "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim /usr/bin/nvim"
-curl -fLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs "${VIM_PLUG_URL}"
-nvim +PluginInstall +qall
-nvim -c 'CocInstall -sync coc-json coc-highlight coc-tsserver coc-html coc-css coc-pyright coc-clangd|q'
 # Antigen
 mkdir "${HOME}/.antigen" && curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
 

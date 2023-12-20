@@ -34,7 +34,7 @@ antigen apply
 # Sources
 source ~/.zvimrc
 source ~/.aliases
-source ~/.vim_plugged/vim-tmux-navigator/vim-tmux-navigator.tmux
+source ~/.local/share/nvim/lazy/vim-tmux-navigator/vim-tmux-navigator.tmux
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 

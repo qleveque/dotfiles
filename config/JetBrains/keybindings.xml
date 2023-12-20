@@ -25,6 +25,12 @@
   <action id="CopyContentRootPath">
     <keyboard-shortcut first-keystroke="y" second-keystroke="w" />
   </action>
+  <action id="Diff.ApplyLeftSide">
+    <keyboard-shortcut first-keystroke="d" second-keystroke="o" />
+  </action>
+  <action id="EditSource">
+    <keyboard-shortcut first-keystroke="g" second-keystroke="f" />
+  </action>
   <action id="Editor Copy">
     <keyboard-shortcut first-keystroke="y" second-keystroke="y" />
   </action>

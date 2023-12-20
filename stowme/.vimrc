@@ -33,6 +33,7 @@ nn ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
+no <Space> :lua require('leap').leap{target_windows={vim.fn.win_getid()}}<CR>
 
 " Shortcuts
 map <C-f> :NvimTreeFindFile<CR>
@@ -42,6 +43,12 @@ map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
 map <C-g> :AerialOpen<CR>
 map <C-q> ZQ
+
+" Tabs
+nn <M-h> <Cmd>BufferPrevious<CR>
+nn <M-l> <Cmd>BufferNext<CR>
+nn <M-j> <Cmd>BufferClose<CR>
+nn <M-k> <Cmd>BufferRestore<CR>
 
 " Term
 nn <silent> é :exe'sil !tmux splitw "run '.expand("%").'"'<CR>
@@ -81,33 +88,5 @@ if &diff
   nn + ]c
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
-  let g:barbar_auto_setup=v:false
-  let g:coc_start_at_startup=0
   au VimEnter * :windo set wrap nofen fdc=0 | :norm +-
 endif
-
-" Plugins
-call plug#begin('~/.vim_plugged')
-  Plug 'SUSTech-data/wildfire.nvim'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'farmergreg/vim-lastplace'
-  Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'mattn/emmet-vim'
-  Plug 'michaeljsmith/vim-indent-object'
-  Plug 'neoclide/coc.nvim',{'branch': 'release'}
-  Plug 'numToStr/Comment.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-tree/nvim-tree.lua'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'petertriho/nvim-scrollbar'
-  Plug 'pocco81/auto-save.nvim'
-  Plug 'romgrk/barbar.nvim'
-  Plug 'roxma/vim-paste-easy'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'stevearc/aerial.nvim'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-surround'
-  Plug 'wellle/targets.vim'
-  Plug 'ggandor/leap.nvim'
-call plug#end()
