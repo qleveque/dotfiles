@@ -2,6 +2,8 @@ source ~/dotfiles/stowme/.vimrc
 sethandler a:vim
 set ideajoin
 set argtextobj.vim
+set easymotion
+let g:EasyMotion_do_mapping=0
 set vim-commentary
 
 " Navigation
@@ -38,13 +40,12 @@ nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
 nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
-map H ?\V\C\\<
-map L /\V\C\\<
 vnoremap \f :action ShowReformatFileDialog<CR>
 nnoremap <Tab> :action FileStructurePopup<CR>
 nmap _ :action EditorSelectWord<CR>
 vmap _ :action EditorSelectWord<CR>
 vmap - :action EditorUnSelectWord<CR>
+nmap <Space> <Plug>(easymotion-bd-f2)
 
 " New
 nnoremap gi :action GotoImplementation<CR>
@@ -73,14 +74,14 @@ nmap <Up> :action Resume<CR>
 nmap <Right> :action StepInto<CR>
 nmap <Left> :action StepOut<CR>
 nmap <Down> :action StepOver<CR>
-nmap <Space>j :action NextOccurence<CR>
-nmap <Space>k :action PreviousOccurence<CR>
-nmap <Space>a :action ShowExecutionPoint<CR>
-nmap <Space>c :action RunToCursor<CR>
-nmap <Space>p :action Pause<CR>
-nmap <Space>x :action Stop<CR>
-nmap <Space>b :action ToggleLineBreakpoint<CR>
-nmap <Space>B :action ViewBreakpoints<CR>
-nmap <Space>m :action XDebugger.MuteBreakpoints<CR>
-map <Space>w :action Debugger.AddToWatch<CR>
-nmap <Space>W :action XDebugger.RemoveAllWatches<CR>
+nmap ùj :action NextOccurence<CR>
+nmap ùk :action PreviousOccurence<CR>
+nmap ùa :action ShowExecutionPoint<CR>
+nmap ùc :action RunToCursor<CR>
+nmap ùp :action Pause<CR>
+nmap ùx :action Stop<CR>
+nmap ùb :action ToggleLineBreakpoint<CR>
+nmap ùùb :action ViewBreakpoints<CR>
+nmap ùm :action XDebugger.MuteBreakpoints<CR>
+map ùw :action Debugger.AddToWatch<CR>
+nmap ùùw :action XDebugger.RemoveAllWatches<CR>

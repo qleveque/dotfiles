@@ -14,8 +14,9 @@ if $(grep -q Microsoft /proc/version); then
   jetBrainsDir="${appData}/JetBrains"
 
   # Pycharm
-  pyCharmDir=$(find "${jetBrainsDir}" -maxdepth 1 -type d -name 'PyCharm*' -print -quit)
+  pyCharmDir=$(find "${jetBrainsDir}" -maxdepth 1 -type d -name 'PyCharm*'|tail -n1)
   if [[ -d ${pyCharmDir} ]]; then
+    mkdir -p "${pyCharmDir}/keymaps"
     ln -f "${currentDir}/JetBrains/keybindings.xml" "${pyCharmDir}/keymaps/keybindings.xml"
   fi
 fi
