@@ -37,6 +37,8 @@ sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 # Nvim
 TMP=$(mktemp) && wget -O "${TMP}" "${NVIM_URL}" && tar xvzf "${TMP}" -C "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim /usr/bin/nvim"
+PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
+rm "${PLUG}"/{{tar,netrw,zip}Plugin,gzip,matchit,matchparen,rplugin,shada,spellfile,tohtml,tutor}.vim
 # Antigen
 mkdir "${HOME}/.antigen" && curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
 
