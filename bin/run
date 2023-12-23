@@ -1,30 +1,37 @@
 #!/usr/bin/zsh
 # Run any program
+
+pprint() { echo -n "\e[36m$1\e[0m" }
+
 run() {
-  local full_path=$1
+  local full_path=$1 file="${1:t}" name="${1:t:r}"
   if [ ! -f $full_path ]; then
-    echo 'File does not exist' && return
+    echo 'File does not exist'
+    return
   fi
-  local file="${1:t}" name="${1:t:r}"
+  cd ${full_path:h}
+
+  # Scripts
+  declare -A scripts=("Makefile" "make" "build" "./build" "setup" "./setup")
+  while [[ $PWD != / ]]; do
+    for script in "${(@k)scripts}"; do
+      if [[ -f $script ]]; then
+        pprint "[Running $PWD/$script]\n"
+        ${scripts[$script]}
+        return
+      fi
+    done
+    cd ..
+  done
   cd ${full_path:h}
 
   # Shebang
   local shebang=$(sed -n '1s/^#!//p' $file)
   if [[ -n $shebang ]]; then
+    pprint "[Running #!$shebang]\n"
     eval "$shebang $file"
     return
   fi
-
-  # Makefile
-  while [[ ! -f Makefile ]] && [[ $PWD != / ]]; do
-    cd ..
-  done
-  if [[ -f Makefile ]]; then
-    echo Running makefile:
-    make
-    return
-  fi
-  cd ${full_path:h}
 
   # Extension
   case ${1:t:e} in
@@ -38,7 +45,7 @@ run() {
     go) go run $file;;
     groovy) groovy $file;;
     hs) ghc $file && ./$name;;
-    html|md) o $file; exit 0;;
+    html|md) o $file; exit;;
     java) javac $file && java $name;;
     jl) julia $file;;
     js|ts|mjs|tsx|jsx) bun run $file;;
@@ -64,9 +71,9 @@ run() {
     *) # Executable
       if [[ -x $file ]]; then
         ./$file
-        return
-      fi
-      echo 'Nothing to do';;
+      else
+        echo 'Nothing to do'
+      fi;;
   esac
 }
 
@@ -74,5 +81,5 @@ START=$(date +%s.%2N)
 run "$(readlink -f "$*")"
 RC=$?
 ET=$(echo "$(date +%s.%2N) - $START" | bc)
-echo -n "\e[36m[Returned $RC in $ET seconds]\e[0m"
+pprint "[Returned $RC in $ET seconds]"
 read
