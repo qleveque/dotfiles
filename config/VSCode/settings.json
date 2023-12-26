@@ -1,9 +1,5 @@
 {
   "C_Cpp.clang_format_sortIncludes": true,
-  "editor.autoClosingBrackets": "never",
-  "editor.autoClosingDelete": "never",
-  "editor.autoClosingOvertype": "never",
-  "editor.autoClosingQuotes": "never",
   "editor.cursorSurroundingLines": 4,
   "editor.formatOnPaste": true,
   "editor.inlineSuggest.enabled": true,

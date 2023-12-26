@@ -3,11 +3,10 @@ LESS = -irFRX --mouse --wheel-lines=1
 
 #command
 \e clear-search
+gg goto-line
 
-# Git log:
-# Open the current commit in tig
-c noaction mawj?\^commit \\w{40}\nmm|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|xargs -I v tmux neww "tig show v"\n'a
-# Copy the current commit hash
+# Git
+gc noaction mawj?\^commit \\w{40}\nmm|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|xargs -I v tmux neww "tig show v"\n'a
+gf noaction mawj?\^index \\w{7}\.\.\\w{7} \nmm|mhead -1|cut -d\\  -f2|xargs -I v tmux neww "git difftool --trust-exit-code --no-prompt v"\n'a
 yc noaction mawj?\^commit \\w{40}\nmm|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|tr -d '\\n'|c\n'a
-# Copy the current filename
 yf noaction mawj?\^--- a/\nmm|mhead -1|sed 's/\^.\\{10\\}//'|sed 's/.\\{3\\}$//'|tr -d '\\n'|c\n'a

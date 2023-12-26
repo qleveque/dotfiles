@@ -27,6 +27,7 @@ require("lazy").setup({
   {"ggandor/leap.nvim", lazy=true},
   {"numToStr/Comment.nvim", opts= {}},
   {"petertriho/nvim-scrollbar", opts={}},
+  {"windwp/nvim-autopairs", lazy=true, event = "InsertEnter", opts = {}},
   {
     "SUSTech-data/wildfire.nvim",
     event = "VeryLazy",
@@ -95,6 +96,8 @@ require("lazy").setup({
         ['p']=tree_api.fs.paste,
         ['l']=tree_api.node.open.edit,
         ['h']=tree_api.node.navigate.parent_close,
+        ['L']=tree_api.tree.change_root_to_node,
+        ['H']=tree_api.tree.change_root_to_parent,
         ['é']=function() vim.cmd('sil !tmux splitw "run '..node_path()..'"') end,
         ['<CR>']=function() vim.cmd('sil !o "'..node_path()..'"') end,
         ['<C-f>']=function() vim.cmd('wincmd p') end,
