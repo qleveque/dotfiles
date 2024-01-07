@@ -22,7 +22,6 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c80,)|*
 # Plugins
 source ~/.antigen/antigen.zsh
   antigen bundle lincheney/fzf-tab-completion
-  antigen bundle ohmyzsh/ohmyzsh plugins/extract
   antigen bundle ohmyzsh/ohmyzsh plugins/git
   antigen bundle ohmyzsh/ohmyzsh plugins/jump
   antigen bundle thimc/vifm_devicons

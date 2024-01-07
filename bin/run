@@ -1,85 +1,86 @@
 #!/usr/bin/zsh
 # Run any program
 
-pprint() { echo -n "\e[36m$1\e[0m" }
-
 run() {
-  local full_path=$1 file="${1:t}" name="${1:t:r}"
-  if [ ! -f $full_path ]; then
-    echo 'File does not exist'
-    return
-  fi
-  cd ${full_path:h}
-
-  # Scripts
-  declare -A scripts=("Makefile" "make" "build" "./build" "setup" "./setup")
-  while [[ $PWD != / ]]; do
-    for script in "${(@k)scripts}"; do
-      if [[ -f $script ]]; then
-        pprint "[Running $PWD/$script]\n"
-        ${scripts[$script]}
-        return
-      fi
-    done
-    cd ..
-  done
-  cd ${full_path:h}
-
-  # Shebang
-  local shebang=$(sed -n '1s/^#!//p' $file)
-  if [[ -n $shebang ]]; then
-    pprint "[Running #!$shebang]\n"
-    eval "$shebang $file"
-    return
-  fi
-
-  # Extension
-  case ${1:t:e} in
-    asm) nasm -f elf64 $file && ld -s -o $name.out $name.o && ./$name.out;;
-    bash) bash $file;;
-    bat|cmd) cmd.exe /C $file;;
-    c) clang-17 -o $name.out $file && ./$name.out;;
-    cc|cpp) clang++-17 -w -std=c++23 -o $name.out $file && ./$name.out;;
-    cs) csc.exe -out:$name.out $file && ./$name.out;;
-    f90|f95|f03) gfortran -o $name.out $file && ./$name.out;;
-    go) go run $file;;
-    groovy) groovy $file;;
-    hs) ghc $file && ./$name;;
-    html|md) o $file; exit;;
-    java) javac $file && java $name;;
-    jl) julia $file;;
-    js|ts|mjs|tsx|jsx) bun run $file;;
-    kt) kotlinc $file -include-runtime -d $name.jar && java -jar $name.jar;;
-    lisp) clisp $name;;
-    lua) lua $file;;
-    m4) m4 -I $file > $name;;
-    mod|aMod) voc $file -M && echo && ./$name;;
-    nsi) cmd.exe /C "makensis $file && $name.exe";;
-    pl) perl $file;;
-    ps1) powershell.exe -ExecutionPolicy RemoteSigned -File $file;;
-    py) python3 $file;;
-    r) Rscript $file;;
-    rb) ruby $file;;
-    rs) rustc $file -o $name.out && ./$name.out;;
-    scala) scala $file;;
-    sh) sh $file;;
-    sql) sqlite3 $name.db < $file;;
-    tex) pdflatex -halt-on-error $file && o $name.pdf && exit;;
-    zig) zig build-exe $file && ./$name;;
-    zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) zsh -ic "x \"$file\"";;
-    zsh) zsh $file;;
-    *) # Executable
-      if [[ -x $file ]]; then
-        ./$file
-      else
-        echo 'Nothing to do'
-      fi;;
-  esac
+  echo "\e[36m[$*]\e[0m"
+  start=$(date +%s.%2N)
+  eval $*
+  rc=$?
+  et=$(echo "$(date +%s.%2N) - ${start}" | bc)
+  echo -n "\e[36m[Returned ${rc} in ${et} seconds]\e[0m"
+  read
+  exit 0
 }
 
-START=$(date +%s.%2N)
-run "$(readlink -f "$*")"
-RC=$?
-ET=$(echo "$(date +%s.%2N) - $START" | bc)
-pprint "[Returned $RC in $ET seconds]"
-read
+error() {
+  echo -n "\e[31m[$*]\e[0m"
+  read
+  exit 0
+}
+
+full_path="$(readlink -f "$*")"
+[[ ! -f ${full_path} ]] && error 'File does not exist'
+cd ${full_path:h}
+
+file="${full_path:t}" name="${file:r}" ext="${file:e}"
+
+# Scripts
+while [[ $PWD != / ]]; do
+  [[ -f Makefile ]] && run make
+  [[ -f build ]] && run ./build
+  [[ -f setup ]] && run ./setup
+  cd ..
+done
+cd ${full_path:h}
+
+# Shebang
+shebang=$(sed -n '1s/^#!//p' ${file})
+[[ -n ${shebang} ]] && run "${shebang} ${file}"
+
+# Extension
+if [[ $name =~ ^[[:alnum:]]+$ ]]; then
+  f="${file}" n="${name}"
+else
+  f="\"${file}\"" n="\"${name}\""
+fi
+case ${ext} in
+  asm) run "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
+  bash) run "bash $f";;
+  bat|cmd) run cmd.exe /C "$f";;
+  c) run "clang-17 -o $n.out $f && ./$n.out";;
+  cc|cpp) run "clang++-17 -w -std=c++23 -o $n.out $f && ./$n.out";;
+  cs) run "csc.exe -out:$n.out $f && ./$n.out";;
+  f90|f95|f03) run "gfortran -o $n.out $f && ./$n.out";;
+  go) run "go run $f";;
+  groovy) run "groovy $f";;
+  hs) run "ghc $f && ./$n";;
+  html|md) run "o $f; exit";;
+  java) run "javac $f && java $n";;
+  jl) run "julia $f";;
+  js|ts|mjs|tsx|jsx) run "bun run $f";;
+  kt) run "kotlinc $f -include-runtime -d $n.jar && java -jar $n.jar";;
+  lisp) run "clisp $n";;
+  lua) run "lua $f";;
+  m4) run "m4 -I $f > $n";;
+  mod|aMod) run "voc $f -M && echo && ./$n";;
+  nsi) run cmd.exe /C "makensis $f && $n.exe";;
+  pl) run "perl $f";;
+  ps1) run "powershell.exe -ExecutionPolicy RemoteSigned -f $f";;
+  py) run "python3 $f";;
+  r) run "Rscript $f";;
+  rb) run "ruby $f";;
+  rs) run "rustc $f -o $n.out && ./$n.out";;
+  scala) run "scala $f";;
+  sh) run "sh $f";;
+  sql) run "sqlite3 $n.db < $f";;
+  tex) run "pdflatex -halt-on-error $f && o $n.pdf && exit";;
+  zig) run "zig build-exe $f && ./$n";;
+  zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) run "extract $f";;
+  zsh) run "zsh $f";;
+esac
+
+# Executable
+[[ -x ${file} ]] && run "./$f"
+
+# Not executable
+error 'Nothing to do'

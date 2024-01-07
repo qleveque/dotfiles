@@ -68,7 +68,7 @@ ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 no <Space> :lua require('leap').leap{target_windows={vim.fn.win_getid()}}<CR>
 
 " Term
-nn <silent> é :exe'sil !tmux splitw "run '.expand("%").'"'<CR>
+nn <silent> é :exe'sil !tmux splitw "run \"'.expand("%").'\""'<CR>
 nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 

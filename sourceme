@@ -9,6 +9,7 @@ NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64
 SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
 W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
 WSLGIT_URL='https://github.com/andy-5/wslgit/releases/download/v1.2.0/wslgit.exe'
+EXTRACT_URL='https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
 
 # OS specific
 if $(grep -q Microsoft /proc/version); then
@@ -33,6 +34,8 @@ sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certific
   vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 wget -O "${HOME}/bin/sd" "${SD_URL}"
+(echo '#!/usr/bin/zsh' && wget -qO- "${EXTRACT_URL}" && echo 'extract $1') > "${HOME}/bin/extract"
+chmod +x "${HOME}/bin/extract"
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 # Nvim
 TMP=$(mktemp) && wget -O "${TMP}" "${NVIM_URL}" && tar xvzf "${TMP}" -C "${HOME}"
