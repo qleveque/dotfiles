@@ -1,22 +1,21 @@
 #!/usr/bin/zsh
-currentDir="${0:h}"
+configDir="${0:h}"
 if $(grep -q Microsoft /proc/version); then
   appData="${HOME}/AppData/Roaming"
   # VSCode
   codeDir="${appData}/Code/User"
   if [[ -d ${codeDir} ]]; then
-    ln -f "${currentDir}/VSCode/settings.json" "${codeDir}/settings.json"
-    ln -f "${currentDir}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
+    ln -f "${configDir}/VSCode/settings.json" "${codeDir}/settings.json"
+    ln -f "${configDir}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
   fi
 
   # JetBrains
-  ln -f "${currentDir}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
-  jetBrainsDir="${appData}/JetBrains"
-
-  # Pycharm
-  pyCharmDir=$(find "${jetBrainsDir}" -maxdepth 1 -type d -name 'PyCharm*'|tail -n1)
-  if [[ -d ${pyCharmDir} ]]; then
-    mkdir -p "${pyCharmDir}/keymaps"
-    ln -f "${currentDir}/JetBrains/keybindings.xml" "${pyCharmDir}/keymaps/keybindings.xml"
-  fi
+  ln -f "${configDir}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
+  for dirPattern in 'PyCharm*' 'IdeaIC*'; do
+    dir=$(find "${appData}/JetBrains" -type d -name $dirPattern|sort -n|tail -n1)
+    if [[ -d ${dir} ]]; then
+      mkdir -p "${dir}/keymaps"
+      ln -f "${configDir}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
+    fi
+  done
 fi

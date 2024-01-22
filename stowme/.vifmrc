@@ -24,7 +24,7 @@ vn d D
 
 " FZF
 nn <M-c> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
-nn <C-t> :exe 'goto "'.system('eval $FZF_CTRL_T_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
+nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:redr<CR>
 
 " Tmux integration
@@ -32,7 +32,7 @@ nn <C-b>s :!tmux split-window -v -c %d<CR>
 nn <C-b>v :!tmux split-window -h -c %d<CR>
 
 " Commands
-com! g :exe 'cd "'.system('set %a && readlink "$MARKPATH/$1"').'"'
+com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')
 com! o :!o "%a"
 com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
 
