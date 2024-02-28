@@ -27,7 +27,7 @@ require("lazy").setup({
   {"ggandor/leap.nvim", lazy=true},
   {"numToStr/Comment.nvim", opts= {}},
   {"petertriho/nvim-scrollbar", opts={}},
-  {"windwp/nvim-autopairs", lazy=true, event = "InsertEnter", opts = {}},
+  {"windwp/nvim-autopairs", lazy=false, event = "InsertEnter", opts = {}},
   {
     "SUSTech-data/wildfire.nvim",
     event = "VeryLazy",

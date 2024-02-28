@@ -48,6 +48,8 @@ vmap _ :action EditorSelectWord<CR>
 vmap - :action EditorUnSelectWord<CR>
 let g:EasyMotion_do_mapping=0
 nmap <Space> <Plug>(easymotion-bd-f2)
+map ç *Ncgn
+vnoremap * "xy/<C-R>x<CR>
 
 " New
 nnoremap gi :action GotoImplementation<CR>

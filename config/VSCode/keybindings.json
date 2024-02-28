@@ -2,7 +2,10 @@
   // Grep
   { "key": "enter", "command": "search.action.focusNextSearchResult", "when": "searchInputBoxFocus" },
   { "key": "escape", "command": "workbench.action.focusLastEditorGroup", "when": "searchInputBoxFocus" },
-  { "key": "ctrl+s", "command": "workbench.action.findInFiles" },
+
+  { "key": "ctrl+s", "command": "workbench.action.findInFiles", "when": "editorFocus" },
+  { "key": "ctrl+s", "command": "workbench.action.focusLastEditorGroup", "when": "searchInputBoxFocus" },
+
   { "key": "ctrl+p", "command": "history.showPrevious", "when": "searchInputBoxFocus" },
   { "key": "ctrl+n", "command": "history.showNext", "when": "searchInputBoxFocus" },
   { "key": "tab", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
