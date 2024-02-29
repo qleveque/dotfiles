@@ -75,7 +75,7 @@ case ${ext} in
   sql) run "sqlite3 $n.db < $f";;
   tex) run "pdflatex -halt-on-error $f && o $n.pdf && exit";;
   zig) run "zig build-exe $f && ./$n";;
-  zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz) run "extract $f";;
+  zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz|jar) run "extract $f";;
   zsh) run "zsh $f";;
 esac
 

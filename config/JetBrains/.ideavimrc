@@ -42,7 +42,6 @@ nmap <C-i> <Action>(Forward)
 nnoremap gd gd
 nnoremap gr :action GotoDeclaration<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
-nnoremap <Tab> :action FileStructurePopup<CR>
 nmap _ :action EditorSelectWord<CR>
 vmap _ :action EditorSelectWord<CR>
 vmap - :action EditorUnSelectWord<CR>

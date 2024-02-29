@@ -67,9 +67,6 @@
     <keyboard-shortcut first-keystroke="ctrl v" />
     <keyboard-shortcut first-keystroke="p" />
   </action>
-  <action id="EditorTextEnd">
-    <keyboard-shortcut first-keystroke="shift g" />
-  </action>
   <action id="EditorTextStart">
     <keyboard-shortcut first-keystroke="g" second-keystroke="g" />
   </action>
@@ -77,10 +74,7 @@
     <keyboard-shortcut first-keystroke="up" />
     <keyboard-shortcut first-keystroke="k" />
   </action>
-  <action id="Find">
-    <keyboard-shortcut first-keystroke="shift colon" />
-    <keyboard-shortcut first-keystroke="shift comma" />
-  </action>
+  <action id="Find" />
   <action id="FindInPath">
     <keyboard-shortcut first-keystroke="ctrl s" />
   </action>
@@ -114,10 +108,10 @@
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="j" />
   </action>
-  <action id="NewElement">
-    <keyboard-shortcut first-keystroke="shift t" />
-  </action>
   <action id="NextDiff">
+    <keyboard-shortcut first-keystroke="shift equals" />
+  </action>
+  <action id="NextOccurence">
     <keyboard-shortcut first-keystroke="shift equals" />
   </action>
   <action id="NextParameter">
@@ -128,6 +122,9 @@
     <keyboard-shortcut first-keystroke="j" />
   </action>
   <action id="PreviousDiff">
+    <keyboard-shortcut first-keystroke="shift 8" />
+  </action>
+  <action id="PreviousOccurence">
     <keyboard-shortcut first-keystroke="shift 8" />
   </action>
   <action id="QuickJavaDoc" />
@@ -152,6 +149,14 @@
   <action id="Terminal.ClearBuffer" />
   <action id="Terminal.CloseTab">
     <keyboard-shortcut first-keystroke="ctrl q" />
+  </action>
+  <action id="Tree-scrollDownChangeSelection">
+    <keyboard-shortcut first-keystroke="page_down" />
+    <keyboard-shortcut first-keystroke="ctrl d" />
+  </action>
+  <action id="Tree-scrollUpChangeSelection">
+    <keyboard-shortcut first-keystroke="page_up" />
+    <keyboard-shortcut first-keystroke="ctrl u" />
   </action>
   <action id="Tree-selectChild">
     <keyboard-shortcut first-keystroke="right" />
