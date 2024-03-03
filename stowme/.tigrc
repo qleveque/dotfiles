@@ -17,6 +17,8 @@ bind generic ; back
 bind generic <C-q> :quit
 bind diff + :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind diff - :?\|\s+(0|[0-9]+\s[\+-]+)$
+bind stage + :/^@@
+bind stage - :?^@@
 bind status + :/^\S+
 bind status - :?^\S+
 bind generic l enter
