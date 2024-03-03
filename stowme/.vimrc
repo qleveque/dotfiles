@@ -27,8 +27,8 @@ vm <C-e> <C-y>,
 im <C-e> <C-y>,
 ino <C-v> <C-R>+
 cno <C-v> <C-R>+
-nn ç <Cmd>let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
-vn ç "xy<Cmd>let @/='\V'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
+nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
+vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 no ]x /\v^[\=<>\|]{7}.*<CR>
