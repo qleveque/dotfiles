@@ -53,6 +53,7 @@ vnoremap * "xy/<C-R>x<CR>
 " New
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+map gh <Action>(ShowErrorDescription)
 
 " Miscellaneous
 nnoremap \i :action OptimizeImports<CR>
