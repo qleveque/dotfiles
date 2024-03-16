@@ -1,4 +1,7 @@
 #!/usr/bin/zsh
+
+./lesskey.py
+
 configDir="${0:h}"
 if $(grep -q Microsoft /proc/version); then
   appData="${HOME}/AppData/Roaming"
