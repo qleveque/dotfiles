@@ -6,7 +6,8 @@ LESS = -irFRX --mouse --wheel-lines=1
 gg goto-line
 
 # Git
-gc noaction mawj?\^commit \\w{40}\nmm|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|xargs -I v tmux neww "tig show v"\n/\ek\ek\n'a
-gf noaction mawj?\^index \\w{7}\.\.\\w{7} \nmm|mhead -1|cut -d\\  -f2|xargs -I v tmux neww "git difftool --trust-exit-code --no-prompt v"\n/\ek\ek\n'a
-yc noaction mawj?\^commit \\w{40}\nmm|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|tr -d '\\n'|c\n/\ek\ek\n'a
-yf noaction mawj?\^--- a/\nmm|mhead -1|sed 's/\^.\\{10\\}//'|sed 's/.\\{3\\}$//'|tr -d '\\n'|c\n/\ek\ek\n'a
+yc noaction mawj?\^commit \\w{40}\nmm/\ek\ek\n'a|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|tr -d '\\n'|c\n
+yf noaction mawj?\^--- a/\nmm/\ek\ek\n'a|mhead -1|sed 's/\^.\\{10\\}//'|sed 's/.\\{3\\}$//'|tr -d '\\n'|c\n
+yl noaction mawj?\^\@\@\nmm/\ek\ek\n'a|mhead -1|cut -d, -f 1|cut -d '-' -f 2|c\n
+gc noaction mawj?\^commit \\w{40}\nmm/\ek\ek\n'a|mhead -1|cut -d\\  -f2|sed 's/.\\{8\\}$//'|xargs -I v tmux neww "tig show v"\n
+gf noaction mawj?\^index \\w{7}\.\.\\w{7} \nmm/\ek\ek\n'a|mhead -1|cut -d\\  -f2|xargs -I v tmux neww "git difftool --trust-exit-code --no-prompt v"\n

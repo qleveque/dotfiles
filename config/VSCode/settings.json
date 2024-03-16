@@ -60,7 +60,7 @@
     { "before": [ "g", "c", "c" ], "commands": [ "editor.action.commentLine" ] },
     { "before": [ "c", "s", "t" ], "commands": [ "editor.emmet.action.updateTag" ] },
     { "before": [ "_" ], "commands": [ "editor.action.smartSelect.expand" ] },
-    { "before": [ "<Space>" ], "after": [ "<leader>", "<leader>", "2", "s" ],
+    { "before": [ "<Space>" ], "after": [ "<leader>", "<leader>", "2", "s" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     // Git
