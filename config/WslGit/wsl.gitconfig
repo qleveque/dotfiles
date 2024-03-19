@@ -1,0 +1,3 @@
+[core]
+  editor = "~/dotfiles/config/WslGit/nvim.bat"
+  pager = "wsl.exe -e bash --norc -c less"

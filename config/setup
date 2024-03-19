@@ -1,9 +1,11 @@
 #!/usr/bin/zsh
-
-./lesskey.py
-
 configDir="${0:h}"
-if $(grep -q Microsoft /proc/version); then
+
+# Dotfiles
+python3 "${configDir}/Dotfiles/lesskey.py" > ~/.lesskey
+ln -f "${configDir}/Dotfiles/.gitconfig" "${HOME}/"
+
+if iswsl; then
   appData="${HOME}/AppData/Roaming"
   # VSCode
   codeDir="${appData}/Code/User"
@@ -11,7 +13,6 @@ if $(grep -q Microsoft /proc/version); then
     ln -f "${configDir}/VSCode/settings.json" "${codeDir}/settings.json"
     ln -f "${configDir}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
   fi
-
   # JetBrains
   ln -f "${configDir}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
   for dirPattern in 'PyCharm*' 'IdeaIC*'; do
@@ -21,4 +22,6 @@ if $(grep -q Microsoft /proc/version); then
       ln -f "${configDir}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
     fi
   done
+  # Git
+  ln -f "${configDir}/WslGit/git" "${HOME}/bin"
 fi

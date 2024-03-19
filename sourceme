@@ -19,8 +19,6 @@ if $(grep -q Microsoft /proc/version); then
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
   # Win32yank
   TMP=$(mktemp) && wget -O "${TMP}" "${W32Y_URL}" && unzip "${TMP}" win32yank.exe -d "${HOME}/bin" && chmod +x win32yank.exe
-  # WSL git
-  wget -O "${HOME}/bin/git.exe" "${WSLGIT_URL}" && chmod +x "${HOME}/bin/git.exe"
   # Hack Nerd Font
   cmd.exe /C START ' ' "${HACK_FONT_URL}"
 else
@@ -47,3 +45,4 @@ mkdir "${HOME}/.antigen" && curl -L git.io/antigen > "${HOME}/.antigen/antigen.z
 
 # Finalize
 stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
+"${HOME}/dotfiles/config/setup"

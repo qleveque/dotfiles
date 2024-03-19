@@ -5,20 +5,16 @@
   editor = nvim
   ignorecase = true
   whitespace = trailing-space
-[diff]
-  tool = vimdiff3
 [push]
   autoSetupRemote = true
 [pull]
   rebase = true
-[merge]
+[diff]
   tool = vimdiff3
-  conflictstyle = diff3
 [difftool "vimdiff3"]
   path = nvim
-[mergetool "vimdiff3"]
-  path = nvim
-  keepBackup = false
+[merge]
+  conflictstyle = diff3
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f

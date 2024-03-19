@@ -1,0 +1,12 @@
+#!/bin/zsh
+# ~/.use_git_exe should be a file containing the directories using git.exe
+if [[ "$1" != "difftool" && -e ~/.use_git_exe ]]; then
+  directories=$(< ~/.use_git_exe)
+  regex=^\(${directories//$'\n'/'/.*|'}.\*\)\$
+  if [[ $PWD/ =~ $regex ]]; then
+    GIT_EXE='/mnt/c/Program Files/Git/cmd/git.exe'
+    "${GIT_EXE}" -c include.path=~/dotfiles/config/WslGit/wsl.gitconfig "$@"
+    exit
+  fi
+fi
+/usr/bin/git "$@"
