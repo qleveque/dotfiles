@@ -4,7 +4,7 @@
 if [[ -z "$*" ]] then
   set $PWD
 fi
-if $(grep -q Microsoft /proc/version); then
+if iswsl; then
   cmd.exe /C START '""' "`wslpath -m "\""$(readlink -f $*)"\""`"
 else
   open "$*" 1>/dev/null 2>/dev/null &

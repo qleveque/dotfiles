@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+# Test if in WSL
+
+grep -q Microsoft /proc/version
