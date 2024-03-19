@@ -5,7 +5,7 @@ goto-recent-dir() { cd "$(eval ${FZF_P_COMMAND} | fzf --exact)";zle reset-prompt
 open-fm() { cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt;zle zle-line-init }
 quit() { exit }
 vi-cut() { zle .vi-delete; printf '%s' "${CUTBUFFER}" | c }
-vi-yank() { zle .vi-yank; printf '%s' "${CUTBUFFER}" | c }
+vi-yank() { zle .vi-yank; zle set-mark-command -n -1; printf '%s' "${CUTBUFFER}" | c }
 vi-put-before() { CUTBUFFER="$(p 2>/dev/null || echo ${CUTBUFFER})"; zle .vi-put-before }
 vi-put-after() { CUTBUFFER="$(p 2>/dev/null || echo ${CUTBUFFER})"; zle .vi-put-after }
 opp-wrap() { read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac }
