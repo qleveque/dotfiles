@@ -1,35 +1,33 @@
 #!python3
+# Write ~/.lesskey
+
 import os
 
-RESEARCH = r'/\ek\ek\n'
-COPY = r"tr -d '\\n'|c\n"
+RESET = r'/\ek\ek\n'
+COPY = r"tr -d '\\n'|c"
 NA = 'noaction'
-
-def tmux_run(command):
-    return rf'xargs -I v tmux neww "{command}"\n'
+TMUX = 'xargs -I v tmux neww '
 
 def read(pattern):
-    search_pattern = pattern.replace(r'\\K', '')
-    return rf"mawj?\^{search_pattern}\nmm{RESEARCH}'a|mhead -1|grep -oP -- '{pattern}'"
+    s = pattern.replace(r'\\K', '')
+    return rf"mawj?\^{s}\nmm{RESET}'a|mhead -1|grep -oP -- '{pattern}'"
 
 COMMIT = r'commit \\K\\w{40}'
 LINE = r'\@\@ -\\K\\w\+'
-FILE = r'--- a/\\K\\S\+'
+FILE = r'--- a/\\K(\\w|/|\\.|-| )\+'
 INDEX = r'index \\K\\w{7}\\.\\.\\w{7} '
 
-with open(os.path.expanduser('~/.lesskey'), 'w') as f:
-    f.write(
-rf'''#env
+CONTENT = rf'''#env
 LESS = -irFRX --mouse --wheel-lines=1
-
 #command
 \e clear-search
 gg goto-line
-
 # Git
-yc {NA} {read(COMMIT)}|{COPY}
-yf {NA} {read(FILE)}|{COPY}
-yl {NA} {read(LINE)}|{COPY}
-gc {NA} {read(COMMIT)}|{tmux_run("tig show v")}
-gf {NA} {read(INDEX)}|{tmux_run("git difftool --trust-exit-code --no-prompt v")}
-''')
+yc {NA} {read(COMMIT)}|{COPY}\n
+yf {NA} {read(FILE)}|{COPY}\n
+yl {NA} {read(LINE)}|{COPY}\n
+gc {NA} {read(COMMIT)}|{TMUX}"tig show v"\n
+gf {NA} {read(INDEX)}|{TMUX}"git difftool --trust-exit-code --no-prompt v"\n
+'''
+
+with open(os.path.expanduser('~/.lesskey'), 'w') as f: f.write(CONTENT)
