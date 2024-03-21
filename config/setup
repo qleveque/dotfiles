@@ -23,5 +23,5 @@ if iswsl; then
     fi
   done
   # Git
-  ln -f "${configDir}/WslGit/git" "${HOME}/bin"
+  ln -f "${configDir}/WslGit/wslgit" "${HOME}/bin/git"
 fi
