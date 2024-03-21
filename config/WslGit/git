@@ -5,7 +5,12 @@ if [[ "$1" != "difftool" && -e ~/.use_git_exe ]]; then
   regex=^\(${directories//$'\n'/'/.*|'}.\*\)\$
   if [[ $PWD/ =~ $regex ]]; then
     GIT_EXE='/mnt/c/Program Files/Git/cmd/git.exe'
-    "${GIT_EXE}" -c include.path=~/dotfiles/config/WslGit/wsl.gitconfig "$@"
+    EDITOR='edit(){
+      wsl.exe -e bash -c "source ~/.colors && nvim \`wslpath $1\`"
+    }
+    edit'
+    PAGER='wsl.exe -e bash -c less'
+    "${GIT_EXE}" -c core.editor="${EDITOR}" -c core.pager="${PAGER}" "$@"
     exit
   fi
 fi

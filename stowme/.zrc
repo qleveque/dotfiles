@@ -43,7 +43,6 @@ t() {
   iswsl && tmp="${HOME}/AppData/Local/Temp" || tmp="/tmp"
   nvim $(mktemp -p ${tmp} $([ -z $1 ] || echo --suffix .$1))
 }
-unalias gd && gd() { [ -z $1 ] && tig status || git difftool -y $1 }
 
 # Directory history
 autoload -U add-zsh-hook
