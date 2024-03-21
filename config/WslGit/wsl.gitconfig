@@ -1,3 +1,3 @@
 [core]
-  editor = "~/dotfiles/config/WslGit/nvim.bat"
+  editor = "edit(){\nwsl.exe -e bash --norc -c \"source ~/.colors && nvim \\`wslpath $1\\`\"\n}\nedit"
   pager = "wsl.exe -e bash --norc -c less"
