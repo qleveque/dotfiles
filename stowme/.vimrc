@@ -1,6 +1,6 @@
 colorscheme style
-set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %0*%= mousescroll=ver:2
-set so=4 hls ic scs is nu lz list noswf udf et cul tgc ch=0 dip+=iwhite,vertical shm+=aI scl=number
+set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %2*%= mousescroll=ver:2
+set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number
 
 " Vim corrections
 nn ' `
@@ -68,7 +68,7 @@ ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 no <Space> :lua require('leap').leap{target_windows={vim.fn.win_getid()}}<CR>
 
 " Term
-nn <silent> é :exe'sil !tmux splitw "run \"'.expand("%").'\""'<CR>
+nn <silent> é :exe'sil !tmux splitw "run -p \"'.expand("%").'\""'<CR>
 nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
 nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
@@ -78,7 +78,7 @@ let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabl
 for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set formatoptions-=cro
 if &diff
-  set noro
+  set noro dip+=iwhite,vertical
   nn <C-Q> :qa<CR>
   nn q :qa<CR>
   nn + ]c

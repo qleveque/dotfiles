@@ -1,7 +1,7 @@
 RESET = r'/\ek\ek\n'
 REMOVE_COLORS = r"sed -r 's/\\x1B\\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g'"
 NA = 'noaction'
-XARGS = 'xargs bash -c '
+RUN = 'xargs bash -c '
 CUT=r"tr '\\n' ' '|cut -d ' ' -f"
 
 def read(pattern, n = 1):
@@ -18,8 +18,8 @@ LESS = -irFRX --mouse --wheel-lines=1
 \e clear-search
 gg goto-line
 # Git
-gc {NA} {READ_COMMIT}|{XARGS}'tmux neww "tig show $0"'\n
+gc {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
 yc {NA} {READ_COMMIT}|c\n
-gf {NA} {READ_INDEX_AND_FILE}|{XARGS}'tmux neww -e FILE="$PWD/$1" "git difftool --trust-exit-code -y $0"'\n
+gf {NA} {READ_INDEX_AND_FILE}|{RUN}'tmux neww -e FILE="$PWD/$1" "git difftool --trust-exit-code -y $0"'\n
 yf {NA} {READ_INDEX_AND_FILE}|{CUT}2|c\n
 ''')

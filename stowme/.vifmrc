@@ -18,7 +18,7 @@ nn yp :exe '!echo -n %d | c'<CR>
 nn yw :exe '!echo -n %c | c'<CR>
 nn xx dd
 nn dd DD
-nn é :!tmux splitw "run %f"<CR>
+nn é :!tmux splitw "run -p %f"<CR>
 vn x d
 vn d D
 

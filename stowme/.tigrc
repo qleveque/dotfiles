@@ -25,24 +25,15 @@ bind generic l enter
 
 bind log l !@>tmux new-window -a "tig show '%(commit)'"
 bind diff l !@>tmux new-window -a "\
-  export FILE=\"$(readlink -f '%(file)')\";\
-  PARAMS=('%(commit)^!');\
-  [[ -n '%(stash)' ]] && PARAMS=('%(stash)^' '%(stash)');\
-  git difftool --trust-exit-code -y ${(@)PARAMS} -- '%(file)';\
+  [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\
+  FILE=\"$(readlink -f '%(file)')\" git difftool --trust-exit-code -y ${P} -- '%(file)';\
 "
 bind stage l !@>tmux new-window -a "\
-  export FILE=\"$(readlink -f '%(file)')\";\
-  PARAMS=();\
-  [[ '%(status)' =~ 'Staged changes' ]] && PARAMS+=('--staged');\
-  git difftool --trust-exit-code -y ${(@)PARAMS} -- '%(file)';\
+  [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
+  FILE=\"$(readlink -f '%(file)')\" git difftool --trust-exit-code -y ${P} -- '%(file)';\
 "
 bind status l !@>tmux new-window -a "\
-  if [[ '%(status)' =~ 'Untracked file' ]]; then\
-    nvim '%(file)';\
-  else;\
-    export FILE=\"$(readlink -f '%(file)')\";\
-    PARAMS=();\
-    [[ '%(status)' =~ 'Staged changes' ]] && PARAMS+=('--staged');\
-    git difftool --trust-exit-code -y ${(@)PARAMS} -- '%(file)';\
-  fi;\
+  [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
+  [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
+  FILE=\"$(readlink -f '%(file)')\" git difftool --trust-exit-code -y ${P} -- '%(file)';\
 "

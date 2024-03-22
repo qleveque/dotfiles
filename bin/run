@@ -1,37 +1,44 @@
 #!/usr/bin/zsh
 # Run any program
 
+# Pause at the end if the '-p' flag is specified
+[[ "$1" == "-p" ]] && PAUSE=true && shift
+
+quit() {
+  echo -n "$1"
+  [[ ${PAUSE} == true ]] && read || echo
+  exit 0
+}
+
 run() {
   echo "\e[36m[$*]\e[0m"
-  start=$(date +%s.%2N)
-  eval $*
-  rc=$?
-  et=$(echo "$(date +%s.%2N) - ${start}" | bc)
-  echo -n "\e[36m[Returned ${rc} in ${et} seconds]\e[0m"
-  read
-  exit 0
+  local start=$(date +%s.%2N)
+  eval $* $PARAMS
+  local rc=$?
+  local et=$(echo "$(date +%s.%2N) - ${start}" | bc)
+  quit "\e[36m[Returned ${rc} in ${et} seconds]\e[0m"
 }
 
 error() {
-  echo -n "\e[31m[$*]\e[0m"
-  read
-  exit 0
+  quit "\e[31m[$*]\e[0m"
 }
 
-full_path="$(readlink -f "$*")"
-[[ ! -f ${full_path} ]] && error 'File does not exist'
-cd ${full_path:h}
-
-file="${full_path:t}" name="${file:r}" ext="${file:e}"
-
 # Scripts
-while [[ $PWD != / ]]; do
+while [[ ${PWD} != / ]]; do
   [[ -f Makefile ]] && run make
   [[ -f build ]] && run ./build
   [[ -f setup ]] && run ./setup
   cd ..
 done
+full_path="$(readlink -f "$1")"
 cd ${full_path:h}
+
+# File and params
+[[ ! -f ${full_path} ]] && error 'File does not exist'
+cd ${full_path:h}
+file="${full_path:t}" name="${file:r}" ext="${file:e}"
+shift
+PARAMS="$@"
 
 # Shebang
 shebang=$(sed -n '1s/^#!//p' ${file})
