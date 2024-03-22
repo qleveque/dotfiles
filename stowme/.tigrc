@@ -28,13 +28,13 @@ bind diff l !@>tmux new-window -a "\
   export FILE=\"$(readlink -f '%(file)')\";\
   PARAMS=('%(commit)^!');\
   [[ -n '%(stash)' ]] && PARAMS=('%(stash)^' '%(stash)');\
-  git difftool --trust-exit-code --no-prompt ${(@)PARAMS} -- '%(file)';\
+  git difftool --trust-exit-code -y ${(@)PARAMS} -- '%(file)';\
 "
 bind stage l !@>tmux new-window -a "\
   export FILE=\"$(readlink -f '%(file)')\";\
   PARAMS=();\
   [[ '%(status)' =~ 'Staged changes' ]] && PARAMS+=('--staged');\
-  git difftool --trust-exit-code --no-prompt ${(@)PARAMS} -- '%(file)';\
+  git difftool --trust-exit-code -y ${(@)PARAMS} -- '%(file)';\
 "
 bind status l !@>tmux new-window -a "\
   if [[ '%(status)' =~ 'Untracked file' ]]; then\
@@ -43,6 +43,6 @@ bind status l !@>tmux new-window -a "\
     export FILE=\"$(readlink -f '%(file)')\";\
     PARAMS=();\
     [[ '%(status)' =~ 'Staged changes' ]] && PARAMS+=('--staged');\
-    git difftool --trust-exit-code --no-prompt ${(@)PARAMS} -- '%(file)';\
+    git difftool --trust-exit-code -y ${(@)PARAMS} -- '%(file)';\
   fi;\
 "
