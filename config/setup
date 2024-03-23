@@ -3,6 +3,7 @@ configDir="${0:h}"
 
 # Dotfiles
 python3 "${configDir}/Dotfiles/lesskey.py" > ~/.lesskey
+bash "${configDir}/Dotfiles/colors.bash"
 ln -f "${configDir}/Dotfiles/.gitconfig" "${HOME}/"
 
 if iswsl; then
@@ -23,6 +24,6 @@ if iswsl; then
     fi
   done
   # Git
-  ln -f "${configDir}/WslGit/wslgit" "${HOME}/bin/git"
+  ln -f "${configDir}/Wsl/wslgit" "${HOME}/bin/git"
   chmod +x "${HOME}/bin/git"
 fi

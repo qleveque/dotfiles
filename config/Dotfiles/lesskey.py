@@ -21,5 +21,4 @@ gg goto-line
 gc {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
 yc {NA} {READ_COMMIT}|c\n
 gf {NA} {READ_INDEX_AND_FILE}|{RUN}'tmux neww -e FILE="$PWD/$1" "git difftool --trust-exit-code -y $0"'\n
-yf {NA} {READ_INDEX_AND_FILE}|{CUT}2|c\n
-''')
+yf {NA} {READ_INDEX_AND_FILE}|{CUT}2|c\n''')

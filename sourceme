@@ -12,7 +12,7 @@ WSLGIT_URL='https://github.com/andy-5/wslgit/releases/download/v1.2.0/wslgit.exe
 EXTRACT_URL='https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
 
 # OS specific
-if $(grep -q Microsoft /proc/version); then
+if "${HOME}/dotfiles/bin/iswsl"; then
   COMMAND="WSL -u root usermod -d ${HOME} qleveque && "`
          `'SETX PATH "%USERPROFILE%\bin;%USERPROFILE%\dotfiles\bin;%PATH%" && '`
          `'PAUSE'
@@ -34,7 +34,8 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 wget -O "${HOME}/bin/sd" "${SD_URL}"
 (echo '#!/usr/bin/zsh' && wget -qO- "${EXTRACT_URL}" && echo 'extract $1') > "${HOME}/bin/extract"
 chmod +x "${HOME}/bin/extract"
-sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
+"${HOME}/dotfiles/config/setup"
 # Nvim
 TMP=$(mktemp) && wget -O "${TMP}" "${NVIM_URL}" && tar xvzf "${TMP}" -C "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim /usr/bin/nvim"
@@ -42,7 +43,3 @@ PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
 rm "${PLUG}"/{{tar,netrw,zip}Plugin,gzip,matchit,matchparen,rplugin,shada,spellfile,tohtml,tutor}.vim
 # Antigen
 mkdir "${HOME}/.antigen" && curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
-
-# Finalize
-stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
-"${HOME}/dotfiles/config/setup"
