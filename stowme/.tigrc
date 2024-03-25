@@ -13,6 +13,7 @@ bind generic G move-last-line
 bind generic y none
 bind generic yc !@>zsh -fc "echo -n %(commit) | c"
 bind generic yf !@>zsh -fc "echo -n %(file) | c"
+bind generic yy !@>zsh -fc "echo -n %(text) | c"
 bind generic ; back
 bind generic <C-q> :quit
 bind diff + :/\|\s+(0|[0-9]+\s[\+-]+)$
@@ -26,14 +27,14 @@ bind generic l enter
 bind log l !@>tmux new-window -a "tig show '%(commit)'"
 bind diff l !@>tmux new-window -a "\
   [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\
-  FILE=\"$(readlink -f '%(file)')\" git difftool --trust-exit-code -y ${P} -- '%(file)';\
+  FILE="${PWD}/%(file)" git difftool --follow ${P} -- '%(file)';\
 "
 bind stage l !@>tmux new-window -a "\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
-  FILE=\"$(readlink -f '%(file)')\" git difftool --trust-exit-code -y ${P} -- '%(file)';\
+  FILE="${PWD}/%(file)" git difftool --follow ${P} -- '%(file)';\
 "
 bind status l !@>tmux new-window -a "\
   [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
-  FILE=\"$(readlink -f '%(file)')\" git difftool --trust-exit-code -y ${P} -- '%(file)';\
+  FILE="${PWD}/%(file)" git difftool --follow ${P} -- '%(file)';\
 "

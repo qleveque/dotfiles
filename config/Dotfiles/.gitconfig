@@ -11,6 +11,9 @@
   rebase = true
 [diff]
   tool = vimdiff3
+[difftool]
+  prompt = false
+  trustExitCode = true
 [difftool "vimdiff3"]
   path = nvim
 [merge]

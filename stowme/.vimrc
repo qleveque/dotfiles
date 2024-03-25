@@ -51,7 +51,7 @@ nn <M-j> <Cmd>BufferClose<CR>
 nn <M-k> <Cmd>BufferRestore<CR>
 
 " Version Control
-nn \d :exe'sil '.eval(tmux).'git difftool -y '.expand('%:t').'"'<CR>
+nn \d :exe'sil '.eval(tmux).'git difftool '.expand('%:t').'"'<CR>
 nn \D :exe'sil '.eval(tmux).'tig status"'<CR>
 nn \l :exe'sil '.eval(tmux).'tig --follow '.expand('%:t').'"'<CR>
 nn \L :exe'sil '.eval(tmux).'tig"'<CR>
