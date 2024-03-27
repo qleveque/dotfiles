@@ -9,7 +9,7 @@ def read(pattern, n = 1):
 
 COMMIT = r'\^commit \\w{40}'
 READ_COMMIT = f"{read(COMMIT)}|{CUT}2"
-INDEX = r'\^index \\w{7}\\.\\.\\w{7}'
+INDEX = r'\^index \\S*\\w{7}\\.\\.\\w{7}'
 READ_INDEX_FILE = fr"{read(INDEX, 3)}|grep -v ' /'|cut -c7-|{RUN}'echo $0 ${{@:$\#}}'"
 
 print(rf'''#env
