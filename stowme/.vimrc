@@ -1,6 +1,6 @@
-colorscheme style
+colorscheme theme
 set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h mousescroll=ver:2 stl=%1*\ \%f%m\ %0*%=
-set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number nowrap
+set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number nowrap tgc
 
 " Vim corrections
 nn ' `
@@ -9,22 +9,18 @@ nn U <C-R>
 vn $ $h
 xn . :norm! .<CR>
 nn <Esc> :nohl<CR>
-nm s ys
-vm s S
 xn p P
 xn P p
 no c "_c
 nn cc "_cc
 no d "_d
 nn dd "_dd
+no x d
 
 " Easy life
-no x d
 nn V ggVG
 xn à :norm! @q<CR>
 nn à @q
-vm <C-e> <C-y>,
-im <C-e> <C-y>,
 ino <C-v> <C-R>+
 cno <C-v> <C-R>+
 nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
@@ -73,7 +69,7 @@ nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 " Miscellaneous
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
-for k in split('hjklftpq','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
+for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set formatoptions-=cro
 if &diff
   set noro dip+=iwhite,vertical

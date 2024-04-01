@@ -1,3 +1,4 @@
 stowme/.config/nvim/ftdetect
+stowme/.config/nvim/colors
 stowme/.config/nvim/syntax
 stowme/.config/nvim/lazy-lock.json

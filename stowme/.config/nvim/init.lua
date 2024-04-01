@@ -18,30 +18,49 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
-  "mattn/emmet-vim",
   "pocco81/auto-save.nvim",
   "sheerun/vim-polyglot",
   "tpope/vim-repeat",
-  "tpope/vim-surround",
   "wellle/targets.vim",
   {"neoclide/coc.nvim", branch = "release"},
   {"ggandor/leap.nvim", lazy=true},
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
   {"echasnovski/mini.indentscope", opts={}},
-  {"echasnovski/mini.bracketed", opts={}},
+  {"echasnovski/mini.bracketed",
+    opts = { undo = {suffix=''} }
+  },
   {
     "echasnovski/mini.splitjoin", 
-    opts={ mappings = { toggle = 'S' } }
+    opts = { mappings = { toggle = 'S' } }
   },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = { highlight = { enable = true } }
   },
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
-    config = true
+    opts = { map_cr = false }
+  },
+  {
+    "mattn/emmet-vim",
+    config = function()
+      vim.keymap.set('v', '<C-e>', '<C-y>,', {remap = true}) 
+      vim.keymap.set('i', '<C-e>', '<C-y>,', {remap = true}) 
+    end
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {
+      keymaps = {
+        normal = "s",
+        normal_cur = "ss",
+        visual = "s",
+      }
+    }
   },
   {
     "nvim-pack/nvim-spectre",
@@ -52,7 +71,7 @@ require("lazy").setup({
       default = { replace = { cmd = "sd" } },
       mapping={
         ['run_current_replace'] = { map = "r" },
-        ['run_replace'] = { map = "<C-r>" },
+        ['run_replace'] = { map = "<S-r>" },
       },
       highlight = {
         search = "DiffText",

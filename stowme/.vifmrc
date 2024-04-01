@@ -37,8 +37,4 @@ com! o :!o "%a"
 com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
 
 " Style
-com! none :exe 'hi %a cterm=none ctermfg=none ctermbg=none'
-none Win|none Executable|none StatusLine|none CmdLine|none TopLine
-hi Border cterm=none ctermfg=black ctermbg=none
-hi Directory cterm=bold ctermfg=green ctermbg=none
-source ~/.antigen/bundles/thimc/vifm_devicons/favicons.vifm
+source ~/.theme.vifm
