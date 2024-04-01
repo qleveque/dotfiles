@@ -1,6 +1,6 @@
 colorscheme style
 set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h mousescroll=ver:2 stl=%1*\ \%f%m\ %0*%=
-set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number
+set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number nowrap
 
 " Vim corrections
 nn ' `
@@ -31,9 +31,6 @@ nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
-no ]x /\v^[\=<>\|]{7}.*<CR>
-no [x ?\v^[\=<>\|]{7}.*<CR>
-nm dc [xjvV]xky?\v\<{7}.*<CR>vV/\v\>{7}.*<CR>dp<BS>
 
 " Ctrl shortcuts
 map <C-f> :NvimTreeFindFile<CR>
@@ -85,5 +82,5 @@ if &diff
   nn + ]c
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
-  au VimEnter * :windo set wrap nofen fdc=0 | :norm +-
+  au VimEnter * :windo set nofen fdc=0 | :norm +-
 endif

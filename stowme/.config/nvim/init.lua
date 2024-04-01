@@ -1,3 +1,6 @@
+-- Vimrc
+vim.cmd('source ~/.vimrc')
+
 -- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -21,15 +24,24 @@ require("lazy").setup({
   "tpope/vim-repeat",
   "tpope/vim-surround",
   "wellle/targets.vim",
-  "cohama/lexima.vim",
   {"neoclide/coc.nvim", branch = "release"},
   {"ggandor/leap.nvim", lazy=true},
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
   {"echasnovski/mini.indentscope", opts={}},
+  {"echasnovski/mini.bracketed", opts={}},
+  {
+    "echasnovski/mini.splitjoin", 
+    opts={ mappings = { toggle = 'S' } }
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = { highlight = { enable = true } }
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
   },
   {
     "nvim-pack/nvim-spectre",
@@ -151,6 +163,3 @@ require("lazy").setup({
     end
   },
 })
-
--- Vimrc
-vim.cmd('source ~/.vimrc')
