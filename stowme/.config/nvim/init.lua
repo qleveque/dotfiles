@@ -16,27 +16,47 @@ require("lazy").setup({
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
   "mattn/emmet-vim",
-  "michaeljsmith/vim-indent-object",
   "pocco81/auto-save.nvim",
-  "roxma/vim-paste-easy",
   "sheerun/vim-polyglot",
   "tpope/vim-repeat",
   "tpope/vim-surround",
   "wellle/targets.vim",
+  "cohama/lexima.vim",
   {"neoclide/coc.nvim", branch = "release"},
   {"ggandor/leap.nvim", lazy=true},
-  {"numToStr/Comment.nvim", opts= {}},
+  {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
-  {"windwp/nvim-autopairs", lazy=false, event = "InsertEnter", opts = {}},
+  {"echasnovski/mini.indentscope", opts={}},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = { highlight = { enable = true } }
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      is_insert_mode = true,
+      live_update = true,
+      default = { replace = { cmd = "sd" } },
+      mapping={
+        ['run_current_replace'] = { map = "r" },
+        ['run_replace'] = { map = "<C-r>" },
+      },
+      highlight = {
+        search = "DiffText",
+        replace = "DiffAdd"
+      },
+    }
+  },
   {
     "SUSTech-data/wildfire.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
       keymaps = {
-          init_selection = "_",
-          node_incremental = "_",
-          node_decremental = "-",
+        init_selection = "_",
+        node_incremental = "_",
+        node_decremental = "-",
       },
     }
   },
@@ -68,59 +88,10 @@ require("lazy").setup({
     }
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      highlight = {
-        enable = true,
-      },
-    }
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    lazy=true,
-    cmd= "NvimTreeFindFile",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
-    config = function()
-    local tree_api=require('nvim-tree.api')
-    local function node_path() return tree_api.tree.get_node_under_cursor().absolute_path end
-    local function tree_attach(bufnr)
-      local arr={
-        ['A']=tree_api.fs.rename,
-        ['cw']=tree_api.fs.rename_sub,
-        ['yW']=tree_api.fs.copy.absolute_path,
-        ['yw']=tree_api.fs.copy.relative_path,
-        ['yy']=tree_api.fs.copy.node,
-        ['dd']=tree_api.fs.remove,
-        ['xx']=tree_api.fs.cut,
-        ['T']=tree_api.fs.create,
-        ['p']=tree_api.fs.paste,
-        ['l']=tree_api.node.open.edit,
-        ['h']=tree_api.node.navigate.parent_close,
-        ['L']=tree_api.tree.change_root_to_node,
-        ['H']=tree_api.tree.change_root_to_parent,
-        ['é']=function() vim.cmd('sil !tmux splitw "run -p \\"'..node_path()..'\\""') end,
-        ['<CR>']=function() vim.cmd('sil !o "'..node_path()..'"') end,
-        ['<C-f>']=function() vim.cmd('wincmd p') end,
-      }
-      for k, v in pairs(arr) do
-        vim.keymap.set('n',k,v,{buffer=bufnr,silent=true,nowait=true})
-      end
-    end
-    require('nvim-tree').setup{
-      update_focused_file = { enable = true },
-      view={ signcolumn='no' },
-      renderer={ group_empty=true, root_folder_label=false },
-      on_attach=tree_attach,
-      actions = {open_file = { window_picker = { enable = false } } },
-    }
-    vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
-    end
-  },
-  {
     "nvim-telescope/telescope.nvim",
     lazy=true,
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config=function()
+    config = function()
       local telescope_actions=require("telescope.actions")
       require('telescope').setup{defaults={
         mappings={i={
@@ -136,7 +107,48 @@ require("lazy").setup({
           prompt_position = "top",
         },
       }}
+    end
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    lazy=true,
+    cmd= "NvimTreeFindFile",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
+    config = function()
+      local tree_api=require('nvim-tree.api')
+      local function node_path() return tree_api.tree.get_node_under_cursor().absolute_path end
+      local function tree_attach(bufnr)
+        local arr={
+          ['A']=tree_api.fs.rename,
+          ['cw']=tree_api.fs.rename_sub,
+          ['yW']=tree_api.fs.copy.absolute_path,
+          ['yw']=tree_api.fs.copy.relative_path,
+          ['yy']=tree_api.fs.copy.node,
+          ['dd']=tree_api.fs.remove,
+          ['xx']=tree_api.fs.cut,
+          ['T']=tree_api.fs.create,
+          ['p']=tree_api.fs.paste,
+          ['l']=tree_api.node.open.edit,
+          ['h']=tree_api.node.navigate.parent_close,
+          ['L']=tree_api.tree.change_root_to_node,
+          ['H']=tree_api.tree.change_root_to_parent,
+          ['é']=function() vim.cmd('sil !tmux splitw "run -p \\"'..node_path()..'\\""') end,
+          ['<CR>']=function() vim.cmd('sil !o "'..node_path()..'"') end,
+          ['<C-f>']=function() vim.cmd('wincmd p') end,
+        }
+        for k, v in pairs(arr) do
+          vim.keymap.set('n',k,v,{buffer=bufnr,silent=true,nowait=true})
+        end
       end
+      require('nvim-tree').setup{
+        update_focused_file = { enable = true },
+        view={ signcolumn='no' },
+        renderer={ group_empty=true, root_folder_label=false },
+        on_attach=tree_attach,
+        actions = {open_file = { window_picker = { enable = false } } },
+      }
+      vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
+    end
   },
 })
 

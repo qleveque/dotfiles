@@ -8,7 +8,6 @@ HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/
 NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
 SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
 W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
-WSLGIT_URL='https://github.com/andy-5/wslgit/releases/download/v1.2.0/wslgit.exe'
 EXTRACT_URL='https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
 
 # OS specific

@@ -1,5 +1,5 @@
 colorscheme style
-set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h stl=%1*\ \%f%m\ %2*%= mousescroll=ver:2
+set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h mousescroll=ver:2 stl=%1*\ \%f%m\ %0*%=
 set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number
 
 " Vim corrections
@@ -39,8 +39,9 @@ nm dc [xjvV]xky?\v\<{7}.*<CR>vV/\v\>{7}.*<CR>dp<BS>
 map <C-f> :NvimTreeFindFile<CR>
 map <C-n> :CocList -I symbols<CR>
 map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
-map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
 map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
+map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
+map <C-r> :sil lua require'spectre'.toggle()<CR>
 map <C-g> :AerialOpen<CR>
 map <C-q> ZQ
 

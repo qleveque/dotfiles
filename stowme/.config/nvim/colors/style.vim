@@ -7,7 +7,7 @@ source ~/.colors.vim
 
 for [bg, contexts] in items({
     \PALETTE_1:["ActiveWin","TelescopeNormal","StatusLine"],
-    \PALETTE_2:["CursorLine","InactiveWin","VertSplit","StatusLineNC"],
+    \PALETTE_2:["CursorLine","InactiveWin","StatusLineNC","WinSeparator"],
     \PALETTE_3:["CursorLineNr","LineNr","BufferTabpageFill","TelescopeSelection",
     \  "User1","NvimTreeCursorLine","CocMenuSel","PmenuSel"],
     \PALETTE_4:["Visual","Pmenu","CocFloating","CurSearch", "AerialLine",
@@ -24,13 +24,12 @@ for v in ['','Mod','Index','Sign']
   exe 'hi BufferVisible'.v.' guibg='.PALETTE_3
 endfor
 
-exe 'hi User2 guifg='.PALETTE_2
 exe 'hi DiffDelete guibg='.RED.' guifg='.RED
-
 hi Visual guifg=white
+hi CocErrorFloat guifg=orange
+hi User1 gui=underline
 hi StatusLine gui=underline
 hi StatusLineNC gui=underline
-hi CocErrorFloat guifg=orange
 hi DiffChange guibg=none
 
 au FocusLost * setlocal winhl=Normal:InactiveWin
