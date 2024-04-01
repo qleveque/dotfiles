@@ -1,0 +1,44 @@
+#!/usr/bin/bash
+function github_release() {
+  local url="https://github.com/$1/releases/latest/download/$2"
+  local tmp=$(mktemp) ext=${2##*.}
+  wget -O ${tmp} ${url} 
+  [[ "$ext" == "zip" ]] && unzip -o ${tmp} -d "$@" || tar -xvzf ${tmp} -C "${@:3}"
+}
+
+# Common packages
+sudo apt-get update -y
+sudo apt-get install -y \
+  curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm \
+  zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs
+
+# Nerd Font
+github_release ryanoasis/nerd-fonts Hack.zip "${HOME}/.fonts"
+fc-cache -fv
+
+# Nvim
+github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
+sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
+VIM_PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
+rm "${VIM_PLUG}"/{tar,netrw,zip}Plugin.vim
+rm "${VIM_PLUG}"/{gzip,matchit,matchparen,rplugin,shada,spellfile,tohtml,tutor}.vim
+
+# win32yank
+if "${HOME}/dotfiles/bin/iswsl"; then
+  github_release equalsraf/win32yank win32yank-x64.zip "${HOME}/bin" win32yank.exe
+  chmod +x "${HOME}/bin/win32yank.exe"
+fi
+
+# sd
+SD='sd-v1.0.0-x86_64-unknown-linux-gnu'
+github_release chmln/sd ${SD}.tar.gz "${HOME}/bin" "${SD}/sd"
+
+# antigen
+mkdir -p "${HOME}/.antigen"
+curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
+
+# extract
+echo '#!/usr/bin/zsh
+source ~/.antigen/bundles/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
+extract $1' > "${HOME}/bin/extract"
+chmod +x "${HOME}/bin/extract"

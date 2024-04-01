@@ -10,11 +10,11 @@
 [pull]
   rebase = true
 [diff]
-  tool = vimdiff3
+  tool = vimdiff
 [difftool]
   prompt = false
   trustExitCode = true
-[difftool "vimdiff3"]
+[difftool "vimdiff"]
   path = nvim
 [merge]
   conflictstyle = diff3

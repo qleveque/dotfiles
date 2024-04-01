@@ -1,44 +1,19 @@
-#!/usr/bin/env bash
-export HOME
-HOME=$(dirname "$(dirname $(realpath $0))")
-mkdir "${HOME}/bin" "${HOME}/.config"
-echo source "${HOME}/.zrc">"${HOME}/.zshrc"
+# vim: set ft=bash:
+export HOME=$(dirname "$(dirname $(realpath $0))")
+mkdir -p "${HOME}/bin" "${HOME}/.config"
+echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
 
-HACK_FONT_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip'
-NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
-SD_URL='https://github.com/chmln/sd/releases/download/v0.7.6/sd-v0.7.6-x86_64-unknown-linux-gnu'
-W32Y_URL='https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip'
-EXTRACT_URL='https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
-
-# OS specific
+# Windows
 if "${HOME}/dotfiles/bin/iswsl"; then
   COMMAND="WSL -u root usermod -d ${HOME} qleveque && "`
          `'SETX PATH "%USERPROFILE%\bin;%USERPROFILE%\dotfiles\bin;%PATH%" && '`
          `'PAUSE'
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
-  # Win32yank
-  TMP=$(mktemp) && wget -O "${TMP}" "${W32Y_URL}" && unzip "${TMP}" win32yank.exe -d "${HOME}/bin" && chmod +x win32yank.exe
-  # Hack Nerd Font
-  cmd.exe /C START ' ' "${HACK_FONT_URL}"
-else
-  # Hack Nerd Font
-  TMP=$(mktemp) && wget -O "${TMP}" "${HACK_FONT_URL}" && unzip "${TMP}" -d "${HOME}/.fonts" && fc-cache -fv
+  HACK_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
+  cmd.exe /C START ' ' ${HACK_URL}
 fi
 
-# Common packages
-sudo apt-get update -y
-sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake \
-  vifm zsh tmux fzf neovim nodejs fontconfig tig qalc p7zip-full httpie ripgrep fd-find xsel clang
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-wget -O "${HOME}/bin/sd" "${SD_URL}"
-(echo '#!/usr/bin/zsh' && wget -qO- "${EXTRACT_URL}" && echo 'extract $1') > "${HOME}/bin/extract"
-chmod +x "${HOME}/bin/extract"
-stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
+# Setup
+"${HOME}/dotfiles/install"
 "${HOME}/dotfiles/config/setup"
-# Nvim
-TMP=$(mktemp) && wget -O "${TMP}" "${NVIM_URL}" && tar xvzf "${TMP}" -C "${HOME}"
-sudo ln -s "${HOME}/nvim-linux64/bin/nvim /usr/bin/nvim"
-PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
-rm "${PLUG}"/{{tar,netrw,zip}Plugin,gzip,matchit,matchparen,rplugin,shada,spellfile,tohtml,tutor}.vim
-# Antigen
-mkdir "${HOME}/.antigen" && curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
+stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
