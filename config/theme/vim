@@ -1,8 +1,9 @@
+" vim: set ft=vim:
 for [bg, contexts] in items({
     \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine'],
     \PALETTE_2:['CursorLine','InactiveWin','StatusLineNC','WinSeparator'],
     \PALETTE_3:['CursorLineNr','LineNr','BufferTabpageFill','TelescopeSelection',
-    \  'User1','NvimTreeCursorLine','CocMenuSel','PmenuSel'],
+    \  'User1','NvimTreeCursorLine','CocMenuSel','PmenuSel','HighlightedyankRegion'],
     \PALETTE_4:['Visual','Pmenu','CocFloating','CurSearch', 'AerialLine',
     \  'CocErrorSign','CocWarningSign','CocInfoSign','CocHintSign']})
   for context in contexts

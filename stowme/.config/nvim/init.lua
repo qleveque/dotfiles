@@ -14,7 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
+local lazy_opts = {install = {colorscheme = {"theme"}}}
 require("lazy").setup({
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
@@ -22,6 +22,7 @@ require("lazy").setup({
   "tpope/vim-repeat",
   "tpope/vim-sleuth",
   "wellle/targets.vim",
+  "machakann/vim-highlightedyank",
   {"neoclide/coc.nvim", branch = "release"},
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
@@ -29,7 +30,13 @@ require("lazy").setup({
   {"ggandor/leap.nvim", lazy=true, opts={safe_labels = {}}},
   {"echasnovski/mini.bracketed", opts = {undo = {suffix = ''}}},
   {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
-  {"nvim-treesitter/nvim-treesitter", opts = {highlight = {enable = true}}},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require'nvim-treesitter.configs'.setup({})
+      vim.cmd('TSEnable highlight')
+    end
+  },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -38,8 +45,8 @@ require("lazy").setup({
   {
     "mattn/emmet-vim",
     config = function()
-      vim.keymap.set('v', '<C-e>', '<C-y>,', {remap = true}) 
-      vim.keymap.set('i', '<C-e>', '<C-y>,', {remap = true}) 
+      vim.keymap.set('v', '<C-e>', '<C-y>,', {remap = true})
+      vim.keymap.set('i', '<C-e>', '<C-y>,', {remap = true})
     end
   },
   {
@@ -58,14 +65,12 @@ require("lazy").setup({
     "echasnovski/mini.animate",
     config = function()
       local animate = require('mini.animate')
-      local params = { duration = 100, unit = 'total' }
+      local params = { duration = 80, unit = 'total' }
       animate.setup({
-        scroll = {
-          timing = animate.gen_timing.linear(params)
-        },
-        cursor = {
-          timing = animate.gen_timing.cubic(params)
-        },
+        scroll = {timing = animate.gen_timing.linear(params)},
+        cursor = {timing = animate.gen_timing.cubic(params)},
+        open = {enable = false},
+        resize = {enable = false}
       })
     end
   },
@@ -188,4 +193,4 @@ require("lazy").setup({
       vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
     end
   },
-})
+}, lazy_opts)
