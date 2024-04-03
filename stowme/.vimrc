@@ -1,6 +1,6 @@
 colorscheme theme
-set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h mousescroll=ver:2 stl=%1*\ \%f%m\ %0*%=
-set so=4 hls ic scs is nu lz list noswf udf et cul ch=0 shm+=aI scl=number nowrap tgc
+set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h mousescroll=ver:1 stl=%1*\ \%f%m\ %0*%=
+set so=4 hls ic scs is nu list noswf udf et cul ch=0 shm+=aI scl=number nowrap tgc
 
 " Vim corrections
 nn ' `

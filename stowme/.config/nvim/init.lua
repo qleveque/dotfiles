@@ -23,21 +23,13 @@ require("lazy").setup({
   "tpope/vim-sleuth",
   "wellle/targets.vim",
   {"neoclide/coc.nvim", branch = "release"},
-  {"ggandor/leap.nvim", lazy=true},
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
   {"echasnovski/mini.indentscope", opts={}},
-  {"echasnovski/mini.bracketed",
-    opts = { undo = {suffix=''} }
-  },
-  {
-    "echasnovski/mini.splitjoin", 
-    opts = { mappings = { toggle = 'S' } }
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = { highlight = { enable = true } }
-  },
+  {"ggandor/leap.nvim", lazy=true, opts={safe_labels = {}}},
+  {"echasnovski/mini.bracketed", opts = {undo = {suffix = ''}}},
+  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
+  {"nvim-treesitter/nvim-treesitter", opts = {highlight = {enable = true}}},
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -61,6 +53,21 @@ require("lazy").setup({
         visual = "s",
       }
     }
+  },
+  {
+    "echasnovski/mini.animate",
+    config = function()
+      local animate = require('mini.animate')
+      local params = { duration = 100, unit = 'total' }
+      animate.setup({
+        scroll = {
+          timing = animate.gen_timing.linear(params)
+        },
+        cursor = {
+          timing = animate.gen_timing.cubic(params)
+        },
+      })
+    end
   },
   {
     "nvim-pack/nvim-spectre",

@@ -25,6 +25,7 @@ hi DiffAdd gui=none guifg=none guibg=DarkGreen
 hi DiffText gui=none guifg=none guibg=SlateBlue
 hi DiffChange guibg=none
 
+hi Cursor gui=reverse
 hi Visual guifg=white
 hi CocErrorFloat guifg=orange
 au FocusLost * setlocal winhl=Normal:InactiveWin

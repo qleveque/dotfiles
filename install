@@ -21,7 +21,7 @@ github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
 VIM_PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
 rm "${VIM_PLUG}"/{tar,netrw,zip}Plugin.vim
-rm "${VIM_PLUG}"/{gzip,matchit,matchparen,rplugin,shada,spellfile,tohtml,tutor}.vim
+rm "${VIM_PLUG}"/{gzip,rplugin,shada,spellfile,tohtml,tutor}.vim
 
 # win32yank
 if "${HOME}/dotfiles/bin/iswsl"; then
