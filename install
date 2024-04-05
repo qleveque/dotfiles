@@ -8,6 +8,7 @@ function github_release() {
 
 # Common packages
 sudo apt-get update -y
+sudo apt-get upgrade -y
 sudo apt-get install -y \
   curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm \
   zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs

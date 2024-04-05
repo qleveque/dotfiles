@@ -1,6 +1,5 @@
-colorscheme theme
-set cb^=unnamed,unnamedplus sd=!,'1000,<50,s10,h mousescroll=ver:1 stl=%1*\ \%f%m\ %0*%=
-set so=4 hls ic scs is nu list noswf udf et cul ch=0 shm+=aI scl=number nowrap tgc
+set clipboard^=unnamed,unnamedplus mousescroll=ver:1 so=4 ch=0 scl=number
+set ic scs nu list noswf udf cul nowrap
 
 " Vim corrections
 nn ' `
@@ -23,8 +22,8 @@ xn à :norm! @q<CR>
 nn à @q
 ino <C-v> <C-R>+
 cno <C-v> <C-R>+
-nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>"_cgn
-vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hlsearch<CR>"_cgn
+nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hls<CR>"_cgn
+vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hls<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 
@@ -44,27 +43,15 @@ nn <M-l> <Cmd>BufferNext<CR>
 nn <M-j> <Cmd>BufferClose<CR>
 nn <M-k> <Cmd>BufferRestore<CR>
 
-" Version Control
+" Term
+nn <silent> é :exe'sil !tmux splitw "run -p \"'.expand("%").'\""'<CR>
+nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
+nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 nn \d :exe'sil '.eval(tmux).'git difftool '.expand('%:t').'"'<CR>
 nn \D :exe'sil '.eval(tmux).'tig status"'<CR>
 nn \l :exe'sil '.eval(tmux).'tig '.expand('%:t').'"'<CR>
 nn \L :exe'sil '.eval(tmux).'tig"'<CR>
 nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
-
-" Plugin shortcuts
-nn gd <Plug>(coc-definition)
-nn gr <Plug>(coc-references)
-xn \f <Plug>(coc-format-selected)
-nn <CR> <Plug>(coc-codeaction-cursor)
-ino <expr><CR> coc#pum#visible()?coc#pum#confirm():"\<C-g>u\<CR>\<C-r>=coc#on_enter()\<CR>"
-ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-ino <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-no <Space> :lua require('leap').leap{target_windows={vim.fn.win_getid()}}<CR>
-
-" Term
-nn <silent> é :exe'sil !tmux splitw "run -p \"'.expand("%").'\""'<CR>
-nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
-nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 
 " Miscellaneous
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
@@ -79,4 +66,5 @@ if &diff
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
   au VimEnter * :windo set nofen fdc=0 | :norm +-
+  au BufWinEnter /tmp/* setlocal nomodifiable
 endif

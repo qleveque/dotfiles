@@ -1,7 +1,3 @@
--- Vimrc
-vim.cmd('source ~/.vimrc')
-
--- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -14,7 +10,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-local lazy_opts = {install = {colorscheme = {"theme"}}}
+
+local COLORSCHEME="theme"
 require("lazy").setup({
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
@@ -23,13 +20,32 @@ require("lazy").setup({
   "tpope/vim-sleuth",
   "wellle/targets.vim",
   "machakann/vim-highlightedyank",
-  {"neoclide/coc.nvim", branch = "release"},
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
-  {"echasnovski/mini.indentscope", opts={}},
-  {"ggandor/leap.nvim", lazy=true, opts={safe_labels = {}}},
-  {"echasnovski/mini.bracketed", opts = {undo = {suffix = ''}}},
-  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
+  {
+    "neoclide/coc.nvim",
+    branch = "release",
+    config = function()
+      vim.cmd('source ~/.local/share/nvim/lazy/coc.nvim/doc/coc-example-config.vim')
+      vim.cmd('nn gh :call CocAction("diagnosticInfo")<CR>')
+      vim.cmd('nn <CR> <Plug>(coc-codeaction-cursor)')
+      vim.cmd('au! mygroup')
+      vim.cmd('autocmd FileType qf nn <buffer> <CR> <CR>')
+    end
+  },
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      local leap = require('leap')
+      leap.setup({opts={safe_labels = {}}})
+      vim.keymap.set(
+        'n',
+        '<Space>',
+        function() leap.leap{target_windows={vim.fn.win_getid()}} end,
+        {buffer=bufnr, silent=true, nowait=true}
+      )
+    end
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()
@@ -60,6 +76,18 @@ require("lazy").setup({
         visual = "s",
       }
     }
+  },
+  {
+    "echasnovski/mini.indentscope",
+    opts={}
+  },
+  {
+    "echasnovski/mini.bracketed",
+    opts = { undo = {suffix = ''} }
+  },
+  {
+    "echasnovski/mini.splitjoin",
+    opts = {mappings = {toggle = 'S'}}
   },
   {
     "echasnovski/mini.animate",
@@ -158,25 +186,25 @@ require("lazy").setup({
     cmd= "NvimTreeFindFile",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
-      local tree_api=require('nvim-tree.api')
-      local function node_path() return tree_api.tree.get_node_under_cursor().absolute_path end
+      local ta=require('nvim-tree.api')
+      local function path() return ta.tree.get_node_under_cursor().absolute_path end
       local function tree_attach(bufnr)
         local arr={
-          ['A']=tree_api.fs.rename,
-          ['cw']=tree_api.fs.rename_sub,
-          ['yW']=tree_api.fs.copy.absolute_path,
-          ['yw']=tree_api.fs.copy.relative_path,
-          ['yy']=tree_api.fs.copy.node,
-          ['dd']=tree_api.fs.remove,
-          ['xx']=tree_api.fs.cut,
-          ['T']=tree_api.fs.create,
-          ['p']=tree_api.fs.paste,
-          ['l']=tree_api.node.open.edit,
-          ['h']=tree_api.node.navigate.parent_close,
-          ['L']=tree_api.tree.change_root_to_node,
-          ['H']=tree_api.tree.change_root_to_parent,
-          ['é']=function() vim.cmd('sil !tmux splitw "run -p \\"'..node_path()..'\\""') end,
-          ['<CR>']=function() vim.cmd('sil !o "'..node_path()..'"') end,
+          ['A']=ta.fs.rename,
+          ['cw']=ta.fs.rename_sub,
+          ['yW']=ta.fs.copy.absolute_path,
+          ['yw']=ta.fs.copy.relative_path,
+          ['yy']=ta.fs.copy.node,
+          ['dd']=ta.fs.remove,
+          ['xx']=ta.fs.cut,
+          ['T']=ta.fs.create,
+          ['p']=ta.fs.paste,
+          ['l']=ta.node.open.edit,
+          ['h']=ta.node.navigate.parent_close,
+          ['L']=ta.tree.change_root_to_node,
+          ['H']=ta.tree.change_root_to_parent,
+          ['é']=function() vim.cmd('sil !tmux splitw "run -p \\"'..path()..'\\""') end,
+          ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
         }
         for k, v in pairs(arr) do
@@ -193,4 +221,7 @@ require("lazy").setup({
       vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
     end
   },
-}, lazy_opts)
+}, {install = {colorscheme = {COLORSCHEME}}})
+
+vim.cmd("colorscheme "..COLORSCHEME)
+vim.cmd('source ~/.vimrc')

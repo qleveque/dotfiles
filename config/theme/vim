@@ -1,11 +1,15 @@
 " vim: set ft=vim:
+set tgc
+set stl=%1*\ \%f%m\ %0*%=
+
 for [bg, contexts] in items({
-    \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine'],
+    \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine','CocFloating'],
     \PALETTE_2:['CursorLine','InactiveWin','StatusLineNC','WinSeparator'],
     \PALETTE_3:['CursorLineNr','LineNr','BufferTabpageFill','TelescopeSelection',
-    \  'User1','NvimTreeCursorLine','CocMenuSel','PmenuSel','HighlightedyankRegion'],
-    \PALETTE_4:['Visual','Pmenu','CocFloating','CurSearch', 'AerialLine',
-    \  'CocErrorSign','CocWarningSign','CocInfoSign','CocHintSign']})
+    \  'NvimTreeCursorLine','HighlightedyankRegion','AerialLine',
+    \  'CocHighlightText','CocMenuSel','Pmenu'],
+    \PALETTE_4:['User1','Visual','CurSearch']
+    \})
   for context in contexts
     exe 'hi '.context.' gui=none guifg=none guibg='.bg
   endfor
@@ -17,7 +21,17 @@ for v in ['','Mod','Index','Sign']
   exe 'hi BufferVisible'.v.' guibg='.PALETTE_3
 endfor
 
-for v in ['User1', 'StatusLine', 'StatusLineNC']
+for [context, fg] in items({
+    \'Error': 'IndianRed',
+    \'Warning': 'orange',
+    \'Info': 'LimeGreen',
+    \'Hint': 'LightSkyBlue3'
+    \})
+  exe 'hi Coc'.context.'Sign guifg='.fg.' guibg='.PALETTE_3
+  exe 'hi Coc'.context.'Float guifg='.fg
+endfor
+
+for v in ['User1', 'StatusLine', 'StatusLineNC', 'CocUnusedHighlight']
   exe 'hi '.v.' gui=underline'
 endfor
 
@@ -28,6 +42,6 @@ hi DiffChange guibg=none
 
 hi Cursor gui=reverse
 hi Visual guifg=white
-hi CocErrorFloat guifg=orange
+
 au FocusLost * setlocal winhl=Normal:InactiveWin
 au BufNew,BufLeave,BufRead,FocusGained * setlocal winhl+=Normal:ActiveWin,NormalNC:InactiveWin
