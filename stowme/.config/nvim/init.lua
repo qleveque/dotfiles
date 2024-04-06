@@ -12,7 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local COLORSCHEME="theme"
+vim.cmd("colorscheme "..COLORSCHEME)
+vim.cmd('source ~/.vimrc')
+
 require("lazy").setup({
+  {"neoclide/coc.nvim", branch = "release"},
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
   "pocco81/auto-save.nvim",
@@ -22,22 +26,28 @@ require("lazy").setup({
   "machakann/vim-highlightedyank",
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
+  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
+  {"echasnovski/mini.indentscope", opts={}},
+  {"echasnovski/mini.bracketed", opts = { undo = {suffix = ''} }},
+  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
   {
-    "neoclide/coc.nvim",
-    branch = "release",
+    "echasnovski/mini.animate",
     config = function()
-      vim.cmd('source ~/.local/share/nvim/lazy/coc.nvim/doc/coc-example-config.vim')
-      vim.cmd('nn gh :call CocAction("diagnosticInfo")<CR>')
-      vim.cmd('nn <CR> <Plug>(coc-codeaction-cursor)')
-      vim.cmd('au! mygroup')
-      vim.cmd('autocmd FileType qf nn <buffer> <CR> <CR>')
+      local animate = require('mini.animate')
+      local params = { duration = 80, unit = 'total' }
+      animate.setup({
+        scroll = {timing = animate.gen_timing.linear(params)},
+        cursor = {timing = animate.gen_timing.cubic(params)},
+        open = {enable = false},
+        resize = {enable = false}
+      })
     end
   },
   {
     "ggandor/leap.nvim",
     config = function()
       local leap = require('leap')
-      leap.setup({opts={safe_labels = {}}})
+      leap.setup({safe_labels = {}})
       vim.keymap.set(
         'n',
         '<Space>',
@@ -47,16 +57,23 @@ require("lazy").setup({
     end
   },
   {
+    "mizlan/iswap.nvim",
+    event = "VeryLazy",
+    config = function()
+      vim.cmd('nn L :ISwapNodeWithRight<CR>')
+      vim.cmd('nn H :ISwapNodeWithLeft<CR>')
+      require('iswap').setup{
+        flash_style = false,
+        move_cursor = true,
+      }
+    end
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require'nvim-treesitter.configs'.setup({})
       vim.cmd('TSEnable highlight')
     end
-  },
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = { map_cr = false }
   },
   {
     "mattn/emmet-vim",
@@ -78,32 +95,8 @@ require("lazy").setup({
     }
   },
   {
-    "echasnovski/mini.indentscope",
-    opts={}
-  },
-  {
-    "echasnovski/mini.bracketed",
-    opts = { undo = {suffix = ''} }
-  },
-  {
-    "echasnovski/mini.splitjoin",
-    opts = {mappings = {toggle = 'S'}}
-  },
-  {
-    "echasnovski/mini.animate",
-    config = function()
-      local animate = require('mini.animate')
-      local params = { duration = 80, unit = 'total' }
-      animate.setup({
-        scroll = {timing = animate.gen_timing.linear(params)},
-        cursor = {timing = animate.gen_timing.cubic(params)},
-        open = {enable = false},
-        resize = {enable = false}
-      })
-    end
-  },
-  {
     "nvim-pack/nvim-spectre",
+    lazy = "true",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       is_insert_mode = true,
@@ -124,6 +117,7 @@ require("lazy").setup({
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
+      surrounds = {},
       keymaps = {
         init_selection = "_",
         node_incremental = "_",
@@ -150,7 +144,7 @@ require("lazy").setup({
     cmd="AerialOpen",
     opts={
       autojump = true,
-      backends = { "treesitter" },
+      backends = {"treesitter"},
       close_on_select = true,
       keymaps = { ["<C-j>"] = false, ["<C-k>"] = false },
       layout = { width = 30 },
@@ -222,6 +216,3 @@ require("lazy").setup({
     end
   },
 }, {install = {colorscheme = {COLORSCHEME}}})
-
-vim.cmd("colorscheme "..COLORSCHEME)
-vim.cmd('source ~/.vimrc')
