@@ -54,19 +54,6 @@ nn \l :exe'sil '.eval(tmux).'tig '.expand('%:t').'"'<CR>
 nn \L :exe'sil '.eval(tmux).'tig"'<CR>
 nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 
-" Coc.nvim
-nn gd <Plug>(coc-definition)
-nn gr <Plug>(coc-references)
-nn gh :call CocAction("diagnosticInfo")<CR>'
-nn K :call CocActionAsync('doHover')<CR>
-xn \f <Plug>(coc-format-selected)
-au FileType * if &ft != 'qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|endif
-ino <expr><CR> coc#pum#visible()?coc#pum#confirm():
-  \ "\<CMD>call feedkeys(v:lua.require('nvim-autopairs').autopairs_cr(), 'in')\<CR>"
-ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):
-  \ indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
-
 " Miscellaneous
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}

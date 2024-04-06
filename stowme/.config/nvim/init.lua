@@ -16,7 +16,7 @@ vim.cmd("colorscheme "..COLORSCHEME)
 vim.cmd('source ~/.vimrc')
 
 require("lazy").setup({
-  {"neoclide/coc.nvim", branch = "release"},
+  {import = "lsp"},
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
   "pocco81/auto-save.nvim",
@@ -215,4 +215,8 @@ require("lazy").setup({
       vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
     end
   },
-}, {install = {colorscheme = {COLORSCHEME}}})
+},
+{
+    install = {colorscheme = {COLORSCHEME}},
+    change_detection = {notify = false},
+})

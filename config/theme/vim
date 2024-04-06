@@ -3,13 +3,11 @@ set tgc
 set stl=%1*\ \%f%m\ %0*%=
 
 for [bg, contexts] in items({
-    \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine','CocFloating'],
-    \PALETTE_2:['CursorLine','InactiveWin','StatusLineNC','WinSeparator'],
+    \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine','NormalFloat','WinSeparator'],
+    \PALETTE_2:['CursorLine','InactiveWin','StatusLineNC'],
     \PALETTE_3:['CursorLineNr','LineNr','BufferTabpageFill','TelescopeSelection',
-    \  'NvimTreeCursorLine','HighlightedyankRegion','AerialLine',
-    \  'CocHighlightText','CocMenuSel','Pmenu'],
-    \PALETTE_4:['User1','Visual','CurSearch']
-    \})
+    \  'NvimTreeCursorLine','Pmenu','HighlightedyankRegion'],
+    \PALETTE_4:['User1', 'Visual','PmenuSel','CurSearch', 'AerialLine']})
   for context in contexts
     exe 'hi '.context.' gui=none guifg=none guibg='.bg
   endfor
@@ -21,17 +19,16 @@ for v in ['','Mod','Index','Sign']
   exe 'hi BufferVisible'.v.' guibg='.PALETTE_3
 endfor
 
-for [context, fg] in items({
-    \'Error': 'IndianRed',
-    \'Warning': 'orange',
-    \'Info': 'LimeGreen',
-    \'Hint': 'LightSkyBlue3'
-    \})
-  exe 'hi Coc'.context.'Sign guifg='.fg.' guibg='.PALETTE_3
-  exe 'hi Coc'.context.'Float guifg='.fg
+for v in [["Error", "IndianRed", ""],
+         \["Warn", "orange", ""],
+         \["Info", "LightSkyBlue3", ""],
+         \["Hint", "LimeGreen", ""]]
+  exe 'hi Text'.v[0].' guibg='.PALETTE_3.' guifg='.v[1]
+  exe 'hi DiagnosticFloating'.v[0].' guifg='.v[1]
+  exe 'sign define DiagnosticSign'.v[0].' text='.v[2].' texthl=Text'.v[0]
 endfor
 
-for v in ['User1', 'StatusLine', 'StatusLineNC', 'CocUnusedHighlight']
+for v in ['User1', 'StatusLine', 'StatusLineNC']
   exe 'hi '.v.' gui=underline'
 endfor
 
