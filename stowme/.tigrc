@@ -1,4 +1,4 @@
-# vim: set ft=vim:
+# vim: set ft=bash:
 color search-result default blue
 set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:yes,interval=1 text
 set ignore-case = smart-case

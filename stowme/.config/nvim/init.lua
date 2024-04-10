@@ -21,20 +21,27 @@ require("lazy").setup({
   "farmergreg/vim-lastplace",
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
-  "tpope/vim-sleuth",
   "wellle/targets.vim",
   "machakann/vim-highlightedyank",
+  "sheerun/vim-polyglot",
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={}},
+  {"nvim-treesitter/nvim-treesitter", opts = {}},
   {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
   {"echasnovski/mini.indentscope", opts={}},
-  {"echasnovski/mini.bracketed", opts = { undo = {suffix = ''} }},
   {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
+  {
+    "echasnovski/mini.bracketed",
+    opts = {
+      undo = {suffix = ''},
+      diagnostic = {suffix = ''}
+    }
+  },
   {
     "echasnovski/mini.animate",
     config = function()
       local animate = require('mini.animate')
-      local params = { duration = 80, unit = 'total' }
+      local params = { duration = 50, unit = 'total' }
       animate.setup({
         scroll = {timing = animate.gen_timing.linear(params)},
         cursor = {timing = animate.gen_timing.cubic(params)},
@@ -66,13 +73,6 @@ require("lazy").setup({
         flash_style = false,
         move_cursor = true,
       }
-    end
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require'nvim-treesitter.configs'.setup({})
-      vim.cmd('TSEnable highlight')
     end
   },
   {

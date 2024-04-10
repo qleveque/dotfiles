@@ -1,5 +1,4 @@
-set clipboard^=unnamed,unnamedplus
-set mousescroll=ver:1 so=4 ch=0 scl=number shortmess+=I
+set cb=unnamedplus mousescroll=ver:1 so=4 ch=0 scl=number shm+=I
 set ic scs nu list noswf udf cul nowrap nowb
 
 " Vim corrections
@@ -58,6 +57,8 @@ nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 nn gd <Plug>(coc-definition)
 nn gr <Plug>(coc-references)
 nn gh :call CocAction('diagnosticInfo')<CR>'
+nm <silent> [d <Plug>(coc-diagnostic-prev)
+nm <silent> ]d <Plug>(coc-diagnostic-next)
 nn K :call CocActionAsync('doHover')<CR>
 xn \f <Plug>(coc-format-selected)
 au FileType * if &ft != 'qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|endif
@@ -69,7 +70,7 @@ ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
 
 " Miscellaneous
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-let g:clipboard={'copy':{'+':'c','*':'c'},'paste':{'+':'p','*':'p'},'cache_enabled':0}
+let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
 for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set formatoptions-=cro
 if &diff

@@ -6,6 +6,7 @@ set easymotion
 set ideajoin
 set surround
 set textobj-indent
+set incsearch
 
 " Navigation
 sethandler <C-t> a:ide
@@ -40,6 +41,7 @@ nnoremap <CR> :action ShowIntentionActions<CR>
 nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
 nnoremap gd gd
+inoremap - -
 nnoremap gr :action GotoDeclaration<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nmap _ :action EditorSelectWord<CR>
@@ -49,6 +51,8 @@ let g:EasyMotion_do_mapping=0
 nmap <Space> <Plug>(easymotion-bd-f2)
 map ç *Ncgn
 vnoremap * "xy/<C-R>x<CR>
+nm s ys
+vm s S
 
 " New
 nnoremap gi :action GotoImplementation<CR>
