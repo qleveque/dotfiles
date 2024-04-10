@@ -4,9 +4,9 @@ mkdir -p "${HOME}/bin" "${HOME}/.config"
 echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
 
 # Windows
-if "${HOME}/dotfiles/bin/iswsl"; then
+if grep -q Microsoft /proc/version; then
   COMMAND="WSL -u root usermod -d ${HOME} qleveque && "`
-         `'SETX PATH "%USERPROFILE%\bin;%USERPROFILE%\dotfiles\bin;%PATH%" && '`
+         `'SETX PATH "%USERPROFILE%\bin;%PATH%" && '`
          `'PAUSE'
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
   HACK_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
@@ -14,6 +14,7 @@ if "${HOME}/dotfiles/bin/iswsl"; then
 fi
 
 # Setup
-"${HOME}/dotfiles/install"
+"${HOME}/dotfiles/scripts/install"
+"${HOME}/dotfiles/scripts/theme"
 "${HOME}/dotfiles/config/setup"
 stow -d "${HOME}/dotfiles" -t "${HOME}" stowme

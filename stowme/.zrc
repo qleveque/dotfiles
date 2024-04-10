@@ -10,7 +10,7 @@ export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --border --bind=tab:down,shift-tab:up --reverse'
 export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^${PWD}\$\""'
 export MYVIFMRC="${HOME}/.vifmrc"
-export PATH="${HOME}/dotfiles/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/dotfiles/bin:${HOME}/.local/bin:${PATH}"
 KEYTIMEOUT=1
 HISTFILE=~/.zsh_history HISTSIZE=1000 SAVEHIST=1000
 PROMPT=$'\n%B%F{white}%S%n@%M%s%f %F{blue}%5~%f%b %# '
@@ -33,16 +33,12 @@ antigen apply
 # Sources
 source ~/.zvimrc
 source ~/.aliases
-source ~/.local/share/nvim/lazy/vim-tmux-navigator/vim-tmux-navigator.tmux
-source /usr/share/doc/fzf/examples/key-bindings.zsh
 source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Functions
 cf() { cd "$(dirname $1)" }
-t() {
-  iswsl && tmp="${HOME}/AppData/Local/Temp" || tmp="/tmp"
-  nvim $(mktemp -p ${tmp} $([ -z $1 ] || echo --suffix .$1))
-}
+t() { nvim $(mktemp -p ${TMP:-/tmp} $([ -z $1 ] || echo --suffix .$1)) }
 
 # Directory history
 autoload -U add-zsh-hook
@@ -50,8 +46,8 @@ add-zsh-hook chpwd stack_new_dir
 stack_new_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
 stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
 
-# Windows
-if iswsl; then
-  cmd() { cmd.exe /C $@ }
-  admin() { powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/K cd `wslpath -m .`'" }
+# Wsl
+if [ -f ~/.WSL ]; then
+  TMP="${HOME}/AppData/Local/Temp"
+  export PATH="${HOME}/dotfiles/bin/wsl:${PATH}"
 fi

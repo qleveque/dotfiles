@@ -1,0 +1,2 @@
+#!/bin/bash
+[ $# -eq 0 ] && cmd.exe || cmd.exe /C $@

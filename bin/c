@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 # Copy to clipboard
 
-if iswsl; then
+if grep -q Microsoft /proc/version; then
   win32yank.exe -i --crlf
 else
   xsel --input --clipboard

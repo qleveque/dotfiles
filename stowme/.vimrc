@@ -61,7 +61,7 @@ nm <silent> [d <Plug>(coc-diagnostic-prev)
 nm <silent> ]d <Plug>(coc-diagnostic-next)
 nn K :call CocActionAsync('doHover')<CR>
 xn \f <Plug>(coc-format-selected)
-au FileType * if &ft != 'qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|endif
+au FileType * if &ft!='qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|end
 ino <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):
@@ -72,7 +72,7 @@ ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
 for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
-au FileType * set formatoptions-=cro
+au FileType * set fo-=cro
 if &diff
   set noro dip+=iwhite,vertical
   nn <C-Q> :qa<CR>
@@ -80,6 +80,6 @@ if &diff
   nn + ]c
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
-  au VimEnter * :windo set nofen fdc=0 | :norm +-
-  au BufWinEnter /tmp/* setlocal nomodifiable
-endif
+  au VimEnter * :windo set nofen fdc=0 wrap | :norm +-
+  au BufWinEnter /tmp/* setlocal noma
+end

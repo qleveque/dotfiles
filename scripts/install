@@ -24,12 +24,6 @@ VIM_PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
 rm "${VIM_PLUG}"/{tar,netrw,zip}Plugin.vim
 rm "${VIM_PLUG}"/{gzip,rplugin,shada,spellfile,tohtml,tutor}.vim
 
-# win32yank
-if "${HOME}/dotfiles/bin/iswsl"; then
-  github_release equalsraf/win32yank win32yank-x64.zip "${HOME}/bin" win32yank.exe
-  chmod +x "${HOME}/bin/win32yank.exe"
-fi
-
 # sd
 SD='sd-v1.0.0-x86_64-unknown-linux-gnu'
 github_release chmln/sd ${SD}.tar.gz "${HOME}/bin" "${SD}/sd"
@@ -43,3 +37,15 @@ echo '#!/usr/bin/zsh
 source ~/.antigen/bundles/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
 extract $1' > "${HOME}/bin/extract"
 chmod +x "${HOME}/bin/extract"
+
+if grep -q Microsoft /proc/version; then
+  # win32yank
+  github_release equalsraf/win32yank win32yank-x64.zip "${HOME}/bin" win32yank.exe
+  chmod +x "${HOME}/bin/win32yank.exe"
+
+  # wudo
+  wsl_sudo="https://raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py"
+  wudo="${HOME}/bin/wudo"
+  wget ${wsl_sudo} -O "${wudo}"
+  chmod +x "${wudo}"
+fi

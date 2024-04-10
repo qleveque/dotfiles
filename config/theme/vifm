@@ -1,9 +1,0 @@
-" vim: set ft=vim:
-hi Win cterm=none ctermfg=none ctermbg=none
-hi Executable cterm=none ctermfg=none ctermbg=none
-hi StatusLine cterm=none ctermfg=none ctermbg=none
-hi CmdLine cterm=none ctermfg=none ctermbg=none
-hi TopLine cterm=none ctermfg=none ctermbg=none
-hi Border cterm=none ctermfg=black ctermbg=none
-hi Directory cterm=bold ctermfg=green ctermbg=none
-source ~/.antigen/bundles/thimc/vifm_devicons/favicons.vifm

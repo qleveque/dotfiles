@@ -1,6 +1,7 @@
 " vim: set ft=vim:
-set tgc
-set stl=%1*\ \%f%m\ %0*%=
+source ~/.theme.vim
+
+set tgc stl=%1*\ \%f%m\ %0*%=
 
 for [bg, contexts] in items({
     \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine','CocFloating'],
