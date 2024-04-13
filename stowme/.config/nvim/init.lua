@@ -20,8 +20,12 @@ require("lazy").setup({
   {
     "qleveque/hexa.nvim",
     opts={
-      keymaps = { redo_ascii = 'U', run = 'é' },
-      run_cmd = function(file) return 'sil !tmux splitw "run -p \"'..file..'\""' end
+      keymaps = {
+        ascii = {redo = 'U'},
+        run = 'é'
+      },
+      run_cmd = function(file) return 'sil !tmux splitw "run -p \"'..file..'\""' end,
+      ascii_left = true
     }
   },
   "christoomey/vim-tmux-navigator",
