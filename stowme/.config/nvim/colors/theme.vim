@@ -4,8 +4,8 @@ source ~/.theme.vim
 set tgc stl=%1*\ \%f%m\ %0*%=
 
 for [bg, contexts] in items({
-    \PALETTE_1:['ActiveWin','TelescopeNormal','StatusLine','CocFloating'],
-    \PALETTE_2:['CursorLine','InactiveWin','StatusLineNC','WinSeparator'],
+    \PALETTE_1:['Active','TelescopeNormal','StatusLine','CocFloating'],
+    \PALETTE_2:['CursorLine','Inactive','StatusLineNC','WinSeparator'],
     \PALETTE_3:['CursorLineNr','LineNr','BufferTabpageFill','TelescopeSelection',
     \  'NvimTreeCursorLine','HighlightedyankRegion','AerialLine',
     \  'CocHighlightText','CocMenuSel','Pmenu'],
@@ -44,5 +44,5 @@ hi DiffChange guibg=none
 hi Cursor gui=reverse
 hi Visual guifg=white
 
-au FocusLost * setlocal winhl=Normal:InactiveWin
-au BufNew,BufLeave,BufRead,FocusGained * setlocal winhl+=Normal:ActiveWin,NormalNC:InactiveWin
+au FocusLost,FocusGained,BufNew,BufLeave,BufRead *
+  \ set winhl+=Normal:Active,NormalNC:Inactive

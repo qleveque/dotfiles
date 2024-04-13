@@ -1,9 +1,11 @@
 #!/usr/bin/bash
 function github_release() {
-  local url="https://github.com/$1/releases/latest/download/$2"
-  local tmp=$(mktemp) ext=${2##*.}
+  local url="https://github.com/$1/releases/latest/download/$2" tmp=$(mktemp)
   wget -O ${tmp} ${url} 
-  [[ "$ext" == "zip" ]] && unzip -o ${tmp} -d "$@" || tar -xvzf ${tmp} -C "${@:3}"
+  case ${2##*.} in
+    "zip") unzip -o ${tmp} -d "${@:3}";;
+    "gz") tar -xvzf ${tmp} -C "${@:3}";;
+  esac
 }
 
 # Common packages
@@ -11,7 +13,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install -y \
   curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm \
-  zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs
+  zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs jq
 
 # Nerd Font
 github_release ryanoasis/nerd-fonts Hack.zip "${HOME}/.fonts"
@@ -20,13 +22,14 @@ fc-cache -fv
 # Nvim
 github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
-VIM_PLUG="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
-rm "${VIM_PLUG}"/{tar,netrw,zip}Plugin.vim
-rm "${VIM_PLUG}"/{gzip,rplugin,shada,spellfile,tohtml,tutor}.vim
+vim_plug="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
+rm "${vim_plug}"/{tar,netrw,zip}Plugin.vim
+rm "${vim_plug}"/{gzip,rplugin,shada,spellfile,tohtml,tutor}.vim
 
 # sd
-SD='sd-v1.0.0-x86_64-unknown-linux-gnu'
-github_release chmln/sd ${SD}.tar.gz "${HOME}/bin" "${SD}/sd"
+sd_tag=`curl -s https://api.github.com/repos/chmln/sd/tags | jq -r '.[0].name'`
+sd="sd-${sd_tag}-x86_64-unknown-linux-gnu"
+github_release chmln/sd "${sd}.tar.gz" "${HOME}/bin" --strip-components=1 "${sd}/sd"
 
 # antigen
 mkdir -p "${HOME}/.antigen"
@@ -45,7 +48,6 @@ if grep -q Microsoft /proc/version; then
 
   # wudo
   wsl_sudo="https://raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py"
-  wudo="${HOME}/bin/wudo"
-  wget ${wsl_sudo} -O "${wudo}"
-  chmod +x "${wudo}"
+  wget ${wsl_sudo} -O "${HOME}/bin/wudo"
+  chmod +x "${HOME}/bin/wudo"
 fi

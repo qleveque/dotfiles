@@ -42,12 +42,12 @@ t() { nvim $(mktemp -p ${TMP:-/tmp} $([ -z $1 ] || echo --suffix .$1)) }
 
 # Directory history
 autoload -U add-zsh-hook
-add-zsh-hook chpwd stack_new_dir
-stack_new_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
-stack_new_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
+add-zsh-hook chpwd stack_dir
+stack_dir() {touch ~/.dirhist && sed -i "\#^$PWD\$#d" ~/.dirhist && echo $PWD >> ~/.dirhist}
+stack_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
 
 # Wsl
-if [ -f ~/.WSL ]; then
+if grep -q Microsoft /proc/version; then
   TMP="${HOME}/AppData/Local/Temp"
   export PATH="${HOME}/dotfiles/bin/wsl:${PATH}"
 fi

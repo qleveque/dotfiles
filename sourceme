@@ -16,5 +16,5 @@ fi
 # Setup
 "${HOME}/dotfiles/scripts/install"
 "${HOME}/dotfiles/scripts/theme"
-"${HOME}/dotfiles/config/setup"
+"${HOME}/dotfiles/scripts/config/setup"
 stow -d "${HOME}/dotfiles" -t "${HOME}" stowme

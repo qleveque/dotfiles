@@ -17,6 +17,13 @@ vim.cmd('source ~/.vimrc')
 
 require("lazy").setup({
   {"neoclide/coc.nvim", branch = "release"},
+  {
+    "qleveque/hexa.nvim",
+    opts={
+      keymaps = { redo_ascii = 'U', run = 'é' },
+      run_cmd = function(file) return 'sil !tmux splitw "run -p \"'..file..'\""' end
+    }
+  },
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
   "pocco81/auto-save.nvim",
@@ -131,7 +138,7 @@ require("lazy").setup({
     init = function() vim.g.barbar_auto_setup = false end,
     enabled = not vim.api.nvim_win_get_option(0, "diff"),
     opts = {
-      exclude_ft={'qf'},
+      exclude_ft={'qf','hexd'},
       sidebar_filetypes={
         NvimTree={ text=' '..vim.fn.fnamemodify(vim.fn.getcwd(), ":t")..'/' }
       },

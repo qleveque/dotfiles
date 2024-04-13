@@ -1,14 +1,14 @@
 #!/usr/bin/zsh
 
 colors_string="171127-231b37-2d3457-444e88"
-COLORS=("${(s:-:)colors_string}")
+colors=("${(s:-:)colors_string}")
 
-NVIM_THEME="${HOME}/.theme.vim"
-BASH_THEME="${HOME}/.theme.bash"
-:> ${BASH_THEME} :> ${NVIM_THEME}
+nvim_theme="${HOME}/.theme.vim"
+bash_theme="${HOME}/.theme.bash"
+:> ${bash_theme} :> ${nvim_theme}
 
-for (( i=1; i<=${#COLORS[@]}; i++ )); do
-  assignment="PALETTE_${i}=\"#${COLORS[$i]}\""
-  echo "let ${assignment}"  >> ${NVIM_THEME}
-  echo "export ${assignment}" >> ${BASH_THEME}
+for (( i=1; i<=${#colors[@]}; i++ )); do
+  assignment="PALETTE_${i}=\"#${colors[$i]}\""
+  echo "let ${assignment}"  >> ${nvim_theme}
+  echo "export ${assignment}" >> ${bash_theme}
 done
