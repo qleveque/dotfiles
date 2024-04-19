@@ -1,6 +1,6 @@
 set sd=!,'1000,<50,s10,h mousescroll=ver:1
 set cb=unnamedplus so=4 ch=0 scl=number shm+=I
-set ic scs nu list noswf udf cul nowrap nowb et
+set ic scs nu list noswf udf cul nowrap nowb
 
 " Vim corrections
 nn ' `

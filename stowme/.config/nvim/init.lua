@@ -62,6 +62,16 @@ require("lazy").setup({
     end
   },
   {
+    "kevinhwang91/nvim-bqf",
+    opts = {
+      preview = {
+        winblend = 0,
+        win_height=999,
+        show_scroll_bar=false
+      }
+    }
+  },
+  {
     "ggandor/leap.nvim",
     config = function()
       local leap = require('leap')
@@ -112,7 +122,6 @@ require("lazy").setup({
     opts = {
       is_insert_mode = true,
       live_update = true,
-      default = { replace = { cmd = "sd" } },
       mapping={
         ['run_current_replace'] = { map = "r" },
         ['run_replace'] = { map = "<S-r>" },
