@@ -6,7 +6,7 @@ set tgc stl=%1*\ \%f%m\ %0*%=
 for [bg, contexts] in items({
     \PALETTE_1:['Active','TelescopeNormal','StatusLine','CocFloating'],
     \PALETTE_2:['CursorLine','Inactive','StatusLineNC','WinSeparator'],
-    \PALETTE_3:['CursorLineNr','LineNr','BufferTabpageFill','TelescopeSelection',
+    \PALETTE_3:['BufferTabpageFill','TelescopeSelection',
     \  'NvimTreeCursorLine','HighlightedyankRegion','AerialLine',
     \  'CocHighlightText','CocMenuSel','Pmenu'],
     \PALETTE_4:['User1','Visual','CurSearch']
@@ -15,6 +15,8 @@ for [bg, contexts] in items({
     exe 'hi '.context.' gui=none guifg=none guibg='.bg
   endfor
 endfor
+
+exe 'hi LineNr guifg='.PALETTE_4
 
 for v in ['','Mod','Index','Sign']
   exe 'hi BufferCurrent'.v.' guibg='.PALETTE_1

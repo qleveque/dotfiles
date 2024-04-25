@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 stty -ixon
-setopt histignorealldups sharehistory nonomatch promptsubst
+setopt histignorealldups sharehistory nonomatch
 zstyle ':completion:*' fzf-search-display true
 eval "$(starship init zsh)"
 
