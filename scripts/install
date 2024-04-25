@@ -45,6 +45,9 @@ chmod +x "${HOME}/bin/extract"
 starship='starship-x86_64-unknown-linux-musl.tar.gz'
 github_release starship/starship ${starship} "${HOME}/bin"
 
+# eza
+github_release eza-community/eza eza_x86_64-unknown-linux-musl.tar.gz "${HOME}/bin"
+
 if grep -q Microsoft /proc/version; then
   # win32yank
   github_release equalsraf/win32yank win32yank-x64.zip "${HOME}/bin" win32yank.exe
