@@ -44,5 +44,5 @@ hi DiffChange guibg=none
 hi Cursor gui=reverse
 hi Visual guifg=white
 
-au FocusLost,FocusGained,BufNew,BufLeave,BufRead *
-  \ set winhl+=Normal:Active,NormalNC:Inactive
+au FocusLost * set winhl=Normal:Inactive
+au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive

@@ -2,6 +2,7 @@
 stty -ixon
 setopt histignorealldups sharehistory nonomatch promptsubst
 zstyle ':completion:*' fzf-search-display true
+eval "$(starship init zsh)"
 
 # Variables
 export EDITOR='nvim'
@@ -13,7 +14,6 @@ export MYVIFMRC="${HOME}/.vifmrc"
 export PATH="${HOME}/bin:${HOME}/dotfiles/bin:${HOME}/.local/bin:${PATH}"
 KEYTIMEOUT=1
 HISTFILE=~/.zsh_history HISTSIZE=1000 SAVEHIST=1000
-PROMPT=$'\n%B%F{white}%S%n@%M%s%f %F{blue}%5~%f%b %# '
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit recursive-edit)
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c80,)|*
