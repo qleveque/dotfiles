@@ -4,11 +4,11 @@ if [[ ! "$1" =~ ^(difftool|log|show)$ && -e ~/.use_git_exe ]]; then
   directories=$(< ~/.use_git_exe)
   regex=^\(${directories//$'\n'/'/.*|'}.\*\)\$
   if [[ $PWD/ =~ $regex ]]; then
-    EDITOR='edit(){
+    editor='edit(){
       wsl.exe -e bash -c "nvim \`wslpath $1\`"
     }
     edit'
-    git.exe -c core.editor="${EDITOR}" "$@"
+    git.exe -c core.editor="${editor}" "$@"
     exit
   fi
 fi

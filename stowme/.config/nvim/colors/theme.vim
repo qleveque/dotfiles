@@ -24,25 +24,13 @@ for v in ['','Mod','Index','Sign']
   exe 'hi BufferVisible'.v.' guibg='.PALETTE_3
 endfor
 
-for [context, fg] in items({
-    \'Error': 'IndianRed',
-    \'Warning': 'orange',
-    \'Info': 'LimeGreen',
-    \'Hint': 'LightSkyBlue3'
-    \})
-  exe 'hi Coc'.context.'Sign guifg='.fg.' guibg='.PALETTE_3
-  exe 'hi Coc'.context.'Float guifg='.fg
-endfor
-
-for v in ['User1', 'StatusLine', 'StatusLineNC', 'CocUnusedHighlight']
-  exe 'hi '.v.' gui=underline'
-endfor
-
+hi User1 gui=underline
+hi StatusLine gui=underline
+hi StatusLineNC gui=underline
 hi DiffDelete guibg=IndianRed4 guifg=IndianRed4
 hi DiffAdd gui=none guifg=none guibg=DarkGreen
 hi DiffText gui=none guifg=none guibg=SlateBlue
 hi DiffChange guibg=none
-
 hi Cursor gui=reverse
 hi Visual guifg=white
 

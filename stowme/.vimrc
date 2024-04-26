@@ -1,6 +1,6 @@
 set sd=!,'1000,<50,s10,h mousescroll=ver:1
 set cb=unnamedplus so=4 ch=0 scl=number shm+=I
-set ic scs nu list noswf udf cul nowrap nowb
+set ic scs nu list noswf udf cul nowrap nowb et
 
 " Vim corrections
 nn ' `
@@ -53,21 +53,6 @@ nn \D :exe'sil '.eval(tmux).'tig status"'<CR>
 nn \l :exe'sil '.eval(tmux).'tig '.expand('%:t').'"'<CR>
 nn \L :exe'sil '.eval(tmux).'tig"'<CR>
 nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
-
-" Coc.nvim
-nn gd <Plug>(coc-definition)
-nn gr <Plug>(coc-references)
-nn gh :call CocAction('diagnosticInfo')<CR>'
-nm <silent> [d <Plug>(coc-diagnostic-prev)
-nm <silent> ]d <Plug>(coc-diagnostic-next)
-nn K :call CocActionAsync('doHover')<CR>
-xn \f <Plug>(coc-format-selected)
-au FileType * if &ft!='qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|end
-ino <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):
-  \ indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
 
 " Miscellaneous
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"

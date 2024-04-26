@@ -16,7 +16,27 @@ vim.cmd("colorscheme "..COLORSCHEME)
 vim.cmd('source ~/.vimrc')
 
 require("lazy").setup({
-  {"neoclide/coc.nvim", branch = "release"},
+  {
+    "neoclide/coc.nvim",
+    branch = "release",
+    config = function()
+      vim.cmd[[
+        nn gd <Plug>(coc-definition)
+        nn gr <Plug>(coc-references)
+        nn gh :call CocAction('diagnosticInfo')<CR>
+        nm <silent> [d <Plug>(coc-diagnostic-prev)
+        nm <silent> ]d <Plug>(coc-diagnostic-next)
+        nn K :call CocActionAsync('doHover')<CR>
+        xn \f <Plug>(coc-format-selected)
+        au FileType * if &ft!='qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|end
+        ino <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):
+          \ indent(".")<col(".")-1?coc#refresh():"\<TAB>"
+        ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
+      ]]
+    end
+  },
   {
     "qleveque/hexa.nvim",
     opts={
