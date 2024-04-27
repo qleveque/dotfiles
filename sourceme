@@ -11,6 +11,8 @@ if grep -q Microsoft /proc/version; then
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
   HACK_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
   cmd.exe /C START ' ' ${HACK_URL}
+  cmd.exe /C "winget install LGUG2Z.komorebi"
+  cmd.exe /C "winget install LGUG2Z.whkd"
 fi
 
 # Setup

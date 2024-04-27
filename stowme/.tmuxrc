@@ -13,7 +13,7 @@ source "${HOME}/.theme.zsh"
 # Options
 m_set bell-action=none default-terminal=screen-256color focus-events=on
 m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
-m_set mode-keys=vi status-justify=centre status-{left,right}= 
+m_set mode-keys=vi status-justify=centre status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
 set_all bg=$PALETTE_1 status-style window-active-style
 set_all bg=$PALETTE_2 pane-{,active-}border-style window-style
@@ -27,15 +27,14 @@ tmux set-hook -g pane-focus-in ${toggle_status}
 bind l 'send C-C;send -R;clear-history;send Escape a'
 bind s if "${ps}'(nvim|vifm)'" 'send C-b s' 'splitw -v -c "#{pane_current_path}"'
 bind v if "${ps}'(nvim|vifm)'" 'send C-b v' 'splitw -h -c "#{pane_current_path}"'
+bind n neww -ac "#{pane_current_path}"
 bind x killp
 bind -n C-a if "${ps}'(nvim|vifm)'" 'send C-a' 'copy-mode'
 bind -n C-s if "${ps}'nvim'" 'send C-s' 'copy-mode;send ?'
 bind -n C-u if "${ps}'zsh'" 'copy-mode;send C-u' 'send C-u'
 bind -n C-v if "${ps}'(nvim|zsh)'" 'send C-v' "run 'p|tmux loadb -;tmux pasteb'"
-bind -n M-H prev
-bind -n M-L next
-bind -n M-J confirm killw
-bind -n M-K neww -ac "#{pane_current_path}"
+bind -n C-Tab next
+bind -n C-S-Tab prev
 bind -c '/' command-prompt -ip '' "send -X search-forward-incremental \"%%%\""
 bind -c '?' command-prompt -ip '' "send -X search-backward-incremental \"%%%\""
 bind -c 'v' ${=if_sel} 'send -X select-line' 'send -X begin-selection'

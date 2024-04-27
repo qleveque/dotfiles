@@ -10,6 +10,11 @@ echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
+  shellStartup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
+  # komorebi
+  echo komorebic.exe start --whkd > "${shellStartup}/start_komorebic.bat"
+  ln -f "${configDir}/komorebi/komorebi.json" "${HOME}/komorebi.json"
+  ln -f "${configDir}/komorebi/whkdrc" "${HOME}/.config/whkdrc"
   # VSCode
   codeDir="${appData}/Code/User"
   if [[ -d ${codeDir} ]]; then

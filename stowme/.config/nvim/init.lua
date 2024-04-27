@@ -170,10 +170,10 @@ require("lazy").setup({
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     init = function()
       vim.cmd[[
-        nn <M-h> <Cmd>BufferPrevious<CR>
-        nn <M-l> <Cmd>BufferNext<CR>
-        nn <M-j> <Cmd>BufferClose<CR>
-        nn <M-k> <Cmd>BufferRestore<CR>
+        nn 6 <Cmd>BufferPrevious<CR>
+        nn 9 <Cmd>BufferNext<CR>
+        nn 7 <Cmd>BufferClose<CR>
+        nn 8 <Cmd>BufferRestore<CR>
       ]]
       vim.g.barbar_auto_setup = false
     end,
