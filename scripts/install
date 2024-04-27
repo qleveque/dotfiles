@@ -48,6 +48,10 @@ github_release starship/starship "starship-${musl}.tar.gz" "${HOME}/bin"
 # eza
 github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
 
+# vifm devicons
+vifm_favicons="thimc/vifm_devicons/master/favicons.vifm"
+wget "https://raw.githubusercontent.com/${vifm_favicons}" -O "${HOME}/.vifm.icons"
+
 if grep -q Microsoft /proc/version; then
   # win32yank
   github_release equalsraf/win32yank win32yank-x64.zip "${HOME}/bin" win32yank.exe
@@ -57,4 +61,8 @@ if grep -q Microsoft /proc/version; then
   wsl_sudo="https://raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py"
   wget ${wsl_sudo} -O "${HOME}/bin/wudo"
   chmod +x "${HOME}/bin/wudo"
+
+  # komorebi configuration
+  k_apps="LGUG2Z/komorebi-application-specific-configuration/master/applications.yaml"
+  wget "https://raw.githubusercontent.com/${k_apps}" -O "${HOME}/application.yaml"
 fi

@@ -26,7 +26,6 @@ source ~/.antigen/antigen.zsh
   antigen bundle lincheney/fzf-tab-completion
   antigen bundle ohmyzsh/ohmyzsh plugins/git
   antigen bundle ohmyzsh/ohmyzsh plugins/jump
-  antigen bundle thimc/vifm_devicons
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle qleveque/zsh-vi-search

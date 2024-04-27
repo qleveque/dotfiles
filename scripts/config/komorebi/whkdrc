@@ -1,35 +1,35 @@
 .shell powershell
 
-alt + h            : komorebic focus left
-alt + j            : komorebic focus down
-alt + k            : komorebic focus up
-alt + l            : komorebic focus right
-alt + q            : komorebic focus-workspace 0
-alt + s            : komorebic focus-workspace 1
-alt + d            : komorebic focus-workspace 2
-alt + f            : komorebic focus-workspace 3
-alt + g            : komorebic focus-workspace 4
+alt + h                : komorebic focus left
+alt + j                : komorebic focus down
+alt + k                : komorebic focus up
+alt + l                : komorebic focus right
+alt + q                : komorebic focus-workspace 0
+alt + s                : komorebic focus-workspace 1
+alt + d                : komorebic focus-workspace 2
+alt + f                : komorebic focus-workspace 3
+alt + g                : komorebic focus-workspace 4
 
-alt + shift + h    : komorebic move left
-alt + shift + j    : komorebic move down
-alt + shift + k    : komorebic move up
-alt + shift + l    : komorebic move right
-alt + shift + q    : komorebic move-to-workspace 0
-alt + shift + s    : komorebic move-to-workspace 1
-alt + shift + d    : komorebic move-to-workspace 2
-alt + shift + f    : komorebic move-to-workspace 3
-alt + shift + g    : komorebic move-to-workspace 4
+alt + shift + h        : komorebic move left
+alt + shift + j        : komorebic move down
+alt + shift + k        : komorebic move up
+alt + shift + l        : komorebic move right
+alt + shift + q        : komorebic move-to-workspace 0
+alt + shift + s        : komorebic move-to-workspace 1
+alt + shift + d        : komorebic move-to-workspace 2
+alt + shift + f        : komorebic move-to-workspace 3
+alt + shift + g        : komorebic move-to-workspace 4
 
-alt + left         : komorebic stack left
-alt + down         : komorebic stack down
-alt + up           : komorebic stack up
-alt + right        : komorebic stack right
-alt + back         : komorebic unstack
-alt + n            : komorebic cycle-stack previous
-alt + p            : komorebic cycle-stack next
+alt + left             : komorebic stack left
+alt + down             : komorebic stack down
+alt + up               : komorebic stack up
+alt + right            : komorebic stack right
+alt + back             : komorebic unstack
+alt + n                : komorebic cycle-stack previous
+alt + p                : komorebic cycle-stack next
 
-alt + t            : komorebic toggle-float
-alt + return       : komorebic toggle-monocle
-alt + shift + r    : komorebic retile
-alt + p            : komorebic toggle-pause
-alt + x            : komorebic close
+alt + t                : komorebic toggle-float
+alt + return           : komorebic toggle-monocle
+alt + space            : komorebic retile
+alt + p                : komorebic toggle-pause
+alt + x                : komorebic close
