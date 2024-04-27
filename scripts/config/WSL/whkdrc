@@ -30,6 +30,6 @@ alt + p                : komorebic cycle-stack next
 
 alt + t                : komorebic toggle-float
 alt + return           : komorebic toggle-monocle
-alt + space            : komorebic retile
+alt + space            : komorebic manage
 alt + p                : komorebic toggle-pause
 alt + x                : komorebic close

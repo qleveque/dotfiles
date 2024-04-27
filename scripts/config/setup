@@ -11,10 +11,6 @@ echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
   shellStartup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
-  # komorebi
-  echo komorebic.exe start --whkd > "${shellStartup}/start_komorebic.bat"
-  ln -f "${configDir}/komorebi/komorebi.json" "${HOME}/komorebi.json"
-  ln -f "${configDir}/komorebi/whkdrc" "${HOME}/.config/whkdrc"
   # VSCode
   codeDir="${appData}/Code/User"
   if [[ -d ${codeDir} ]]; then
@@ -29,5 +25,14 @@ if grep -q Microsoft /proc/version; then
       mkdir -p "${dir}/keymaps"
       ln -f "${configDir}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
     fi
-done
+  done
+  # komorebi
+  echo komorebic.exe start --whkd > "${shellStartup}/start_komorebic.bat"
+  ln -f "${configDir}/WSL/komorebi.json" "${HOME}/komorebi.json"
+  ln -f "${configDir}/WSL/whkdrc" "${HOME}/.config/whkdrc"
+  # Windows Terminal
+  packages="${HOME}/AppData/Local/Packages"
+  win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`
+  win_term_settings="${packages}/${win_term_dir}/LocalState/settings.json"
+  ln -f "${configDir}/WSL/windowsTerminal.json" ${win_term_settings}
 fi
