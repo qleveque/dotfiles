@@ -4,6 +4,9 @@ configDir="${0:h}"
 # dotfiles
 python3 "${configDir}/dotfiles/lesskey.py" > ~/.lesskey
 ln -f "${configDir}/dotfiles/.gitconfig" "${HOME}/"
+echo run \"${HOME}/.tmuxrc\" > ~/.tmux.conf
+mkdir -p "${HOME}/.config/vifm"
+echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"

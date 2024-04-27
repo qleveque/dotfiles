@@ -168,7 +168,15 @@ require("lazy").setup({
   {
     "romgrk/barbar.nvim",
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    init = function() vim.g.barbar_auto_setup = false end,
+    init = function()
+      vim.cmd[[
+        nn <M-h> <Cmd>BufferPrevious<CR>
+        nn <M-l> <Cmd>BufferNext<CR>
+        nn <M-j> <Cmd>BufferClose<CR>
+        nn <M-k> <Cmd>BufferRestore<CR>
+      ]]
+      vim.g.barbar_auto_setup = false
+    end,
     enabled = not vim.api.nvim_win_get_option(0, "diff"),
     opts = {
       exclude_ft={'qf','hexd'},

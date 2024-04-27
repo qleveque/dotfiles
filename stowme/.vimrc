@@ -1,6 +1,5 @@
-set sd=!,'1000,<50,s10,h mousescroll=ver:1
-set cb=unnamedplus so=4 ch=0 scl=number shm+=I
-set ic scs nu list noswf udf cul nowrap nowb et
+set ic scs nu list noswf udf cul nowrap nowb et so=4 ch=0 shm+=I
+set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number mousescroll=ver:1
 
 " Vim corrections
 nn ' `
@@ -38,12 +37,6 @@ map <C-r> :sil lua require'spectre'.toggle()<CR>
 map <C-g> :AerialOpen<CR>
 map <C-q> ZQ
 
-" Tabs
-nn <M-h> <Cmd>BufferPrevious<CR>
-nn <M-l> <Cmd>BufferNext<CR>
-nn <M-j> <Cmd>BufferClose<CR>
-nn <M-k> <Cmd>BufferRestore<CR>
-
 " Term
 nn <silent> é :exe'sil !tmux splitw "run -p \"'.expand("%").'\""'<CR>
 nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
@@ -60,12 +53,10 @@ let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
 for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
 au FileType * set fo-=cro
 if &diff
-  set noro dip+=iwhite,vertical
   nn <C-Q> :qa<CR>
-  nn q :qa<CR>
   nn + ]c
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
-  au VimEnter * :windo set nofen fdc=0 wrap | :norm +-
+  au VimEnter * :windo set nofen fdc=0 wrap noro | :norm +-
   au BufWinEnter /tmp/* setlocal noma
 end

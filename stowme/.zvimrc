@@ -1,5 +1,4 @@
-#!/usr/bin/zsh
-# vim: set ft=zsh:
+#!/bin/zsh
 set-cursor() { zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c }
 goto-recent-dir() { cd "$(eval ${FZF_P_COMMAND} | fzf --exact)";zle reset-prompt;zle zle-line-init }
 open-fm() { cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt;zle zle-line-init }

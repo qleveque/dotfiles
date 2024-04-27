@@ -7,6 +7,7 @@ function github_release() {
     "gz") tar -xvzf ${tmp} -C "${@:3}";;
   esac
 }
+musl='x86_64-unknown-linux-musl'
 
 # Common packages
 sudo apt-get update -y
@@ -19,17 +20,12 @@ sudo apt-get install -y \
 github_release ryanoasis/nerd-fonts Hack.zip "${HOME}/.fonts"
 fc-cache -fv
 
-# Nvim
+# nvim
 github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
 vim_plug="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
 rm "${vim_plug}"/{tar,netrw,zip}Plugin.vim
 rm "${vim_plug}"/{gzip,rplugin,shada,spellfile,tohtml,tutor}.vim
-
-# sd
-sd_tag=`curl -s https://api.github.com/repos/chmln/sd/tags | jq -r '.[0].name'`
-sd="sd-${sd_tag}-x86_64-unknown-linux-gnu"
-github_release chmln/sd "${sd}.tar.gz" "${HOME}/bin" --strip-components=1 "${sd}/sd"
 
 # antigen
 mkdir -p "${HOME}/.antigen"
@@ -41,12 +37,16 @@ source ~/.antigen/bundles/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
 extract $1' > "${HOME}/bin/extract"
 chmod +x "${HOME}/bin/extract"
 
+# sd
+sd_tag=`curl -s https://api.github.com/repos/chmln/sd/tags | jq -r '.[0].name'`
+sd="sd-${sd_tag}-${musl}"
+github_release chmln/sd "${sd}.tar.gz" "${HOME}/bin" --strip-components=1 "${sd}/sd"
+
 # starship
-starship='starship-x86_64-unknown-linux-musl.tar.gz'
-github_release starship/starship ${starship} "${HOME}/bin"
+github_release starship/starship "starship-${musl}.tar.gz" "${HOME}/bin"
 
 # eza
-github_release eza-community/eza eza_x86_64-unknown-linux-musl.tar.gz "${HOME}/bin"
+github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
 
 if grep -q Microsoft /proc/version; then
   # win32yank

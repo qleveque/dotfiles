@@ -1,0 +1,44 @@
+#!/bin/zsh
+bind(){local m="";[[ $1 == "-c" ]]&&m='-Tcopy-mode-vi'&&shift;tmux bind ${m} "$@"}
+m_set(){while [[ -n $1 ]];do tmux set -g ${(@s:=:)1};shift;done}
+set_all(){local s=$1&&while shift&&[[ -n $1 ]];do tmux set -g $1 ${s};done}
+ps='ps -o state= -o comm= -t "#{pane_tty}"|tail -1|grep -iqE '
+toggle_status='if "[ #{session_windows} -lt 2 ]" "set status off" "set status on"'
+if_sel='if -F #{selection_present}'
+
+# Sources
+source "${HOME}/.local/share/nvim/lazy/vim-tmux-navigator/vim-tmux-navigator.tmux"
+source "${HOME}/.theme.zsh"
+
+# Options
+m_set bell-action=none default-terminal=screen-256color focus-events=on
+m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
+m_set mode-keys=vi status-justify=centre status-{left,right}= 
+set_all " #[bold]#W#[default] " window-status-{,current-}format
+set_all bg=$PALETTE_1 status-style window-active-style
+set_all bg=$PALETTE_2 pane-{,active-}border-style window-style
+set_all bg=$PALETTE_3 message-{,command-}style
+set_all fg=white,bg=$PALETTE_4 window-status-current-style mode-style
+set_all fg=$PALETTE_4,bg=$PALETTE_2 window-status-style
+tmux set -ga terminal-overrides ',xterm*:Tc:smcup@:rmcup@'
+tmux set-hook -g pane-focus-in ${toggle_status}
+
+# Bindings
+bind l 'send C-C;send -R;clear-history;send Escape a'
+bind s if "${ps}'(nvim|vifm)'" 'send C-b s' 'splitw -v -c "#{pane_current_path}"'
+bind v if "${ps}'(nvim|vifm)'" 'send C-b v' 'splitw -h -c "#{pane_current_path}"'
+bind x killp
+bind -n C-a if "${ps}'(nvim|vifm)'" 'send C-a' 'copy-mode'
+bind -n C-s if "${ps}'nvim'" 'send C-s' 'copy-mode;send ?'
+bind -n C-u if "${ps}'zsh'" 'copy-mode;send C-u' 'send C-u'
+bind -n C-v if "${ps}'(nvim|zsh)'" 'send C-v' "run 'p|tmux loadb -;tmux pasteb'"
+bind -n M-H prev
+bind -n M-L next
+bind -n M-J confirm killw
+bind -n M-K neww -ac "#{pane_current_path}"
+bind -c '/' command-prompt -ip '' "send -X search-forward-incremental \"%%%\""
+bind -c '?' command-prompt -ip '' "send -X search-backward-incremental \"%%%\""
+bind -c 'v' ${=if_sel} 'send -X select-line' 'send -X begin-selection'
+bind -c 'y' ${=if_sel} 'send -X copy-pipe c' 'send hEvBy'
+bind -c 'P' ${=if_sel} 'send -X copy-selection;pasteb;setb \ ;pasteb' 'send hEvBP'
+bind -c 'p' ${=if_sel} 'send -X copy-selection-and-cancel;pasteb' 'send hEvBp'

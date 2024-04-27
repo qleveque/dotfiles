@@ -14,7 +14,7 @@ bind generic yc !@>zsh -fc "echo -n %(commit) | c"
 bind generic yf !@>zsh -fc "echo -n %(file) | c"
 bind generic yy !@>zsh -fc "echo -n %(text) | c"
 bind generic ; back
-bind generic <C-q> :quit
+bind generic <C-q> :q
 bind diff + :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind diff - :?\|\s+(0|[0-9]+\s[\+-]+)$
 bind stage + :/^@@
