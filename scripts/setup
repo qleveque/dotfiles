@@ -1,0 +1,40 @@
+#!/usr/bin/zsh
+
+stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
+
+config="${HOME}/dotfiles/config"
+
+# dotfiles
+python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
+ln -f "${config}/dotfiles/.gitconfig" "${HOME}/"
+echo run \"${HOME}/.tmuxrc\" > ~/.tmux.conf
+mkdir -p "${HOME}/.config/vifm"
+echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
+
+if grep -q Microsoft /proc/version; then
+  appData="${HOME}/AppData/Roaming"
+  # VSCode
+  codeDir="${appData}/Code/User"
+  if [[ -d ${codeDir} ]]; then
+    ln -f "${config}/VSCode/settings.json" "${codeDir}/settings.json"
+    ln -f "${config}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
+  fi
+  # JetBrains
+  ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
+  for dirPattern in 'PyCharm*' 'IdeaIC*'; do
+    dir=$(find "${appData}/JetBrains" -type d -name $dirPattern|sort -n|tail -n1)
+    if [[ -d ${dir} ]]; then
+      mkdir -p "${dir}/keymaps"
+      ln -f "${config}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
+    fi
+  done
+  # komorebi
+  komorebic.exe enable-autostart --whkd
+  ln -f "${config}/windows/komorebi.json" "${HOME}/komorebi.json"
+  ln -f "${config}/windows/whkdrc" "${HOME}/.config/whkdrc"
+  # Windows Terminal
+  packages="${HOME}/AppData/Local/Packages"
+  win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`
+  win_term_settings="${packages}/${win_term_dir}/LocalState/settings.json"
+  ln -f "${config}/windows/windowsTerminal.json" ${win_term_settings}
+fi

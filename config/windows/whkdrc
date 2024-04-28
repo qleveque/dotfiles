@@ -24,12 +24,13 @@ alt + left             : komorebic stack left
 alt + down             : komorebic stack down
 alt + up               : komorebic stack up
 alt + right            : komorebic stack right
-alt + back             : komorebic unstack
 alt + n                : komorebic cycle-stack previous
 alt + p                : komorebic cycle-stack next
+alt + back             : komorebic unstack
 
-alt + t                : komorebic toggle-float
-alt + return           : komorebic toggle-monocle
+alt + return           : komorebic toggle-maximize
 alt + space            : komorebic manage
-alt + p                : komorebic toggle-pause
+alt + shift + space    : komorebic unmanage
+alt + w                : komorebic minimize
 alt + x                : komorebic close
+alt + t : komorebic toggle-tiling
