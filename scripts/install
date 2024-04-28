@@ -64,5 +64,5 @@ if grep -q Microsoft /proc/version; then
 
   # komorebi configuration
   k_apps="LGUG2Z/komorebi-application-specific-configuration/master/applications.yaml"
-  wget "https://raw.githubusercontent.com/${k_apps}" -O "${HOME}/application.yaml"
+  wget "https://raw.githubusercontent.com/${k_apps}" -O "${HOME}/.komorebi_apps.yaml"
 fi

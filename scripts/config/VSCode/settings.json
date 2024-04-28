@@ -63,6 +63,10 @@
     { "before": [ "c", "s", "t" ], "commands": [ "editor.emmet.action.updateTag" ] },
     { "before": [ "_" ], "commands": [ "editor.action.smartSelect.expand" ] },
     { "before": [ "<Space>" ], "after": [ "<leader>", "<leader>", "2", "s" ] },
+    { "before": [ "9" ], "commands": [ "workbench.action.nextEditor" ] },
+    { "before": [ "6" ], "commands": [ "workbench.action.previousEditor" ] },
+    { "before": [ "7" ], "commands": [ "workbench.action.closeActiveEditor" ] },
+    { "before": [ "8" ], "commands": [ "workbench.action.keepEditor" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     // Git

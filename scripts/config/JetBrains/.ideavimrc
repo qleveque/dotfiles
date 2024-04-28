@@ -24,10 +24,10 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
 " Tabs
-nnoremap <M-h> :action PreviousTab<CR>
-nnoremap <M-l> :action NextTab<CR>
-nnoremap <M-k> :action ReopenClosedTab<CR>
-nnoremap <M-j> :q<CR>
+nnoremap 6 :action PreviousTab<CR>
+nnoremap 9 :action NextTab<CR>
+nnoremap 8 :action ReopenClosedTab<CR>
+nnoremap 7 :q<CR>
 
 " Run
 nmap é :action Run<CR>

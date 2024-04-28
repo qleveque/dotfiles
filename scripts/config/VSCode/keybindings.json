@@ -30,11 +30,6 @@
   { "key": "ctrl+q", "command": "workbench.action.closeEditorsInGroup", "when": "!sideBarFocus && !terminalFocus" },
   { "key": "ctrl+q", "command": "workbench.action.toggleSidebarVisibility", "when": "sideBarFocus" },
   { "key": "ctrl+q", "command": "workbench.action.togglePanel", "when": "terminalFocus" },
-  // Tabs
-  { "key": "alt+l", "command": "workbench.action.nextEditor" },
-  { "key": "alt+h", "command": "workbench.action.previousEditor" },
-  { "key": "alt+j", "command": "workbench.action.closeActiveEditor" },
-  { "key": "alt+k", "command": "workbench.action.keepEditor" },
   // Tree
   { "key": "ctrl+f", "command": "workbench.files.action.showActiveFileInExplorer", "when": "editorFocus" },
   { "key": "ctrl+f", "command": "workbench.view.explorer", "when": "!editorFocus" },
