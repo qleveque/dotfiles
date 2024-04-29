@@ -33,4 +33,6 @@ alt + space            : komorebic manage
 alt + shift + space    : komorebic unmanage
 alt + w                : komorebic minimize
 alt + x                : komorebic close
-alt + t : komorebic toggle-tiling
+alt + t                : komorebic toggle-tiling
+
+alt + m                : komorebic manage; komorebic cycle-send-to-monitor next; komorebic cycle-monitor next
