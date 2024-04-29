@@ -20,14 +20,6 @@ alt + shift + d        : komorebic move-to-workspace 2
 alt + shift + f        : komorebic move-to-workspace 3
 alt + shift + g        : komorebic move-to-workspace 4
 
-alt + left             : komorebic stack left
-alt + down             : komorebic stack down
-alt + up               : komorebic stack up
-alt + right            : komorebic stack right
-alt + n                : komorebic cycle-stack previous
-alt + p                : komorebic cycle-stack next
-alt + back             : komorebic unstack
-
 alt + return           : komorebic toggle-maximize
 alt + space            : komorebic manage
 alt + shift + space    : komorebic unmanage

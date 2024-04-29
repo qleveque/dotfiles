@@ -9,16 +9,6 @@
   "mouse_follows_focus": true,
   "window_container_behaviour": "Create",
   "border_width": 4,
-  "stackbar": {
-    "height": 20,
-    "mode": "OnStack",
-    "tabs": {
-      "width": 300,
-      "focused_text": "#ffffff",
-      "unfocused_text": "#777777",
-      "background": "#010101"
-    }
-  },
   "monitors": [
     {
       "workspaces": [
