@@ -28,7 +28,7 @@ bind l 'send C-C;send -R;clear-history;send Escape a'
 bind s if "${ps}'(nvim|vifm)'" 'send C-b s' 'splitw -v -c "#{pane_current_path}"'
 bind v if "${ps}'(nvim|vifm)'" 'send C-b v' 'splitw -h -c "#{pane_current_path}"'
 bind n neww -ac "#{pane_current_path}"
-bind x killp
+bind q killp
 bind -n C-a if "${ps}'(nvim|vifm)'" 'send C-a' 'copy-mode'
 bind -n C-s if "${ps}'nvim'" 'send C-s' 'copy-mode;send ?'
 bind -n C-u if "${ps}'zsh'" 'copy-mode;send C-u' 'send C-u'

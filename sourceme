@@ -7,8 +7,7 @@ echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
 if grep -q Microsoft /proc/version; then
   COMMAND="WSL -u root usermod -d ${HOME} qleveque && "`
          `'SETX PATH "%USERPROFILE%\bin;%PATH%" && '`
-         `'winget install LGUG2Z.komorebi && '`
-         `'winget install LGUG2Z.whkd && '`
+         `'winget install GlazeWM && '`
          `'PAUSE'`
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
   HACK_URL="https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"

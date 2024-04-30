@@ -13,6 +13,7 @@ echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
+  startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
   # VSCode
   codeDir="${appData}/Code/User"
   if [[ -d ${codeDir} ]]; then
@@ -28,10 +29,11 @@ if grep -q Microsoft /proc/version; then
       ln -f "${config}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
     fi
   done
-  # komorebi
-  komorebic.exe enable-autostart --whkd
-  ln -f "${config}/windows/komorebi.json" "${HOME}/komorebi.json"
-  ln -f "${config}/windows/whkdrc" "${HOME}/.config/whkdrc"
+  # glaze-wm
+  glaze_cmd="Start-Process -FilePath GlazeWM.exe -WindowStyle Hidden"
+  echo powershell.exe -c \"${glaze_cmd}\" > "${startup}/glazewm.bat"
+  mkdir -p "${HOME}/.glaze-wm"
+  ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
   # Windows Terminal
   packages="${HOME}/AppData/Local/Packages"
   win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`
