@@ -4,27 +4,28 @@ alt + h                : komorebic focus left
 alt + j                : komorebic focus down
 alt + k                : komorebic focus up
 alt + l                : komorebic focus right
+
+alt + shift + h        : komorebic move left
+alt + shift + j        : komorebic move down
+alt + shift + k        : komorebic move up
+alt + shift + l        : komorebic move right
+
 alt + q                : komorebic focus-workspace 0
 alt + s                : komorebic focus-workspace 1
 alt + d                : komorebic focus-workspace 2
 alt + f                : komorebic focus-workspace 3
 alt + g                : komorebic focus-workspace 4
 
-alt + shift + h        : komorebic move left
-alt + shift + j        : komorebic move down
-alt + shift + k        : komorebic move up
-alt + shift + l        : komorebic move right
-alt + shift + q        : komorebic move-to-workspace 0
-alt + shift + s        : komorebic move-to-workspace 1
-alt + shift + d        : komorebic move-to-workspace 2
-alt + shift + f        : komorebic move-to-workspace 3
-alt + shift + g        : komorebic move-to-workspace 4
+alt + a                : komorebic move-to-workspace 0
+alt + z                : komorebic move-to-workspace 1
+alt + e                : komorebic move-to-workspace 2
+alt + r                : komorebic move-to-workspace 3
+alt + t                : komorebic move-to-workspace 4
 
 alt + return           : komorebic toggle-maximize
 alt + space            : komorebic manage
 alt + shift + space    : komorebic unmanage
 alt + w                : komorebic minimize
 alt + x                : komorebic close
-alt + t                : komorebic toggle-tiling
 
 alt + m                : komorebic manage; komorebic cycle-send-to-monitor next; komorebic cycle-monitor next
