@@ -51,37 +51,28 @@ bar:
       padding: "0 8px"
 
 workspaces:
-  - name: "general"
+  - name: "any"
+  - name: "else"
   - name: "term"
   - name: "msg"
   - name: "code"
   - name: "web"
-  - name: "other"
-  - name: "apps"
-  - name: "nook"
+  - name: "rest"
 
 window_rules:
   - command: "ignore"
     match_process_name: "/Taskmgr|ScreenClippingHost/"
   - command: "set floating"
     match_class_name: "#32770"
-  - command: "ignore"
-    match_title: "[Pp]icture.in.[Pp]icture"
-    match_class_name: "Chrome_WidgetWin_1|MozillaDialogClass"
-
-binding_modes:
-  - name: "resize"
-    keybindings:
-      - command: "resize width -2%"
-        binding: "H"
-      - command: "resize width +2%"
-        binding: "L"
-      - command: "resize height +2%"
-        binding: "K"
-      - command: "resize height -2%"
-        binding: "J"
-      - command: "binding mode none"
-        bindings: ["Escape", "Enter"]
+  - commands: ["move to workspace msg", "focus workspace msg"]
+    match_process_name: "/msteams|Microsoft Teams|olk|(Microsoft )?Outlook/"
+  - commands: ["move to workspace rest", "focus workspace rest"]
+    match_title: "/Spotify|WhatsApp/"
+  - commands: ["move to workspace term", "focus workspace term"]
+    match_process_name: "/WindowsTerminal/"
+    match_title: "Ubuntu"
+  - commands: ["move to workspace code", "focus workspace code"]
+    match_process_name: "/Code|PyCharm|pycharm64/"
 
 keybindings:
   - command: "focus left"
@@ -102,15 +93,12 @@ keybindings:
   - command: "move down"
     binding: "Alt+Shift+J"
 
-  - command: "binding mode resize"
-    binding: "Alt+R"
-
   - command: "tiling direction toggle"
     binding: "Alt+V"
 
-  - command: "focus mode toggle"
-    binding: "Alt+Space"
   - command: "toggle floating"
+    binding: "Alt+Space"
+  - command: "focus mode toggle"
     binding: "Alt+Shift+Space"
 
   - command: "toggle maximized"
@@ -118,25 +106,27 @@ keybindings:
   - command: "set minimized"
     binding: "Alt+X"
   - command: "close"
-    binding: "Alt+Shift+Q"
-  - command: "exit wm"
-    binding: "Alt+Shift+E"
+    binding: "Alt+Q"
 
   - command: "focus workspace recent"
     binding: "Alt+Z"
 
   - command: "reload config"
-    binding: "Alt+Shift+R"
+    binding: "Alt+Shift+U"
 
   - command: "move workspace left"
-    binding: "Alt+Q"
+    binding: "Alt+S"
   - command: "move workspace right"
-    binding: "Alt+F"
+    binding: "Alt+G"
   - command: "move workspace up"
     binding: "Alt+D"
   - command: "move workspace down"
-    binding: "Alt+S"
+    binding: "Alt+F"
 
+  - command: "focus workspace any"
+    binding: "Alt+A"
+  - command: "focus workspace else"
+    binding: "Alt+E"
   - command: "focus workspace term"
     binding: "Alt+T"
   - command: "focus workspace msg"
@@ -145,15 +135,13 @@ keybindings:
     binding: "Alt+C"
   - command: "focus workspace web"
     binding: "Alt+W"
-  - command: "focus workspace other"
-    binding: "Alt+O"
-  - command: "focus workspace apps"
-    binding: "Alt+A"
-  - command: "focus workspace nook"
-    binding: "Alt+N"
-  - command: "focus workspace general"
-    binding: "Alt+G"
+  - command: "focus workspace rest"
+    binding: "Alt+R"
 
+  - commands: ["move to workspace any", "focus workspace any"]
+    binding: "Alt+Shift+A"
+  - commands: ["move to workspace else", "focus workspace else"]
+    binding: "Alt+Shift+E"
   - commands: ["move to workspace term", "focus workspace term"]
     binding: "Alt+Shift+T"
   - commands: ["move to workspace msg", "focus workspace msg"]
@@ -162,11 +150,5 @@ keybindings:
     binding: "Alt+Shift+C"
   - commands: ["move to workspace web", "focus workspace web"]
     binding: "Alt+Shift+W"
-  - commands: ["move to workspace other", "focus workspace other"]
-    binding: "Alt+Shift+O"
-  - commands: ["move to workspace apps", "focus workspace apps"]
-    binding: "Alt+Shift+A"
-  - commands: ["move to workspace nook", "focus workspace nook"]
-    binding: "Alt+Shift+N"
-  - commands: ["move to workspace general", "focus workspace general"]
-    binding: "Alt+Shift+G"
+  - commands: ["move to workspace rest", "focus workspace rest"]
+    binding: "Alt+Shift+R"
