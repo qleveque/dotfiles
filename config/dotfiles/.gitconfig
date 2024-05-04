@@ -5,6 +5,7 @@
   editor = nvim
   ignorecase = true
   whitespace = trailing-space
+  longpaths = true
 [push]
   autoSetupRemote = true
 [pull]
