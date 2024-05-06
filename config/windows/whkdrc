@@ -1,0 +1,45 @@
+.shell powershell
+
+alt + h                : komorebic focus left
+alt + j                : komorebic focus down
+alt + k                : komorebic focus up
+alt + l                : komorebic focus right
+
+alt + shift + h        : komorebic move left
+alt + shift + j        : komorebic move down
+alt + shift + k        : komorebic move up
+alt + shift + l        : komorebic move right
+
+alt + a : komorebic focus-workspace 0
+alt + e : komorebic focus-workspace 1
+alt + r : komorebic focus-workspace 2
+alt + t : komorebic focus-workspace 3
+alt + w : komorebic focus-workspace 4
+alt + m : komorebic focus-workspace 5
+alt + c : komorebic focus-workspace 6
+
+alt + z : komorebic focus-last-workspace
+
+alt + shift + a : komorebic move-to-workspace 0
+alt + shift + e : komorebic move-to-workspace 1
+alt + shift + r : komorebic move-to-workspace 2
+alt + shift + t : komorebic move-to-workspace 3
+alt + shift + w : komorebic move-to-workspace 4
+alt + shift + m : komorebic move-to-workspace 5
+alt + shift + c : komorebic move-to-workspace 6
+
+alt + left              : komorebic stack left
+alt + down              : komorebic stack down
+alt + up                : komorebic stack up
+alt + right             : komorebic stack right
+alt + back              : komorebic unstack
+alt + n                 : komorebic cycle-stack previous
+alt + p                 : komorebic cycle-stack next
+
+alt + return           : komorebic toggle-maximize
+alt + space            : komorebic manage
+alt + shift + space    : komorebic unmanage
+alt + x                : komorebic minimize
+alt + q                : komorebic close
+
+alt + s                : komorebic manage; komorebic cycle-send-to-monitor next; komorebic cycle-monitor next

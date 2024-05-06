@@ -29,11 +29,17 @@ if grep -q Microsoft /proc/version; then
       ln -f "${config}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
     fi
   done
-  # glaze-wm
-  glaze_cmd="Start-Process -FilePath GlazeWM.exe -WindowStyle Hidden"
-  echo powershell.exe -c \"${glaze_cmd}\" > "${startup}/glazewm.bat"
-  mkdir -p "${HOME}/.glaze-wm"
-  ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
+  # # glaze-wm
+  # glaze_cmd="Start-Process -FilePath GlazeWM.exe -WindowStyle Hidden"
+  # echo powershell.exe -c \"${glaze_cmd}\" > "${startup}/glazewm.bat"
+  # mkdir -p "${HOME}/.glaze-wm"
+  # ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
+  # komorebi
+  komorebic.exe enable-autostart --whkd
+  rm -f "${HOME}/komorebi.json" "${HOME}/.config/whkdrc"
+  komorebic.exe quickstart > /dev/null
+  ln -f "${config}/windows/komorebi.json" "${HOME}/komorebi.json"
+  ln -f "${config}/windows/whkdrc" "${HOME}/.config/whkdrc"
   # Windows Terminal
   packages="${HOME}/AppData/Local/Packages"
   win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`
