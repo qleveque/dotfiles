@@ -34,6 +34,7 @@ if grep -q Microsoft /proc/version; then
   echo powershell.exe -c \"${glaze_cmd}\" > "${startup}/glazewm.bat"
   mkdir -p "${HOME}/.glaze-wm"
   ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
+  ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
   # Windows Terminal
   packages="${HOME}/AppData/Local/Packages"
   win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`

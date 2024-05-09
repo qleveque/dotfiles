@@ -13,7 +13,7 @@ source "${HOME}/.theme.zsh"
 # Options
 m_set bell-action=none default-terminal=screen-256color focus-events=on
 m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
-m_set mode-keys=vi status-justify=centre status-{left,right}=  status-position=top
+m_set mode-keys=vi status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
 set_all bg=$PALETTE_1 status-style window-active-style
 set_all bg=$PALETTE_2 pane-{,active-}border-style window-style

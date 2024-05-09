@@ -54,6 +54,7 @@ else
   f="\"${file}\"" n="\"${name}\""
 fi
 case ${ext} in
+  ahk) run cmd.exe /C "autohotkey.exe $f";;
   asm) run "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
   bash) run "bash $f";;
   bat|cmd) run cmd.exe /C "$f";;

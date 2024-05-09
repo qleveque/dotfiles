@@ -34,5 +34,6 @@
   "alwaysShowTabs": false,
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "tabSwitcherMode": "disabled"
+  "tabSwitcherMode": "disabled",
+  "launchMode": "focus"
 }
