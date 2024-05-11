@@ -72,10 +72,9 @@ require("lazy").setup({
     "echasnovski/mini.animate",
     config = function()
       local animate = require('mini.animate')
-      local params = { duration = 50, unit = 'total' }
       animate.setup({
-        scroll = {timing = animate.gen_timing.linear(params)},
-        cursor = {timing = animate.gen_timing.cubic(params)},
+        cursor = {timing = animate.gen_timing.cubic({duration = 100, unit = 'total'})},
+        scroll = {enable = false},
         open = {enable = false},
         resize = {enable = false}
       })

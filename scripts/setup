@@ -50,9 +50,7 @@ if grep -q Microsoft /proc/version; then
   firefox_profile="$(ls -t "${firefox_profiles}" | grep release | head -n1)"
   firefox_dir="${firefox_profiles}/${firefox_profile}"
   mkdir -p "${firefox_dir}/chrome"
-  slick_fox="raw.githubusercontent.com/Etesam913/slick-fox/master/userChrome.css"
-  wget -q "https://${slick_fox}" -O "${firefox_dir}/chrome/userChrome.css"
-  sed -i 's/0\.4s/0.05s/g' "${firefox_dir}/chrome/userChrome.css"
+  ln -f "${config}/mozilla/userChrome.css" "${firefox_dir}/chrome/userChrome.css"
   use_chrome_css='user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
   if ! grep -qF "${use_chrome_css}" "${firefox_dir}/prefs.js"; then
     echo "${use_chrome_css}" >> "${firefox_dir}/prefs.js"

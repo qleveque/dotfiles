@@ -28,8 +28,8 @@ Activate(dir) {
         return
     idx := IndexOf(mins, activeWin)
     newIdx := Mod(idx - 1 + dir + mins.length, mins.length)
-    WinRestore("ahk_id " mins[newIdx + 1])
     WinMinimize("ahk_id " activeWin)
+    WinRestore("ahk_id " mins[newIdx + 1])
 }
 
 Close() {
@@ -46,3 +46,4 @@ Close() {
 !p::Activate(1)
 !n::Activate(-1)
 !q::Close()
+!+q::WinClose("A")

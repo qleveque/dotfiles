@@ -1,0 +1,12 @@
+#nav-bar:not([customizing]) {
+  margin-top: -25px;
+  opacity: 0;
+  transition: margin-top, ease 0.05s !important;
+}
+#nav-bar:hover,
+#nav-bar:focus-within,
+#urlbar[focused='true'],
+#titlebar:hover + #nav-bar:not([customizing]) {
+  margin-top: 0px;
+  opacity: 100;
+}
