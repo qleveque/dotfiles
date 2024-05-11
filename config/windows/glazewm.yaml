@@ -9,7 +9,7 @@ general:
 
 gaps:
   inner_gap: "10px"
-  outer_gap: "10px"
+  outer_gap: "5px"
 
 focus_borders:
   active:
@@ -19,7 +19,51 @@ focus_borders:
     enabled: false
 
 bar:
-  enabled: false
+  enabled: true
+  height: "20px"
+  position: "top"
+  opacity: 1.0
+  background: "#20242cc4"
+  foreground: "#ffffff"
+  font_family: "Segoe UI"
+  font_size: "12px"
+  padding: "0px"
+  offset_x: "0"
+  offset_y: "0"
+  border_radius: "0"
+  components_left:
+    - type: "workspaces"
+      focused_workspace_background: "#ffffff33"
+      displayed_workspace_background: "#00000033"
+      default_workspace_background: "transparent"
+  components_center:
+    - type: "window title"
+  components_right:
+    - type: "clock"
+      time_formatting: "HH:mm"
+      background: "#ffffff33"
+      margin: "0 4px"
+      padding: "0 8px"
+    - type: "clock"
+      time_formatting: "d MMM"
+      background: "#ffffff33"
+      margin: "0 4px"
+      padding: "0 8px"
+    - type: "clock"
+      time_formatting: "Week w"
+      background: "#ffffff33"
+      margin: "0 4px"
+      padding: "0 8px"
+    - type: "tiling direction"
+      label_horizontal: "⮂"
+      label_vertical: "⮁"
+      background: "#ffffff33"
+      margin: "0 4px"
+      padding: "0 8px"
+    - type: "binding mode"
+      background: "#ffffff33"
+      margin: "0 4px 0 0"
+      padding: "0 8px"
 
 workspaces:
   - name: "any"
