@@ -14,12 +14,14 @@ echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
   startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
+
   # VSCode
   codeDir="${appData}/Code/User"
   if [[ -d ${codeDir} ]]; then
     ln -f "${config}/VSCode/settings.json" "${codeDir}/settings.json"
     ln -f "${config}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
   fi
+
   # JetBrains
   ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
   for dirPattern in 'PyCharm*' 'IdeaIC*'; do
@@ -29,15 +31,30 @@ if grep -q Microsoft /proc/version; then
       ln -f "${config}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
     fi
   done
+
   # glaze-wm
   glaze_cmd="Start-Process -FilePath GlazeWM.exe -WindowStyle Hidden"
   echo powershell.exe -c \"${glaze_cmd}\" > "${startup}/glazewm.bat"
   mkdir -p "${HOME}/.glaze-wm"
   ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
+
   # Windows Terminal
   packages="${HOME}/AppData/Local/Packages"
   win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`
   win_term_settings="${packages}/${win_term_dir}/LocalState/settings.json"
   ln -f "${config}/windows/windowsTerminal.json" ${win_term_settings}
+
+  # Firefox
+  firefox_profiles="${appData}/Mozilla/Firefox/Profiles/"
+  firefox_profile="$(ls -t "${firefox_profiles}" | grep release | head -n1)"
+  firefox_dir="${firefox_profiles}/${firefox_profile}"
+  mkdir -p "${firefox_dir}/chrome"
+  slick_fox="raw.githubusercontent.com/Etesam913/slick-fox/master/userChrome.css"
+  wget -q "https://${slick_fox}" -O "${firefox_dir}/chrome/userChrome.css"
+  sed -i 's/0\.4s/0.05s/g' "${firefox_dir}/chrome/userChrome.css"
+  use_chrome_css='user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
+  if ! grep -qF "${use_chrome_css}" "${firefox_dir}/prefs.js"; then
+    echo "${use_chrome_css}" >> "${firefox_dir}/prefs.js"
+  fi
 fi
