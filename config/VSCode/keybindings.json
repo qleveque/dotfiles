@@ -12,10 +12,10 @@
   { "key": "shift+tab", "command": "workbench.action.quickOpenNavigatePrevious", "when": "inQuickOpen" },
   // Search files
   { "key": "ctrl+t", "command": "workbench.action.quickOpen" },
+  // Open recent file
+  { "key": "ctrl+p", "command": "workbench.action.quickOpen", "when": "!searchInputBoxFocus" },
   // Search symbols
   { "key": "ctrl+n", "command": "workbench.action.showAllSymbols", "when": "!searchInputBoxFocus" },
-  // Open recent file
-  { "key": "ctrl+p", "command": "workbench.action.openRecent", "when": "!searchInputBoxFocus" },
   // Breadcrumbs
   { "key": "ctrl+g", "command": "breadcrumbs.focusAndSelect" },
   // Panes

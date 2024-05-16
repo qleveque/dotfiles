@@ -23,6 +23,7 @@ require("lazy").setup({
       vim.cmd[[
         nn gd <Plug>(coc-definition)
         nn gr <Plug>(coc-references)
+        nn gy <Plug>(coc-type-definition)
         nn gh :call CocAction('diagnosticInfo')<CR>
         nm <silent> [d <Plug>(coc-diagnostic-prev)
         nm <silent> ]d <Plug>(coc-diagnostic-next)

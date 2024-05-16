@@ -23,7 +23,7 @@ if grep -q Microsoft /proc/version; then
   fi
 
   # JetBrains
-  ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/_ideavimrc"
+  ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/.ideavimrc"
   for dirPattern in 'PyCharm*' 'IdeaIC*'; do
     dir=$(find "${appData}/JetBrains" -type d -name $dirPattern|sort -n|tail -n1)
     if [[ -d ${dir} ]]; then

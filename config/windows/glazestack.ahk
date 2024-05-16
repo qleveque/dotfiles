@@ -1,11 +1,19 @@
 #SingleInstance Force
 
+MONITOR_DEFAULTTONEAREST := 0x00000002
+
+GetMonitor(hwnd){
+  NumPut("uint", 40, monInfo := Buffer(40))
+  return DllCall("MonitorFromWindow", "uint", hwnd, "uint", MONITOR_DEFAULTTONEAREST)
+}
+
 MinimizedWindows(activeWin) {
+    monitor := GetMonitor(activeWin)
     windows := Map(activeWin, 0)
     for id in WinGetList() {
         minMax := WinGetMinMax("ahk_id " id)
         title := WinGetTitle("ahk_id " id)
-        if ( minMax = -1 && StrLen(title) > 0)
+        if (GetMonitor(id) = monitor && minMax = -1 && StrLen(title) > 0)
             windows[id] := 0
     }
     ret := Array()
@@ -22,6 +30,9 @@ IndexOf(obj, item) {
 }
 
 Activate(dir) {
+    if !WinExist("A") {
+        return
+    }
     activeWin := WinGetID("A")
     mins := MinimizedWindows(activeWin)
     if (mins.length = 1)
@@ -43,7 +54,7 @@ Close() {
     WinClose("ahk_id " activeWin)
 }
 
-!p::Activate(1)
-!n::Activate(-1)
+!f::Activate(1)
+!d::Activate(-1)
 !q::Close()
 !+q::WinClose("A")

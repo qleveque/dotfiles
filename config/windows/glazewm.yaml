@@ -59,7 +59,7 @@ workspaces:
   - name: "any"
   - name: "else"
   - name: "term"
-  - name: "msg"
+  - name: "send"
   - name: "code"
   - name: "web"
   - name: "rest"
@@ -69,7 +69,7 @@ window_rules:
     match_process_name: "/Taskmgr|ScreenClippingHost/"
   - command: "set floating"
     match_class_name: "#32770"
-  - commands: ["move to workspace msg", "focus workspace msg"]
+  - commands: ["move to workspace send", "focus workspace send"]
     match_process_name: "/msteams|Microsoft Teams|olk|(Microsoft )?Outlook/"
   - commands: ["move to workspace rest", "focus workspace rest"]
     match_title: "/Spotify|WhatsApp/"
@@ -117,14 +117,10 @@ keybindings:
   - command: "reload config"
     binding: "Alt+Shift+U"
 
-  - command: "move workspace left"
-    binding: "Alt+S"
-  - command: "move workspace right"
-    binding: "Alt+G"
   - command: "move workspace up"
-    binding: "Alt+D"
+    binding: "Alt+Shift+D"
   - command: "move workspace down"
-    binding: "Alt+F"
+    binding: "Alt+Shift+F"
 
   - command: "focus workspace any"
     binding: "Alt+A"
@@ -132,8 +128,8 @@ keybindings:
     binding: "Alt+E"
   - command: "focus workspace term"
     binding: "Alt+T"
-  - command: "focus workspace msg"
-    binding: "Alt+M"
+  - command: "focus workspace send"
+    binding: "Alt+S"
   - command: "focus workspace code"
     binding: "Alt+C"
   - command: "focus workspace web"
@@ -147,8 +143,8 @@ keybindings:
     binding: "Alt+Shift+E"
   - commands: ["move to workspace term", "focus workspace term"]
     binding: "Alt+Shift+T"
-  - commands: ["move to workspace msg", "focus workspace msg"]
-    binding: "Alt+Shift+M"
+  - commands: ["move to workspace send", "focus workspace send"]
+    binding: "Alt+Shift+S"
   - commands: ["move to workspace code", "focus workspace code"]
     binding: "Alt+Shift+C"
   - commands: ["move to workspace web", "focus workspace web"]

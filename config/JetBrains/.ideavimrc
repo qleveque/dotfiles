@@ -7,6 +7,7 @@ set ideajoin
 set surround
 set textobj-indent
 set incsearch
+set clipboard+=unnamed
 
 " Navigation
 sethandler <C-t> a:ide

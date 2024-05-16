@@ -1,0 +1,3 @@
+#!/bin/bash
+gmd_exe='/mnt/c/Program Files/Git/bin/sh.exe'
+[ $# -eq 0 ] && "${gmd_exe}" --rcfile '' || "${gmd_exe}" -c "'$@'"
