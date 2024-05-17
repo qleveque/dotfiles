@@ -11,11 +11,29 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local COLORSCHEME="theme"
-vim.cmd("colorscheme "..COLORSCHEME)
 vim.cmd('source ~/.vimrc')
 
 require("lazy").setup({
+  {
+    "catppuccin/nvim", name = "catppuccin", priority = 1000,
+    config = function()
+      require("catppuccin").setup{flavour="mocha"}
+      vim.cmd.colorscheme "catppuccin"
+      local cp = require("catppuccin.palettes").get_palette()
+      vim.api.nvim_set_hl(0, 'Active', { bg = cp.base })
+      vim.api.nvim_set_hl(0, 'Inactive', { bg = cp.crust })
+      vim.api.nvim_set_hl(0, 'User1', { bg = cp.surface2 })
+      vim.cmd [[
+	      set stl=%1*\ \%f%m\ %0*%=
+        au FocusLost * set winhl=Normal:Inactive
+        au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
+        hi WinSeparator gui=none guifg=white
+        hi StatusLine gui=underline guifg=white
+        hi StatusLineNC gui=underline guifg=white
+        hi User1 gui=underline
+      ]]
+    end,
+  },
   {
     "neoclide/coc.nvim",
     branch = "release",
@@ -263,4 +281,4 @@ require("lazy").setup({
       vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
     end
   },
-}, {install = {colorscheme = {COLORSCHEME}}})
+})

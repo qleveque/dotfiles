@@ -8,20 +8,23 @@ if_sel='if -F #{selection_present}'
 
 # Sources
 source "${HOME}/.local/share/nvim/lazy/vim-tmux-navigator/vim-tmux-navigator.tmux"
-source "${HOME}/.theme.zsh"
+
+# Colors: catppuccin/mocha
+surface2="#585b70"
+crust="#11111b"
+base="#1e1e2e"
 
 # Options
+tmux set -ga terminal-overrides ',xterm*:Tc:smcup@:rmcup@'
+tmux set-hook -g pane-focus-in ${toggle_status}
 m_set bell-action=none default-terminal=screen-256color focus-events=on
 m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
 m_set mode-keys=vi status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
-set_all bg=$PALETTE_1 status-style window-active-style
-set_all bg=$PALETTE_2 pane-{,active-}border-style window-style
-set_all bg=$PALETTE_3 message-{,command-}style
-set_all fg=white,bg=$PALETTE_4 window-status-current-style mode-style
-set_all fg=$PALETTE_4,bg=$PALETTE_2 window-status-style
-tmux set -ga terminal-overrides ',xterm*:Tc:smcup@:rmcup@'
-tmux set-hook -g pane-focus-in ${toggle_status}
+set_all bg=${base} window-active-style
+set_all bg=${crust} pane-{,active-}border-style status-style window-style
+set_all bg=${surface2} window-status-current-style mode-style
+set_all window-status-style
 
 # Bindings
 bind l 'send C-C;send -R;clear-history;send Escape a'

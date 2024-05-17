@@ -1,4 +1,4 @@
-set ic scs nu list noswf udf cul nowrap nowb et lz so=4 ch=0 shm+=I
+set ic scs nu list noswf udf cul nowrap nowb et lz tgc so=4 ch=0 shm+=I
 set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number mousescroll=ver:1
 
 " Vim corrections
