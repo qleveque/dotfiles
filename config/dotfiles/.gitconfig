@@ -6,6 +6,7 @@
   ignorecase = true
   whitespace = trailing-space
   longpaths = true
+  autocrlf = input
 [push]
   autoSetupRemote = true
 [pull]
