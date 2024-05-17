@@ -11,6 +11,7 @@ source "${HOME}/.local/share/nvim/lazy/vim-tmux-navigator/vim-tmux-navigator.tmu
 
 # Colors: catppuccin/mocha
 surface2="#585b70"
+surface0="#313244"
 crust="#11111b"
 base="#1e1e2e"
 
@@ -22,8 +23,9 @@ m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
 m_set mode-keys=vi status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
 set_all bg=${base} window-active-style
-set_all bg=${crust} pane-{,active-}border-style status-style window-style
-set_all bg=${surface2} window-status-current-style mode-style
+set_all bg=${crust} pane-{,active-}border-style window-style
+set_all bg=${surface0},fg=white status-style 
+set_all bg=${surface2},fg=white window-status-current-style mode-style
 set_all window-status-style
 
 # Bindings
