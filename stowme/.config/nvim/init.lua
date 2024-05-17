@@ -14,26 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.cmd('source ~/.vimrc')
 
 require("lazy").setup({
-  {
-    "catppuccin/nvim", name = "catppuccin", priority = 1000,
-    config = function()
-      require("catppuccin").setup{flavour="mocha"}
-      vim.cmd.colorscheme "catppuccin"
-      local cp = require("catppuccin.palettes").get_palette()
-      vim.api.nvim_set_hl(0, 'Active', { bg = cp.base })
-      vim.api.nvim_set_hl(0, 'Inactive', { bg = cp.crust })
-      vim.api.nvim_set_hl(0, 'User1', { bg = cp.surface2 })
-      vim.cmd [[
-	      set stl=%1*\ \%f%m\ %0*%=
-        au FocusLost * set winhl=Normal:Inactive
-        au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
-        hi WinSeparator gui=none guifg=white
-        hi StatusLine gui=underline guifg=white
-        hi StatusLineNC gui=underline guifg=white
-        hi User1 gui=underline
-      ]]
-    end,
-  },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "neoclide/coc.nvim",
     branch = "release",
@@ -282,3 +263,30 @@ require("lazy").setup({
     end
   },
 })
+
+require("catppuccin").setup{
+  flavour="mocha",
+  integrations = {
+    nvimtree = false,
+    barbar = true,
+    coc_nvim = true,
+    leap = true
+  }
+}
+vim.cmd.colorscheme("catppuccin")
+local C = require("catppuccin.palettes").get_palette()
+vim.api.nvim_set_hl(0, 'Active', { bg = C.base })
+vim.api.nvim_set_hl(0, 'Inactive', { bg = C.mantle })
+vim.api.nvim_set_hl(0, 'User1', { bg = C.surface2 })
+vim.api.nvim_set_hl(0, 'WinSeparator', { bg = C.mantle, fg = C.surface2 })
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = C.base, fg = C.surface2, underline = true })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = C.mantle, fg = C.surface2, underline = true })
+vim.api.nvim_set_hl(0, 'ScrollbarHandle', { bg = C.surface1 })
+vim.api.nvim_set_hl(0, 'ScrollbarCursorHandle', { bg = C.surface1 })
+vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+
+vim.cmd [[
+  set stl=%1*\ \%f%m\ %0*%=
+  au FocusLost * set winhl=Normal:Inactive
+  au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
+]]

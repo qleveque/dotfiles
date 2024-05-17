@@ -8,6 +8,7 @@ function github_release() {
   esac
 }
 musl='x86_64-unknown-linux-musl'
+raw_github='https://raw.githubusercontent.com'
 
 # Common packages
 sudo apt-get update -y
@@ -49,8 +50,10 @@ github_release starship/starship "starship-${musl}.tar.gz" "${HOME}/bin"
 github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
 
 # vifm devicons
-vifm_favicons="thimc/vifm_devicons/master/favicons.vifm"
-wget "https://raw.githubusercontent.com/${vifm_favicons}" -O "${HOME}/.vifm.icons"
+wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
+
+# cappuccin
+wget "${raw_github}/catppuccin/palette/main/palette.json" -O ~/.cappuccin.json
 
 if grep -q Microsoft /proc/version; then
   # win32yank
@@ -58,7 +61,7 @@ if grep -q Microsoft /proc/version; then
   chmod +x "${HOME}/bin/win32yank.exe"
 
   # wudo
-  wsl_sudo="https://raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py"
+  wsl_sudo="${raw_github}/Chronial/wsl-sudo/master/wsl-sudo.py"
   wget ${wsl_sudo} -O "${HOME}/bin/wudo"
   chmod +x "${HOME}/bin/wudo"
 fi

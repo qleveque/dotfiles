@@ -47,11 +47,7 @@ nn \l :exe'sil '.eval(tmux).'tig '.expand('%:t').'"'<CR>
 nn \L :exe'sil '.eval(tmux).'tig"'<CR>
 nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 
-" Miscellaneous
-let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
-for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
-au FileType * set fo-=cro
+" Diff
 if &diff
   nn <C-Q> :qa<CR>
   nn + ]c
@@ -60,3 +56,9 @@ if &diff
   au VimEnter * :windo set nofen fdc=0 wrap noro | :norm +-
   au BufWinEnter /tmp/* setlocal noma
 end
+
+" Miscellaneous
+let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
+let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
+for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
+au FileType * set fo-=cro

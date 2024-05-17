@@ -9,12 +9,6 @@ if_sel='if -F #{selection_present}'
 # Sources
 source "${HOME}/.local/share/nvim/lazy/vim-tmux-navigator/vim-tmux-navigator.tmux"
 
-# Colors: catppuccin/mocha
-surface2="#585b70"
-surface0="#313244"
-crust="#11111b"
-base="#1e1e2e"
-
 # Options
 tmux set -ga terminal-overrides ',xterm*:Tc:smcup@:rmcup@'
 tmux set-hook -g pane-focus-in ${toggle_status}
@@ -22,11 +16,14 @@ m_set bell-action=none default-terminal=screen-256color focus-events=on
 m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
 m_set mode-keys=vi status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
-set_all bg=${base} window-active-style
-set_all bg=${crust} pane-{,active-}border-style window-style
-set_all bg=${surface0},fg=white status-style 
-set_all bg=${surface2},fg=white window-status-current-style mode-style
-set_all window-status-style
+
+# Colors
+`jq -r '.mocha.colors|to_entries|.[]|"export C_\(.key)=\(.value.hex)"' ~/.cappuccin.json`
+set_all bg=${C_base} window-active-style
+set_all bg=${C_mantle} window-style
+set_all bg=${C_mantle},fg=${C_surface2} pane-{,active-}border-style
+set_all bg=${C_surface0},fg=${C_text} status-style 
+set_all bg=${C_surface2},fg=${C_text} window-status-current-style mode-style
 
 # Bindings
 bind l 'send C-C;send -R;clear-history;send Escape a'
