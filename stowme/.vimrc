@@ -1,5 +1,8 @@
 set ic scs nu list noswf udf cul nowrap nowb et lz tgc so=4 ch=0 shm+=I
 set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number mousescroll=ver:1
+let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
+let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
+au FileType * set fo-=cro
 
 " Vim corrections
 nn ' `
@@ -26,15 +29,6 @@ nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hls<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hls<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
-
-" Ctrl shortcuts
-map <C-f> :NvimTreeFindFile<CR>
-map <C-n> :CocList -I symbols<CR>
-map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
-map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
-map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
-map <C-r> :sil lua require'spectre'.toggle()<CR>
-map <C-g> :AerialOpen<CR>
 map <C-q> ZQ
 
 " Term
@@ -49,16 +43,10 @@ nn \b :exe'sil '.eval(tmux).'tig blame +'.line('.').' '.expand('%:t').'"'<CR>
 
 " Diff
 if &diff
-  nn <C-Q> :qa<CR>
+  nn <C-q> :qa<CR>
   nn + ]c
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
   au VimEnter * :windo set nofen fdc=0 wrap noro | :norm +-
   au BufWinEnter /tmp/* setlocal noma
 end
-
-" Miscellaneous
-let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
-let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
-for k in split('hjklftpqgr','\zs')|exe 'imap <C-'.k.'> <Esc><C-'.k.'>'|endfor
-au FileType * set fo-=cro

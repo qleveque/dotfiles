@@ -52,8 +52,8 @@ github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
 # vifm devicons
 wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
 
-# cappuccin
-wget "${raw_github}/catppuccin/palette/main/palette.json" -O ~/.cappuccin.json
+# catppuccin
+wget "${raw_github}/catppuccin/palette/main/palette.json" -O ~/.catppuccin.json
 
 if grep -q Microsoft /proc/version; then
   # win32yank

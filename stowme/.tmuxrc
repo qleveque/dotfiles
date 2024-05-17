@@ -18,9 +18,10 @@ m_set mode-keys=vi status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
 
 # Colors
-`jq -r '.mocha.colors|to_entries|.[]|"export C_\(.key)=\(.value.hex)"' ~/.cappuccin.json`
-set_all bg=${C_base} window-active-style
-set_all bg=${C_mantle} window-style
+catppuccin_request='.mocha.colors|to_entries|.[]|"export C_\(.key)=\(.value.hex)"'
+`jq -r ${catppuccin_request} ~/.catppuccin.json`
+set_all bg=${C_base},fg=${C_text} window-active-style
+set_all bg=${C_mantle},fg=${C_text} window-style
 set_all bg=${C_mantle},fg=${C_surface2} pane-{,active-}border-style
 set_all bg=${C_surface0},fg=${C_text} status-style 
 set_all bg=${C_surface2},fg=${C_text} window-status-current-style mode-style

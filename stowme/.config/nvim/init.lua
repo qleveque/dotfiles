@@ -14,12 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.cmd('source ~/.vimrc')
 
 require("lazy").setup({
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "neoclide/coc.nvim",
     branch = "release",
-    config = function()
+    init = function()
       vim.cmd[[
+        map <C-n> :CocList -I symbols<CR>
         nn gd <Plug>(coc-definition)
         nn gr <Plug>(coc-references)
         nn gy <Plug>(coc-type-definition)
@@ -37,17 +37,6 @@ require("lazy").setup({
       ]]
     end
   },
-  {
-    "qleveque/hexa.nvim",
-    opts={
-      keymaps = {
-        ascii = {redo = 'U'},
-        run = 'é'
-      },
-      run_cmd = function(file) return 'sil !tmux splitw "run -p \"'..file..'\""' end,
-      ascii_left = true
-    }
-  },
   "christoomey/vim-tmux-navigator",
   "farmergreg/vim-lastplace",
   "pocco81/auto-save.nvim",
@@ -56,10 +45,10 @@ require("lazy").setup({
   "machakann/vim-highlightedyank",
   "sheerun/vim-polyglot",
   {"numToStr/Comment.nvim", opts={}},
-  {"petertriho/nvim-scrollbar", opts={}},
   {"nvim-treesitter/nvim-treesitter", opts = {}},
-  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
   {"echasnovski/mini.indentscope", opts={}},
+  {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
+  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
   {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
   {
     "echasnovski/mini.bracketed",
@@ -92,13 +81,14 @@ require("lazy").setup({
   },
   {
     "ggandor/leap.nvim",
-    config = function()
-      local leap = require('leap')
-      leap.setup({safe_labels = {}})
+    opts = {
+      safe_labels = {}
+    },
+    init = function()
       vim.keymap.set(
         'n',
         '<Space>',
-        function() leap.leap{target_windows={vim.fn.win_getid()}} end,
+        function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
         {buffer=bufnr, silent=true, nowait=true}
       )
     end
@@ -106,20 +96,24 @@ require("lazy").setup({
   {
     "mizlan/iswap.nvim",
     event = "VeryLazy",
-    config = function()
-      vim.cmd('nn L :ISwapNodeWithRight<CR>')
-      vim.cmd('nn H :ISwapNodeWithLeft<CR>')
-      require('iswap').setup{
-        flash_style = false,
-        move_cursor = true,
-      }
-    end
+    init = function()
+      vim.cmd[[
+        nn L :ISwapNodeWithRight<CR>
+        nn H :ISwapNodeWithLeft<CR>
+      ]]
+    end,
+    opts = {
+      flash_style = false,
+      move_cursor = true,
+    }
   },
   {
     "mattn/emmet-vim",
-    config = function()
-      vim.keymap.set('v', '<C-e>', '<C-y>,', {remap = true})
-      vim.keymap.set('i', '<C-e>', '<C-y>,', {remap = true})
+    init = function()
+      vim.cmd[[
+        vmap <C-e> <C-y>,
+        imap <C-e> <C-y>,
+      ]]
     end
   },
   {
@@ -135,9 +129,23 @@ require("lazy").setup({
     }
   },
   {
+    "qleveque/hexa.nvim",
+    opts={
+      keymaps = {
+        ascii = {redo = 'U'},
+        run = 'é'
+      },
+      run_cmd = function(file) return 'sil !tmux splitw "run -p \"'..file..'\""' end,
+      ascii_left = true
+    }
+  },
+  {
     "nvim-pack/nvim-spectre",
     lazy = "true",
     dependencies = { "nvim-lua/plenary.nvim" },
+    init = function()
+      vim.cmd('map <C-r> :sil lua require"spectre".toggle()<CR>')
+    end,
     opts = {
       is_insert_mode = true,
       live_update = true,
@@ -189,6 +197,9 @@ require("lazy").setup({
     "stevearc/aerial.nvim",
     lazy=true,
     cmd="AerialOpen",
+    init = function()
+      vim.cmd('map <C-g> :AerialOpen<CR>')
+    end,
     opts={
       autojump = true,
       backends = {"treesitter"},
@@ -203,6 +214,13 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     lazy=true,
     dependencies = { 'nvim-lua/plenary.nvim' },
+    init = function()
+      vim.cmd [[
+        map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
+        map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
+        map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
+      ]]
+    end,
     config = function()
       local telescope_actions=require("telescope.actions")
       require('telescope').setup{defaults={
@@ -226,6 +244,12 @@ require("lazy").setup({
     lazy=true,
     cmd= "NvimTreeFindFile",
     dependencies = { "kyazdani42/nvim-web-devicons" },
+    init = function()
+      vim.cmd[[
+        au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_
+        map <C-f> :NvimTreeFindFile<CR>
+      ]]
+    end,
     config = function()
       local ta=require('nvim-tree.api')
       local function path() return ta.tree.get_node_under_cursor().absolute_path end
@@ -259,34 +283,42 @@ require("lazy").setup({
         on_attach=tree_attach,
         actions = {open_file = { window_picker = { enable = false } } },
       }
-      vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
+    end
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require'catppuccin'.setup{
+        flavour="auto",
+        integrations = {
+          nvimtree = false,
+          barbar = true,
+          coc_nvim = true,
+          leap = true
+        },
+        custom_highlights = function(C)
+          return {
+            Active = { bg = C.base },
+            Inactive = { bg = C.mantle },
+            User1 = { bg = C.surface2 },
+            WinSeparator = { bg = C.mantle, fg = C.surface2 },
+            StatusLine = { bg = C.base, fg = C.surface2, underline = true },
+            StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
+            Cursor = { reverse = true },
+            ScrollbarHandle = { bg = C.surface1 },
+            ScrollbarCursorHandle = { bg = C.surface1 },
+          }
+        end
+      }
+      vim.cmd [[
+        colorscheme catppuccin
+        set stl=%1*\ \%f%m\ %0*%=
+        au FocusLost * set winhl=Normal:Inactive
+        au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
+      ]]
     end
   },
 })
-
-require("catppuccin").setup{
-  flavour="mocha",
-  integrations = {
-    nvimtree = false,
-    barbar = true,
-    coc_nvim = true,
-    leap = true
-  }
-}
-vim.cmd.colorscheme("catppuccin")
-local C = require("catppuccin.palettes").get_palette()
-vim.api.nvim_set_hl(0, 'Active', { bg = C.base })
-vim.api.nvim_set_hl(0, 'Inactive', { bg = C.mantle })
-vim.api.nvim_set_hl(0, 'User1', { bg = C.surface2 })
-vim.api.nvim_set_hl(0, 'WinSeparator', { bg = C.mantle, fg = C.surface2 })
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = C.base, fg = C.surface2, underline = true })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = C.mantle, fg = C.surface2, underline = true })
-vim.api.nvim_set_hl(0, 'ScrollbarHandle', { bg = C.surface1 })
-vim.api.nvim_set_hl(0, 'ScrollbarCursorHandle', { bg = C.surface1 })
-vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
-
-vim.cmd [[
-  set stl=%1*\ \%f%m\ %0*%=
-  au FocusLost * set winhl=Normal:Inactive
-  au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
-]]
