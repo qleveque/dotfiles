@@ -15,6 +15,5 @@ if grep -q Microsoft /proc/version; then
 fi
 
 # Setup
-"${HOME}/dotfiles/scripts/install"
-"${HOME}/dotfiles/scripts/theme"
-"${HOME}/dotfiles/scripts/setup"
+"${HOME}/dotfiles/install"
+"${HOME}/dotfiles/config/setup"
