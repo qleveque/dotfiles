@@ -1,15 +1,15 @@
 #!/bin/bash
 # ~/.use_git_exe should be a file containing the directories using git.exe
 if [[ ! "$1" =~ ^(difftool|log|show)$ && -e ~/.use_git_exe ]]; then
-  directories=$(< ~/.use_git_exe)
-  regex=^\(${directories//$'\n'/'/.*|'}.\*\)\$
-  if [[ $PWD/ =~ $regex ]]; then
-    editor='edit(){
-      wsl.exe -e bash -c "nvim \`wslpath $1\`"
-    }
-    edit'
-    git.exe -c core.editor="${editor}" "$@"
-    exit
-  fi
+  while IFS= read -r directory; do
+    if [[ "$PWD" == "${directory}"* ]]; then
+      editor='edit(){
+        wsl.exe -e bash -c "nvim \`wslpath $1\`"
+      }
+      edit'
+      git.exe -c core.editor="${editor}" "$@"
+      exit 0
+    fi
+  done < ~/.use_git_exe
 fi
 /usr/bin/git "$@"

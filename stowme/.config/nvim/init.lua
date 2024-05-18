@@ -292,7 +292,7 @@ require("lazy").setup({
     priority = 1000,
     config = function()
       require'catppuccin'.setup{
-        flavour="auto",
+        flavour=os.getenv("FLAVOR") or "auto",
         integrations = {
           nvimtree = false,
           barbar = true,
@@ -315,10 +315,25 @@ require("lazy").setup({
       }
       vim.cmd [[
         colorscheme catppuccin
-        set stl=%1*\ \%f%m\ %0*%=
         au FocusLost * set winhl=Normal:Inactive
         au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
       ]]
     end
   },
+}, {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "rplugin",
+        "shada",
+        "spellfile",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      }
+    }
+  }
 })

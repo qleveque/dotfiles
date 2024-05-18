@@ -19,10 +19,10 @@
       }
     },
     "list" : [{
-      "colorScheme": "Tango Dark",
+      "colorScheme": "One Half Dark",
       "commandline": "C:\\WINDOWS\\system32\\wsl.exe -d Ubuntu",
       "cursorShape": "filledBox",
-      "font": { "face": "Hack Nerd Font Mono", "size": 12.0 },
+      "font": { "face": "Hack Nerd Font Mono", "size": 11 },
       "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
       "hidden": false,
       "name": "Ubuntu",

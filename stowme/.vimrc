@@ -1,5 +1,5 @@
-set ic scs nu list noswf udf cul nowrap nowb et lz tgc so=4 ch=0 shm+=I
-set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number mousescroll=ver:1
+set ic scs nu list udf cul et lz noswf nowrap nowb so=4 ch=0 shm+=I
+set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number stl=%1*\ \%f%m\ %0*%=
 let tmux="'!tmux neww -a \"cd '.fnamemodify(resolve(expand('%')),':h').'&&'"
 let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
 au FileType * set fo-=cro
@@ -47,6 +47,6 @@ if &diff
   nn + ]c
   nn - [c
   nn gf :exe 'sil '.eval(tmux).'nvim "$FILE" +'.line('.').'"'<CR>
-  au VimEnter * :windo set nofen fdc=0 wrap noro | :norm +-
+  au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
   au BufWinEnter /tmp/* setlocal noma
 end

@@ -24,9 +24,6 @@ fc-cache -fv
 # nvim
 github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
-vim_plug="${HOME}/nvim-linux64/share/nvim/runtime/plugin"
-rm "${vim_plug}"/{tar,netrw,zip}Plugin.vim
-rm "${vim_plug}"/{gzip,rplugin,shada,spellfile,tohtml,tutor}.vim
 
 # antigen
 mkdir -p "${HOME}/.antigen"
@@ -53,7 +50,7 @@ github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
 wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
 
 # catppuccin
-wget "${raw_github}/catppuccin/palette/main/palette.json" -O ~/.catppuccin.json
+wget "${raw_github}/catppuccin/palette/main/palette.json" -O "${HOME}/.catppuccin.json"
 
 if grep -q Microsoft /proc/version; then
   # win32yank
@@ -61,7 +58,6 @@ if grep -q Microsoft /proc/version; then
   chmod +x "${HOME}/bin/win32yank.exe"
 
   # wudo
-  wsl_sudo="${raw_github}/Chronial/wsl-sudo/master/wsl-sudo.py"
-  wget ${wsl_sudo} -O "${HOME}/bin/wudo"
+  wget "${raw_github}/Chronial/wsl-sudo/master/wsl-sudo.py" -O "${HOME}/bin/wudo"
   chmod +x "${HOME}/bin/wudo"
 fi

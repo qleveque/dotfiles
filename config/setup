@@ -51,8 +51,6 @@ if grep -q Microsoft /proc/version; then
   firefox_dir="${firefox_profiles}/${firefox_profile}"
   mkdir -p "${firefox_dir}/chrome"
   ln -f "${config}/mozilla/userChrome.css" "${firefox_dir}/chrome/userChrome.css"
-  use_chrome_css='user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
-  if ! grep -qF "${use_chrome_css}" "${firefox_dir}/prefs.js"; then
-    echo "${use_chrome_css}" >> "${firefox_dir}/prefs.js"
-  fi
+  l=`grep -n legacyUserProfileCustomizations "${firefox_dir}/prefs.js"|cut -d: -f1`
+  sed -i "${l}s/false/true/" "${firefox_dir}/prefs.js"
 fi

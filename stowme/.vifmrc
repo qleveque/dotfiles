@@ -6,6 +6,7 @@ set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,re
 " Shortcuts
 map <C-i> :histnext<CR>
 map <C-q> :quit<CR>
+map e l
 nn <CR> :!o %f<CR>
 nn U <C-r>
 nn A cw

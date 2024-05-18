@@ -20,7 +20,7 @@ LESS = -irFRX --mouse --wheel-lines=1
 \e clear-search
 gg goto-line
 # Git
-gc {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
+gD {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
+gd {NA} {READ_IDX_FILE}|{RUN}'tmux neww -e FILE="$PWD/$1" "git difftool $0"'\n
 yc {NA} {READ_COMMIT}|c\n
-gf {NA} {READ_IDX_FILE}|{RUN}'tmux neww -e FILE="$PWD/$1" "git difftool $0"'\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|c\n''')
