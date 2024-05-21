@@ -70,6 +70,22 @@ require("lazy").setup({
     end
   },
   {
+    "phelipetls/jsonpath.nvim",
+    init = function()
+      vim.api.nvim_create_augroup("JsonSettings", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "json",
+        group = "JsonSettings",
+        callback = function()
+          vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
+          vim.keymap.set("n", "yp", function()
+            vim.fn.setreg("+", require("jsonpath").get())
+          end, { buffer = true })
+        end,
+      })
+    end
+  },
+  {
     "kevinhwang91/nvim-bqf",
     opts = {
       preview = {
@@ -84,24 +100,22 @@ require("lazy").setup({
     opts = {
       safe_labels = {}
     },
-    init = function()
-      vim.keymap.set(
-        'n',
+    keys = {
+      {
         '<Space>',
         function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
-        {buffer=bufnr, silent=true, nowait=true}
-      )
-    end
+        buffer=bufnr,
+        silent=true,
+        nowait=true
+      }
+    }
   },
   {
     "mizlan/iswap.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.cmd[[
-        nn L :ISwapNodeWithRight<CR>
-        nn H :ISwapNodeWithLeft<CR>
-      ]]
-    end,
+    keys = {
+      {'L', '<cmd>ISwapNodeWithRight<CR>'},
+      {'H', '<cmd>ISwapNodeWithLeft<CR>'}
+    },
     opts = {
       flash_style = false,
       move_cursor = true,
@@ -109,12 +123,9 @@ require("lazy").setup({
   },
   {
     "mattn/emmet-vim",
-    init = function()
-      vim.cmd[[
-        vmap <C-e> <C-y>,
-        imap <C-e> <C-y>,
-      ]]
-    end
+    keys = {
+      {'<C-e>', '<C-y>,', mode={'v', 'i'}, remap=true},
+    }
   },
   {
     "kylechui/nvim-surround",
@@ -129,23 +140,11 @@ require("lazy").setup({
     }
   },
   {
-    "qleveque/hexa.nvim",
-    opts={
-      keymaps = {
-        ascii = {redo = 'U'},
-        run = 'é'
-      },
-      run_cmd = function(file) return 'sil !tmux splitw "run -p \"'..file..'\""' end,
-      ascii_left = true
-    }
-  },
-  {
     "nvim-pack/nvim-spectre",
-    lazy = "true",
     dependencies = { "nvim-lua/plenary.nvim" },
-    init = function()
-      vim.cmd('map <C-r> :sil lua require"spectre".toggle()<CR>')
-    end,
+    keys = {
+      {"<C-r>", "<cmd>sil lua require'spectre'.toggle()<CR>"}
+    },
     opts = {
       is_insert_mode = true,
       live_update = true,
@@ -186,7 +185,7 @@ require("lazy").setup({
     end,
     enabled = not vim.api.nvim_win_get_option(0, "diff"),
     opts = {
-      exclude_ft={'qf','hexd'},
+      exclude_ft={'qf'},
       sidebar_filetypes={
         NvimTree={ text=' '..vim.fn.fnamemodify(vim.fn.getcwd(), ":t")..'/' }
       },
@@ -197,9 +196,9 @@ require("lazy").setup({
     "stevearc/aerial.nvim",
     lazy=true,
     cmd="AerialOpen",
-    init = function()
-      vim.cmd('map <C-g> :AerialOpen<CR>')
-    end,
+    keys = {
+      {'<C-g>', '<cmd>AerialOpen<CR>'}
+    },
     opts={
       autojump = true,
       backends = {"treesitter"},
@@ -214,13 +213,11 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     lazy=true,
     dependencies = { 'nvim-lua/plenary.nvim' },
-    init = function()
-      vim.cmd [[
-        map <C-t> :sil lua require'telescope.builtin'.find_files()<CR>
-        map <C-p> :sil lua require'telescope.builtin'.oldfiles()<CR>
-        map <C-s> :sil lua require'telescope.builtin'.live_grep()<CR>
-      ]]
-    end,
+    keys = {
+      {"<C-t>", "<cmd>sil lua require'telescope.builtin'.find_files()<CR>"},
+      {"<C-p>", "<cmd>sil lua require'telescope.builtin'.oldfiles()<CR>"},
+      {"<C-s>", "<cmd>sil lua require'telescope.builtin'.live_grep()<CR>"}
+    },
     config = function()
       local telescope_actions=require("telescope.actions")
       require('telescope').setup{defaults={
@@ -241,16 +238,13 @@ require("lazy").setup({
   },
   {
     "nvim-tree/nvim-tree.lua",
-    lazy=true,
     cmd= "NvimTreeFindFile",
     dependencies = { "kyazdani42/nvim-web-devicons" },
-    init = function()
-      vim.cmd[[
-        au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_
-        map <C-f> :NvimTreeFindFile<CR>
-      ]]
-    end,
+    keys = {
+      {"<C-f>", "<cmd>NvimTreeFindFile<CR>"},
+    },
     config = function()
+      vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
       local ta=require('nvim-tree.api')
       local function path() return ta.tree.get_node_under_cursor().absolute_path end
       local function tree_attach(bufnr)
@@ -303,8 +297,9 @@ require("lazy").setup({
           return {
             Active = { bg = C.base },
             Inactive = { bg = C.mantle },
-            User1 = { bg = C.surface2 },
+            User1 = { bg = C.surface1 },
             WinSeparator = { bg = C.mantle, fg = C.surface2 },
+            WinBar = { fg = C.overlay1 },
             StatusLine = { bg = C.base, fg = C.surface2, underline = true },
             StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
             Cursor = { reverse = true },
