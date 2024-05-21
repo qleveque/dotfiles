@@ -44,6 +44,22 @@ require("lazy").setup({
   "wellle/targets.vim",
   "machakann/vim-highlightedyank",
   "sheerun/vim-polyglot",
+  {
+    "phelipetls/jsonpath.nvim",
+    init = function()
+      vim.api.nvim_create_augroup("JsonSettings", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "json",
+        group = "JsonSettings",
+        callback = function()
+          vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
+          vim.keymap.set("n", "yp", function()
+            vim.fn.setreg("+", require("jsonpath").get())
+          end, { buffer = true })
+        end,
+      })
+    end
+  },
   {"numToStr/Comment.nvim", opts={}},
   {"nvim-treesitter/nvim-treesitter", opts = {}},
   {"echasnovski/mini.indentscope", opts={}},
