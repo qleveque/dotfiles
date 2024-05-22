@@ -24,7 +24,7 @@ vn x d
 vn d D
 
 " FZF
-nn <M-c> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
+nn <C-n> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
 nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:redr<CR>
 
