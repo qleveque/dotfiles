@@ -25,10 +25,8 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
 " Tabs
-nnoremap 6 :action PreviousTab<CR>
-nnoremap 9 :action NextTab<CR>
-nnoremap 8 :action ReopenClosedTab<CR>
-nnoremap 7 :q<CR>
+nnoremap Q :q<CR>
+nnoremap X :action CloseAllEditorsButActive
 
 " Run
 nmap é :action Run<CR>

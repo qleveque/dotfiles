@@ -1,4 +1,6 @@
 [
+  { "key": "ctrl+tab", "command": "workbench.action.nextEditor" },
+  { "key": "ctrl+shift+tab", "command": "workbench.action.previousEditor" },
   // Grep
   { "key": "enter", "command": "search.action.focusNextSearchResult", "when": "searchInputBoxFocus" },
   { "key": "escape", "command": "workbench.action.focusLastEditorGroup", "when": "searchInputBoxFocus" },

@@ -46,18 +46,12 @@ require("lazy").setup({
   "sheerun/vim-polyglot",
   {
     "phelipetls/jsonpath.nvim",
+    ft = {'json'},
     init = function()
-      vim.api.nvim_create_augroup("JsonSettings", { clear = true })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "json",
-        group = "JsonSettings",
-        callback = function()
-          vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
-          vim.keymap.set("n", "yp", function()
-            vim.fn.setreg("+", require("jsonpath").get())
-          end, { buffer = true })
-        end,
-      })
+      vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
+      vim.keymap.set("n", "yp", function()
+        vim.fn.setreg("+", require("jsonpath").get())
+      end, { buffer = true })
     end
   },
   {"numToStr/Comment.nvim", opts={}},
@@ -192,10 +186,10 @@ require("lazy").setup({
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     init = function()
       vim.cmd[[
-        nn 6 <Cmd>BufferPrevious<CR>
-        nn 9 <Cmd>BufferNext<CR>
-        nn 7 <Cmd>BufferClose<CR>
-        nn 8 <Cmd>BufferRestore<CR>
+        nn <C-S-Tab> <Cmd>BufferPrevious<CR>
+        nn <C-Tab> <Cmd>BufferNext<CR>
+        nn Q <Cmd>BufferClose<CR>
+        nn X <Cmd>BufferCloseAllButVisible<CR>
       ]]
       vim.g.barbar_auto_setup = false
     end,
