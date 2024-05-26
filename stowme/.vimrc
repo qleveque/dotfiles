@@ -33,8 +33,8 @@ map <C-q> ZQ
 
 " Term
 nn <silent> é :exe'sil !tmux splitw "run -p \"'.expand("%").'\""'<CR>
-nn <C-b>s :exe 'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
-nn <C-b>v :exe 'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
+nn <C-b>s :exe'sil !tmux splitw -v -c "'.getcwd().'"'<CR>
+nn <C-b>v :exe'sil !tmux splitw -h -c "'.getcwd().'"'<CR>
 nn \d :exe'sil '.eval(tmux).'git difftool '.expand('%:t').'"'<CR>
 nn \D :exe'sil '.eval(tmux).'tig status"'<CR>
 nn \l :exe'sil '.eval(tmux).'tig '.expand('%:t').'"'<CR>

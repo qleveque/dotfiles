@@ -26,7 +26,7 @@ nnoremap <C-l> <C-W>l
 
 " Tabs
 nnoremap Q :q<CR>
-nnoremap X :action CloseAllEditorsButActive
+nnoremap X :action CloseAllEditorsButActive<CR>
 
 " Run
 nmap é :action Run<CR>
