@@ -44,6 +44,9 @@
     { "before": [ "-" ], "commands": [ "editor.action.smartSelect.shrink" ] },
   ],
   "vim.normalModeKeyBindings": [
+    // VSCode bug: https://github.com/VSCodeVim/Vim/issues/9061
+    { "before": ["C-w", "v"], "after": [":", "v", "s", "<Enter>"] },
+    { "before": ["C-w", "s"], "after": [":", "s", "p", "<Enter>"] },
     // New
     { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
     { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
@@ -65,6 +68,7 @@
     { "before": [ "<Space>" ], "after": [ "<leader>", "<leader>", "2", "s" ] },
     { "before": [ "Q" ], "commands": [ "workbench.action.closeActiveEditor" ] },
     { "before": [ "X" ], "commands": [ "workbench.action.closeOtherEditors" ] },
+    { "before": [ "<C-R>" ], "commands": [ "workbench.action.replaceInFiles" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     // Git

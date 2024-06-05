@@ -1,6 +1,6 @@
 def r(pattern, n=1):
     """find pattern and return n lines"""
-    return rf"mawj?{pattern}\nmm{RESET}'a|mhead -{n}|{REMOVE_COLORS}"
+    return rf"maJ/{pattern}\nNmm{RESET}'a|mhead -{n}|{REMOVE_COLORS}"
 
 
 RESET = r'/\ek\ek\n'
@@ -20,7 +20,11 @@ LESS = -irFRX --mouse --wheel-lines=1
 \e clear-search
 gg goto-line
 # Git
-gD {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
+gc {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
 gd {NA} {READ_IDX_FILE}|{RUN}'tmux neww -e FILE="$PWD/$1" "git difftool $0"'\n
 yc {NA} {READ_COMMIT}|c\n
-yf {NA} {READ_IDX_FILE}|{CUT}2|c\n''')
+yf {NA} {READ_IDX_FILE}|{CUT}2|c\n
+]c {NA} J/{COMMIT}\n
+[c {NA} /{COMMIT}\nN
+]f {NA} J/{IDX}\n
+[f {NA} /{IDX}\nN''')

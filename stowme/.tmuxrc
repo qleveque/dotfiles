@@ -9,8 +9,8 @@ if_sel='if -F #{selection_present}'
 # Options
 tmux set -ga terminal-overrides ',xterm*:Tc:smcup@:rmcup@'
 tmux set-hook -g pane-focus-in ${toggle_status}
-m_set bell-action=none default-terminal=screen-256color focus-events=on
-m_set mouse=on default-shell=/bin/zsh history-limit=50000 escape-time=0
+m_set bell-action=none default-terminal=screen-256color focus-events=on mouse=on
+m_set default-shell=/bin/zsh history-limit=50000 escape-time=0 repeat-time=5000
 m_set mode-keys=vi status-justify=centre status-{left,right}=  status-position=top
 set_all " #[bold]#W#[default] " window-status-{,current-}format
 
@@ -30,12 +30,12 @@ bind s if "${ps}'(nvim|vifm)'" 'send C-b s' 'splitw -v -c "#{pane_current_path}"
 bind v if "${ps}'(nvim|vifm)'" 'send C-b v' 'splitw -h -c "#{pane_current_path}"'
 bind n neww -ac "#{pane_current_path}"
 bind q killp
-bind -n C-a if "${ps}'(nvim|vifm)'" 'send C-a' 'copy-mode'
+bind -r C-Tab next
+bind -r C-S-Tab prev
+bind -n C-a if "${ps}'(nvim|vifm)'" 'send C-a' 'copy-mode; send kkkh'
 bind -n C-s if "${ps}'nvim'" 'send C-s' 'copy-mode;send ?'
 bind -n C-u if "${ps}'zsh'" 'copy-mode;send C-u' 'send C-u'
 bind -n C-v if "${ps}'(nvim|zsh)'" 'send C-v' "run 'p|tmux loadb -;tmux pasteb'"
-bind -n C-Right next
-bind -n C-Left prev
 bind -c '/' command-prompt -ip '' "send -X search-forward-incremental \"%%%\""
 bind -c '?' command-prompt -ip '' "send -X search-backward-incremental \"%%%\""
 bind -c 'v' ${=if_sel} 'send -X select-line' 'send -X begin-selection'

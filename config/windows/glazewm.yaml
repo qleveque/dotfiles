@@ -25,7 +25,7 @@ bar:
   opacity: 1.0
   background: "#20242cc4"
   foreground: "#ffffff"
-  font_family: "Segoe UI"
+  font_family: "Hack Nerd Font Mono"
   font_size: "12px"
   padding: "0px"
   offset_x: "0"

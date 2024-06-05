@@ -17,6 +17,7 @@ sethandler <C-p> a:ide
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-q> :action CloseAllEditors<CR>
 nnoremap <C-g> :action FileStructurePopup<CR>
+nnoremap <C-R> :action ReplaceInPath<CR>
 
 " Panes
 nnoremap <C-h> <C-W>h
@@ -52,6 +53,8 @@ map ç *Ncgn
 vnoremap * "xy/<C-R>x<CR>
 nm s ys
 vm s S
+nn + :action NextOccurence<CR>
+nn - :action PreviousOccurence<CR>
 
 " New
 nnoremap gi :action GotoImplementation<CR>

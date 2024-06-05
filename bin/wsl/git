@@ -1,6 +1,6 @@
 #!/bin/bash
 # ~/.use_git_exe should be a file containing the directories using git.exe
-if [[ ! "$1" =~ ^(difftool|log|show)$ && -e ~/.use_git_exe ]]; then
+if [[ ! "$1" =~ ^(difftool|log|show|pick)$ && -e ~/.use_git_exe ]]; then
   win_directories=`cat "${HOME}/.use_git_exe"`
   for directory in ${win_directories}; do
     if [[ "${PWD}/" == "${directory}/"* ]]; then

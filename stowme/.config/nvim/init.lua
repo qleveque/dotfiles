@@ -13,9 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.cmd('source ~/.vimrc')
 
+local notdiff = not vim.api.nvim_win_get_option(0, "diff")
+
 require("lazy").setup({
   {
     "neoclide/coc.nvim",
+    enabled = notdiff,
     branch = "release",
     init = function()
       vim.cmd[[
@@ -38,24 +41,27 @@ require("lazy").setup({
     end
   },
   "christoomey/vim-tmux-navigator",
-  "farmergreg/vim-lastplace",
+  {
+    "farmergreg/vim-lastplace",
+    enabled = notdiff
+  },
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
   "wellle/targets.vim",
   "machakann/vim-highlightedyank",
-  "sheerun/vim-polyglot",
   {
-    "phelipetls/jsonpath.nvim",
-    ft = {'json'},
+    "sheerun/vim-polyglot",
     init = function()
-      vim.opt_local.winbar = "%{%v:lua.require'jsonpath'.get()%}"
-      vim.keymap.set("n", "yp", function()
-        vim.fn.setreg("+", require("jsonpath").get())
-      end, { buffer = true })
+      -- for now, since it bugs
+      vim.g.polyglot_disabled = { 'vue' }
     end
   },
   {"numToStr/Comment.nvim", opts={}},
-  {"nvim-treesitter/nvim-treesitter", opts = {}},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    enabled = notdiff,
+    opts = {}
+  },
   {"echasnovski/mini.indentscope", opts={}},
   {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
   {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
@@ -81,6 +87,7 @@ require("lazy").setup({
   },
   {
     "phelipetls/jsonpath.nvim",
+    enabled = notdiff,
     init = function()
       vim.api.nvim_create_augroup("JsonSettings", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
@@ -97,6 +104,7 @@ require("lazy").setup({
   },
   {
     "kevinhwang91/nvim-bqf",
+    enabled = notdiff,
     opts = {
       preview = {
         winblend = 0,
@@ -122,6 +130,7 @@ require("lazy").setup({
   },
   {
     "mizlan/iswap.nvim",
+    enabled = notdiff,
     keys = {
       {'L', '<cmd>ISwapNodeWithRight<CR>'},
       {'H', '<cmd>ISwapNodeWithLeft<CR>'}
@@ -151,6 +160,7 @@ require("lazy").setup({
   },
   {
     "nvim-pack/nvim-spectre",
+    enabled = notdiff,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       {"<C-r>", "<cmd>sil lua require'spectre'.toggle()<CR>"}
@@ -170,6 +180,7 @@ require("lazy").setup({
   },
   {
     "SUSTech-data/wildfire.nvim",
+    enabled = notdiff,
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
@@ -183,6 +194,7 @@ require("lazy").setup({
   },
   {
     "romgrk/barbar.nvim",
+    enabled = notdiff,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     init = function()
       vim.cmd[[
@@ -193,7 +205,6 @@ require("lazy").setup({
       ]]
       vim.g.barbar_auto_setup = false
     end,
-    enabled = not vim.api.nvim_win_get_option(0, "diff"),
     opts = {
       exclude_ft={'qf'},
       sidebar_filetypes={
@@ -204,6 +215,7 @@ require("lazy").setup({
   },
   {
     "stevearc/aerial.nvim",
+    enabled = notdiff,
     lazy=true,
     cmd="AerialOpen",
     keys = {
@@ -221,6 +233,7 @@ require("lazy").setup({
   },
   {
     "nvim-telescope/telescope.nvim",
+    enabled = notdiff,
     lazy=true,
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
@@ -248,6 +261,7 @@ require("lazy").setup({
   },
   {
     "nvim-tree/nvim-tree.lua",
+    enabled = notdiff,
     cmd= "NvimTreeFindFile",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     keys = {
