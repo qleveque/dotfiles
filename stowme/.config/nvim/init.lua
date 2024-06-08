@@ -30,7 +30,10 @@ require("lazy").setup({
         nm <silent> [d <Plug>(coc-diagnostic-prev)
         nm <silent> ]d <Plug>(coc-diagnostic-next)
         nn K :call CocActionAsync('doHover')<CR>
+        nn \f :call CocActionAsync('format')<CR>
+        nn \i :call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>
         xn \f <Plug>(coc-format-selected)
+        nn \r <Plug>(coc-rename)
         au FileType * if &ft!='qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|end
         ino <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
           \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"

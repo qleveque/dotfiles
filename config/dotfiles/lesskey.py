@@ -15,7 +15,7 @@ IDX = r'\^index \\S*\\w{7}\\.\\.\\w{7}'
 READ_IDX_FILE = fr"{r(IDX, 3)}|grep -v ' /'|cut -c7-|{RUN}'echo $0 ${{@:$\#}}'"
 
 print(rf'''#env
-LESS = -irFRX --mouse --wheel-lines=1
+LESS = -irFRX --mouse --wheel-lines=1 +/\^
 #command
 \e clear-search
 gg goto-line

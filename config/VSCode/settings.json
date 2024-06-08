@@ -48,9 +48,6 @@
     { "before": ["C-w", "v"], "after": [":", "v", "s", "<Enter>"] },
     { "before": ["C-w", "s"], "after": [":", "s", "p", "<Enter>"] },
     // New
-    { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
-    { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
-    { "before": [ "<leader>", "t" ], "commands": [ "workbench.action.terminal.focus" ] },
     { "before": [ "<leader>", "w" ], "commands": [ "workbench.debug.action.focusWatchView" ] },
     // Adaptations
     { "before": [ "é" ], "commands": [ "workbench.action.tasks.build" ] },
@@ -68,7 +65,10 @@
     { "before": [ "<Space>" ], "after": [ "<leader>", "<leader>", "2", "s" ] },
     { "before": [ "Q" ], "commands": [ "workbench.action.closeActiveEditor" ] },
     { "before": [ "X" ], "commands": [ "workbench.action.closeOtherEditors" ] },
-    { "before": [ "<C-R>" ], "commands": [ "workbench.action.replaceInFiles" ] },
+    { "before": [ "<C-r>" ], "commands": [ "workbench.action.replaceInFiles" ] },
+    { "before": [ "<leader>", "r" ], "commands": [ "editor.action.rename" ] },
+    { "before": [ "<leader>", "i" ], "commands": [ "editor.action.organizeImports" ] },
+    { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatDocument" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     // Git

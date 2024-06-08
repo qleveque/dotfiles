@@ -17,7 +17,7 @@ sethandler <C-p> a:ide
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-q> :action CloseAllEditors<CR>
 nnoremap <C-g> :action FileStructurePopup<CR>
-nnoremap <C-R> :action ReplaceInPath<CR>
+nnoremap <C-r> :action ReplaceInPath<CR>
 
 " Panes
 nnoremap <C-h> <C-W>h
