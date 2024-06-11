@@ -15,7 +15,7 @@ IDX = r'\^index \\S*\\w{7}\\.\\.\\w{7}'
 READ_IDX_FILE = fr"{r(IDX, 3)}|grep -v ' /'|cut -c7-|{RUN}'echo $0 ${{@:$\#}}'"
 
 print(rf'''#env
-LESS = -irFRX --mouse --wheel-lines=1 +/\^
+LESS = -irFRX --mouse --wheel-lines=1
 #command
 \e clear-search
 gg goto-line
@@ -24,7 +24,7 @@ gc {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
 gd {NA} {READ_IDX_FILE}|{RUN}'tmux neww -e FILE="$PWD/$1" "git difftool $0"'\n
 yc {NA} {READ_COMMIT}|c\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|c\n
-]c {NA} J/{COMMIT}\n
-[c {NA} /{COMMIT}\nN
-]f {NA} J/{IDX}\n
-[f {NA} /{IDX}\nN''')
+]c {NA} J/{COMMIT}\nma{RESET}'a
+[c {NA} /{COMMIT}\nNma{RESET}'a
+]f {NA} J/{IDX}\nma{RESET}'a
+[f {NA} /{IDX}\nNma{RESET}'a''')
