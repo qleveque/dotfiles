@@ -6,6 +6,7 @@
   "editor.lineNumbers": "on",
   "editor.minimap.enabled": false,
   "editor.smartSelect.selectSubwords": false,
+  "eslint.format.enable": true,
   "extensions.ignoreRecommendations": false,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
