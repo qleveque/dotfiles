@@ -30,8 +30,8 @@ bind s if "${ps}'(nvim|vifm)'" 'send C-b s' 'splitw -v -c "#{pane_current_path}"
 bind v if "${ps}'(nvim|vifm)'" 'send C-b v' 'splitw -h -c "#{pane_current_path}"'
 bind n neww -ac "#{pane_current_path}"
 bind q killp
-bind -r C-Tab next
-bind -r C-S-Tab prev
+bind -r '\;' next
+bind -r , prev
 bind -n C-a if "${ps}'(nvim|vifm)'" 'send C-a' 'copy-mode; send kkkh'
 bind -n C-s if "${ps}'nvim'" 'send C-s' 'copy-mode;send ?'
 bind -n C-u if "${ps}'zsh'" 'copy-mode;send C-u' 'send C-u'
