@@ -52,14 +52,8 @@ require("lazy").setup({
   "tpope/vim-repeat",
   "wellle/targets.vim",
   "machakann/vim-highlightedyank",
-  {
-    "sheerun/vim-polyglot",
-    init = function()
-      -- for now, since it bugs
-      vim.g.polyglot_disabled = { 'vue' }
-    end
-  },
   {"numToStr/Comment.nvim", opts={}},
+  {"sheerun/vim-polyglot", enabled = notdiff},
   {
     "nvim-treesitter/nvim-treesitter",
     enabled = notdiff,
