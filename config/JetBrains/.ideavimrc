@@ -40,8 +40,6 @@ vnoremap <C-e> :action SurroundWithEmmet<CR>
 nnoremap <CR> :action ShowIntentionActions<CR>
 nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
-nnoremap gd gd
-inoremap - -
 nnoremap gr :action GotoDeclaration<CR>
 vnoremap \f :action ShowReformatFileDialog<CR>
 nmap _ :action EditorSelectWord<CR>

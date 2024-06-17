@@ -10,7 +10,6 @@ vn v V
 nn U <C-R>
 vn $ $h
 xn . :norm! .<CR>
-nn <Esc> :nohl<CR>
 xn p P
 xn P p
 no c "_c

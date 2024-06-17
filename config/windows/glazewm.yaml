@@ -36,6 +36,8 @@ bar:
       focused_workspace_background: "#ffffff33"
       displayed_workspace_background: "#00000033"
       default_workspace_background: "transparent"
+      font_size: "30px"
+      margin: "-10px 0px"
   components_center:
     - type: "clock"
       time_formatting: "HH:mm"
@@ -57,27 +59,27 @@ bar:
 
 workspaces:
   - name: "any"
+    display_name: "󰋜"
   - name: "else"
+    display_name: "󰥵"
   - name: "term"
+    display_name: ""
   - name: "send"
+    display_name: ""
   - name: "code"
+    display_name: "󰨞"
   - name: "web"
+    display_name: ""
   - name: "rest"
+    display_name: ""
+  - name: "back"
+    display_name: "󰶄"
 
 window_rules:
   - command: "ignore"
     match_process_name: "/Taskmgr|ScreenClippingHost/"
   - command: "set floating"
     match_class_name: "#32770"
-  - commands: ["move to workspace send", "focus workspace send"]
-    match_process_name: "/msteams|Microsoft Teams|olk|(Microsoft )?Outlook/"
-  - commands: ["move to workspace rest", "focus workspace rest"]
-    match_title: "/Spotify|WhatsApp/"
-  - commands: ["move to workspace term", "focus workspace term"]
-    match_process_name: "/WindowsTerminal/"
-    match_title: "Ubuntu"
-  - commands: ["move to workspace code", "focus workspace code"]
-    match_process_name: "/Code|PyCharm|pycharm64/"
 
 keybindings:
   - command: "focus left"
@@ -136,6 +138,8 @@ keybindings:
     binding: "Alt+W"
   - command: "focus workspace rest"
     binding: "Alt+R"
+  - command: "focus workspace back"
+    binding: "Alt+B"
 
   - commands: ["move to workspace any", "focus workspace any"]
     binding: "Alt+Shift+A"
@@ -151,3 +155,5 @@ keybindings:
     binding: "Alt+Shift+W"
   - commands: ["move to workspace rest", "focus workspace rest"]
     binding: "Alt+Shift+R"
+  - commands: ["move to workspace back", "focus workspace back"]
+    binding: "Alt+Shift+B"
