@@ -1,0 +1,17 @@
+#!/usr/bin/zsh
+# Edit any file
+
+full_path="$(readlink -f "$1")"
+cd ${full_path:h}
+file="${full_path:t}"
+ext="${file:e}"
+
+if grep -q Microsoft /proc/version; then
+  case ${ext} in
+    png) mspaint.exe "${file}";;
+    mp3) "/mnt/c/Program Files/Audacity/Audacity.exe" "${file}";;
+    *) nvim "${file}";;
+  esac
+else
+  nvim "${file}"
+fi
