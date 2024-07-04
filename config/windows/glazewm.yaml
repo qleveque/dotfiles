@@ -72,8 +72,12 @@ workspaces:
     display_name: ""
   - name: "rest"
     display_name: ""
+  - name: "videogames"
+    display_name: ""
+  - name: "gui"
+    display_name: ""
   - name: "back"
-    display_name: "󰶄"
+    display_name: "󰀿"
 
 window_rules:
   - command: "ignore"
@@ -138,6 +142,10 @@ keybindings:
     binding: "Alt+W"
   - command: "focus workspace rest"
     binding: "Alt+R"
+  - command: "focus workspace videogames"
+    binding: "Alt+V"
+  - command: "focus workspace gui"
+    binding: "Alt+G"
   - command: "focus workspace back"
     binding: "Alt+B"
 
@@ -155,5 +163,9 @@ keybindings:
     binding: "Alt+Shift+W"
   - commands: ["move to workspace rest", "focus workspace rest"]
     binding: "Alt+Shift+R"
+  - commands: ["move to workspace videogames", "focus workspace videogames"]
+    binding: "Alt+Shift+V"
+  - commands: ["move to workspace gui", "focus workspace gui"]
+    binding: "Alt+Shift+G"
   - commands: ["move to workspace back", "focus workspace back"]
     binding: "Alt+Shift+B"
