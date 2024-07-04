@@ -84,6 +84,8 @@ window_rules:
     match_process_name: "/Taskmgr|ScreenClippingHost/"
   - command: "set floating"
     match_class_name: "#32770"
+  - command: "set floating"
+    match_process_name: "/.*Godot.*/"
 
 keybindings:
   - command: "focus left"

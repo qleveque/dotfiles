@@ -8,8 +8,8 @@ ext="${file:e}"
 
 if grep -q Microsoft /proc/version; then
   case ${ext} in
-    png) mspaint.exe "${file}";;
-    mp3) "/mnt/c/Program Files/Audacity/Audacity.exe" "${file}";;
+    png|jpg) mspaint.exe "${file}" &;;
+    mp3) "/mnt/c/Program Files/Audacity/Audacity.exe" "${file}" &;;
     *) nvim "${file}";;
   esac
 else
