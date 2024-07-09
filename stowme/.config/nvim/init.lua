@@ -317,7 +317,7 @@ require("lazy").setup({
         custom_highlights = function(C)
           return {
             Active = { bg = C.base },
-            Inactive = { bg = C.mantle },
+            Inactive = { bg = C.crust },
             User1 = { bg = C.surface1 },
             WinSeparator = { bg = C.mantle, fg = C.surface2 },
             WinBar = { fg = C.overlay1 },
