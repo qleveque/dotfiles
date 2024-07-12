@@ -8,10 +8,13 @@ if_sel='if -F #{selection_present}'
 
 # Options
 tmux set -ga terminal-overrides ',xterm*:Tc:smcup@:rmcup@'
+tmux set -ga update-environment TERM
+tmux set -ga update-environment TERM_PROGRAM
 tmux set-hook -g pane-focus-in ${toggle_status}
 m_set bell-action=none default-terminal=screen-256color focus-events=on mouse=on
 m_set default-shell=/bin/zsh history-limit=50000 escape-time=0 repeat-time=5000
 m_set mode-keys=vi status-justify=centre status-{left,right}=  status-position=top
+# m_set allow-passthrough=on
 set_all " #[bold]#W#[default] " window-status-{,current-}format
 
 # Colors

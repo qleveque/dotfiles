@@ -5,7 +5,7 @@ stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
 config="${HOME}/dotfiles/config"
 
 # dotfiles
-python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
+/usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
 ln -f "${config}/dotfiles/.gitconfig" "${HOME}/"
 echo run \"${HOME}/.tmuxrc\" > ~/.tmux.conf
 mkdir -p "${HOME}/.config/vifm"
@@ -39,11 +39,8 @@ if grep -q Microsoft /proc/version; then
   ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
 
-  # Windows Terminal
-  packages="${HOME}/AppData/Local/Packages"
-  win_term_dir=`ls ${packages} | grep 'WindowsTerminal'`
-  win_term_settings="${packages}/${win_term_dir}/LocalState/settings.json"
-  ln -f "${config}/windows/windowsTerminal.json" ${win_term_settings}
+  # Wezterm
+  ln -f "${config}/windows/.wezterm.lua" "${HOME}/.wezterm.lua"
 
   # Firefox
   firefox_profiles="${appData}/Mozilla/Firefox/Profiles/"
