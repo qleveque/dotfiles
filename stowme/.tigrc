@@ -1,10 +1,11 @@
 # vim: set ft=bash:
 color search-result default blue
+color cursor default black
+color title-focus default default
+color title-blur default default
 set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:interval=1 text
 set ignore-case = smart-case
 set show-changes = no
-set split-view-width = 99%
-set vertical-split = vertical
 
 bind generic g none
 bind generic gg :0
@@ -19,7 +20,8 @@ bind diff + :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind diff - :?\|\s+(0|[0-9]+\s[\+-]+)$
 bind status + :/^\S+
 bind status - :?^\S+
-bind generic l enter
+
+bind generic l :d
 
 bind log l !@>tmux new-window -a "tig show '%(commit)'"
 bind diff l !+>tmux new-window -a "\
