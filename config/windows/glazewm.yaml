@@ -81,7 +81,7 @@ workspaces:
 
 window_rules:
   - command: "ignore"
-    match_process_name: "/Taskmgr|ScreenClippingHost/"
+    match_process_name: "/Taskmgr|ScreenClippingHost|LockApp/"
   - command: "set floating"
     match_class_name: "#32770"
   - command: "set floating"
