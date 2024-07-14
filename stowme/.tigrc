@@ -36,6 +36,7 @@ bind stage l !+>tmux new-window -a "\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
 bind status l !+>tmux new-window -a "\
+  [[ $(git ls-files --unmerged '%(file)') ]] && git mergetool -- '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\

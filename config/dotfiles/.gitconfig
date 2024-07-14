@@ -20,6 +20,12 @@
   path = nvim
 [merge]
   conflictstyle = diff3
+  tool = nvimdiff
+[mergetool]
+  keepBackup = false
+[mergetool "nvimdiff"]
+  cmd = "nvim -d $LOCAL $BASE $REMOTE -c 'au VimEnter * :wincmd h' && mv $BASE $MERGED"
+  trustExitCode = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
