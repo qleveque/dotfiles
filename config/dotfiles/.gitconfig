@@ -24,7 +24,7 @@
 [mergetool]
   keepBackup = false
 [mergetool "nvimdiff"]
-  cmd = "nvim -d $LOCAL $BASE $REMOTE -c 'au VimEnter * :wincmd h' && mv $BASE $MERGED"
+  cmd = "nvim -d $LOCAL $BASE $REMOTE -c 'nn doh 1do|nn dol 3do|au VimEnter * :wincmd h' && mv $BASE $MERGED"
   trustExitCode = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
