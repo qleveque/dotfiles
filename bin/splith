@@ -1,0 +1,4 @@
+#!/bin/bash
+if grep -q Microsoft /proc/version; then
+  wezterm.exe cli split-pane --cwd "$(wslpath -m $1)" -- zsh
+fi

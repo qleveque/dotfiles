@@ -1,0 +1,4 @@
+#!/bin/bash
+if grep -q Microsoft /proc/version; then
+  wezterm.exe cli spawn --cwd "$(wslpath -m $PWD)" -- zsh "$@"
+fi
