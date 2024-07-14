@@ -8,7 +8,7 @@ set main-view = date:custom,format=%d/%m/%Y author:abbreviated commit-title:refs
 set ignore-case = smart-case
 set show-changes = no
 
-set diff-options = --pretty=medium --word-diff -U1
+set diff-options = --pretty=medium
 
 bind generic g none
 bind generic gg :0
@@ -19,10 +19,10 @@ bind generic yf !@>zsh -fc "echo -n %(file) | c"
 bind generic yy !@>zsh -fc "echo -n %(text) | c"
 bind generic ; back
 bind generic <C-q> :q
-bind diff + :/\|\s+(0|[0-9]+\s[\+-]+)$
-bind diff - :?\|\s+(0|[0-9]+\s[\+-]+)$
-bind status + :/^\S+
-bind status - :?^\S+
+bind diff j :/\|\s+(0|[0-9]+\s[\+-]+)$
+bind diff k :?\|\s+(0|[0-9]+\s[\+-]+)$
+bind status j :/^\S+
+bind status k :?^\S+
 
 bind generic l :d
 

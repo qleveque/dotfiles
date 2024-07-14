@@ -28,8 +28,8 @@ bindkey -M vicmd s add-surround c change-wrap d delete-wrap x vi-cut U redo \
   '^V' edit-command-line '\e' nohl
 bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-mode \
   P visual-swap p visual-put
-bindkey -M viins '^[[Z' forward-word '^V' vi-put-before '^I' fzf_completion \
-  '^?' backward-delete-char '^G' _mark_expansion '^N' fzf-cd-widget
+bindkey -M viins '^[[Z' forward-word '^V' vi-put-before '^I' fzf_completion '^?' backward-delete-char\
+   '^G' _mark_expansion '^T' fzf-cd-widget '^N' fzf-file-widget '^R' fzf-history-widget
 for m in visual vicmd viins
   do bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^G' open-tig '^Q' quit;
 done

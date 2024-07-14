@@ -32,10 +32,10 @@ source ~/.antigen/antigen.zsh
 antigen apply
 
 # Sources
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 source ~/.zvimrc
 source ~/.aliases
-source ~/.antigen/bundles/lincheney/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Directory history
 autoload -U add-zsh-hook
