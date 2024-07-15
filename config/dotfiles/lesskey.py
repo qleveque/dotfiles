@@ -17,7 +17,6 @@ READ_IDX_FILE = fr"{r(IDX, 3)}|grep -v ' /'|cut -c7-|{RUN}'echo $0 ${{@:$\#}}'"
 print(rf'''#env
 LESS = -irFRX --mouse --wheel-lines=1
 #command
-\e clear-search
 gg goto-line
 # Git
 gc {NA} {READ_COMMIT}|{RUN}'tmux neww "tig show $0"'\n
