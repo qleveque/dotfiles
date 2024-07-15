@@ -1,15 +1,10 @@
 #!/bin/bash
 # ~/.use_git_exe should be a file containing the directories using git.exe
 [[ "$1" == log ]] && sed -i '/^\.shell$/i "^' "${HOME}/.lesshst"
-if [[ ! "$1" =~ ^(difftool|log|show|pick)$ && -e ~/.use_git_exe ]]; then
-  win_directories=`cat "${HOME}/.use_git_exe"`
-  for directory in ${win_directories}; do
+if [[ ! "$1" =~ ^(mergetool|difftool|log|show|pick)$ && -e ~/.use_git_exe ]]; then
+  for directory in `cat "${HOME}/.use_git_exe"`; do
     if [[ "${PWD}/" == "${directory}/"* ]]; then
-      editor='edit(){
-        wsl.exe -e bash -c "nvim \`wslpath $1\`"
-      }
-      edit'
-      git.exe -c core.editor="${editor}" "$@"
+      git.exe -c core.editor='edit(){ wsl.exe -e bash -c "nvim \`wslpath $1\`"; }; edit' "$@"
       exit 0
     fi
   done

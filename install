@@ -17,23 +17,9 @@ sudo apt-get install -y \
   curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm \
   zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs jq
 
-# Nerd Font
-github_release ryanoasis/nerd-fonts Hack.zip "${HOME}/.fonts"
-fc-cache -fv
-
 # nvim
 github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
-
-# antigen
-mkdir -p "${HOME}/.antigen"
-curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
-
-# extract
-echo '#!/usr/bin/zsh
-source ~/.antigen/bundles/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
-extract $1' > "${HOME}/bin/extract"
-chmod +x "${HOME}/bin/extract"
 
 # sd
 sd_tag=`curl -s https://api.github.com/repos/chmln/sd/tags | jq -r '.[0].name'`
@@ -51,6 +37,20 @@ wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.
 
 # catppuccin
 wget "${raw_github}/catppuccin/palette/main/palette.json" -O "${HOME}/.catppuccin.json"
+
+# antigen
+mkdir -p "${HOME}/.antigen"
+curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
+
+# Nerd Font
+github_release ryanoasis/nerd-fonts Hack.zip "${HOME}/.fonts"
+fc-cache -fv
+
+# extract
+echo '#!/usr/bin/zsh
+source ~/.antigen/bundles/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
+extract $1' > "${HOME}/bin/extract"
+chmod +x "${HOME}/bin/extract"
 
 if grep -q Microsoft /proc/version; then
   # win32yank
