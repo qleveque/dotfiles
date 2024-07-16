@@ -24,8 +24,11 @@ bind diff k :?\|\s+(0|[0-9]+\s[\+-]+)$
 bind status j :/^\S+
 bind status k :?^\S+
 
-bind generic l :d
+bind generic gl view-main
+bind generic gs view-status
+bind generic gs view-status
 
+bind generic l :d
 bind log l !@>tmux new-window -a "tig show '%(commit)'"
 bind diff l !+>tmux new-window -a "\
   [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\

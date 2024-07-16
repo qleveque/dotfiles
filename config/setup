@@ -3,10 +3,10 @@
 stow -d "${HOME}/dotfiles" -t "${HOME}" stowme
 
 config="${HOME}/dotfiles/config"
+stowme="${HOME}/dotfiles/stowme"
 
 # dotfiles
 /usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
-ln -f "${config}/dotfiles/.gitconfig" "${HOME}/"
 echo run \"${HOME}/.tmuxrc\" > ~/.tmux.conf
 mkdir -p "${HOME}/.config/vifm"
 echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
@@ -14,6 +14,10 @@ echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
   startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
+  
+  # git
+  rm "${HOME}/.gitconfig"
+  ln -f "${stowme}/.gitconfig" "${HOME}/"
 
   # VSCode
   codeDir="${appData}/Code/User"
