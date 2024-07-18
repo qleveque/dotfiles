@@ -15,7 +15,7 @@ config.keys = {
   {key="Tab", mods="CTRL", action=wezterm.action{SendString="\x1b[27;5;9~"}},
   {key="Tab", mods="CTRL|SHIFT", action=wezterm.action{SendString="\x1b[27;6;9~"}},
 }
-config.font_size = 11
+config.font_size = 10
 config.window_close_confirmation = 'NeverPrompt'
 
 config.wsl_domains = {

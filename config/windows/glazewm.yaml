@@ -86,6 +86,8 @@ window_rules:
     match_class_name: "#32770"
   - command: "set floating"
     match_process_name: "/.*Godot.*/"
+  - commands: ["set floating", "move to workspace gui", "focus workspace gui"]
+    match_title: "/ANT lab.*/"
 
 keybindings:
   - command: "focus left"

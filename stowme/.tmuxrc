@@ -22,7 +22,7 @@ catppuccin_request='colors|to_entries|.[]|"C_\(.key)=\(.value.hex)"'
 eval `jq -r .${FLAVOR}.${catppuccin_request} ~/.catppuccin.json`
 set_all bg=${C_base} window-active-style
 set_all bg=${C_crust} window-style
-set_all bg=${C_mantle},fg=${C_surface2} pane-{,active-}border-style
+set_all bg=${C_crust},fg=${C_surface2} pane-{,active-}border-style
 set_all bg=${C_surface0} status-style
 set_all bg=${C_surface2} window-status-current-style mode-style
 
