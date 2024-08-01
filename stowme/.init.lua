@@ -17,6 +17,18 @@ local notdiff = not vim.api.nvim_win_get_option(0, "diff")
 
 require("lazy").setup({
   {
+    'mrjones2014/smart-splits.nvim',
+    opts = {},
+    init = function()
+      vim.cmd[[
+        nn <C-h> :SmartCursorMoveLeft<CR>
+        nn <C-j> :SmartCursorMoveDown<CR>
+        nn <C-k> :SmartCursorMoveUp<CR>
+        nn <C-l> :SmartCursorMoveRight<CR>
+      ]]
+    end
+  },
+  {
     "neoclide/coc.nvim",
     enabled = notdiff,
     branch = "release",
@@ -43,7 +55,6 @@ require("lazy").setup({
       ]]
     end
   },
-  "christoomey/vim-tmux-navigator",
   {
     "farmergreg/vim-lastplace",
     enabled = notdiff
@@ -283,7 +294,7 @@ require("lazy").setup({
           ['h']=ta.node.navigate.parent_close,
           ['L']=ta.tree.change_root_to_node,
           ['H']=ta.tree.change_root_to_parent,
-          ['é']=function() vim.cmd('sil !tmux splitw "run -p \\"'..path()..'\\""') end,
+          ['é']=function() vim.cmd('sil !new -s -c "run -p \\"'..path()..'\\""') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
         }
@@ -316,8 +327,6 @@ require("lazy").setup({
         },
         custom_highlights = function(C)
           return {
-            Active = { bg = C.base },
-            Inactive = { bg = C.crust },
             User1 = { bg = C.surface1 },
             WinSeparator = { bg = C.mantle, fg = C.surface2 },
             WinBar = { fg = C.overlay1 },
@@ -329,11 +338,7 @@ require("lazy").setup({
           }
         end
       }
-      vim.cmd [[
-        colorscheme catppuccin
-        au FocusLost * set winhl=Normal:Inactive
-        au FocusGained,BufNew,BufLeave,BufRead * set winhl+=Normal:Active,NormalNC:Inactive
-      ]]
+      vim.cmd('colorscheme catppuccin')
     end
   },
 }, {

@@ -7,7 +7,6 @@ stowme="${HOME}/dotfiles/stowme"
 
 # dotfiles
 /usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
-echo run \"${HOME}/.tmuxrc\" > ~/.tmux.conf
 mkdir -p "${HOME}/.config/vifm"
 echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 

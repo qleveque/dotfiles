@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+if grep -q Microsoft /proc/version; then
+  printf "\033]7;file://%s\033\\" "$(wslpath -w "$1")" &
+fi

@@ -35,9 +35,6 @@ github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
 # vifm devicons
 wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
 
-# catppuccin
-wget "${raw_github}/catppuccin/palette/main/palette.json" -O "${HOME}/.catppuccin.json"
-
 # antigen
 mkdir -p "${HOME}/.antigen"
 curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"

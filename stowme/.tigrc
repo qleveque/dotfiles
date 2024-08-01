@@ -29,19 +29,19 @@ bind generic gs view-status
 bind generic gs view-status
 
 bind generic l :d
-bind log l !@>tmux new-window -a "tig show '%(commit)'"
-bind diff l !+>tmux new-window -a "\
+bind log l !@>new -c "tig show '%(commit)'"
+bind diff l !+>new -c "\
   [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind stage l !+>tmux new-window -a "\
+bind stage l !+>new -c "\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind status l !+>tmux new-window -a "\
+bind status l !+>new -c "\
   [[ $(git ls-files --unmerged '%(file)') ]] && git mergetool -- '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind status p !+>tmux new-window -a "FILE="${PWD}/%(file)" git pick '%(file)'"
+bind status p !+>new -c "FILE="${PWD}/%(file)" git pick '%(file)'"

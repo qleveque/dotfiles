@@ -4,7 +4,10 @@ set vicmd=e syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.loca
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
 " Shortcuts
-map <C-i> :histnext<CR>
+map <C-i> :histnext|osc7<CR>
+map <C-o> :histprev|osc7<CR>
+nn l :exe('normal! l')|osc7<CR>
+nn h :exe('normal! h')|osc7<CR>
 map e l
 nn <CR> :!o %f<CR>
 nn U <C-r>
@@ -18,26 +21,23 @@ nn yp :exe '!echo -n %d | c'<CR>
 nn yw :exe '!echo -n %c | c'<CR>
 nn xx dd
 nn dd DD
-nn é :!tmux splitw "run -p %f"<CR>
+nn é :!new -s -c "run -p %f"<CR>
 vn x d
 vn d D
 nn <C-q> :quit<CR>
 nn ! :do<Space>
 
 " FZF
-nn <C-n> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:redr<CR>
-nn <C-t> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:redr<CR>
-nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:redr<CR>
-
-" Tmux integration
-nn <C-b>s :!tmux split-window -v -c %d<CR>
-nn <C-b>v :!tmux split-window -h -c %d<CR>
+nn <C-n> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:osc7|:redr<CR>
+nn <C-t> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:osc7|:redr<CR>
+nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:osc7|:redr<CR>
 
 " Commands
-com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')
+com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|osc7
 com! o :!o "%a"
 com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
 com! do :!%a %f
+com! osc7 :!fire_osc7 "%d"
 
 " Style
 hi Win cterm=none ctermfg=none ctermbg=none
