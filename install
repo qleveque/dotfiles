@@ -4,7 +4,6 @@ function github_release() {
   wget -O ${tmp} "https://github.com/$1/releases/latest/download/$2"
   unzip -o ${tmp} -d "${@:3}"
 }
-raw_github='https://raw.githubusercontent.com'
 
 # Common packages
 sudo apt update -y
@@ -18,15 +17,14 @@ github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
 sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
 
 # sd
-sd_tag=`curl -s https://api.github.com/repos/chmln/sd/tags | jq -r '.[0].name'`
-sd="sd-${sd_tag}-x86_64-unknown-linux-musl"
+sd="sd-v1.0.0-x86_64-unknown-linux-musl"
 github_release chmln/sd "${sd}.tar.gz" "${HOME}/bin" --strip-components=1 "${sd}/sd"
 
 # eza
 github_release eza-community/eza "eza_x86_64-unknown-linux-musl.tar.gz" "${HOME}/bin"
 
 # vifm devicons
-wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
+wget "raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
 
 # starship
 curl -sS https://starship.rs/install.sh | sh -s -- -y --bin-dir "${HOME}"/bin
@@ -45,6 +43,6 @@ if grep -q Microsoft /proc/version; then
   # win32yank
   winget.exe install --id=equalsraf.win32yank -e
   # wudo
-  wget "${raw_github}/Chronial/wsl-sudo/master/wsl-sudo.py" -O "${HOME}/bin/wudo"
+  wget "raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py" -O "${HOME}/bin/wudo"
   chmod +x "${HOME}/bin/wudo"
 fi

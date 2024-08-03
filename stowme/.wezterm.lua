@@ -11,8 +11,8 @@ c.leader = {key = 'b', mods = 'CTRL'}
 c.window_decorations = "RESIZE"
 c.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
 c.keys = {
-  {key='Tab', mods = 'CTRL', action=wezterm.action{SendString='\x1b[27;5;9~'}},
-  {key='Tab', mods = 'CTRL|SHIFT', action=wezterm.action{SendString='\x1b[27;6;9~'}},
+  {key='Tab', mods = 'CTRL', action=act{SendString='\x1b[27;5;9~'}},
+  {key='Tab', mods = 'CTRL|SHIFT', action=act{SendString='\x1b[27;6;9~'}},
   {key = ';', mods = 'CTRL', action = act.ActivateTabRelative(1)},
   {key = ',', mods = 'CTRL', action = act.ActivateTabRelative(-1)},
   {key = 's', mods = 'LEADER', action = act.SplitVertical{}},

@@ -1,4 +1,5 @@
 -- vim: set ft=lua:
+
 -- Light plugins
 nvim_plugins = {
   "pocco81/auto-save.nvim",
