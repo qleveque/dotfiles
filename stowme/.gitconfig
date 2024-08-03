@@ -18,14 +18,14 @@
   prompt = false
   trustExitCode = true
 [difftool "vimdiff"]
-  path = nvim
+  cmd = "nvim --cmd 'lua light=true' -d $LOCAL $REMOTE"
 [merge]
   conflictstyle = diff3
   tool = nvimdiff
 [mergetool]
   keepBackup = false
 [mergetool "nvimdiff"]
-  cmd = "nvim -d $LOCAL $BASE $REMOTE -c 'nn doh 1do|nn dol 3do|au VimEnter * :wincmd h' && mv $BASE $MERGED"
+  cmd = "nvim --cmd 'lua light=true' -d $LOCAL $BASE $REMOTE -c 'nn doh 1do|nn dol 3do|au VimEnter * :wincmd h' && mv $BASE $MERGED"
   trustExitCode = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -33,5 +33,5 @@
   process = git-lfs filter-process
   required = true
 [alias]
-  pick = "!h(){ f=\"$GIT_PREFIX$1\";b=`mktemp`;mv $f $b;git restore $f||>$f;nvim -d $b $f;[ -s $f ]&&git add $f;mv $b $f;};h"
+  pick = "!h(){ f=\"$GIT_PREFIX$1\";b=`mktemp`;mv $f $b;git restore $f||>$f;nvim --cmd 'lua light=true' -d $b $f;[ -s $f ]&&git add $f;mv $b $f;};h"
   parent = "!h(){ git log -n1 --oneline `git merge-base $*`;};h"

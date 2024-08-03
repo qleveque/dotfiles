@@ -1,21 +1,13 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.cmd('source ~/.vimrc')
-
-local notdiff = not vim.api.nvim_win_get_option(0, "diff")
-
-require("lazy").setup({
+-- Light plugins
+nvim_plugins = {
+  "pocco81/auto-save.nvim",
+  "tpope/vim-repeat",
+  "wellle/targets.vim",
+  {"numToStr/Comment.nvim", opts={}},
+  {"echasnovski/mini.indentscope", opts={}},
+  {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
+  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
+  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
   {
     'mrjones2014/smart-splits.nvim',
     opts = {},
@@ -29,8 +21,61 @@ require("lazy").setup({
     end
   },
   {
+    "ggandor/leap.nvim",
+    opts = { safe_labels = {} },
+    keys = {
+      {
+        '<Space>',
+        function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
+        buffer=bufnr,
+        silent=true,
+        nowait=true
+      }
+    }
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = { keymaps = { normal = "s", normal_cur = "ss", visual = "s", } }
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require'catppuccin'.setup{
+        flavour=os.getenv("FLAVOR") or "auto",
+        integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
+        custom_highlights = function(C)
+          return {
+            User1 = { bg = C.surface1 },
+            WinSeparator = { bg = C.mantle, fg = C.surface2 },
+            WinBar = { fg = C.overlay1 },
+            StatusLine = { bg = C.base, fg = C.surface2, underline = true },
+            StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
+            Cursor = { reverse = true },
+            ScrollbarHandle = { bg = C.surface1 },
+            ScrollbarCursorHandle = { bg = C.surface1 },
+          }
+        end
+      }
+      vim.cmd('colorscheme catppuccin')
+    end
+  },
+}
+
+if light then return end
+
+-- Heavier plugins
+local heavier_plugins = {
+  "farmergreg/vim-lastplace",
+  "machakann/vim-highlightedyank",
+  "sheerun/vim-polyglot",
+  {"nvim-treesitter/nvim-treesitter", opts = {}},
+  {
     "neoclide/coc.nvim",
-    enabled = notdiff,
     branch = "release",
     init = function()
       vim.cmd[[
@@ -56,32 +101,6 @@ require("lazy").setup({
     end
   },
   {
-    "farmergreg/vim-lastplace",
-    enabled = notdiff
-  },
-  "pocco81/auto-save.nvim",
-  "tpope/vim-repeat",
-  "wellle/targets.vim",
-  "machakann/vim-highlightedyank",
-  {"numToStr/Comment.nvim", opts={}},
-  {"sheerun/vim-polyglot", enabled = notdiff},
-  {
-    "nvim-treesitter/nvim-treesitter",
-    enabled = notdiff,
-    opts = {}
-  },
-  {"echasnovski/mini.indentscope", opts={}},
-  {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
-  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
-  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
-  {
-    "echasnovski/mini.bracketed",
-    opts = {
-      undo = {suffix = ''},
-      diagnostic = {suffix = ''}
-    }
-  },
-  {
     "echasnovski/mini.animate",
     config = function()
       local animate = require('mini.animate')
@@ -95,7 +114,6 @@ require("lazy").setup({
   },
   {
     "phelipetls/jsonpath.nvim",
-    enabled = notdiff,
     init = function()
       vim.api.nvim_create_augroup("JsonSettings", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
@@ -112,7 +130,6 @@ require("lazy").setup({
   },
   {
     "kevinhwang91/nvim-bqf",
-    enabled = notdiff,
     opts = {
       preview = {
         winblend = 0,
@@ -122,23 +139,7 @@ require("lazy").setup({
     }
   },
   {
-    "ggandor/leap.nvim",
-    opts = {
-      safe_labels = {}
-    },
-    keys = {
-      {
-        '<Space>',
-        function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
-        buffer=bufnr,
-        silent=true,
-        nowait=true
-      }
-    }
-  },
-  {
     "mizlan/iswap.nvim",
-    enabled = notdiff,
     keys = {
       {'L', '<cmd>ISwapNodeWithRight<CR>'},
       {'H', '<cmd>ISwapNodeWithLeft<CR>'}
@@ -155,20 +156,7 @@ require("lazy").setup({
     }
   },
   {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    opts = {
-      keymaps = {
-        normal = "s",
-        normal_cur = "ss",
-        visual = "s",
-      }
-    }
-  },
-  {
     "nvim-pack/nvim-spectre",
-    enabled = notdiff,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
       {"<C-r>", "<cmd>sil lua require'spectre'.toggle()<CR>"}
@@ -188,7 +176,6 @@ require("lazy").setup({
   },
   {
     "SUSTech-data/wildfire.nvim",
-    enabled = notdiff,
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
@@ -202,7 +189,6 @@ require("lazy").setup({
   },
   {
     "romgrk/barbar.nvim",
-    enabled = notdiff,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     init = function()
       vim.cmd[[
@@ -223,7 +209,6 @@ require("lazy").setup({
   },
   {
     "stevearc/aerial.nvim",
-    enabled = notdiff,
     lazy=true,
     cmd="AerialOpen",
     keys = {
@@ -241,7 +226,6 @@ require("lazy").setup({
   },
   {
     "nvim-telescope/telescope.nvim",
-    enabled = notdiff,
     lazy=true,
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
@@ -269,7 +253,6 @@ require("lazy").setup({
   },
   {
     "nvim-tree/nvim-tree.lua",
-    enabled = notdiff,
     cmd= "NvimTreeFindFile",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     keys = {
@@ -310,51 +293,6 @@ require("lazy").setup({
         actions = {open_file = { window_picker = { enable = false } } },
       }
     end
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require'catppuccin'.setup{
-        flavour=os.getenv("FLAVOR") or "auto",
-        integrations = {
-          nvimtree = false,
-          barbar = true,
-          coc_nvim = true,
-          leap = true
-        },
-        custom_highlights = function(C)
-          return {
-            User1 = { bg = C.surface1 },
-            WinSeparator = { bg = C.mantle, fg = C.surface2 },
-            WinBar = { fg = C.overlay1 },
-            StatusLine = { bg = C.base, fg = C.surface2, underline = true },
-            StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
-            Cursor = { reverse = true },
-            ScrollbarHandle = { bg = C.surface1 },
-            ScrollbarCursorHandle = { bg = C.surface1 },
-          }
-        end
-      }
-      vim.cmd('colorscheme catppuccin')
-    end
-  },
-}, {
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "netrwPlugin",
-        "rplugin",
-        "shada",
-        "spellfile",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      }
-    }
   }
-})
+}
+table.move(heavier_plugins, 1, #heavier_plugins, #nvim_plugins + 1, nvim_plugins)

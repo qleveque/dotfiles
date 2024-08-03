@@ -12,7 +12,13 @@ opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDG
 nohl(){region_highlight=();_zsh_highlight}
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|c}
 visual-put(){zle vi-delete; zle vi-put-before}
-copy-mode(){local f=$(mktemp)&&wezterm cli get-text>$f&&sd '( +$|^\s$)' '' $f&& nvim +"norm G3k$" $f}
+copy-mode(){
+  local f=$(mktemp)
+  wezterm cli get-text --start-line -10000 > $f
+  sd ' *\n' '\n' $f
+  sd '\n\n\n+' '\n\n' $f
+  nvim --cmd 'lua light=true' +"norm G3k^" $f
+}
 
 # Instantiating zle widgets
 autoload -U select-{bracketed,quoted} surround edit-command-line

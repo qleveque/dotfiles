@@ -19,7 +19,12 @@ c.keys = {
   {key = 'v', mods = 'LEADER', action = act.SplitHorizontal{}},
   {key = 'n', mods = 'LEADER', action = act { SpawnTab = 'CurrentPaneDomain'}},
   {key = 'q', mods = 'LEADER', action=act{CloseCurrentPane={confirm=false}}},
-  {key = 'l', mods = 'LEADER', action = wezterm.action.SendString('\x0c')},
+  {key = 'l', mods = 'LEADER',
+    action = act.Multiple({
+      act.ClearScrollback 'ScrollbackAndViewport',
+      act.SendString('\x0c'),
+    })
+  }
 }
 
 if wezterm.target_triple:match("windows") then
