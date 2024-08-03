@@ -1,3 +1,4 @@
+-- vim: set ft=lua:
 -- Light plugins
 nvim_plugins = {
   "pocco81/auto-save.nvim",
@@ -27,9 +28,7 @@ nvim_plugins = {
       {
         '<Space>',
         function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
-        buffer=bufnr,
-        silent=true,
-        nowait=true
+        buffer=bufnr, silent=true, nowait=true
       }
     }
   },
@@ -130,61 +129,34 @@ local heavier_plugins = {
   },
   {
     "kevinhwang91/nvim-bqf",
-    opts = {
-      preview = {
-        winblend = 0,
-        win_height=999,
-        show_scroll_bar=false
-      }
-    }
+    opts = { preview = { winblend = 0, win_height=999, show_scroll_bar=false } }
   },
   {
     "mizlan/iswap.nvim",
-    keys = {
-      {'L', '<cmd>ISwapNodeWithRight<CR>'},
-      {'H', '<cmd>ISwapNodeWithLeft<CR>'}
-    },
-    opts = {
-      flash_style = false,
-      move_cursor = true,
-    }
+    keys = { {'L', '<cmd>ISwapNodeWithRight<CR>'}, {'H', '<cmd>ISwapNodeWithLeft<CR>'} },
+    opts = { flash_style = false, move_cursor = true, }
   },
   {
     "mattn/emmet-vim",
-    keys = {
-      {'<C-e>', '<C-y>,', mode={'v', 'i'}, remap=true},
-    }
+    keys = { {'<C-e>', '<C-y>,', mode={'v', 'i'}, remap=true}, }
   },
   {
     "nvim-pack/nvim-spectre",
     dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      {"<C-r>", "<cmd>sil lua require'spectre'.toggle()<CR>"}
-    },
+    keys = { {"<C-r>", "<cmd>sil lua require'spectre'.toggle()<CR>"} },
     opts = {
       is_insert_mode = true,
       live_update = true,
-      mapping={
-        ['run_current_replace'] = { map = "r" },
-        ['run_replace'] = { map = "<S-r>" },
-      },
-      highlight = {
-        search = "DiffText",
-        replace = "DiffAdd"
-      },
+      mapping={ ['run_current_replace'] = { map = "r" }, ['run_replace'] = { map = "<S-r>" }, },
+      highlight = { search = "DiffText", replace = "DiffAdd" },
     }
   },
   {
     "SUSTech-data/wildfire.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {
-      surrounds = {},
-      keymaps = {
-        init_selection = "_",
-        node_incremental = "_",
-        node_decremental = "-",
-      },
+    opts = { surrounds = {},
+      keymaps = { init_selection = "_", node_incremental = "_", node_decremental = "-", },
     }
   },
   {
@@ -201,9 +173,7 @@ local heavier_plugins = {
     end,
     opts = {
       exclude_ft={'qf'},
-      sidebar_filetypes={
-        NvimTree={ text=' '..vim.fn.fnamemodify(vim.fn.getcwd(), ":t")..'/' }
-      },
+      sidebar_filetypes={ NvimTree={ text=' '..vim.fn.fnamemodify(vim.fn.getcwd(), ":t")..'/' } },
       auto_hide=1,
     }
   },
@@ -211,9 +181,7 @@ local heavier_plugins = {
     "stevearc/aerial.nvim",
     lazy=true,
     cmd="AerialOpen",
-    keys = {
-      {'<C-g>', '<cmd>AerialOpen<CR>'}
-    },
+    keys = { {'<C-g>', '<cmd>AerialOpen<CR>'} },
     opts={
       autojump = true,
       backends = {"treesitter"},

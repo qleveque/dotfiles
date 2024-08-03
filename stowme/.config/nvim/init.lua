@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.cmd('source ~/.vimrc')
 
-dofile(os.getenv("HOME") .. "/.init.lua")
+dofile(os.getenv("HOME") .. "/.plugins.nvim")
 
 require("lazy").setup(nvim_plugins, {
   performance = {
