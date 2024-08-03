@@ -28,7 +28,7 @@ cd ${full_path:h}
 
 # Scripts
 while [[ ${PWD} != / ]]; do
-  for script in build setup start run; do
+  for script in build start run; do
     [[ -f ${script} && -x ${script} ]] && run ./${script}
   done
   [[ -f Makefile ]] && run make

@@ -1,19 +1,15 @@
 #!/usr/bin/bash
 function github_release() {
-  local url="https://github.com/$1/releases/latest/download/$2" tmp=$(mktemp)
-  wget -O ${tmp} ${url} 
-  case ${2##*.} in
-    "zip") unzip -o ${tmp} -d "${@:3}";;
-    "gz") tar -xvzf ${tmp} -C "${@:3}";;
-  esac
+  local tmp=$(mktemp)
+  wget -O ${tmp} "https://github.com/$1/releases/latest/download/$2"
+  unzip -o ${tmp} -d "${@:3}"
 }
-musl='x86_64-unknown-linux-musl'
 raw_github='https://raw.githubusercontent.com'
 
 # Common packages
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install -y \
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install -y \
   curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm \
   zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs jq
 
@@ -23,25 +19,21 @@ sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
 
 # sd
 sd_tag=`curl -s https://api.github.com/repos/chmln/sd/tags | jq -r '.[0].name'`
-sd="sd-${sd_tag}-${musl}"
+sd="sd-${sd_tag}-x86_64-unknown-linux-musl"
 github_release chmln/sd "${sd}.tar.gz" "${HOME}/bin" --strip-components=1 "${sd}/sd"
 
-# starship
-github_release starship/starship "starship-${musl}.tar.gz" "${HOME}/bin"
-
 # eza
-github_release eza-community/eza "eza_${musl}.tar.gz" "${HOME}/bin"
+github_release eza-community/eza "eza_x86_64-unknown-linux-musl.tar.gz" "${HOME}/bin"
 
 # vifm devicons
 wget "${raw_github}/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
 
+# starship
+curl -sS https://starship.rs/install.sh | sh -s -- -y --bin-dir "${HOME}"/bin
+
 # antigen
 mkdir -p "${HOME}/.antigen"
 curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
-
-# Nerd Font
-github_release ryanoasis/nerd-fonts Hack.zip "${HOME}/.fonts"
-fc-cache -fv
 
 # extract
 echo '#!/usr/bin/zsh
@@ -51,9 +43,7 @@ chmod +x "${HOME}/bin/extract"
 
 if grep -q Microsoft /proc/version; then
   # win32yank
-  github_release equalsraf/win32yank win32yank-x64.zip "${HOME}/bin" win32yank.exe
-  chmod +x "${HOME}/bin/win32yank.exe"
-
+  winget.exe install --id=equalsraf.win32yank -e
   # wudo
   wget "${raw_github}/Chronial/wsl-sudo/master/wsl-sudo.py" -O "${HOME}/bin/wudo"
   chmod +x "${HOME}/bin/wudo"

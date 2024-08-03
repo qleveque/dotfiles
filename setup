@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
 
 stow --adopt -d "${HOME}/dotfiles" -t "${HOME}" stowme
 
@@ -15,10 +15,11 @@ if grep -q Microsoft /proc/version; then
   startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
 
   # hard links stowme
-  rm "${HOME}/.gitconfig"
-  ln -f "${stowme}/.gitconfig" "${HOME}/"
-  rm "${HOME}/.vimrc"
-  ln -f "${stowme}/.vimrc" "${HOME}/"
+  files=(".gitconfig" ".vimrc" ".wezterm.lua")
+  for file in "${files[@]}"; do
+    rm -f "${HOME}/${file}"
+    ln -f "${stowme}/${file}" "${HOME}/"
+  done
 
   # VSCode
   codeDir="${appData}/Code/User"
@@ -43,9 +44,6 @@ if grep -q Microsoft /proc/version; then
   mkdir -p "${HOME}/.glaze-wm"
   ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
-
-  # Wezterm
-  ln -f "${config}/windows/.wezterm.lua" "${HOME}/.wezterm.lua"
 
   # Firefox
   firefox_profiles="${appData}/Mozilla/Firefox/Profiles/"

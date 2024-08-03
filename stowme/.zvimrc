@@ -12,6 +12,7 @@ opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDG
 nohl(){region_highlight=();_zsh_highlight}
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|c}
 visual-put(){zle vi-delete; zle vi-put-before}
+copy-mode(){local f=$(mktemp)&&wezterm cli get-text>$f&&sd '( +$|^\s$)' '' $f&& nvim +"norm G3k$" $f}
 
 # Instantiating zle widgets
 autoload -U select-{bracketed,quoted} surround edit-command-line
@@ -19,7 +20,7 @@ zle -N add-surround surround
 for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done
 for w in {change,delete}-wrap; do zle -N $w opp-wrap; done
 for w in goto-recent-dir open-{fm,tig} quit select-{bracketed,quoted} edit-command-line\
-  vi-{cut,yank,put-{before,after}} nohl visual-{put,swap}; do zle -N $w; done
+  vi-{cut,yank,put-{before,after}} nohl visual-{put,swap} copy-mode; do zle -N $w; done
 
 # Remapping
 bindkey -v
@@ -31,7 +32,7 @@ bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-
 bindkey -M viins '^[[Z' forward-word '^V' vi-put-before '^I' fzf_completion '^?' backward-delete-char\
    '^G' _mark_expansion '^T' fzf-cd-widget '^N' fzf-file-widget '^R' fzf-history-widget
 for m in visual vicmd viins
-  do bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^G' open-tig '^Q' quit;
+  do bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^G' open-tig '^Q' quit '^A' copy-mode;
 done
 for m in visual viopp; do
   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do

@@ -19,8 +19,8 @@ LESS = -irFRX --mouse --wheel-lines=1
 #command
 gg goto-line
 # Git
-gc {NA} {READ_COMMIT}|{RUN}'new -c "tig show $0"'\n
-gd {NA} {READ_IDX_FILE}|{RUN}'new -c "FILE=\\"$PWD/$1\\" git difftool $0"'\n
+gc {NA} {READ_COMMIT}|{RUN}'weznew "tig show $0"'\n
+gd {NA} {READ_IDX_FILE}|{RUN}'weznew "FILE=\\"$PWD/$1\\" git difftool $0"'\n
 yc {NA} {READ_COMMIT}|c\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|c\n
 ]c {NA} J/{COMMIT}\nma{RESET}'a

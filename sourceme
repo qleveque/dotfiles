@@ -5,11 +5,11 @@ echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
 
 # Windows
 if grep -q Microsoft /proc/version; then
-  COMMAND="WSL -u root usermod -d ${HOME} qleveque && SETX PATH "%USERPROFILE%\bin;%PATH%" && PAUSE"
+  COMMAND="WSL -u root usermod -d ${HOME} qleveque && SETX PATH "%USERPROFILE%\bin;%PATH%""
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
 fi
 
 # Setup
 "${HOME}/dotfiles/install"
-"${HOME}/dotfiles/config/setup"
+"${HOME}/dotfiles/setup"
 sudo chsh -s /usr/bin/zsh

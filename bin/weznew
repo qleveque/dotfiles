@@ -1,5 +1,5 @@
 #!/bin/bash
 if grep -q Microsoft /proc/version; then
   [ $1 == '-s' ] && cmd='split-pane --bottom' && shift || cmd='spawn'
-  wezterm.exe cli ${cmd} --cwd "$(wslpath -m $PWD)" -- zsh "$@"
+  wezterm.exe cli ${cmd} --cwd "$(wslpath -m $PWD)" -- zsh -c "$@"
 fi

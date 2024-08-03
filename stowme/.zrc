@@ -40,5 +40,5 @@ source ~/.aliases
 # Directory history
 autoload -U add-zsh-hook
 add-zsh-hook chpwd on_change_dir
-on_change_dir() {fire_osc7 "$PWD"&&sed -i "\#^$PWD\$#d" ~/.dirhist&&echo $PWD>>~/.dirhist}
+on_change_dir() {osc7 "$PWD"&&sed -i "\#^$PWD\$#d" ~/.dirhist&&echo $PWD>>~/.dirhist}
 touch ~/.dirhist && on_change_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist

@@ -294,7 +294,7 @@ require("lazy").setup({
           ['h']=ta.node.navigate.parent_close,
           ['L']=ta.tree.change_root_to_node,
           ['H']=ta.tree.change_root_to_parent,
-          ['é']=function() vim.cmd('sil !new -s -c "run -p \\"'..path()..'\\""') end,
+          ['é']=function() vim.cmd('sil !weznew -s "run -p \\"'..path()..'\\""') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
         }
