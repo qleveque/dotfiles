@@ -1,6 +1,6 @@
 #!/bin/zsh
 set-cursor(){zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
-goto-recent-dir(){cd "$(eval ${FZF_P_COMMAND}|fzf --exact)";zle reset-prompt;zle zle-line-init}
+goto-recent(){cd "$(eval ${FZF_P_COMMAND}|fzf --exact)";zle reset-prompt;zle zle-line-init}
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt;zle zle-line-init}
 open-tig(){tig status < /dev/tty;zle reset-prompt;zle zle-line-init}
 quit(){exit}
@@ -12,21 +12,15 @@ opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDG
 nohl(){region_highlight=();_zsh_highlight}
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|c}
 visual-put(){zle vi-delete; zle vi-put-before}
-copy-mode(){vim-mode -c 'norm G3k^'}
-search(){vim-mode -c 'norm G^' -c 'redraw' -c 'call feedkeys("?")'}
-vim-mode(){
-  local f=$(mktemp)
-  wezterm cli get-text --start-line -10000 > $f
-  sd ' *\n' '\n' $f && sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' $f
-  nvim --cmd 'lua light=true' "$@" $f
-}
+copy-mode(){copymode 0 -10000 -c 'norm G3k^'}
+search(){copymode 0 -10000 -c 'norm G^' -c 'redraw' -c 'call feedkeys("?")'}
 
 # Instantiating zle widgets
 autoload -U select-{bracketed,quoted} surround edit-command-line
 zle -N add-surround surround
 for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done
 for w in {change,delete}-wrap; do zle -N $w opp-wrap; done
-for w in goto-recent-dir open-{fm,tig} quit select-{bracketed,quoted} edit-command-line\
+for w in goto-recent open-{fm,tig} quit select-{bracketed,quoted} edit-command-line\
   vi-{cut,yank,put-{before,after}} nohl visual-{put,swap} copy-mode search; do zle -N $w; done
 
 # Remapping
@@ -39,7 +33,7 @@ bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-
 bindkey -M viins '^[[Z' forward-word '^V' vi-put-before '^I' fzf_completion '^?' backward-delete-char\
    '^G' _mark_expansion '^T' fzf-cd-widget '^N' fzf-file-widget '^R' fzf-history-widget
 for m in visual vicmd viins
-  do bindkey -M $m '^P' goto-recent-dir '^F' open-fm '^G' open-tig '^Q' quit '^A' copy-mode '^S' search;
+  do bindkey -M $m '^P' goto-recent '^F' open-fm '^G' open-tig '^Q' quit '^A' copy-mode '^S' search;
 done
 for m in visual viopp; do
   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do

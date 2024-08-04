@@ -17,14 +17,18 @@ c.keys = {
   {key = ',', mods = 'CTRL', action = act.ActivateTabRelative(-1)},
   {key = 's', mods = 'LEADER', action = act.SplitVertical{}},
   {key = 'v', mods = 'LEADER', action = act.SplitHorizontal{}},
-  {key = 'n', mods = 'LEADER', action = act { SpawnTab = 'CurrentPaneDomain'}},
+  {key = 'n', mods = 'LEADER', action = act{SpawnTab='CurrentPaneDomain'}},
   {key = 'q', mods = 'LEADER', action=act{CloseCurrentPane={confirm=false}}},
-  {key = 'l', mods = 'LEADER',
-    action = act.Multiple({
-      act.ClearScrollback 'ScrollbackAndViewport',
-      act.SendString('\x0c'),
-    })
-  }
+  {
+    key = 'l', mods = 'LEADER',
+    action=act.Multiple{act.ClearScrollback'ScrollbackAndViewport',act.SendString'\x0c'}
+  },
+  {
+    key = 'a', mods = 'CTRL|SHIFT',
+    action = wezterm.action_callback(function(w, p) w:perform_action(
+      act.SpawnCommandInNewTab{args={'zsh','-c','copymode '..p:pane_id()..' 0 -c "norm G"'}},p
+    )end),
+  },
 }
 
 if wezterm.target_triple:match("windows") then
@@ -34,9 +38,6 @@ end
 
 -- Smart splits
 local smart_splits = wezterm.plugin.require('https://github.com/mrjones2014/smart-splits.nvim')
-smart_splits.apply_to_config(c, {
-  direction_keys = { 'h', 'j', 'k', 'l' },
-  modifiers = { move = 'CTRL', },
-})
+smart_splits.apply_to_config(c,{direction_keys={'h','j','k','l'},modifiers={move='CTRL'}})
 
 return c

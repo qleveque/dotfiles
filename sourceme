@@ -5,7 +5,9 @@ echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
 
 # Windows
 if grep -q Microsoft /proc/version; then
-  COMMAND="WSL -u root usermod -d ${HOME} qleveque && SETX PATH "%USERPROFILE%\bin;%PATH%""
+  COMMAND="WSL -u root usermod -d ${HOME} qleveque && "`
+         `'SETX PATH "%USERPROFILE%\bin\wsl;%USERPROFILE%\bin;%PATH%" && '`
+         `'PAUSE'`
   powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
 fi
 

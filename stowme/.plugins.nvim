@@ -4,12 +4,9 @@
 nvim_plugins = {
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
-  "wellle/targets.vim",
+  "machakann/vim-highlightedyank",
   {"numToStr/Comment.nvim", opts={}},
-  {"echasnovski/mini.indentscope", opts={}},
   {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
-  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
-  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
   {
     'mrjones2014/smart-splits.nvim',
     opts = {},
@@ -71,8 +68,11 @@ if light then return end
 -- Heavier plugins
 local heavier_plugins = {
   "farmergreg/vim-lastplace",
-  "machakann/vim-highlightedyank",
   "sheerun/vim-polyglot",
+  "wellle/targets.vim",
+  {"echasnovski/mini.indentscope", opts={}},
+  {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
+  {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
   {"nvim-treesitter/nvim-treesitter", opts = {}},
   {
     "neoclide/coc.nvim",
@@ -224,9 +224,7 @@ local heavier_plugins = {
     "nvim-tree/nvim-tree.lua",
     cmd= "NvimTreeFindFile",
     dependencies = { "kyazdani42/nvim-web-devicons" },
-    keys = {
-      {"<C-f>", "<cmd>NvimTreeFindFile<CR>"},
-    },
+    keys = { {"<C-f>", "<cmd>NvimTreeFindFile<CR>"}, },
     config = function()
       vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
       local ta=require('nvim-tree.api')
