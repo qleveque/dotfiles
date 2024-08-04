@@ -30,7 +30,7 @@ nn + :sil cnext<CR>
 map <C-q> ZQ
 
 " Term
-nn <silent> é :exe'sil !weznew -s "run -p \"'.expand("%").'\""'<CR>
+nn é :exe'sil !weznew -s "run -p \"'.expand("%").'\""'<CR>
 nn \d :exe'sil !weznew "git difftool '.expand('%:t').'"'<CR>
 nn \D :exe'sil !weznew "tig status"'<CR>
 nn \l :exe'sil !weznew "tig '.expand('%:t').'"'<CR>

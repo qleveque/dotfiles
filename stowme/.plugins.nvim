@@ -2,6 +2,31 @@
 
 -- Light plugins
 nvim_plugins = {
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require'catppuccin'.setup{
+        flavour="Mocha",
+        integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
+        custom_highlights = function(C)
+          return {
+            User1 = { bg = C.surface1 },
+            WinSeparator = { bg = C.mantle, fg = C.surface2 },
+            WinBar = { fg = C.overlay1 },
+            StatusLine = { bg = C.base, fg = C.surface2, underline = true },
+            StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
+            Cursor = { reverse = true },
+            ScrollbarHandle = { bg = C.surface1 },
+            ScrollbarCursorHandle = { bg = C.surface1 },
+          }
+        end
+      }
+      vim.cmd('colorscheme catppuccin')
+    end
+  },
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
   "machakann/vim-highlightedyank",
@@ -35,31 +60,6 @@ nvim_plugins = {
     version = "*",
     event = "VeryLazy",
     opts = { keymaps = { normal = "s", normal_cur = "ss", visual = "s", } }
-  },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require'catppuccin'.setup{
-        flavour=os.getenv("FLAVOR") or "auto",
-        integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
-        custom_highlights = function(C)
-          return {
-            User1 = { bg = C.surface1 },
-            WinSeparator = { bg = C.mantle, fg = C.surface2 },
-            WinBar = { fg = C.overlay1 },
-            StatusLine = { bg = C.base, fg = C.surface2, underline = true },
-            StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
-            Cursor = { reverse = true },
-            ScrollbarHandle = { bg = C.surface1 },
-            ScrollbarCursorHandle = { bg = C.surface1 },
-          }
-        end
-      }
-      vim.cmd('colorscheme catppuccin')
-    end
   },
 }
 
