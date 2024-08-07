@@ -1,41 +1,52 @@
 -- vim: set ft=lua:
+-- Theme
+local theme = {
+  "catppuccin/nvim",
+  name = "catppuccin",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require'catppuccin'.setup{
+      flavour='Mocha',
+      integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
+      custom_highlights = function(C)
+        return {
+          User1 = { bg = C.surface1 },
+          WinSeparator = { bg = C.mantle, fg = C.surface2 },
+          WinBar = { fg = C.overlay1 },
+          StatusLine = { bg = C.base, fg = C.surface2, underline = true },
+          StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
+          Cursor = { reverse = true },
+          ScrollbarHandle = { bg = C.surface1 },
+          ScrollbarCursorHandle = { bg = C.surface1 },
+        }
+      end
+    }
+    vim.cmd('colorscheme catppuccin')
+  end
+}
 
 -- Light plugins
 nvim_plugins = {
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require'catppuccin'.setup{
-        flavour="Mocha",
-        integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
-        custom_highlights = function(C)
-          return {
-            User1 = { bg = C.surface1 },
-            WinSeparator = { bg = C.mantle, fg = C.surface2 },
-            WinBar = { fg = C.overlay1 },
-            StatusLine = { bg = C.base, fg = C.surface2, underline = true },
-            StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
-            Cursor = { reverse = true },
-            ScrollbarHandle = { bg = C.surface1 },
-            ScrollbarCursorHandle = { bg = C.surface1 },
-          }
-        end
-      }
-      vim.cmd('colorscheme catppuccin')
-    end
-  },
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
   "machakann/vim-highlightedyank",
   {"numToStr/Comment.nvim", opts={}},
+  {"echasnovski/mini.indentscope", opts={}},
   {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
+  {
+    "echasnovski/mini.animate",
+    config = function()
+      require('mini.animate').setup({
+        cursor = {timing = require('mini.animate').gen_timing.cubic({duration = 100, unit = 'total'})},
+        scroll = {enable = false}, open = {enable = false}, resize = {enable = false}
+      })
+    end
+  },
   {
     'mrjones2014/smart-splits.nvim',
     opts = {},
-    init = function()
+    init = function() 
       vim.cmd[[
         nn <C-h> :SmartCursorMoveLeft<CR>
         nn <C-j> :SmartCursorMoveDown<CR>
@@ -57,12 +68,13 @@ nvim_plugins = {
   },
   {
     "kylechui/nvim-surround",
+    opts = { keymaps = { normal = "s", normal_cur = "ss", visual = "s", } },
     version = "*",
     event = "VeryLazy",
-    opts = { keymaps = { normal = "s", normal_cur = "ss", visual = "s", } }
   },
 }
 
+table.insert(nvim_plugins, theme)
 if light then return end
 
 -- Heavier plugins
@@ -70,10 +82,22 @@ local heavier_plugins = {
   "farmergreg/vim-lastplace",
   "sheerun/vim-polyglot",
   "wellle/targets.vim",
-  {"echasnovski/mini.indentscope", opts={}},
   {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
   {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
   {"nvim-treesitter/nvim-treesitter", opts = {}},
+  {
+    "kevinhwang91/nvim-bqf",
+    opts = { preview = { winblend = 0, win_height=999, show_scroll_bar=false } }
+  },
+  {
+    "mizlan/iswap.nvim",
+    keys = { {'L', '<cmd>ISwapNodeWithRight<CR>'}, {'H', '<cmd>ISwapNodeWithLeft<CR>'} },
+    opts = { flash_style = false, move_cursor = true, }
+  },
+  {
+    "mattn/emmet-vim",
+    keys = { {'<C-e>', '<C-y>,', mode={'v', 'i'}, remap=true}, }
+  },
   {
     "neoclide/coc.nvim",
     branch = "release",
@@ -101,18 +125,6 @@ local heavier_plugins = {
     end
   },
   {
-    "echasnovski/mini.animate",
-    config = function()
-      local animate = require('mini.animate')
-      animate.setup({
-        cursor = {timing = animate.gen_timing.cubic({duration = 100, unit = 'total'})},
-        scroll = {enable = false},
-        open = {enable = false},
-        resize = {enable = false}
-      })
-    end
-  },
-  {
     "phelipetls/jsonpath.nvim",
     init = function()
       vim.api.nvim_create_augroup("JsonSettings", { clear = true })
@@ -127,19 +139,6 @@ local heavier_plugins = {
         end,
       })
     end
-  },
-  {
-    "kevinhwang91/nvim-bqf",
-    opts = { preview = { winblend = 0, win_height=999, show_scroll_bar=false } }
-  },
-  {
-    "mizlan/iswap.nvim",
-    keys = { {'L', '<cmd>ISwapNodeWithRight<CR>'}, {'H', '<cmd>ISwapNodeWithLeft<CR>'} },
-    opts = { flash_style = false, move_cursor = true, }
-  },
-  {
-    "mattn/emmet-vim",
-    keys = { {'<C-e>', '<C-y>,', mode={'v', 'i'}, remap=true}, }
   },
   {
     "nvim-pack/nvim-spectre",
@@ -262,4 +261,5 @@ local heavier_plugins = {
     end
   }
 }
+
 table.move(heavier_plugins, 1, #heavier_plugins, #nvim_plugins + 1, nvim_plugins)
