@@ -39,10 +39,8 @@ if grep -q Microsoft /proc/version; then
   done
 
   # glaze-wm
-  glaze_cmd="Start-Process -FilePath GlazeWM.exe -WindowStyle Hidden"
-  echo powershell.exe -c \"${glaze_cmd}\" > "${startup}/glazewm.bat"
-  mkdir -p "${HOME}/.glaze-wm"
-  ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glaze-wm/config.yaml"
+  mkdir -p "${HOME}/.glzr/glazewm"
+  ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glzr/glazewm/config.yaml"
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
 
   # Firefox
