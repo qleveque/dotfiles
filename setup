@@ -38,10 +38,12 @@ if grep -q Microsoft /proc/version; then
     fi
   done
 
-  # glaze-wm
+  # glazewm + zebar
+  ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
   mkdir -p "${HOME}/.glzr/glazewm"
   ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glzr/glazewm/config.yaml"
-  ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
+  mkdir -p "${HOME}/.glzr/zebar"
+  ln -f "${config}/windows/zebar.yaml" "${HOME}/.glzr/zebar/config.yaml"
 
   # Firefox
   firefox_profiles="${appData}/Mozilla/Firefox/Profiles/"
