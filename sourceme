@@ -1,17 +1,18 @@
 # vim: set ft=bash:
-export HOME=$(dirname "$(dirname $(realpath $0))")
+ask() { read -r -p "$1 [y/N]" response && [[ $response == y ]] }
+export HOME=$(dirname "$PWD")
 mkdir -p "${HOME}/bin" "${HOME}/.config"
-echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
+
+# Setup
+echo 'Installing environment' && "${HOME}/dotfiles/install"
+echo 'Setting up dotfiles' && "${HOME}/dotfiles/setup"
+ask 'Overwrite ~/.zshrc ?' && echo source "${HOME}/.zrc" > "${HOME}/.zshrc"
+ask 'Change shell to zsh ?' && chsh -s $(which zsh)
 
 # Windows
 if grep -q Microsoft /proc/version; then
-  COMMAND="WSL -u root usermod -d ${HOME} qleveque && "`
-         `'SETX PATH "%USERPROFILE%\bin\wsl;%USERPROFILE%\bin;%PATH%" && '`
-         `'PAUSE'`
-  powershell.exe -Command "start cmd.exe -Verb runAs -ArgumentList '/C ${COMMAND}'"
+  echo '-Add `"${HOME}/dotfiles/bin"` to PATH'
+  echo '-Add `"${HOME}/dotfiles/bin/wsl"` to PATH'
+  echo '-Run `wsl.exe -u root usermod -d "${HOME}/dotfiles $USER"`'
 fi
 
-# Setup
-"${HOME}/dotfiles/install"
-"${HOME}/dotfiles/setup"
-sudo chsh -s /usr/bin/zsh

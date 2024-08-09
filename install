@@ -1,48 +1,39 @@
 #!/usr/bin/bash
-function github_release() {
-  local tmp=$(mktemp)
-  wget -O ${tmp} "https://github.com/$1/releases/latest/download/$2"
-  unzip -o ${tmp} -d "${@:3}"
-}
 
 # Common packages
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y \
-  curl dirmngr apt-transport-https lsb-release ca-certificates stow cmake vifm \
-  zsh tmux fzf fontconfig tig qalc httpie ripgrep fd-find xsel clang nodejs jq
+  curl stow cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel clang nodejs jq sd lsd
 
 # nvim
-github_release neovim/neovim nvim-linux64.tar.gz "${HOME}"
-sudo ln -s "${HOME}/nvim-linux64/bin/nvim" "/usr/bin/nvim"
-
-# sd
-sd="sd-v1.0.0-x86_64-unknown-linux-musl"
-github_release chmln/sd "${sd}.tar.gz" "${HOME}/bin" --strip-components=1 "${sd}/sd"
-
-# eza
-github_release eza-community/eza "eza_x86_64-unknown-linux-musl.tar.gz" "${HOME}/bin"
+local tmp=$(mktemp)
+wget -O ${tmp} 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
+unzip -o ${tmp} -d "${HOME}"
+sudo ln -s "${HOME}/nvim-linux64/bin/nvim" '/usr/bin/nvim'
 
 # vifm devicons
-wget "raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm" -O "${HOME}/.vifm.icons"
+wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.vifm.icons"
 
 # starship
-curl -sS https://starship.rs/install.sh | sh -s -- -y --bin-dir "${HOME}"/bin
+curl -sS https://starship.rs/install.sh | sh -s -- -y
 
-# antigen
-mkdir -p "${HOME}/.antigen"
-curl -L git.io/antigen > "${HOME}/.antigen/antigen.zsh"
+# zim
+ZIM_HOME="${HOME}/.zim"
+mkdir -p "${ZIM_HOME}"
+wget -nv -O "${ZIM_HOME}/zimfw.zsh" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
+source "${ZIM_HOME}/zimfw.zsh" install -q
 
 # extract
 echo '#!/usr/bin/zsh
-source ~/.antigen/bundles/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
-extract $1' > "${HOME}/bin/extract"
-chmod +x "${HOME}/bin/extract"
+source ~/.zim/modules/ohmyzsh/plugins/extract/extract.plugin.zsh
+extract $1' | sudo tee /usr/bin/extract > /dev/null
+sudo chmod +x "/usr/bin/extract"
 
 if grep -q Microsoft /proc/version; then
   # win32yank
   winget.exe install --id=equalsraf.win32yank -e
   # wudo
-  wget "raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py" -O "${HOME}/bin/wudo"
-  chmod +x "${HOME}/bin/wudo"
+  sudo wget 'raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py' -O '/usr/bin/wudo'
+  sudo chmod +x '/usr/bin/wudo'
 fi

@@ -1,0 +1,7 @@
+zmodule zsh-users/zsh-autosuggestions
+zmodule zdharma-continuum/fast-syntax-highlighting
+zmodule Aloxaf/fzf-tab
+zmodule lincheney/fzf-tab-completion --source zsh/fzf-zsh-completion.sh
+zmodule ohmyzsh/ohmyzsh --root plugins/git
+zmodule ohmyzsh/ohmyzsh --root plugins/jump
+zmodule qleveque/zsh-vi-search

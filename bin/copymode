@@ -1,7 +1,7 @@
 #!/bin/bash
 f=$(mktemp)
-[[ "$1" != "0" ]] && pane_id="--pane-id $1"
-[[ "$2" != "0" ]] && start_line="--start-line $2"
+[[ "$1" != "-1" ]] && pane_id="--pane-id $1"
+[[ "$2" != "-1" ]] && start_line="--start-line $2"
 shift && shift
 wezterm cli get-text ${pane_id} ${start_line} > $f
 sd ' *\n' '\n' $f && sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' $f

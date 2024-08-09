@@ -1,56 +1,37 @@
 #!/usr/bin/bash
 
 stow --adopt -d "${HOME}/dotfiles" -t "${HOME}" stowme
-
 config="${HOME}/dotfiles/config"
-stowme="${HOME}/dotfiles/stowme"
+lndir() { mkdir -p "$2" && for file in "$1/*"; do ln -sf "$file" "$2/"; done }
 
 # dotfiles
 /usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
-mkdir -p "${HOME}/.config/vifm"
-echo source "${HOME}/.vifmrc" > "${HOME}/.config/vifm/vifmrc"
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
   startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
 
   # hard links stowme
-  files=(".gitconfig" ".vimrc" ".wezterm.lua")
-  for file in "${files[@]}"; do
-    rm -f "${HOME}/${file}"
-    ln -f "${stowme}/${file}" "${HOME}/"
+  for file in .gitconfig .vimrc .wezterm.lua; do
+    ln -f "${HOME}/dotfiles/stowme/${file}" "${HOME}/"
   done
 
   # VSCode
-  codeDir="${appData}/Code/User"
-  if [[ -d ${codeDir} ]]; then
-    ln -f "${config}/VSCode/settings.json" "${codeDir}/settings.json"
-    ln -f "${config}/VSCode/keybindings.json" "${codeDir}/keybindings.json"
-  fi
+  lndir "${config}/VSCode" "${appData}/Code/User"
 
   # JetBrains
   ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/.ideavimrc"
-  for dirPattern in 'PyCharm*' 'IdeaIC*'; do
-    dir=$(find "${appData}/JetBrains" -type d -name $dirPattern|sort -n|tail -n1)
-    if [[ -d ${dir} ]]; then
-      mkdir -p "${dir}/keymaps"
-      ln -f "${config}/JetBrains/keybindings.xml" "${dir}/keymaps/keybindings.xml"
-    fi
+  for dir in $(find "${appData}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do
+    lndir "${config}/JetBrains/keymaps" "${dir}/keymaps"
   done
 
   # glazewm + zebar
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
-  mkdir -p "${HOME}/.glzr/glazewm"
-  ln -f "${config}/windows/glazewm.yaml" "${HOME}/.glzr/glazewm/config.yaml"
-  mkdir -p "${HOME}/.glzr/zebar"
-  ln -f "${config}/windows/zebar.yaml" "${HOME}/.glzr/zebar/config.yaml"
+  lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
+  lndir "${config}/windows/zebar" "${HOME}/.glzr/zebar"
 
-  # Firefox
-  firefox_profiles="${appData}/Mozilla/Firefox/Profiles/"
-  firefox_profile="$(ls -t "${firefox_profiles}" | grep release | head -n1)"
-  firefox_dir="${firefox_profiles}/${firefox_profile}"
-  mkdir -p "${firefox_dir}/chrome"
-  ln -f "${config}/mozilla/userChrome.css" "${firefox_dir}/chrome/userChrome.css"
-  l=`grep -n legacyUserProfileCustomizations "${firefox_dir}/prefs.js"|cut -d: -f1`
-  sed -i "${l}s/false/true/" "${firefox_dir}/prefs.js"
+  # Firefox (should activate legacyUserProfileCustomizations)
+  for dir in $(find "${appData}/Mozilla/Firefox/Profiles/" -type d -name "*release*"); do
+    lndir "${config}/mozilla" "${dir}/chrome"
+  done
 fi

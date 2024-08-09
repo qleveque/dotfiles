@@ -9,11 +9,10 @@ vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|c}
 vi-put-before(){CUTBUFFER="$(p 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-before}
 vi-put-after(){CUTBUFFER="$(p 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-after}
 opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac}
-nohl(){region_highlight=();_zsh_highlight}
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|c}
 visual-put(){zle vi-delete; zle vi-put-before}
-copy-mode(){copymode 0 -10000 -c 'norm G3k^'}
-search(){copymode 0 -10000 -c 'norm G^' -c 'redraw' -c 'call feedkeys("?")'}
+copy-mode(){copymode -1 -10000 -c 'norm G3k^'}
+search(){copymode -1 -10000 -c 'norm G^' -c 'redraw' -c 'call feedkeys("?")'}
 
 # Instantiating zle widgets
 autoload -U select-{bracketed,quoted} surround edit-command-line
@@ -21,13 +20,13 @@ zle -N add-surround surround
 for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done
 for w in {change,delete}-wrap; do zle -N $w opp-wrap; done
 for w in goto-recent open-{fm,tig} quit select-{bracketed,quoted} edit-command-line\
-  vi-{cut,yank,put-{before,after}} nohl visual-{put,swap} copy-mode search; do zle -N $w; done
+  vi-{cut,yank,put-{before,after}} visual-{put,swap} copy-mode search; do zle -N $w; done
 
 # Remapping
 bindkey -v
 bindkey -M vicmd -r :
 bindkey -M vicmd s add-surround c change-wrap d delete-wrap x vi-cut U redo \
-  '^V' edit-command-line '\e' nohl
+  '^V' edit-command-line
 bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-mode \
   P visual-swap p visual-put
 bindkey -M viins '^[[Z' forward-word '^V' vi-put-before '^I' fzf_completion '^?' backward-delete-char\

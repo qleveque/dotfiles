@@ -26,13 +26,13 @@ c.keys = {
   {
     key = 'a', mods = 'CTRL|SHIFT',
     action = wezterm.action_callback(function(w, p) w:perform_action(
-      act.SpawnCommandInNewTab{args={'zsh','-c','copymode '..p:pane_id()..' 0 -c "norm G"'}},p
+      act.SpawnCommandInNewTab{args={'zsh','-c','copymode '..p:pane_id()..' -1 -c "norm G"'}},p
     )end),
   },
 }
 
 if wezterm.target_triple:match("windows") then
-  c.wsl_domains = {{name = 'WSL:Ubuntu', distribution = 'Ubuntu'}}
+  c.wsl_domains = {{name = 'WSL:Ubuntu', distribution = 'Ubuntu-24.04'}}
   c.default_domain = 'WSL:Ubuntu'
 end
 
