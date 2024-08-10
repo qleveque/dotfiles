@@ -1,5 +1,4 @@
 #!/usr/bin/zsh
-alias e='nvim'
 alias fd='fdfind'
 alias g='jump'
 alias gcm='git commit -m'

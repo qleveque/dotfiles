@@ -13,5 +13,7 @@ if grep -q Microsoft /proc/version; then
     *) nvim "${file}";;
   esac
 else
-  nvim "${file}"
+  case ${ext} in
+    *) nvim "${file}";;
+  esac
 fi

@@ -1,9 +1,7 @@
 #!/usr/bin/zsh
 # Open any file with the default program
 
-if [[ -z "$*" ]] then
-  set $PWD
-fi
+if [[ -z "$*" ]] then; set ${PWD}; fi
 if grep -q Microsoft /proc/version; then
   cmd.exe /C START '""' "`wslpath -m "\""$(readlink -f $*)"\""`"
 else

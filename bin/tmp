@@ -1,10 +1,8 @@
 #!/usr/bin/zsh
 # Open a test file with the given extension
 
-tmp="/tmp"
-if grep -q Microsoft /proc/version; then
-  tmp="${HOME}/AppData/Local/Temp"
-fi
+is_windows=$(grep -q Microsoft /proc/version)
+${is_windows} && tmp="${HOME}/AppData/Local/Temp" || tmp="/tmp"
 test_file=$(mktemp -p "${tmp}")
 [[ -n $1 ]] && test_file="${test_file}.$1"
 nvim ${test_file}

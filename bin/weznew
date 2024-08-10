@@ -1,5 +1,5 @@
 #!/bin/bash
-if grep -q Microsoft /proc/version; then
-  [ $1 == '-s' ] && cmd='split-pane --bottom' && shift || cmd='spawn'
-  wezterm.exe cli ${cmd} --cwd "$(wslpath -m $PWD)" -- env PATH="$PATH" zsh -c "$@"
-fi
+[[ $1 == '-s' ]] && cmd='split-pane --bottom' && shift || cmd='spawn'
+is_windows=$(grep -q Microsoft /proc/version)
+${is_windows} && cwd="$(wslpath -m ${PWD})" || cwd="${PWD}"
+wezterm cli ${cmd} --cwd ${cwd}  -- zsh -c "$@"
