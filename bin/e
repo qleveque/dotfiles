@@ -10,10 +10,10 @@ if grep -q Microsoft /proc/version; then
   case ${ext} in
     png|jpg) mspaint.exe "${file}" &;;
     mp3) "/mnt/c/Program Files/Audacity/Audacity.exe" "${file}" &;;
-    *) nvim "${file}";;
+    *) nvim "$@";;
   esac
 else
   case ${ext} in
-    *) nvim "${file}";;
+    *) nvim "$@";;
   esac
 fi
