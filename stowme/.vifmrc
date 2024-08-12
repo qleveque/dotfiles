@@ -20,10 +20,10 @@ nn yW :exe '!echo -n %c:p | c'<CR>
 nn yp :exe '!echo -n %d | c'<CR>
 nn yw :exe '!echo -n %c | c'<CR>
 nn xx dd
-nn dd DD
+nn dd "0dd
 nn é :!weznew -s "run -p %f"<CR>
 vn x d
-vn d D
+vn d "0d
 nn <C-q> :quit<CR>
 nn ! :do<Space>
 
@@ -47,4 +47,5 @@ hi CmdLine cterm=none ctermfg=none ctermbg=none
 hi TopLine cterm=none ctermfg=none ctermbg=none
 hi Border cterm=none ctermfg=black ctermbg=none
 hi Directory cterm=bold ctermfg=green ctermbg=none
+hi Selected cterm=reverse ctermfg=blue ctermbg=default
 source ~/.vifm.icons
