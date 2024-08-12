@@ -4,8 +4,8 @@ stow --adopt -d "${HOME}/dotfiles" -t "${HOME}" stowme
 config="${HOME}/dotfiles/config"
 lndir() { mkdir -p "$2" && for file in "$1/*"; do ln -sf "$file" "$2/"; done }
 
-# dotfiles
 /usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
+env ZIM_HOME="${HOME}/.zim" zsh "${ZIM_HOME}/zimfw.zsh" install -q
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"

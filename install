@@ -7,10 +7,10 @@ sudo apt install -y \
   curl stow cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel clang nodejs jq sd lsd
 
 # nvim
-local tmp=$(mktemp)
+tmp="$(mktemp).tar.gz"
 wget -O ${tmp} 'https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz'
-unzip -o ${tmp} -d "${HOME}"
-sudo ln -s "${HOME}/nvim-linux64/bin/nvim" '/usr/bin/nvim'
+tar -xvf ${tmp} -C "${HOME}"
+sudo ln -fs "${HOME}/nvim-linux64/bin/nvim" '/usr/bin/nvim'
 
 # vifm devicons
 wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.vifm.icons"
@@ -19,10 +19,8 @@ wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 
 # zim
-ZIM_HOME="${HOME}/.zim"
-mkdir -p "${ZIM_HOME}"
-wget -nv -O "${ZIM_HOME}/zimfw.zsh" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
-source "${ZIM_HOME}/zimfw.zsh" install -q
+mkdir -p "${HOME}/.zim"
+wget -nv -O "${HOME}/.zim/zimfw.zsh" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
 
 # extract
 echo '#!/usr/bin/zsh

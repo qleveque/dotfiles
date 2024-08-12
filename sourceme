@@ -11,8 +11,8 @@ ask 'Change shell to zsh ?' && chsh -s $(which zsh)
 
 # Windows
 if grep -q Microsoft /proc/version; then
-  echo '-Add `'$(wslpath -m "${HOME}/dotfiles/bin")'` to PATH'
-  echo '-Add `'$(wslpath -m "${HOME}/dotfiles/bin/wsl")'` to PATH'
-  echo '-Run `wsl.exe -u root usermod -d "'${HOME}/dotfiles $USER'"`'
+  echo -Add \`$(wslpath -m "${HOME}/dotfiles/bin")\` to PATH
+  echo -Add \`$(wslpath -m "${HOME}/dotfiles/bin/wsl")\` to PATH
+  echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`
 fi
 
