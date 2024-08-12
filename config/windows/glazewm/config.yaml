@@ -5,7 +5,6 @@ general:
 
   cursor_jump:
     enabled: false
-    # trigger: 'monitor_focus'
 
 gaps:
   inner_gap: '3px'
@@ -67,25 +66,28 @@ window_rules:
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
 
 binding_modes:
-#   - name: 'resize'
-#     keybindings:
-#       - commands: ['resize --width -2%']
-#         bindings: ['h', 'left']
-#       - commands: ['resize --width +2%']
-#         bindings: ['l', 'right']
-#       - commands: ['resize --height +2%']
-#         bindings: ['k', 'up']
-#       - commands: ['resize --height -2%']
-#         bindings: ['j', 'down']
-#       - commands: ['wm-disable-binding-mode --name resize']
-#         bindings: ['escape', 'enter']
-
-  - name: 'pause'
-    keybindings:
-      - commands: ['wm-disable-binding-mode --name pause']
-        bindings: ['alt+shift+p']
 
 keybindings:
+  - commands: ['move-workspace --direction up']
+    bindings: ['alt+shift+d']
+  - commands: ['move-workspace --direction down']
+    bindings: ['alt+shift+f']
+  - commands: ['wm-reload-config']
+    bindings: ['alt+shift+u']
+  - commands: ['toggle-tiling-direction']
+    bindings: ['alt+v']
+  - commands: ['set-minimized']
+    bindings: ['alt+x']
+  # - commands: ['close']
+  #   bindings: ['alt+shift+q']
+
+  - commands: ['set-tiling']
+    bindings: ['alt+space']
+  - commands: ['toggle-floating --centered']
+    bindings: ['alt+enter']
+  - commands: ['toggle-fullscreen']
+    bindings: ['alt+shift+enter']
+
   - commands: ['focus --direction left']
     bindings: ['alt+h', 'alt+left']
   - commands: ['focus --direction right']
@@ -103,57 +105,6 @@ keybindings:
     bindings: ['alt+shift+k', 'alt+shift+up']
   - commands: ['move --direction down']
     bindings: ['alt+shift+j', 'alt+shift+down']
-
-  - commands: ['wm-enable-binding-mode --name pause']
-    bindings: ['alt+shift+p']
-
-  - commands: ['toggle-tiling-direction']
-    bindings: ['alt+v']
-
-  - commands: ['wm-cycle-focus']
-    bindings: ['alt+space']
-  - commands: ['toggle-floating --centered']
-    bindings: ['alt+shift+space']
-
-  # Change the focused window to be tiling.
-  - commands: ['toggle-tiling']
-    bindings: ['alt+t']
-
-  - commands: ['toggle-fullscreen']
-    bindings: ['alt+enter']
-  - commands: ['toggle-minimized']
-    bindings: ['alt+x']
-
-  # Close focused window.
-  # - commands: ['close']
-  #   bindings: ['alt+shift+q']
-
-  # Kill GlazeWM process safely.
-  # - commands: ['wm-exit']
-  #   bindings: ['alt+shift+e']
-
-  # Re-evaluate configuration file.
-  - commands: ['wm-reload-config']
-    bindings: ['alt+shift+u']
-
-  # Redraw all windows.
-  # - commands: ['wm-redraw']
-  #   bindings: ['alt+shift+w']
-
-  # # Focus the next/previous workspace defined in `workspaces` config.
-  # - commands: ['focus --next-workspace']
-  #   bindings: ['alt+s']
-  # - commands: ['focus --prev-workspace']
-  #   bindings: ['alt+a']
-
-  # Focus the workspace that last had focus.
-  - commands: ['focus --recent-workspace']
-    bindings: ['alt+z']
-
-  - commands: ['move-workspace --direction up']
-    bindings: ['alt+shift+d']
-  - commands: ['move-workspace --direction down']
-    bindings: ['alt+shift+f']
 
   - commands: ['focus --workspace any']
     bindings: ['alt+a']
@@ -192,3 +143,9 @@ keybindings:
     bindings: ['alt+shift+g']
   - commands: ['move --workspace back', 'focus --workspace back']
     bindings: ['alt+shift+b']
+
+  - commands: ['focus --recent-workspace']
+    bindings: ['alt+z']
+  - commands: ['move --recent-workspace', 'focus --recent-workspace']
+    bindings: ['alt+shift+z']
+
