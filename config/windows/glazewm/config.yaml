@@ -54,7 +54,7 @@ workspaces:
   - name: "rest"
     display_name: ""
   - name: "gui"
-    display_name: ""
+    display_name: ""
   - name: "back"
     display_name: "󰀿"
 
