@@ -30,12 +30,12 @@ nn + :sil cnext<CR>
 map <C-q> ZQ
 
 " Term
-nn é :exe'sil !weznew -s "run -p \"'.expand("%").'\""'<CR>
-nn \d :exe'sil !weznew "git difftool '.expand('%:t').'"'<CR>
+nn é :exe'sil !weznew -s "run -p \"'.expand('%').'\""'<CR>
+nn \d :exe'sil !weznew "git difftool '.expand('%').'"'<CR>
 nn \D :exe'sil !weznew "tig status"'<CR>
-nn \l :exe'sil !weznew "tig '.expand('%:t').'"'<CR>
+nn \l :exe'sil !weznew "tig '.expand('%').'"'<CR>
 nn \L :exe'sil !weznew "tig"'<CR>
-nn \b :exe'sil !weznew "tig blame +'.line('.').' '.expand('%:t').'"'<CR>
+nn \b :exe'sil !weznew "tig blame +'.line('.').' '.expand('%').'"'<CR>
 
 " Diff
 if &diff

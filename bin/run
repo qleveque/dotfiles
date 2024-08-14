@@ -65,7 +65,8 @@ case ${ext} in
   html|md) run "o $f; exit";;
   java) run "javac $f && java $n";;
   jl) run "julia $f";;
-  js|ts|mjs|tsx|jsx) run "node $f";;
+  js) run "node $f";;
+  ts) run "npx ts-node $f";;
   kt) run "kotlinc $f -include-runtime -d $n.jar && java -jar $n.jar";;
   lisp) run "clisp $n";;
   lua) run "lua $f";;

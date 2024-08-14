@@ -2,14 +2,14 @@
 # Edit any file
 
 full_path="$(readlink -f "$1")"
-cd ${full_path:h}
-file="${full_path:t}"
-ext="${file:e}"
+ext="${full_path:t:e}"
 
 if grep -q Microsoft /proc/version; then
+  win_args=("$@")
+  [[ "$#" -ne 0 ]] && win_args[1]=$(wslpath -m -- ${full_path})
   case ${ext} in
-    png|jpg) mspaint.exe "${file}" &;;
-    mp3) "/mnt/c/Program Files/Audacity/Audacity.exe" "${file}" &;;
+    png|jpg) mspaint.exe "${win_args[@]}" &;;
+    mp3) "/mnt/c/Program Files/Audacity/Audacity.exe" "${win_args[@]}" &;;
     *) nvim "$@";;
   esac
 else
