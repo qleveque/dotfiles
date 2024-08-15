@@ -55,8 +55,8 @@ case ${ext} in
   asm) run "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
   bash) run "bash $f";;
   bat|cmd) run cmd.exe /C "$f";;
-  c) run "clang-17 -o $n.out $f && ./$n.out";;
-  cc|cpp) run "clang++-17 -w -std=c++23 -o $n.out $f && ./$n.out";;
+  c) run "clang -o $n.out $f && ./$n.out";;
+  cc|cpp) run "clang++ -w -std=c++23 -o $n.out $f && ./$n.out";;
   cs) run "csc.exe -out:$n.out $f && ./$n.out";;
   f90|f95|f03) run "gfortran -o $n.out $f && ./$n.out";;
   go) run "go run $f";;

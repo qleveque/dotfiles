@@ -45,6 +45,7 @@ hi Executable cterm=none ctermfg=none ctermbg=none
 hi StatusLine cterm=none ctermfg=none ctermbg=none
 hi CmdLine cterm=none ctermfg=none ctermbg=none
 hi TopLine cterm=none ctermfg=none ctermbg=none
+hi TopLineSel cterm=none ctermfg=yellow ctermbg=none
 hi Border cterm=none ctermfg=black ctermbg=none
 hi Directory cterm=bold ctermfg=green ctermbg=none
 hi Selected cterm=reverse ctermfg=blue ctermbg=default
