@@ -36,7 +36,7 @@ window_behavior:
       shown_on_top: false
 
     fullscreen:
-      maximized: false
+      maximized: true
 
 workspaces:
   - name: "any"
