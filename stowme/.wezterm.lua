@@ -9,6 +9,7 @@ c.enable_scroll_bar = false
 c.font_size = 10
 c.leader = {key = 'b', mods = 'CTRL'}
 c.window_decorations = "RESIZE"
+c.window_background_opacity = 0.95
 c.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
 c.keys = {
   {key='Tab', mods = 'CTRL', action=act{SendString='\x1b[27;5;9~'}},

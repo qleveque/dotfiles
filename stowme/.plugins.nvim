@@ -8,6 +8,7 @@ local theme = {
   config = function()
     require'catppuccin'.setup{
       flavour='Mocha',
+      transparent_background = true,
       integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
       custom_highlights = function(C)
         return {
