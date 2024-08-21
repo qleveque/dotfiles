@@ -2,7 +2,7 @@
   email = qleveque@hotmail.com
   name = Quentin Leveque
 [core]
-  editor = nvim
+  editor = "nvim --cmd 'lua light=true'"
   ignorecase = true
   whitespace = trailing-space
   longpaths = true

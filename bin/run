@@ -23,14 +23,9 @@ error() {
   quit "\e[31m[$*]\e[0m"
 }
 
-full_path="$(readlink -f "$1")"
-cd ${full_path:h}
+[[ -f .run ]] && run "./.run"
 
-# Scripts
-while [[ ${PWD} != / ]]; do
-  [[ -f Makefile ]] && run make
-  cd ..
-done
+full_path="$(readlink -f "$1")"
 cd ${full_path:h}
 
 # File and params

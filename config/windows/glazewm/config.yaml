@@ -64,6 +64,9 @@ window_rules:
       - window_process: { equals: 'zebar' }
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+  - commands: ['set-floating', 'move --workspace gui', 'focus --workspace gui']
+    match:
+      - window_process: { equals: 'ANTlab' }
 
 binding_modes:
 

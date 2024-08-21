@@ -20,9 +20,19 @@ c.keys = {
   {key = 'v', mods = 'LEADER', action = act.SplitHorizontal{}},
   {key = 'n', mods = 'LEADER', action = act{SpawnTab='CurrentPaneDomain'}},
   {key = 'q', mods = 'LEADER', action=act{CloseCurrentPane={confirm=false}}},
+  {key = 'z', mods = 'LEADER', action = wezterm.action.TogglePaneZoomState},
   {
     key = 'l', mods = 'LEADER',
     action=act.Multiple{act.ClearScrollback'ScrollbackAndViewport',act.SendString'\x0c'}
+  },
+  {
+    key = 'r', mods = 'LEADER',
+    action = act.PromptInputLine {
+      description = 'Enter new name for tab',
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then window:active_tab():set_title(line) end
+      end),
+    },
   },
   {
     key = 'a', mods = 'CTRL|SHIFT',

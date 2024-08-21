@@ -1,14 +1,14 @@
 " vim: set ft=vim:
 set history=100 ul=100 wmnu is scs nohls ic so=4 stl=" " cf=permdelete
-set vicmd=e syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.local/share/Trash
+set vicmd=nvim syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.local/share/Trash
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
 " Shortcuts
 map <C-i> :histnext|osc7<CR>
 map <C-o> :histprev|osc7<CR>
 nn l :exe('normal! l')|osc7<CR>
+nn e :!e "%f"<CR>
 nn h :exe('normal! h')|osc7<CR>
-map e l
 nn <CR> :!o %f<CR>
 nn U <C-r>
 nn A cw
@@ -28,8 +28,8 @@ nn <C-q> :quit<CR>
 nn ! :do<Space>
 
 " FZF
-nn <C-n> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:osc7|:redr<CR>
-nn <C-t> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:osc7|:redr<CR>
+nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:osc7|:redr<CR>
+nn <C-n> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:osc7|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:osc7|:redr<CR>
 
 " Commands

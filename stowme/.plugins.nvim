@@ -241,6 +241,7 @@ local heavier_plugins = {
           ['T']=ta.fs.create,
           ['p']=ta.fs.paste,
           ['l']=ta.node.open.edit,
+          ['e']=function() vim.cmd('sil !weznew -s "e \\"'..path()..'\\""') end,
           ['h']=ta.node.navigate.parent_close,
           ['L']=ta.tree.change_root_to_node,
           ['H']=ta.tree.change_root_to_parent,

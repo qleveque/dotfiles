@@ -5,15 +5,15 @@ full_path="$(readlink -f "$1")"
 ext="${full_path:t:e}"
 
 if grep -q Microsoft /proc/version; then
-  args=("$@")
-  [[ "$#" -ne 0 ]] && args[1]=$(wslpath -m -- ${full_path})
-  if [[ -s "$1" ]] && file --mime-encoding $1 | grep '\bbinary$'; then
-    '/mnt/c/Program Files/ImHex/imhex.exe' "${args[@]}" &;
+  wargs=("$@")
+  [[ "$#" -ne 0 ]] && wargs[1]=$(wslpath -m -- ${full_path})
+  if [[ -s "$1" ]] && file -i "$1" | grep '.*: application/\S\+; charset=binary$'; then
+    '/mnt/c/Program Files/ImHex/imhex.exe' "${wargs[@]}" &;
     exit 0
   fi
   case ${ext} in
-    png|jpg) mspaint.exe "${args[@]}" &;;
-    mp3) '/mnt/c/Program Files/Audacity/Audacity.exe' "${args[@]}" &;;
+    png|jpg) mspaint.exe "${wargs[@]}" &;;
+    mp3) '/mnt/c/Program Files/Audacity/Audacity.exe' "${wargs[@]}" &;;
     *) nvim "$@";;
   esac
 else
