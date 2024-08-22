@@ -23,7 +23,7 @@ error() {
   quit "\e[31m[$*]\e[0m"
 }
 
-[[ -f .run ]] && run "./.run"
+[[ -f .run.sh ]] && run "./.run.sh"
 
 full_path="$(readlink -f "$1")"
 cd ${full_path:h}
@@ -34,6 +34,8 @@ cd ${full_path:h}
 file="${full_path:t}" name="${file:r}" ext="${file:e}"
 shift
 PARAMS="$@"
+
+[[ "${file}" == "Makefile" ]] && run "make"
 
 # Shebang
 shebang=$(sed -n '1s/^#!//p' ${file})
