@@ -1,8 +1,7 @@
 #!/bin/bash
 f=$(mktemp)
 [[ "$1" != "-1" ]] && pane_id="--pane-id $1"
-[[ "$2" != "-1" ]] && start_line="--start-line $2"
-shift && shift
-wezterm cli get-text ${pane_id} ${start_line} > $f
+shift
+wezterm cli get-text ${pane_id} --start-line '-1000' > $f
 sd ' *\n' '\n' $f && sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' $f
 nvim --cmd 'lua light=true' -c 'set ls=0' "$@" $f

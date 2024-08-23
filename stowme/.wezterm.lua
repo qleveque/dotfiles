@@ -36,7 +36,7 @@ c.keys = {
   {
     key = 'a', mods = 'CTRL|SHIFT',
     action = wezterm.action_callback(function(w, p) w:perform_action(
-      act.SpawnCommandInNewTab{args={'zsh','-c','copymode '..p:pane_id()..' -1 -c "norm G"'}},p
+      act.SpawnCommandInNewTab{args={'zsh','-c','copymode '..p:pane_id()..' -c "norm G"'}},p
     )end),
   },
 }
