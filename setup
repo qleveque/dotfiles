@@ -5,8 +5,7 @@ config="${HOME}/dotfiles/config"
 lndir() { mkdir -p "$2" && for file in "$1/*"; do ln -sf "$file" "$2/"; done }
 
 /usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
-export ZIM_HOME="${HOME}/.zim"
-zsh "${ZIM_HOME}/zimfw.zsh" install -q
+export ZIM_HOME="${HOME}/.zim" && zsh "${ZIM_HOME}/zimfw.zsh" install -q
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"

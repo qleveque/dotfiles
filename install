@@ -13,8 +13,7 @@ wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 
 # zim
-mkdir -p "${HOME}/.zim"
-wget -nv -O "${HOME}/.zim/zimfw.zsh" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
+wget -nv -P "${HOME}/.zim" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
 
 # extract
 echo '#!/usr/bin/zsh
