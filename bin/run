@@ -5,37 +5,53 @@
 [[ "$1" == "-p" ]] && PAUSE=true && shift
 
 quit() {
-  echo -n "$1"
   [[ ${PAUSE} == true ]] && read || echo
   exit 0
 }
 
+comment() {
+  echo "\e[40m$*\e[0m"
+}
+
+error() {
+  echo "\e[31m$*\e[0m"
+  quit
+}
+
 run() {
-  echo "\e[36m[$*]\e[0m"
+  comment "$*"
   local start=$(date +%s.%2N)
   eval $* $PARAMS
   local rc=$?
   local et=$(echo "$(date +%s.%2N) - ${start}" | bc)
-  quit "\e[36m[Returned ${rc} in ${et} seconds]\e[0m"
+  comment "Returned ${rc} in ${et} seconds"
+  quit
 }
-
-error() {
-  quit "\e[31m[$*]\e[0m"
-}
-
-[[ -f .run.sh ]] && run "./.run.sh"
 
 full_path="$(readlink -f "$1")"
-cd ${full_path:h}
+
+# Makefile and runfile
+run_file_pwd="" make_file_pwd=""
+while [[ ${PWD} != / ]]; do
+  [[ -z ${run_file_pwd} && -f .run ]] && run_file_pwd="${PWD}"
+  [[ -z ${make_file_pwd} && -f Makefile ]] && make_file_pwd="${PWD}"
+  cd ..
+done
+if [[ -n ${run_file_pwd}${make_file_pwd} ]]; then
+  [[ -n ${run_file_pwd} ]] && comment "(r): ${run_file_pwd}/.run"
+  [[ -n ${make_file_pwd} ]] && comment "(m): ${make_file_pwd}/Makefile"
+  comment "(*): ${full_path}" && read -k1 -s key
+  [[ -n ${run_file_pwd} && $key == "r" ]] && cd ${run_file_pwd} && run "./.run"
+  [[ -n ${run_file_pwd} && $key == "m" ]] && cd ${make_file_pwd} && run "make"
+fi
 
 # File and params
+cd ${full_path:h}
 [[ ! -f ${full_path} ]] && error 'File does not exist'
 cd ${full_path:h}
 file="${full_path:t}" name="${file:r}" ext="${file:e}"
 shift
 PARAMS="$@"
-
-[[ "${file}" == "Makefile" ]] && run "make"
 
 # Shebang
 shebang=$(sed -n '1s/^#!//p' ${file})
@@ -50,7 +66,7 @@ fi
 case ${ext} in
   ahk) run cmd.exe /C "autohotkey.exe $f";;
   asm) run "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
-  bash) run "bash $f";;
+  bash|sh) run "bash $f";;
   bat|cmd) run cmd.exe /C "$f";;
   c) run "clang -o $n.out $f && ./$n.out";;
   cc|cpp) run "clang++ -w -std=c++23 -o $n.out $f && ./$n.out";;
@@ -77,7 +93,6 @@ case ${ext} in
   rb) run "ruby $f";;
   rs) run "rustc $f -o $n.out && ./$n.out";;
   scala) run "scala $f";;
-  sh) run "sh $f";;
   sql) run "sqlite3 $n.db < $f";;
   tex) run "pdflatex -halt-on-error $f && o $n.pdf && exit";;
   zig) run "zig build-exe $f && ./$n";;

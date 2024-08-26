@@ -8,6 +8,7 @@
   longpaths = true
   autocrlf = input
   filemode = false
+  excludesfile = ~/.gitignore
 [push]
   autoSetupRemote = true
 [pull]

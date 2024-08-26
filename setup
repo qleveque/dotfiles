@@ -12,7 +12,7 @@ if grep -q Microsoft /proc/version; then
   startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
 
   # hard links stowme
-  for file in .gitconfig .vimrc .wezterm.lua; do
+  for file in .gitconfig .gitignore .vimrc .wezterm.lua; do
     ln -f "${HOME}/dotfiles/stowme/${file}" "${HOME}/"
   done
 
