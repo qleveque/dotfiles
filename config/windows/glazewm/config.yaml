@@ -52,7 +52,7 @@ workspaces:
   - name: "web"
     display_name: ""
   - name: "rest"
-    display_name: ""
+    display_name: ""
   - name: "gui"
     display_name: ""
   - name: "back"
@@ -71,9 +71,9 @@ window_rules:
 binding_modes:
 
 keybindings:
-  - commands: ['move-workspace --direction up']
+  - commands: ['move-workspace --direction up', 'wm-redraw']
     bindings: ['alt+shift+d']
-  - commands: ['move-workspace --direction down']
+  - commands: ['move-workspace --direction down', 'wm-redraw']
     bindings: ['alt+shift+f']
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']
