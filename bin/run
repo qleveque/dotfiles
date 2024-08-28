@@ -1,24 +1,11 @@
 #!/usr/bin/zsh
 # Run any program
 
-# Pause at the end if the '-p' flag is specified
-[[ "$1" == "-p" ]] && PAUSE=true && shift
+quit() { [[ ${PAUSE} == true ]] && read || echo; exit 0; }
+comment() { echo "\e[40m$*\e[0m" }
+error() { echo "\e[31m$*\e[0m"; quit; }
 
-quit() {
-  [[ ${PAUSE} == true ]] && read || echo
-  exit 0
-}
-
-comment() {
-  echo "\e[40m$*\e[0m"
-}
-
-error() {
-  echo "\e[31m$*\e[0m"
-  quit
-}
-
-run() {
+run_cmd() {
   comment "$*"
   local start=$(date +%s.%2N)
   eval $* $PARAMS
@@ -28,80 +15,93 @@ run() {
   quit
 }
 
-full_path="$(readlink -f "$1")"
+run_file() {
+  full_path="$1"
 
-# Makefile and runfile
-run_file_pwd="" make_file_pwd=""
+  # File and params
+  cd ${full_path:h}
+  [[ ! -f ${full_path} ]] && error 'File does not exist'
+  cd ${full_path:h}
+  file="${full_path:t}" name="${file:r}" ext="${file:e}"
+  shift
+  PARAMS="$@"
+
+  # Shebang
+  shebang=$(sed -n '1s/^#!//p' ${file})
+  [[ -n ${shebang} ]] && run_cmd "${shebang} ${file}"
+
+  # Extension
+  if [[ $name =~ ^[[:alnum:]]+$ ]]; then
+    f="${file}" n="${name}"
+  else
+    f="\"${file}\"" n="\"${name}\""
+  fi
+  case ${ext} in
+    ahk) run_cmd cmd.exe /C "autohotkey.exe $f";;
+    asm) run_cmd "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
+    bash|sh) run_cmd "bash $f";;
+    bat|cmd) run_cmd cmd.exe /C "$f";;
+    c) run_cmd "clang -o $n.out $f && ./$n.out";;
+    cc|cpp) run_cmd "clang++ -w -std=c++23 -o $n.out $f && ./$n.out";;
+    cs) run_cmd "csc.exe -out:$n.out $f && ./$n.out";;
+    f90|f95|f03) run_cmd "gfortran -o $n.out $f && ./$n.out";;
+    go) run_cmd "go run $f";;
+    groovy) run_cmd "groovy $f";;
+    hs) run_cmd "ghc $f && ./$n";;
+    html|md) run_cmd "o $f; exit";;
+    java) run_cmd "javac $f && java $n";;
+    jl) run_cmd "julia $f";;
+    js) run_cmd "node $f";;
+    ts) run_cmd "npx ts-node $f";;
+    kt) run_cmd "kotlinc $f -include-runtime -d $n.jar && java -jar $n.jar";;
+    lisp) run_cmd "clisp $n";;
+    lua) run_cmd "lua $f";;
+    m4) run_cmd "m4 -I $f > $n";;
+    mod|aMod) run_cmd "voc $f -M && echo && ./$n";;
+    nsi) run_cmd cmd.exe /C "makensis $f && $n.exe";;
+    pl) run_cmd "perl $f";;
+    ps1) run_cmd "powershell.exe -ExecutionPolicy RemoteSigned -f $f";;
+    py) run_cmd "python3 $f";;
+    r) run_cmd "Rscript $f";;
+    rb) run_cmd "ruby $f";;
+    rs) run_cmd "rustc $f -o $n.out && ./$n.out";;
+    scala) run_cmd "scala $f";;
+    sql) run_cmd "sqlite3 $n.db < $f";;
+    tex) run_cmd "pdflatex -halt-on-error $f && o $n.pdf && exit";;
+    zig) run_cmd "zig build-exe $f && ./$n";;
+    zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz|jar) run_cmd "extract $f";;
+    zsh) run_cmd "zsh $f";;
+  esac
+
+  # Executable
+  [[ -x ${file} ]] && run_cmd "./$f"
+}
+
+# Pause at the end if the '-p' flag is specified
+[[ "$1" == "-p" ]] && PAUSE=true && shift
+
+input_file="$(readlink -f "$1")"
+
+# Run file or Makefile
+run_file="" run_file_pwd="" make_file_pwd=""
 while [[ ${PWD} != / ]]; do
-  [[ -z ${run_file_pwd} && -f .run ]] && run_file_pwd="${PWD}"
+  if [[ -z ${run_file_pwd} ]]; then
+    run_file=$(find . -maxdepth 1 -name '.run.*' -print | head -n1 | cut -c 3-)
+    [[ -n ${run_file} ]] && run_file_pwd="${PWD}"
+  fi
   [[ -z ${make_file_pwd} && -f Makefile ]] && make_file_pwd="${PWD}"
   cd ..
 done
 if [[ -n ${run_file_pwd}${make_file_pwd} ]]; then
-  [[ -n ${run_file_pwd} ]] && comment "(r): ${run_file_pwd}/.run"
+  [[ -n ${run_file_pwd} ]] && comment "(r): ${run_file_pwd}/${run_file}"
   [[ -n ${make_file_pwd} ]] && comment "(m): ${make_file_pwd}/Makefile"
-  comment "(*): ${full_path}" && read -k1 -s key
-  [[ -n ${run_file_pwd} && $key == "r" ]] && cd ${run_file_pwd} && run "./.run"
-  [[ -n ${run_file_pwd} && $key == "m" ]] && cd ${make_file_pwd} && run "make"
+  comment "(*): ${input_file}" && read -k1 -s key
+  [[ -n ${run_file_pwd} && $key == "r" ]] && cd ${run_file_pwd} && run_file "${run_file_pwd}/${run_file}"
+  [[ -n ${run_file_pwd} && $key == "m" ]] && cd ${make_file_pwd} && run_cmd "make"
 fi
 
-# File and params
-cd ${full_path:h}
-[[ ! -f ${full_path} ]] && error 'File does not exist'
-cd ${full_path:h}
-file="${full_path:t}" name="${file:r}" ext="${file:e}"
-shift
-PARAMS="$@"
-
-# Shebang
-shebang=$(sed -n '1s/^#!//p' ${file})
-[[ -n ${shebang} ]] && run "${shebang} ${file}"
-
-# Extension
-if [[ $name =~ ^[[:alnum:]]+$ ]]; then
-  f="${file}" n="${name}"
-else
-  f="\"${file}\"" n="\"${name}\""
-fi
-case ${ext} in
-  ahk) run cmd.exe /C "autohotkey.exe $f";;
-  asm) run "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
-  bash|sh) run "bash $f";;
-  bat|cmd) run cmd.exe /C "$f";;
-  c) run "clang -o $n.out $f && ./$n.out";;
-  cc|cpp) run "clang++ -w -std=c++23 -o $n.out $f && ./$n.out";;
-  cs) run "csc.exe -out:$n.out $f && ./$n.out";;
-  f90|f95|f03) run "gfortran -o $n.out $f && ./$n.out";;
-  go) run "go run $f";;
-  groovy) run "groovy $f";;
-  hs) run "ghc $f && ./$n";;
-  html|md) run "o $f; exit";;
-  java) run "javac $f && java $n";;
-  jl) run "julia $f";;
-  js) run "node $f";;
-  ts) run "npx ts-node $f";;
-  kt) run "kotlinc $f -include-runtime -d $n.jar && java -jar $n.jar";;
-  lisp) run "clisp $n";;
-  lua) run "lua $f";;
-  m4) run "m4 -I $f > $n";;
-  mod|aMod) run "voc $f -M && echo && ./$n";;
-  nsi) run cmd.exe /C "makensis $f && $n.exe";;
-  pl) run "perl $f";;
-  ps1) run "powershell.exe -ExecutionPolicy RemoteSigned -f $f";;
-  py) run "python3 $f";;
-  r) run "Rscript $f";;
-  rb) run "ruby $f";;
-  rs) run "rustc $f -o $n.out && ./$n.out";;
-  scala) run "scala $f";;
-  sql) run "sqlite3 $n.db < $f";;
-  tex) run "pdflatex -halt-on-error $f && o $n.pdf && exit";;
-  zig) run "zig build-exe $f && ./$n";;
-  zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz|jar) run "extract $f";;
-  zsh) run "zsh $f";;
-esac
-
-# Executable
-[[ -x ${file} ]] && run "./$f"
+# Run single file
+run_file "${input_file}"
 
 # Not executable
 error 'Nothing to do'
