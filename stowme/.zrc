@@ -5,16 +5,13 @@ zstyle ':completion:*' fzf-search-display true
 eval "$(starship init zsh)"
 cf() { cd "$(dirname $1)" }
 
-# Path
-export PATH="${HOME}/bin:${HOME}/dotfiles/bin:${HOME}/.local/bin:${PATH}"
-grep -q Microsoft /proc/version && export PATH="${HOME}/dotfiles/bin/wsl:${PATH}"
-
 # Variables
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --border --bind=tab:down,shift-tab:up --reverse'
 export FZF_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^${PWD}\$\""'
 export MYVIFMRC="${HOME}/.vifmrc"
+export PATH="${HOME}/.local/bin:${HOME}/dotfiles/bin:${PATH}"
 KEYTIMEOUT=1
 HISTFILE=~/.zsh_history HISTSIZE=1000 SAVEHIST=1000
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(vi-cmd-mode accept-line push-line-or-edit recursive-edit)

@@ -61,9 +61,9 @@ nvim_plugins = {
     opts = { safe_labels = {} },
     keys = {
       {
-        '<Space>',
+        '_',
         function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
-        buffer=bufnr, silent=true, nowait=true
+        buffer=bufnr, silent=true, nowait=true, mode={'v', 'n'}
       }
     }
   },
@@ -89,11 +89,6 @@ local heavier_plugins = {
   {
     "kevinhwang91/nvim-bqf",
     opts = { preview = { winblend = 0, win_height=999, show_scroll_bar=false } }
-  },
-  {
-    "mizlan/iswap.nvim",
-    keys = { {'L', '<cmd>ISwapNodeWithRight<CR>'}, {'H', '<cmd>ISwapNodeWithLeft<CR>'} },
-    opts = { flash_style = false, move_cursor = true, }
   },
   {
     "mattn/emmet-vim",
@@ -157,7 +152,11 @@ local heavier_plugins = {
     event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = { surrounds = {},
-      keymaps = { init_selection = "_", node_incremental = "_", node_decremental = "-", },
+      keymaps = {
+        init_selection = '<Space>',
+        node_incremental = '<Space>',
+        node_decremental = '<S-Space>',
+      },
     }
   },
   {
@@ -245,10 +244,8 @@ local heavier_plugins = {
           ['l']=ta.node.open.edit,
           ['e']=function() vim.cmd('sil !weznew -s "e \\"'..path()..'\\""') end,
           ['h']=ta.node.navigate.parent_close,
-          ['L']=ta.tree.change_root_to_node,
-          ['H']=ta.tree.change_root_to_parent,
           ['é']=function() vim.cmd('sil !weznew -s "run -p \\"'..path()..'\\""') end,
-          ['É']=function() vim.cmd('sil !weznew -s "run"') end,
+          ['É']=function() vim.cmd('sil !weznew -s run') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
         }
@@ -257,6 +254,7 @@ local heavier_plugins = {
         end
       end
       require('nvim-tree').setup{
+        sync_root_with_cwd = true,
         update_focused_file = { enable = true },
         view={ signcolumn='no' },
         renderer={ group_empty=true, root_folder_label=false },

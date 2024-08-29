@@ -57,6 +57,8 @@ workspaces:
     display_name: ""
   - name: "back"
     display_name: "󰀿"
+  - name: "music"
+    display_name: ""
 
 window_rules:
   - commands: ['ignore']
@@ -67,6 +69,9 @@ window_rules:
   - commands: ['set-floating', 'move --workspace gui', 'focus --workspace gui']
     match:
       - window_process: { equals: 'ANTlab' }
+  - commands: ['move --workspace music']
+    match:
+      - window_process: { equals: 'Spotify' }
 
 binding_modes:
 
@@ -127,6 +132,8 @@ keybindings:
     bindings: ['alt+g']
   - commands: ['focus --workspace back']
     bindings: ['alt+b']
+  - commands: ['focus --workspace music']
+    bindings: ['alt+m']
 
   - commands: ['move --workspace any', 'focus --workspace any']
     bindings: ['alt+shift+a']
@@ -146,9 +153,10 @@ keybindings:
     bindings: ['alt+shift+g']
   - commands: ['move --workspace back', 'focus --workspace back']
     bindings: ['alt+shift+b']
+  - commands: ['move --workspace music', 'focus --workspace music']
+    bindings: ['alt+shift+m']
 
   - commands: ['focus --recent-workspace']
     bindings: ['alt+z']
   - commands: ['move --recent-workspace', 'focus --recent-workspace']
     bindings: ['alt+shift+z']
-

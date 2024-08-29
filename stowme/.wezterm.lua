@@ -13,6 +13,7 @@ c.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
 c.keys = {
   {key='Tab', mods = 'CTRL', action=act{SendString='\x1b[27;5;9~'}},
   {key='Tab', mods = 'CTRL|SHIFT', action=act{SendString='\x1b[27;6;9~'}},
+  {key= 'Space', mods= 'SHIFT', action=act{SendString='\x1b[27;2;32~'}},
   {key = ';', mods = 'CTRL', action = act.ActivateTabRelative(1)},
   {key = ',', mods = 'CTRL', action = act.ActivateTabRelative(-1)},
   {key = 's', mods = 'LEADER', action = act.SplitVertical{}},

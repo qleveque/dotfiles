@@ -2,17 +2,16 @@
 # Run any program
 
 quit() { [[ ${PAUSE} == true ]] && read || echo; exit 0; }
-comment() { echo "\e[40m$*\e[0m" }
+display() { echo "\e[40m$*\e[0m" }
 error() { echo "\e[31m$*\e[0m"; quit; }
 
 # Wrapper to run any command showing execution time and returned code
 run_cmd() {
-  comment "$*"
+  display "PWD: ${PWD}, CMD: $*"
   local start=$(date +%s.%2N)
   eval $*
-  local rc=$?
-  local et=$(echo "$(date +%s.%2N) - ${start}" | bc)
-  comment "Returned ${rc} in ${et} seconds"
+  local rc=$? et=$(echo "$(date +%s.%2N) - ${start}" | bc)
+  display "Returned ${rc} in ${et} seconds"
   quit
 }
 
@@ -20,19 +19,18 @@ run_cmd() {
 run_file() {
   [[ ! -f $1 ]] && error 'File does not exist'
   cd ${1:h}
-  local file="${1:t}" name="${file:r}" ext="${file:e}"
+  local file="${1:t}"
+
+  # Makefile
+  [[ ${file} == Makefile ]] && run_cmd "make"
 
   # Shebang
-  local shebang=$(sed -n '1s/^#!//p' ${file})
+  local shebang=$(sed -n '1s/^.*#!//p' ${file})
   [[ -n ${shebang} ]] && run_cmd "${shebang} ${file}"
 
   # Extension
-  if [[ $name =~ ^[[:alnum:]]+$ ]]; then
-    local f="${file}" n="${name}"
-  else
-    local f="\"${file}\"" n="\"${name}\""
-  fi
-  case ${ext} in
+  local f="${file}" n="${file:r}" && [[ $f =~ " " ]] && f="\"$f\"" n="\"$n\""
+  case ${file:e} in
     ahk) run_cmd cmd.exe /C "autohotkey.exe $f";;
     asm) run_cmd "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
     bash|sh) run_cmd "bash $f";;
@@ -78,9 +76,8 @@ run_file() {
 # Find and run a script file `.run.*` in current or any parent directory
 run_project() {
   while [[ ${PWD} != / ]]; do
-    local file=$(find . -maxdepth 1 -name '.run.*' -print | head -n1 | cut -c 3-)
-    [[ -n ${file} ]] && run_file "${PWD}/${file}"
-    cd ..
+    local file=$(ls -a1 | grep "^.run."| head -n1)
+    [[ -n ${file} ]] && run_file "${PWD}/${file}" || cd ..
   done
   error 'No `.run` script'
 }
