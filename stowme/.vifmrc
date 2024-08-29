@@ -22,6 +22,7 @@ nn yw :exe '!echo -n %c | c'<CR>
 nn xx dd
 nn dd "0dd
 nn é :!weznew -s "run -p %f"<CR>
+nn É :!weznew -s "run"<CR>
 vn x d
 vn d "0d
 nn <C-q> :quit<CR>

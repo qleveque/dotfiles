@@ -31,6 +31,7 @@ map <C-q> ZQ
 
 " Term
 nn é :exe'sil !weznew -s "run -p \"'.expand('%').'\""'<CR>
+nn É :exe'sil !weznew -s "run"'<CR>
 nn \d :exe'sil !weznew "git difftool '.expand('%').'"'<CR>
 nn \D :exe'sil !weznew "tig status"'<CR>
 nn \l :exe'sil !weznew "tig '.expand('%').'"'<CR>
@@ -46,3 +47,5 @@ if &diff
   au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
   au BufWinEnter /tmp/* setlocal noma
 end
+
+command! -nargs=1 Go execute 'normal! 0go' . (<args>-1) . ' '

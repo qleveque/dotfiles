@@ -248,6 +248,7 @@ local heavier_plugins = {
           ['L']=ta.tree.change_root_to_node,
           ['H']=ta.tree.change_root_to_parent,
           ['é']=function() vim.cmd('sil !weznew -s "run -p \\"'..path()..'\\""') end,
+          ['É']=function() vim.cmd('sil !weznew -s "run"') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
         }

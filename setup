@@ -2,7 +2,7 @@
 
 stow --adopt -d "${HOME}/dotfiles" -t "${HOME}" stowme
 config="${HOME}/dotfiles/config"
-lndir() { mkdir -p "$2" && for file in "$1/"*; do ln -sf "$file" "$2/"; done }
+lndir() { mkdir -p "$2" && for file in "$1/"*; do ln -f "$file" "$2/"; done }
 
 /usr/bin/python3 "${config}/dotfiles/lesskey.py" > ~/.lesskey
 export ZIM_HOME="${HOME}/.zim" && zsh "${ZIM_HOME}/zimfw.zsh" install -q
@@ -27,8 +27,8 @@ if grep -q Microsoft /proc/version; then
 
   # glazewm + zebar
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
-  cp -f "${config}/windows/glazewm/"* "${HOME}/.glzr/glazewm/"
-  cp -f "${config}/windows/zebar/"* "${HOME}/.glzr/zebar"
+  lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm/"
+  lndir "${config}/windows/zebar" "${HOME}/.glzr/zebar"
 
   # Firefox (should activate legacyUserProfileCustomizations)
   for dir in $(find "${appData}/Mozilla/Firefox/Profiles/" -type d -name "*release*"); do

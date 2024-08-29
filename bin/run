@@ -5,36 +5,32 @@ quit() { [[ ${PAUSE} == true ]] && read || echo; exit 0; }
 comment() { echo "\e[40m$*\e[0m" }
 error() { echo "\e[31m$*\e[0m"; quit; }
 
+# Wrapper to run any command showing execution time and returned code
 run_cmd() {
   comment "$*"
   local start=$(date +%s.%2N)
-  eval $* $PARAMS
+  eval $*
   local rc=$?
   local et=$(echo "$(date +%s.%2N) - ${start}" | bc)
   comment "Returned ${rc} in ${et} seconds"
   quit
 }
 
+# Run a script based on the shebang or its extension
 run_file() {
-  full_path="$1"
-
-  # File and params
-  cd ${full_path:h}
-  [[ ! -f ${full_path} ]] && error 'File does not exist'
-  cd ${full_path:h}
-  file="${full_path:t}" name="${file:r}" ext="${file:e}"
-  shift
-  PARAMS="$@"
+  [[ ! -f $1 ]] && error 'File does not exist'
+  cd ${1:h}
+  local file="${1:t}" name="${file:r}" ext="${file:e}"
 
   # Shebang
-  shebang=$(sed -n '1s/^#!//p' ${file})
+  local shebang=$(sed -n '1s/^#!//p' ${file})
   [[ -n ${shebang} ]] && run_cmd "${shebang} ${file}"
 
   # Extension
   if [[ $name =~ ^[[:alnum:]]+$ ]]; then
-    f="${file}" n="${name}"
+    local f="${file}" n="${name}"
   else
-    f="\"${file}\"" n="\"${name}\""
+    local f="\"${file}\"" n="\"${name}\""
   fi
   case ${ext} in
     ahk) run_cmd cmd.exe /C "autohotkey.exe $f";;
@@ -57,7 +53,7 @@ run_file() {
     lisp) run_cmd "clisp $n";;
     lua) run_cmd "lua $f";;
     m4) run_cmd "m4 -I $f > $n";;
-    mod|aMod) run_cmd "voc $f -M && echo && ./$n";;
+    mod|aMod) run_cmd "voc $f -m && echo && ./$n";;
     nsi) run_cmd cmd.exe /C "makensis $f && $n.exe";;
     pl) run_cmd "perl $f";;
     ps1) run_cmd "powershell.exe -ExecutionPolicy RemoteSigned -f $f";;
@@ -75,33 +71,20 @@ run_file() {
 
   # Executable
   [[ -x ${file} ]] && run_cmd "./$f"
+
+  error 'Nothing to do'
 }
 
-# Pause at the end if the '-p' flag is specified
+# Find and run a script file `.run.*` in current or any parent directory
+run_project() {
+  while [[ ${PWD} != / ]]; do
+    local file=$(find . -maxdepth 1 -name '.run.*' -print | head -n1 | cut -c 3-)
+    [[ -n ${file} ]] && run_file "${PWD}/${file}"
+    cd ..
+  done
+  error 'No `.run` script'
+}
+
 [[ "$1" == "-p" ]] && PAUSE=true && shift
-
-input_file="$(readlink -f "$1")"
-
-# Run file or Makefile
-run_file="" run_file_pwd="" make_file_pwd=""
-while [[ ${PWD} != / ]]; do
-  if [[ -z ${run_file_pwd} ]]; then
-    run_file=$(find . -maxdepth 1 -name '.run.*' -print | head -n1 | cut -c 3-)
-    [[ -n ${run_file} ]] && run_file_pwd="${PWD}"
-  fi
-  [[ -z ${make_file_pwd} && -f Makefile ]] && make_file_pwd="${PWD}"
-  cd ..
-done
-if [[ -n ${run_file_pwd}${make_file_pwd} ]]; then
-  [[ -n ${run_file_pwd} ]] && comment "(r): ${run_file_pwd}/${run_file}"
-  [[ -n ${make_file_pwd} ]] && comment "(m): ${make_file_pwd}/Makefile"
-  comment "(*): ${input_file}" && read -k1 -s key
-  [[ -n ${run_file_pwd} && $key == "r" ]] && cd ${run_file_pwd} && run_file "${run_file_pwd}/${run_file}"
-  [[ -n ${run_file_pwd} && $key == "m" ]] && cd ${make_file_pwd} && run_cmd "make"
-fi
-
-# Run single file
-run_file "${input_file}"
-
-# Not executable
-error 'Nothing to do'
+[[ -z "$1" ]] && run_project
+run_file "$(readlink -f "$1")"
