@@ -10,7 +10,6 @@ set ignore-case = smart-case
 set diff-options = --pretty=medium
 
 bind generic g none
-bind generic d none
 bind generic gg :0
 bind generic G move-last-line
 bind generic y none
@@ -23,6 +22,7 @@ bind diff j :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind diff k :?\|\s+(0|[0-9]+\s[\+-]+)$
 bind status j :/^\S+
 bind status k :?^\S+
+bind status d none
 bind status dd !@>rm %(file)
 
 bind generic gl view-main

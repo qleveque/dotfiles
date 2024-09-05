@@ -4,16 +4,16 @@
 full_path="$(readlink -f "$1")"
 ext="${full_path:t:e}"
 
+# Check if binary file
+[[ -s "$1" ]]&&file -i "$1"|grep -q '.*: application/\S\+; charset=binary$'&&ext='bin'
+
 if grep -q Microsoft /proc/version; then
-  wargs=("$@")
-  [[ "$#" -ne 0 ]] && wargs[1]=$(wslpath -m -- ${full_path})
-  if [[ -s "$1" ]] && file -i "$1" | grep '.*: application/\S\+; charset=binary$'; then
-    '/mnt/c/Program Files/ImHex/imhex.exe' "${wargs[@]}" &;
-    exit 0
-  fi
+  # Setup Windows arguments
+  wargs=("$@") && [[ "$#" -ne 0 ]] && wargs[1]=$(wslpath -m -- ${full_path})
   case ${ext} in
     png|jpg) mspaint.exe "${wargs[@]}" &;;
     mp3) '/mnt/c/Program Files/Audacity/Audacity.exe' "${wargs[@]}" &;;
+    bin) '/mnt/c/Program Files/ImHex/imhex.exe' "${wargs[@]}" &;;
     *) nvim "$@";;
   esac
 else

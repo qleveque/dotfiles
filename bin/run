@@ -38,6 +38,7 @@ run_file() {
     c) run_cmd "clang -o $n.out $f && ./$n.out";;
     cc|cpp) run_cmd "clang++ -w -std=c++23 -o $n.out $f && ./$n.out";;
     cs) run_cmd "csc.exe -out:$n.out $f && ./$n.out";;
+    exp) run_cmd "expect $f";;
     f90|f95|f03) run_cmd "gfortran -o $n.out $f && ./$n.out";;
     go) run_cmd "go run $f";;
     groovy) run_cmd "groovy $f";;
