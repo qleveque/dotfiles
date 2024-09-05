@@ -1,0 +1,17 @@
+#!/usr/bin/zsh
+
+directory_changed_callback() {
+  N=300
+  DIRHIST=${HOME}/.dirhist
+  # Add the current directory to the directory history
+  touch ${DIRHIST}
+  sed -i "\#^$PWD\$#d" ${DIRHIST}
+  echo $PWD >> ${DIRHIST}
+  echo "$(cat ${DIRHIST} | tail -$N)" > ${DIRHIST}
+  # osc7
+  if grep -q Microsoft /proc/version; then
+    printf "\033]7;file://%s\033\\" "$(wslpath -w "${PWD}")"
+  fi
+}
+
+directory_changed_callback &

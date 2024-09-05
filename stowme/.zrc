@@ -25,8 +25,7 @@ source ~/.zim/init.zsh
 source ~/.zvimrc
 source ~/.aliases
 
-# Directory history
+# On directory changed
+_on_dir_changed() { oncd }
 autoload -U add-zsh-hook
-add-zsh-hook chpwd on_change_dir
-on_change_dir() {osc7 "$PWD"&&sed -i "\#^$PWD\$#d" ~/.dirhist&&echo $PWD>>~/.dirhist}
-touch ~/.dirhist && on_change_dir && echo "$(cat ~/.dirhist | tail -300)" > ~/.dirhist
+add-zsh-hook chpwd _on_dir_changed
