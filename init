@@ -9,7 +9,7 @@ sudo apt install -y \
   curl stow cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel clang nodejs jq sd lsd nvim
 
 # vifm devicons
-wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.vifm.icons"
+wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"
 
 # starship
 curl -sS https://starship.rs/install.sh | sh -s -- -y

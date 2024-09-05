@@ -29,19 +29,19 @@ bind generic gl view-main
 bind generic gs view-status
 
 bind generic l :d
-bind log l !@>weznew "tig show '%(commit)'"
-bind diff l !+>weznew "\
+bind log l !@>wez new "tig show '%(commit)'"
+bind diff l !+>wez new "\
   [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind stage l !+>weznew "\
+bind stage l !+>wez new "\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind status l !+>weznew "\
+bind status l !+>wez new "\
   [[ $(git ls-files --unmerged '%(file)') ]] && git mergetool -- '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
   FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind status p !+>weznew "FILE="${PWD}/%(file)" git pick '%(file)'"
+bind status p !+>wez new "FILE="${PWD}/%(file)" git pick '%(file)'"

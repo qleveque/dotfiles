@@ -30,20 +30,20 @@ nn + :sil cnext<CR>
 map <C-q> ZQ
 
 " Term
-nn é :exe'sil !weznew -s "run -p \"'.expand('%').'\""'<CR>
-nn É :exe'sil !weznew -s run'<CR>
-nn \d :exe'sil !weznew "git difftool '.expand('%').'"'<CR>
-nn \D :exe'sil !weznew "tig status"'<CR>
-nn \l :exe'sil !weznew "tig '.expand('%').'"'<CR>
-nn \L :exe'sil !weznew "tig"'<CR>
-nn \b :exe'sil !weznew "tig blame +'.line('.').' '.expand('%').'"'<CR>
+nn é :exe'sil !wez split "run -p \"'.expand('%').'\""'<CR>
+nn É :exe'sil !wez split run'<CR>
+nn \d :exe'sil !wez new "git difftool '.expand('%').'"'<CR>
+nn \D :exe'sil !wez new "tig status"'<CR>
+nn \l :exe'sil !wez new "tig '.expand('%').'"'<CR>
+nn \L :exe'sil !wez new "tig"'<CR>
+nn \b :exe'sil !wez new "tig blame +'.line('.').' '.expand('%').'"'<CR>
 
 " Diff
 if &diff
   nn <C-q> :qa<CR>
   nn + ]c
   nn - [c
-  nn gf :exe 'sil !weznew "nvim "$FILE" +'.line('.').'"'<CR>
+  nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
   au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
   au BufWinEnter /tmp/* setlocal noma
 end

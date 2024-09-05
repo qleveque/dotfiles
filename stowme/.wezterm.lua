@@ -2,6 +2,18 @@ local wezterm = require 'wezterm'
 local c = wezterm.config_builder()
 local act = wezterm.action
 
+-- Hacks to spawn tab next to current one
+wezterm.on('user-var-changed', function(w, p, name, value)
+  if name == 'MOVE_TAB' then
+    w:perform_action(wezterm.action.MoveTab(tonumber(value)), p)
+  end
+end)
+local function move_tab_next(w)
+  for _, item in ipairs(w:mux_window():tabs_with_info()) do
+    if item.is_active then return act.MoveTab(item.index + 1) end
+  end
+end
+
 -- Parameters
 c.audible_bell = 'Disabled'
 c.color_scheme = 'Catppuccin Mocha'
@@ -29,19 +41,24 @@ c.keys = {
     key = 'r', mods = 'LEADER',
     action = act.PromptInputLine {
       description = 'Enter new name for tab',
-      action = wezterm.action_callback(function(window, pane, line)
-        if line then window:active_tab():set_title(line) end
+      action = wezterm.action_callback(function(w, p, line)
+        if line then w:active_tab():set_title(line) end
       end),
     },
   },
   {
     key = 'a', mods = 'CTRL|SHIFT',
-    action = wezterm.action_callback(function(w, p) w:perform_action(
-      act.SpawnCommandInNewTab{args={'zsh','-c','copymode '..p:pane_id()..' -c "norm G"'}},p
-    )end),
+    action = wezterm.action_callback(function(w, p)
+      local a = move_tab_next(w)
+      w:perform_action(act.SpawnCommandInNewTab{
+        args={'zsh','-c','wez copy '..p:pane_id()..' && wez _prev'}
+      },p)
+      w:perform_action(a, p)
+    end),
   },
 }
 
+-- WSL distribution
 if wezterm.target_triple:match("windows") then
   c.wsl_domains = {{name = 'WSL:Ubuntu', distribution = 'Ubuntu-24.04'}}
   c.default_domain = 'WSL:Ubuntu'

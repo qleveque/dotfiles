@@ -242,10 +242,10 @@ local heavier_plugins = {
           ['T']=ta.fs.create,
           ['p']=ta.fs.paste,
           ['l']=ta.node.open.edit,
-          ['e']=function() vim.cmd('sil !weznew -s "e \\"'..path()..'\\""') end,
+          ['e']=function() vim.cmd('sil !wez split "e \\"'..path()..'\\""') end,
           ['h']=ta.node.navigate.parent_close,
-          ['é']=function() vim.cmd('sil !weznew -s "run -p \\"'..path()..'\\""') end,
-          ['É']=function() vim.cmd('sil !weznew -s run') end,
+          ['é']=function() vim.cmd('sil !wez split "run -p \\"'..path()..'\\""') end,
+          ['É']=function() vim.cmd('sil !wez split run') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
         }
