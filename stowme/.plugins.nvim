@@ -98,6 +98,25 @@ local heavier_plugins = {
     "neoclide/coc.nvim",
     branch = "release",
     init = function()
+
+      vim.g.coc_user_config = {
+        ['diagnostic.errorSign'] = '',
+        ['diagnostic.hintSign'] = '',
+        ['diagnostic.infoSign'] = '',
+        ['diagnostic.warningSign'] = '',
+
+        ['diagnostic.floatConfig'] = { border = true, rounded = true },
+        ['hover.floatConfig'] = { border = true, rounded = true },
+        ['signature.floatConfig'] = { border = true, rounded = true },
+        ['suggest.floatConfig'] = { border = true, rounded = true },
+
+        ['coc.preferences.useQuickfixForLocations'] = true,
+        ['colors.enable'] = true,
+        ['diagnostic.enableMessage'] = 'jump',
+        ['python.pythonPath'] = '/usr/bin/python3',
+        ['inlayHint.enable'] = false,
+      }
+
       vim.cmd[[
         map <C-n> :CocList -I symbols<CR>
         nn gd <Plug>(coc-definition)

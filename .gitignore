@@ -1,3 +1,2 @@
-stowme/.config/nvim/ftdetect
-stowme/.config/nvim/syntax
-stowme/.config/nvim/lazy-lock.json
+stowme/.config/nvim/*
+!stowme/.config/nvim/init.lua
