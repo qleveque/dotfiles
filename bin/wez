@@ -6,8 +6,6 @@ else
   WEZTERM="wezterm" cwd="${PWD}"
 fi
 
-cmd=$1 && shift
-
 # Hacks to spawn tab next to current one
 tab_position() {
   local pane_id=$(${WEZTERM} cli list-clients --format json|jq -r '.[0].focused_pane_id')
@@ -20,10 +18,10 @@ move_tab_next() {
 }
 [[ "${cmd}" == "_prev" ]] && ${WEZTERM} cli activate-tab --tab-index $(( $(tab_position) - 2 )) && exit 0
 
+cmd=$1 && shift
 case ${cmd} in
-  copy)
-    [[ "$1" != "-1" ]] && pane_id="--pane-id $1"
-    shift
+  copy-pane) pane_id="--pane-id $1" && shift;|
+  copy*)
     f=$(mktemp)
     ${WEZTERM} cli get-text ${=pane_id} --start-line '-1000' > $f
     sd ' *\n' '\n' $f

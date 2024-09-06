@@ -47,11 +47,11 @@ c.keys = {
     },
   },
   {
-    key = 'a', mods = 'CTRL|SHIFT',
+    key = 'a', mods = 'LEADER',
     action = wezterm.action_callback(function(w, p)
       local a = move_tab_next(w)
       w:perform_action(act.SpawnCommandInNewTab{
-        args={'zsh','-c','wez copy '..p:pane_id()..' && wez _prev'}
+        args={'zsh','-c','wez copy-pane '..p:pane_id()..' && wez _prev'}
       },p)
       w:perform_action(a, p)
     end),

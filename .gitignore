@@ -1,2 +1,0 @@
-stowme/.config/nvim/*
-!stowme/.config/nvim/init.lua

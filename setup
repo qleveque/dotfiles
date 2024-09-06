@@ -1,20 +1,20 @@
 #!/usr/bin/bash
 
-stow --adopt -d "${HOME}/dotfiles" -t "${HOME}" stowme
-config="${HOME}/dotfiles/config"
+shopt -s dotglob
 lndir() { mkdir -p "$2" && for file in "$1/"*; do ln -f "$file" "$2/"; done }
+wf() { local f=$1 && shift && mkdir -p "$(dirname $f)" && "$@" > $f; }
 
-/usr/bin/python3 "${config}/lesskey.py" > ~/.lesskey
-export ZIM_HOME="${HOME}/.zim" && zsh "${ZIM_HOME}/zimfw.zsh" install -q
+config="${HOME}/dotfiles/config"
+
+wf "${HOME}/.config/nvim/init.lua" echo "dofile(\"${HOME}/.init.lua\")"
+wf "${HOME}/.config/vifm/vifmrc" echo "source ${HOME}/.vifmrc"
+wf "${HOME}/.lesskey" /usr/bin/python3 "${config}/lesskey.py"
+
+lndir "${HOME}/dotfiles/dots" "${HOME}"
 
 if grep -q Microsoft /proc/version; then
   appData="${HOME}/AppData/Roaming"
   startup="${appData}/Microsoft/Windows/Start Menu/Programs/Startup"
-
-  # hard links stowme
-  for file in .gitconfig .gitignore .vimrc .wezterm.lua; do
-    ln -f "${HOME}/dotfiles/stowme/${file}" "${HOME}/"
-  done
 
   # VSCode
   lndir "${config}/VSCode" "${appData}/Code/User"
@@ -27,7 +27,7 @@ if grep -q Microsoft /proc/version; then
 
   # glazewm + zebar
   ln -f "${config}/windows/glazestack.ahk" "${startup}/glazestack.ahk"
-  lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm/"
+  lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
   lndir "${config}/windows/zebar" "${HOME}/.glzr/zebar"
 
   # Firefox (should activate legacyUserProfileCustomizations)
