@@ -3,17 +3,8 @@ export HOME=$(dirname "$PWD")
 
 # Set up environment
 mkdir -p "${HOME}/bin" "${HOME}/.config"
-"${HOME}/dotfiles/setup"
 [[ ! "$SHELL" == "/usr/bin/zsh" ]] && chsh -s '/usr/bin/zsh'
-if ! grep -qxF 'source "${HOME}/.zrc"' "${HOME}/.zshrc"; then
-  mv "${HOME}/.zshrc"{,.bk} 2> /dev/null
-  echo 'source "${HOME}/.zrc"' > "${HOME}/.zshrc"
-fi
-if grep -q Microsoft /proc/version; then
-  echo -Add \`$(wslpath -m "${HOME}/dotfiles/bin")\` to PATH
-  echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`
-  read
-fi
+"${HOME}/dotfiles/setup"
 
 # Common packages
 sudo apt update -y
@@ -45,4 +36,8 @@ if grep -q Microsoft /proc/version; then
   sudo chmod +x '/usr/bin/wudo'
   # node
   curl -ksL https://deb.nodesource.com/setup_20.x | sed 's|https://|http://|' | sudo -E bash -
+  # Environment
+  echo -Add \`$(wslpath -m "${HOME}/dotfiles/bin")\` to PATH
+  echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`
+  read
 fi

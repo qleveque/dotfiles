@@ -29,4 +29,3 @@ source ~/.aliases
 _on_dir_changed() { oncd }
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _on_dir_changed
-

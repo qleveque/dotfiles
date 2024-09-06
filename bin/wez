@@ -20,13 +20,14 @@ move_tab_next() {
 
 cmd=$1 && shift
 case ${cmd} in
-  copy-pane) pane_id="--pane-id $1" && shift;|
+  copy-pane) nvim_cmd='norm G' pane_id="--pane-id $1" && shift;|
+  copy) nvim_cmd='norm G3k^';|
   copy*)
     f=$(mktemp)
     ${WEZTERM} cli get-text ${=pane_id} --start-line '-1000' > $f
     sd ' *\n' '\n' $f
     sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' $f
-    nvim --cmd 'lua light=true' -c 'set ls=0' -c 'norm G' "$@" $f
+    nvim --cmd 'lua light=true' -c 'set ls=0' -c "${nvim_cmd}" "$@" $f
   ;;
   split) ${WEZTERM} cli split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
   new) ${WEZTERM} cli spawn --cwd ${cwd} -- zsh -c "$(move_tab_next); $@; wez _prev";;

@@ -1,4 +1,41 @@
 #!/bin/zsh
+bindkey -v
+vm(){bindkey -Mvisual $*};im(){bindkey -Mviins $*};nm(){bindkey -Mvicmd $*};om(){bindkey -Mviopp $*}
+autoload -U select-bracketed select-quoted surround
+
+# Remapping
+nm s add-surround
+nm c change-wrap
+nm d delete-wrap
+nm x vi-cut
+nm U redo
+vm s add-surround
+vm c vi-change
+vm d vi-delete
+vm x vi-cut
+vm v visual-line-mode
+vm P visual-swap
+vm p visual-put
+im '^[[Z' forward-word
+im '^V' vi-put-before
+im '^I' fzf_completion
+im '^?' backward-delete-char
+im '^@' g_expansion
+im '^N' fzf-cd-widget
+im '^R' fzf-history-widget
+for m in nm im; do
+  $m '^P' goto-recent
+  $m '^F' open-fm
+  $m '^G' open-tig
+  $m '^Q' quit
+  $m '^A' copy-mode
+done
+for m in vm om; do
+  for c in {a,i}${(s..)^:-'()[]{}<>'}; do $m $c select-bracketed; done
+  for c in {a,i}{\',\",\`,_,-,\\,/,\,,.,\;,:,\|,\&}; do $m $c select-quoted; done
+done
+
+# Functions
 set-cursor(){zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
 goto-recent(){cd "$(eval ${FZF_P_COMMAND}|fzf --exact)";zle reset-prompt;zle zle-line-init}
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt;zle zle-line-init}
@@ -11,34 +48,11 @@ vi-put-after(){CUTBUFFER="$(p 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-after
 opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac}
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|c}
 visual-put(){zle vi-delete; zle vi-put-before}
-copy-mode(){wez copy -c 'norm 3k^'}
+copy-mode(){wez copy}
 g_expansion(){zle _mark_expansion && zle autosuggest-clear}
 
-# Instantiating zle widgets
-autoload -U select-{bracketed,quoted} surround edit-command-line
-zle -N add-surround surround
-for w in zle-{keymap-select,line-{init,finish}}; do zle -N $w set-cursor; done
-for w in {change,delete}-wrap; do zle -N $w opp-wrap; done
-for w in goto-recent open-{fm,tig} quit select-{bracketed,quoted} edit-command-line\
-  vi-{cut,yank,put-{before,after}} visual-{put,swap} copy-mode g_expansion; do zle -N $w; done
-
-# Remapping
-bindkey -v
-bindkey -M vicmd -r :
-bindkey -M vicmd s add-surround c change-wrap d delete-wrap x vi-cut U redo \
-  '^V' edit-command-line
-bindkey -M visual s add-surround c vi-change d vi-delete x vi-cut v visual-line-mode \
-  P visual-swap p visual-put
-bindkey -M viins '^[[Z' forward-word '^V' vi-put-before '^I' fzf_completion '^?' backward-delete-char\
-   '^@' g_expansion '^N' fzf-cd-widget '^R' fzf-history-widget
-for m in visual vicmd viins
-  do bindkey -M $m '^P' goto-recent '^F' open-fm '^G' open-tig '^Q' quit '^A' copy-mode;
-done
-for m in visual viopp; do
-  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $m $c select-bracketed
-  done
-  for c in {a,i}{\',\",\`,_,-,\\,/,\,,.,\;,:,\|,\&}; do
-    bindkey -M $m $c select-quoted
-  done
-done
+# Instantiate widgets
+wids=(goto-recent open-{fm,tig} quit select-{bracketed,quoted} visual-{put,swap}
+      vi-{cut,yank,put-{before,after}} copy-mode g_expansion add-surround:surround
+      {change,delete}-wrap:opp-wrap zle-{keymap-select,line-{init,finish}}:set-cursor)
+for wid in "${wids[@]}"; do zle -N ${=wid//:/ }; done
