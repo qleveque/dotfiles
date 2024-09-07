@@ -4,8 +4,13 @@ set vicmd=nvim syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.l
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
 " Shortcuts
+nn xx dd
+nn dd "0dd
+vn x d
+vn d "0d
 map <C-i> :histnext|oncd<CR>
 map <C-o> :histprev|oncd<CR>
+nn <C-q> :quit<CR>
 nn l :exe('normal! l')|oncd<CR>
 nn h :exe('normal! h')|oncd<CR>
 nn U <C-r>
@@ -17,12 +22,6 @@ nn T :create<Space>
 nn yW :exe '!echo -n %c:p | c'<CR>
 nn yp :exe '!echo -n %d | c'<CR>
 nn yw :exe '!echo -n %c | c'<CR>
-nn xx dd
-nn dd "0dd
-vn x d
-vn d "0d
-nn <C-q> :quit<CR>
-nn ! :do<Space>
 nn é :!wez split "run -p %f"<CR>
 nn É :!wez split run<CR>
 nn e :!e "%f"<CR>
@@ -34,9 +33,7 @@ nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:o
 
 " Commands
 com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd
-com! o :!o "%a"
 com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
-com! do :!%a %f
 com! oncd :!oncd "%d"
 
 " Style

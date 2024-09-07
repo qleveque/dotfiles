@@ -18,6 +18,7 @@ nn dd "_dd
 no x d
 
 " Easy life
+map <C-q> ZQ
 nn V ggVG
 xn à :norm! @q<CR>
 nn à @q
@@ -27,9 +28,6 @@ nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hls<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hls<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
-map <C-q> ZQ
-
-" Term
 nn é :exe'sil !wez split "run -p \"'.expand('%').'\""'<CR>
 nn É :exe'sil !wez split run'<CR>
 nn <C-g> :exe'sil !giter '.nr2char(getchar()).' '.expand('%').' +'.line('.')<CR>

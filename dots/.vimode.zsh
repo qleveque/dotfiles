@@ -28,10 +28,8 @@ im '^F' open-fm
 im '^G' open-giter
 im '^Q' quit
 im '^A' copy-mode
-for m in vm om; do
-  for c in {a,i}${(s..)^:-'()[]{}<>'}; do $m $c select-bracketed; done
-  for c in {a,i}{\',\",\`,_,-,\\,/,\,,.,\;,:,\|,\&}; do $m $c select-quoted; done
-done
+for c in {v,o}m\ {a,i}${(s..)^:-'()[]{}<>'};do ${=c} select-bracketed;done
+for c in {v,o}m\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
 
 # Functions and widgets instantiation
 set-cursor(){zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}

@@ -2,14 +2,12 @@
 # Set up environment
 export HOME=$(dirname "$PWD")
 [[ ! "$SHELL" == "/usr/bin/zsh" ]] && chsh -s '/usr/bin/zsh'
-grep -q Microsoft /proc/version && echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`
+grep -q Microsoft /proc/version&&echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`&&read
 "${HOME}/dotfiles/setup"
 
 # Common packages
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install -y \
-  curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel clang nodejs jq sd lsd nvim
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nvim
 
 # vifm devicons
 wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"
@@ -18,8 +16,9 @@ wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 
 # zim
-wget -nv -P "${HOME}/.zim" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
-export ZIM_HOME="${HOME}/.zim" && zsh "${ZIM_HOME}/zimfw.zsh" install -q
+export ZIM_HOME="${HOME}/.zim"
+wget -nv -P "${ZIM_HOME}" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
+zsh "${ZIM_HOME}/zimfw.zsh" install -q
 
 # extract
 echo '#!/usr/bin/zsh

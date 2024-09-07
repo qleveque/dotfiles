@@ -24,11 +24,8 @@ bind status j :/^\S+
 bind status k :?^\S+
 bind status d none
 bind status dd !@>rm %(file)
-
-bind generic <C-g>l view-main
-bind generic <C-g>s view-status
-bind generic <C-g>t view-stash
-bind generic <C-g>r view-reflog
+bind status C !git commit
+bind status A !git commit --amend --no-edit
 
 bind generic l :d
 bind log l !@>wez new "tig show '%(commit)'"
