@@ -182,7 +182,7 @@ if not light then
       "stevearc/aerial.nvim",
       lazy=true,
       cmd="AerialOpen",
-      keys = { {'<C-g>', '<cmd>AerialOpen<CR>'} },
+      keys = { {'<C-z>', '<cmd>AerialOpen<CR>'} },
       opts={
         autojump = true,
         backends = {"treesitter"},

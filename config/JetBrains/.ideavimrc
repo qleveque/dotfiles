@@ -17,7 +17,7 @@ sethandler <C-s> a:ide
 sethandler <C-p> a:ide
 nnoremap <C-f> :action ActivateProjectToolWindow<CR>
 nnoremap <C-q> :action CloseAllEditors<CR>
-nnoremap <C-g> :action FileStructurePopup<CR>
+nnoremap <C-z> :action FileStructurePopup<CR>
 nnoremap <C-r> :action ReplaceInPath<CR>
 
 " Panes
@@ -69,11 +69,11 @@ nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 
 " Git
-noremap \d :action Compare.LastVersion<CR>
-nnoremap \D :action Vcs.Show.Local.Changes<CR>
-nnoremap \l :action Vcs.ShowTabbedFileHistory<CR>
-nnoremap \L :action Vcs.Show.Log<CR>
-nnoremap \b :action Annotate<CR>
+noremap <C-g>d :action Compare.LastVersion<CR>
+nnoremap <C-g>s :action Vcs.Show.Local.Changes<CR>
+nnoremap <C-g>f :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <C-g>l :action Vcs.Show.Log<CR>
+nnoremap <C-g>b :action Annotate<CR>
 
 " Debug
 nmap <Up> :action Resume<CR>

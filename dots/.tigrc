@@ -25,8 +25,10 @@ bind status k :?^\S+
 bind status d none
 bind status dd !@>rm %(file)
 
-bind generic gl view-main
-bind generic gs view-status
+bind generic <C-g>l view-main
+bind generic <C-g>s view-status
+bind generic <C-g>t view-stash
+bind generic <C-g>r view-reflog
 
 bind generic l :d
 bind log l !@>wez new "tig show '%(commit)'"

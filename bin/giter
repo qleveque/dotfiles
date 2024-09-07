@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+
+key="$1" file="$2" line="$3"
+case $key in
+  d) cmd="git difftool '${file}'";;
+  s) cmd='tig status';;
+  f) cmd="tig '${file}'";;
+  l) cmd='tig';;
+  b) cmd="tig blame ${line} '${file}'";;
+  r) cmd='tig reflog';;
+  t) cmd='tig stash --list';;
+  *) return;;
+esac
+wez new "${cmd}"

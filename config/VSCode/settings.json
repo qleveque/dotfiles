@@ -73,11 +73,11 @@
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
     // Git
-    { "before": [ "<leader>", "b" ], "commands": [ "gitlens.toggleFileBlame" ] },
-    { "before": [ "<leader>", "d" ], "commands": [ "git.openChange" ] },
-    { "before": [ "<leader>", "D" ], "commands": [ "workbench.scm.focus" ] },
-    { "before": [ "<leader>", "l" ], "commands": [ "gitlens.views.fileHistory.focus" ] },
-    { "before": [ "<leader>", "L" ], "commands": [ "gitlens.showCommitsView" ] },
+    { "before": [ "<C-g>", "b" ], "commands": [ "gitlens.toggleFileBlame" ] },
+    { "before": [ "<C-g>", "d" ], "commands": [ "git.openChange" ] },
+    { "before": [ "<C-g>", "s" ], "commands": [ "workbench.scm.focus" ] },
+    { "before": [ "<C-g>", "f" ], "commands": [ "gitlens.views.fileHistory.focus" ] },
+    { "before": [ "<C-g>", "l" ], "commands": [ "gitlens.showCommitsView" ] },
     // Debug
     { "before": [ "<Up>" ], "commands": [ "workbench.action.debug.continue" ] },
     { "before": [ "<Right>" ], "commands": [ "workbench.action.debug.stepInto" ] },

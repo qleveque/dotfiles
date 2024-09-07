@@ -32,11 +32,7 @@ map <C-q> ZQ
 " Term
 nn é :exe'sil !wez split "run -p \"'.expand('%').'\""'<CR>
 nn É :exe'sil !wez split run'<CR>
-nn \d :exe'sil !wez new "git difftool '.expand('%').'"'<CR>
-nn \D :exe'sil !wez new "tig status"'<CR>
-nn \l :exe'sil !wez new "tig '.expand('%').'"'<CR>
-nn \L :exe'sil !wez new "tig"'<CR>
-nn \b :exe'sil !wez new "tig blame +'.line('.').' '.expand('%').'"'<CR>
+nn <C-g> :exe'sil !giter '.nr2char(getchar()).' '.expand('%').' +'.line('.')<CR>
 
 " Diff
 if &diff

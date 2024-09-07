@@ -19,7 +19,7 @@
   // Search symbols
   { "key": "ctrl+n", "command": "workbench.action.showAllSymbols", "when": "!searchInputBoxFocus" },
   // Breadcrumbs
-  { "key": "ctrl+g", "command": "breadcrumbs.focusAndSelect" },
+  { "key": "ctrl+z", "command": "breadcrumbs.focusAndSelect" },
   // Panes
   { "key": "ctrl+l", "command": "workbench.action.focusRightGroup", "when": "!sideBarFocus" },
   { "key": "ctrl+l", "command": "workbench.action.focusFirstEditorGroup", "when": "sideBarFocus" },

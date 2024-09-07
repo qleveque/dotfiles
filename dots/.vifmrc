@@ -7,9 +7,7 @@ set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,re
 map <C-i> :histnext|oncd<CR>
 map <C-o> :histprev|oncd<CR>
 nn l :exe('normal! l')|oncd<CR>
-nn e :!e "%f"<CR>
 nn h :exe('normal! h')|oncd<CR>
-nn <CR> :!o %f<CR>
 nn U <C-r>
 nn A cw
 nn I cw<c-a>
@@ -21,14 +19,15 @@ nn yp :exe '!echo -n %d | c'<CR>
 nn yw :exe '!echo -n %c | c'<CR>
 nn xx dd
 nn dd "0dd
-nn é :!wez split "run -p %f"<CR>
-nn É :!wez split run<CR>
 vn x d
 vn d "0d
 nn <C-q> :quit<CR>
 nn ! :do<Space>
-
-" FZF
+nn é :!wez split "run -p %f"<CR>
+nn É :!wez split run<CR>
+nn e :!e "%f"<CR>
+nn <CR> :!o %f<CR>
+nn <C-g> :exe'!read -k1 k && giter $k '.expand('%f')<CR>
 nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:oncd|:redr<CR>
 nn <C-n> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:oncd|:redr<CR>

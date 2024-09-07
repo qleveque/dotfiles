@@ -1,9 +1,8 @@
 #!/usr/bin/bash
-export HOME=$(dirname "$PWD")
-
 # Set up environment
-mkdir -p "${HOME}/bin" "${HOME}/.config"
+export HOME=$(dirname "$PWD")
 [[ ! "$SHELL" == "/usr/bin/zsh" ]] && chsh -s '/usr/bin/zsh'
+grep -q Microsoft /proc/version && echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`
 "${HOME}/dotfiles/setup"
 
 # Common packages
@@ -36,8 +35,4 @@ if grep -q Microsoft /proc/version; then
   sudo chmod +x '/usr/bin/wudo'
   # node
   curl -ksL https://deb.nodesource.com/setup_20.x | sed 's|https://|http://|' | sudo -E bash -
-  # Environment
-  echo -Add \`$(wslpath -m "${HOME}/dotfiles/bin")\` to PATH
-  echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`
-  read
 fi
