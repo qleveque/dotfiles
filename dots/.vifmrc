@@ -26,7 +26,7 @@ nn é :!wez split "run -p %f"<CR>
 nn É :!wez split run<CR>
 nn e :!e "%f"<CR>
 nn <CR> :!o %f<CR>
-nn <C-g> :exe'!read -k1 k && giter $k '.expand('%f')<CR>
+nn <C-g> :exe'!read -k1 k && gitw $k '.expand('%f')<CR>
 nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:oncd|:redr<CR>
 nn <C-n> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:oncd|:redr<CR>

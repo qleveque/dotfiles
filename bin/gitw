@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+key="$1" file=$(realpath -s --relative-to="${PWD}" "$2")
+case $key in
+  d) git difftool "${file}";;
+  s) tig status;;
+  f) tig "${file}";;
+  l) tig;;
+  b) line="$3" && tig blame +${line:-1} "${file}" ;;
+  r) tig reflog;;
+  t) tig stash --list;;
+  *) return;;
+esac

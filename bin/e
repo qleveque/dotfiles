@@ -5,7 +5,7 @@ full_path="$(readlink -f "$1")"
 ext="${full_path:t:e}"
 
 # Check if binary file
-[[ -s "$1" ]]&&file -i "$1"|grep -q '.*: application/\S\+; charset=binary$'&&ext='bin'
+[[ -s $1 ]]&&file -i "$1"|grep -q '.*: application/\S\+; charset=binary$'&&ext='bin'
 
 if grep -q Microsoft /proc/version; then
   # Setup Windows arguments

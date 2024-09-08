@@ -25,7 +25,7 @@ im '^N' fzf-cd-widget
 im '^R' fzf-history-widget
 im '^P' goto-recent
 im '^F' open-fm
-im '^G' open-giter
+im '^G' open-gitw
 im '^Q' quit
 im '^A' copy-mode
 for c in {v,o}m\ {a,i}${(s..)^:-'()[]{}<>'};do ${=c} select-bracketed;done
@@ -35,7 +35,7 @@ for c in {v,o}m\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
 set-cursor(){zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
 goto-recent(){cd "$(eval ${FZF_P_COMMAND}|fzf --exact)";zle reset-prompt;zle zle-line-init}
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt}
-open-giter(){local k; read -k1 k; giter $k < /dev/tty; zle reset-prompt}
+open-gitw(){local k; read -k1 k; gitw $k ${PWD} < /dev/tty; zle reset-prompt}
 quit(){exit}
 vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|c}
 vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|c}
@@ -46,7 +46,7 @@ visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s'
 visual-put(){zle vi-delete; zle vi-put-before}
 copy-mode(){wez copy}
 g-expansion(){zle _mark_expansion && zle autosuggest-clear}
-wids=(goto-recent open-{fm,giter} quit select-{bracketed,quoted} visual-{put,swap}
+wids=(goto-recent open-{fm,gitw} quit select-{bracketed,quoted} visual-{put,swap}
       vi-{cut,yank,put-{before,after}} copy-mode g-expansion add-surround:surround
       {change,delete}-wrap:opp-wrap zle-{keymap-select,line-{init,finish}}:set-cursor)
 for wid in "${wids[@]}"; do zle -N ${=wid//:/ }; done

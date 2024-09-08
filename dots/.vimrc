@@ -30,7 +30,7 @@ nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 nn é :exe'sil !wez split "run -p \"'.expand('%').'\""'<CR>
 nn É :exe'sil !wez split run'<CR>
-nn <C-g> :exe'sil !giter '.nr2char(getchar()).' '.expand('%').' +'.line('.')<CR>
+nn <C-g> :exe'sil !wez new "gitw '.nr2char(getchar()).' '.expand('%').' '.line('.').'"'<CR>
 
 " Diff
 if &diff
@@ -40,4 +40,9 @@ if &diff
   nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
   au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
   au BufWinEnter /tmp/* setlocal noma
+  if len(argv()) == 3
+    nn doh 1do
+    nn dol 3do
+    au VimEnter * :winc h
+  endif
 end

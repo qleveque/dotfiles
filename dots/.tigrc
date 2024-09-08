@@ -9,6 +9,7 @@ set ignore-case = smart-case
 set show-changes = no
 set diff-options = --pretty=medium
 
+bind generic <C-r> refresh
 bind generic g none
 bind generic gg :0
 bind generic G move-last-line
@@ -28,19 +29,27 @@ bind status C !git commit
 bind status A !git commit --amend --no-edit
 
 bind generic l :d
-bind log l !@>wez new "tig show '%(commit)'"
 bind diff l !+>wez new "\
   [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\
-  FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
+  NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
 bind stage l !+>wez new "\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
-  FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
+  NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
 bind status l !+>wez new "\
-  [[ $(git ls-files --unmerged '%(file)') ]] && git mergetool -- '%(file)' && exit 0;\
+  [[ $(git ls-files -u '%(file)') ]] && NVIM_LIGHT=1 git mergetool '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
-  FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
+  NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind status p !+>wez new "FILE="${PWD}/%(file)" git pick '%(file)'"
+bind status p !+>wez new "\
+  tmp=$(mktemp);\
+  mv '%(file)' "${tmp}";\
+  touch '%(file)';\
+  git restore '%(file)' &> /dev/null;\
+  NVIM_LIGHT=1 FILE="${PWD}/%(file)" nvim -d "${tmp}" '%(file)';\
+  [ -s '%(file)' ] && git add '%(file)';\
+  mv ${tmp} '%(file)';\
+"
+

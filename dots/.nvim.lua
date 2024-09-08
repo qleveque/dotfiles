@@ -249,6 +249,9 @@ if not os.getenv("NVIM_LIGHT") then
             ['É']=function() vim.cmd('sil !wez split run') end,
             ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
             ['<C-f>']=function() vim.cmd('wincmd p') end,
+            ['<C-g>']=function()
+              vim.cmd('sil !wez new "gitw '..vim.fn.nr2char(vim.fn.getchar())..' \\"'..path()..'\\""')
+            end,
           }
           for k, v in pairs(arr) do
             vim.keymap.set('n',k,v,{buffer=bufnr,silent=true,nowait=true})
