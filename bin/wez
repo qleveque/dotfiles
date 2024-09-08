@@ -27,7 +27,7 @@ case ${cmd} in
     ${=CLI} get-text ${=pane_id} --start-line '-1000' > $f
     sd ' *\n' '\n' $f
     sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' $f
-    nvim --cmd 'lua light=true' -c 'set ls=0' -c "${nvim_cmd}" "$@" $f
+    NVIM_LIGHT=1 nvim -c 'set ls=0' -c "${nvim_cmd}" "$@" $f
   ;;
   split) ${=CLI} split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
   new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next); $@; wez _prev";;

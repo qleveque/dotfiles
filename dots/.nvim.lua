@@ -63,7 +63,7 @@ nvim_plugins = {
   },
 }
 
-if not light then 
+if not os.getenv("NVIM_LIGHT") then 
   -- Heavier plugins
   local heavier_plugins = {
     "farmergreg/vim-lastplace",
