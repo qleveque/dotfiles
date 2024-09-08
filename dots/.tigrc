@@ -43,13 +43,5 @@ bind status l !+>wez new "\
   [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
   NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
 "
-bind status p !+>wez new "\
-  tmp=$(mktemp);\
-  mv '%(file)' "${tmp}";\
-  touch '%(file)';\
-  git restore '%(file)' &> /dev/null;\
-  NVIM_LIGHT=1 FILE="${PWD}/%(file)" nvim -d "${tmp}" '%(file)';\
-  [ -s '%(file)' ] && git add '%(file)';\
-  mv ${tmp} '%(file)';\
-"
+bind status p !+>wez new "gitw p '%(file)'"
 
