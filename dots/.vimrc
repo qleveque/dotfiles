@@ -44,5 +44,5 @@ if &diff
     nn doh 1do
     nn dol 3do
     au VimEnter * :winc h
-  endif
+  end
 end

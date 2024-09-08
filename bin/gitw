@@ -6,10 +6,10 @@ export NVIM_LIGHT=1
 
 case $key in
   d)
-    [[ $(git ls-files -u "${file}") ]] && git mergetool "${file}" && exit 0
-    [[ $(git ls-files -o "${file}") ]] && nvim "${file}" && exit 0
-    [[ -n $3 ]] && ref="$3^ $3"
-    git difftool ${=ref} "${file}"
+    if [[ $(git ls-files -u "${file}") ]]; then git mergetool "${file}";
+    elif [[ $(git ls-files -o "${file}") ]]; then nvim "${file}";
+    else git difftool $([[ -n $3 ]] && echo $3^ $3) -- "${file}";
+    fi
   ;;
   D) git difftool --staged "${file}";;
   s) tig status;;
@@ -27,5 +27,4 @@ case $key in
     [[ -s "${file}" ]] && git add "${file}"
     mv ${tmp} "${file}"
   ;;
-  *) return;;
 esac
