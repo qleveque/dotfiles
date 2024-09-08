@@ -29,19 +29,7 @@ bind status C !git commit
 bind status A !git commit --amend --no-edit
 
 bind generic l :d
-bind diff l !+>wez new "\
-  [[ -n '%(stash)' ]] && P='%(stash)^ %(stash)' || P='%(commit)^!';\
-  NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
-"
-bind stage l !+>wez new "\
-  [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
-  NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
-"
-bind status l !+>wez new "\
-  [[ $(git ls-files -u '%(file)') ]] && NVIM_LIGHT=1 git mergetool '%(file)' && exit 0;\
-  [[ '%(status)' =~ 'Untracked file' ]] && nvim '%(file)' && exit 0;\
-  [[ '%(status)' =~ 'Staged changes' ]] && P='--staged' || P='';\
-  NVIM_LIGHT=1 FILE="${PWD}/%(file)" git difftool "${=P}" -- '%(file)';\
-"
+bind diff l !+>wez new "gitw d '%(file)' %(stash) %(commit)"
+bind stage l !+>wez new "[[ '%(status)' =~ 'Staged' ]] && k=D || k=d; gitw ${k} '%(file)'"
+bind status l !+>wez new "[[ '%(status)' =~ 'Staged' ]] && k=D || k=d; gitw ${k} '%(file)'"
 bind status p !+>wez new "gitw p '%(file)'"
-

@@ -1,12 +1,21 @@
 #!/usr/bin/zsh
 
 key="$1" file=$(realpath -s --relative-to="${PWD}" "$2")
+export FILE="${PWD}/${file}"
+export NVIM_LIGHT=1
+
 case $key in
-  d) git difftool "${file}";;
+  d)
+    [[ $(git ls-files -u "${file}") ]] && git mergetool "${file}" && exit 0
+    [[ $(git ls-files -o "${file}") ]] && nvim "${file}" && exit 0
+    [[ -n $3 ]] && ref="$3^ $3"
+    git difftool ${=ref} "${file}"
+  ;;
+  D) git difftool --staged "${file}";;
   s) tig status;;
   f) tig "${file}";;
   l) tig;;
-  b) line="$3" && tig blame +${line:-1} "${file}" ;;
+  b) line="$3" && tig blame +${line:-1} "${file}";;
   r) tig reflog;;
   t) tig stash --list;;
   p)
@@ -14,7 +23,7 @@ case $key in
     mv "${file}" "${tmp}"
     touch "${file}"
     git restore "${file}" &> /dev/null
-    NVIM_LIGHT=1 FILE="${PWD}/${file}" nvim -d "${tmp}" "${file}"
+    nvim -d "${tmp}" "${file}"
     [[ -s "${file}" ]] && git add "${file}"
     mv ${tmp} "${file}"
   ;;
