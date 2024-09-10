@@ -2,12 +2,23 @@
 # Set up environment
 export HOME=$(dirname "$PWD")
 [[ ! "$SHELL" == "/usr/bin/zsh" ]] && chsh -s '/usr/bin/zsh'
-grep -q Microsoft /proc/version&&echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`&&read
 "${HOME}/dotfiles/setup"
+
+# Windows
+if grep -q Microsoft /proc/version; then
+  echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`&&read
+  # win32yank
+  winget.exe install --id=equalsraf.win32yank -e
+  # wudo
+  sudo wget 'raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py' -O '/usr/bin/wudo'
+  sudo chmod +x '/usr/bin/wudo'
+  # node
+  curl -ksL https://deb.nodesource.com/setup_20.x | sed 's|https://|http://|' | sudo -E bash -
+fi
 
 # Common packages
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nvim
+sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nvim nodejs
 
 # vifm devicons
 wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"
@@ -25,13 +36,3 @@ echo '#!/usr/bin/zsh
 source ~/.zim/modules/ohmyzsh/plugins/extract/extract.plugin.zsh
 extract $1' | sudo tee /usr/bin/extract > /dev/null
 sudo chmod +x "/usr/bin/extract"
-
-if grep -q Microsoft /proc/version; then
-  # win32yank
-  winget.exe install --id=equalsraf.win32yank -e
-  # wudo
-  sudo wget 'raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py' -O '/usr/bin/wudo'
-  sudo chmod +x '/usr/bin/wudo'
-  # node
-  curl -ksL https://deb.nodesource.com/setup_20.x | sed 's|https://|http://|' | sudo -E bash -
-fi

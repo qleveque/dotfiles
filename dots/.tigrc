@@ -12,7 +12,7 @@ set diff-options = --pretty=medium
 bind generic <C-r> refresh
 bind generic g none
 bind generic gg :0
-bind generic G move-last-line
+bind main G move-last-line
 bind generic y none
 bind generic yc !@>zsh -fc "echo -n %(commit) | c"
 bind generic yf !@>zsh -fc "echo -n %(file) | c"
@@ -30,6 +30,5 @@ bind status A !git commit --amend --no-edit
 
 bind generic l :d
 bind diff l !+>wez new "gitw d '%(file)' -r %(stash) %(commit)"
-bind stage l !+>wez new "[[ '%(status)' =~ 'Staged' ]] && k=D || k=d; gitw ${k} '%(file)'"
-bind status l !+>wez new "[[ '%(status)' =~ 'Staged' ]] && k=D || k=d; gitw ${k} '%(file)'"
+bind status l !+>wez new "[[ '%(status)' =~ Staged ]]&&p=-s;gitw d '%(file)' ${p}"
 bind status p !+>wez new "gitw p '%(file)'"

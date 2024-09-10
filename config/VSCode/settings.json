@@ -26,7 +26,7 @@
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
-  "vim.vimrc.path": "~/dotfiles/stowme/.vimrc",
+  "vim.vimrc.path": "~/dotfiles/dots/.vimrc",
   "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Default Dark+",
   "workbench.editorAssociations": { "*.ipynb": "jupyter-notebook" },
