@@ -1,21 +1,28 @@
 #!/usr/bin/zsh
 
 key="$1" file=$(realpath -s --relative-to="${PWD}" "$2")
+shift 2
 export FILE="${PWD}/${file}"
 export NVIM_LIGHT=1
+
+while getopts "l:r:" opt; do case $opt in
+    l) line="${OPTARG}";;
+    r) ref="${OPTARG}^ ${OPTARG}";;
+esac; done
+shift $((OPTIND -1))
 
 case $key in
   d)
     if [[ $(git ls-files -u "${file}") ]]; then git mergetool "${file}";
     elif [[ $(git ls-files -o "${file}") ]]; then nvim "${file}";
-    else git difftool $([[ -n $3 ]] && echo $3^ $3) -- "${file}";
+    else git difftool ${=ref} -- "${file}";
     fi
   ;;
-  D) git difftool --staged "${file}";;
+  D) git difftool --staged -- "${file}";;
   s) tig status;;
   f) tig "${file}";;
   l) tig;;
-  b) line="$3" && tig blame +${line:-1} "${file}";;
+  b) tig blame +${line:-1} "${file}";;
   r) tig reflog;;
   t) tig stash --list;;
   p)

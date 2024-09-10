@@ -1,4 +1,4 @@
-source ~/dotfiles/stowme/.vimrc
+source ~/.vimrc
 sethandler a:vim
 set argtextobj
 set commentary

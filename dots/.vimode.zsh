@@ -1,7 +1,8 @@
 #!/bin/zsh
 bindkey -v
 autoload -U select-bracketed select-quoted surround
-vm(){bindkey -Mvisual $*};im(){bindkey -Mviins $*};nm(){bindkey -Mvicmd $*};om(){bindkey -Mviopp $*}
+typeset -A vimodes=( [vm]='visual' [im]='viins' [nm]='vicmd' [om]='viopp' )
+for map in ${(k)vimodes}; do eval ${map}'(){bindkey -M'${vimodes[${map}]}' $*;}';done
 
 # Remapping
 nm s add-surround
