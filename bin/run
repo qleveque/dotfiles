@@ -44,7 +44,7 @@ run_file() {
     groovy) run_cmd "groovy $f";;
     hs) run_cmd "ghc $f && ./$n";;
     html|md) run_cmd "o $f; exit";;
-    java) run_cmd "javac $f && java $n";;
+    java) run_cmd "javac $f && java -cp . $n";;
     jl) run_cmd "julia $f";;
     js) run_cmd "node $f";;
     ts) run_cmd "npx ts-node $f";;

@@ -1,6 +1,9 @@
-set ic scs nu list udf cul et lz noswf nowrap nowb so=4 ch=0 shm+=I
-set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number stl=%1*\ \%f%m\ %0*%=
 let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
+let g:macro_recording=''
+autocmd RecordingEnter * let g:macro_recording=' 󰑋 '
+autocmd RecordingLeave * let g:macro_recording=''
+set ic scs nu list udf cul et lz noswf nowrap nowb so=4 ch=0 shm+=I
+set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number stl=%1*\ \%f%m%{g:macro_recording}\ %0*%=
 au FileType * set fo-=cro
 
 " Vim corrections

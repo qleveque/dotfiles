@@ -24,7 +24,7 @@ nvim_plugins = {
   {
     'mrjones2014/smart-splits.nvim',
     opts = {},
-    init = function() 
+    init = function()
       vim.cmd[[
         nn <C-h> :SmartCursorMoveLeft<CR>
         nn <C-j> :SmartCursorMoveDown<CR>

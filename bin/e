@@ -11,9 +11,9 @@ if grep -q Microsoft /proc/version; then
   # Setup Windows arguments
   wargs=("$@") && [[ "$#" -ne 0 ]] && wargs[1]=$(wslpath -m -- ${full_path})
   case ${ext} in
-    png|jpg) mspaint.exe "${wargs[@]}" &;;
-    mp3) '/mnt/c/Program Files/Audacity/Audacity.exe' "${wargs[@]}" &;;
-    bin) '/mnt/c/Program Files/ImHex/imhex.exe' "${wargs[@]}" &;;
+    png|jpg) cmd.exe /C start '' 'mspaint.exe' "${wargs[@]}";;
+    mp3) cmd.exe /C start '' 'C:/Program Files/Audacity/Audacity.exe' "${wargs[@]}";;
+    bin) cmd.exe /C start '' 'C:/Program Files/ImHex/imhex.exe' "${wargs[@]}";;
     *) nvim "$@";;
   esac
 else
