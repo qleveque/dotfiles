@@ -80,7 +80,7 @@ run_project() {
     local file=$(ls -a1 | grep "^.run."| head -n1)
     [[ -n ${file} ]] && run_file "${PWD}/${file}" || cd ..
   done
-  error 'No `.run` script'
+  error 'No run script'
 }
 
 [[ "$1" == "-p" ]] && PAUSE=true && shift

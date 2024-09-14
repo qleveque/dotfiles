@@ -1,8 +1,6 @@
 let g:clipboard={'copy':{'+':'c'},'paste':{'+':'p'},'cache_enabled':0}
-set ic scs nu list udf cul et lz noswf nowb so=4 ch=0 shm+=I
-set sd=!,'1000,<50,s10,h cb=unnamedplus scl=number
+set ic scs nu list udf cul et lz noswf nowb so=4 ch=0 shm+=I scl=number cb=unnamedplus
 set stl=%1*\ \%f%m%{reg_recording()!=''?'\ 󰑋':''}\ %0*%=
-au FileType * set fo-=cro
 
 " Vim corrections
 nn ' `
