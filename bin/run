@@ -52,7 +52,7 @@ run_file() {
     lisp) run_cmd "clisp $n";;
     lua) run_cmd "lua $f";;
     m4) run_cmd "m4 -I $f > $n";;
-    mod|aMod) run_cmd "voc $f -m && echo && ./$n";;
+    mod|aMod) run_cmd "/opt/voc/bin/voc $f -m && echo && ./$n";;
     nsi) run_cmd cmd.exe /C "makensis $f && $n.exe";;
     pl) run_cmd "perl $f";;
     ps1) run_cmd "powershell.exe -ExecutionPolicy RemoteSigned -f $f";;

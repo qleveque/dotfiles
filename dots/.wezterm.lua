@@ -13,7 +13,7 @@ local c = wez.config_builder()
 c.audible_bell = 'Disabled'
 c.color_scheme = 'Catppuccin Mocha'
 c.enable_scroll_bar = false
-c.font_size = 10
+c.font_size = 9.3
 c.leader = {key = 'b', mods = 'CTRL'}
 c.window_decorations = 'RESIZE'
 c.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
