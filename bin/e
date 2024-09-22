@@ -8,12 +8,14 @@ ext="${full_path:t:e}"
 [[ -s $1 ]]&&file -i "$1"|grep -q '.*: application/\S\+; charset=binary$'&&ext='bin'
 
 if grep -q Microsoft /proc/version; then
-  # Setup Windows arguments
-  wargs=("$@") && [[ "$#" -ne 0 ]] && wargs[1]=$(wslpath -m -- ${full_path})
+  winrun() {
+    prog=$1 && shift
+    for f in "$@"; do cmd.exe /C start '' "${prog}" $(wslpath -w -- "${f}") done
+  }
   case ${ext} in
-    png|jpg) cmd.exe /C start '' 'mspaint.exe' "${wargs[@]}";;
-    mp3) cmd.exe /C start '' 'C:/Program Files/Audacity/Audacity.exe' "${wargs[@]}";;
-    bin) cmd.exe /C start '' 'C:/Program Files/ImHex/imhex.exe' "${wargs[@]}";;
+    png|jpg) winrun 'mspaint.exe' "$@";;
+    mp3) winrun 'C:\Program Files\Audacity\Audacity.exe' "$@";;
+    bin) winrun 'C:\Program Files\ImHex\imhex.exe' "$@";;
     *) nvim "$@";;
   esac
 else
