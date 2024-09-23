@@ -10,7 +10,7 @@ ext="${full_path:t:e}"
 if grep -q Microsoft /proc/version; then
   winrun() {
     prog=$1 && shift
-    for f in "$@"; do cmd.exe /C start '' "${prog}" $(wslpath -w -- "${f}") done
+    for f in "$@"; do cmd.exe /C start '' "${prog}" $(wslpath -w -- "${f}"); done
   }
   case ${ext} in
     png|jpg) winrun 'mspaint.exe' "$@";;
