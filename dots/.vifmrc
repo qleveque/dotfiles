@@ -31,6 +31,10 @@ nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"'
 nn <C-n> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:oncd|:redr<CR>
 
+" File clipboard
+nn P :!powershell.exe -Command 'Get-Clipboard -Format FileDropList | ForEach-Object { Copy-Item $_ -Destination . -Recurse }'<CR>
+map Y :!echo %f | powershell.exe -Command 'Add-Type -AssemblyName System.Windows.Forms; $c = New-Object Collections.Specialized.StringCollection; $input -split " " | ForEach-Object { $fullPath = Join-Path (Get-Location) $_; $c.Add($fullPath) }; [System.Windows.Forms.Clipboard]::SetFileDropList($c);'<CR>
+
 " Commands
 com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd
 com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
