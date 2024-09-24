@@ -231,6 +231,7 @@ if not os.getenv("NVIM_LIGHT") then
         vim.cmd('au VimEnter,BufEnter,BufRead *NvimTree* setlocal statusline=_')
         local ta=require('nvim-tree.api')
         local function path() return ta.tree.get_node_under_cursor().absolute_path end
+        local function filename() return ta.tree.get_node_under_cursor().name end
         local function tree_attach(bufnr)
           local arr={
             ['A']=ta.fs.rename,
@@ -252,6 +253,8 @@ if not os.getenv("NVIM_LIGHT") then
             ['<C-g>']=function()
               vim.cmd('sil !wez new "gitw '..vim.fn.nr2char(vim.fn.getchar())..' \\"'..path()..'\\""')
             end,
+            ['Y']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb copy "'..filename()..'"') end,
+            ['P']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb paste') end,
           }
           for k, v in pairs(arr) do
             vim.keymap.set('n',k,v,{buffer=bufnr,silent=true,nowait=true})

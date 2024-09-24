@@ -1,8 +1,0 @@
-#!/usr/bin/zsh
-# Get from clipboard
-
-if grep -q Microsoft /proc/version; then
-  win32yank.exe -o --lf
-else
-  xsel --output --clipboard
-fi

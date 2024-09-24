@@ -19,9 +19,9 @@ nn I cw<c-a>
 nn cw cw<c-u>
 nn s :sort<CR>
 nn T :create<Space>
-nn yW :exe '!echo -n %c:p | c'<CR>
-nn yp :exe '!echo -n %d | c'<CR>
-nn yw :exe '!echo -n %c | c'<CR>
+nn yW :exe '!echo -n %c:p | cb copy'<CR>
+nn yp :exe '!echo -n %d | cb copy'<CR>
+nn yw :exe '!echo -n %c | cb copy'<CR>
 nn é :!wez split "run -p %f"<CR>
 nn É :!wez split run<CR>
 nn e :!e "%f"<CR>
@@ -30,10 +30,8 @@ nn <C-g> :exe'!read -k1 k && gitw $k '.expand('%f')<CR>
 nn <C-t> :exe system('g=$($FZF_CTRL_T_COMMAND|fzf 2>/dev/tty)&&echo goto \"$g\"')|:oncd|:redr<CR>
 nn <C-n> :exe 'cd "./'.system('eval $FZF_ALT_C_COMMAND|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
 nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:oncd|:redr<CR>
-
-" File clipboard
-nn P :!powershell.exe -Command 'Get-Clipboard -Format FileDropList | ForEach-Object { Copy-Item $_ -Destination . -Recurse }'<CR>
-map Y :!for a in %f; do echo "$a"; done | powershell.exe -Command 'Add-Type -AssemblyName System.Windows.Forms; $c = New-Object Collections.Specialized.StringCollection; $input -split "\n" | ForEach-Object { $fullPath = Join-Path (Get-Location) $_; $c.Add($fullPath) }; [System.Windows.Forms.Clipboard]::SetFileDropList($c);'<CR>
+nn P :!filecb paste<CR>
+map Y :!filecb copy %f<CR>
 
 " Commands
 com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd

@@ -38,12 +38,12 @@ goto-recent(){cd "$(eval ${FZF_P_COMMAND}|fzf --exact)";zle reset-prompt;zle zle
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-gitw(){local k; read -k1 k; gitw $k ${PWD} < /dev/tty; zle reset-prompt; zle zle-line-init}
 quit(){exit}
-vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|c}
-vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|c}
-vi-put-before(){CUTBUFFER="$(p 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-before}
-vi-put-after(){CUTBUFFER="$(p 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-after}
+vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|cb copy}
+vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|cb copy}
+vi-put-before(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-before}
+vi-put-after(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-after}
 opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac}
-visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|c}
+visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|cb copy}
 visual-put(){zle vi-delete; zle vi-put-before}
 copy-mode(){wez copy}
 g-expansion(){zle _mark_expansion && zle autosuggest-clear}

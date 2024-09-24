@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+
+cmd=$1 && shift
+
+if grep -q Microsoft /proc/version; then
+  case ${cmd} in
+    copy) win32yank.exe -i --crlf;;
+    paste) win32yank.exe -o --lf;;
+  esac
+else
+  case ${cmd} in
+    copy) xsel --input --clipboard;;
+    paste) xsel --output --clipboard;;
+  esac
+fi

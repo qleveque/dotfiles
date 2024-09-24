@@ -1,0 +1,26 @@
+#!/usr/bin/zsh
+
+cmd=$1 && shift
+
+if grep -q Microsoft /proc/version; then
+  case ${cmd} in
+    paste) 
+      powershell.exe -Command \
+        'Get-Clipboard -Format FileDropList | `
+        ForEach-Object { `
+          Copy-Item $_ -Destination . -Recurse `
+        }'
+    ;;
+    copy) 
+      for a in "$@"; do echo "$a"; done | powershell.exe -Command \
+        'Add-Type -AssemblyName System.Windows.Forms; `
+        $c = New-Object Collections.Specialized.StringCollection; `
+        $input -split "\n" | `
+        ForEach-Object { `
+          $fullPath = Join-Path (Get-Location) $_;`
+          $c.Add($fullPath) `
+        };`
+        [System.Windows.Forms.Clipboard]::SetFileDropList($c);'
+    ;;
+  esac
+fi
