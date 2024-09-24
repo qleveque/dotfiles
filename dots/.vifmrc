@@ -33,7 +33,7 @@ nn <C-p> :exe 'cd "'.system('eval $FZF_P_COMMAND|fzf --exact 2>/dev/tty').'"'|:o
 
 " File clipboard
 nn P :!powershell.exe -Command 'Get-Clipboard -Format FileDropList | ForEach-Object { Copy-Item $_ -Destination . -Recurse }'<CR>
-map Y :!echo %f | powershell.exe -Command 'Add-Type -AssemblyName System.Windows.Forms; $c = New-Object Collections.Specialized.StringCollection; $input -split " " | ForEach-Object { $fullPath = Join-Path (Get-Location) $_; $c.Add($fullPath) }; [System.Windows.Forms.Clipboard]::SetFileDropList($c);'<CR>
+map Y :!for a in %f; do echo "$a"; done | powershell.exe -Command 'Add-Type -AssemblyName System.Windows.Forms; $c = New-Object Collections.Specialized.StringCollection; $input -split "\n" | ForEach-Object { $fullPath = Join-Path (Get-Location) $_; $c.Add($fullPath) }; [System.Windows.Forms.Clipboard]::SetFileDropList($c);'<CR>
 
 " Commands
 com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd
