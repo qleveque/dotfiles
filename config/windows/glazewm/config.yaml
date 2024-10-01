@@ -22,10 +22,18 @@ window_effects:
       enabled: true
       color: '#ffffff'
 
+    corner_style:
+      enabled: true
+      style: 'square'
+
   other_windows:
     border:
       enabled: true
       color: '#000000'
+
+    corner_style:
+      enabled: true
+      style: 'square'
 
 window_behavior:
   initial_state: 'tiling'
