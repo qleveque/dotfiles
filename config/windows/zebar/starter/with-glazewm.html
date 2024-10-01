@@ -32,7 +32,8 @@
         network: { type: 'network' },
         glazewm: { type: 'glazewm' },
         cpu: { type: 'cpu' },
-        date: { type: 'date', formatting: 'EEE d MMM t' },
+        time: { type: 'date', formatting: 't' },
+        date: { type: 'date', formatting: 'dd/MM (W)' },
         battery: { type: 'battery' },
         memory: { type: 'memory' },
         weather: { type: 'weather' },
@@ -143,7 +144,7 @@
               )}
             </div>
 
-            <div className="center">{output.date?.formatted}</div>
+            <div className="center">{output.time?.formatted}</div>
 
             <div className="right">
               {output.glazewm && (
@@ -173,26 +174,6 @@
                 </div>
               )}
 
-              {output.memory && (
-                <div className="memory">
-                  <i className="nf nf-fae-chip"></i>
-                  {Math.round(output.memory.usage)}%
-                </div>
-              )}
-
-              {output.cpu && (
-                <div className="cpu">
-                  <i className="nf nf-oct-cpu"></i>
-
-                  {/* Change the text color if the CPU usage is high. */}
-                  <span
-                    className={output.cpu.usage > 85 ? 'high-usage' : ''}
-                  >
-                    {Math.round(output.cpu.usage)}%
-                  </span>
-                </div>
-              )}
-
               {output.battery && (
                 <div className="battery">
                   {/* Show icon for whether battery is charging. */}
@@ -204,12 +185,13 @@
                 </div>
               )}
 
-              {output.weather && (
-                <div className="weather">
-                  {getWeatherIcon(output.weather)}
-                  {Math.round(output.weather.celsiusTemp)}°C
+              {output.date && (
+                <div className="date">
+                  <i className="nf nf-md-calendar"></i>
+                  {output.date.formatted}
                 </div>
               )}
+
             </div>
           </div>
         );

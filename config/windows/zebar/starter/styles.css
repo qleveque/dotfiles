@@ -55,7 +55,8 @@ body,
 .network,
 .memory,
 .cpu,
-.battery {
+.battery,
+.weather{
   margin-right: 20px;
 }
 
