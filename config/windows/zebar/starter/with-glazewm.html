@@ -174,11 +174,11 @@
                 </div>
               )}
 
-              {output.battery?.isCharging && (
-                <i className="nf nf-md-power_plug charging-icon"></i>
-              )}
               {output.battery && (
                 <div className="battery">
+                  {output.battery?.isCharging && (
+                    <i className="nf nf-md-power_plug charging-icon"></i>
+                  )}
                   {/* Show icon for whether battery is charging. */}
                   {getBatteryIcon(output.battery)}
                   {Math.round(output.battery.chargePercent)}%
