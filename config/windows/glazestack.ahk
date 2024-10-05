@@ -54,7 +54,6 @@ Close() {
     WinClose("ahk_id " activeWin)
 }
 
-!f::Activate(1)
-!d::Activate(-1)
+!;::Activate(1)
+!,::Activate(-1)
 !q::Close()
-!+q::WinClose("A")

@@ -67,6 +67,8 @@ workspaces:
     display_name: "󰀿"
   - name: "music"
     display_name: ""
+  - name: "post"
+    display_name: "󰇮"
 
 window_rules:
   - commands: ['ignore']
@@ -85,9 +87,9 @@ window_rules:
 binding_modes:
 
 keybindings:
-  - commands: ['move-workspace --direction up', 'wm-redraw']
+  - commands: ['move-workspace --direction up']
     bindings: ['alt+shift+d']
-  - commands: ['move-workspace --direction down', 'wm-redraw']
+  - commands: ['move-workspace --direction down']
     bindings: ['alt+shift+f']
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']
@@ -95,15 +97,14 @@ keybindings:
     bindings: ['alt+v']
   - commands: ['set-minimized']
     bindings: ['alt+x']
-  # - commands: ['close']
-  #   bindings: ['alt+shift+q']
-
-  - commands: ['set-tiling']
-    bindings: ['alt+space']
-  - commands: ['toggle-floating --centered']
-    bindings: ['alt+enter']
   - commands: ['toggle-fullscreen']
+    bindings: ['alt+f']
+  - commands: ['toggle-floating']
+    bindings: ['alt+enter']
+  - commands: ['set-tiling']
     bindings: ['alt+shift+enter']
+  - commands: ['close']
+    bindings: ['alt+shift+q']
 
   - commands: ['focus --direction left']
     bindings: ['alt+h', 'alt+left']
@@ -143,6 +144,8 @@ keybindings:
     bindings: ['alt+b']
   - commands: ['focus --workspace music']
     bindings: ['alt+m']
+  - commands: ['focus --workspace post']
+    bindings: ['alt+p']
 
   - commands: ['move --workspace any', 'focus --workspace any']
     bindings: ['alt+shift+a']
@@ -164,6 +167,8 @@ keybindings:
     bindings: ['alt+shift+b']
   - commands: ['move --workspace music', 'focus --workspace music']
     bindings: ['alt+shift+m']
+  - commands: ['move --workspace post', 'focus --workspace post']
+    bindings: ['alt+shift+p']
 
   - commands: ['focus --recent-workspace']
     bindings: ['alt+z']
