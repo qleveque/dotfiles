@@ -5,7 +5,7 @@ wez.on('user-var-changed', function(w, p, name, value)
   if name == 'MOVE_TAB' then w:perform_action(wez.action.MoveTab(tonumber(value)), p) end
 end)
 function move_tab_next(w) for _, item in ipairs(w:mux_window():tabs_with_info()) do
-    if item.is_active then return wez.action.MoveTab(item.index + 1) end
+  if item.is_active then return wez.action.MoveTab(item.index + 1) end
 end end
 
 -- Configuration
@@ -17,6 +17,7 @@ c.font_size = 9.3
 c.leader = {key = 'b', mods = 'CTRL'}
 c.window_decorations = 'RESIZE'
 c.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
+c.hide_tab_bar_if_only_one_tab = true
 c.keys = {
   {key = 'Tab', mods = 'CTRL', action = wez.action{SendString='\x1b[27;5;9~'}},
   {key = 'Tab', mods = 'CTRL|SHIFT', action = wez.action{SendString='\x1b[27;6;9~'}},
@@ -45,7 +46,16 @@ if wez.target_triple:match("windows") then
   c.wsl_domains = {{name = 'WSL:Ubuntu', distribution = 'Ubuntu-24.04'}}
   c.default_domain = 'WSL:Ubuntu'
 end
+
+-- Plugins
 local smarts=wez.plugin.require('http://github.com/mrjones2014/smart-splits.nvim')
 smarts.apply_to_config(c,{direction_keys={'h','j','k','l'},modifiers={move='CTRL'}})
+local tabline = wez.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+local tabline_tab = { 'index', { 'tab', padding=1, icons_enabled=false}, { 'zoomed', padding = 0 }}
+tabline.setup({sections = {
+  tabline_a = {}, tabline_b = {}, tabline_c = {}, tabline_x = {}, tabline_y = {},
+  tabline_z = {'hostname'}, tab_active = tabline_tab, tab_inactive = tabline_tab,
+}})
+tabline.apply_to_config(c)
 
 return c
