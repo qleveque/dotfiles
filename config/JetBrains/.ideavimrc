@@ -9,6 +9,7 @@ set textobj-indent
 set incsearch
 set clipboard+=unnamed
 set visualbell
+set vim-highlightedyank
 
 " Navigation
 sethandler <C-t> a:ide

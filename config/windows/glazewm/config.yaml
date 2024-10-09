@@ -79,7 +79,7 @@ window_rules:
   - commands: ['set-floating', 'move --workspace gui', 'focus --workspace gui']
     match:
       - window_process: { equals: 'ANTlab' }
-      - window_title: { regex: 'ANT lab.*|Change User Group' }
+      - window_title: { regex: 'ANT lab.*|Change User Group|Setup|Warning' }
   - commands: ['move --workspace music']
     match:
       - window_process: { equals: 'Spotify' }

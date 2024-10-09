@@ -38,10 +38,7 @@ if &diff
   nn - [c
   nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
   au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
-  au BufWinEnter /tmp/* setlocal noma
-  if len(argv()) == 3
-    nn doh 1do
-    nn dol 3do
-    au VimEnter * :winc h
+  if len(argv()) == 2
+    au BufWinEnter /tmp/* setlocal noma
   end
 end
