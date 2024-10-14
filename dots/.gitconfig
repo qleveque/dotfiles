@@ -19,7 +19,7 @@
   prompt = false
   trustExitCode = true
 [difftool "vimdiff"]
-  path = nvim
+  cmd = nvim --cmd 'au BufRead /tmp/* setl noma' -d $LOCAL $REMOTE
 [merge]
   conflictstyle = diff3
   tool = nvimdiff
