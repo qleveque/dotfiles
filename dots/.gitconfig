@@ -6,7 +6,7 @@
   ignorecase = true
   whitespace = trailing-space
   longpaths = true
-  autocrlf = input
+  autocrlf = true
   filemode = false
   excludesfile = ~/.gitignore
 [push]
