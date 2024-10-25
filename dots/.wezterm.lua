@@ -18,6 +18,7 @@ c.leader = {key = 'b', mods = 'CTRL'}
 c.window_decorations = 'RESIZE'
 c.window_padding = {left = 0, right = 0, top = 0, bottom = 0}
 c.hide_tab_bar_if_only_one_tab = true
+c.adjust_window_size_when_changing_font_size = false
 c.keys = {
   {key = 'Tab', mods = 'CTRL', action = wez.action{SendString='\x1b[27;5;9~'}},
   {key = 'Tab', mods = 'CTRL|SHIFT', action = wez.action{SendString='\x1b[27;6;9~'}},
