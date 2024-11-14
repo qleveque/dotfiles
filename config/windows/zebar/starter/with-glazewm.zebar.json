@@ -16,6 +16,11 @@
       "height": "22px",
       "monitorSelection": {
         "type": "all"
+      },
+      "dockToEdge": {
+        "enabled": true,
+        "edge": null,
+        "windowMargin": "0px"
       }
     }
   ]
