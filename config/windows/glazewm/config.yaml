@@ -45,6 +45,7 @@ window_behavior:
 
     fullscreen:
       maximized: true
+      shown_on_top: false
 
 workspaces:
   - name: "any"
@@ -76,13 +77,13 @@ window_rules:
       - window_process: { equals: 'zebar' }
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+  - commands: ['move --workspace music']
+    match:
+      - window_process: { equals: 'Spotify' }
   - commands: ['set-floating', 'move --workspace gui', 'focus --workspace gui']
     match:
       - window_process: { equals: 'ANTlab' }
       - window_title: { regex: '^(ANT lab( - C.*)?|Change User Group|Setup|Warning)$' }
-  - commands: ['move --workspace music']
-    match:
-      - window_process: { equals: 'Spotify' }
 
 binding_modes:
 
@@ -104,25 +105,30 @@ keybindings:
   - commands: ['set-tiling']
     bindings: ['alt+shift+enter']
   - commands: ['close']
-    bindings: ['alt+shift+q']
+    bindings: ['alt+q']
 
   - commands: ['focus --direction left']
-    bindings: ['alt+h', 'alt+left']
+    bindings: ['alt+h']
   - commands: ['focus --direction right']
-    bindings: ['alt+l', 'alt+right']
+    bindings: ['alt+l']
   - commands: ['focus --direction up']
-    bindings: ['alt+k', 'alt+up']
+    bindings: ['alt+k']
   - commands: ['focus --direction down']
-    bindings: ['alt+j', 'alt+down']
+    bindings: ['alt+j']
 
   - commands: ['move --direction left']
-    bindings: ['alt+shift+h', 'alt+shift+left']
+    bindings: ['alt+shift+h']
   - commands: ['move --direction right']
-    bindings: ['alt+shift+l', 'alt+shift+right']
+    bindings: ['alt+shift+l']
   - commands: ['move --direction up']
-    bindings: ['alt+shift+k', 'alt+shift+up']
+    bindings: ['alt+shift+k']
   - commands: ['move --direction down']
-    bindings: ['alt+shift+j', 'alt+shift+down']
+    bindings: ['alt+shift+j']
+
+  - commands: ['resize --width -10%']
+    bindings: ['alt+shift+_']
+  - commands: ['resize --width +10%']
+    bindings: ['alt+shift+oem_plus']
 
   - commands: ['focus --workspace any']
     bindings: ['alt+a']
