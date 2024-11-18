@@ -1,7 +1,7 @@
 {
   "filterLinkHints": true,
   "hideHud": true,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap <C-u> scrollPageUp\nmap <C-d> scrollPageDown\nmap Q removeTab\nmap X closeOtherTabs\nmap _ LinkHints.activateMode\nunmap f",
+  "keyMappings": "# Insert your preferred key mappings here.\nmap <C-u> scrollPageUp\nmap <C-d> scrollPageDown\nmap Q removeTab\nmap X closeOtherTabs\nmap _ LinkHints.activateMode\nmap - LinkHints.activateModeToOpenInNewTab\nunmap f\nunmap J\nunmap K",
   "newTabUrl": "pages/blank.html",
   "nextPatterns": "suivant,next,Next,more,newer,>,›,→,»,≫,>>",
   "previousPatterns": "précédent,prev,Prev,previous,back,older,<,‹,←,«,≪,<<",
