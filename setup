@@ -27,9 +27,4 @@ if grep -q Microsoft /proc/version; then
   # glazewm + zebar
   lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
   lndir "${config}/windows/zebar/starter" "${HOME}/.glzr/zebar/starter"
-
-  # Firefox (should activate legacyUserProfileCustomizations)
-  for dir in $(find "${appData}/Mozilla/Firefox/Profiles/" -type d -name "*release*"); do
-    lndir "${config}/mozilla" "${dir}/chrome"
-  done
 fi
