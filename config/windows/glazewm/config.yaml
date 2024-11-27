@@ -80,10 +80,27 @@ window_rules:
   - commands: ['move --workspace music']
     match:
       - window_process: { equals: 'Spotify' }
+  - commands: ['move --workspace send']
+    match:
+      - window_process: { equals: 'ms-teams' }
+  - commands: ['move --workspace post']
+    match:
+      - window_process: { equals: 'OUTLOOK' }
+  - commands: ['move --workspace code']
+    match:
+      - window_process: { equals: 'Code' }
+      - window_process: { equals: 'pycharm64' }
+      - window_process: { equals: 'idea64' }
+  - commands: ['set-floating', 'move --workspace back', 'focus --workspace back']
+    match:
+      - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
   - commands: ['set-floating', 'move --workspace gui', 'focus --workspace gui']
     match:
+      - window_process: { equals: 'python' }
+      - window_process: { equals: 'WindowsTerminal' }
+        window_title: { regex: 'ANT lab|\\\\' }
+      - window_process: { equals: 'python.exe' }
       - window_process: { equals: 'ANTlab' }
-      - window_title: { regex: '^(ANT lab( - C.*)?|Change User Group|Setup|Warning)$' }
 
 binding_modes:
 
