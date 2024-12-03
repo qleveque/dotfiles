@@ -49,15 +49,15 @@ body,
   justify-self: end;
 }
 
-.logo,
 .binding-mode,
-.tiling-direction,
-.network,
-.memory,
-.cpu,
+.date,
 .battery,
-.weather{
-  margin-right: 20px;
+.tiling-direction {
+  margin-right: 15px;
+}
+.network,
+.audio {
+  margin-right: 10px;
 }
 
 .workspaces {
@@ -84,23 +84,18 @@ body,
   }
 }
 
-.binding-mode,
-.tiling-direction {
+.button {
   background: rgb(255 255 255 / 15%);
   color: rgb(255 255 255 / 90%);
   border-radius: 2px;
   line-height: 1;
-  padding: 4px 8px;
   border: 0;
   cursor: pointer;
+  padding: 4px 8px;
 }
 
 .binding-mode {
   margin-right: 4px;
-}
-
-.cpu .high-usage {
-  color: #900029;
 }
 
 .battery{

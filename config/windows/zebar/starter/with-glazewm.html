@@ -31,12 +31,10 @@
       const providers = zebar.createProviderGroup({
         network: { type: 'network' },
         glazewm: { type: 'glazewm' },
-        cpu: { type: 'cpu' },
         time: { type: 'date', formatting: 't' },
-        date: { type: 'date', formatting: 'dd/MM (W)' },
+        date: { type: 'date', formatting: 'dd/MM' },
         battery: { type: 'battery' },
-        memory: { type: 'memory' },
-        weather: { type: 'weather' },
+        audio: { type: 'audio' },
       });
 
       createRoot(document.getElementById('root')).render(<App />);
@@ -47,6 +45,10 @@
         useEffect(() => {
           providers.onOutput(() => setOutput(providers.outputMap));
         }, []);
+
+        function truncateString(str, maxLength) {
+          return str.length > maxLength ? str.substring(0, maxLength) + '...' : str;
+        }
 
         // Get icon to show for current network status.
         function getNetworkIcon(networkOutput) {
@@ -91,40 +93,9 @@
           return <i className="nf nf-fa-battery_0"></i>;
         }
 
-        // Get icon to show for current weather status.
-        function getWeatherIcon(weatherOutput) {
-          switch (weatherOutput.status) {
-            case 'clear_day':
-              return <i className="nf nf-weather-day_sunny"></i>;
-            case 'clear_night':
-              return <i className="nf nf-weather-night_clear"></i>;
-            case 'cloudy_day':
-              return <i className="nf nf-weather-day_cloudy"></i>;
-            case 'cloudy_night':
-              return <i className="nf nf-weather-night_alt_cloudy"></i>;
-            case 'light_rain_day':
-              return <i className="nf nf-weather-day_sprinkle"></i>;
-            case 'light_rain_night':
-              return <i className="nf nf-weather-night_alt_sprinkle"></i>;
-            case 'heavy_rain_day':
-              return <i className="nf nf-weather-day_rain"></i>;
-            case 'heavy_rain_night':
-              return <i className="nf nf-weather-night_alt_rain"></i>;
-            case 'snow_day':
-              return <i className="nf nf-weather-day_snow"></i>;
-            case 'snow_night':
-              return <i className="nf nf-weather-night_alt_snow"></i>;
-            case 'thunder_day':
-              return <i className="nf nf-weather-day_lightning"></i>;
-            case 'thunder_night':
-              return <i className="nf nf-weather-night_alt_lightning"></i>;
-          }
-        }
-
         return (
           <div className="app">
             <div className="left">
-              <i className="logo nf nf-custom-windows"></i>
               {output.glazewm && (
                 <div className="workspaces">
                   {output.glazewm.currentWorkspaces.map(workspace => (
@@ -145,10 +116,6 @@
             </div>
 
             <div className="center">
-                <div className="time">
-                  <i className="nf nf-fa-clock"></i>
-                  {output.time?.formatted}
-                </div>
             </div>
 
             <div className="right">
@@ -164,7 +131,7 @@
                   ))}
 
                   <button
-                    className={`tiling-direction nf ${output.glazewm.tilingDirection === 'horizontal' ? 'nf-md-swap_horizontal' : 'nf-md-swap_vertical'}`}
+                    className={`button nf tiling-direction ${output.glazewm.tilingDirection === 'horizontal' ? 'nf-md-swap_horizontal' : 'nf-md-swap_vertical'}`}
                     onClick={() =>
                       output.glazewm.runCommand('toggle-tiling-direction')
                     }
@@ -172,10 +139,15 @@
                 </>
               )}
 
+              {output.audio?.defaultPlaybackDevice && output.audio.defaultPlaybackDevice.name.startsWith('Headphones') && (
+                <div className="audio">
+                  <i className='nf nf-fa-headphones'></i>
+                </div>
+              )}
+
               {output.network && (
                 <div className="network">
                   {getNetworkIcon(output.network)}
-                  {output.network.defaultGateway?.ssid}
                 </div>
               )}
 
@@ -195,6 +167,13 @@
                   <i className="nf nf-md-calendar"></i>
                   {output.date.formatted}
                 </div>
+              )}
+
+              {output.time && (
+              <div className="time">
+                <i className="nf nf-fa-clock"></i>
+                {output.time.formatted}
+              </div>
               )}
 
             </div>

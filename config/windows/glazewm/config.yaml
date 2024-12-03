@@ -2,6 +2,7 @@ general:
   startup_commands: ['shell-exec zebar']
   focus_follows_cursor: false
   toggle_workspace_on_refocus: false
+  show_all_in_taskbar: true
 
   cursor_jump:
     enabled: false
@@ -83,6 +84,10 @@ window_rules:
   - commands: ['move --workspace send']
     match:
       - window_process: { equals: 'ms-teams' }
+  - commands: ['move --workspace send', 'focus --workspace send']
+    match:
+      - window_title: { equals: 'WhatsApp' }
+      - window_process: { equals: 'Discord' }
   - commands: ['move --workspace post']
     match:
       - window_process: { equals: 'OUTLOOK' }
