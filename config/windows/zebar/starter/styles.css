@@ -52,6 +52,7 @@ body,
 .binding-mode,
 .date,
 .battery,
+.weather,
 .tiling-direction {
   margin-right: 15px;
 }

@@ -42,11 +42,11 @@ window_behavior:
   state_defaults:
     floating:
       centered: true
-      shown_on_top: false
+      shown_on_top: true
 
     fullscreen:
       maximized: true
-      shown_on_top: false
+      shown_on_top: true
 
 workspaces:
   - name: "any"
@@ -78,20 +78,20 @@ window_rules:
       - window_process: { equals: 'zebar' }
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+
   - commands: ['move --workspace music']
     match:
       - window_process: { equals: 'Spotify' }
   - commands: ['move --workspace send']
     match:
       - window_process: { equals: 'ms-teams' }
-  - commands: ['move --workspace send', 'focus --workspace send']
-    match:
       - window_title: { equals: 'WhatsApp' }
-      - window_process: { equals: 'Discord' }
-  - commands: ['move --workspace post']
+
+  - commands: ['move --workspace post', 'focus --workspace post']
     match:
       - window_process: { equals: 'OUTLOOK' }
-  - commands: ['move --workspace code']
+      - window_process: { equals: 'olk' }
+  - commands: ['move --workspace code', 'focus --workspace code']
     match:
       - window_process: { equals: 'Code' }
       - window_process: { equals: 'pycharm64' }

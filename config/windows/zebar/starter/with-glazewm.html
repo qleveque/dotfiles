@@ -35,6 +35,7 @@
         date: { type: 'date', formatting: 'dd/MM' },
         battery: { type: 'battery' },
         audio: { type: 'audio' },
+        weather: { type: 'weather' },
       });
 
       createRoot(document.getElementById('root')).render(<App />);
@@ -93,6 +94,29 @@
           return <i className="nf nf-fa-battery_0"></i>;
         }
 
+        // Get icon to show for current weather status.
+        function getWeatherIcon(weatherOutput) {
+          switch (weatherOutput.status) {
+            case 'clear_day':
+            case 'clear_night':
+              return <i className="nf nf-md-white_balance_sunny"></i>;
+            case 'cloudy_day':
+            case 'cloudy_night':
+              return <i className="nf nf-fa-cloud"></i>;
+            case 'light_rain_night':
+            case 'light_rain_day':
+            case 'heavy_rain_day':
+            case 'heavy_rain_night':
+              return <i className="nf nf-fa-cloud_rain"></i>;
+            case 'snow_day':
+            case 'snow_night':
+              return <i className="nf nf-fa-snowflake"></i>;
+            case 'thunder_day':
+            case 'thunder_night':
+              return <i className="nf nf-weather-lightning"></i>;
+          }
+        }
+
         return (
           <div className="app">
             <div className="left">
@@ -148,6 +172,13 @@
               {output.network && (
                 <div className="network">
                   {getNetworkIcon(output.network)}
+                </div>
+              )}
+
+              {output.weather && (
+                <div className="weather">
+                  {getWeatherIcon(output.weather)}
+                  {Math.round(output.weather.celsiusTemp)}°C
                 </div>
               )}
 
