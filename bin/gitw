@@ -12,30 +12,8 @@ while getopts "l:r:s" opt; do case $opt in
 esac; done
 shift $((OPTIND -1))
 
-mergetool() {
-  tmp=$(mktemp -d /tmp/merge.XXXXXX) c=0
-  f1="${tmp}/local_${1:t}" f2="${tmp}/base_${1:t}" f3="${tmp}/remote_${1:t}"
-  while IFS= read -r l; do
-    case "$l" in
-      '<<<<<<<'*)c=1;; '|||||||'*)c=2;; '======='*)c=3;; '>>>>>>>'*)c=0;;
-      *) case "$c" in
-        0)for i in {1..3};do eval "echo \$l >> \"\$f$i\"";done;;
-        *)eval "echo \$l >> \"\$f$c\"";;
-      esac;;
-    esac
-  done < "$1"
-  nvim -c ":nn dp 1dp3dp:wa<CR>" -c ":nm doh 1dodp" -c ":nm dol 3dodp"\
-    -c ':au VimEnter * :winc h' -d "$f1" "$f2" "$f3"
-  git merge-file --diff3 -p "$f1" "$f2" "$f3" > "$1"
-}
-
 case $key in
-  d)
-    if [[ $(git ls-files -u "${file}") ]]; then mergetool "${file}"
-    elif [[ $(git ls-files -o "${file}") ]]; then nvim "${file}"
-    else git difftool ${=ref} -- "${file}"
-    fi
-  ;;
+  d) git difftool ${=ref} -- "${file}";;
   s) tig status;;
   f) tig "${file}";;
   l) tig;;
@@ -50,5 +28,22 @@ case $key in
     nvim -d "${tmp}" "${file}"
     [[ -s "${file}" ]] && git add "${file}"
     mv ${tmp} "${file}"
+  ;;
+  m)
+    tmp=$(mktemp -d /tmp/merge.XXXXXX) c=0
+    f1="${tmp}/local_${file:t}" f2="${tmp}/base_${file:t}" f3="${tmp}/remote_${file:t}"
+    while IFS= read -r l; do
+      case "$l" in
+        '<<<<<<<'*)c=1;; '|||||||'*)c=2;; '======='*)c=3;; '>>>>>>>'*)c=0;;
+        *) case "$c" in
+          0)for i in {1..3};do echo -E "$l" >> $(eval echo "\$f$i");done;;
+          *)echo -E "$l" >> $(eval echo "\$f$c");;
+        esac;;
+      esac;
+    done < "${file}";
+    nvim -c ":nn dp 1dp3dp:wa<CR>" -c ":nm doh 1dodp" -c ":nm dol 3dodp"\
+      -c ':au VimEnter * :winc h' -d "$f1" "$f2" "$f3";
+    git merge-file --diff3 -p "$f1" "$f2" "$f3" > "${file}";
+    echo
   ;;
 esac

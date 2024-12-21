@@ -30,5 +30,6 @@ bind status A !git commit --amend --no-edit
 
 bind generic l :d
 bind diff l !+>wez new "gitw d '%(file)' -r %(stash) %(commit)"
+bind diff m !+>wez new "gitw m '%(file)'"
 bind status l !+>wez new "[[ '%(status)' =~ Staged ]]&&p=-s;gitw d '%(file)' ${p}"
 bind status p !+>wez new "gitw p '%(file)'"
