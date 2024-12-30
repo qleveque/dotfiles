@@ -79,10 +79,10 @@ window_rules:
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
 
-  - commands: ['move --workspace music']
+  - commands: ['move --workspace music', 'focus --workspace music']
     match:
       - window_process: { equals: 'Spotify' }
-  - commands: ['move --workspace send']
+  - commands: ['move --workspace send', 'focus --workspace send']
     match:
       - window_process: { equals: 'ms-teams' }
       - window_title: { equals: 'WhatsApp' }
@@ -110,24 +110,29 @@ window_rules:
 binding_modes:
 
 keybindings:
-  - commands: ['move-workspace --direction up']
-    bindings: ['alt+shift+d']
-  - commands: ['move-workspace --direction down']
-    bindings: ['alt+shift+f']
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']
+
   - commands: ['toggle-tiling-direction']
     bindings: ['alt+v']
   - commands: ['set-minimized']
     bindings: ['alt+x']
-  - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
-  - commands: ['toggle-floating']
-    bindings: ['alt+enter']
-  - commands: ['set-tiling']
-    bindings: ['alt+shift+enter']
   - commands: ['close']
     bindings: ['alt+q']
+  - commands: ['toggle-fullscreen']
+    bindings: ['alt+f']
+
+  - commands: ['toggle-floating']
+    bindings: ['alt+enter']
+  - commands: ['wm-cycle-focus']
+    bindings: ['alt+space']
+  - commands: ['set-tiling']
+    bindings: ['alt+shift+enter']
+
+  - commands: ['move-workspace --direction up']
+    bindings: ['alt+shift+d']
+  - commands: ['move-workspace --direction down']
+    bindings: ['alt+shift+f']
 
   - commands: ['focus --direction left']
     bindings: ['alt+h']

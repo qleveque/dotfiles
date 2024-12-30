@@ -8,7 +8,7 @@ export NVIM_LIGHT=1
 while getopts "l:r:s" opt; do case $opt in
     l) line="${OPTARG}";;
     r) ref="${OPTARG}^ ${OPTARG}";;
-    s) ref='--staged'
+    s) ref='--staged';;
 esac; done
 shift $((OPTIND -1))
 
