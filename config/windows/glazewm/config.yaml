@@ -5,7 +5,8 @@ general:
   show_all_in_taskbar: true
 
   cursor_jump:
-    enabled: false
+    enabled: true
+    trigger: 'monitor_focus'
 
 gaps:
   inner_gap: '10px'
@@ -42,7 +43,7 @@ window_behavior:
   state_defaults:
     floating:
       centered: true
-      shown_on_top: true
+      shown_on_top: false
 
     fullscreen:
       maximized: true
