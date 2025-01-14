@@ -9,10 +9,10 @@ set ignore-case = smart-case
 set show-changes = no
 set diff-options = --pretty=medium
 
+bind main G move-last-line
 bind generic <C-r> refresh
 bind generic g none
 bind generic gg :0
-bind main G move-last-line
 bind generic y none
 bind generic yc !@>zsh -fc "echo -n %(commit) | cb copy"
 bind generic yf !@>zsh -fc "echo -n %(file) | cb copy"
@@ -21,6 +21,7 @@ bind generic ; back
 bind generic <C-q> :q
 bind diff j :/\|\s+(0|[0-9]+\s[\+-]+)$
 bind diff k :?\|\s+(0|[0-9]+\s[\+-]+)$
+bind diff G move-last-line
 bind status j :/^\S+
 bind status k :?^\S+
 bind status d none

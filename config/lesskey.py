@@ -21,8 +21,8 @@ gg goto-line
 # Git
 gc {NA} {READ_COMMIT}|{RUN}'wez new "tig show $0"'\n
 gd {NA} {READ_IDX_FILE}|{RUN}'wez new "gitw d $0"'\n
-yc {NA} {READ_COMMIT}|c\n
-yf {NA} {READ_IDX_FILE}|{CUT}2|c\n
+yc {NA} {READ_COMMIT}|cb copy\n
+yf {NA} {READ_IDX_FILE}|{CUT}2|cb copy\n
 ]c {NA} J/{COMMIT}\nma{RESET}'a
 [c {NA} /{COMMIT}\nNma{RESET}'a
 ]f {NA} J/{IDX}\nma{RESET}'a
