@@ -40,16 +40,25 @@
 
       createRoot(document.getElementById('root')).render(<App />);
 
+      let centerHtml = "";
+      function setCentralText() {
+        zebar.shellExec('zebarCenter.bat').then(out => {
+          if(out.stderr) {
+            centerHtml = '';
+            return;
+          }
+          centerHtml = out.stdout;
+          setTimeout(setCentralText, 1000);
+        })
+      }
+      setCentralText();
+
       function App() {
         const [output, setOutput] = useState(providers.outputMap);
 
         useEffect(() => {
           providers.onOutput(() => setOutput(providers.outputMap));
         }, []);
-
-        function truncateString(str, maxLength) {
-          return str.length > maxLength ? str.substring(0, maxLength) + '...' : str;
-        }
 
         // Get icon to show for current network status.
         function getNetworkIcon(networkOutput) {
@@ -139,7 +148,7 @@
               )}
             </div>
 
-            <div className="center">
+            <div className="center" dangerouslySetInnerHTML={{ __html: centerHtml }}>
             </div>
 
             <div className="right">

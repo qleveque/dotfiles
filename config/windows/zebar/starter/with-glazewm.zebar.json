@@ -6,6 +6,18 @@
   "focused": false,
   "resizable": false,
   "transparent": false,
+  "caching": {
+    "defaultDuration": 0,
+    "rules": []
+  },
+  "privileges": {
+    "shellCommands": [
+      {
+        "program": "zebarCenter.bat",
+        "argsRegex": ".*"
+      }
+    ]
+  },
   "presets": [
     {
       "name": "default",
