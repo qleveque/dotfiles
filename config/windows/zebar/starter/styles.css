@@ -17,48 +17,29 @@ body {
 
 html,
 body,
+.app,
 #root {
   height: 100%;
 }
 
 #root {
   border-bottom: 1px solid rgb(255 255 255 / 5%);
-  background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%));
+  background-color: transparent;
 }
 
 .app {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  height: 100%;
-  padding: 0px 1.5vw;
-}
-
-.left,
-.center,
-.right {
   display: flex;
   align-items: center;
 }
 
-.center {
-  justify-self: center;
+.line {
+  display: flex;
+  padding: 0px 10px;
 }
 
-.right {
-  justify-self: end;
-}
-
-.binding-mode,
-.date,
-.battery,
-.weather,
 .tiling-direction {
   margin-right: 15px;
-}
-.network,
-.audio {
-  margin-right: 10px;
+  padding-top: 3px;
 }
 
 .workspaces {
@@ -93,19 +74,4 @@ body,
   border: 0;
   cursor: pointer;
   padding: 4px 8px;
-}
-
-.binding-mode {
-  margin-right: 4px;
-}
-
-.battery{
-  position: relative;
-}
-
-.battery .charging-icon {
-  position: absolute;
-  font-size: 7px;
-  left: -8px;
-  top: 3px;
 }
