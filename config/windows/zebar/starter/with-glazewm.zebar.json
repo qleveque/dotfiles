@@ -11,16 +11,21 @@
     "rules": []
   },
   "privileges": {
-    "shellCommands": []
+    "shellCommands": [
+      {
+        "program": "autohotkey",
+        "argsRegex": ".*"
+      }
+    ]
   },
   "presets": [
     {
       "name": "default",
-      "anchor": "bottom_left",
+      "anchor": "bottom_center",
       "offsetX": "0px",
       "offsetY": "0px",
       "width": "25%",
-      "height": "45px",
+      "height": "30px",
       "monitorSelection": {
         "type": "all"
       },

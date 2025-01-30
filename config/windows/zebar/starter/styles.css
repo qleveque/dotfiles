@@ -30,16 +30,22 @@ body,
 .app {
   display: flex;
   align-items: center;
-}
-
-.line {
-  display: flex;
-  padding: 0px 10px;
+  justify-content: center;
+  padding: 0px 0px;
 }
 
 .tiling-direction {
-  margin-right: 15px;
-  padding-top: 3px;
+  margin-right: 5px;
+  background: transparent;
+  color: rgb(255 255 255 / 90%);
+  border: 0;
+  cursor: pointer;
+}
+
+.audio {
+  margin-right: 0px;
+  color: rgb(255 255 255 / 90%);
+  border: 0;
 }
 
 .workspaces {
@@ -64,14 +70,4 @@ body,
   &:hover {
     background: rgb(75 115 255 / 50%);
   }
-}
-
-.button {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
-  border-radius: 2px;
-  line-height: 1;
-  border: 0;
-  cursor: pointer;
-  padding: 4px 8px;
 }

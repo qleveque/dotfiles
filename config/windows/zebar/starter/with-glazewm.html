@@ -29,7 +29,8 @@
       import * as zebar from 'https://esm.sh/zebar@2';
 
       const providers = zebar.createProviderGroup({
-        glazewm: { type: 'glazewm' }
+        glazewm: { type: 'glazewm' },
+        audio: { type: 'audio' }
       });
 
       createRoot(document.getElementById('root')).render(<App />);
@@ -37,88 +38,57 @@
       function App() {
         const [output, setOutput] = useState(providers.outputMap);
 
+        zebar.shellExec('autohotkey', 'C:/Users/qleveque/dotfiles/config/windows/zebar/starter/ahk.ahk');
         useEffect(() => {
-          providers.onOutput(() => setOutput(providers.outputMap));
+          providers.onOutput(() => {
+            setOutput(providers.outputMap);
+          });
         }, []);
-
-        // Get icon to show for how much of the battery is charged.
-        function getBatteryIcon(batteryOutput) {
-          if (batteryOutput.chargePercent > 90)
-            return <i className="nf nf-fa-battery_4"></i>;
-          if (batteryOutput.chargePercent > 70)
-            return <i className="nf nf-fa-battery_3"></i>;
-          if (batteryOutput.chargePercent > 40)
-            return <i className="nf nf-fa-battery_2"></i>;
-          if (batteryOutput.chargePercent > 20)
-            return <i className="nf nf-fa-battery_1"></i>;
-          return <i className="nf nf-fa-battery_0"></i>;
-        }
-
-        // Get icon to show for current weather status.
-        function getWeatherIcon(weatherOutput) {
-          switch (weatherOutput.status) {
-            case 'clear_day':
-            case 'clear_night':
-              return <i className="nf nf-md-white_balance_sunny"></i>;
-            case 'cloudy_day':
-            case 'cloudy_night':
-              return <i className="nf nf-fa-cloud"></i>;
-            case 'light_rain_night':
-            case 'light_rain_day':
-            case 'heavy_rain_day':
-            case 'heavy_rain_night':
-              return <i className="nf nf-fa-cloud_rain"></i>;
-            case 'snow_day':
-            case 'snow_night':
-              return <i className="nf nf-fa-snowflake"></i>;
-            case 'thunder_day':
-            case 'thunder_night':
-              return <i className="nf nf-weather-lightning"></i>;
-          }
-        }
 
         return (
           <div className="app">
-            <div className="line">
 
-              {output.glazewm && (
-                <>
-                  {output.glazewm.bindingModes.map(bindingMode => (
-                    <button
-                      className="binding-mode"
-                      key={bindingMode.name}
-                    >
-                      {bindingMode.displayName ?? bindingMode.name}
-                    </button>
-                  ))}
+            {output.audio?.defaultPlaybackDevice && output.audio.defaultPlaybackDevice.name.startsWith('Headphones') && (
+              <i className='audio nf nf-fa-headphones'></i>
+            )}
 
+            {output.glazewm && (
+              <>
+                {output.glazewm.bindingModes.map(bindingMode => (
                   <button
-                    className={`button nf tiling-direction ${output.glazewm.tilingDirection === 'horizontal' ? 'nf-md-swap_horizontal' : 'nf-md-swap_vertical'}`}
-                    onClick={() =>
-                      output.glazewm.runCommand('toggle-tiling-direction')
-                    }
-                  ></button>
-                </>
-              )}
+                    className="binding-mode"
+                    key={bindingMode.name}
+                  >
+                    {bindingMode.displayName ?? bindingMode.name}
+                  </button>
+                ))}
 
-              {output.glazewm && (
-                <div className="workspaces">
-                  {output.glazewm.currentWorkspaces.map(workspace => (
-                    <button
-                      className={`workspace ${workspace.hasFocus && 'focused'} ${workspace.isDisplayed && 'displayed'}`}
-                      onClick={() =>
-                        output.glazewm.runCommand(
-                          `focus --workspace ${workspace.name}`,
-                        )
-                      }
-                      key={workspace.name}
-                    >
-                      {workspace.displayName ?? workspace.name}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+                <button
+                  className={`button nf tiling-direction ${output.glazewm.tilingDirection === 'horizontal' ? 'nf-md-swap_horizontal' : 'nf-md-swap_vertical'}`}
+                  onClick={() =>
+                    output.glazewm.runCommand('toggle-tiling-direction')
+                  }
+                ></button>
+              </>
+            )}
+
+            {output.glazewm && (
+              <div className="workspaces">
+                {output.glazewm.currentWorkspaces.map(workspace => (
+                  <button
+                    className={`workspace ${workspace.hasFocus && 'focused'} ${workspace.isDisplayed && 'displayed'}`}
+                    onClick={() =>
+                      output.glazewm.runCommand(
+                        `focus --workspace ${workspace.name}`,
+                      )
+                    }
+                    key={workspace.name}
+                  >
+                    {workspace.displayName ?? workspace.name}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         );
       }

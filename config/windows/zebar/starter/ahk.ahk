@@ -1,22 +1,16 @@
-#Persistent
-SetTimer, CheckWindow, 100
-SetTimer, OnWindowChanged, 3000
 
-CheckWindow:
-    WinGet, currentWindow, ID, A
-    if (currentWindow != lastWindow)
-    {
-        lastWindow := currentWindow
-        OnWindowChanged()
-    }
-return
+WinGet, windowList, List, ahk_exe zebar.exe
 
-OnWindowChanged() {
-    WinGet, windowList, List, ahk_exe zebar.exe
+WinGetPos, X, Y, Width, Height, A
+SysGet, MonitorWidth, 78
+SysGet, MonitorHeight, 79
+if (Width > MonitorWidth - 10 and Height > MonitorHeight - 10)
+{
+    return
+}
 
-    Loop, %windowList%
-    {
-        thisWindow := windowList%A_Index%
-        WinSet, AlwaysOnTop, On, ahk_id %thisWindow%
-    }
+Loop, %windowList%
+{
+    thisWindow := windowList%A_Index%
+    WinSet, AlwaysOnTop, On, ahk_id %thisWindow%
 }
