@@ -53,6 +53,18 @@ body,
   align-items: center;
 }
 
+@keyframes bubble {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .workspace {
   background: rgb(255 255 255 / 5%);
   margin-right: 4px;
@@ -64,6 +76,9 @@ body,
 
   &.displayed {
     background: rgb(255 255 255 / 15%);
+  }
+  &.focused {
+    animation: bubble 0.3s ease-out;
   }
 
   &.focused,

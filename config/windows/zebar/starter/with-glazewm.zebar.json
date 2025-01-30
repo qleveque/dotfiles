@@ -13,7 +13,7 @@
   "privileges": {
     "shellCommands": [
       {
-        "program": "autohotkey",
+        "program": "cmd",
         "argsRegex": ".*"
       }
     ]

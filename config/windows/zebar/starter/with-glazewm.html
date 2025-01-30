@@ -28,6 +28,8 @@
       import { createRoot } from 'https://esm.sh/react-dom@18/client?dev';
       import * as zebar from 'https://esm.sh/zebar@2';
 
+      zebar.shellExec('cmd', '/C autohotkey.exe %USERPROFILE%/dotfiles/config/windows/zebar/starter/keepTaskbarBehind.ahk');
+
       const providers = zebar.createProviderGroup({
         glazewm: { type: 'glazewm' },
         audio: { type: 'audio' }
@@ -38,7 +40,6 @@
       function App() {
         const [output, setOutput] = useState(providers.outputMap);
 
-        zebar.shellExec('autohotkey', 'C:/Users/qleveque/dotfiles/config/windows/zebar/starter/ahk.ahk');
         useEffect(() => {
           providers.onOutput(() => {
             setOutput(providers.outputMap);
