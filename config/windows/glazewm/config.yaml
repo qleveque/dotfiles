@@ -62,8 +62,6 @@ workspaces:
     display_name: "󰨞"
   - name: "web"
     display_name: ""
-  - name: "rest"
-    display_name: ""
   - name: "gui"
     display_name: ""
   - name: "back"
@@ -72,6 +70,8 @@ workspaces:
     display_name: ""
   - name: "post"
     display_name: "󰇮"
+  - name: "rest"
+    display_name: ""
 
 window_rules:
   - commands: ['ignore']
@@ -170,8 +170,6 @@ keybindings:
     bindings: ['alt+c']
   - commands: ['focus --workspace web']
     bindings: ['alt+w']
-  - commands: ['focus --workspace rest']
-    bindings: ['alt+r']
   - commands: ['focus --workspace gui']
     bindings: ['alt+g']
   - commands: ['focus --workspace back']
@@ -180,6 +178,8 @@ keybindings:
     bindings: ['alt+m']
   - commands: ['focus --workspace post']
     bindings: ['alt+p']
+  - commands: ['focus --workspace rest']
+    bindings: ['alt+r']
 
   - commands: ['move --workspace any', 'focus --workspace any']
     bindings: ['alt+shift+a']
@@ -193,8 +193,6 @@ keybindings:
     bindings: ['alt+shift+c']
   - commands: ['move --workspace web', 'focus --workspace web']
     bindings: ['alt+shift+w']
-  - commands: ['move --workspace rest', 'focus --workspace rest']
-    bindings: ['alt+shift+r']
   - commands: ['move --workspace gui', 'focus --workspace gui']
     bindings: ['alt+shift+g']
   - commands: ['move --workspace back', 'focus --workspace back']
@@ -203,6 +201,8 @@ keybindings:
     bindings: ['alt+shift+m']
   - commands: ['move --workspace post', 'focus --workspace post']
     bindings: ['alt+shift+p']
+  - commands: ['move --workspace rest', 'focus --workspace rest']
+    bindings: ['alt+shift+r']
 
   - commands: ['focus --recent-workspace']
     bindings: ['alt+z']

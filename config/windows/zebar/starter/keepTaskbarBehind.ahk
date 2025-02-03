@@ -6,6 +6,12 @@ SetTimer, CheckActiveWindow, 100
 MoveTaskbarToBottom()
 return
 
+!u::
+    Process, Close, zebar.exe
+    Sleep, 500
+    Run, zebar.exe
+    ExitApp
+
 CheckActiveWindow:
     WinGet, currentWindow, ID, A
     if (currentWindow != lastWindow) {
@@ -15,10 +21,12 @@ CheckActiveWindow:
 return
 
 MoveTaskbarToBottom() {
-    WinGet, windowList, List, ahk_class Shell_TrayWnd
-    Loop, %windowList%
-    {
-        thisWindow := windowList%A_Index%
-        WinSet, Bottom, , ahk_id %thisWindow%
+    WinGet, windowsTaskBar, ID, ahk_class Shell_TrayWnd
+    if (windowsTaskBar) {
+        WinSet, Bottom, , ahk_id %windowsTaskBar%
+    }
+    WinGet, windowsSecondaryTaskBar, ID, ahk_class Shell_SecondaryTrayWnd
+    if (windowsSecondaryTaskBar) {
+        WinSet, Bottom, , ahk_id %windowsSecondaryTaskBar%
     }
 }
