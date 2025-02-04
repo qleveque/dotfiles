@@ -8,7 +8,7 @@ return
 
 !u::
     Process, Close, zebar.exe
-    Sleep, 500
+    Sleep, 2000
     Run, zebar.exe
     ExitApp
 
