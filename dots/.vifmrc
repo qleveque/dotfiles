@@ -8,6 +8,7 @@ nn xx dd
 nn dd "0dd
 vn x d
 vn d "0d
+nn V ggvG
 map <C-i> :histnext|oncd<CR>
 map <C-o> :histprev|oncd<CR>
 nn <C-q> :quit<CR>

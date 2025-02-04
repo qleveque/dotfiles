@@ -17,53 +17,52 @@ body {
 
 html,
 body,
+.app,
 #root {
   height: 100%;
 }
 
 #root {
   border-bottom: 1px solid rgb(255 255 255 / 5%);
-  background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%));
+  background-color: transparent;
 }
 
 .app {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  height: 100%;
-  padding: 0px 1.5vw;
-}
-
-.left,
-.center,
-.right {
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0px 0px;
 }
 
-.center {
-  justify-self: center;
-}
-
-.right {
-  justify-self: end;
-}
-
-.binding-mode,
-.date,
-.battery,
-.weather,
 .tiling-direction {
-  margin-right: 15px;
+  margin-right: 5px;
+  background: transparent;
+  color: rgb(255 255 255 / 90%);
+  border: 0;
+  cursor: pointer;
 }
-.network,
+
 .audio {
-  margin-right: 10px;
+  margin-right: 0px;
+  color: rgb(255 255 255 / 90%);
+  border: 0;
 }
 
 .workspaces {
   display: flex;
   align-items: center;
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .workspace {
@@ -78,34 +77,12 @@ body,
   &.displayed {
     background: rgb(255 255 255 / 15%);
   }
+  &.focused {
+    animation: bubble 0.3s ease-out;
+  }
 
   &.focused,
   &:hover {
     background: rgb(75 115 255 / 50%);
   }
-}
-
-.button {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
-  border-radius: 2px;
-  line-height: 1;
-  border: 0;
-  cursor: pointer;
-  padding: 4px 8px;
-}
-
-.binding-mode {
-  margin-right: 4px;
-}
-
-.battery{
-  position: relative;
-}
-
-.battery .charging-icon {
-  position: absolute;
-  font-size: 7px;
-  left: -8px;
-  top: 3px;
 }
