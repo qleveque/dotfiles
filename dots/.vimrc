@@ -33,12 +33,9 @@ nn <C-g> :exe'sil !wez new "gitw '.nr2char(getchar()).' '.expand('%').' -l'.line
 
 " Diff
 if &diff
-  syntax off
-  set dip+=iwhite,iblank
-  au BufRead /tmp/* setl noma
+  set dip+=iwhiteall
   nn <C-q> :qa<CR>
   nn + ]c
   nn - [c
-  nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
   au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
 end

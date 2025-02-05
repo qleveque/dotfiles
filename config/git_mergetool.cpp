@@ -65,11 +65,7 @@ int main(int argc, char *argv[]) {
         return EXIT_SUCCESS;
     }
 
-    std::string nvim_cmd = "nvim -c \":nn dp 1dp3dp:wa<CR>\""
-                           " -c \":nm doh 1dodp\""
-                           " -c \":nm dol 3dodp\""
-                           " -c ':au VimEnter * :winc h' -d " +
-                           paths[0] + " " + paths[1] + " " + paths[2];
+    std::string nvim_cmd = "nvim -d " + paths[0] + " " + paths[1] + " " + paths[2];
     std::system(nvim_cmd.c_str());
 
     std::string merge_cmd = "git merge-file --diff3 -p " + paths[0] + " " + paths[1] + " " + paths[2];

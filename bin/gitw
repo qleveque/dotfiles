@@ -13,20 +13,20 @@ esac; done
 shift $((OPTIND -1))
 
 case $key in
-  d) git difftool ${=ref} -- "${file}";;
+  d) NVIM_GITDIFF=1 git difftool ${=ref} -- "${file}";;
+  m) NVIM_GITMERGE=1 git_mergetool "${file}";;
   s) tig status;;
   f) tig "${file}";;
   l) tig;;
   b) tig blame +${line:-1} "${file}";;
   r) tig reflog;;
   t) tig stash --list;;
-  m) git_mergetool "${file}";;
   p)
     tmp=$(mktemp)
     mv "${file}" "${tmp}"
     touch "${file}"
     git restore "${file}" &> /dev/null
-    nvim -d "${tmp}" "${file}"
+    NVIM_GITDIFF=1 nvim -d "${tmp}" "${file}"
     [[ -s "${file}" ]] && git add "${file}"
     mv ${tmp} "${file}"
   ;;

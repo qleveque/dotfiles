@@ -303,6 +303,25 @@ local theme = {
 }
 table.insert(nvim_plugins, theme)
 
+-- Git diff
+if os.getenv("NVIM_GITDIFF") then
+  vim.cmd[[
+    syntax off
+    nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
+    au BufRead /tmp/* setl noma
+  ]]
+end
+
+-- Git merge
+if os.getenv("NVIM_GITMERGE") then
+  vim.cmd[[
+    nn dp 1dp3dp:wa<CR>
+    nm doh 1dodp
+    nm dol 3dodp
+    au VimEnter * :winc h
+  ]]
+end
+
 -- Load lazy
 disabled={'gzip','netrwPlugin','rplugin','shada','spellfile','tarPlugin','tohtml','tutor','zipPlugin'}
 require("lazy").setup(nvim_plugins, { performance = { rtp = { disabled = disabled}}})
