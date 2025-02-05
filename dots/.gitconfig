@@ -13,17 +13,11 @@
 [pull]
   rebase = true
 [diff]
-  tool = vimdiff
+  tool = nvimdiff
 [difftool]
   prompt = false
   trustExitCode = true
-[difftool "vimdiff"]
-  cmd = nvim --cmd 'au BufRead /tmp/* setl noma' -d $LOCAL $REMOTE
-[merge]
-  conflictstyle = diff3
-  tool = nvimdiff
-[mergetool]
-  keepBackup = false
+  tool = nvim
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f

@@ -33,6 +33,9 @@ nn <C-g> :exe'sil !wez new "gitw '.nr2char(getchar()).' '.expand('%').' -l'.line
 
 " Diff
 if &diff
+  syntax off
+  set dip+=iwhite,iblank
+  au BufRead /tmp/* setl noma
   nn <C-q> :qa<CR>
   nn + ]c
   nn - [c

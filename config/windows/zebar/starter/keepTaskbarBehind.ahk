@@ -1,14 +1,13 @@
 #Persistent
 #SingleInstance Force
 
-SetTimer, MoveTaskbarToBottom, 1000
+SetTimer, MoveTaskbarToBottom, 3000
 SetTimer, CheckActiveWindow, 100
 MoveTaskbarToBottom()
 return
 
 !u::
     Process, Close, zebar.exe
-    Sleep, 2000
     Run, zebar.exe
     ExitApp
 

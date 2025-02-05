@@ -107,6 +107,9 @@ window_rules:
         window_title: { regex: 'ANT lab|\\\\' }
       - window_process: { equals: 'python.exe' }
       - window_process: { equals: 'ANTlab' }
+  - commands: ['set-floating']
+    match:
+      - window_class: { equals: 'ConsoleWindowClass' }
 
 binding_modes:
 
