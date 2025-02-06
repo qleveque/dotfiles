@@ -305,8 +305,11 @@ table.insert(nvim_plugins, theme)
 
 -- Git diff
 if os.getenv("NVIM_GITDIFF") then
+  local file = io.open(vim.fn.argv(0), "r")
+  if not file then return 0 end
+  if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
+  file:close()
   vim.cmd[[
-    syntax off
     nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
   ]]
