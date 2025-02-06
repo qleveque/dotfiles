@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <filesystem>
@@ -61,7 +62,8 @@ int main(int argc, char *argv[]) {
     }
 
     if(!marker) {
-        std::system(("nvim " + std::string(argv[1])).c_str());
+        std::cout << "No git conflicts found." << std::endl;
+        std::cin.get();
         return EXIT_SUCCESS;
     }
 
@@ -82,8 +84,12 @@ int main(int argc, char *argv[]) {
     output.close();
 
     if (!has_conflict_markers(merged_content)) {
+        std::cout << "No remaining git conflicts, adding the file to the staging area." << std::endl;
         std::system(("git add " + std::string(argv[1])).c_str());
+    } else {
+        std::cout << "git conflicts are still present." << std::endl;
     }
+    std::cin.get();
 
     return EXIT_SUCCESS;
 }
