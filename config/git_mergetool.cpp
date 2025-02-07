@@ -14,8 +14,7 @@ int main(int argc, char *argv[]) {
     vector<string> paths = { tmp + "/local_" + filename, tmp + "/base_" + filename, tmp + "/remote_" + filename };
 
     ifstream input(argv[1]);
-    vector<ofstream> outputs;
-    for (const auto &path : paths) outputs.emplace_back(path);
+    vector<ofstream> outputs; for (const auto &path : paths) outputs.emplace_back(path);
     string line; bool marker = false; int c = 0;
     while (getline(input, line)) {
         if (line.rfind("<<<<<<<", 0) == 0)  c = 1;
@@ -23,8 +22,7 @@ int main(int argc, char *argv[]) {
         else if (line.rfind("=======", 0) == 0) c = 3;
         else if (line.rfind(">>>>>>>", 0) == 0) c = 0;
         else if (c == 0) for (auto &out : outputs) out << line << '\n';
-        else outputs[c - 1] << line << '\n';
-        if(c) marker = true;
+        else { marker = true; outputs[c - 1] << line << '\n'; }
     }
     input.close();
     for (auto &out : outputs) out.close();
@@ -35,13 +33,12 @@ int main(int argc, char *argv[]) {
 
     system(("nvim -d " + listed_paths).c_str());
 
-    FILE *pipe = popen(("git merge-file --diff3 -p " + listed_paths).c_str(), "r");
     string merged_content; char buffer[4096];
+    FILE *pipe = popen(("git merge-file --diff3 -p " + listed_paths).c_str(), "r");
     while (fgets(buffer, sizeof(buffer), pipe) != nullptr) merged_content += buffer;
     pclose(pipe);
-    ofstream output(argv[1]);
-    output << merged_content;
-    output.close();
+
+    ofstream output(argv[1]); output << merged_content; output.close();
 
     if (!has_conflict_markers(merged_content)) {
         cout << "No remaining git conflicts, adding the file to the staging area." << endl;
