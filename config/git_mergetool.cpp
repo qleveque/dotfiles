@@ -1,95 +1,53 @@
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <vector>
 #include <filesystem>
-#include <cstdlib>
 
-bool has_conflict_markers(const std::string &content) {
-    return content.find("<<<<<<<") != std::string::npos &&
-           content.find("|||||||") != std::string::npos &&
-           content.find("=======") != std::string::npos &&
-           content.find(">>>>>>>") != std::string::npos;
-}
+using namespace std;
+
+bool has_conflict_markers(const string &content) { return content.find("<<<<<<<") != string::npos; }
 
 int main(int argc, char *argv[]) {
-    std::string tmpdir = "/tmp/merge.XXXXXX";
-    mkdtemp(&tmpdir[0]);
-    std::string filename = std::filesystem::path(argv[1]).filename().string();
+    string tmp = "/tmp/merge.XXXXXX";
+    mkdtemp(&tmp[0]);
+    string filename = filesystem::path(argv[1]).filename().string();
+    vector<string> paths = { tmp + "/local_" + filename, tmp + "/base_" + filename, tmp + "/remote_" + filename };
 
-    std::vector<std::string> paths = {
-        tmpdir + "/local_" + filename,
-        tmpdir + "/base_" + filename,
-        tmpdir + "/remote_" + filename
-    };
-
-    std::ifstream input(argv[1]);
-    std::vector<std::ofstream> outputs;
-    for (const auto &path : paths) {
-        outputs.emplace_back(path);
+    ifstream input(argv[1]);
+    vector<ofstream> outputs;
+    for (const auto &path : paths) outputs.emplace_back(path);
+    string line; bool marker = false; int c = 0;
+    while (getline(input, line)) {
+        if (line.rfind("<<<<<<<", 0) == 0)  c = 1;
+        else if (line.rfind("|||||||", 0) == 0)  c = 2;
+        else if (line.rfind("=======", 0) == 0) c = 3;
+        else if (line.rfind(">>>>>>>", 0) == 0) c = 0;
+        else if (c == 0) for (auto &out : outputs) out << line << '\n';
+        else outputs[c - 1] << line << '\n';
+        if(c) marker = true;
     }
-
-    std::string line;
-    bool marker = false;
-    int c = 0;
-
-    while (std::getline(input, line)) {
-        if (line.rfind("<<<<<<<", 0) == 0) {
-            c = 1;
-        } else if (line.rfind("|||||||", 0) == 0) {
-            c = 2;
-        } else if (line.rfind("=======", 0) == 0) {
-            c = 3;
-        } else if (line.rfind(">>>>>>>", 0) == 0) {
-            c = 0;
-        } else {
-            if (c == 0) {
-                for (auto &out : outputs) {
-                    out << line << '\n';
-                }
-            } else {
-                outputs[c - 1] << line << '\n';
-            }
-        }
-        if(c) {
-            marker = true;
-        }
-    }
-
     input.close();
-    for (auto &out : outputs) {
-        out.close();
-    }
+    for (auto &out : outputs) out.close();
 
-    if(!marker) {
-        std::cout << "No git conflicts found." << std::endl;
-        std::cin.get();
-        return EXIT_SUCCESS;
-    }
+    if(!marker) { cout << "No git conflicts found." << endl; cin.get(); return EXIT_SUCCESS; }
 
-    std::string nvim_cmd = "nvim -d " + paths[0] + " " + paths[1] + " " + paths[2];
-    std::system(nvim_cmd.c_str());
+    string listed_paths = paths[0] + " " + paths[1] + " " + paths[2];
 
-    std::string merge_cmd = "git merge-file --diff3 -p " + paths[0] + " " + paths[1] + " " + paths[2];
-    FILE *pipe = popen(merge_cmd.c_str(), "r");
-    std::string merged_content;
-    char buffer[4096];
-    while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
-        merged_content += buffer;
-    }
+    system(("nvim -d " + listed_paths).c_str());
+
+    FILE *pipe = popen(("git merge-file --diff3 -p " + listed_paths).c_str(), "r");
+    string merged_content; char buffer[4096];
+    while (fgets(buffer, sizeof(buffer), pipe) != nullptr) merged_content += buffer;
     pclose(pipe);
-
-    std::ofstream output(argv[1]);
+    ofstream output(argv[1]);
     output << merged_content;
     output.close();
 
     if (!has_conflict_markers(merged_content)) {
-        std::cout << "No remaining git conflicts, adding the file to the staging area." << std::endl;
-        std::system(("git add " + std::string(argv[1])).c_str());
-    } else {
-        std::cout << "git conflicts are still present." << std::endl;
-    }
-    std::cin.get();
+        cout << "No remaining git conflicts, adding the file to the staging area." << endl;
+        system(("git add " + string(argv[1])).c_str());
+    } else cout << "git conflicts are still present." << endl;
+    cin.get();
 
     return EXIT_SUCCESS;
 }
