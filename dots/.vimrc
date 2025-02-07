@@ -33,7 +33,6 @@ nn <C-g> :exe'sil !wez new "gitw '.nr2char(getchar()).' '.expand('%').' -l'.line
 
 " Diff
 if &diff
-  set dip+=iwhiteall
   nn <C-q> :qa<CR>
   nn + ]c
   nn - [c
