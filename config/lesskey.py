@@ -20,7 +20,7 @@ LESS = -irFRX --mouse --wheel-lines=1
 gg goto-line
 # Git
 gc {NA} {READ_COMMIT}|{RUN}'wez new "tig show $0"'\n
-gd {NA} {READ_IDX_FILE}|{RUN}'wez new "gitw d $0"'\n
+gd {NA} {READ_IDX_FILE}|{RUN}'wez new "gitw i $0"'\n
 yc {NA} {READ_COMMIT}|cb copy\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|cb copy\n
 ]c {NA} J/{COMMIT}\nma{RESET}'a

@@ -14,6 +14,7 @@ shift $((OPTIND -1))
 
 case $key in
   d) NVIM_GITDIFF=1 git difftool ${=ref} -- "${file}";;
+  i) NVIM_GITDIFF=1 git difftool "${file}";;
   m) NVIM_GITMERGE=1 git_mergetool "${file}";;
   s) tig status;;
   f) tig "${file}";;
