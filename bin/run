@@ -76,10 +76,21 @@ run_file() {
 
 # Find and run a script file `.run.*` in current or any parent directory
 run_project() {
+  local files=()
   while [[ ${PWD} != / ]]; do
-    local file=$(ls -a1 | grep "^.run."| head -n1)
-    [[ -n ${file} ]] && run_file "${PWD}/${file}" || cd ..
+    files+=($(ls -a1 | grep "^.run." | xargs -r realpath))
+    cd ..
   done
+  if [[ ! -z ${files} ]]; then
+    local selected_file
+    if [[ ${#files[@]} -eq 1 ]]; then
+      selected_file=${files}
+    else
+      selected_file=$(printf "%s\n" "${files[@]}" | fzf)
+    fi
+    [[ -e ${selected_file} ]] && run_file "${selected_file}"
+  fi
+  PAUSE=true
   error 'No run script'
 }
 
