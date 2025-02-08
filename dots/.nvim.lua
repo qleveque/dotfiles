@@ -15,6 +15,35 @@ vim.opt.rtp:prepend(lazypath)
 -- Vimrc
 vim.cmd('source ~/.vimrc')
 
+-- Use cb for the clipboard
+vim.g.clipboard = {
+  copy = { ['+'] = 'cb copy' },
+  paste = { ['+'] = 'cb paste' },
+  cache_enabled = 0
+}
+
+-- Git diff
+if os.getenv("NVIM_GITDIFF") then
+  local file = io.open(vim.fn.argv(0), "r")
+  if not file then return 0 end
+  if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
+  file:close()
+  vim.cmd[[
+    nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
+    au BufRead /tmp/* setl noma
+  ]]
+end
+
+-- Git merge
+if os.getenv("NVIM_GITMERGE") then
+  vim.cmd[[
+    nn dp 1dp3dp:wa<CR>
+    nm doh 1dodp
+    nm dol 3dodp
+    au VimEnter * :winc h
+  ]]
+end
+
 -- Light plugins
 nvim_plugins = {
   "pocco81/auto-save.nvim",
@@ -302,28 +331,6 @@ local theme = {
   end
 }
 table.insert(nvim_plugins, theme)
-
--- Git diff
-if os.getenv("NVIM_GITDIFF") then
-  local file = io.open(vim.fn.argv(0), "r")
-  if not file then return 0 end
-  if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
-  file:close()
-  vim.cmd[[
-    nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
-    au BufRead /tmp/* setl noma
-  ]]
-end
-
--- Git merge
-if os.getenv("NVIM_GITMERGE") then
-  vim.cmd[[
-    nn dp 1dp3dp:wa<CR>
-    nm doh 1dodp
-    nm dol 3dodp
-    au VimEnter * :winc h
-  ]]
-end
 
 -- Load lazy
 disabled={'gzip','netrwPlugin','rplugin','shada','spellfile','tarPlugin','tohtml','tutor','zipPlugin'}
