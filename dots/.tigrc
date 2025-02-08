@@ -14,9 +14,9 @@ bind generic <C-r> refresh
 bind generic g none
 bind generic gg :0
 bind generic y none
-bind generic yc !@>zsh -fc "echo -n %(commit) | cb copy"
-bind generic yf !@>zsh -fc "echo -n %(file) | cb copy"
-bind generic yy !@>zsh -fc "echo -n %(text) | cb copy"
+bind generic yc @zsh -fc "echo -n %(commit) | cb copy"
+bind generic yf @zsh -fc "echo -n %(file) | cb copy"
+bind generic yy @zsh -fc "echo -n %(text) | cb copy"
 bind generic ; back
 bind generic <C-q> :q
 bind diff j :/\|\s+(0|[0-9]+\s[\+-]+)$
@@ -30,7 +30,7 @@ bind status C !git commit
 bind status A !git commit --amend --no-edit
 
 bind generic l :d
-bind diff l !+>wez new "gitw d '%(file)' -r %(stash) %(commit)"
-bind status l !+>wez new "[[ '%(status)' =~ Staged ]]&&p=-s;gitw d '%(file)' ${p}"
-bind status m !+>wez new "gitw m '%(file)'"
-bind status p !+>wez new "gitw p '%(file)'"
+bind diff l @wez new "gitw d '%(file)' -r %(stash) %(commit)"
+bind status l @wez new "[[ '%(status)' =~ Staged ]]&&p=-s;gitw d '%(file)' ${p}"
+bind status m @wez new "gitw m '%(file)'"
+bind status p @wez new "gitw p '%(file)'"
