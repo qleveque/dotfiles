@@ -124,15 +124,9 @@ keybindings:
     bindings: ['alt+x']
   - commands: ['close']
     bindings: ['alt+q']
-  - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
 
-  - commands: ['toggle-floating']
-    bindings: ['alt+enter']
   - commands: ['wm-cycle-focus']
     bindings: ['alt+space']
-  - commands: ['set-tiling']
-    bindings: ['alt+shift+enter']
 
   - commands: ['move-workspace --direction up']
     bindings: ['alt+shift+d']
@@ -157,9 +151,13 @@ keybindings:
   - commands: ['move --direction down']
     bindings: ['alt+shift+j']
 
-  - commands: ['resize --width -10%']
+  - commands: ['resize --width -100']
+    bindings: ['alt+_']
+  - commands: ['resize --width +100']
+    bindings: ['alt+oem_plus']
+  - commands: ['resize --height -100']
     bindings: ['alt+shift+_']
-  - commands: ['resize --width +10%']
+  - commands: ['resize --height +100']
     bindings: ['alt+shift+oem_plus']
 
   - commands: ['focus --workspace any']

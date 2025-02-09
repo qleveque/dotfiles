@@ -6,6 +6,10 @@ SetTimer, CheckActiveWindow, 100
 MoveTaskbarToBottom()
 return
 
+!f::Run, bash -c "~/dotfiles/config/windows/zebar/starter/glazewm-utils.sh toggle-fullscreen",, Hide
+!+Space::Run, bash -c "~/dotfiles/config/windows/zebar/starter/glazewm-utils.sh toggle-floating",, Hide
+!+Enter::Run, bash -c "~/dotfiles/config/windows/zebar/starter/glazewm-utils.sh move-workspace",, Hide
+
 !u::
     Process, Close, zebar.exe
     Run, zebar.exe
@@ -17,7 +21,7 @@ CheckActiveWindow:
         lastWindow := currentWindow
         MoveTaskbarToBottom()
     }
-return
+    return
 
 MoveTaskbarToBottom() {
     WinGet, windowsTaskBar, ID, ahk_class Shell_TrayWnd

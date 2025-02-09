@@ -14,9 +14,7 @@ c.color_scheme='Catppuccin Mocha'
 c.enable_scroll_bar=false
 c.font_size=9.3
 c.leader={key='b', mods='CTRL'}
-c.window_decorations='RESIZE'
 c.window_padding={left=0, right=0, top=0, bottom=0}
-c.hide_tab_bar_if_only_one_tab=true
 c.adjust_window_size_when_changing_font_size=false
 c.keys={
   {key='Tab', mods='CTRL', action=a{SendString='\x1b[27;5;9~'}},
@@ -42,7 +40,7 @@ end
 local smarts=wez.plugin.require('http://github.com/mrjones2014/smart-splits.nvim')
 smarts.apply_to_config(c,{direction_keys={'h','j','k','l'},modifiers={move='CTRL'}})
 local tabline=wez.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-local tabline_tab={ 'index', { 'tab', padding=1, icons_enabled=false}, { 'zoomed', padding=0 }}
+local tabline_tab={{'tab', padding=1, icons_enabled=false}, { 'zoomed', padding=0 }}
 tabline.setup({sections={
   tabline_a={}, tabline_b={}, tabline_c={}, tabline_x={}, tabline_y={},
   tabline_z={'hostname'}, tab_active=tabline_tab, tab_inactive=tabline_tab,
