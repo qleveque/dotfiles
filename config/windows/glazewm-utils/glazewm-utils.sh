@@ -2,20 +2,23 @@
 
 cmd=$1 && shift
 
-state=$(glazewm.exe query focused | jq -r '.data.focused.state.type')
+
+G='/mnt/c/Program Files/glzr.io/GlazeWM/cli/glazewm.exe'
+
+state=$($G query focused | jq -r '.data.focused.state.type')
 
 toggle_fullscreen() {
   if [[ "${state}" == "fullscreen" ]]; then
-    prevState=$(glazewm.exe query focused | jq -r '.data.focused.prevState.type')
+    prevState=$($G query focused | jq -r '.data.focused.prevState.type')
     if [[ "${prevState}" == "floating" ]]; then
-      glazewm.exe command set-floating
+      $G command set-floating
     else
-      glazewm.exe command set-tiling
+      $G command set-tiling
       sleep 0.02
-      glazewm.exe command wm-redraw
+      $G command wm-redraw
     fi
   else
-    glazewm.exe command set-fullscreen
+    $G command set-fullscreen
   fi
 }
 
@@ -23,16 +26,16 @@ case ${cmd} in
   toggle-fullscreen) toggle_fullscreen;;
   toggle-floating) 
     if [[ "${state}" == "tiling" ]]; then
-      glazewm.exe command set-floating
+      $G command set-floating
     elif [[ "${state}" == "fullscreen" ]]; then
       toggle_fullscreen
     else
-      glazewm.exe command set-tiling
+      $G command set-tiling
     fi
   ;;
   move-workspace)
-    read x y < <(glazewm.exe query monitors | jq -r '.data.monitors.[] | select(.hasFocus == true) | "\(.x) \(.y)"')
-    read x_ y_ < <(glazewm.exe query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | "\(.x) \(.y)"')
+    read x y < <($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == true) | "\(.x) \(.y)"')
+    read x_ y_ < <($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | "\(.x) \(.y)"')
     dx=$(( x - x_ ))
     dy=$(( y - y_ ))
     if (( ${dx#-} > ${dy#-} )); then
@@ -48,6 +51,6 @@ case ${cmd} in
         direction=down
       fi
     fi
-    glazewm.exe command move-workspace --direction $direction
+    $G command move-workspace --direction $direction
   ;;
 esac
