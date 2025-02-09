@@ -128,11 +128,6 @@ keybindings:
   - commands: ['wm-cycle-focus']
     bindings: ['alt+space']
 
-  - commands: ['move-workspace --direction up']
-    bindings: ['alt+shift+d']
-  - commands: ['move-workspace --direction down']
-    bindings: ['alt+shift+f']
-
   - commands: ['focus --direction left']
     bindings: ['alt+h']
   - commands: ['focus --direction right']
