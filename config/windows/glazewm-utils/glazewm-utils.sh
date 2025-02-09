@@ -2,10 +2,7 @@
 
 cmd=$1 && shift
 
-
 G='/mnt/c/Program Files/glzr.io/GlazeWM/cli/glazewm.exe'
-
-state=$($G query focused | jq -r '.data.focused.state.type')
 
 toggle_fullscreen() {
   if [[ "${state}" == "fullscreen" ]]; then
@@ -23,8 +20,12 @@ toggle_fullscreen() {
 }
 
 case ${cmd} in
-  toggle-fullscreen) toggle_fullscreen;;
+  toggle-fullscreen)
+    state=$($G query focused | jq -r '.data.focused.state.type')
+    toggle_fullscreen
+  ;;
   toggle-floating) 
+    state=$($G query focused | jq -r '.data.focused.state.type')
     if [[ "${state}" == "tiling" ]]; then
       $G command set-floating
     elif [[ "${state}" == "fullscreen" ]]; then
@@ -34,22 +35,14 @@ case ${cmd} in
     fi
   ;;
   move-workspace)
-    read x y < <($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == true) | "\(.x) \(.y)"')
-    read x_ y_ < <($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | "\(.x) \(.y)"')
-    dx=$(( x - x_ ))
-    dy=$(( y - y_ ))
+    monitors=$($G query monitors | jq -r '.data.monitors.[]')
+    read x y < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == true) | "\(.x) \(.y)"')
+    read x_ y_ < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == false) | "\(.x) \(.y)"')
+    dx=$(( x - x_ )) dy=$(( y - y_ ))
     if (( ${dx#-} > ${dy#-} )); then
-      if (( x < x_ )); then
-        direction=right
-      else
-        direction=left
-      fi
+      (( x < x_ )) && direction=right || direction=left
     else
-      if (( y < y_ )); then
-        direction=up
-      else
-        direction=down
-      fi
+      (( y < y_ )) && direction=up || direction=down
     fi
     $G command move-workspace --direction $direction
   ;;
