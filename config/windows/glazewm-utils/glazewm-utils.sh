@@ -42,7 +42,7 @@ case ${cmd} in
     if (( ${dx#-} > ${dy#-} )); then
       (( x < x_ )) && direction=right || direction=left
     else
-      (( y < y_ )) && direction=up || direction=down
+      (( y < y_ )) && direction=down || direction=up
     fi
     $G command move-workspace --direction $direction
   ;;
