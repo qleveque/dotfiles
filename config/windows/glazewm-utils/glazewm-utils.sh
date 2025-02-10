@@ -46,4 +46,9 @@ case ${cmd} in
     fi
     $G command move-workspace --direction $direction
   ;;
+  switch-workspace)
+    workspace=$($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | .children.[] | select(.isDisplayed == true) | .name')
+    $G command move --workspace ${workspace}
+    $G command focus --workspace ${workspace}
+  ;;
 esac
