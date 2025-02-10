@@ -64,6 +64,8 @@ workspaces:
     display_name: ""
   - name: "gui"
     display_name: "󰔃"
+  - name: "dash"
+    display_name: "󱐋"
   - name: "back"
     display_name: "󰀿"
   - name: "music"
@@ -72,8 +74,6 @@ workspaces:
     display_name: "󰇮"
   - name: "rest"
     display_name: ""
-  - name: "dash"
-    display_name: "󱐋"
 
 window_rules:
   - commands: ['ignore']
