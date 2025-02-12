@@ -27,7 +27,7 @@ c.keys={
   {key='v', mods='LEADER', action=a.SplitHorizontal{}},
   {key='n', mods='LEADER', action=a{SpawnTab='CurrentPaneDomain'}},
   {key='q', mods='LEADER', action=a{CloseCurrentPane={confirm=false}}},
-  {key='z', mods='LEADER', action=a.TogglePaneZoomState},
+  {key='f', mods='LEADER', action=a.TogglePaneZoomState},
   {key='d', mods='LEADER', action=run_new(function(w,p) return 'nvim ~/.draft.txt' end)},
   {key='a', mods='LEADER', action=run_new(function(w,p) return 'wez copy-pane '..p:pane_id() end)},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
