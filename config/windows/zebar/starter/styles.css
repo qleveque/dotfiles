@@ -74,6 +74,9 @@ body,
   border-radius: 2px;
   cursor: pointer;
 
+  &.tight {
+    padding: 4px 4px;
+  }
   &.displayed {
     background: rgb(255 255 255 / 15%);
   }

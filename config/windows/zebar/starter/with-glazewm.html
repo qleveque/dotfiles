@@ -46,6 +46,9 @@
           });
         }, []);
 
+        const numberOfWorkspaces = output.glazewm?.currentWorkspaces.length ?? 0;
+        console.log(numberOfWorkspaces);
+
         return (
           <div className="app">
 
@@ -77,7 +80,12 @@
               <div className="workspaces">
                 {output.glazewm.currentWorkspaces.map(workspace => (
                   <button
-                    className={`workspace ${workspace.hasFocus && 'focused'} ${workspace.isDisplayed && 'displayed'}`}
+                    className={`
+                      workspace
+                      ${workspace.hasFocus && 'focused'}
+                      ${workspace.isDisplayed && 'displayed'}
+                      ${numberOfWorkspaces>6 && 'tight'}
+                    `}
                     onClick={() =>
                       output.glazewm.runCommand(
                         `focus --workspace ${workspace.name}`,
