@@ -38,6 +38,8 @@ int main(int argc, char *argv[]) {
     while (fgets(buffer, sizeof(buffer), pipe) != nullptr) merged_content += buffer;
     pclose(pipe);
 
+    system(("rm -rf " + tmp).c_str());
+
     ofstream output(argv[1]); output << merged_content; output.close();
 
     if (!has_conflict_markers(merged_content)) {
