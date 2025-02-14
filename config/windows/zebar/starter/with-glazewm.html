@@ -47,16 +47,17 @@
         }, []);
 
         const numberOfWorkspaces = output.glazewm?.currentWorkspaces.length ?? 0;
-        console.log(numberOfWorkspaces);
+        const workingRect = output.glazewm?.currentMonitor.workingRect;
+        const mainMonitor = workingRect?.left === 0 && workingRect?.top === 0;
 
         return (
           <div className="app">
 
-            {output.audio?.defaultPlaybackDevice && output.audio.defaultPlaybackDevice.name.startsWith('Headphones') && (
+            {mainMonitor && output.audio?.defaultPlaybackDevice && output.audio.defaultPlaybackDevice.name.startsWith('Headphones') && (
               <i className='audio nf nf-fa-headphones'></i>
             )}
 
-            {output.glazewm && (
+            {mainMonitor && output.glazewm && (
               <>
                 {output.glazewm.bindingModes.map(bindingMode => (
                   <button
