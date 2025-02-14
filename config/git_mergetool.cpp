@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
     system(("nvim -d " + listed_paths).c_str());
 
     string merged_content; char buffer[4096];
-    FILE *pipe = popen(("git merge-file --diff3 -p " + listed_paths).c_str(), "r");
+    FILE *pipe = popen(("/usr/bin/git merge-file --diff3 -p " + listed_paths).c_str(), "r");
     while (fgets(buffer, sizeof(buffer), pipe) != nullptr) merged_content += buffer;
     pclose(pipe);
 

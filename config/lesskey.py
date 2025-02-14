@@ -18,6 +18,7 @@ print(rf'''#env
 LESS = -irFRX --mouse --wheel-lines=1
 #command
 gg goto-line
+zz back-scroll
 # Git
 gc {NA} {READ_COMMIT}|{RUN}'wez new "tig show $0"'\n
 gd {NA} {READ_IDX_FILE}|{RUN}'wez new "gitw i $0"'\n
