@@ -4,7 +4,7 @@ setopt histignorealldups sharehistory nonomatch promptsubst
 zstyle ':completion:*' fzf-search-display true
 eval "$(starship init zsh)"
 cf() { cd "$(dirname $1)" }
-h() { eval "$1 --help" | less }
+h() { eval "$@ --help" | batcat --language=help --plain }
 
 # Sources
 source /usr/share/doc/fzf/examples/key-bindings.zsh

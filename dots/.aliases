@@ -1,4 +1,5 @@
 #!/bin/zsh
+alias cat='batcat --plain'
 alias fd='fdfind'
 alias g='jump'
 alias gcm='git commit -m'

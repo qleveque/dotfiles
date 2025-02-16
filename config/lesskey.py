@@ -4,7 +4,7 @@ def r(pattern, n=1):
 
 
 RESET = r'/\ek\ek\n'
-REMOVE_COLORS = r"sed -r 's/\\x1B\\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g'"
+REMOVE_COLORS = r"sed -r 's/\\x1B\\[[0-9;]*[mGK]//g'"
 NA = 'noaction'
 RUN = 'xargs bash -c '
 CUT = "cut -d' ' -f"
@@ -19,7 +19,7 @@ LESS = -irFRX --mouse --wheel-lines=1
 #command
 gg goto-line
 zz back-scroll
-^a {NA} mm|mNVIM_LIGHT=1 nvim -c 'set ls=0' -c 'set nonu'\n
+^a {NA} mm|m{REMOVE_COLORS}|NVIM_LIGHT=1 nvim -c 'syn off' -c 'set ls=0' -c 'set nonu'\n
 # Git
 gc {NA} {READ_COMMIT}|{RUN}'wez new "tig show $0"'\n
 gd {NA} {READ_IDX_FILE}|{RUN}'wez new "gitw i $0"'\n

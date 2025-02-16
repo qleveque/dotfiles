@@ -18,7 +18,7 @@ fi
 
 # Common packages
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nvim nodejs
+sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nvim nodejs bat
 
 # vifm devicons
 wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"

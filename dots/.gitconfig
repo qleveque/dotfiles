@@ -25,3 +25,8 @@
   required = true
 [alias]
   parent = "!h(){ git log -n1 --oneline `git merge-base $*`;};h"
+[color "diff"]
+	meta = black
+	frag = black
+  func = black
+	plain = 50
