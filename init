@@ -2,7 +2,6 @@
 # Set up environment
 export HOME=$(dirname "$PWD")
 [[ ! "$SHELL" == "/usr/bin/zsh" ]] && chsh -s '/usr/bin/zsh'
-"${HOME}/dotfiles/setup"
 
 # Windows
 if grep -q Microsoft /proc/version; then
@@ -18,7 +17,7 @@ fi
 
 # Common packages
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nvim nodejs bat
+sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd neovim nodejs bat g++
 
 # vifm devicons
 wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"
@@ -37,3 +36,6 @@ echo '#!/usr/bin/zsh
 source ~/.zim/modules/ohmyzsh/plugins/extract/extract.plugin.zsh
 extract $1' | sudo tee /usr/bin/extract > /dev/null
 sudo chmod +x "/usr/bin/extract"
+
+# Setup
+"${HOME}/dotfiles/setup"
