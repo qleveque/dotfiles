@@ -40,16 +40,12 @@
     { "before": [ "#" ], "after": [ "\"", "x", "y", "?", "<C-R>", "x", "<CR>" ] },
     { "before": [ "ç" ], "after": [ "\"", "x", "y", "/", "<C-R>", "x", "<CR>", "N", "c", "g", "n" ] },
     { "before": [ "s" ], "after": [ "S" ] },
-    { "before": [ " ", "w" ], "commands": [ "editor.debug.action.selectionToWatch" ] },
     { "before": [ "<Space>" ], "commands": [ "editor.action.smartSelect.expand" ] },
     { "before": [ "<S-Space>" ], "commands": [ "editor.action.smartSelect.shrink" ] },
+    { "before": [ "+" ], "commands": [ "search.action.focusNextSearchResult" ] },
+    { "before": [ "-" ], "commands": [ "search.action.focusPreviousSearchResult" ] },
   ],
   "vim.normalModeKeyBindings": [
-    // VSCode bug: https://github.com/VSCodeVim/Vim/issues/9061
-    { "before": ["C-w", "v"], "after": [":", "v", "s", "<Enter>"] },
-    { "before": ["C-w", "s"], "after": [":", "s", "p", "<Enter>"] },
-    // New
-    { "before": [ "<leader>", "w" ], "commands": [ "workbench.debug.action.focusWatchView" ] },
     // Adaptations
     { "before": [ "é" ], "commands": [ "workbench.action.tasks.build" ] },
     { "before": [ "è" ], "commands": [ "workbench.action.debug.start" ] },

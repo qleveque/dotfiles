@@ -9,6 +9,7 @@ nn dd "0dd
 vn x d
 vn d "0d
 nn V ggvG
+cno <C-v> <C-r>=system('cb paste')<CR>
 map <C-i> :histnext|oncd<CR>
 map <C-o> :histprev|oncd<CR>
 nn <C-q> :quit<CR>
