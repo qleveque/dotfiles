@@ -5,7 +5,6 @@ export FZF_CTRL_P_OPTS='--no-sort'
 export FZF_CTRL_R_OPTS='--no-sort'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --border --bind=tab:down,shift-tab:up --reverse --exact'
-export MANPAGER='batcat -l man -p'
 export PATH="${HOME}/dotfiles/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
 KEYTIMEOUT=1
 HISTFILE=~/.zsh_history HISTSIZE=1000 SAVEHIST=1000
