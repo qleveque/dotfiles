@@ -5,9 +5,9 @@
 # ~/.use_git_exe should be a file containing the directories using git.exe
 if grep -q Microsoft /proc/version && [[ ! "$1" =~ ^(difftool|log|diff|show)$ ]] &&
   [[ -n $(cat ~/.use_git_exe 2>/dev/null|xargs -IX sh -c "echo ${PWD}/|grep '^X'") ]]; then
-  core_editor='ce(){ wsl.exe -e bash -c "NVIM_LIGHT=1 nvim \`wslpath $1\`"; clear; }; ce'
+  core_editor='ce(){ wsl.exe -e bash -c "NVIM_GIT=1 nvim \`wslpath $1\`"; clear; }; ce'
   git.exe -c core.editor="${core_editor}" "$@" 
   exit 0
 fi
 
-NVIM_GIT=1 NVIM_LIGHT=1 /usr/bin/git "$@"
+NVIM_GIT=1 /usr/bin/git "$@"

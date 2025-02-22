@@ -3,7 +3,6 @@
 key="$1" file=$(realpath -s --relative-to="${PWD}" "$2")
 shift 2
 export FILE="${PWD}/${file}"
-export NVIM_LIGHT=1
 
 while getopts "l:r:s" opt; do case $opt in
     l) line="${OPTARG}";;

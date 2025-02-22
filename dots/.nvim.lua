@@ -28,23 +28,25 @@ vim.g.clipboard = {
   cache_enabled = 0
 }
 
--- Git
+-- Specific configs
+local light = os.getenv("NVIM_LIGHT");
 if os.getenv("NVIM_GITDIFF") then
   vim.cmd[[
-    syntax off
     nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
   ]]
+  light = true
 elseif os.getenv("NVIM_GITMERGE") then
   vim.cmd[[
-    syntax off
     nn dp 1dp3dp:wa<CR>
     nm doh 1dodp
     nm dol 3dodp
     au VimEnter * :winc h
   ]]
+  light = true
 elseif os.getenv("NVIM_GIT") then
   vim.cmd('syntax on')
+  light = true
 end
 
 -- Light plugins
@@ -100,11 +102,12 @@ nvim_plugins = {
         highlight = { enable = true },
         additional_vim_regex_highlighting = false
       })
+      vim.treesitter.language.register('bash', 'zsh')
     end
   }
 }
 
-if not os.getenv("NVIM_LIGHT") then
+if not light then
   -- Heavier plugins
   local heavier_plugins = {
     "farmergreg/vim-lastplace",
