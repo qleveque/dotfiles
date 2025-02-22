@@ -53,6 +53,7 @@ end
 nvim_plugins = {
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
+  "tpope/vim-sleuth",
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
   {
@@ -103,6 +104,7 @@ nvim_plugins = {
         additional_vim_regex_highlighting = false
       })
       vim.treesitter.language.register('bash', 'zsh')
+      vim.treesitter.language.register('javascript', 'babel')
     end
   }
 }
