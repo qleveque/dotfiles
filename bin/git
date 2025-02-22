@@ -10,4 +10,4 @@ if grep -q Microsoft /proc/version && [[ ! "$1" =~ ^(difftool|log|diff|show)$ ]]
   exit 0
 fi
 
-NVIM_LIGHT=1 /usr/bin/git "$@"
+NVIM_GIT=1 NVIM_LIGHT=1 /usr/bin/git "$@"

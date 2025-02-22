@@ -15,6 +15,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Vimrc
 vim.cmd('source ~/.vimrc')
 
+-- No syntax for performance
+vim.cmd('syntax off')
+
+-- Tabs
+vim.cmd('set tabstop=2 shiftwidth=2')
+
 -- Use cb for the clipboard
 vim.g.clipboard = {
   copy = { ['+'] = 'cb copy' },
@@ -22,26 +28,23 @@ vim.g.clipboard = {
   cache_enabled = 0
 }
 
--- Git diff
+-- Git
 if os.getenv("NVIM_GITDIFF") then
-  local file = io.open(vim.fn.argv(0), "r")
-  if not file then return 0 end
-  if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
-  file:close()
   vim.cmd[[
+    syntax off
     nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
   ]]
-end
-
--- Git merge
-if os.getenv("NVIM_GITMERGE") then
+elseif os.getenv("NVIM_GITMERGE") then
   vim.cmd[[
+    syntax off
     nn dp 1dp3dp:wa<CR>
     nm doh 1dodp
     nm dol 3dodp
     au VimEnter * :winc h
   ]]
+elseif os.getenv("NVIM_GIT") then
+  vim.cmd('syntax on')
 end
 
 -- Light plugins
@@ -90,17 +93,24 @@ nvim_plugins = {
       })
     end
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require'nvim-treesitter.configs'.setup({
+        highlight = { enable = true },
+        additional_vim_regex_highlighting = false
+      })
+    end
+  }
 }
 
-if not os.getenv("NVIM_LIGHT") then 
+if not os.getenv("NVIM_LIGHT") then
   -- Heavier plugins
   local heavier_plugins = {
     "farmergreg/vim-lastplace",
-    "sheerun/vim-polyglot",
     "wellle/targets.vim",
     {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
     {"echasnovski/mini.splitjoin", opts = {mappings = {toggle = 'S'}}},
-    {"nvim-treesitter/nvim-treesitter", opts = {}},
     {
       "kevinhwang91/nvim-bqf",
       opts = { preview = { winblend = 0, win_height=999, show_scroll_bar=false } }
