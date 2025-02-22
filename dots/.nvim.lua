@@ -110,6 +110,110 @@ nvim_plugins = {
 if not light then
   -- Heavier plugins
   local heavier_plugins = {
+    {
+      "neovim/nvim-lspconfig",
+      dependencies = {
+        "VonHeikemen/lsp-zero.nvim",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-buffer",
+        "L3MON4D3/LuaSnip",
+        "nvimtools/none-ls.nvim",
+        "jay-babu/mason-null-ls.nvim",
+        -- Real dependencies
+        "nvim-lua/plenary.nvim",
+        {
+          "ray-x/lsp_signature.nvim",
+          event = "VeryLazy",
+          opts = {hint_enable = false},
+          config = function(_, opts) require'lsp_signature'.setup(opts) end
+        }
+      },
+      config = function()
+        local ensure_lsp_installed = { "html", "jsonls", "tsserver", "pyright", "clangd", "rust_analyzer", "eslint", }
+        local ensure_null_ls_installed = { "flake8", "pylint", "prettier" }
+        -- utils
+        local lsp_zero = require'lsp-zero'
+        local cmp = require'cmp'
+        local luasnip = require'luasnip'
+        local null_ls = require'null-ls'
+        function FormatFunction()
+          local gm=vim.api.nvim_buf_get_mark
+          vim.lsp.buf.format({
+            async = true,
+            range = { ["start"] = gm(0, "<"), ["end"] = gm(0, ">") }
+          })
+        end
+        function HasWordsBefore()
+          local line, c = unpack(vim.api.nvim_win_get_cursor(0))
+          local b = vim.api.nvim_buf_get_lines(0,line-1,line,true)[1]
+          return c ~= 0 and b:sub(c,c):match("%s")==nil
+        end
+        function Tab(fallback)
+          if luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif cmp.visible() then
+            cmp.select_next_item()
+          elseif HasWordsBefore() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end
+        function STab(fallback)
+          if luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          elseif cmp.visible() then
+            cmp.select_prev_item()
+          else
+            fallback()
+          end
+        end
+
+        -- mason - null_ls
+        require'mason'.setup({})
+        require'mason-lspconfig'.setup({
+          ensure_installed = ensure_lsp_installed,
+          handlers = { lsp_zero.default_setup },
+        })
+        require("mason-null-ls").setup({
+          ensure_installed = ensure_null_ls_installed,
+          automatic_installation = true,
+          handlers = {},
+        })
+
+        -- cmp
+        local cmp_win = cmp.config.window.bordered
+        cmp.setup({
+          snippet = {
+            expand = function(args) luasnip.lsp_expand(args.body) end,
+          },
+          window = { completion = cmp_win(), documentation = cmp_win() },
+          mapping = {
+            ["<Tab>"] = cmp.mapping(Tab, { "i", "s" }),
+            ["<S-Tab>"] = cmp.mapping(STab, { "i", "s" }),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }),
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          },
+          sources = cmp.config.sources({
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+            { name = 'path' },
+            { name = 'buffer' },
+          })
+        })
+
+        -- lsp-config
+        vim.diagnostic.config({ virtual_text = false })
+        lsp_zero.on_attach(function (_, bufnr) lsp_zero.default_keymaps({buffer = bufnr}) end)
+        vim.api.nvim_set_keymap("n", 'gh', "<cmd>lua vim.diagnostic.open_float()<CR>", {})
+        vim.api.nvim_set_keymap("v", "\\f", "<Esc><cmd>lua FormatFunction()<CR>", {})
+      end
+    },
     "farmergreg/vim-lastplace",
     "wellle/targets.vim",
     {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
@@ -121,47 +225,6 @@ if not light then
     {
       "mattn/emmet-vim",
       keys = { {'<C-e>', '<C-y>,', mode={'v', 'i'}, remap=true}, }
-    },
-    {
-      "neoclide/coc.nvim",
-      branch = "release",
-      init = function()
-        vim.g.coc_user_config = {
-          ['diagnostic.errorSign'] = '',
-          ['diagnostic.hintSign'] = '',
-          ['diagnostic.infoSign'] = '',
-          ['diagnostic.warningSign'] = '',
-          ['diagnostic.floatConfig'] = { border = true, rounded = true },
-          ['hover.floatConfig'] = { border = true, rounded = true },
-          ['signature.floatConfig'] = { border = true, rounded = true },
-          ['suggest.floatConfig'] = { border = true, rounded = true },
-          ['coc.preferences.useQuickfixForLocations'] = true,
-          ['colors.enable'] = true,
-          ['diagnostic.enableMessage'] = 'jump',
-          ['python.pythonPath'] = '/usr/bin/python3',
-          ['inlayHint.enable'] = false,
-        }
-        vim.cmd[[
-          map <C-n> :CocList -I symbols<CR>
-          nn gd <Plug>(coc-definition)
-          nn gr <Plug>(coc-references)
-          nn gy <Plug>(coc-type-definition)
-          nn gh :call CocAction('diagnosticInfo')<CR>
-          nm <silent> [d <Plug>(coc-diagnostic-prev)
-          nm <silent> ]d <Plug>(coc-diagnostic-next)
-          nn K :call CocActionAsync('doHover')<CR>
-          nn \f :call CocActionAsync('format')<CR>
-          nn \i :call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>
-          xn \f <Plug>(coc-format-selected)
-          nn \r <Plug>(coc-rename)
-          au FileType * if &ft!='qf'|nn <buffer> <CR> <Plug>(coc-codeaction-cursor)|end
-          ino <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-          ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):
-            \ indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-          ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
-        ]]
-      end
     },
     {
       "phelipetls/jsonpath.nvim",
@@ -326,7 +389,7 @@ local theme = {
     require'catppuccin'.setup{
       flavour='Mocha',
       transparent_background = true,
-      integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
+      integrations = { nvimtree = false, barbar = true, leap = true },
       custom_highlights = function(C)
         return {
           User1 = { bg = C.surface1 },
