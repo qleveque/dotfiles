@@ -18,6 +18,17 @@ toggle_fullscreen() {
     $G command set-fullscreen
   fi
 }
+other_monitor_direction() {
+    monitors=$($G query monitors | jq -r '.data.monitors.[]')
+    read x y < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == true) | "\(.x) \(.y)"')
+    read x_ y_ < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == false) | "\(.x) \(.y)"')
+    dx=$(( x - x_ )) dy=$(( y - y_ ))
+    if (( ${dx#-} > ${dy#-} )); then
+      (( x < x_ )) && echo right || echo left
+    else
+      (( y < y_ )) && echo down || echo up
+    fi
+}
 
 case ${cmd} in
   toggle-fullscreen)
@@ -35,18 +46,17 @@ case ${cmd} in
     fi
   ;;
   move-workspace)
-    monitors=$($G query monitors | jq -r '.data.monitors.[]')
-    read x y < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == true) | "\(.x) \(.y)"')
-    read x_ y_ < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == false) | "\(.x) \(.y)"')
-    dx=$(( x - x_ )) dy=$(( y - y_ ))
-    if (( ${dx#-} > ${dy#-} )); then
-      (( x < x_ )) && direction=right || direction=left
-    else
-      (( y < y_ )) && direction=down || direction=up
-    fi
-    $G command move-workspace --direction $direction
+    $G command move-workspace --direction $(other_monitor_direction)
   ;;
-  switch-workspace)
+  switch-workspaces)
+    current=$($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == true) | .children.[] | select(.isDisplayed == true) | .name')
+    other=$($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | .children.[] | select(.isDisplayed == true) | .name')
+    $G command move-workspace --direction $(other_monitor_direction)
+    $G command focus --workspace ${other}
+    $G command move-workspace --direction $(other_monitor_direction)
+    $G command focus --workspace ${current}
+  ;;
+  move-to-other-monitor)
     workspace=$($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | .children.[] | select(.isDisplayed == true) | .name')
     $G command move --workspace ${workspace}
     $G command focus --workspace ${workspace}
