@@ -29,7 +29,7 @@ c.keys={
   {key='q', mods='LEADER', action=a{CloseCurrentPane={confirm=false}}},
   {key='f', mods='LEADER', action=a.TogglePaneZoomState},
   {key='d', mods='LEADER', action=run_new('draft', function(w,p) return 'nvim ~/.draft.txt' end)},
-  {key='a', mods='LEADER', action=run_new('copy-mode', function(w,p) return 'wez copy-pane '..p:pane_id() end)},
+  {key='a', mods='LEADER', action=run_new('copy-mode', function(w,p) return 'wez copy '..p:pane_id() end)},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
   {key='r', mods='LEADER', action=a.PromptInputLine{action=wez.action_callback(set_title)}},
 }

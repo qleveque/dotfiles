@@ -44,6 +44,11 @@ elseif os.getenv("NVIM_GITMERGE") then
     au VimEnter * :winc h
     set ls=0
   ]]
+elseif os.getenv("NVIM_COPY") then
+  vim.cmd[[
+    set ls=0
+    set nonu
+  ]]
 end
 
 nvim_plugins = {

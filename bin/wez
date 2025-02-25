@@ -23,17 +23,14 @@ move_tab_next() {
 }
 
 case ${cmd} in
-  copy-pane) nvim_cmd='norm G' pane_id="--pane-id $1" && shift;|
-  copy) nvim_cmd='norm G3k^';|
-  copy*)
+  copy)
+    [[ -z $1 ]] && nvim_norm_cmd='3k^' || pane_id="--pane-id $1"
     f=$(mktemp)
-    ${=CLI} get-text ${=pane_id} --start-line '-1000' > $f
-    sd ' *\n' '\n' $f
-    sed -i ':a;/^\n*$/{$d;N;};/\n$/ba' $f
-    nvim -c 'set ls=0' -c 'set nonu' -c "${nvim_cmd}" "$@" $f
+    ${=CLI} get-text ${=pane_id} --start-line '-1000' | sd ' *\n' '\n' | sed ':a;/^\n*$/{$d;N;};/\n$/ba' > $f
+    NVIM_COPY=1 nvim -c "norm G${nvim_norm_cmd}" $f
   ;;
   split) ${=CLI} split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
-  new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next); ${CLI} set-tab-title \"$1\"&; $2; wez kill";;
+  new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${CLI} set-tab-title \"$1\" &; $2; wez kill";;
   kill)
     pi=$(pane_id)
     ${=CLI} activate-tab --tab-index $(( $(tab_position) - 2 ))

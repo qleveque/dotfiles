@@ -54,14 +54,14 @@ workspaces:
     display_name: "󰋜"
   - name: "else"
     display_name: "󰥵"
+  - name: "web"
+    display_name: ""
   - name: "term"
     display_name: ""
   - name: "send"
     display_name: ""
   - name: "code"
     display_name: "󰨞"
-  - name: "web"
-    display_name: ""
   - name: "gui"
     display_name: ""
   - name: "dash"
@@ -160,14 +160,14 @@ keybindings:
     bindings: ['alt+a']
   - commands: ['focus --workspace else']
     bindings: ['alt+e']
+  - commands: ['focus --workspace web']
+    bindings: ['alt+w']
   - commands: ['focus --workspace term']
     bindings: ['alt+t']
   - commands: ['focus --workspace send']
     bindings: ['alt+s']
   - commands: ['focus --workspace code']
     bindings: ['alt+c']
-  - commands: ['focus --workspace web']
-    bindings: ['alt+w']
   - commands: ['focus --workspace gui']
     bindings: ['alt+g']
   - commands: ['focus --workspace back']
@@ -185,14 +185,14 @@ keybindings:
     bindings: ['alt+shift+a']
   - commands: ['move --workspace else', 'focus --workspace else']
     bindings: ['alt+shift+e']
+  - commands: ['move --workspace web', 'focus --workspace web']
+    bindings: ['alt+shift+w']
   - commands: ['move --workspace term', 'focus --workspace term']
     bindings: ['alt+shift+t']
   - commands: ['move --workspace send', 'focus --workspace send']
     bindings: ['alt+shift+s']
   - commands: ['move --workspace code', 'focus --workspace code']
     bindings: ['alt+shift+c']
-  - commands: ['move --workspace web', 'focus --workspace web']
-    bindings: ['alt+shift+w']
   - commands: ['move --workspace gui', 'focus --workspace gui']
     bindings: ['alt+shift+g']
   - commands: ['move --workspace back', 'focus --workspace back']
