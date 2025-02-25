@@ -1,32 +1,48 @@
 #!/usr/bin/zsh
 
-key="$1" file=$(realpath -s --relative-to="${PWD}" "$2")
-shift 2
-export FILE="${PWD}/${file}"
+cmd=""
+key="$1"
+use_wez=1
+shift
 
-while getopts "l:r:s" opt; do case $opt in
-    l) line="${OPTARG}";;
-    r) ref="${OPTARG}^ ${OPTARG}";;
-    s) ref='--staged';;
+while getopts "f:l:r:ns" opt; do case $opt in
+  f)
+    file=$(realpath -s --relative-to="${PWD}" "${OPTARG}")
+    export FILE="${PWD}/${file}"
+  ;;
+  l) line="${OPTARG}";;
+  r) ref="${OPTARG}^ ${OPTARG}";;
+  n) use_wez=;;
+  s) ref='--staged';;
 esac; done
 shift $((OPTIND -1))
 
+run() {
+  tab_title="$1"
+  shift
+  if [[ ${use_wez} ]]; then
+    eval "wez new \"${tab_title}\" \"$@\""
+  else
+    eval "$@"
+  fi
+}
+
 case $key in
-  d) NVIM_GITDIFF=1 git difftool ${=ref} -- "${file}";;
-  i) NVIM_GITDIFF=1 git difftool "${file}";;
-  m) NVIM_GITMERGE=1 git_mergetool "${file}";;
-  s) tig status;;
-  f) tig "${file}";;
-  l) tig;;
-  b) tig blame +${line:-1} "${file}";;
-  r) tig reflog;;
-  t) tig stash --list;;
+  d) run "git-diff:${file:t:r}" NVIM_GITDIFF=1 git difftool ${=ref} -- "${file}";;
+  i) run "git-diff:${file:t:r}" NVIM_GITDIFF=1 git difftool "${file}";;
+  m) run "git-merge:${file:t:r}" NVIM_GITMERGE=1 git_mergetool "${file}";;
+  s) run "git-status" tig status;;
+  f) run "git-log:${file:t:r}" tig "${file}";;
+  l) run "git-log" tig;;
+  b) run "git-blame:${file:t:r}" tig blame +${line:-1} "${file}";;
+  r) run "git-reflog" tig reflog;;
+  t) run "git-stash" tig stash --list;;
   p)
     tmp=$(mktemp)
     mv "${file}" "${tmp}"
     touch "${file}"
     git restore "${file}" &> /dev/null
-    NVIM_GITDIFF=1 nvim -d "${tmp}" "${file}"
+    run "git-pick:${file:t:r}" NVIM_GITDIFF=1 nvim -d "${tmp}" "${file}"
     [[ -s "${file}" ]] && git add "${file}"
     mv ${tmp} "${file}"
   ;;

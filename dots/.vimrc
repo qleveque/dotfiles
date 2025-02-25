@@ -28,7 +28,7 @@ nn - :sil cprev<CR>
 nn + :sil cnext<CR>
 nn é :exe'sil !wez split "run -p \"'.expand('%').'\""'<CR>
 nn É :exe'sil !wez split run'<CR>
-nn <C-g> :exe'sil !wez new "gitw '.nr2char(getchar()).' '.expand('%').' -l'.line('.').'"'<CR>
+nn <C-g> :exe'sil !gitw '.nr2char(getchar()).' -f'.expand('%').' -l'.line('.')<CR>
 
 " Diff
 if &diff

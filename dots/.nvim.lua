@@ -32,8 +32,9 @@ if os.getenv("NVIM_GITDIFF") then
   if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
   file:close()
   vim.cmd[[
-    nn gf :exe 'sil !wez new "nvim "$FILE" +'.line('.').'"'<CR>
+    nn gf :exe 'sil !wez new "file" "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
+    set ls=0
   ]]
 elseif os.getenv("NVIM_GITMERGE") then
   vim.cmd[[
@@ -41,6 +42,7 @@ elseif os.getenv("NVIM_GITMERGE") then
     nm doh 1dodp
     nm dol 3dodp
     au VimEnter * :winc h
+    set ls=0
   ]]
 end
 
@@ -285,7 +287,7 @@ nvim_plugins = {
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
           ['<C-g>']=function()
-            vim.cmd('sil !wez new "gitw '..vim.fn.nr2char(vim.fn.getchar())..' \\"'..path()..'\\""')
+            vim.cmd('sil !gitw '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"')
           end,
           ['Y']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb copy "'..filename()..'"') end,
           ['P']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb paste') end,

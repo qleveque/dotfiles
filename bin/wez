@@ -33,7 +33,7 @@ case ${cmd} in
     nvim -c 'set ls=0' -c 'set nonu' -c "${nvim_cmd}" "$@" $f
   ;;
   split) ${=CLI} split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
-  new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next); $@; wez kill";;
+  new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next); ${CLI} set-tab-title \"$1\"&; $2; wez kill";;
   kill)
     pi=$(pane_id)
     ${=CLI} activate-tab --tab-index $(( $(tab_position) - 2 ))
