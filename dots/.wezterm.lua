@@ -4,7 +4,7 @@ wez.on('user-var-changed', function(w, p, name, value)
   if name == 'MOVE_TAB' then w:perform_action(wez.action.MoveTab(tonumber(value)), p) end
 end)
 function run_new(title, command) return wez.action_callback(function(w,p)
-  wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez new "'..title..'" "'..command(w,p)..'"' })
+  wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez_wrap new "'..title..'" "'..command(w,p)..'"' })
 end) end
 function set_title(w, p, t) w:active_tab():set_title(t) end
 
@@ -29,7 +29,7 @@ c.keys={
   {key='q', mods='LEADER', action=a{CloseCurrentPane={confirm=false}}},
   {key='f', mods='LEADER', action=a.TogglePaneZoomState},
   {key='d', mods='LEADER', action=run_new('draft', function(w,p) return 'nvim ~/.draft.txt' end)},
-  {key='a', mods='LEADER', action=run_new('copy-mode', function(w,p) return 'wez copy '..p:pane_id() end)},
+  {key='a', mods='LEADER', action=run_new('copy-mode', function(w,p) return 'wez_wrap copy '..p:pane_id() end)},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
   {key='r', mods='LEADER', action=a.PromptInputLine{action=wez.action_callback(set_title)}},
 }

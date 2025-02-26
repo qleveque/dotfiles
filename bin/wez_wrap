@@ -30,7 +30,7 @@ case ${cmd} in
     NVIM_COPY=1 nvim -c "norm G${nvim_norm_cmd}" $f
   ;;
   split) ${=CLI} split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
-  new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${CLI} set-tab-title \"$1\" &; $2; wez kill";;
+  new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${CLI} set-tab-title \"$1\" &; $2; wez_wrap kill";;
   kill)
     pi=$(pane_id)
     ${=CLI} activate-tab --tab-index $(( $(tab_position) - 2 ))

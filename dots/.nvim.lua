@@ -32,7 +32,7 @@ if os.getenv("NVIM_GITDIFF") then
   if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
   file:close()
   vim.cmd[[
-    nn gf :exe 'sil !wez new "file" "nvim "$FILE" +'.line('.').'"'<CR>
+    nn gf :exe 'sil !wez_wrap new "file" "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
     set ls=0
   ]]
@@ -285,14 +285,14 @@ nvim_plugins = {
           ['T']=ta.fs.create,
           ['p']=ta.fs.paste,
           ['l']=ta.node.open.edit,
-          ['e']=function() vim.cmd('sil !wez split "e \\"'..path()..'\\""') end,
+          ['e']=function() vim.cmd('sil !wez_wrap split "e \\"'..path()..'\\""') end,
           ['h']=ta.node.navigate.parent_close,
-          ['é']=function() vim.cmd('sil !wez split "run -p \\"'..path()..'\\""') end,
-          ['É']=function() vim.cmd('sil !wez split run') end,
+          ['é']=function() vim.cmd('sil !wez_wrap split "run -p \\"'..path()..'\\""') end,
+          ['É']=function() vim.cmd('sil !wez_wrap split run') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
           ['<C-g>']=function()
-            vim.cmd('sil !gitw '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"')
+            vim.cmd('sil !git_wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"')
           end,
           ['Y']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb copy "'..filename()..'"') end,
           ['P']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb paste') end,

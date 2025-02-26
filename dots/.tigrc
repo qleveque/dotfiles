@@ -30,7 +30,7 @@ bind status C !git commit
 bind status A !git commit --amend --no-edit
 
 bind generic l :d
-bind diff l @gitw d -f'%(file)' -r %(stash) %(commit)
-bind status m @gitw m -f'%(file)'
-bind status p @gitw p -f'%(file)'
-bind status l @zsh -c "[[ '%(status)' =~ Staged ]] && p=-s; gitw d -f'%(file)' ${p}"
+bind diff l @git_wrap d -f'%(file)' -r %(stash) %(commit)
+bind status m @git_wrap m -f'%(file)'
+bind status p @git_wrap p -f'%(file)'
+bind status l @zsh -c "[[ '%(status)' =~ Staged ]] && p=-s; git_wrap d -f'%(file)' ${p}"

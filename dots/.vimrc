@@ -26,9 +26,9 @@ nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hls<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hls<CR>"_cgn
 nn - :sil cprev<CR>
 nn + :sil cnext<CR>
-nn é :exe'sil !wez split "run -p \"'.expand('%').'\""'<CR>
-nn É :exe'sil !wez split run'<CR>
-nn <C-g> :exe'sil !gitw '.nr2char(getchar()).' -f'.expand('%').' -l'.line('.')<CR>
+nn é :exe'sil !wez_wrap split "run -p \"'.expand('%').'\""'<CR>
+nn É :exe'sil !wez_wrap split run'<CR>
+nn <C-g> :exe'sil !git_wrap '.nr2char(getchar()).' -f'.expand('%').' -l'.line('.')<CR>
 
 " Diff
 if &diff

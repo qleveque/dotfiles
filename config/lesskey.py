@@ -21,8 +21,8 @@ gg goto-line
 zz back-scroll
 ^a {NA} mm|m{REMOVE_COLORS}|nvim -c 'syn off' -c 'set ls=0' -c 'set nonu'\n
 # Git
-gc {NA} {READ_COMMIT}|{RUN}'wez new git-commit "tig show $0"'\n
-gd {NA} {READ_IDX_FILE}|{RUN}'gitw i -f $0'\n
+gc {NA} {READ_COMMIT}|{RUN}'wez_wrap new git-commit "tig show $0"'\n
+gd {NA} {READ_IDX_FILE}|{RUN}'git_wrap i -f $0'\n
 yc {NA} {READ_COMMIT}|cb copy\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|cb copy\n
 ]c {NA} J/{COMMIT}\nma{RESET}'a
