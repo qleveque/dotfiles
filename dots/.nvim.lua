@@ -321,17 +321,14 @@ local theme = {
   priority = 1000,
   config = function()
     require'catppuccin'.setup{
-      flavour='Mocha',
-      transparent_background = true,
+      flavour = "mocha",
       integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
       custom_highlights = function(C)
         return {
           User1 = { bg = C.surface1 },
           WinSeparator = { bg = C.mantle, fg = C.surface2 },
-          WinBar = { fg = C.overlay1 },
           StatusLine = { bg = C.base, fg = C.surface2, underline = true },
           StatusLineNC = { bg = C.mantle, fg = C.surface2, underline = true },
-          Cursor = { reverse = true },
           ScrollbarHandle = { bg = C.surface1 },
           ScrollbarCursorHandle = { bg = C.surface1 },
         }
