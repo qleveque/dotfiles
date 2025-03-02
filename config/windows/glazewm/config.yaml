@@ -79,8 +79,6 @@ window_rules:
   - commands: ['ignore']
     match:
       - window_process: { equals: 'zebar' }
-      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
-        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
       - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
 
   - commands: ['move --workspace music', 'focus --workspace music']
@@ -110,6 +108,8 @@ window_rules:
       - window_process: { equals: 'ANTlab' }
   - commands: ['set-floating']
     match:
+      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
+        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
 

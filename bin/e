@@ -13,7 +13,7 @@ if grep -q Microsoft /proc/version; then
     for f in "$@"; do cmd.exe /C start '' "${prog}" "$(wslpath -w -- "${f}")"; done
   }
   case ${ext} in
-    png|jpg) winrun 'mspaint.exe' "$@";;
+    png|jpg|jpeg) winrun 'mspaint.exe' "$@";;
     mp3) winrun 'C:\Program Files\Audacity\Audacity.exe' "$@";;
     bin) winrun 'C:\Program Files\ImHex\imhex.exe' "$@";;
     *) nvim "$@";;
