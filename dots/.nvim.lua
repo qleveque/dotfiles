@@ -54,7 +54,6 @@ end
 nvim_plugins = {
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
-  "tpope/vim-sleuth",
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
   {
@@ -102,6 +101,7 @@ nvim_plugins = {
     config = function()
       require'nvim-treesitter.configs'.setup({
         highlight = { enable = true },
+        indent = { enable = true },
         additional_vim_regex_highlighting = false
       })
       vim.treesitter.language.register('bash', 'zsh')
