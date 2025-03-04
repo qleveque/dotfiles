@@ -3,13 +3,15 @@ local a=wez.action
 wez.on('user-var-changed', function(w, p, name, value)
   if name == 'MOVE_TAB' then w:perform_action(wez.action.MoveTab(tonumber(value)), p) end
 end)
-function run_new(title, command) return wez.action_callback(function(w,p)
-  wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez_wrap new "'..title..'" "'..command(w,p)..'"' })
+function run_new(command) return wez.action_callback(function(w,p)
+  wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez_wrap new "copy-mode" "'..command(w,p)..'"' })
 end) end
 function set_title(w, p, t) w:active_tab():set_title(t) end
 
 local c=wez.config_builder()
 c.audible_bell='Disabled'
+c.front_end='WebGpu'
+c.webgpu_power_preference = 'HighPerformance'
 c.color_scheme='Catppuccin Mocha'
 c.enable_scroll_bar=false
 c.font_size=9.3
@@ -29,8 +31,7 @@ c.keys={
   {key='n', mods='LEADER', action=a{SpawnTab='CurrentPaneDomain'}},
   {key='q', mods='LEADER', action=a{CloseCurrentPane={confirm=false}}},
   {key='f', mods='LEADER', action=a.TogglePaneZoomState},
-  {key='d', mods='LEADER', action=run_new('draft', function(w,p) return 'nvim ~/.draft.txt' end)},
-  {key='a', mods='LEADER', action=run_new('copy-mode', function(w,p) return 'wez_wrap copy '..p:pane_id() end)},
+  {key='a', mods='LEADER', action=run_new(function(w,p) return 'wez_wrap copy '..p:pane_id() end)},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
   {key='r', mods='LEADER', action=a.PromptInputLine{action=wez.action_callback(set_title)}},
 }

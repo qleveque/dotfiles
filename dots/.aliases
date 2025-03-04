@@ -1,5 +1,6 @@
 #!/bin/zsh
 alias cat='batcat --plain'
+alias draft='e ~/.draft.txt'
 alias fd='fdfind'
 alias g='jump'
 alias gcm='git commit -m'
