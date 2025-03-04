@@ -2,7 +2,7 @@
 # Run any program
 
 quit() { [[ ${PAUSE} == true ]] && read || echo; exit 0; }
-display() { echo "\e[40m$*\e[0m" }
+display() { echo "\e[30m$*\e[0m" }
 error() { echo "\e[31m$*\e[0m"; quit; }
 
 # Wrapper to run any command showing execution time and returned code
