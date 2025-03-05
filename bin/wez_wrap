@@ -24,10 +24,14 @@ move_tab_next() {
 
 case ${cmd} in
   copy)
-    [[ -z $1 ]] && nvim_norm_cmd='3k^' || pane_id="--pane-id $1"
+    [[ -n $1 ]] && pane_id="--pane-id $1"
     f=$(mktemp)
     ${=CLI} get-text ${=pane_id} --start-line '-1000' | sd ' *\n' '\n' | sed ':a;/^\n*$/{$d;N;};/\n$/ba' > $f
-    NVIM_COPY=1 nvim -c "norm G${nvim_norm_cmd}" $f
+    if [[ -n $1 ]]; then
+      NVIM_COPY=1 wez_wrap new copy-mode "nvim -c 'norm G' $f"
+    else
+      NVIM_COPY=1 nvim -c "norm G3k^" $f
+    fi
   ;;
   split) ${=CLI} split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
   new) ${=CLI} spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${CLI} set-tab-title \"$1\" &; $2; wez_wrap kill";;
