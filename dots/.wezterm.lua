@@ -8,10 +8,19 @@ function run_new(command) return wez.action_callback(function(w,p)
 end) end
 function set_title(w, p, t) w:active_tab():set_title(t) end
 
+local function has_nvidia_driver()
+    for _, obj in ipairs(wez.gui.enumerate_gpus()) do if obj.driver == "NVIDIA" then return true end end
+    return false
+end
+
 local c=wez.config_builder()
 c.audible_bell='Disabled'
-c.front_end='WebGpu'
-c.webgpu_power_preference = 'HighPerformance'
+if has_nvidia_driver() then
+  c.front_end='Software'
+else
+  c.front_end='WebGpu'
+  c.webgpu_power_preference = 'HighPerformance'
+end
 c.color_scheme='Catppuccin Mocha'
 c.enable_scroll_bar=false
 c.initial_cols=100
