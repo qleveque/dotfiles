@@ -14,6 +14,8 @@ c.front_end='WebGpu'
 c.webgpu_power_preference = 'HighPerformance'
 c.color_scheme='Catppuccin Mocha'
 c.enable_scroll_bar=false
+c.initial_cols=100
+c.initial_rows=40
 c.font_size=9.3
 c.leader={key='b', mods='CTRL'}
 c.window_padding={left=0, right=0, top=0, bottom=0}
