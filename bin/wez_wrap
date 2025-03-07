@@ -34,7 +34,7 @@ case ${cmd} in
     fi
   ;;
   split) ${wez} cli split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
-  new) ${wez} cli spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${wez} cli set-tab-title \"$1\" &; $2; wez_wrap kill";;
+  new) ${wez} cli spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez_wrap kill";;
   kill)
     pi=$(pane_id)
     ${wez} cli activate-tab --tab-index $(( $(tab_position) - 2 ))

@@ -18,7 +18,7 @@ run() {
   tab_title="$1"
   shift
   if [[ ${use_wez} ]]; then
-    eval "wez_wrap new \"${tab_title}\" \"$@\""
+    wez_wrap new "${tab_title}" "$(printf "%q " "$@")"
   else
     eval "$@"
   fi
