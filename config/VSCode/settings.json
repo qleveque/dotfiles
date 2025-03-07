@@ -68,6 +68,8 @@
     { "before": [ "<leader>", "f" ], "commands": [ "editor.action.formatDocument" ] },
     // Correction
     { "before": [ "g", "%" ], "commands": [ "editor.emmet.action.matchTag" ] },
+    // Other
+    { "before": [ "g", "F" ], "commands": [{ "command": "workbench.action.tasks.runTask", "args": "Nvim"}] },
     // Git
     { "before": [ "<C-g>", "b" ], "commands": [ "gitlens.toggleFileBlame" ] },
     { "before": [ "<C-g>", "d" ], "commands": [ "git.openChange" ] },

@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Nvim",
+            "type": "process",
+            "args": [
+                "-c",
+                "wez_wrap nvim ${fileBasename} ${lineNumber}"
+            ],
+            "command": "bash",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "isBackground": true,
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            },
+            "presentation": {
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false
+            }
+        }
+    ]
+}

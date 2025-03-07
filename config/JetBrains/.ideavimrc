@@ -68,6 +68,7 @@ nnoremap \r :action RenameElement<CR>
 nnoremap \o :action OverrideMethods<CR>
 nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
+nnoremap gF :action Tool_External Tools_Nvim<CR>
 
 " Git
 noremap <C-g>d :action Compare.LastVersion<CR>

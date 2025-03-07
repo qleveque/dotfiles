@@ -24,6 +24,7 @@ if grep -q Microsoft /proc/version; then
   ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/.ideavimrc"
   for dir in $(find "${appData}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do
     lndir "${config}/JetBrains/keymaps" "${dir}/keymaps"
+    lndir "${config}/JetBrains/tools" "${dir}/tools"
   done
 
   # glazewm + zebar
