@@ -86,9 +86,14 @@ run_project() {
     if [[ ${#files[@]} -eq 1 ]]; then
       selected_file=${files}
     else
-      selected_file=$(printf "%s\n" "${files[@]}" | fzf)
+      selected_file=$(
+        for f in "${files[@]}"; do printf "%s\t%s\n" "${${f:t}#.run.}" "$f"; done |
+        fzf --with-nth=1 |
+        awk -F'\t' '{print $2}'
+      )
     fi
     [[ -e ${selected_file} ]] && run_file "${selected_file}"
+    exit 0
   fi
   PAUSE=true
   error 'No run script'

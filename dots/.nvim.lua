@@ -15,9 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Vimrc
 vim.cmd('source ~/.vimrc')
 
--- Tabs
-vim.cmd('set tabstop=2 shiftwidth=2')
-
 -- Use cb for the clipboard
 vim.g.clipboard = {
   copy = { ['+'] = 'cb copy' },
@@ -54,6 +51,7 @@ end
 nvim_plugins = {
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
+  "tpope/vim-sleuth",
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
   {

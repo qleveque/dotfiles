@@ -1,4 +1,4 @@
-set ic scs nu list udf cul et lz noswf nowb so=4 ch=0 shm+=I scl=number cb=unnamedplus lbr
+set ic scs nu list udf cul et lz noswf nowb so=4 ch=0 shm+=I scl=number cb=unnamedplus ts=2 sw=0 lbr
 set stl=%1*\ \%f%m%{reg_recording()!=''?'\ 󰑋\ '.reg_recording():''}\ %0*%=
 
 " Vim corrections
