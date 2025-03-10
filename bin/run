@@ -26,7 +26,7 @@ run_file() {
 
   # Shebang
   local shebang=$(sed -n '1s/^.*#!//p' ${file})
-  [[ -n ${shebang} ]] && run_cmd "${shebang} ${file}"
+  [[ -n ${shebang} ]] && run_cmd "${shebang} '${file}'"
 
   # Extension
   local f="${file}" n="${file:r}" && [[ $f =~ "[() ]" ]] && f="\"$f\"" n="\"$n\""
@@ -65,7 +65,7 @@ run_file() {
     tex) run_cmd "pdflatex -halt-on-error $f && o $n.pdf && exit";;
     zig) run_cmd "zig build-exe $f && ./$n";;
     zip|tar|rar|7z|xz|txz|bz2|tbz|tbz2|gz|tgz|jar) run_cmd "extract $f";;
-    zsh) run_cmd "zsh $f";;
+    zsh) run_cmd "zsh '$f'";;
   esac
 
   # Executable
@@ -78,7 +78,9 @@ run_file() {
 run_project() {
   local files=()
   while [[ ${PWD} != / ]]; do
-    files+=($(ls -a1 | grep "^.run." | xargs -r realpath))
+    while IFS= read -r -d '' file; do
+      files+=("$(realpath "$file")")
+    done < <(find . -maxdepth 1 -name ".run.*" -print0)
     cd ..
   done
   if [[ ! -z ${files} ]]; then
@@ -87,8 +89,8 @@ run_project() {
       selected_file=${files}
     else
       selected_file=$(
-        for f in "${files[@]}"; do printf "%s\t%s\n" "${${f:t}#.run.}" "$f"; done |
-        fzf --with-nth=1 |
+        for f in "${files[@]}"; do printf "%s\t%s\n" "${${f:t:r}#.run.}" "$f"; done |
+        fzf --with-nth=1 -d'\t'|
         awk -F'\t' '{print $2}'
       )
     fi

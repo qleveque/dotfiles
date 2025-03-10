@@ -104,6 +104,7 @@ nvim_plugins = {
       })
       vim.treesitter.language.register('bash', 'zsh')
       vim.treesitter.language.register('javascript', 'babel')
+      vim.treesitter.language.register('xml', 'ant')
     end
   },
   "farmergreg/vim-lastplace",

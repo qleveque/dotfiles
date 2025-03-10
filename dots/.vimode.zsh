@@ -46,9 +46,8 @@ vi-put-after(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-pu
 opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac}
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|cb copy}
 visual-put(){zle vi-delete; zle vi-put-before}
-copy-mode(){wez_wrap copy}
+copy-mode(){zle autosuggest-clear; wez_wrap copy}
 wids=(goto-recent open-{fm,git_wrap} quit select-{bracketed,quoted} visual-{put,swap}
       vi-{cut,yank,put-{before,after}} copy-mode insert-space add-surround:surround
       {change,delete}-wrap:opp-wrap zle-{keymap-select,line-{init,finish}}:set-cursor)
 for wid in "${wids[@]}"; do zle -N ${=wid//:/ }; done
-precmd_functions+=(set-cursor)
