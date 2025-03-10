@@ -95,7 +95,6 @@ run_project() {
     [[ -e ${selected_file} ]] && run_file "${selected_file}"
     exit 0
   fi
-  PAUSE=true
   error 'No run script'
 }
 
