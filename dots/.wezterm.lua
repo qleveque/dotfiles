@@ -26,7 +26,6 @@ c.font_size=9.3
 c.leader={key='b', mods='CTRL'}
 c.window_padding={left=0, right=0, top=0, bottom=0}
 c.adjust_window_size_when_changing_font_size=false
-c.hide_tab_bar_if_only_one_tab=true
 c.keys={
   {key="F11", action=a.ToggleFullScreen},
   {key='Tab', mods='CTRL', action=a{SendString='\x1b[27;5;9~'}},

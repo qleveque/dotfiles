@@ -12,14 +12,13 @@ pane_id() {
   ${wez} cli list-clients --format json|jq -r '.[0].focused_pane_id'
 }
 tab_position() {
-  local pane_id=$()
-  { read -r tab_id; read -r window_id } <<< $(${wez} cli list --format json\
-    |jq -r ".[]|select(.pane_id == $(pane_id))|.tab_id, .window_id")
-  ${wez} cli list --format json|jq -r ".[]|select(.window_id == ${window_id})|.tab_id"\
-    |uniq|grep -n ${tab_id}|cut -d: -f1
+  list=$(${wez} cli list --format json)
+  tab_id=$(jq -r ".[]|select(.pane_id == $1)|.tab_id" <<< "${list}")
+  window_id=$(jq -r ".[]|select(.pane_id == $1)|.window_id" <<< "${list}")
+  jq -r ".[]|select(.window_id == ${window_id})|.tab_id" <<< "${list}"|uniq|grep -n ${tab_id}|cut -d: -f1
 }
 move_tab_next() {
-  echo 'printf "\033]1337;SetUserVar=%s=%s\007"' MOVE_TAB $(echo -n $(tab_position)|base64)
+  echo 'printf "\033]1337;SetUserVar=%s=%s\007"' MOVE_TAB $(echo -n $(tab_position $(pane_id))|base64)
 }
 
 case ${cmd} in
@@ -36,9 +35,9 @@ case ${cmd} in
   split) ${wez} cli split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
   new) ${wez} cli spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez_wrap kill";;
   kill)
-    pi=$(pane_id)
-    ${wez} cli activate-tab --tab-index $(( $(tab_position) - 2 ))
-    ${wez} cli kill-pane --pane-id ${pi} &
+    pane=$(pane_id)
+    ${wez} cli activate-tab --tab-index $(( $(tab_position ${pane}) - 2 ))
+    ${wez} cli kill-pane --pane-id ${pane} &
   ;;
   nvim) ${wez} start --cwd="${cwd}" bash -c "nvim '$1' +$2";;
 esac
