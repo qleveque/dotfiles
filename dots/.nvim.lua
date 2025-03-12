@@ -29,7 +29,7 @@ if os.getenv("NVIM_GITDIFF") then
   if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
   file:close()
   vim.cmd[[
-    nn gf :exe 'sil !wez_wrap new "file" "nvim "$FILE" +'.line('.').'"'<CR>
+    nn gF :exe 'sil !wez_wrap new "file" "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
     set ls=0
   ]]
@@ -121,6 +121,7 @@ nvim_plugins = {
   },
   {
     "neoclide/coc.nvim",
+    enabled = not vim.opt.diff:get(),
     branch = "release",
     init = function()
       vim.g.coc_user_config = {

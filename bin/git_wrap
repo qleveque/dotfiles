@@ -3,14 +3,16 @@
 cmd=""
 key="$1"
 use_wez=1
+idx=""
 shift
 
-while getopts "f:l:r:ns" opt; do case $opt in
+while getopts "i:f:l:r:ns" opt; do case $opt in
   f) file=$(realpath -s --relative-to="${PWD}" "${OPTARG}") ;;
   l) line="${OPTARG}";;
   r) ref="${OPTARG}^ ${OPTARG}";;
   n) use_wez=;;
   s) ref='--staged';;
+  i) idx="${OPTARG}";;
 esac; done
 shift $((OPTIND -1))
 
@@ -26,7 +28,6 @@ run() {
 
 case $key in
   d) run "git-diff:${file:t}" NVIM_GITDIFF=1 FILE="${PWD}/${file}" git difftool ${=ref} -- "${file}";;
-  i) run "git-diff:${file:t}" NVIM_GITDIFF=1 FILE="${PWD}/${file}" git difftool "${file}";;
   m) run "git-merge:${file:t}" NVIM_GITMERGE=1 FILE="${PWD}/${file}" git_mergetool "${file}";;
   s) run "git-status:$(basename `git rev-parse --show-toplevel`)" tig status;;
   f) run "git-logfile:${file:t}" tig "${file}";;
@@ -34,6 +35,12 @@ case $key in
   b) run "git-blame:${file:t}" tig blame +${line:-1} "${file}";;
   r) run "git-reflog" tig reflog;;
   t) run "git-stash" tig stash --list;;
+  i)
+    shown_commit=$(git log --raw --all --find-object="${idx:0:8}" -n1)
+    ref=$(echo ${shown_commit} | head -n1 | sd '^commit ' '')
+    file=$(echo ${shown_commit} | tail -n1 | sd '^.*\t' '')
+    run "git-diff:${file:t}" NVIM_GITDIFF=1 FILE="${PWD}/${file}" git difftool "${ref}^..${ref}" -- "${file}"
+  ;;
   p)
     tmp=$(mktemp)
     mv "${file}" "${tmp}"
