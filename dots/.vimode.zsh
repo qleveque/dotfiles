@@ -51,3 +51,4 @@ wids=(goto-recent open-{fm,git_wrap} quit select-{bracketed,quoted} visual-{put,
       vi-{cut,yank,put-{before,after}} copy-mode insert-space add-surround:surround
       {change,delete}-wrap:opp-wrap zle-{keymap-select,line-{init,finish}}:set-cursor)
 for wid in "${wids[@]}"; do zle -N ${=wid//:/ }; done
+precmd_functions+=(set-cursor)
