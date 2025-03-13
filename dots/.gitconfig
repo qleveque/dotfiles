@@ -14,6 +14,7 @@
 	rebase = true
 [diff]
 	tool = nvimdiff
+	context = 0
 [difftool]
 	prompt = false
 	trustExitCode = true
@@ -29,4 +30,3 @@
 	meta = black
 	frag = black
 	func = black
-	plain = 50

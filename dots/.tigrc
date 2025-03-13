@@ -7,10 +7,11 @@ set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:inte
 set main-view = date:custom,format=%d/%m/%Y author:abbreviated commit-title:refs=true
 set ignore-case = smart-case
 set show-changes = no
+set refresh-mode = manual
 set diff-options = --pretty=medium
 
 bind main G move-last-line
-bind generic <C-r> refresh
+bind generic u refresh
 bind generic g none
 bind generic gg :0
 bind generic y none
@@ -26,8 +27,12 @@ bind status j :/^\S+
 bind status k :?^\S+
 bind status d none
 bind status dd !@>rm %(file)
-bind status C !git commit
-bind status A !git commit --amend --no-edit
+bind status C <git commit
+bind status A <git commit --amend
+bind status N <git commit --amend --no-edit
+
+bind status t @zsh -c "[[ '%(status)' =~ Staged ]]&&c='restore --staged'||c='add'; git ${=c} '%(file)'"
+bind main R <git rebase --interactive %(commit)^
 
 bind generic l :d
 bind diff l @git_wrap d -f'%(file)' -r %(stash) %(commit)
