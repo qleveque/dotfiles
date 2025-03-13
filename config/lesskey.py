@@ -25,7 +25,6 @@ gc {NA} {READ_COMMIT}|{RUN}'wez_wrap new git-commit "tig show $0"'\n
 gd {NA} {READ_IDX_FILE}|{RUN}'git_wrap i -i $0'\n
 yc {NA} {READ_COMMIT}|cb copy\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|cb copy\n
-]c {NA} J/{COMMIT}\nma{RESET}'a
-[c {NA} /{COMMIT}\nNma{RESET}'a
-]f {NA} J/{IDX}\nma{RESET}'a
-[f {NA} /{IDX}\nNma{RESET}'a''')
+c {NA} J/{COMMIT}\nma{RESET}'a
+C {NA} /{COMMIT}\nNma{RESET}'a
+''')

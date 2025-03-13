@@ -30,3 +30,4 @@
 	meta = black
 	frag = black
 	func = black
+	commit = blue
