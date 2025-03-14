@@ -3,9 +3,17 @@
 
 full_path="$(readlink -f "$1")"
 ext="${full_path:t:e}"
-
+filetype=$(file --mime-type -b "$1")
 # Check if binary file
-[[ -s $1 ]]&&file -i "$1"|grep -q '.*: application/\S\+; charset=binary$'&&ext='bin'
+[[ -s $1 ]]&&file -vi "$1"|grep -q 'application/\S\+; charset=binary$'&&ext='bin'
+
+return_if_matched() { [[ ${matched} == 0 ]] && matched=1 || exit 0 }
+
+case ${filetype} in
+  application/vnd.sqlite3) lazysql "$1";;
+  *) matched=0;;
+esac
+return_if_matched
 
 if grep -q Microsoft /proc/version; then
   winrun() {
@@ -16,10 +24,14 @@ if grep -q Microsoft /proc/version; then
     png|jpg|jpeg) winrun 'mspaint.exe' "$@";;
     mp3) winrun 'C:\Program Files\Audacity\Audacity.exe' "$@";;
     bin) winrun 'C:\Program Files\ImHex\imhex.exe' "$@";;
-    *) nvim "$@";;
+    *) matched=0;;
   esac
+  return_if_matched
 else
   case ${ext} in
-    *) nvim "$@";;
+    *) matched=0;;
   esac
+  return_if_matched
 fi
+
+nvim "$@"

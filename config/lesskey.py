@@ -9,8 +9,8 @@ NA = 'noaction'
 RUN = 'xargs bash -c '
 CUT = "cut -d' ' -f"
 
-COMMIT = r'\^(commit \\w{40}|([\\*\\|] )+\\w{8} - )'
-READ_COMMIT = f"{r(COMMIT)}|sd -n1 '\\^[\\* \\|]+' 'commit '|{CUT}2"
+COMMIT = r'\^commit \\w{40}'
+READ_COMMIT = f"{r(COMMIT)}|{CUT}2"
 IDX = r'\^index \\S*\\w{7}\\.\\.\\w{7}'
 READ_IDX_FILE = fr"{r(IDX, 3)}|grep -v ' /'|cut -c7-|{RUN}'echo $0 ${{@:$\#}}'"
 

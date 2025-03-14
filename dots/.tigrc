@@ -3,6 +3,10 @@ color search-result default blue
 color cursor default black
 color title-focus default black
 color title-blur default black
+color "--- " black default
+color "+++ " black default
+color "commit " blue default
+
 set blame-view = author:abbreviated date:custom,format=%d/%m/%Y line-number:interval=1 text
 set main-view = date:custom,format=%d/%m/%Y author:abbreviated commit-title:refs=true
 set ignore-case = smart-case
@@ -11,7 +15,7 @@ set refresh-mode = manual
 set diff-options = --pretty=medium
 
 bind main G move-last-line
-bind generic u refresh
+bind generic R refresh
 bind generic g none
 bind generic gg :0
 bind generic y none
