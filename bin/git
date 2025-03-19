@@ -1,9 +1,9 @@
 #!/bin/bash
 # Add an empty search history to less
-[[ "$1" =~ ^(log|diff)$ ]] && sed -i '/^\.shell$/i "^' "${HOME}/.lesshst"
+[[ "$1" =~ ^(log|diff|stash|reflog)$ ]] && sed -i '/^\.shell$/i "^' "${HOME}/.lesshst"
 
 # ~/.use_git_exe should be a file containing the directories using git.exe
-if grep -q Microsoft /proc/version && [[ ! "$1" =~ ^(difftool|log|diff|show)$ ]] &&
+if grep -q Microsoft /proc/version && [[ ! "$1" =~ ^(difftool|log|diff|show|stash|reflog)$ ]] &&
   [[ -n $(cat ~/.use_git_exe 2>/dev/null|xargs -IX sh -c "echo ${PWD}/|grep '^X'") ]]; then
   core_editor='ce(){ wsl.exe -e bash -c "nvim \`wslpath $1\`"; clear; }; ce'
   git.exe -c core.editor="${core_editor}" "$@" 

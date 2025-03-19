@@ -17,7 +17,7 @@ fi
 
 # Common packages
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y curl cmake vifm zsh tmux fzf tig qalc ripgrep fd-find xsel jq sd lsd nodejs bat g++
+sudo apt install -y curl cmake vifm zsh tmux fzf qalc ripgrep fd-find xsel jq sd lsd nodejs bat g++
 
 # Neovim
 NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz'

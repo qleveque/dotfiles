@@ -1,33 +1,34 @@
 [user]
-	email = qleveque@hotmail.com
-	name = Quentin Leveque
+  email = qleveque@hotmail.com
+  name = Quentin Leveque
 [core]
-	editor = nvim
-	ignorecase = true
-	whitespace = trailing-space
-	longpaths = true
-	filemode = false
-	excludesfile = ~/.gitignore
+  editor = nvim
+  ignorecase = true
+  whitespace = trailing-space
+  longpaths = true
+  filemode = false
+  excludesfile = ~/.gitignore
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 [pull]
-	rebase = true
+  rebase = true
 [diff]
-	tool = nvimdiff
-	context = 0
+  tool = nvimdiff
+  context = 0
 [difftool]
-	prompt = false
-	trustExitCode = true
-	tool = nvim
+  prompt = false
+  trustExitCode = true
+  tool = nvim
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [alias]
-	parent = "!h(){ git log -n1 --oneline `git merge-base $*`;};h"
+  parent = "!h(){ git log -n1 --oneline `git merge-base $*`;};h"
+  pick = "!h(){ f=\"$GIT_PREFIX$1\";b=`mktemp`;mv $f $b;git restore $f||>$f;nvim -d $b $f;[ -s $f ]&&git add $f;mv $b $f;};h"
 [color "diff"]
-	meta = black
-	frag = black
-	func = black
-	commit = blue
+  meta = black
+  frag = black
+  func = black
+  commit = blue
