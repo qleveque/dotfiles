@@ -27,7 +27,7 @@ zz back-scroll
 j forw-line-force
 yy {NA} ma|ahead -1|cb copy\n
 # Git
-\n {NA} {READ_COMMIT_LINE}|git_wrap commit-line\n
+l {NA} {READ_COMMIT_LINE}|git_wrap commit-line\n
 gd {NA} {READ_IDX_FILE}|git_wrap index\n
 yc {NA} {READ_COMMIT_LINE}|git_wrap commit-line -c\n
 yf {NA} {READ_IDX_FILE}|{CUT}2|cb copy\n
