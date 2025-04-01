@@ -29,8 +29,8 @@ run() {
 case $key in
   d) run "git-diff:${file:t}" NVIM_GITDIFF=1 FILE="${PWD}/${file}" git difftool ${=ref} -- "${file}";;
   s) run "git-status:$(basename `git rev-parse --show-toplevel`)" gitrs status;;
-  f) run "git-logfile:${file:t}" git log "${file}";;
-  l) run "git-log:$(basename `git rev-parse --show-toplevel`)" git log;;
+  f) run "git-logfile:${file:t}" git pretty "${file}";;
+  l) run "git-log:$(basename `git rev-parse --show-toplevel`)" git pretty;;
   b) run "git-blame:${file:t}" gitrs blame "${file}" -L ${line:-1};;
   merge) run "git-merge:${file:t}" NVIM_GITMERGE=1 FILE="${PWD}/${file}" git_mergetool "${file}";;
   pick) run "git-pick:${file:t}" NVIM_GITDIFF=1 git pick "${file}";;

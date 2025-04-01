@@ -80,7 +80,7 @@ run_project() {
   while [[ ${PWD} != / ]]; do
     while IFS= read -r -d '' file; do
       files+=("$(realpath "$file")")
-    done < <(find . -maxdepth 1 -name ".run.*" -print0)
+    done < <(find . -maxdepth 1 -name ".run.*" -print0 2>/dev/null)
     cd ..
   done
   if [[ ! -z ${files} ]]; then

@@ -1,4 +1,5 @@
 map global y @echo -n %(rev) | cb copy
+map show Y @git show --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
 
 map status C >git commit
 map status A >git commit --amend
