@@ -25,14 +25,22 @@ vim.g.clipboard = {
 -- Specific configs
 if os.getenv("NVIM_GITDIFF") then
   local file = io.open(vim.fn.argv(0), "r")
-  if not file then return 0 end
-  if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
-  file:close()
+  if file then
+    if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
+    file:close()
+  end
   vim.cmd[[
     nn gF :exe 'sil !wez_wrap new "file" "nvim "$FILE" +'.line('.').'"'<CR>
     au BufRead /tmp/* setl noma
     set ls=0
   ]]
+  local line = os.getenv("LINE")
+  if line and tonumber(line) then
+    vim.api.nvim_create_autocmd("VimEnter", {
+      pattern = '*',
+      command = "normal! "..line.."G",
+    })
+  end
 elseif os.getenv("NVIM_GITMERGE") then
   vim.cmd[[
     nn dp 1dp3dp:wa<CR>

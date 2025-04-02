@@ -1,12 +1,14 @@
 #!/bin/bash
 # Add an empty search history to less
-[[ "$1" =~ ^(log|diff|stash|reflog|pretty)$ ]] && sed -i '/^\.shell$/i "^' "${HOME}/.lesshst"
+sed -i '/^\.shell$/i "^' "${HOME}/.lesshst"
 
-# ~/.use_git_exe should be a file containing the directories using git.exe
-if grep -q Microsoft /proc/version && [[ ! "$1" =~ ^(difftool|log|diff|show|stash|reflog|pretty)$ ]] &&
-  [[ -n $(cat ~/.use_git_exe 2>/dev/null|xargs -IX sh -c "echo ${PWD}/|grep '^X'") ]]; then
-  core_editor='ce(){ wsl.exe -e bash -c "nvim \`wslpath $1\`"; clear; }; ce'
-  git.exe -c core.editor="${core_editor}" "$@" 
+if which git.exe &>/dev/null && grep -q "$(git.exe rev-parse --show-toplevel)" ~/.use_git_exe; then
+  git.exe \
+    -c core.editor='ce(){ wsl.exe -e bash -c "nvim \`wslpath $1\`"; clear; }; ce' \
+    -c core.pager='cp(){ wsl.exe -e bash -c "less"; clear; }; cp' \
+    -c diff.tool=diff \
+    -c difftool.diff.cmd='wsl.exe -e bash -c "NVIM_GITDIFF=1 nvim -d \`wslpath ${LOCAL//\\//}\` \`wslpath ${REMOTE//\\//}\`"' \
+    "$@" 
   exit 0
 fi
 
