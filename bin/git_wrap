@@ -37,7 +37,7 @@ case $key in
   log-diff)
     lines=$(cat)
     n=$(tput lines)
-    lines=$(print -r -- $lines | head -n -$(( n - 4 )))
+    lines=$(print -r -- $lines | head -n -$(( n - 2 )))
     file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
     [[ ${copy} ]] && echo ${file} | cb copy && exit 0
     commit=$(print -r -- $lines | head -n1 | awk '{print $2}')

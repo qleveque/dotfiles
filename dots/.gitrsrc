@@ -1,11 +1,12 @@
-map global y @echo -n %(rev) | cb copy
-map show Y @git show %(rev) --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
+map global yc @echo -n %(rev) | cb copy
+map global yf @echo -n %(file) | cb copy
+map show yt @git show %(rev) --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
 
 map status C >git commit
 map status A >git commit --amend
 map status N >git commit --amend --no-edit
 
-map untracked D !rm "%(file)"
+map untracked dd !rm "%(file)"
 map unstaged ! !git restore "%(file)"
 
 map staged l @git_wrap d -f '%(file)' -s
