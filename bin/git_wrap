@@ -36,8 +36,6 @@ case $key in
   pick) run "git-pick:${file:t}" NVIM_GITDIFF=1 git pick "${file}";;
   log-diff)
     lines=$(cat)
-    n=$(tput lines)
-    lines=$(print -r -- $lines | head -n -$(( n - 2 )))
     file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
     [[ ${copy} ]] && echo ${file} | cb copy && exit 0
     commit=$(print -r -- $lines | head -n1 | awk '{print $2}')
