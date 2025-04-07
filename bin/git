@@ -1,5 +1,5 @@
 #!/bin/bash
-if which git.exe &>/dev/null && grep -q "$(git.exe rev-parse --show-toplevel)" ~/.use_git_exe; then
+if which git.exe &>/dev/null && grep -q "^$(git.exe rev-parse --show-toplevel)\$" ~/.use_git_exe; then
   A='\`wslpath ${LOCAL//\\//}\`' B='\`wslpath ${REMOTE//\\//}\`'
   DIFF_CMD="NVIM_GITDIFF=1 LINE=$LINE FILE="$FILE" nvim -d $A $B"
   git.exe \

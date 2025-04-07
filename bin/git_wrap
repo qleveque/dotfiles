@@ -34,6 +34,7 @@ case $key in
   b) run "git-blame:${file:t}" gitrs blame "${file}" ${line:-1};;
   merge) run "git-merge:${file:t}" NVIM_GITMERGE=1 FILE="${PWD}/${file}" git_mergetool "${file}";;
   pick) run "git-pick:${file:t}" NVIM_GITDIFF=1 git pick "${file}";;
+  untracked) run "${file:t}" nvim "${file}";;
   log-diff)
     lines=$(cat)
     file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')

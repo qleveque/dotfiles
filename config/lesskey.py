@@ -20,7 +20,7 @@ print(rf'''#env
 LESS = -irR --mouse --wheel-lines=1 +/\^
 #command
 gg goto-line
-G goto-end
+G goto-end \e\40
 zz back-scroll
 j forw-line-force
 ^a {NA} |.^P{REMOVE_COLORS}|nvim -c 'syn off' -c 'set ls=0' -c 'set nonu'\n

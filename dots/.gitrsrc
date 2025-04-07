@@ -13,6 +13,6 @@ map staged l @git_wrap d -f '%(file)' -s
 map unstaged l @git_wrap d -f '%(file)'
 map show l @git_wrap d -f '%(file)' -r '%(rev)'
 
-map untracked l @nvim '%(file)'
+map untracked l @git_wrap untracked -f '%(file)'
 map unmerged l @git_wrap merge -f '%(file)'
 map unstaged p @git_wrap pick -f '%(file)'
