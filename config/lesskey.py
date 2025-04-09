@@ -17,6 +17,9 @@ UNTIL_COMMIT_LINE = rf"JmaKJ\eb?{ANY_COMMIT}\n|a^P head -n -1|{REMOVE_COLORS}"
 
 print(rf'''#env
 LESS = -irR --mouse --wheel-lines=1 +/\^
+#line-edit
+\e abort
+^A up
 #command
 gg goto-line
 G goto-end \e\40
@@ -24,17 +27,14 @@ zz back-scroll
 j forw-line-force
 ^a {NA} {CURRENT_LINE}|nvim -c 'syn off' -c 'set ls=0' -c 'set nonu'\n
 yy {NA} {CURRENT_LINE}|head -1|cb copy\n
-# Git
-l {NA} {CURRENT_LINE}|git_wrap log-commit\n
-yc {NA} {CURRENT_LINE}|git_wrap log-commit -c\n
-dd {NA} {CURRENT_LINE}|git_wrap log-drop -c\n
-gd {NA} {START}{UNTIL_COMMIT_LINE}|git_wrap log-diff\n{END}
-yf {NA} {START}{UNTIL_COMMIT_LINE}|git_wrap log-diff -c\n{END}
-c {NA} J/{ANY_COMMIT}\n{START}{END}
-C {NA} \eb?{ANY_COMMIT}\n{START}{END}
 \e\e {NA} $
 ^q quit
-#line-edit
-\e abort
-^A up
+# Git
+l {NA} {CURRENT_LINE}|git_wrap log-commit\n
+yc {NA} {CURRENT_LINE}|git_wrap log-commit copy\n
+dd {NA} {CURRENT_LINE}|git_wrap log-drop\n
+gd {NA} {START}{UNTIL_COMMIT_LINE}|git_wrap log-diff\n{END}
+yf {NA} {START}{UNTIL_COMMIT_LINE}|git_wrap log-diff copy\n{END}
+c {NA} J/{ANY_COMMIT}\n{START}{END}
+C {NA} \eb?{ANY_COMMIT}\n{START}{END}
 ''')

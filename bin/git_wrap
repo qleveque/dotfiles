@@ -3,16 +3,14 @@
 cmd=""
 key="$1"
 use_wez=1
-copy=
 shift
 
-while getopts "i:f:l:r:ncs" opt; do case $opt in
+while getopts "i:f:l:r:ns" opt; do case $opt in
   f) file=$(realpath -s --relative-to="${PWD}" "${OPTARG}") ;;
   l) line="${OPTARG}";;
   r) ref="${OPTARG}^ ${OPTARG}";;
   n) use_wez=;;
   s) ref='--staged';;
-  c) copy=1;;
 esac; done
 shift $((OPTIND -1))
 
@@ -58,13 +56,13 @@ case $key in
     commit=$(read-commit-line) || exit 0
     lines=$(cat)
     file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
-    [[ ${copy} ]] && echo ${file} | cb copy && exit 0
+    [[ $1 == copy ]] && echo ${file} | cb copy && exit 0
     line=$(print -r -- $lines | grep '^@@ ' | tail -n1 | awk '{match($0, /\+([0-9]+)/, arr); print arr[1]}')
     git_wrap d -f ${file} -l ${line} -r ${commit}
   ;;
   log-commit)
     commit=$(read-commit-line) || exit 0
-    if [[ ${copy} ]]; then
+    if [[ $1 == copy ]]; then
       echo ${commit} | cb copy
     else
       gitrs show ${commit}
