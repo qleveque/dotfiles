@@ -6,8 +6,9 @@ map status C >git commit
 map status A >git commit --amend
 map status N >git commit --amend --no-edit
 
-map untracked dd !rm "%(file)"
-map unstaged ! !git restore "%(file)"
+map untracked dd !rm '%(file)'
+map unstaged ! !git restore '%(file)'
+map unmerged ! !git checkout --ours '%(file)' && git add '%(file)'
 
 map staged l @git_wrap d -f '%(file)' -s
 map unstaged l @git_wrap d -f '%(file)'

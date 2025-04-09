@@ -36,6 +36,7 @@ if os.getenv("NVIM_GITDIFF") then
   ]]
   local line = os.getenv("LINE")
   if line and tonumber(line) then
+    if line == "0" then line = "1" end
     vim.api.nvim_create_autocmd("VimEnter", {
       pattern = '*',
       command = "normal! "..line.."G",

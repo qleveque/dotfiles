@@ -26,37 +26,48 @@ run() {
   fi
 }
 
+read-commit-line() {
+  read line
+  if [[
+      "$line" =~ '^commit\ (\w+)' ||
+      "$line" =~ '(HEAD@\{[0-9]+\})' ||
+      "$line" =~ '(stash@\{[0-9]+\})' ||
+      "$line" =~ '^[*| ]* (\w+)'
+    ]]; then
+    echo "${match[1]}"
+  else
+    exit 1
+  fi
+}
+
 case $key in
   d) run "git-diff:${file:t}" NVIM_GITDIFF=1 LINE=${line} FILE="${PWD}/${file}" git difftool ${=ref} -- "${file}";;
   s) run "git-status:$(basename `git rev-parse --show-toplevel`)" gitrs status;;
   f) run "git-logfile:${file:t}" git pretty "${file}";;
   l) run "git-log:$(basename `git rev-parse --show-toplevel`)" git pretty;;
   b) run "git-blame:${file:t}" gitrs blame "${file}" ${line:-1};;
+  t) run "git-stash:$(basename `git rev-parse --show-toplevel`)" git stash list;;
   merge) run "git-merge:${file:t}" NVIM_GITMERGE=1 FILE="${PWD}/${file}" git_mergetool "${file}";;
   pick) run "git-pick:${file:t}" NVIM_GITDIFF=1 git pick "${file}";;
   untracked) run "${file:t}" nvim "${file}";;
+  log-drop)
+    commit=$(read-commit-line) || exit 0
+    git stash drop $commit
+  ;;
   log-diff)
+    commit=$(read-commit-line) || exit 0
     lines=$(cat)
     file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
     [[ ${copy} ]] && echo ${file} | cb copy && exit 0
-    commit=$(print -r -- $lines | head -n1 | awk '{print $2}')
     line=$(print -r -- $lines | grep '^@@ ' | tail -n1 | awk '{match($0, /\+([0-9]+)/, arr); print arr[1]}')
     git_wrap d -f ${file} -l ${line} -r ${commit}
   ;;
   log-commit)
-    read line
-    if [[
-        "$line" =~ '^commit\ (\w+)' ||
-        "$line" =~ '(HEAD@\{[0-9]+\})' ||
-        "$line" =~ '(stash@\{[0-9]+\})' ||
-        "$line" =~ '^[*| ]* (\w+)'
-      ]]; then
-      commit="${match[1]}"
-      if [[ ${copy} ]]; then
-        echo ${commit} | cb copy
-      else
-        gitrs show ${commit}
-      fi
+    commit=$(read-commit-line) || exit 0
+    if [[ ${copy} ]]; then
+      echo ${commit} | cb copy
+    else
+      gitrs show ${commit}
     fi
   ;;
 esac
