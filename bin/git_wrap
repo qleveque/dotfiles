@@ -1,15 +1,13 @@
 #!/usr/bin/zsh
 
-cmd=""
 key="$1"
-use_wez=1
 shift
 
 while getopts "i:f:l:r:ns" opt; do case $opt in
   f) file=$(realpath -s --relative-to="${PWD}" "${OPTARG}") ;;
   l) line="${OPTARG}";;
   r) ref="${OPTARG}^ ${OPTARG}";;
-  n) use_wez=;;
+  n) no_new_tab=1;;
   s) ref='--staged';;
 esac; done
 shift $((OPTIND -1))
@@ -17,10 +15,10 @@ shift $((OPTIND -1))
 run() {
   tab_title="$1"
   shift
-  if [[ ${use_wez} ]]; then
-    wez_wrap new "${tab_title}" "$(printf "%q " "$@")" > /dev/null
-  else
+  if [[ ${no_new_tab} ]]; then
     eval "$@"
+  else
+    wez_wrap new "${tab_title}" "$(printf "%q " "$@")" > /dev/null
   fi
 }
 
@@ -33,9 +31,9 @@ read-commit-line() {
       "$line" =~ '^[*| ]* (\w+)'
     ]]; then
     echo "${match[1]}"
-  else
-    exit 1
+    return
   fi
+  echo NO_COMMIT
 }
 
 case $key in
@@ -48,24 +46,13 @@ case $key in
   merge) run "git-merge:${file:t}" NVIM_GITMERGE=1 FILE="${PWD}/${file}" git_mergetool "${file}";;
   pick) run "git-pick:${file:t}" NVIM_GITDIFF=1 git pick "${file}";;
   untracked) run "${file:t}" nvim "${file}";;
-  log-drop)
-    commit=$(read-commit-line) || exit 0
-    git stash drop $commit
-  ;;
+  log-commit) read-commit-line;;
   log-diff)
-    commit=$(read-commit-line) || exit 0
+    commit=$(read-commit-line)
     lines=$(cat)
     file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
     [[ $1 == copy ]] && echo ${file} | cb copy && exit 0
     line=$(print -r -- $lines | grep '^@@ ' | tail -n1 | awk '{match($0, /\+([0-9]+)/, arr); print arr[1]}')
     git_wrap d -f ${file} -l ${line} -r ${commit}
-  ;;
-  log-commit)
-    commit=$(read-commit-line) || exit 0
-    if [[ $1 == copy ]]; then
-      echo ${commit} | cb copy
-    else
-      gitrs show ${commit}
-    fi
   ;;
 esac
