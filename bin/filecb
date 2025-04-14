@@ -11,7 +11,7 @@ if grep -q Microsoft /proc/version; then
           Copy-Item $_ -Destination . -Recurse `
         }'
     ;;
-    copy) 
+    copy)
       for a in "$@"; do echo "$a"; done | powershell.exe -Command \
         'Add-Type -AssemblyName System.Windows.Forms; `
         $c = New-Object Collections.Specialized.StringCollection; `

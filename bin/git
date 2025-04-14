@@ -1,5 +1,8 @@
 #!/bin/bash
-if which git.exe &>/dev/null && grep -q "^$(git.exe rev-parse --show-toplevel)\$" ~/.use_git_exe; then
+
+while read -r path; do [[ $PWD/ == $path* ]] &&  win=1; done < ~/.use_git_exe
+
+if [[ -n $win ]]; then
   A='\`wslpath ${LOCAL//\\//}\`' B='\`wslpath ${REMOTE//\\//}\`'
   DIFF_CMD="NVIM_GITDIFF=1 LINE=$LINE FILE="$FILE" nvim -d $A $B"
   git.exe \
@@ -7,7 +10,6 @@ if which git.exe &>/dev/null && grep -q "^$(git.exe rev-parse --show-toplevel)\$
     -c core.pager='cp(){ wsl.exe -e bash -c "~/bin/less"; }; cp' \
     -c diff.tool=win -c difftool.win.cmd="wsl.exe -e bash -c \"${DIFF_CMD}\"" \
     "$@"
-  exit 0
+else
+  /usr/bin/git "$@"
 fi
-
-/usr/bin/git "$@"
