@@ -33,7 +33,7 @@ for c in {v,o}m\ {a,i}${(s..)^:-'()[]{}<>'};do ${=c} select-bracketed;done
 for c in {v,o}m\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
 
 # Functions and widgets instantiation
-set-cursor(){zvs-zle-keymap-select;local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
+set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
 goto-recent(){cd "$(eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS})";zle reset-prompt;zle zle-line-init}
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-git_wrap(){local k; read -k1 k; git_wrap $k -n -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
@@ -51,4 +51,3 @@ wids=(goto-recent open-{fm,git_wrap} quit select-{bracketed,quoted} visual-{put,
       vi-{cut,yank,put-{before,after}} copy-mode insert-space add-surround:surround
       {change,delete}-wrap:opp-wrap zle-{keymap-select,line-{init,finish}}:set-cursor)
 for wid in "${wids[@]}"; do zle -N ${=wid//:/ }; done
-precmd_functions+=(set-cursor)

@@ -31,3 +31,6 @@ if grep -q Microsoft /proc/version; then
   lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
   lndir "${config}/windows/zebar/starter" "${HOME}/.glzr/zebar/starter"
 fi
+
+export ZIM_HOME="${HOME}/.zim"
+zsh "${ZIM_HOME}/zimfw.zsh" update -q

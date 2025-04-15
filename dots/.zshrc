@@ -8,11 +8,12 @@ h() { eval "$@ --help" | batcat -l help -p }
 man() { eval "/usr/bin/man $@" | batcat -l man -p }
 
 # Sources
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source ~/.zim/init.zsh
+source ~/.zim/modules/zsh-defer/zsh-defer.plugin.zsh
 source ~/.vimode.zsh
-source ~/.aliases
-[[ -f ~/.init.zsh ]] && source ~/.init.zsh
+zsh-defer source /usr/share/doc/fzf/examples/key-bindings.zsh
+zsh-defer source ~/.zim/init.zsh && zsh-defer bindkey '^G' open-git_wrap
+zsh-defer source ~/.aliases
+[[ -f ~/.init.zsh ]] && zsh-defer source ~/.init.zsh
 
 # On directory changed
 _on_dir_changed() { oncd }
