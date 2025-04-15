@@ -32,7 +32,7 @@ case ${cmd} in
       NVIM_COPY=1 nvim -c "norm G3k^" $f
     fi
   ;;
-  split) ${wez} cli split-pane --bottom --cwd ${cwd} -- zsh -c "$@";;
+  split) ${wez} cli split-pane --bottom --cwd ${cwd} -- zsh -c "$1";;
   new) ${wez} cli spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez_wrap kill";;
   kill)
     pane=$(pane_id)
