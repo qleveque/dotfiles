@@ -80,7 +80,7 @@ nvim_plugins = {
     opts = { safe_labels = {} },
     keys = {
       {
-        '_',
+        '<Space>',
         function() require'leap'.leap{target_windows={vim.fn.win_getid()}} end,
         buffer=bufnr, silent=true, nowait=true, mode={'v', 'n'}
       }
@@ -203,9 +203,9 @@ nvim_plugins = {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = { surrounds = {},
       keymaps = {
-        init_selection = '<Space>',
-        node_incremental = '<Space>',
-        node_decremental = '<S-Space>',
+        init_selection = '_',
+        node_incremental = '_',
+        node_decremental = '-',
       },
     }
   },
@@ -353,5 +353,5 @@ local theme = {
 table.insert(nvim_plugins, theme)
 
 -- Load lazy
-disabled={'gzip','netrwPlugin','rplugin','shada','spellfile','tarPlugin','tohtml','tutor','zipPlugin'}
-require("lazy").setup(nvim_plugins, { performance = { rtp = { disabled = disabled}}})
+disabled={'gzip','netrwPlugin','rplugin','shada','spellfile','tarPlugin','tohtml','tutor','zipPlugin','matchit'}
+require("lazy").setup(nvim_plugins, { performance = { rtp = { disabled_plugins = disabled}}})

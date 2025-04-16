@@ -1,13 +1,14 @@
 {
   "filterLinkHints": true,
   "hideHud": true,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap <C-u> scrollPageUp\nmap <C-d> scrollPageDown\nmap Q removeTab\nmap X closeOtherTabs\nmap _ LinkHints.activateMode\nmap - LinkHints.activateModeToOpenInNewTab\nunmap f\nunmap J\nunmap K",
-  "newTabUrl": "pages/blank.html",
+  "keyMappings": "map <C-u> scrollPageUp\nmap <C-d> scrollPageDown\nmap Q removeTab\nmap X closeOtherTabs\nmap / LinkHints.activateMode\nmap : LinkHints.activateModeToOpenInNewTab\nmap ' Marks.activateGotoMode\nmap t focusInput\nunmap x\nunmap f\nunmap J\nunmap K\nunmap b\nunmap B\nunmap T\nunmap o\nunmap O",
+  "newTabUrl": "",
   "nextPatterns": "suivant,next,Next,more,newer,>,›,→,»,≫,>>",
   "previousPatterns": "précédent,prev,Prev,previous,back,older,<,‹,←,«,≪,<<",
   "regexFindMode": true,
   "grabBackFocus": true,
-  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\n\ng: https://www.google.com/search?q=%s Google\ny: https://www.youtube.com/results?search_query=%s Youtube\nm: https://www.google.com/maps?q=%s Google maps\naz: https://www.amazon.com/s/?field-keywords=%s Amazon\nsyn: http://www.synonymo.fr/synonyme/%s Synonymo",
+  "searchEngines": "",
+  "searchUrl": "",
   "settingsVersion": "2.1.2",
   "exclusionRules": []
 }

@@ -129,7 +129,7 @@
     },
     {
       "before": [
-        "<Space>"
+        "_"
       ],
       "commands": [
         "editor.action.smartSelect.expand"
@@ -137,7 +137,7 @@
     },
     {
       "before": [
-        "<S-Space>"
+        "-"
       ],
       "commands": [
         "editor.action.smartSelect.shrink"
@@ -263,7 +263,7 @@
     },
     {
       "before": [
-        "<Space>"
+        "_"
       ],
       "commands": [
         "editor.action.smartSelect.expand"
@@ -271,7 +271,7 @@
     },
     {
       "before": [
-        "_"
+        "<Space>"
       ],
       "after": [
         "<leader>",

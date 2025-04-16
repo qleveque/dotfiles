@@ -1,6 +1,6 @@
-zmodule romkatv/zsh-defer -d
 zmodule zsh-users/zsh-autosuggestions
 zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule lincheney/fzf-tab-completion --source zsh/fzf-zsh-completion.sh
+zmodule junegunn/fzf --tag 0.47.0 --source shell/key-bindings.zsh
 zmodule ohmyzsh/ohmyzsh --root plugins/jump
 zmodule ohmyzsh/ohmyzsh --root plugins/git

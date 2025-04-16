@@ -34,7 +34,6 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y
 export ZIM_HOME="${HOME}/.zim"
 wget -nv -P "${ZIM_HOME}" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
 zsh "${ZIM_HOME}/zimfw.zsh" install -q
-zsh "${ZIM_HOME}/zimfw.zsh" update -q
 
 # extract
 echo '#!/usr/bin/zsh
