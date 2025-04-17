@@ -7,7 +7,7 @@ wf() { local f=$1 && shift && mkdir -p "$(dirname $f)" && "$@" > $f; }
 mkdir -p "${HOME}/bin"
 config="${HOME}/dotfiles/config"
 
-g++ "${config}/git_mergetool.cpp" -o "${HOME}/bin/git_mergetool"
+g++ "${config}/git_mergetool.cpp" -o "${HOME}/bin/git_mergetool" &
 wf "${HOME}/.config/nvim/init.lua" echo "dofile(\"${HOME}/.nvim.lua\")"
 wf "${HOME}/.config/vifm/vifmrc" echo "source ${HOME}/.vifmrc"
 wf "${HOME}/.lesskey" /usr/bin/python3 "${config}/lesskey.py"

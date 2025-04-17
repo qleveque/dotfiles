@@ -3,6 +3,10 @@ set history=100 ul=100 wmnu is scs nohls ic so=4 stl=" " cf=permdelete
 set vicmd=nvim syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.local/share/Trash
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
+" Preview
+fileviewer *[^/] batcat --color always --wrap never --pager never %c -p
+nnoremap w :if layoutis('only') | split | view! | else | only | endif <cr>
+
 " Shortcuts
 nn xx dd
 nn dd "0dd
