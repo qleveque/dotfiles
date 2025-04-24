@@ -30,7 +30,7 @@ yy {NA} {BUFFER}|head -1|cb copy\n
 # Git
 l {NA} {COMMIT}|xargs gitrs show\n
 yc {NA} {COMMIT}|cb copy\n
-dd {NA} {COMMIT}|xargs stash drop\n
+dd {NA} {COMMIT}|xargs git stash drop\n
 R {NA} {COMMIT}|xargs -i git rebase -i {{}}\^\n
 gd {NA} {SAVE}{UNTIL_COMMIT_LINE}|git_wrap log-diff\n{RESET_SEARCH}{RESTORE}
 yf {NA} {SAVE}{UNTIL_COMMIT_LINE}|git_wrap log-diff copy\n{RESET_SEARCH}{RESTORE}
