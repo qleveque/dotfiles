@@ -1,19 +1,13 @@
-map global yc @echo -n %(rev) | cb copy
-map global yf @echo -n %(file) | cb copy
-map show yt @git show %(rev) --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
-
-map status C >git commit
-map status A >git commit --amend
-map status N >git commit --amend --no-edit
-
-map untracked dd !rm '%(file)'
-map unstaged ! !git restore '%(file)'
-map unmerged ! !git checkout --ours '%(file)' && git add '%(file)'
-
 map staged l @git_wrap d -f '%(file)' -s
 map unstaged l @git_wrap d -f '%(file)'
-map show l @git_wrap d -f '%(file)' -r '%(rev)'
-
+map files l @git_wrap d -f '%(file)' -r '%(rev)'
 map untracked l @git_wrap untracked -f '%(file)'
 map unmerged l @git_wrap merge -f '%(file)'
 map unstaged p @git_wrap pick -f '%(file)'
+map pager d !git_wrap d -f '%(file)' -l '%(line)' -r '%(rev)'
+map pager l open_files_app
+map stash l open_files_app
+
+map show yt @git show %(rev) --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
+map unmerged !r !git checkout --ours '%(file)' && git add '%(file)'
+set clipboard cb copy

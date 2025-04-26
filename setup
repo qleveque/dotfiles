@@ -10,7 +10,6 @@ config="${HOME}/dotfiles/config"
 g++ "${config}/git_mergetool.cpp" -o "${HOME}/bin/git_mergetool" &
 wf "${HOME}/.config/nvim/init.lua" echo "dofile(\"${HOME}/.nvim.lua\")"
 wf "${HOME}/.config/vifm/vifmrc" echo "source ${HOME}/.vifmrc"
-wf "${HOME}/.lesskey" /usr/bin/python3 "${config}/lesskey.py"
 
 lndir "${HOME}/dotfiles/dots" "${HOME}"
 
