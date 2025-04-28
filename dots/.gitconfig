@@ -9,6 +9,7 @@
   filemode = false
   excludesfile = ~/.gitignore
   abbrev = 6
+  pager = gitrs
 [push]
   autoSetupRemote = true
 [pull]
@@ -31,6 +32,7 @@
 [alias]
   parent = "!h(){ git log -n1 --oneline `git merge-base $*`;};h"
   pick = "!h(){ f=\"$GIT_PREFIX$1\";b=`mktemp`;mv $f $b;git restore $f||>$f;nvim -d $b $f;[ -s $f ]&&git add $f;mv $b $f;};h"
+  pretty = "log --graph --pretty=\"%Cred%h%Creset %Cgreen%s%C(auto)%d %C(bold blue)%an %Cgreen%cr%Creset\""
 [color "diff"]
   meta = black
   frag = black

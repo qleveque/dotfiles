@@ -6,7 +6,6 @@ export FZF_CTRL_P_OPTS='--no-sort'
 export FZF_CTRL_R_OPTS='--no-sort'
 export FZF_CTRL_T_COMMAND='fdfind'
 export FZF_DEFAULT_OPTS='--ansi --border --bind=tab:down,shift-tab:up --reverse --exact'
-export GIT_PAGER='less'
 export STARSHIP_LOG='error'
 export ZIM_HOME="${HOME}/.zim"
 KEYTIMEOUT=1
