@@ -8,6 +8,7 @@ map pager d !git_wrap d -f '%(file)' -l '%(line)' -r '%(rev)'
 map pager l open_files_app
 map stash l open_files_app
 map global <c-q> quit
+map global <esc> nop
 
 map show yt @git show %(rev) --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
 map unmerged !r !git checkout --ours '%(file)' && git add '%(file)'

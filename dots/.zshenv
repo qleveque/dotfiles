@@ -1,5 +1,5 @@
 #!/bin/zsh
-export PATH="${HOME}/dotfiles/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/dotfiles/bin:${HOME}/.local/bin:${PATH}"
 export FZF_ALT_C_COMMAND='fdfind --type d'
 export FZF_CTRL_P_COMMAND='eval "tac ~/.dirhist | grep -v \"^${PWD}\$\""'
 export FZF_CTRL_P_OPTS='--no-sort'
