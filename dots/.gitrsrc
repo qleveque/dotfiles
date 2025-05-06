@@ -1,14 +1,19 @@
 map status:staged l @git_wrap d -f '%(file)' -s
 map status:unstaged l @git_wrap d -f '%(file)'
-map files l @git_wrap d -f '%(file)' -r '%(rev)'
+map show l @git_wrap d -f '%(file)' -r '%(rev)'
+map log l open_show_app
+map stash l open_show_app
 map status:unstaged:new l @git_wrap untracked -f '%(file)'
 map status:unstaged:conflicted l @git_wrap merge -f '%(file)'
+
 map status:unstaged p @git_wrap pick -f '%(file)'
+
 map log d @git_wrap d -f '%(file)' -l '%(line)' -r '%(rev)'
 map show d @git_wrap d -f '%(file)' -l '%(line)' -r '%(rev)'
 map blame d @git_wrap d -f '%(file)' -l '%(line)' -r '%(rev)'
 map diff d @git_wrap d -f '%(file)' -i '%(rev)' -l '%(line)'
 
-map show yt @git show %(rev) --no-patch | grep -o '\(AL\|OPMT\)-[0-9]\+' | cb copy
 map status:unstaged:conflicted !r !git checkout --ours '%(file)' && git add '%(file)'
+
 set clipboard cb copy
+map global yt @yt %(rev)
