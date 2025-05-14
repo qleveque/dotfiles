@@ -25,7 +25,7 @@ run() {
 
 case $key in
   d)
-    env="NVIM_GITDIFF=1 LINE=${line} FILE=\"${PWD}/${file}\""
+    env="NVIM_GITDIFF=1 LINE=\'${line}\' FILE=\'${PWD}/${file}\'"
     if [[ -n ${index} ]]; then
       run "git-diff:${file:t}" "${env} git difftool ${index} || git difftool -- '${file}'"
     else

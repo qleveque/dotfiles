@@ -5,7 +5,7 @@ set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,re
 
 " Preview
 fileviewer *[^/] batcat --color always --wrap never --pager never %c -p
-nnoremap w :if layoutis('only') | split | view! | else | only | endif <cr>
+nnoremap W :if layoutis('only') | split | view! | else | only | endif <cr>
 
 " Shortcuts
 nn xx dd
