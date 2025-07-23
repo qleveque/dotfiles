@@ -17,3 +17,4 @@ map status:unstaged:conflicted !r !git checkout --ours '%(file)' && git add '%(f
 
 set clipboard cb copy
 map global yt @yt %(rev)
+map global yc !echo %(rev) | %(clip)

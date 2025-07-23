@@ -22,7 +22,7 @@ sudo apt install -y curl cmake vifm zsh tmux fzf qalc ripgrep fd-find xsel jq sd
 # Neovim
 NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz'
 TMP=$(mktemp) && wget -O $TMP $NVIM_URL && tar xvzf $TMP -C $HOME
-sudo ln -s $HOME/nvim-linux-x86_64/bin/nvim /usr/bin/nvim
+sudo ln -fs $HOME/nvim-linux-x86_64/bin/nvim /usr/bin/nvim
 
 # vifm devicons
 wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"

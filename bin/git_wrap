@@ -37,7 +37,7 @@ case $key in
   l) run "git-log:$(basename `git rev-parse --show-toplevel`)" "git pretty";;
   b) run "git-blame:${file:t}" "gitrs blame '${file}' ${line:-1}";;
   t) run "git-stash:$(basename `git rev-parse --show-toplevel`)" "gitrs stash";;
-  merge) run "git-merge:${file:t}" NVIM_GITMERGE=1 FILE="${PWD}/${file}" "git_mergetool '${file}'";;
-  pick) run "git-pick:${file:t}" NVIM_GITDIFF=1 "git pick '${file}'";;
+  merge) run "git-merge:${file:t}" "NVIM_GITMERGE=1 FILE='${PWD}/${file}' git_mergetool '${file}'";;
+  pick) run "git-pick:${file:t}" "NVIM_GITDIFF=1 git pick '${file}'";;
   untracked) run "${file:t}" "nvim '${file}'";;
 esac
