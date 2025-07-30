@@ -18,7 +18,12 @@ else
   c.front_end='WebGpu'
   c.webgpu_power_preference = 'HighPerformance'
 end
+
 c.color_scheme='Catppuccin Mocha'
+c.inactive_pane_hsb = {
+  saturation = 0.5,
+  brightness = 0.5,
+}
 c.enable_scroll_bar=false
 c.initial_cols=100
 c.initial_rows=40

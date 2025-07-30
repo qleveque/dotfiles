@@ -26,7 +26,6 @@ gaps:
 window_effects:
   focused_window:
     border:
-      # only windows 11?
       enabled: true
       color: '#ffffff'
 
@@ -102,17 +101,14 @@ window_rules:
   - commands: ['set-floating', 'move --workspace back', 'focus --workspace back']
     match:
       - window_title: { equals: 'ANT vehicle simulator' }
-  - commands: ['set-floating', 'move --workspace gui', 'focus --workspace gui']
-    match:
-      - window_process: { equals: 'python' }
-      - window_process: { equals: 'python.exe' }
-      - window_process: { equals: 'ANTlab' }
   - commands: ['set-floating']
     match:
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
+
+      - window_title: { regex: '- ANT lab - .* - CONFIDENTIAL -' }
 
 binding_modes:
 
@@ -138,6 +134,11 @@ keybindings:
     bindings: ['alt+k']
   - commands: ['focus --direction down']
     bindings: ['alt+j']
+
+  - commands: ['focus --next-active-workspace-on-monitor']
+    bindings: ['alt+oem_period']
+  - commands: ['focus --prev-active-workspace-on-monitor']
+    bindings: ['alt+oem_comma']
 
   - commands: ['move --direction left']
     bindings: ['alt+shift+h']

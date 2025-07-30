@@ -56,9 +56,4 @@ case ${cmd} in
     $G command move-workspace --direction $(other_monitor_direction)
     $G command focus --workspace ${current}
   ;;
-  move-to-other-monitor)
-    workspace=$($G query monitors | jq -r '.data.monitors.[] | select(.hasFocus == false) | .children.[] | select(.isDisplayed == true) | .name')
-    $G command move --workspace ${workspace}
-    $G command focus --workspace ${workspace}
-  ;;
 esac

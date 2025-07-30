@@ -1,8 +1,6 @@
 #!/bin/bash
 
-while read -r path; do [[ $PWD/ == $path* ]] &&  win=1; done < ~/.use_git_exe
-
-if [[ -n $win ]]; then
+if /usr/bin/git config --list | grep -q core.gitexe; then
   A='\`wslpath ${LOCAL//\\//}\`' B='\`wslpath ${REMOTE//\\//}\`'
   DIFF_CMD="NVIM_GITDIFF=1 LINE=$LINE FILE="$FILE" nvim -d $A $B"
   git.exe \
