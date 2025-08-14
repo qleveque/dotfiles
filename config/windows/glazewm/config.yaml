@@ -56,29 +56,17 @@ window_behavior:
 
 workspaces:
   - name: "any"
-    display_name: "󰋜"
   - name: "else"
-    display_name: "󰥵"
   - name: "web"
-    display_name: ""
   - name: "term"
-    display_name: ""
   - name: "send"
-    display_name: ""
   - name: "code"
-    display_name: "󰨞"
   - name: "gui"
-    display_name: ""
   - name: "dash"
-    display_name: "󱐋"
   - name: "back"
-    display_name: "󰀿"
   - name: "music"
-    display_name: ""
   - name: "post"
-    display_name: "󰇮"
   - name: "rest"
-    display_name: ""
 
 window_rules:
   - commands: ['ignore']
