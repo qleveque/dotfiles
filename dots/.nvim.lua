@@ -166,7 +166,7 @@ nvim_plugins = {
           \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
         ino <expr><TAB> coc#pum#visible()?coc#pum#next(1):
           \ indent(".")<col(".")-1?coc#refresh():"\<TAB>"
-        ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<C-h>"
+        ino <expr><S-TAB> coc#pum#visible()?coc#pum#prev(1):"\<S-TAB>"
       ]]
     end
   },
@@ -321,6 +321,32 @@ nvim_plugins = {
     end
   }
 }
+
+-- GitHub Copilot
+
+if os.getenv("USE_GITHUB_COPILOT") then
+  vim.g.copilot_no_tab_map = true
+  -- <F13> is <C-S-CR>
+  vim.keymap.set('n', '<F13>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
+  vim.keymap.set('v', '<F13>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("")', { expr = true, silent = true })
+  table.insert(nvim_plugins, {
+    "github/copilot.vim",
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      dependencies = {
+        { "nvim-lua/plenary.nvim", branch = "master" },
+      },
+      build = "make tiktoken",
+      opts = {
+        mappings = {
+          reset = false,
+          ["<C-l>"] = false,
+        }
+      },
+    },
+  })
+end
 
 -- Theme
 local theme = {

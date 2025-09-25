@@ -53,6 +53,7 @@
   <action id="EditorChooseLookupItemReplace">
     <keyboard-shortcut first-keystroke="l" />
   </action>
+  <action id="EditorCompleteStatement" />
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="j" />
@@ -82,8 +83,6 @@
   <action id="FindNext" />
   <action id="FocusEditor">
     <keyboard-shortcut first-keystroke="escape" />
-    <keyboard-shortcut first-keystroke="ctrl f" />
-    <keyboard-shortcut first-keystroke="ctrl l" />
   </action>
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="shift ctrl p" />
@@ -152,6 +151,7 @@
   <action id="Terminal.CloseTab">
     <keyboard-shortcut first-keystroke="ctrl q" />
   </action>
+  <action id="Terminal.SmartCommandExecution.Debug" />
   <action id="Tree-scrollDownChangeSelection">
     <keyboard-shortcut first-keystroke="page_down" />
     <keyboard-shortcut first-keystroke="ctrl d" />
@@ -182,4 +182,11 @@
   <action id="XDebugger.SetValue">
     <keyboard-shortcut first-keystroke="c" second-keystroke="w" />
   </action>
+  <action id="copilot.applyInlays">
+    <keyboard-shortcut first-keystroke="ctrl enter" />
+  </action>
+  <action id="copilot.chat.show">
+    <keyboard-shortcut first-keystroke="shift ctrl enter" />
+  </action>
+  <action id="copilot.disposeInlays" />
 </keymap>

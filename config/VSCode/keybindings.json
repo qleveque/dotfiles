@@ -21,17 +21,19 @@
   // Breadcrumbs
   { "key": "ctrl+z", "command": "breadcrumbs.focusAndSelect" },
   // Panes
-  { "key": "ctrl+l", "command": "workbench.action.focusRightGroup", "when": "!sideBarFocus" },
+  { "key": "ctrl+l", "command": "workbench.action.focusRightGroup", "when": "editorFocus && !activeEditorGroupLast" },
+  { "key": "ctrl+l", "command": "workbench.panel.chat", "when": "editorFocus && activeEditorGroupLast" },
   { "key": "ctrl+l", "command": "workbench.action.focusFirstEditorGroup", "when": "sideBarFocus" },
-  { "key": "ctrl+k", "command": "workbench.action.focusAboveGroup", "when": "!terminalFocus" },
+  { "key": "ctrl+k", "command": "workbench.action.focusAboveGroup", "when": "editorFocus" },
   { "key": "ctrl+k", "command": "workbench.action.focusFirstEditorGroup", "when": "terminalFocus" },
-  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup", "when": "activeEditorGroupIndex != 1" },
-  { "key": "ctrl+h", "command": "workbench.action.focusSideBar", "when": "activeEditorGroupIndex == 1" },
+  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup", "when": "editorFocus && activeEditorGroupIndex != 1" },
+  { "key": "ctrl+h", "command": "workbench.action.focusSideBar", "when": "editorFocus && activeEditorGroupIndex == 1" },
+  { "key": "ctrl+h", "command": "workbench.action.focusLastEditorGroup", "when": "inChat" },
   { "key": "ctrl+j", "command": "workbench.action.focusBelowGroup" },
-  { "key": "ctrl+j", "command": "workbench.action.focusBelowGroup" },
-  { "key": "ctrl+q", "command": "workbench.action.closeEditorsInGroup", "when": "!sideBarFocus && !terminalFocus" },
+  { "key": "ctrl+q", "command": "workbench.action.closeEditorsInGroup", "when": "editorFocus" },
   { "key": "ctrl+q", "command": "workbench.action.toggleSidebarVisibility", "when": "sideBarFocus" },
   { "key": "ctrl+q", "command": "workbench.action.togglePanel", "when": "terminalFocus" },
+  { "key": "ctrl+q", "command": "workbench.panel.chat", "when": "inChat" },
   // Tree
   { "key": "ctrl+f", "command": "workbench.files.action.showActiveFileInExplorer", "when": "editorFocus" },
   { "key": "ctrl+f", "command": "workbench.view.explorer", "when": "!editorFocus" },
@@ -74,5 +76,8 @@
     "when": "suggestWidgetVisible && textInputFocus && (suggestWidgetMultipleSuggestions || !suggestWidgetHasFocusedSuggestion)"
   },
   { "key": "tab", "command": "selectNextCodeAction", "when": "codeActionMenuVisible" },
-  { "key": "shift+tab", "command": "selectPrevCodeAction", "when": "codeActionMenuVisible" }
+  { "key": "shift+tab", "command": "selectPrevCodeAction", "when": "codeActionMenuVisible" },
+  // Copilot Chat Shortcuts
+  { "key": "ctrl+enter", "command": "editor.action.inlineSuggest.commit", "when": "editorTextFocus && inlineSuggestionVisible" },
+  { "key": "ctrl+shift+enter", "command": "workbench.panel.chat" },
 ]

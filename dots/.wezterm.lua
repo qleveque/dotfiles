@@ -32,8 +32,10 @@ c.leader={key='b', mods='CTRL'}
 c.window_padding={left=0, right=0, top=0, bottom=0}
 c.adjust_window_size_when_changing_font_size=false
 c.keys={
-  {key="F11", action=a.ToggleFullScreen},
+  {key='F11', action=a.ToggleFullScreen},
   {key='Tab', mods='CTRL', action=a{SendString='\x1b[27;5;9~'}},
+  {key='Enter', mods='CTRL', action=a{SendString='\x1b[13;5u'}},
+  {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F13'}},
   {key='Tab', mods='CTRL|SHIFT', action=a{SendString='\x1b[27;6;9~'}},
   {key='Space', mods= 'SHIFT', action=a{SendString='\x1b[27;2;32~'}},
   {key=';', mods='CTRL', action=a.ActivateTabRelative(1)},

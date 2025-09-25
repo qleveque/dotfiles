@@ -17,7 +17,7 @@ vm x vi-cut
 vm v visual-line-mode
 vm P visual-swap
 vm p visual-put
-im '^[[Z' forward-word
+im '^[[13;5u' forward-word
 im '^[[27;2;32~' insert-space
 im '^V' vi-put-before
 im '^I' fzf_completion
