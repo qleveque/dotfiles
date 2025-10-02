@@ -26,6 +26,7 @@ nn cw cw<c-u>
 nn s :sort<CR>
 nn T :create<Space>
 nn yW :exe '!echo -n %c:p | cb copy'<CR>
+nn yM :exe '!printf "%%s" "$(wslpath -w %c:p)" | cb copy'<CR>
 nn yp :exe '!echo -n %d | cb copy'<CR>
 nn yw :exe '!echo -n %c | cb copy'<CR>
 nn é :!wez_wrap split "run -p %f"<CR>
