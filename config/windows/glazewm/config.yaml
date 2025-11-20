@@ -1,5 +1,4 @@
 general:
-  startup_commands: ['shell-exec zebar']
   focus_follows_cursor: false
   toggle_workspace_on_refocus: false
   show_all_in_taskbar: true
@@ -55,18 +54,30 @@ window_behavior:
       shown_on_top: false
 
 workspaces:
-  - name: "any"
-  - name: "else"
-  - name: "web"
-  - name: "term"
-  - name: "send"
-  - name: "code"
-  - name: "gui"
-  - name: "dash"
-  - name: "back"
-  - name: "music"
-  - name: "post"
-  - name: "rest"
+  - name: "1_any"
+    display_name: "󰋜"
+  - name: "2_else"
+    display_name: "󰥵"
+  - name: "3_web"
+    display_name: "󰖟"
+  - name: "4_term"
+    display_name: ""
+  - name: "5_send"
+    display_name: "󰭹"
+  - name: "6_code"
+    display_name: "󰅨"
+  - name: "7_gui"
+    display_name: "󰇞"
+  - name: "8_dash"
+    display_name: "󱐋"
+  - name: "9_back"
+    display_name: "󰀿"
+  - name: "10_music"
+    display_name: "󰝚"
+  - name: "11_post"
+    display_name: "󰇮"
+  - name: "12_rest"
+    display_name: "󰅶"
 
 window_rules:
   - commands: ['ignore']
@@ -74,19 +85,19 @@ window_rules:
       - window_process: { equals: 'zebar' }
       - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
 
-  - commands: ['move --workspace music', 'focus --workspace music']
+  - commands: ['move --workspace 10_music', 'focus --workspace 10_music']
     match:
       - window_process: { equals: 'Spotify' }
-  - commands: ['move --workspace send', 'focus --workspace send']
+  - commands: ['move --workspace 5_send', 'focus --workspace 5_send']
     match:
       - window_process: { equals: 'ms-teams' }
       - window_title: { equals: 'WhatsApp' }
 
-  - commands: ['move --workspace post', 'focus --workspace post']
+  - commands: ['move --workspace 11_post', 'focus --workspace 11_post']
     match:
       - window_process: { equals: 'OUTLOOK' }
       - window_process: { equals: 'olk' }
-  - commands: ['set-floating', 'move --workspace back', 'focus --workspace back']
+  - commands: ['set-floating', 'move --workspace 9_back', 'focus --workspace 9_back']
     match:
       - window_title: { equals: 'ANT vehicle simulator' }
   - commands: ['set-floating']
@@ -144,54 +155,54 @@ keybindings:
   - commands: ['resize --height +100']
     bindings: ['alt+shift+oem_plus']
 
-  - commands: ['focus --workspace any']
+  - commands: ['focus --workspace 1_any']
     bindings: ['alt+a']
-  - commands: ['focus --workspace else']
+  - commands: ['focus --workspace 2_else']
     bindings: ['alt+e']
-  - commands: ['focus --workspace web']
+  - commands: ['focus --workspace 3_web']
     bindings: ['alt+w']
-  - commands: ['focus --workspace term']
+  - commands: ['focus --workspace 4_term']
     bindings: ['alt+t']
-  - commands: ['focus --workspace send']
+  - commands: ['focus --workspace 5_send']
     bindings: ['alt+s']
-  - commands: ['focus --workspace code']
+  - commands: ['focus --workspace 6_code']
     bindings: ['alt+c']
-  - commands: ['focus --workspace gui']
+  - commands: ['focus --workspace 7_gui']
     bindings: ['alt+g']
-  - commands: ['focus --workspace back']
+  - commands: ['focus --workspace 9_back']
     bindings: ['alt+b']
-  - commands: ['focus --workspace music']
+  - commands: ['focus --workspace 10_music']
     bindings: ['alt+m']
-  - commands: ['focus --workspace post']
+  - commands: ['focus --workspace 11_post']
     bindings: ['alt+p']
-  - commands: ['focus --workspace rest']
+  - commands: ['focus --workspace 12_rest']
     bindings: ['alt+r']
-  - commands: ['focus --workspace dash']
+  - commands: ['focus --workspace 8_dash']
     bindings: ['alt+d']
 
-  - commands: ['move --workspace any', 'focus --workspace any']
+  - commands: ['move --workspace 1_any', 'focus --workspace 1_any']
     bindings: ['alt+shift+a']
-  - commands: ['move --workspace else', 'focus --workspace else']
+  - commands: ['move --workspace 2_else', 'focus --workspace 2_else']
     bindings: ['alt+shift+e']
-  - commands: ['move --workspace web', 'focus --workspace web']
+  - commands: ['move --workspace 3_web', 'focus --workspace 3_web']
     bindings: ['alt+shift+w']
-  - commands: ['move --workspace term', 'focus --workspace term']
+  - commands: ['move --workspace 4_term', 'focus --workspace 4_term']
     bindings: ['alt+shift+t']
-  - commands: ['move --workspace send', 'focus --workspace send']
+  - commands: ['move --workspace 5_send', 'focus --workspace 5_send']
     bindings: ['alt+shift+s']
-  - commands: ['move --workspace code', 'focus --workspace code']
+  - commands: ['move --workspace 6_code', 'focus --workspace 6_code']
     bindings: ['alt+shift+c']
-  - commands: ['move --workspace gui', 'focus --workspace gui']
+  - commands: ['move --workspace 7_gui', 'focus --workspace 7_gui']
     bindings: ['alt+shift+g']
-  - commands: ['move --workspace back', 'focus --workspace back']
+  - commands: ['move --workspace 9_back', 'focus --workspace 9_back']
     bindings: ['alt+shift+b']
-  - commands: ['move --workspace music', 'focus --workspace music']
+  - commands: ['move --workspace 10_music', 'focus --workspace 10_music']
     bindings: ['alt+shift+m']
-  - commands: ['move --workspace post', 'focus --workspace post']
+  - commands: ['move --workspace 11_post', 'focus --workspace 11_post']
     bindings: ['alt+shift+p']
-  - commands: ['move --workspace rest', 'focus --workspace rest']
+  - commands: ['move --workspace 12_rest', 'focus --workspace 12_rest']
     bindings: ['alt+shift+r']
-  - commands: ['move --workspace dash', 'focus --workspace dash']
+  - commands: ['move --workspace 8_dash', 'focus --workspace 8_dash']
     bindings: ['alt+shift+d']
 
   - commands: ['focus --recent-workspace']

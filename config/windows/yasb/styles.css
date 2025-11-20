@@ -1,0 +1,176 @@
+* {
+  font-size: 12px;
+  font-family: ui-monospace, monospace, 'Hack Nerd Font';
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+.yasb-bar {
+  padding-top: 0;
+}
+.dark .widget {
+  background-color: #000000;
+  margin: 0 4px;
+  padding: 0 4px;
+  border-radius: 12px;
+}
+.widget .label {
+  padding: 0px 2px; 
+}
+.widget .label.alt {
+  padding: 0px 8px;
+}
+.icon {
+  font-size: 16px;
+}
+
+/* glazewm */
+.glazewm-workspaces .ws-btn {
+  overflow: visible;
+  background-color: #ffffff;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.glazewm-workspaces .ws-btn .label {
+  font-size: 20px;
+}
+.glazewm-workspaces .ws-btn .icon-1 {
+  padding-left: 3px;
+}
+.glazewm-workspaces .ws-btn.populated {
+  color: #000000;
+  background-color: #000000;
+}
+.glazewm-workspaces .ws-btn.active_populated {
+  color: #000000;
+  background-color:#333333;
+}
+.glazewm-workspaces .ws-btn.active_empty {
+  color: #000000;
+  background-color:#333333;
+}
+.glazewm-workspaces .ws-btn.empty {
+  color: #000000;
+  background-color:#333333;
+}
+
+/* Power menu */
+.power-menu-popup {
+  background-color: rgba(24, 24, 37, 0);
+  border-radius: 12px; 
+}
+.power-menu-popup .button {
+  padding: 0;
+  width: 180px;
+  height: 230px;
+  border-radius: 8px;
+  background-color: rgba(41, 42, 58, 0.5);
+  color: white;
+  border-left: 4px solid rgba(58, 59, 83, 0);
+  border-right: 4px solid rgba(58, 59, 83, 0);
+  border-top: 8px solid rgba(58, 59, 83, 0);
+  border-bottom: 8px solid rgba(58, 59, 83, 0);
+  margin: 0px;
+}
+.power-menu-popup .button.hover {
+  background-color: rgb(41, 42, 58);
+  border-left: 4px solid rgb(41, 42, 58);
+  border-right: 4px solid rgb(41, 42, 58);
+  border-top: 8px solid rgb(41, 42, 58);
+  border-bottom: 8px solid rgb(41, 42, 58);
+}
+.power-menu-popup .button .label {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
+.power-menu-popup .button .icon {
+  font-size: 64px;
+  padding-top: 32px;
+  color: rgba(255, 255, 255, 0.25);
+}
+.power-menu-popup .button.cancel .icon {
+  padding: 0;
+  margin: 0;
+}
+.power-menu-popup .button.cancel .label {
+  color: rgba(243, 139, 168, 0.95);
+  margin: 0;
+}
+.power-menu-popup .button.cancel {
+  height: 32px;
+  border-radius: 4px;
+}
+
+/* win */
+.win-widget {
+  position: relative;
+ background-color: #ffffff;
+}
+.win-widget .label {
+  position: absolute;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+/* volume */
+.audio-menu {
+    background-color:rgba(17, 17, 27, 0.4); 
+    min-width: 300px;
+}
+.audio-menu .system-volume-container .volume-slider {
+    border: none;
+}
+.audio-menu .audio-container .device {
+    background-color:transparent;
+    border: none;
+    padding:6px 8px 6px 4px;
+    margin: 2px 0;
+    font-size: 12px;
+    border-radius: 4px;
+}
+.audio-menu .audio-container .device.selected {
+    background-color: rgba(255, 255, 255, 0.085);
+}
+.audio-menu .audio-container .device:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.audio-menu .toggle-apps {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-height: 24px;
+    min-width: 24px;
+    border-radius: 4px;
+}
+.audio-menu .toggle-apps.expanded {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.audio-menu .toggle-apps:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.audio-menu .apps-container {
+    padding: 8px;
+    margin-top:20px;
+    border-radius: 8px;
+    background-color:rgba(255, 255, 255, 0.062)
+}
+.audio-menu .apps-container .app-volume .app-icon-container {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 6px;
+    margin-right: 8px;
+}
+.audio-menu .apps-container .app-volume .app-slider {
+    min-height: 40px;
+    max-height: 40px;
+}
+.audio-menu .apps-container .app-volume .app-icon-container:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

@@ -26,7 +26,7 @@ if grep -q Microsoft /proc/version; then
     lndir "${config}/JetBrains/tools" "${dir}/tools"
   done
 
-  # glazewm + zebar
+  # glazewm + yasb
   lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
-  lndir "${config}/windows/zebar/starter" "${HOME}/.glzr/zebar/starter"
+  lndir "${config}/windows/yasb" "${HOME}/.config/yasb"
 fi
