@@ -24,6 +24,7 @@ c.inactive_pane_hsb = {
   saturation = 0.5,
   brightness = 0.5,
 }
+c.warn_about_missing_glyphs=false
 c.enable_scroll_bar=false
 c.initial_cols=100
 c.initial_rows=40
@@ -46,9 +47,6 @@ c.keys={
   {key='q', mods='LEADER', action=a{CloseCurrentPane={confirm=false}}},
   {key='f', mods='LEADER', action=a.TogglePaneZoomState},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
-  {key='d', mods='LEADER', action=wez.action_callback(function(w,p)
-      wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez_wrap split "nvim ~/.draft.txt"' })
-  end)},
   {key='a', mods='LEADER', action=wez.action_callback(function(w,p)
       wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez_wrap copy '..p:pane_id() })
   end)},
