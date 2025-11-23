@@ -20,14 +20,44 @@ bars:
       height: 22
     widgets:
       left: ["home"]
-      center: ["glazewm_workspaces"]
+      center: ["glazewm_workspaces", "komorebi_workspaces"]
       right: ["cava", "glazewm_tiling_direction", "wifi", "bluetooth", "volume", "weather", "clock"]
 widgets:
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "Komorebi Offline"
+      label_workspace_btn: "\udb81\udc3d"
+      label_workspace_active_btn: "\udb81\udc3e"
+      label_workspace_populated_btn: "\udb81\udc3e"
+      label_default_name: ""
+      label_zero_index: false
+      hide_empty_workspaces: true
+      hide_if_offline: true
+      animation: true
+      toggle_workspace_layer:
+        enabled: false
+        tiling_label: "Tiling"
+        floating_label: "Floating"
+      app_icons: 
+        enabled_populated: true
+        enabled_active: true
+        size: 12
   glazewm_tiling_direction:
     type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
     options:
       horizontal_label: "\udb81\udce1"
       vertical_label: "\udb81\udce2"
+  glazewm_workspaces:
+    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
+    options:
+      hide_empty_workspaces: true
+      hide_if_offline: true
+      enable_scroll_switching: false
+      app_icons:
+        enabled_populated: true
+        enabled_active: true
+        size: 12
   home:
     type: "yasb.home.HomeWidget"
     options:
@@ -47,7 +77,7 @@ widgets:
     options:
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: "5337407e8f054898880132623252111" # Get your free API key from https://www.weatherapi.com/
+      api_key: "5337407e8f054898880132623252111" # https://www.weatherapi.com/
       show_alerts: true
       tooltip: true
       update_interval: 600
@@ -95,16 +125,6 @@ widgets:
     type: "yasb.clock.ClockWidget"
     options:
       label: "{%d/%m %H:%M}"
-  glazewm_workspaces:
-    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
-    options:
-      hide_empty_workspaces: true
-      hide_if_offline: true
-      enable_scroll_switching: false
-      app_icons:
-        enabled_populated: true
-        enabled_active: true
-        size: 12
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
