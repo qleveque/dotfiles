@@ -4,20 +4,6 @@ cmd=$1 && shift
 
 G='/mnt/c/Program Files/glzr.io/GlazeWM/cli/glazewm.exe'
 
-toggle_fullscreen() {
-  if [[ "${state}" == "fullscreen" ]]; then
-    prevState=$($G query focused | jq -r '.data.focused.prevState.type')
-    if [[ "${prevState}" == "floating" ]]; then
-      $G command set-floating
-    else
-      $G command set-tiling
-      sleep 0.02
-      $G command wm-redraw
-    fi
-  else
-    $G command set-fullscreen
-  fi
-}
 other_monitor_direction() {
     monitors=$($G query monitors | jq -r '.data.monitors.[]')
     read x y < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == true) | "\(.x) \(.y)"')
@@ -31,20 +17,6 @@ other_monitor_direction() {
 }
 
 case ${cmd} in
-  toggle-fullscreen)
-    state=$($G query focused | jq -r '.data.focused.state.type')
-    toggle_fullscreen
-  ;;
-  toggle-floating) 
-    state=$($G query focused | jq -r '.data.focused.state.type')
-    if [[ "${state}" == "tiling" ]]; then
-      $G command set-floating
-    elif [[ "${state}" == "fullscreen" ]]; then
-      toggle_fullscreen
-    else
-      $G command set-tiling
-    fi
-  ;;
   move-workspace)
     $G command move-workspace --direction $(other_monitor_direction)
   ;;
@@ -55,5 +27,35 @@ case ${cmd} in
     $G command focus --workspace ${other}
     $G command move-workspace --direction $(other_monitor_direction)
     $G command focus --workspace ${current}
+  ;;
+  switch-minimized)
+    current=$("$G" query focused | jq -r '.data.focused.id')
+    minimized=$("$G" query workspaces | jq -r '
+      .data.workspaces[]
+      | select(.hasFocus == true)
+      | .children[]
+      | select(.type == "window")
+      | select(.state.type == "minimized")
+      | .id
+      ')
+    sorted=$(echo $current# $minimized | tr ' ' '\n' | sort | tr '\n' ' ')
+    next=$(echo $sorted | rg -oP '# ([a-z0-9-]*)' --replace '$1')
+    [[ -z $next ]] && next=$(echo $sorted | rg -oP '^[a-z0-9-]*')
+    "$G" command set-minimized
+    "$G" command focus --container-id $next
+    "$G" command toggle-minimized
+  ;;
+  unminimize)
+    first_minimized=$("$G" query workspaces | jq -r '
+      [.data.workspaces[]
+      | select(.hasFocus == true)
+      | .children[]
+      | select(.type == "window")
+      | select(.state.type == "minimized")
+      | .id][0]')
+    [[ $first_minimized == null ]] && exit 0
+    "$G" command focus --container-id $first_minimized
+    "$G" command toggle-minimized
+    echo $minimized
   ;;
 esac
