@@ -1,11 +1,10 @@
 #Persistent
 #SingleInstance Force
+#MaxThreadsPerHotkey 1
 
-!Backspace::Run, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh switch-minimized",, Hide
-!+x::Run, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh unminimize",, Hide
-
-!Enter::Run, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh move-workspace",, Hide
-!+Enter::Run, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh switch-workspaces",, Hide
+!+x::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh unminimize",, Hide
+!Enter::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh switch-minimized",, Hide
+!+Enter::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh move-workspace",, Hide
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"

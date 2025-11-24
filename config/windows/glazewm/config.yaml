@@ -84,22 +84,21 @@ workspaces:
 window_rules:
   - commands: ['ignore']
     match:
-      - window_process: { equals: 'zebar' }
       - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
 
-  - commands: ['move --workspace 10_music', 'focus --workspace 10_music']
+  - commands: ['move --workspace 10_music']
     match:
       - window_process: { equals: 'Spotify' }
-  - commands: ['move --workspace 5_send', 'focus --workspace 5_send']
+  - commands: ['move --workspace 5_send']
     match:
       - window_process: { equals: 'ms-teams' }
       - window_title: { equals: 'WhatsApp' }
 
-  - commands: ['move --workspace 11_post', 'focus --workspace 11_post']
+  - commands: ['move --workspace 11_post']
     match:
       - window_process: { equals: 'OUTLOOK' }
       - window_process: { equals: 'olk' }
-  - commands: ['set-floating', 'move --workspace 9_back', 'focus --workspace 9_back']
+  - commands: ['set-floating', 'move --workspace 9_back']
     match:
       - window_title: { equals: 'ANT vehicle simulator' }
   - commands: ['set-floating']
