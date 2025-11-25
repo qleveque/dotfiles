@@ -1,12 +1,14 @@
 current := A_Args[1]
 next := A_Args[2]
-RunWait, glazewm.exe command wm-toggle-pause,, Hide
-WinGetPos, X, Y, Width, Height, ahk_id %current%
-WinRestore, ahk_id %next%
-WinMinimize, ahk_id %current%
-RunWait, glazewm.exe command wm-toggle-pause,, Hide
-WinActivate, ahk_id %next%
-WinGetPos, X, Y, NWidth, NHeight, ahk_id %next%
-DWidth := Width - NWidth
-DHeight := Height - NHeight
-Run, glazewm.exe command resize --width %DWidth% --height %DHeight%,, Hide
+count := A_Args[3]
+if (count = 0) {
+  WinActivate, ahk_id %current%
+} else if (count = 1) {
+  WinMinimize, ahk_id %current%
+  WinActivate, ahk_id %next%
+} else {
+  RunWait, glazewm.exe command wm-toggle-pause,, Hide
+  WinMinimize, ahk_id %current%
+  WinActivate, ahk_id %next%
+  RunWait, glazewm.exe command wm-toggle-pause,, Hide
+}

@@ -16,8 +16,8 @@ other_monitor_direction() {
     fi
 }
 
-minimized_handles() {
-  "$G" query workspaces | jq -r ' .data.workspaces[] | select(.hasFocus) | .children[] | select(.type == "window" and .state.type == "minimized") | .handle'
+workspace_windows() {
+  "$G" query workspaces | jq -r ' .data.workspaces[] | select(.hasFocus) | .children[] | select(.type == "window") | {handle: .handle, state: .state.type, hasFocus: .hasFocus}'
 }
 
 case ${cmd} in
@@ -25,14 +25,23 @@ case ${cmd} in
     $G command move-workspace --direction $(other_monitor_direction)
   ;;
   switch-minimized)
-    current=$("$G" query focused | jq -r '.data.focused.handle')
-    sorted=$(echo $current# $(minimized_handles) | tr ' ' '\n' | sort | tr '\n' ' ')
-    next=$(echo $sorted | rg -oP '# ([a-z0-9-]*)' --replace '$1')
-    [[ -z $next ]] && next=$(echo $sorted | rg -oP '^[a-z0-9-]*')
-    autohotkey.exe switch-minimized.ahk $current $next
+    windows=$(workspace_windows)
+    minimized=$(echo $windows | jq -r 'select(.state == "minimized") | .handle')
+    current=$(echo $windows | jq -r 'select(.hasFocus) | .handle')
+    sorted=$(echo $current# $minimized | tr ' ' '\n' | sort | tr '\n' ' ')
+    next=$(echo $sorted | rg -oP '# ([0-9]*)' --replace '$1')
+    [[ -z $next ]] && next=$(echo $sorted | rg -oP '^[0-9]*')
+    count=$(echo $windows | jq -r 'select(.state == "tiling")' | jq -s length)
+    autohotkey.exe switch-minimized.ahk $current $next $count
   ;;
   unminimize)
-    first_minimized=$(printf "%s" "$(minimized_handles)" | grep -m1 -o '^[^[:space:]]\+')
-    autohotkey.exe unminimize.ahk $first_minimized
+    minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .handle')
+    first_minimized=$(printf "%s" "$minimized" | grep -m1 -o '^[^[:space:]]\+')
+    autohotkey.exe switch-minimized.ahk $first_minimized 0 0
+  ;;
+  toggle-float)
+    state=$("$G" query focused | jq -r '.data.focused.state.type')
+    [[ $state = 'floating' ]] && f='set-tiling' || f='set-floating'
+    "$G" command $f
   ;;
 esac
