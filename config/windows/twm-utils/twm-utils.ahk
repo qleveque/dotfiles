@@ -15,14 +15,13 @@ ToggleTaskbar() {
     }
 }
 ToggleTaskbar()
+^+Space::ToggleTaskbar()
 
-!+x::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh unminimize",, Hide
-!Enter::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh switch-minimized",, Hide
-!+Enter::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh move-workspace",, Hide
+!Enter::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh move-workspace",, Hide
+!Backspace::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh switch-minimized",, Hide
 
 !+Space::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh toggle-float",, Hide
-!Backspace::ToggleTaskbar()
+!+x::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh unminimize",, Hide
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
-LWin::Send, ^+!a

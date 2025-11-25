@@ -2,10 +2,8 @@
 
 cmd=$1 && shift
 
-G='/mnt/c/Program Files/glzr.io/GlazeWM/cli/glazewm.exe'
-
 other_monitor_direction() {
-    monitors=$($G query monitors | jq -r '.data.monitors.[]')
+    monitors=$(glazewm.exe query monitors | jq -r '.data.monitors.[]')
     read x y < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == true) | "\(.x) \(.y)"')
     read x_ y_ < <(printf '%s\n' "$monitors" | jq -r 'select(.hasFocus == false) | "\(.x) \(.y)"')
     dx=$(( x - x_ )) dy=$(( y - y_ ))
@@ -17,12 +15,12 @@ other_monitor_direction() {
 }
 
 workspace_windows() {
-  "$G" query workspaces | jq -r ' .data.workspaces[] | select(.hasFocus) | .children[] | select(.type == "window") | {handle: .handle, state: .state.type, hasFocus: .hasFocus}'
+  glazewm.exe query workspaces | jq -r ' .data.workspaces[] | select(.hasFocus) | .children[] | select(.type == "window") | {handle: .handle, state: .state.type, hasFocus: .hasFocus}'
 }
 
 case ${cmd} in
   move-workspace)
-    $G command move-workspace --direction $(other_monitor_direction)
+    glazewm.exe command move-workspace --direction $(other_monitor_direction)
   ;;
   switch-minimized)
     windows=$(workspace_windows)
@@ -32,16 +30,20 @@ case ${cmd} in
     next=$(echo $sorted | rg -oP '# ([0-9]*)' --replace '$1')
     [[ -z $next ]] && next=$(echo $sorted | rg -oP '^[0-9]*')
     count=$(echo $windows | jq -r 'select(.state == "tiling")' | jq -s length)
-    autohotkey.exe switch-minimized.ahk $current $next $count
+    [[ $count == 0 ]] && exit 0
+    if [[ $count > 1 ]]; then
+      params=$(glazewm.exe query focused | jq -r '.data.focused | "\(.x) \(.y) \(.width) \(.height)"')
+    fi
+    autohotkey.exe switch-minimized.ahk $current $next ${=params}
   ;;
   unminimize)
     minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .handle')
     first_minimized=$(printf "%s" "$minimized" | grep -m1 -o '^[^[:space:]]\+')
-    autohotkey.exe switch-minimized.ahk $first_minimized 0 0
+    autohotkey.exe switch-minimized.ahk $first_minimized
   ;;
   toggle-float)
-    state=$("$G" query focused | jq -r '.data.focused.state.type')
+    state=$(glazewm.exe query focused | jq -r '.data.focused.state.type')
     [[ $state = 'floating' ]] && f='set-tiling' || f='set-floating'
-    "$G" command $f
+    glazewm.exe command $f
   ;;
 esac
