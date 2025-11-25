@@ -112,7 +112,7 @@ binding_modes:
 
 keybindings:
   - commands: ['wm-cycle-focus']
-    bindings: ['alt+i']
+    bindings: ['alt+space']
 
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']
