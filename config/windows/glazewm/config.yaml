@@ -13,13 +13,13 @@ gaps:
   outer_gap:
     top: '6px'
     right: '6px'
-    bottom: '-20px'
+    bottom: '6px'
     left: '6px'
 
   single_window_outer_gap:
     top: '6px'
     right: '6px'
-    bottom: '-20px'
+    bottom: '6px'
     left: '6px'
 
 window_effects:

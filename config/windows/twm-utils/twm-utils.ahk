@@ -6,14 +6,13 @@ ToggleTaskbar() {
     WinGet, style, Style, ahk_class Shell_TrayWnd
     if (style & 0x10000000) {
         WinHide, ahk_class Shell_TrayWnd
-        WinHide, ahk_class Button
         WinHide, ahk_class Shell_SecondaryTrayWnd
     } else {
         WinShow, ahk_class Shell_TrayWnd
-        WinShow, ahk_class Button
         WinShow, ahk_class Shell_SecondaryTrayWnd
     }
 }
+
 ToggleTaskbar()
 ^+Space::ToggleTaskbar()
 

@@ -27,14 +27,14 @@ case ${cmd} in
     minimized=$(echo $windows | jq -r 'select(.state == "minimized") | .handle')
     current=$(echo $windows | jq -r 'select(.hasFocus) | .handle')
     sorted=$(echo $current# $minimized | tr ' ' '\n' | sort | tr '\n' ' ')
-    next=$(echo $sorted | rg -oP '# ([0-9]*)' --replace '$1')
-    [[ -z $next ]] && next=$(echo $sorted | rg -oP '^[0-9]*')
+    next=$(echo $sorted | rg -o -m 1 -P '(\d+)(?= \d+#)|\w+(?=\W*$)' | head -1)
     count=$(echo $windows | jq -r 'select(.state == "tiling")' | jq -s length)
-    [[ $count == 0 ]] && exit 0
     if [[ $count > 1 ]]; then
       params=$(glazewm.exe query focused | jq -r '.data.focused | "\(.x) \(.y) \(.width) \(.height)"')
+    elif [[ $count == 0 ]]; then
+      exit 0
     fi
-    autohotkey.exe switch-minimized.ahk $current $next ${=params}
+    autohotkey.exe switch-minimized.ahk $current $next $(echo $params)
   ;;
   unminimize)
     minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .handle')
