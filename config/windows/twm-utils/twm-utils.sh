@@ -29,7 +29,6 @@ case ${cmd} in
     sorted=$(echo $current# $minimized | tr ' ' '\n' | sort | tr '\n' ' ')
     next=$(echo $sorted | rg -o -m 1 -P '(\d+)(?= \d+#)|\w+(?=\W*$)' | head -1)
     count=$(echo $windows | jq -r 'select(.state == "tiling")' | jq -s length)
-    echo $count
     if [[ $count > 1 ]]; then
       params=$(glazewm.exe query focused | jq -r '.data.focused | "\(.x) \(.y) \(.width) \(.height)"')
     elif [[ $count == 0 ]]; then
