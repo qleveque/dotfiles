@@ -19,9 +19,9 @@ bars:
       width: "100%"
       height: 22
     widgets:
-      left: ["home", "weather", "glazewm_tiling_direction"]
+      left: ["home", "glazewm_tiling_direction", "weather", "cava"]
       center: ["glazewm_workspaces"]
-      right: ["cava", "battery", "wifi", "bluetooth", "volume", "clock"]
+      right: ["battery", "wifi", "bluetooth", "volume", "clock"]
 widgets:
   battery:
     type: "yasb.battery.BatteryWidget"

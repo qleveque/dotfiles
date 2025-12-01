@@ -29,12 +29,10 @@ case ${cmd} in
     sorted=$(echo $current# $minimized | tr ' ' '\n' | sort | tr '\n' ' ')
     next=$(echo $sorted | rg -o -m 1 -P '(\d+)(?= \d+#)|\w+(?=\W*$)' | head -1)
     count=$(echo $windows | jq -r 'select(.state == "tiling")' | jq -s length)
-    if [[ $count > 1 ]]; then
-      params=$(glazewm.exe query focused | jq -r '.data.focused | "\(.x) \(.y) \(.width) \(.height)"')
-    elif [[ $count == 0 ]]; then
+    if [[ $count == 0 ]]; then
       exit 0
     fi
-    autohotkey.exe switch-minimized.ahk $current $next $(echo $params)
+    autohotkey.exe switch-minimized.ahk $current $next
   ;;
   unminimize)
     minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .handle')

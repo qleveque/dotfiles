@@ -103,8 +103,6 @@ window_rules:
       - window_title: { equals: 'ANT vehicle simulator' }
   - commands: ['set-floating']
     match:
-      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
-        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
 
