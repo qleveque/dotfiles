@@ -19,6 +19,12 @@
   font-size: 16px;
 }
 
+/* battery */
+.battery-widget .widget-container .icon {
+    font-size: 12px;
+    margin-right: 4px;
+}
+
 /* glazewm */
 .glazewm-workspaces .ws-btn {
   overflow: visible;
@@ -111,6 +117,10 @@
 }
 
 /* weather */
+.weather-widget .icon {
+    font-size: 12px;
+    margin-right: 4px;
+}
 /* Weather card style */
 .weather-card {
     background-color: rgba(17, 17, 27, 0.5);

@@ -5,6 +5,7 @@
 ToggleTaskbar() {
     global taskbarHidden
     if (!taskbarHidden) {
+        EnforceHideTaskbar()
         SetTimer, EnforceHideTaskbar, 1000
     } else {
         SetTimer, EnforceHideTaskbar, Off

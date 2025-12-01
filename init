@@ -12,7 +12,7 @@ if grep -q Microsoft /proc/version; then
   sudo wget 'raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py' -O '/usr/bin/wudo'
   sudo chmod +x '/usr/bin/wudo'
   # node
-  curl -ksL https://deb.nodesource.com/setup_20.x | sed 's|https://|http://|' | sudo -E bash -
+  curl -ksL https://deb.nodesource.com/setup_22.x | sed 's|https://|http://|' | sudo -E bash -
 fi
 
 # Common packages

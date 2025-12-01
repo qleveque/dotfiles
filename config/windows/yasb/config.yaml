@@ -19,30 +19,15 @@ bars:
       width: "100%"
       height: 22
     widgets:
-      left: ["home"]
-      center: ["glazewm_workspaces", "komorebi_workspaces"]
-      right: ["cava", "glazewm_tiling_direction", "wifi", "bluetooth", "volume", "weather", "clock"]
+      left: ["home", "weather", "glazewm_tiling_direction"]
+      center: ["glazewm_workspaces"]
+      right: ["cava", "battery", "wifi", "bluetooth", "volume", "clock"]
 widgets:
-  komorebi_workspaces:
-    type: "komorebi.workspaces.WorkspaceWidget"
+  battery:
+    type: "yasb.battery.BatteryWidget"
     options:
-      label_offline: "Komorebi Offline"
-      label_workspace_btn: "\udb81\udc3d"
-      label_workspace_active_btn: "\udb81\udc3e"
-      label_workspace_populated_btn: "\udb81\udc3e"
-      label_default_name: ""
-      label_zero_index: false
-      hide_empty_workspaces: true
-      hide_if_offline: true
-      animation: true
-      toggle_workspace_layer:
-        enabled: false
-        tiling_label: "Tiling"
-        floating_label: "Floating"
-      app_icons: 
-        enabled_populated: true
-        enabled_active: true
-        size: 12
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span> {percent}% | time: {time_remaining}"
   glazewm_tiling_direction:
     type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
     options:
