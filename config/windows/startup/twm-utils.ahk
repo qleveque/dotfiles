@@ -34,21 +34,25 @@ ToggleTaskbar()
 
 !+Space::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh toggle-float",, Hide
 !+x::RunWait, bash -c "~/dotfiles/config/windows/twm-utils/twm-utils.sh unminimize",, Hide
-
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
-^!+Space::
+
+!i::
     DetectHiddenWindows, On
-    IfWinExist, DRAFT
-    {
-        WinGet, style, Style, DRAFT
-        if (style & 0x10000000) {
-            WinHide, DRAFT
-        } else {
-            WinShow, DRAFT
-            WinActivate, DRAFT
+    if (WeztermPID) {
+        if WinExist("ahk_pid " . WeztermPID) {
+            if WinActive("ahk_pid " . WeztermPID) {
+                WinHide, ahk_pid %WeztermPID%
+            } else {
+                WinShow, ahk_pid %WeztermPID%
+                WinActivate, ahk_pid %WeztermPID%
+            }
+            return
         }
     }
-    Else
-        Run, %ComSpec% /C start "DRAFT" /D "%USERPROFILE%" wsl.exe -e nvim .draft.txt,, Hide
+
+    EnvSet, WEZTERM_DRAFT, 1
+    EnvGet, UserProfile, USERPROFILE
+    Run, wezterm-gui.exe start --cwd %USERPROFILE%/.drafts nvim index,,, WeztermPID
+    EnvSet, WEZTERM_DRAFT, 0
 return

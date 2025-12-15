@@ -86,11 +86,18 @@ window_rules:
     match:
       - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
       - window_title: { regex: 'Affichage compact de réunion .*' }
+
+  - commands: ['set-floating']
+    match:
+      - window_class: { equals: 'ConsoleWindowClass' }
+      - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
       - window_title: { equals: 'DRAFT' }
+      - window_title: { equals: 'ANT vehicle simulator' }
 
   - commands: ['move --workspace 4_term']
     match:
       - window_process: { equals: 'wezterm-gui' }
+        window_title: { regex: '^(?!DRAFT$)'}
 
   - commands: ['move --workspace 5_send']
     match:
@@ -108,7 +115,7 @@ window_rules:
       - window_process: { equals: 'Copilot' }
       - window_process: { equals: 'DeepL' }
 
-  - commands: ['move --workspace 9_back', 'set-floating']
+  - commands: ['move --workspace 9_back']
     match:
       - window_title: { equals: 'ANT vehicle simulator' }
 
@@ -124,11 +131,6 @@ window_rules:
   - commands: ['move --workspace 12_rest']
     match:
       - window_title: { regex: '.* WhatsApp — .*' }
-
-  - commands: ['set-floating']
-    match:
-      - window_class: { equals: 'ConsoleWindowClass' }
-      - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
 
 binding_modes:
 
