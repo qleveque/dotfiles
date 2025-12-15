@@ -37,3 +37,18 @@ ToggleTaskbar()
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
+^!+Space::
+    DetectHiddenWindows, On
+    IfWinExist, DRAFT
+    {
+        WinGet, style, Style, DRAFT
+        if (style & 0x10000000) {
+            WinHide, DRAFT
+        } else {
+            WinShow, DRAFT
+            WinActivate, DRAFT
+        }
+    }
+    Else
+        Run, %ComSpec% /C start "DRAFT" /D "%USERPROFILE%" wsl.exe -e nvim .draft.txt,, Hide
+return

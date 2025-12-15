@@ -32,12 +32,12 @@ case ${cmd} in
     if [[ $count == 0 ]]; then
       exit 0
     fi
-    autohotkey.exe switch-minimized.ahk $current $next
+    autohotkey.exe C:/Users/${USER}/dotfiles/config/windows/twm-utils/switch-minimized.ahk $current $next
   ;;
   unminimize)
     minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .handle')
     first_minimized=$(printf "%s" "$minimized" | grep -m1 -o '^[^[:space:]]\+')
-    autohotkey.exe switch-minimized.ahk $first_minimized
+    autohotkey.exe C:/Users/${USER}/dotfiles/config/windows/twm-utils/switch-minimized.ahk $first_minimized
   ;;
   toggle-float)
     state=$(glazewm.exe query focused | jq -r '.data.focused.state.type')

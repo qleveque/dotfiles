@@ -86,6 +86,11 @@ window_rules:
     match:
       - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
       - window_title: { regex: 'Affichage compact de réunion .*' }
+      - window_title: { equals: 'DRAFT' }
+
+  - commands: ['move --workspace 4_term']
+    match:
+      - window_process: { equals: 'wezterm-gui' }
 
   - commands: ['move --workspace 5_send']
     match:
@@ -101,7 +106,7 @@ window_rules:
   - commands: ['move --workspace 8_dash']
     match:
       - window_process: { equals: 'Copilot' }
-      - window_title: { regex: 'DeepL Translate: .*' }
+      - window_process: { equals: 'DeepL' }
 
   - commands: ['move --workspace 9_back', 'set-floating']
     match:

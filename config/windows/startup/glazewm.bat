@@ -1,0 +1,2 @@
+start "" glazewm.exe
+exit

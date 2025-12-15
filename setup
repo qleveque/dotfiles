@@ -29,4 +29,8 @@ if grep -q Microsoft /proc/version; then
   # glazewm + yasb
   lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
   lndir "${config}/windows/yasb" "${HOME}/.config/yasb"
+
+  # startup
+  STARTUP="/mnt/c/Users/$USER/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
+  lndir "${config}/windows/startup" "$STARTUP"
 fi
