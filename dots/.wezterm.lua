@@ -70,12 +70,4 @@ tabline.setup({sections={
 }})
 tabline.apply_to_config(c)
 
-local draft = os.getenv("WEZTERM_DRAFT")
-if draft == '1' then
-  wez.on('format-window-title', function(tab, pane, tabs, panes, config)
-    return 'DRAFT'
-  end)
-  c.enable_tab_bar = false
-end
-
 return c
