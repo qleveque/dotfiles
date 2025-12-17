@@ -15,7 +15,7 @@ other_monitor_direction() {
 }
 
 workspace_windows() {
-  glazewm.exe query workspaces | jq -r ' .data.workspaces[] | select(.hasFocus) | .. | objects | select(.type == "window") | {handle: .handle, state: .state.type, hasFocus: .hasFocus}'
+  glazewm.exe query workspaces | jq -r ' .data.workspaces[] | select(.hasFocus) | .. | objects | select(.type == "window") | {id: .id, state: .state.type, hasFocus: .hasFocus}'
 }
 
 case ${cmd} in
@@ -24,20 +24,22 @@ case ${cmd} in
   ;;
   switch-minimized)
     windows=$(workspace_windows)
-    minimized=$(echo $windows | jq -r 'select(.state == "minimized") | .handle')
-    current=$(echo $windows | jq -r 'select(.hasFocus) | .handle')
+    minimized=$(echo $windows | jq -r 'select(.state == "minimized") | .id')
+    current=$(echo $windows | jq -r 'select(.hasFocus) | .id')
     sorted=$(echo $current# $minimized | tr ' ' '\n' | sort | tr '\n' ' ')
-    next=$(echo $sorted | rg -o -m 1 -P '(\d+)(?= \d+#)|\w+(?=\W*$)' | head -1)
+    next=$(echo $sorted | rg -o -m 1 -P '([\w-]+)(?= [\w-]+#)|[\w-]+(?=\W*$)' | head -1)
     count=$(echo $windows | jq -r 'select(.state == "tiling")' | jq -s length)
     if [[ $count == 0 ]]; then
       exit 0
     fi
-    autohotkey.exe C:/Users/${USER}/dotfiles/config/windows/twm-utils/switch-minimized.ahk $current $next
+    glazewm.exe command --id $current toggle-minimized
+    glazewm.exe command --id $next toggle-minimized
+    glazewm.exe command --id $next focus
   ;;
   unminimize)
-    minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .handle')
+    minimized=$(workspace_windows | jq -r 'select(.state == "minimized") | .id')
     first_minimized=$(printf "%s" "$minimized" | grep -m1 -o '^[^[:space:]]\+')
-    autohotkey.exe C:/Users/${USER}/dotfiles/config/windows/twm-utils/switch-minimized.ahk $first_minimized
+    glazewm.exe command --id $first_minimized toggle-minimized
   ;;
   toggle-float)
     state=$(glazewm.exe query focused | jq -r '.data.focused.state.type')
