@@ -82,11 +82,11 @@ workspaces:
 window_rules:
   - commands: ['ignore']
     match:
-      - window_title: { equals: 'Appel vocal ‎- WhatsApp' }
       - window_title: { regex: 'Affichage compact de réunion .*' }
 
   - commands: ['set-floating']
     match:
+      - window_title: { regex: 'Appel vocal.*' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
       - window_title: { equals: 'ANT vehicle simulator' }

@@ -8,6 +8,8 @@ if grep -q Microsoft /proc/version; then
   echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`&&read
   # win32yank
   winget.exe install --id=equalsraf.win32yank -e
+  # jq
+  winget.exe install jqlang.jq
   # wudo
   sudo wget 'raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py' -O '/usr/bin/wudo'
   sudo chmod +x '/usr/bin/wudo'
