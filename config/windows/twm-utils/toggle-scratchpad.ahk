@@ -1,4 +1,5 @@
 weztermPID := false
+FileCreateDir, %USERPROFILE%/.scratchpad
 ToggleScratchPad() {
     global weztermPID
     if (weztermPID) {
