@@ -342,6 +342,7 @@
 }
 .yasb-bar .grouper {
     margin-left: 0px;
+    padding-left: 0px;
 }
 .grouper .grouper-button {
     width: 25px;
@@ -349,10 +350,9 @@
     overflow: visible;
     position: absolute;
     z-index: 1000;
-    font-size: 22px;
+    font-size: 18px;
     color: #ffffff;
     border: none;
-    margin-left: 6px;
 }
 .grouper .grouper-button:hover {
     color: #88c0d0;
@@ -424,4 +424,10 @@
     border: 1px solid #AAAAAA;
     border-radius: 4px;
     border-color: #AAAAAA;
+}
+
+/* battery */
+.battery-widget .widget-container .icon {
+    font-size: 12px;
+    margin-right: 4px;
 }

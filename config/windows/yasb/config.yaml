@@ -58,7 +58,7 @@ widgets:
       ]
       collapse_options:
         enabled: true
-        expanded_label: "\uf054 "
+        expanded_label: "\uf054"
         collapsed_label: ""
         label_position: "left"
   systray:
@@ -66,10 +66,11 @@ widgets:
     options:
         label_position: "right"
         label_expanded: "◀️"
+        show_unpinned: false
   power_plan:
     type: "yasb.power_plan.PowerPlanWidget"
     options:
-      label: "<span>󱤎</span>"
+      label: "<span>󰓅</span>"
       label_alt: "<span>\uf0e7</span> Power Plan {active_plan}"
       update_interval: 5000
   microphone:
