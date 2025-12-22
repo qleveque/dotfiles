@@ -6,10 +6,15 @@
   background-color: black;
 }
 .secondary-yasb-bar {
-  background-color: transparent;
+  background-color: black;
 }
-.dark .widget,
-.grouper .widget{
+
+.secondary-yasb-bar .widget {
+  background-color: black;
+}
+
+.yasb-bar .widget,
+.yasb-bar .grouper .widget{
   background-color: black;
   margin: 0 4px;
   padding: 0 2px;
@@ -25,8 +30,6 @@
   border-width: 1px;
   border-color: black;
   border-style: solid;
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
   padding-right: 0px;
   margin-right: 0px;
 }
@@ -34,7 +37,6 @@
 /* glazewm */
 .glazewm-workspaces .ws-btn {
   overflow: visible;
-  background-color: white;
   padding-left: 3px;
   padding-right: 3px;
   margin-left: 3px;
@@ -338,11 +340,16 @@
     z-index: 1000;
     overflow: visible;
 }
+.yasb-bar .grouper {
+    margin-left: 0px;
+}
 .grouper .grouper-button {
+    width: 25px;
+    height: 25px;
     overflow: visible;
     position: absolute;
     z-index: 1000;
-    font-size: 16px;
+    font-size: 22px;
     color: #ffffff;
     border: none;
     margin-left: 6px;

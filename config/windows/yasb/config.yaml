@@ -11,8 +11,7 @@ bars:
     screens: ["\\\\.\\DISPLAY1", "XGIMI TV"]
     class_name: "yasb-bar"
     animation:
-      enabled: true
-      duration: 100
+      enabled: false
     alignment:
       position: "bottom"
     window_flags:
@@ -30,17 +29,23 @@ bars:
     screens: ["*"]
     class_name: "secondary-yasb-bar"
     animation:
-      enabled: true
-      duration: 100
+      enabled: false
     alignment:
-      position: "top"
+      position: "bottom"
+      align: "center"
     window_flags:
       always_on_top: true
       windows_app_bar: false
+    blur_effect:
+      enabled: true
+      acrylic: true
+      round_corners: true
+      border_color: "#555555"
     dimensions:
-      height: 20
+      width: "auto"
+      height: 16
     widgets:
-      right: ["glazewm_workspaces"]
+      center: ["glazewm_workspaces"]
 widgets:
   grouper:
     type: "yasb.grouper.GrouperWidget"
