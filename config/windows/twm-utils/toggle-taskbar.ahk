@@ -15,5 +15,3 @@ ToggleTaskbar() {
 EnforceHideTaskbar() {
     WinHide, ahk_class Shell_TrayWnd
 }
-
-EnforceHideTaskbar()

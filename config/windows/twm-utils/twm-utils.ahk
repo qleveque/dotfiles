@@ -4,6 +4,9 @@
 #Include %A_ScriptDir%\toggle-taskbar.ahk
 #Include %A_ScriptDir%\toggle-scratchpad.ahk
 SetWorkingDir, %A_ScriptDir%
+
+EnforceHideTaskbar()
+
 return
 
 ^+Space::ToggleTaskbar()

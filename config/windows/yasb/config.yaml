@@ -8,7 +8,7 @@ glazewm:
 bars:
   primary-bar:
     enabled: true
-    screens: ["\\\\.\\DISPLAY1"]
+    screens: ["\\\\.\\DISPLAY1", "XGIMI TV"]
     class_name: "yasb-bar"
     animation:
       enabled: true
@@ -23,8 +23,8 @@ bars:
       height: 22
     widgets:
       left: ["grouper"]
-      center: ["glazewm_workspaces"]
-      right: ["glazewm_tiling_direction", "wifi", "bluetooth", "microphone", "volume", "clock"]
+      center: ["glazewm_tiling_direction", "glazewm_workspaces"]
+      right: ["systray", "battery", "wifi", "bluetooth", "microphone", "volume", "clock"]
   secondary-bar:
     enabled: true
     screens: ["*"]
@@ -48,15 +48,19 @@ widgets:
       class_name: "grouper"
       widgets: [
         "home",
-        "battery",
         "power_plan",
         "weather"
       ]
       collapse_options:
         enabled: true
-        expanded_label: "\uf053"
+        expanded_label: "\uf054 "
         collapsed_label: ""
+        label_position: "left"
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
         label_position: "right"
+        label_expanded: "◀️"
   power_plan:
     type: "yasb.power_plan.PowerPlanWidget"
     options:
