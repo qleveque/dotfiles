@@ -19,7 +19,7 @@ bars:
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 22
+      height: 16
     widgets:
       left: ["grouper"]
       center: ["glazewm_tiling_direction", "glazewm_workspaces"]
