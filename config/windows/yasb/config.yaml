@@ -8,7 +8,7 @@ glazewm:
 bars:
   primary-bar:
     enabled: true
-    screens: ["*"] 
+    screens: ["\\\\.\\DISPLAY1"]
     class_name: "yasb-bar"
     alignment:
       position: "bottom"
@@ -19,10 +19,45 @@ bars:
       width: "100%"
       height: 22
     widgets:
-      left: ["home", "weather", "glazewm_tiling_direction"]
+      left: ["grouper"]
       center: ["glazewm_workspaces"]
-      right: ["battery", "wifi", "bluetooth", "microphone", "volume", "clock"]
+      right: ["glazewm_tiling_direction", "wifi", "bluetooth", "microphone", "volume", "clock"]
+  secondary-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "bottom"
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 22
+    widgets:
+      center: ["glazewm_workspaces"]
 widgets:
+  grouper:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "grouper"
+      widgets: [
+        "home",
+        "battery",
+        "power_plan",
+        "weather"
+      ]
+      collapse_options:
+        enabled: true
+        expanded_label: "\uf053"
+        collapsed_label: ""
+        label_position: "right"
+  power_plan:
+    type: "yasb.power_plan.PowerPlanWidget"
+    options:
+      label: "<span>󱤎</span>"
+      label_alt: "<span>\uf0e7</span> Power Plan {active_plan}"
+      update_interval: 5000
   microphone:
     type: "yasb.microphone.MicrophoneWidget"
     options:
@@ -32,8 +67,12 @@ widgets:
   battery:
     type: "yasb.battery.BatteryWidget"
     options:
+      class_name: "battery"
       label: "<span>{icon}</span>"
       label_alt: "<span>{icon}</span> {percent}% | time: {time_remaining}"
+      status_icons:
+        icon_charging: ""
+        icon_critical: ""
   glazewm_tiling_direction:
     type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
     options:
@@ -52,7 +91,7 @@ widgets:
   home:
     type: "yasb.home.HomeWidget"
     options:
-      label: "<span></span>"
+      label: "󰍜"
       system_menu: true
       power_menu: true
       blur: true

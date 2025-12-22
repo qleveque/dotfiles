@@ -21,7 +21,6 @@
 
 /* battery */
 .battery-widget .widget-container .icon {
-    font-size: 12px;
     margin-right: 4px;
 }
 
@@ -250,7 +249,6 @@
 
 /* weather */
 .weather-widget .icon {
-    font-size: 12px;
     margin-right: 4px;
 }
 /* Weather card style */
@@ -308,17 +306,9 @@
 }
 
 /* Home */
-.home-widget {
-    position: relative;
-    background-color: white;
-}
 .home-widget .label {
-    position: absolute;
-    font-size: 18px;
-    z-index: 1000;
-}
-.home-widget .icon:hover {
-    color: #cdd6f4;
+    font-size: 16px;
+    padding: 0px;
 }
 .home-menu {
     background-color:rgba(17, 17, 27, 0.5); 
@@ -349,4 +339,50 @@
 .microphone-widget .icon {
     font-size: 14px;
     margin-bottom: 2px;
+}
+
+/* grouper */
+.grouper .container {
+    z-index: 1000;
+    overflow: visible;
+}
+.grouper .grouper-button {
+    overflow: visible;
+    position: absolute;
+    z-index: 1000;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    margin-left: 6px;
+}
+.grouper .grouper-button:hover {
+    color: #88c0d0;
+}
+
+/* power-plan */
+.power-plan-widget .icon {
+    padding-left: 4px;
+    font-size: 18px;
+}
+/* doc */
+.power-plan-menu .menu-content {
+    margin: 10px;
+}
+.power-plan-menu .menu-content .button {
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'Segoe UI';
+    padding: 6px 12px;
+    margin: 1px 0;
+    border: none;
+    border-radius: 4px;
+    text-align: left;
+}
+.power-plan-menu .menu-content  .button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.power-plan-menu .menu-content .button.active {
+    background-color: rgba(0, 120, 212, 0.1);
+    border: 1px solid rgba(0, 120, 212, 0.4);
 }

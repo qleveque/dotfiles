@@ -5,6 +5,7 @@ ToggleScratchPad() {
     if (weztermPID) {
         if WinExist("ahk_pid " . weztermPID) {
             if WinActive("ahk_pid " . weztermPID) {
+                WinActivate, ahk_pid %weztermPID%
                 WinMinimize, ahk_pid %weztermPID%
                 WinMinimize, ahk_pid %weztermPID%
             } else {
