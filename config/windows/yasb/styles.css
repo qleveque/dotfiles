@@ -3,14 +3,15 @@
   font-family: ui-monospace, monospace, 'Hack Nerd Font';
 }
 .yasb-bar {
-  padding-top: 2;
   background-color: black;
+}
+.secondary-yasb-bar {
+  background-color: transparent;
 }
 .dark .widget {
   background-color: black;
   margin: 0 4px;
-  padding: 0 4px;
-  border-radius: 12px;
+  padding: 0 2px;
 }
 .widget .label {
   padding: 0px 2px; 
@@ -24,14 +25,25 @@
     margin-right: 4px;
 }
 
+.dark .widget.glazewm-workspaces {
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
 /* glazewm */
 .glazewm-workspaces .ws-btn {
   overflow: visible;
   background-color: white;
-  padding-left: 4px;
-  padding-right: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-radius: 5px;
 }
 .glazewm-workspaces .ws-btn .label {
   font-size: 20px;

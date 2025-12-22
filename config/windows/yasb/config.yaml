@@ -10,6 +10,9 @@ bars:
     enabled: true
     screens: ["\\\\.\\DISPLAY1"]
     class_name: "yasb-bar"
+    animation:
+      enabled: true
+      duration: 100
     alignment:
       position: "bottom"
     window_flags:
@@ -25,17 +28,19 @@ bars:
   secondary-bar:
     enabled: true
     screens: ["*"]
-    class_name: "yasb-bar"
+    class_name: "secondary-yasb-bar"
+    animation:
+      enabled: true
+      duration: 100
     alignment:
-      position: "bottom"
+      position: "top"
     window_flags:
-      always_on_top: false
-      windows_app_bar: true
+      always_on_top: true
+      windows_app_bar: false
     dimensions:
-      width: "100%"
-      height: 22
+      height: 20
     widgets:
-      center: ["glazewm_workspaces"]
+      right: ["glazewm_workspaces"]
 widgets:
   grouper:
     type: "yasb.grouper.GrouperWidget"
