@@ -1,5 +1,3 @@
-taskbarHidden := true
-
 ToggleTaskbar() {
     global taskbarHidden
     if (!taskbarHidden) {
@@ -15,3 +13,6 @@ ToggleTaskbar() {
 EnforceHideTaskbar() {
     WinHide, ahk_class Shell_TrayWnd
 }
+
+taskbarHidden := false
+ToggleTaskbar()

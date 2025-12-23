@@ -50,7 +50,7 @@ window_behavior:
       shown_on_top: false
 
     fullscreen:
-      maximized: true
+      maximized: false
       shown_on_top: true
 
 workspaces:
@@ -89,7 +89,7 @@ window_rules:
       - window_title: { regex: 'Appel vocal.*' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
-      - window_title: { equals: 'ANT vehicle simulator' }
+      - window_process: { equals: 'vncviewer' }
 
   - commands: ['move --workspace 5_send']
     match:
@@ -106,10 +106,11 @@ window_rules:
     match:
       - window_process: { equals: 'Copilot' }
       - window_process: { equals: 'DeepL' }
+      - window_title: { regex: 'Microsoft Copilot:.*' }
 
   - commands: ['move --workspace 9_back']
     match:
-      - window_title: { equals: 'ANT vehicle simulator' }
+      - window_process: { equals: 'vncviewer' }
 
   - commands: ['move --workspace 10_music']
     match:
@@ -124,11 +125,20 @@ window_rules:
     match:
       - window_title: { regex: '.* WhatsApp — .*' }
 
+  - commands: ['move --workspace 7_gui', 'set-floating']
+    match:
+      - window_process: { equals: 'ANTlab' }
+      - window_process: { equals: 'python' }
+
+  - commands: ['move --workspace 9_back', 'set-floating']
+    match:
+      - window_title: { equals: 'ANT vehicle simulator' }
+
 binding_modes:
 
 keybindings:
   - commands: ['wm-cycle-focus']
-    bindings: ['alt+f']
+    bindings: ['alt+shift+space']
 
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']

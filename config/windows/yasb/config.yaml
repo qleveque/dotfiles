@@ -23,7 +23,7 @@ bars:
     widgets:
       left: ["grouper"]
       center: ["glazewm_tiling_direction", "glazewm_workspaces"]
-      right: ["systray", "battery", "wifi", "bluetooth", "microphone", "volume", "clock"]
+      right: ["systray", "battery", "bluetooth", "microphone", "volume", "clock"]
   secondary-bar:
     enabled: true
     screens: ["*"]
@@ -35,14 +35,13 @@ bars:
       align: "right"
     window_flags:
       always_on_top: true
-      windows_app_bar: false
+      windows_app_bar: true
     padding:
-      bottom: 4
-      top: 4
-      right: 4
+      top: -14
+      right: 3
     dimensions:
       width: "auto"
-      height: 20
+      height: 19
     widgets:
       left: ["glazewm_workspaces"]
 widgets:
@@ -51,9 +50,10 @@ widgets:
     options:
       class_name: "grouper"
       widgets: [
+        "weather",
         "home",
         "power_plan",
-        "weather"
+        "wifi"
       ]
       collapse_options:
         enabled: true
@@ -105,7 +105,7 @@ widgets:
   home:
     type: "yasb.home.HomeWidget"
     options:
-      label: "󰍜"
+      label: ""
       system_menu: true
       power_menu: true
       blur: true
@@ -155,7 +155,7 @@ widgets:
         on_left: "toggle_menu"
       ethernet_label: "<span>{wifi_icon}</span>"
       ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
-      ethernet_icon: "\ueba9"
+      ethernet_icon: "󰀂"
       get_exact_wifi_strength: false
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
