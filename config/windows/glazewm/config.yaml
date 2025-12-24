@@ -87,6 +87,7 @@ window_rules:
   - commands: ['set-floating']
     match:
       - window_title: { regex: 'Appel vocal.*' }
+      - window_title: { equals: 'SCRATCHPAD' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
       - window_process: { equals: 'vncviewer' }
@@ -138,7 +139,7 @@ binding_modes:
 
 keybindings:
   - commands: ['wm-cycle-focus']
-    bindings: ['alt+shift+space']
+    bindings: ['alt+shift+back']
 
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']
