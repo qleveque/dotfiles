@@ -86,8 +86,8 @@ window_rules:
 
   - commands: ['set-floating']
     match:
-      - window_title: { regex: 'Appel vocal.*' }
       - window_title: { equals: 'SCRATCHPAD' }
+      - window_title: { regex: 'Appel vocal.*' }
       - window_class: { equals: 'ConsoleWindowClass' }
       - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
       - window_process: { equals: 'vncviewer' }

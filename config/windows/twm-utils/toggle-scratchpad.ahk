@@ -1,36 +1,33 @@
 DetectHiddenWindows, On
 
-weztermPID := false
+weztermID := false
 FileCreateDir, %USERPROFILE%/.scratchpad
 
 ToggleScratchPad() {
-    global weztermPID
-    if (weztermPID) {
-        if WinExist("ahk_pid " . weztermPID) {
-            if WinActive("ahk_pid " . weztermPID) {
-                WinSet, Transparent, 0, ahk_pid %weztermPID%
-                WinActivate, ahk_pid %weztermPID%
+    global weztermID
+    if (weztermID) {
+        if WinExist("ahk_id " . weztermID) {
+            if WinActive("ahk_id " . weztermID) {
                 RunWait, glazewm.exe command ignore,,Hide
-                While WinActive("ahk_pid " . weztermPID) {
-                    WinMinimize, ahk_pid %weztermPID%
-                }
-                WinHide, ahk_pid %weztermPID%
+                WinMinimize, ahk_id %weztermID%
+                WinHide, ahk_id %weztermID%
             } else {
-                WinSetTitle, ahk_pid %weztermPID%, ,SCRATCHPAD
-                WinRestore, ahk_pid %weztermPID%
-                WinSet, Transparent, 255, ahk_pid %weztermPID%
-                WinActivate, ahk_pid %weztermPID%
+                WinSetTitle, ahk_id %weztermID%, ,SCRATCHPAD
+                WinRestore, ahk_id %weztermID%
+                WinActivate, ahk_id %weztermID%
             }
             return
         }
     }
     Run, wezterm-gui.exe start --cwd %USERPROFILE%/.scratchpad nvim index,,, weztermPID
     WinWaitActive, ahk_pid %weztermPID%
+    WinGet, weztermID, ID, ahk_pid %weztermPID%
     RunWait, glazewm.exe command set-floating,,Hide
 }
 
 Cleanup(ExitReason, ExitCode) {
-    global weztermPID
+    global weztermID
+    WinGet, weztermPID, PID, ahk_id %weztermID%
     Process, Close, %weztermPID%
 }
 OnExit("Cleanup")
