@@ -5,12 +5,14 @@ ToggleTaskbar() {
         EnforceHideTaskbar()
     } else {
         SetTimer, EnforceHideTaskbar, Off
-        WinShow, ahk_class Shell_TrayWnd
+        RunWait, taskkill /f /im explorer.exe,, Hide
+        Run, explorer.exe
     }
     taskbarHidden := !taskbarHidden
 }
 
 EnforceHideTaskbar() {
+    DetectHiddenWindows, Off
     WinHide, ahk_class Shell_TrayWnd
 }
 

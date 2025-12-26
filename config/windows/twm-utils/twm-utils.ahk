@@ -6,7 +6,7 @@
 SetWorkingDir, %A_ScriptDir%
 return
 
-^+Space::ToggleTaskbar()
+!+Space::ToggleTaskbar()
 !Space::ToggleScratchPad()
 !Enter::RunWait, move-workspace.bat,, Hide
 !Backspace::RunWait, switch-minimized.bat,, Hide

@@ -1,10 +1,9 @@
-DetectHiddenWindows, On
-
 weztermID := false
 FileCreateDir, %USERPROFILE%/.scratchpad
 
 ToggleScratchPad() {
     global weztermID
+    DetectHiddenWindows, On
     if (weztermID) {
         if WinExist("ahk_id " . weztermID) {
             if WinActive("ahk_id " . weztermID) {
