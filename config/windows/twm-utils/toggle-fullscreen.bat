@@ -2,5 +2,6 @@
 for /f "tokens=1" %%A in ('glazewm.exe query focused ^| jq -r ".data.focused.state.type"') do (
     set state=%%A
 )
-if "%state%"=="fullscreen" ( set cmd="set-tiling" ) else ( set cmd="set-fullscreen" )
+
+if "%state%"=="tiling" ( set cmd="set-fullscreen" ) else ( set cmd="set-tiling" )
 glazewm.exe command %cmd%

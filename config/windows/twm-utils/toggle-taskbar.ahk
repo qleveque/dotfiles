@@ -1,19 +1,31 @@
+DetectHiddenWindows, On
+
 ToggleTaskbar() {
     global taskbarHidden
     if (!taskbarHidden) {
-        SetTimer, EnforceHideTaskbar, 200
-        EnforceHideTaskbar()
+        SetTimer, HideTaskBar, 1000
+        HideTaskBar()
     } else {
-        SetTimer, EnforceHideTaskbar, Off
-        RunWait, taskkill /f /im explorer.exe,, Hide
-        Run, explorer.exe
+        SetTimer, HideTaskBar, Off
+        ShowTaskBar()
     }
     taskbarHidden := !taskbarHidden
 }
 
-EnforceHideTaskbar() {
-    DetectHiddenWindows, Off
-    WinHide, ahk_class Shell_TrayWnd
+HideTaskBar() {
+    WinGet, trayList, List, ahk_class Shell_TrayWnd
+    Loop, %trayList% {
+        hwnd := trayList%A_Index%
+        WinHide, ahk_id %hwnd%
+    }
+}
+
+ShowTaskBar() {
+    WinGet, trayList, List, ahk_class Shell_TrayWnd
+    Loop, %trayList% {
+        hwnd := trayList%A_Index%
+        WinShow, ahk_id %hwnd%
+    }
 }
 
 taskbarHidden := false

@@ -1,9 +1,9 @@
 weztermID := false
 FileCreateDir, %USERPROFILE%/.scratchpad
+DetectHiddenWindows, On
 
 ToggleScratchPad() {
     global weztermID
-    DetectHiddenWindows, On
     if (weztermID) {
         if WinExist("ahk_id " . weztermID) {
             if WinActive("ahk_id " . weztermID) {
@@ -14,6 +14,7 @@ ToggleScratchPad() {
                 WinSetTitle, ahk_id %weztermID%, ,SCRATCHPAD
                 WinRestore, ahk_id %weztermID%
                 WinActivate, ahk_id %weztermID%
+                WinSet, AlwaysOnTop, On, ahk_id %weztermID%
             }
             return
         }
