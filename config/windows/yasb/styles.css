@@ -2,7 +2,7 @@
   --black: black;
   --white: white;
   --grey: #444444;
-  --lightgrey: #555555;
+  --lightgrey: #777777;
   --lightblue: #88c0d0;
 }
 * {
@@ -54,25 +54,23 @@
 }
 
 /* secondary glazewm */
-.secondary-yasb-bar .widget.glazewm-workspaces {
+.secondary-yasb-bar {
+    padding-top: 3px;
+    padding-bottom: -3px;
+}
+.widget.glazewm-workspaces {
   border-color: var(--black);
   border-style: solid;
-  padding-right: 0px;
-  margin-right: 0px;
 }
-.secondary-yasb-bar .widget.glazewm-workspaces .ws-btn {
-  padding-left: 1px;
-  padding-right: 1px;
-  margin-left: 1px;
-  margin-right: 1px;
+.widget.glazewm-workspaces .ws-btn {
   border-radius: 5px;
 }
-.secondary-yasb-bar .widget.glazewm-workspaces .ws-btn.populated {
+.widget.glazewm-workspaces .ws-btn.populated {
   border: 1px solid var(--lightgrey);
 }
-.secondary-yasb-bar .widget.glazewm-workspaces .ws-btn.active_empty,
-.secondary-yasb-bar .widget.glazewm-workspaces .ws-btn.empty,
-.secondary-yasb-bar .widget.glazewm-workspaces .ws-btn.active_populated{
+.widget.glazewm-workspaces .ws-btn.active_empty,
+.widget.glazewm-workspaces .ws-btn.empty,
+.widget.glazewm-workspaces .ws-btn.active_populated{
   border: 1px solid var(--white);
 }
 

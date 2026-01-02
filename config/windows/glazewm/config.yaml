@@ -51,7 +51,7 @@ window_behavior:
 
     fullscreen:
       maximized: false
-      shown_on_top: true
+      shown_on_top: false
 
 workspaces:
   - name: "1_any"
@@ -96,6 +96,7 @@ window_rules:
     match:
       - window_process: { equals: 'ms-teams' }
       - window_title: { equals: 'WhatsApp' }
+      - window_title: { regex: 'Appel vocal.*' }
 
   - commands: ['move --workspace 6_code']
     match:
@@ -139,13 +140,15 @@ binding_modes:
 
 keybindings:
   - commands: ['wm-cycle-focus']
-    bindings: ['alt+shift+back']
+    bindings: ['alt+back']
 
   - commands: ['wm-reload-config']
     bindings: ['alt+shift+u']
 
   - commands: ['toggle-tiling-direction']
     bindings: ['alt+v']
+  - commands: ['toggle-fullscreen']
+    bindings: ['alt+f']
   - commands: ['set-minimized']
     bindings: ['alt+x']
   - commands: ['close']

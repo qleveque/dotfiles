@@ -21,9 +21,9 @@ bars:
       width: "100%"
       height: 20
     widgets:
-      left: ["grouper"]
-      center: ["glazewm_tiling_direction", "glazewm_workspaces"]
-      right: ["systray", "battery", "bluetooth", "microphone", "volume", "clock"]
+      left: ["grouper", "glazewm_workspaces"]
+      center: []
+      right: ["systray", "glazewm_tiling_direction", "battery", "bluetooth", "microphone", "volume", "clock"]
   secondary-bar:
     enabled: true
     screens: ["*"]
@@ -32,13 +32,14 @@ bars:
       enabled: false
     alignment:
       position: "bottom"
-      align: "right"
+      align: "left"
     window_flags:
       always_on_top: true
       windows_app_bar: true
     padding:
       top: -14
       right: 3
+      left: 3
     dimensions:
       width: "auto"
       height: 19
