@@ -148,7 +148,7 @@ keybindings:
   - commands: ['toggle-tiling-direction']
     bindings: ['alt+v']
   - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
+    bindings: ['alt+shift+f']
   - commands: ['set-minimized']
     bindings: ['alt+x']
   - commands: ['close']
