@@ -37,7 +37,7 @@ bars:
       always_on_top: true
       windows_app_bar: true
     padding:
-      top: -14
+      top: -16
       right: 3
       left: 3
     dimensions:
