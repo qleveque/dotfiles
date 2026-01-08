@@ -54,10 +54,6 @@
 }
 
 /* secondary glazewm */
-.secondary-yasb-bar {
-    padding-top: 3px;
-    padding-bottom: -1px;
-}
 .widget.glazewm-workspaces {
   border-color: var(--black);
   border-style: solid;
