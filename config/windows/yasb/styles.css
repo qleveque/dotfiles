@@ -32,12 +32,16 @@
 }
 
 /* glazewm */
+.widget.glazewm-workspaces {
+  border-color: var(--black);
+  border-style: solid;
+}
 .glazewm-workspaces .ws-btn {
-  overflow: visible;
   padding-left: 3px;
   padding-right: 3px;
   margin-left: 3px;
   margin-right: 3px;
+  border-radius: 5px;
 }
 .glazewm-workspaces .ws-btn .label {
   font-size: 18px;
@@ -45,29 +49,25 @@
 .glazewm-workspaces .ws-btn.populated {
   color: var(--black);
   background-color: var(--black);
+  border: 1px solid var(--lightgrey);
 }
 .glazewm-workspaces .ws-btn.active_populated,
 .glazewm-workspaces .ws-btn.active_empty,
 .glazewm-workspaces .ws-btn.empty {
   color: var(--black);
   background-color: var(--grey);
+  border: 1px solid var(--white);
 }
 
-/* secondary glazewm */
-.widget.glazewm-workspaces {
-  border-color: var(--black);
-  border-style: solid;
-}
-.widget.glazewm-workspaces .ws-btn {
+/* clock */
+.secondary-yasb-bar .clock-widget {
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
   border-radius: 5px;
-}
-.widget.glazewm-workspaces .ws-btn.populated {
   border: 1px solid var(--lightgrey);
-}
-.widget.glazewm-workspaces .ws-btn.active_empty,
-.widget.glazewm-workspaces .ws-btn.empty,
-.widget.glazewm-workspaces .ws-btn.active_populated{
-  border: 1px solid var(--white);
+  background-color: var(--black);
 }
 
 /* wifi */
@@ -85,7 +85,6 @@
 /* grouper */
 .grouper .container {
     z-index: 1000;
-    overflow: visible;
 }
 .yasb-bar .grouper {
     margin-left: 0px;
@@ -94,7 +93,6 @@
 .grouper .grouper-button {
     width: 20px;
     height: 20px;
-    overflow: visible;
     position: absolute;
     z-index: 1000;
     font-size: 18px;

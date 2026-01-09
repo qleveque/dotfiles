@@ -7,11 +7,8 @@ glazewm:
   reload_command: "taskkill /IM glazewm.exe /F && glazewm.exe"
 bars:
   primary-bar:
-    enabled: true
     screens: ["\\\\.\\DISPLAY1", "XGIMI TV"]
     class_name: "yasb-bar"
-    animation:
-      enabled: false
     alignment:
       position: "bottom"
     window_flags:
@@ -20,18 +17,25 @@ bars:
     padding:
       top: -2
     dimensions:
-      width: "100%"
       height: 20
     widgets:
       left: ["grouper", "glazewm_workspaces"]
       center: []
       right: ["systray", "glazewm_tiling_direction", "battery", "bluetooth", "microphone", "volume", "clock"]
+  secondary-bar-bg:
+    screens: ["*"]
+    alignment:
+      position: "bottom"
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+    dimensions:
+      height: 8
+    padding:
+      top: -2
   secondary-bar:
-    enabled: true
     screens: ["*"]
     class_name: "secondary-yasb-bar"
-    animation:
-      enabled: false
     alignment:
       position: "bottom"
       align: "left"
@@ -39,14 +43,15 @@ bars:
       always_on_top: true
       windows_app_bar: true
     padding:
-      top: -19
       right: 3
       left: 3
     dimensions:
-      width: "auto"
-      height: 19
+      height: 20
+    padding:
+      top: -20
     widgets:
       left: ["glazewm_workspaces"]
+      right: ["short_clock"]
 widgets:
   grouper:
     type: "yasb.grouper.GrouperWidget"
@@ -166,6 +171,10 @@ widgets:
       label: "<span>{icon}</span>"
       callbacks:
         on_left: "exec cmd.exe /c start ms-settings:bluetooth"
+  short_clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%H:%M}"
   clock:
     type: "yasb.clock.ClockWidget"
     options:
