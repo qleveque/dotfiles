@@ -25,9 +25,9 @@ ToggleScratchPad() {
     RunWait, glazewm.exe command set-floating,,Hide
 }
 
-Cleanup(ExitReason, ExitCode) {
+CleanupScratchpad(ExitReason, ExitCode) {
     global weztermID
     WinGet, weztermPID, PID, ahk_id %weztermID%
     Process, Close, %weztermPID%
 }
-OnExit("Cleanup")
+OnExit("CleanupScratchpad")

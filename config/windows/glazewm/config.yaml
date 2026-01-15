@@ -84,6 +84,7 @@ window_rules:
     match:
       - window_title: { regex: 'Affichage compact de réunion .*' }
       - window_class : { equals: 'VNCMDI_Window' }
+      - window_title: { equals: 'DeepL' }
 
   - commands: ['set-floating']
     match:
@@ -108,7 +109,6 @@ window_rules:
   - commands: ['move --workspace 8_dash']
     match:
       - window_process: { equals: 'Copilot' }
-      - window_process: { equals: 'DeepL' }
       - window_title: { regex: 'Microsoft Copilot:.*' }
 
   - commands: ['move --workspace 9_back']
