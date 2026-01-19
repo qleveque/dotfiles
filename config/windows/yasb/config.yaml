@@ -1,13 +1,9 @@
 watch_stylesheet: true
 watch_config: true
 debug: true
-glazewm:
-  start_command: "glazewm.exe"
-  stop_command: "taskkill /IM glazewm.exe /F"
-  reload_command: "taskkill /IM glazewm.exe /F && glazewm.exe"
 bars:
   primary-bar:
-    screens: ["\\\\.\\DISPLAY1", "XGIMI TV"]
+    screens: ["\\\\.\\DISPLAY1", "\\\\.\\DISPLAY6", "XGIMI TV"]
     class_name: "yasb-bar"
     alignment:
       position: "bottom"
