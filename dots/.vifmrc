@@ -24,7 +24,8 @@ nn A cw
 nn I cw<c-a>
 nn cw cw<c-u>
 nn s :sort<CR>
-nn T :create<Space>
+nn T :touch<Space>
+nn M :mkdir<Space>
 nn yW :exe '!echo -n %c:p | cb copy'<CR>
 nn yM :exe '!printf "%%s" "$(wslpath -w %c:p)" | cb copy'<CR>
 nn yp :exe '!echo -n %d | cb copy'<CR>
@@ -42,7 +43,6 @@ map Y :!filecb copy %f<CR>
 
 " Commands
 com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd
-com! create :!set %a&&[[ "${1:0-1}" = "/" ]]&&mkdir "$1"||touch "$1"
 com! oncd :!oncd "%d"
 
 " Style

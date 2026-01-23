@@ -292,6 +292,16 @@ nvim_plugins = {
           ['dd']=ta.fs.remove,
           ['xx']=ta.fs.cut,
           ['T']=ta.fs.create,
+          ['M'] = function()
+            local node = ta.tree.get_node_under_cursor()
+            local base_path = node.type == "directory"
+              and node.absolute_path
+              or vim.fn.fnamemodify(node.absolute_path, ":h")
+            vim.ui.input({ prompt = "Create directory: " }, function(input)
+              vim.fn.mkdir(base_path .. "/" .. input, "p")
+              ta.tree.reload()
+            end)
+          end,
           ['p']=ta.fs.paste,
           ['l']=ta.node.open.edit,
           ['e']=function() vim.cmd('sil !wez_wrap split "e \\"'..path()..'\\""') end,
