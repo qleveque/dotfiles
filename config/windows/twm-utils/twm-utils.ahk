@@ -10,6 +10,8 @@ SetWorkingDir, %A_ScriptDir%
 
 return
 
+Insert::Send, #{PrintScreen}
+
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
 !+u::RunWait, glazewm.exe command wm-reload-config,, Hide
