@@ -2,36 +2,9 @@ watch_stylesheet: true
 watch_config: true
 debug: true
 bars:
-  primary-bar:
-    screens: ["\\\\.\\DISPLAY1", "\\\\.\\DISPLAY6", "XGIMI TV"]
-    class_name: "yasb-bar"
-    alignment:
-      position: "bottom"
-    window_flags:
-      always_on_top: false
-      windows_app_bar: true
-    padding:
-      top: -2
-    dimensions:
-      height: 20
-    widgets:
-      left: ["grouper", "glazewm_workspaces"]
-      center: []
-      right: ["systray", "glazewm_tiling_direction", "battery", "bluetooth", "microphone", "volume", "clock"]
-  secondary-bar-bg:
+  main-bar:
     screens: ["*"]
-    alignment:
-      position: "bottom"
-    window_flags:
-      always_on_top: true
-      windows_app_bar: true
-    dimensions:
-      height: 8
-    padding:
-      top: -2
-  secondary-bar:
-    screens: ["*"]
-    class_name: "secondary-yasb-bar"
+    class_name: "main-bar"
     alignment:
       position: "bottom"
       align: "left"
@@ -47,55 +20,84 @@ bars:
       top: -20
     widgets:
       left: ["glazewm_workspaces"]
-      right: ["short_clock"]
+      right: ["group", "clock"]
+  background-bar:
+    class_name: "background-bar"
+    screens: ["*"]
+    alignment:
+      position: "bottom"
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      height: 10
+    padding:
+      top: -2
 widgets:
-  grouper:
+  windows:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "🪟"
+      label_alt: ""
+      class_name: "windows"
+      callbacks:
+        on_left: 'exec cmd /c start "" /b %USERPROFILE%\dotfiles\config\windows\twm-utils\toggle-taskbar.bat'
+  reload:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "♻️"
+      label_alt: ""
+      class_name: "reload"
+      callbacks:
+        on_left: 'exec cmd /c start "" /b glazewm.exe command wm-reload-config && yasbc.exe reload'
+  group:
     type: "yasb.grouper.GrouperWidget"
     options:
-      class_name: "grouper"
+      class_name: "group"
       widgets: [
+        "bluetooth",
+        "glazewm_tiling_direction",
         "weather",
         "home",
+        "microphone",
+        "volume",
+        "wifi",
         "power_plan",
-        "wifi"
+        "reload",
+        "windows",
+        "systray"
       ]
       collapse_options:
         enabled: true
-        expanded_label: "\uf054"
-        collapsed_label: ""
-        label_position: "left"
+        expanded_label: "📖"
+        collapsed_label: "📕"
+        label_position: "right"
+        exclude_widgets: ["bluetooth", "glazewm_tiling_direction"]
   systray:
     type: "yasb.systray.SystrayWidget"
     options:
-        label_position: "right"
-        label_expanded: "◀️"
-        show_unpinned: false
+        class_name: "systray"
+        label_position: "left"
+        show_battery: true
+        show_unpinned_button: false
+        icon_size: 14
   power_plan:
     type: "yasb.power_plan.PowerPlanWidget"
     options:
-      label: "<span>󰓅</span>"
+      label: "🚂"
       label_alt: "<span>\uf0e7</span> Power Plan {active_plan}"
       update_interval: 5000
   microphone:
     type: "yasb.microphone.MicrophoneWidget"
     options:
-      label: "<span>{icon}</span>"
+      label: "🎙️"
       label_alt: "<span>{icon}</span> {level}"
       mute_text: "mute"
-  battery:
-    type: "yasb.battery.BatteryWidget"
-    options:
-      class_name: "battery"
-      label: "<span>{icon}</span>"
-      label_alt: "<span>{icon}</span> {percent}% | time: {time_remaining}"
-      status_icons:
-        icon_charging: ""
-        icon_critical: ""
   glazewm_tiling_direction:
     type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
     options:
-      horizontal_label: "\udb81\udce1"
-      vertical_label: "\udb81\udce2"
+      horizontal_label: "⏩"
+      vertical_label: "⏬"
   glazewm_workspaces:
     type: "glazewm.workspaces.GlazewmWorkspacesWidget"
     options:
@@ -109,7 +111,7 @@ widgets:
   home:
     type: "yasb.home.HomeWidget"
     options:
-      label: ""
+      label: "⚙️"
       system_menu: true
       power_menu: true
       blur: true
@@ -123,11 +125,12 @@ widgets:
   weather:
     type: "yasb.weather.WeatherWidget"
     options:
-      label: "<span>{icon}</span> {temp}"
-      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
+      class_name: "weather"
+      label: "<span>{icon}</span>"
+      label_alt: "{temp}, Rain {daily_chance_of_rain}"
       api_key: "5337407e8f054898880132623252111" # https://www.weatherapi.com/
       show_alerts: true
-      tooltip: true
+      tooltip: false
       update_interval: 600
       hide_decimal: true
       units: "metric"
@@ -136,6 +139,22 @@ widgets:
         on_left: "toggle_card"
         on_middle: "do_nothing"
         on_right: "toggle_label"
+      icons:
+        sunnyDay: "☀️"
+        clearNight: "🌙"
+        cloudyDay: "☁️"
+        cloudyNight: "☁️"
+        rainyDay: "☔"
+        rainyNight: "☔"
+        snowyDay: "❄️"
+        snowyNight: "❄️"
+        blizzardDay: "⛄"
+        blizzardNight: "⛄"
+        foggyDay: "🌫️"
+        foggyNight: "🌫️"
+        thunderstormDay: "⛈️"
+        thunderstormNight: "⛈️"
+        default: "\uebaa"
       weather_card:
         alignment: "right"
         direction: "down"
@@ -152,7 +171,7 @@ widgets:
   wifi:
     type: "yasb.wifi.WifiWidget"
     options:
-      label: "<span>{wifi_icon}</span>"
+      label: "🛜"
       label_alt: "{wifi_name} {wifi_strength}%"
       update_interval: 5000
       callbacks:
@@ -164,21 +183,27 @@ widgets:
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
+      class_name: "bluetooth"
       label: "<span>{icon}</span>"
       callbacks:
         on_left: "exec cmd.exe /c start ms-settings:bluetooth"
-  short_clock:
-    type: "yasb.clock.ClockWidget"
-    options:
-      label: "{%H:%M}"
+      icons:
+        bluetooth_on: ""
+        bluetooth_off: "🔴"
+        bluetooth_connected: "🟢"
   clock:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "{%d/%m %H:%M}"
+      class_name: "clock"
+      tooltip: false
+      label: "⌚{%H:%M}"
+      label_alt: "📅{%d/%m/%y⌚%H:%M:%S}"
+      callbacks:
+        on_right: "toggle_label"
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
-      label: "<span>{icon}</span>"
+      label: "🔊"
       audio_menu:
         show_apps: true
         show_app_icons: true

@@ -1,7 +1,6 @@
 #Persistent
 #SingleInstance Force
 #MaxThreadsPerHotkey 1
-#Include %A_ScriptDir%\toggle-taskbar.ahk
 #Include %A_ScriptDir%\toggle-scratchpad.ahk
 #Include %A_ScriptDir%\toggle-deepl.ahk
 #Include %A_ScriptDir%\move-focus-workspace.ahk
@@ -14,19 +13,17 @@ Insert::Send, #{PrintScreen}
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
-!+u::RunWait, glazewm.exe command wm-reload-config,, Hide
-!v::RunWait, glazewm.exe command toggle-tiling-direction,, Hide
 
 !Space::ToggleScratchPad()
 !+Space::ToggleDeepL()
 !Enter::RunWait, %A_ScriptDir%\move-workspace.bat,, Hide
-!+Enter::ToggleTaskbar()
 !Backspace::RunWait, glazewm.exe command wm-cycle-focus,, Hide
 !+Backspace::RunWait, %A_ScriptDir%\switch-minimized.bat,, Hide
 !f::RunWait, %A_ScriptDir%\toggle-floating.bat,, Hide
 !+f::RunWait, glazewm.exe command toggle-fullscreen,, Hide
 !x::RunWait, glazewm.exe command set-minimized,, Hide
 !+x::RunWait, %A_ScriptDir%\unminimize.bat,, Hide
+!v::RunWait, glazewm.exe command toggle-tiling-direction,, Hide
 !q::WinClose, A
 
 !h::RunWait, glazewm.exe command focus --direction left,, Hide
