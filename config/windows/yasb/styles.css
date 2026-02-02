@@ -4,6 +4,7 @@
   --grey: #444444;
   --lightgrey: #777777;
 }
+
 .background-bar {
   background-color: var(--black);
 }
@@ -22,6 +23,7 @@
 }
 .glazewm-workspaces .ws-btn .label {
   font-size: 18px;
+  font-family: ui-monospace, monospace, 'Hack Nerd Font';
 }
 
 /* elements */

@@ -10,7 +10,7 @@ bars:
       align: "left"
     window_flags:
       always_on_top: true
-      windows_app_bar: true
+      windows_app_bar: false
     padding:
       right: 3
       left: 3
@@ -28,11 +28,9 @@ bars:
       position: "bottom"
     window_flags:
       always_on_top: false
-      windows_app_bar: true
+      windows_app_bar: false
     dimensions:
       height: 10
-    padding:
-      top: -2
 widgets:
   windows:
     type: "yasb.custom.CustomWidget"
@@ -178,7 +176,7 @@ widgets:
         on_left: "toggle_menu"
       ethernet_label: "<span>{wifi_icon}</span>"
       ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
-      ethernet_icon: "󰀂"
+      ethernet_icon: "🪢"
       get_exact_wifi_strength: false
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
@@ -190,7 +188,7 @@ widgets:
       icons:
         bluetooth_on: ""
         bluetooth_off: "🔴"
-        bluetooth_connected: "🟢"
+        bluetooth_connected: "🌳"
   clock:
     type: "yasb.clock.ClockWidget"
     options:

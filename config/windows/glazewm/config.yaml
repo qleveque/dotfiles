@@ -14,13 +14,13 @@ gaps:
     top: '0px'
     right: '0px'
     left: '0px'
-    bottom: '2px'
+    bottom: '10px'
 
   single_window_outer_gap:
     top: '0px'
     right: '0px'
     left: '0px'
-    bottom: '2px'
+    bottom: '10px'
 
 window_effects:
   focused_window:
@@ -50,7 +50,7 @@ window_behavior:
       shown_on_top: false
 
     fullscreen:
-      maximized: false
+      maximized: true
       shown_on_top: true
 
 workspaces:
