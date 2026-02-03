@@ -10,6 +10,10 @@ SetWorkingDir, %A_ScriptDir%
 return
 
 Insert::Send, #{PrintScreen}
+#Up::Send, {Volume_Up}
+#Down::Send, {Volume_Down}
+#Right::Send, {Media_Next}
+#Left::Send, {Media_Prev}
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
