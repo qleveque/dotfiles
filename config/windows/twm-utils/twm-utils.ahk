@@ -6,7 +6,6 @@
 #Include %A_ScriptDir%\move-focus-workspace.ahk
 #Include %A_ScriptDir%\flow-launcher.ahk
 #Include %A_ScriptDir%\hotstrings.ahk
-SetWorkingDir, %A_ScriptDir%
 
 return
 
@@ -21,13 +20,13 @@ Insert::Send, #{PrintScreen}
 
 !Space::ToggleScratchPad()
 !+Space::ToggleDeepL()
-!Enter::RunWait, move-workspace.bat,, Hide
+!Enter::RunWait, %A_ScriptDir%\move-workspace.bat,, Hide
 !Backspace::RunWait, glazewm.exe command wm-cycle-focus,, Hide
-!+Backspace::RunWait, switch-minimized.bat,, Hide
-!f::RunWait, toggle-floating.bat,, Hide
+!+Backspace::RunWait, %A_ScriptDir%\switch-minimized.bat,, Hide
+!f::RunWait, %A_ScriptDir%\toggle-floating.bat,, Hide
 !+f::RunWait, glazewm.exe command toggle-fullscreen,, Hide
 !x::RunWait, glazewm.exe command set-minimized,, Hide
-!+x::RunWait, unminimize.bat,, Hide
+!+x::RunWait, %A_ScriptDir%\unminimize.bat,, Hide
 !v::RunWait, glazewm.exe command toggle-tiling-direction,, Hide
 !q::WinClose, A
 
