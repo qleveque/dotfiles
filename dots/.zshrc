@@ -14,6 +14,6 @@ source ~/.aliases
 source ~/.init.zsh || :
 
 # On directory changed
-_on_dir_changed() { oncd }
+_on_dir_changed() { oncd "$PWD" }
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _on_dir_changed

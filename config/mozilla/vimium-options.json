@@ -8,6 +8,11 @@
   "regexFindMode": true,
   "grabBackFocus": true,
   "searchEngines": "",
-  "settingsVersion": "2.3",
-  "exclusionRules": []
+  "settingsVersion": "2.3.1",
+  "exclusionRules": [
+    {
+      "passKeys": "dl[]",
+      "pattern": "https://bbs-gerrit.zapigroup.com/*"
+    }
+  ]
 }

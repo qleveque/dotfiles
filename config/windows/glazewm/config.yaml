@@ -51,7 +51,7 @@ window_behavior:
 
     fullscreen:
       maximized: true
-      shown_on_top: false
+      shown_on_top: true
 
 workspaces:
   - name: "1_any"
@@ -90,8 +90,6 @@ window_rules:
     match:
       - window_title: { equals: 'SCRATCHPAD' }
       - window_title: { regex: 'Appel vocal.*' }
-      - window_class: { equals: 'ConsoleWindowClass' }
-      - window_class: { equals: 'CASCADIA_HOSTING_WINDOW_CLASS' }
       - window_process: { equals: 'vncviewer' }
       - window_title: { equals: 'Hue Sync' }
 

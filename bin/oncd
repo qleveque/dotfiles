@@ -5,13 +5,11 @@ directory_changed_callback() {
   DIRHIST=${HOME}/.dirhist
   # Add the current directory to the directory history
   touch ${DIRHIST}
-  sed -i "\#^$PWD\$#d" ${DIRHIST}
-  echo $PWD >> ${DIRHIST}
+  sed -i "\#^$1\$#d" ${DIRHIST}
+  echo $1 >> ${DIRHIST}
   echo "$(cat ${DIRHIST} | tail -$N)" > ${DIRHIST}
-  # osc7
-  if grep -q Microsoft /proc/version; then
-    printf "\033]7;file://%s\033\\" "$(wslpath -w "${PWD}")"
-  fi
+  # Set wez working directory
+  wez_wrap cd $1
 }
 
-directory_changed_callback &
+directory_changed_callback "$1" &

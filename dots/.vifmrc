@@ -13,33 +13,33 @@ nn dd "0dd
 vn x d
 vn d "0d
 nn V ggvG
-cno <C-v> <C-r>=system('cb paste')<CR>
-map <C-i> :histnext|oncd<CR>
-map <C-o> :histprev|oncd<CR>
-nn <C-q> :quit<CR>
-nn l :exe('normal! l')|oncd<CR>
-nn h :exe('normal! h')|oncd<CR>
+cno <silent> <C-v> <C-r>=system('cb paste')<CR>
+map <silent> <C-i> :histnext|oncd<CR>
+map <silent> <C-o> :histprev|oncd<CR>
+nn <silent> <C-q> :quit<CR>
+nn <silent> l :exe('normal! l')|oncd<CR>
+nn <silent> h :exe('normal! h')|oncd<CR>
 nn U <C-r>
 nn A cw
 nn I cw<c-a>
 nn cw cw<c-u>
-nn s :sort<CR>
-nn T :touch<Space>
+nn <silent> s :sort<CR>
+nn <silent> T :touch<Space>
 nn M :mkdir<Space>
-nn yW :exe '!echo -n %c:p | cb copy'<CR>
-nn yM :exe '!printf "%%s" "$(wslpath -w %c:p)" | cb copy'<CR>
-nn yp :exe '!echo -n %d | cb copy'<CR>
-nn yw :exe '!echo -n %c | cb copy'<CR>
-nn é :!wez_wrap split "run -p %f"<CR>
-nn É :!wez_wrap split run<CR>
-nn e :!e %f<CR>
-nn <CR> :!o %f<CR>
-nn <C-g> :exe'!read -k1 k && git_wrap $k -f"'.expand('%f').'"'<CR>
-nn <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo goto \"$g\"')|:oncd|:redr<CR>
-nn <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
-nn <C-p> :exe 'cd "'.system('eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS} 2>/dev/tty').'"'|:oncd|:redr<CR>
-nn P :!filecb paste<CR>
-map Y :!filecb copy %f<CR>
+nn <silent> yW :exe '!echo -n %c:p | cb copy'<CR>
+nn <silent> yM :exe '!printf "%%s" "$(wslpath -w %c:p)" | cb copy'<CR>
+nn <silent> yp :exe '!echo -n %d | cb copy'<CR>
+nn <silent> yw :exe '!echo -n %c | cb copy'<CR>
+nn <silent> é :!wez_wrap split "run -p %f"<CR>
+nn <silent> É :!wez_wrap split run<CR>
+nn <silent> e :!e %f<CR>
+nn <silent> <CR> :!o %f<CR>
+nn <silent> <C-g> :exe'!read -k1 k && git_wrap $k -f"'.expand('%f').'"'<CR>
+nn <silent> <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo goto \"$g\"')|:oncd|:redr<CR>
+nn <silent> <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
+nn <silent> <C-p> :exe 'cd "'.system('eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS} 2>/dev/tty').'"'|:oncd|:redr<CR>
+nn <silent> P :!filecb paste<CR>
+map <silent> Y :!filecb copy %f<CR>
 
 " Commands
 com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd

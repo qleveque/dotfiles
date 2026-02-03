@@ -40,4 +40,12 @@ case ${cmd} in
     ${wez} cli kill-pane --pane-id ${pane} &
   ;;
   nvim) ${wez} start --cwd="${cwd}" bash -c "nvim '$1' +$2";;
+  cd)
+    if grep -q Microsoft /proc/version; then
+      wd="$(wslpath -w $1)"
+    else
+      wd="$1"
+    fi
+    ${wez} set-working-directory "${wd}"
+  ;;
 esac
