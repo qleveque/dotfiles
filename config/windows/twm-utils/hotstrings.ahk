@@ -1,1 +1,1 @@
-:*:c.l(::console.log(
+:*?:c.l(::console.log(

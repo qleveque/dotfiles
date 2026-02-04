@@ -54,7 +54,7 @@ c.keys={
     function(w, p, t) w:active_tab():set_title(t) end
   )}},
 }
-c.window_background_opacity = 0.93
+c.window_background_opacity = 1
 if wez.target_triple:match("windows") then
   c.wsl_domains={{name='WSL:Ubuntu', distribution='Ubuntu-24.04'}}
   c.default_domain='WSL:Ubuntu'

@@ -3,23 +3,29 @@
   --white: white;
   --grey: #444444;
   --lightgrey: #777777;
+
+  --surface2: #5b6078;
+  --surface1: #494d64;
+  --surface0: #363a4f;
 }
 
-.background-bar {
-  background-color: var(--black);
-}
 .main-bar {
   background-color: transparent;
   padding: 0px 2px;
 }
+.background-bar {
+  background-color: var(--black);
+}
 
 /* font sizes */
-.group .widget .icon,
-.group .widget .btn,
-.group .widget .label,
-.group .grouper-button {
+.widget .icon,
+.widget .btn,
+.widget .label,
+.grouper-button {
   font-size: 14px;
   border: none;
+      font-weight: bold;
+
 }
 .glazewm-workspaces .ws-btn .label {
   font-size: 18px;
@@ -44,6 +50,13 @@
   border: none;
 }
 
+/* weather */
+.weather {
+  border-right: 1px solid var(--lightgrey);
+  border-radius: 0px;
+  padding: 0 2px;
+}
+
 /* systray */
 .systray {
   border-left: 1px solid var(--lightgrey);
@@ -59,24 +72,22 @@
   border: 1px solid var(--white);
 }
 
-/* clock */
-.clock .label {
-  font-weight: bold;
-  font-size: 14px;
+/* caps lock */
+.language-widget .widget-container.caps-lock-on .label {
+    padding: 0 2px;
+    margin: 0 3px;
+    max-height: 14px;
+    max-width: 14px;
+}
+.language-widget .widget-container .label {
+    max-height: 0px;
+    max-width: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 /** DOCUMENTATION **/
 
-.language-widget .widget-container.caps-lock-on .label {
-    font-size: 14px;
-    padding: 0px;
-}
-.language-widget .widget-container .label {
-    z-index: -10000;
-    font-size: 1px;
-    padding: 0px;
-    margin: 0px;
-}
 .wifi-menu {
     font-family: 'Segoe UI';
     background-color: rgba(17, 17, 27, 0.4);

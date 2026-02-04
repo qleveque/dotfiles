@@ -1,4 +1,6 @@
 #Persistent
+#SingleInstance Force
+#NoTrayIcon
 DetectHiddenWindows, On
 
 HideTaskBar() {

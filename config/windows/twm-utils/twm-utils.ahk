@@ -1,6 +1,7 @@
 #Persistent
 #SingleInstance Force
 #MaxThreadsPerHotkey 1
+#NoTrayIcon
 #Include %A_ScriptDir%\toggle-scratchpad.ahk
 #Include %A_ScriptDir%\toggle-deepl.ahk
 #Include %A_ScriptDir%\move-focus-workspace.ahk
@@ -16,7 +17,12 @@ Insert::Send, #{PrintScreen}
 #Left::Send, {Media_Prev}
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
-^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
+^!+w::
+    Run, "C:\Program Files\Zen Browser\zen.exe"
+    WinWaitActive, ahk_exe zen.exe
+    Sleep, 400
+    RunWait, glazewm.exe command wm-redraw,, Hide
+    return
 
 !Space::ToggleScratchPad()
 !+Space::ToggleDeepL()

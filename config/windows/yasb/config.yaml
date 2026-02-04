@@ -1,5 +1,6 @@
 watch_stylesheet: true
 watch_config: true
+show_systray: false
 debug: true
 bars:
   main-bar:
@@ -35,8 +36,8 @@ widgets:
   language:
     type: "yasb.language.LanguageWidget"
     options:
-      label: "👍"
-      label_alt: "👍"
+      label: "🔒"
+      label_alt: "🔒"
       update_interval: 1
   windows:
     type: "yasb.custom.CustomWidget"
@@ -62,7 +63,6 @@ widgets:
         "language",
         "bluetooth",
         "glazewm_tiling_direction",
-        "weather",
         "home",
         "microphone",
         "volume",
@@ -70,7 +70,8 @@ widgets:
         "power_plan",
         "reload",
         "windows",
-        "systray"
+        "systray",
+        "weather"
       ]
       collapse_options:
         enabled: true
@@ -127,52 +128,6 @@ widgets:
       offset_left: 0
       alignment: "left"
       direction: "down"
-  weather:
-    type: "yasb.weather.WeatherWidget"
-    options:
-      class_name: "weather"
-      label: "<span>{icon}</span>"
-      label_alt: "{temp}, Rain {daily_chance_of_rain}"
-      api_key: "5337407e8f054898880132623252111" # https://www.weatherapi.com/
-      show_alerts: true
-      tooltip: false
-      update_interval: 600
-      hide_decimal: true
-      units: "metric"
-      location: "Lausanne Switzerland"
-      callbacks:
-        on_left: "toggle_card"
-        on_middle: "do_nothing"
-        on_right: "toggle_label"
-      icons:
-        sunnyDay: "☀️"
-        clearNight: "🌙"
-        cloudyDay: "☁️"
-        cloudyNight: "☁️"
-        rainyDay: "☔"
-        rainyNight: "☔"
-        snowyDay: "❄️"
-        snowyNight: "❄️"
-        blizzardDay: "⛄"
-        blizzardNight: "⛄"
-        foggyDay: "🌫️"
-        foggyNight: "🌫️"
-        thunderstormDay: "⛈️"
-        thunderstormNight: "⛈️"
-        default: "\uebaa"
-      weather_card:
-        alignment: "right"
-        direction: "down"
-        icon_size: 64
-        show_hourly_forecast: true
-        time_format: "24h"
-        hourly_point_spacing: 76
-        hourly_icon_size: 32
-        icon_smoothing: true
-        temp_line_width: 2
-        current_line_color: "#8EAEE8"
-        current_line_width: 1
-        current_line_style: "dot"
   wifi:
     type: "yasb.wifi.WifiWidget"
     options:
@@ -193,7 +148,7 @@ widgets:
       callbacks:
         on_left: "exec cmd.exe /c start ms-settings:bluetooth"
       icons:
-        bluetooth_on: ""
+        bluetooth_on: "🌱"
         bluetooth_off: "🔴"
         bluetooth_connected: "🌳"
   clock:
@@ -201,10 +156,40 @@ widgets:
     options:
       class_name: "clock"
       tooltip: false
-      label: "⌚{%H:%M}"
-      label_alt: "📅{%d/%m/%y⌚%H:%M:%S}"
+      label: "{📅%d/%m⌚%H:%M}"
+      label_alt: ""
       callbacks:
-        on_right: "toggle_label"
+        on_left: "toggle_calendar"
+        on_right: "do_nothing"
+  weather:
+    type: "yasb.weather.WeatherWidget"
+    options:
+      class_name: "weather"
+      label: "🌡️{temp} 💧{daily_chance_of_rain}"
+      label_alt: ""
+      api_key: "5337407e8f054898880132623252111" # https://www.weatherapi.com/
+      show_alerts: true
+      tooltip: false
+      update_interval: 600
+      hide_decimal: true
+      units: "metric"
+      location: "Lausanne Switzerland"
+      callbacks:
+        on_left: "toggle_card"
+        on_right: "do_nothing"
+      weather_card:
+        alignment: "right"
+        direction: "down"
+        icon_size: 64
+        show_hourly_forecast: true
+        time_format: "24h"
+        hourly_point_spacing: 76
+        hourly_icon_size: 32
+        icon_smoothing: true
+        temp_line_width: 2
+        current_line_color: "#8EAEE8"
+        current_line_width: 1
+        current_line_style: "dot"
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
