@@ -32,6 +32,12 @@ bars:
     dimensions:
       height: 10
 widgets:
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "👍"
+      label_alt: "👍"
+      update_interval: 1
   windows:
     type: "yasb.custom.CustomWidget"
     options:
@@ -53,6 +59,7 @@ widgets:
     options:
       class_name: "group"
       widgets: [
+        "language",
         "bluetooth",
         "glazewm_tiling_direction",
         "weather",
@@ -70,7 +77,7 @@ widgets:
         expanded_label: "📖"
         collapsed_label: "📕"
         label_position: "right"
-        exclude_widgets: ["bluetooth", "glazewm_tiling_direction"]
+        exclude_widgets: ["language", "bluetooth", "glazewm_tiling_direction"]
   systray:
     type: "yasb.systray.SystrayWidget"
     options:

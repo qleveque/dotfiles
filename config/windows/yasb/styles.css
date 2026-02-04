@@ -67,6 +67,16 @@
 
 /** DOCUMENTATION **/
 
+.language-widget .widget-container.caps-lock-on .label {
+    font-size: 14px;
+    padding: 0px;
+}
+.language-widget .widget-container .label {
+    z-index: -10000;
+    font-size: 1px;
+    padding: 0px;
+    margin: 0px;
+}
 .wifi-menu {
     font-family: 'Segoe UI';
     background-color: rgba(17, 17, 27, 0.4);
