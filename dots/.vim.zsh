@@ -19,20 +19,20 @@ vm P visual-swap
 vm p visual-put
 im '^[[13;5u' forward-word
 im '^[[27;2;32~' insert-space
-im '^V' vi-put-before
-im '^I' fzf_completion
-im '^?' backward-delete-char
-im '^N' fzf-cd-widget
-im '^R' fzf-history-widget
-im '^P' goto-recent
-im '^F' open-fm
-im '^G' open-git_wrap
-im '^Q' quit
-im '^A' copy-mode
+im ^V vi-put-before
+im ^I fzf_completion
+im ^? backward-delete-char
+im ^N fzf-cd-widget
+im ^R fzf-history-widget
+im ^P goto-recent
+im ^F open-fm
+im ^G open-git_wrap
+im ^Q quit
+im ^A copy-mode
 for c in {v,o}m\ {a,i}${(s..)^:-'()[]{}<>'};do ${=c} select-bracketed;done
 for c in {v,o}m\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
 
-# Functions and widgets instantiation
+# Functions
 set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
 goto-recent(){cd "$(eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS})";zle reset-prompt;zle zle-line-init}
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt; zle zle-line-init}
@@ -47,6 +47,8 @@ opp-wrap(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .vi-${WIDG
 visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|cb copy}
 visual-put(){zle vi-delete; zle vi-put-before}
 copy-mode(){zle autosuggest-clear; wez_wrap copy}
+
+# Widgets instantiation
 wids=(goto-recent open-{fm,git_wrap} quit select-{bracketed,quoted} visual-{put,swap}
       vi-{cut,yank,put-{before,after}} copy-mode insert-space add-surround:surround
       {change,delete}-wrap:opp-wrap zle-{keymap-select,line-{init,finish}}:set-cursor)
