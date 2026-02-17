@@ -68,16 +68,18 @@ workspaces:
     display_name: "󰯂"
   - name: "7_gui"
     display_name: "󰏘"
-  - name: "8_dash"
-    display_name: "󱐋"
-  - name: "9_back"
+  - name: "8_back"
     display_name: "󰟾"
-  - name: "10_music"
+  - name: "9_music"
     display_name: "󰝚"
-  - name: "11_post"
+  - name: "10_post"
     display_name: "󰇮"
-  - name: "12_rest"
+  - name: "11_rest"
     display_name: "󰅶"
+  - name: "12_oracle"
+    display_name: "󰼙"
+  - name: "13_dashboard"
+    display_name: "󰕮"
 
 window_rules:
   - commands: ['ignore']
@@ -105,36 +107,47 @@ window_rules:
     - window_process: { equals: 'pycharm64' }
     - window_process: { equals: 'idea64' }
 
-  - commands: ['move --workspace 8_dash']
-    match:
-      - window_process: { equals: 'Copilot' }
-      - window_title: { regex: 'Microsoft Copilot:.*' }
-
-  - commands: ['move --workspace 9_back']
+  - commands: ['move --workspace 8_back']
     match:
       - window_process: { equals: 'vncviewer' }
 
-  - commands: ['move --workspace 10_music']
+  - commands: ['move --workspace 9_music']
     match:
       - window_process: { equals: 'Spotify' }
 
-  - commands: ['move --workspace 11_post']
+  - commands: ['move --workspace 10_post']
     match:
       - window_process: { equals: 'OUTLOOK' }
       - window_process: { equals: 'olk' }
 
-  - commands: ['move --workspace 12_rest']
+  - commands: ['move --workspace 11_rest']
     match:
       - window_title: { regex: '.* WhatsApp — .*' }
 
-  - commands: ['move --workspace 7_gui', 'set-floating']
+  - commands: ['move --workspace 12_oracle']
+    match:
+      - window_process: { equals: 'Copilot' }
+      - window_title: { regex: 'Microsoft Copilot:.*' }
+
+  # BBX
+  - commands: ['move --workspace 7_gui']
     match:
       - window_process: { equals: 'ANTlab' }
       - window_process: { equals: 'python' }
+  - commands: ['set-floating']
+    match:
+      - window_process: { equals: 'ANTlab' }
+        window_title: { not_regex: '.*- ANT lab -.*' }
+      - window_process: { equals: 'python' }
+        window_title: { not_regex: '.*- ANT lab -.*' }
 
-  - commands: ['move --workspace 9_back', 'set-floating']
+  - commands: ['move --workspace 8_back']
     match:
       - window_title: { equals: 'ANT vehicle simulator' }
+
+  - commands: ['move --workspace 13_dashboard']
+    match:
+      - window_title: { regex: "co'clock.*" }
 
 binding_modes:
 

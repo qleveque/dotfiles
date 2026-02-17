@@ -8,11 +8,12 @@ workspaces :=
     "s": "5_send",
     "c": "6_code",
     "g": "7_gui",
-    "d": "8_dash",
-    "b": "9_back",
-    "m": "10_music",
-    "p": "11_post",
-    "r": "12_rest"
+    "b": "8_back",
+    "m": "9_music",
+    "p": "10_post",
+    "r": "11_rest",
+    "o": "12_oracle",
+    "d": "13_dashboard"
 }
 )
 HotkeyData := {}

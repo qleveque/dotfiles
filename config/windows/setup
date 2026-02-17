@@ -1,0 +1,16 @@
+#!zsh
+
+CURRENT_DIR=`realpath "$(dirname $0)"`
+STARTUP_SCRIPT=$(wslpath -m "${CURRENT_DIR}/twm/start.bat")
+PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq AutoHotkey.AutoHotkey)
+
+# Packages
+for package in "${PACKAGES[@]}"; do; winget.exe install --id=${package} -h -e &; done
+wait
+
+# Convert to Windows path
+# TODO
+
+# Schedule and run startup tasks
+wudo schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"${STARTUP_SCRIPT}\"" /ru "SYSTEM" /f
+cmd.exe /C startup.bat
