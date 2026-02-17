@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 # Open a test file with the given extension
 
-is_windows=$(grep -q Microsoft /proc/version)
+is_windows=$(grep -q microsoft /proc/version)
 ${is_windows} && tmp="${HOME}/AppData/Local/Temp" || tmp="/tmp"
 test_file=$(mktemp -p "${tmp}")
 [[ -n $1 ]] && test_file="${test_file}.$1"

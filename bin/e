@@ -15,7 +15,7 @@ case ${filetype} in
 esac
 return_if_matched
 
-if grep -q Microsoft /proc/version; then
+if grep -q microsoft /proc/version; then
   winrun() {
     prog=$1 && shift
     for f in "$@"; do cmd.exe /C start '' "${prog}" "$(wslpath -w -- "${f}")"; done

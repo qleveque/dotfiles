@@ -1,0 +1,45 @@
+#!zsh
+setopt glob_dots
+lndir() { mkdir -p "$2" && for file in "$1/"*; do cp -f "$file" "$2/"; done }
+
+USERPROFILE=`wslpath "$(cmd.exe /c "echo %USERPROFILE%" | tr -d '\r')"`
+APPDATA=`wslpath "$(cmd.exe /c "echo %APPDATA%" | tr -d '\r')"`
+CURRENT="${HOME}/dotfiles"
+
+# neovim
+cp -f "${CURRENT}/config/neovim/.vimrc" "${USERPROFILE}/.vimrc"
+
+# git
+cp -f "${CURRENT}/config/git/.gitconfig" "${USERPROFILE}/.gitconfig"
+cp -f "${CURRENT}/config/git/.gitignore" "${USERPROFILE}/.config/git/.gitignore"
+
+# wezterm
+cp -f "${CURRENT}/config/wezterm/.wezterm.lua" "${USERPROFILE}/.wezterm.lua"
+
+# VSCode
+lndir "${CURRENT}/config/VSCode" "${APPDATA}/Code/User"
+
+# JetBrains
+cp -f "${CURRENT}/config/JetBrains/.ideavimrc" "${USERPROFILE}/.ideavimrc"
+for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do
+  lndir "${CURRENT}/config/JetBrains/keymaps" "${dir}/keymaps"
+  lndir "${CURRENT}/config/JetBrains/tools" "${dir}/tools"
+done
+
+# glazewm + yasb
+lndir "${CURRENT}/windows/glazewm" "${USERPROFILE}/.glzr/glazewm"
+lndir "${CURRENT}/windows/yasb" "${USERPROFILE}/.config/yasb"
+
+###################################################################
+
+CURRENT_DIR=`realpath "$(dirname $0)"`
+STARTUP_SCRIPT=$(wslpath -m "${CURRENT_DIR}/twm/start.bat")
+PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq AutoHotkey.AutoHotkey)
+
+# Packages
+for package in "${PACKAGES[@]}"; do; winget.exe install --id=${package} -h -e &; done
+wait
+
+# Schedule and run startup tasks
+# python.exe wsl-sudo.py schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"echo\"" /ru "SYSTEM" /f
+cmd.exe /C ${STARTUP_SCRIPT}

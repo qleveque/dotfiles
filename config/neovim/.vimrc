@@ -29,11 +29,3 @@ nn <silent> + :sil cnext<CR>
 nn <silent> é :exe'sil !wez_wrap split "run -p \"'.expand('%').'\""'<CR>
 nn <silent> É :exe'sil !wez_wrap split run'<CR>
 nn <silent> <C-g> :exe'sil !git_wrap '.nr2char(getchar()).' -f'.expand('%').' -l'.line('.')<CR>
-
-" Diff
-if &diff
-  nn <silent> <C-q> :qa<CR>
-  nn + ]c
-  nn - [c
-  au VimEnter * :windo set fdc=0 wrap noro nofen | :norm +-
-end

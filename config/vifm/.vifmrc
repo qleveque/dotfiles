@@ -4,7 +4,7 @@ set vicmd=nvim syscalls nofollowlinks sortnumbers syncregs=general trashdir=~/.l
 set vifminfo+=dhistory,savedirs,chistory,state,tui,shistory,phistory,dirstack,registers
 
 " Preview
-fileviewer *[^/] batcat --color always --wrap never --pager never %c -p
+fileviewer *[^/] bat --color always --wrap never --pager never %c -p
 nnoremap W :if layoutis('only') | split | view! | else | only | endif <cr>
 
 " Shortcuts
@@ -55,4 +55,5 @@ hi TopLineSel cterm=none ctermfg=yellow ctermbg=none
 hi Border cterm=none ctermfg=black ctermbg=none
 hi Directory cterm=bold ctermfg=green ctermbg=none
 hi Selected cterm=reverse ctermfg=blue ctermbg=default
-source ~/.favicons.vifm
+
+source ~/.config/vifm/favicons.vifm

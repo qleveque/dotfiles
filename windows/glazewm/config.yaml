@@ -95,6 +95,10 @@ window_rules:
       - window_process: { equals: 'vncviewer' }
       - window_title: { equals: 'Hue Sync' }
 
+  - commands: ['move --workspace 2_else']
+    match:
+      - window_title: { regex: 'Developer Tools .*' }
+
   - commands: ['move --workspace 5_send']
     match:
       - window_process: { equals: 'ms-teams' }

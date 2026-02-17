@@ -1,15 +1,15 @@
 #!/usr/bin/zsh
-
 key="$1"
 shift
 
-while getopts "i:f:l:r:ns" opt; do case $opt in
+while getopts "h:i:f:l:r:ns" opt; do case $opt in
   f) file="$(realpath -s --relative-to="${PWD}" "${OPTARG}")" ;;
   l) line="${OPTARG}";;
   r) ref="${OPTARG}^ ${OPTARG}";;
   n) no_new_tab=1;;
   s) ref='--staged';;
   i) index="${OPTARG}";;
+  h) hash="${OPTARG}";;
 esac; done
 shift $((OPTIND -1))
 
@@ -23,21 +23,39 @@ run() {
   fi
 }
 
+read-commit-line() {
+  read line
+  if [[
+      "$line" =~ '^commit\ (\w+)' ||
+      "$line" =~ '(HEAD@\{[0-9]+\})' ||
+      "$line" =~ '(stash@\{[0-9]+\})' ||
+      "$line" =~ '^[*| ]* (\w+)'
+    ]]; then
+    echo "${match[1]}"
+    return
+  fi
+  echo NO_COMMIT
+}
+
 case $key in
-  d)
-    env="NVIM_GITDIFF=1 LINE=\'${line}\' FILE=\'${PWD}/${file}\'"
-    if [[ -n ${index} ]]; then
-      run "git-diff:${file:t}" "${env} git difftool ${index} || git difftool -- '${file}'"
-    else
-      run "git-diff:${file:t}" "${env} git difftool ${ref} -- '${file}'"
-    fi
+  d) run "git diff: ${file:t}" "NVIM_DIFF=1 nvim +\":DiffviewOpen -uno -- '${file}'\"";;
+  s) run "git status: $(basename `git rev-parse --show-toplevel`)" "NVIM_DIFF=1 nvim +:DiffviewOpen";;
+  f) run "git logfile:${file:t}" "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"";;
+  l) run "git log: $(basename `git rev-parse --show-toplevel`)" "NVIM_DIFF=1 nvim +:DiffviewFileHistory";;
+  c) run "git commit" "git commit || read";;
+  a) run "git commit amend" "git commit --amend || read";;
+  n) run "git commit amend no-edit" "git commit --amend --no-edit || read";;
+  C) run "git commit amend no-edit" "git commit --amend --no-edit && git push --force || read";;
+  o)
+    [ -z $hash ] && hash=$(cb paste)
+    run "git-show:${hash}" "; NVIM_DIFF=1 nvim +\":DiffviewOpen ${hash}^..${hash} -- $file \""
   ;;
-  s) run "git-status:$(basename `git rev-parse --show-toplevel`)" "gitrs status";;
-  f) run "git-logfile:${file:t}" "git pretty '${file}'";;
-  l) run "git-log:$(basename `git rev-parse --show-toplevel`)" "git pretty";;
-  b) run "git-blame:${file:t}" "gitrs blame '${file}' ${line:-1}";;
-  t) run "git-stash:$(basename `git rev-parse --show-toplevel`)" "gitrs stash";;
-  merge) run "git-merge:${file:t}" "NVIM_GITMERGE=1 FILE='${PWD}/${file}' git_mergetool '${file}'";;
-  pick) run "git-pick:${file:t}" "NVIM_GITDIFF=1 git pick '${file}'";;
-  untracked) run "${file:t}" "nvim '${file}'";;
+  read-commit) read-commit-line;;
+  inlog)
+    commit=$(read-commit-line)
+    lines=$(cat)
+    file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
+    [[ $1 == copy ]] && echo ${file} | cb copy && exit 0
+    git_wrap o -h ${commit} ${file:+-f "$file"}
+  ;;
 esac

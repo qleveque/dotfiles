@@ -1,4 +1,4 @@
-#!/bin/zsh
+#zsh
 bindkey -v
 autoload -U select-bracketed select-quoted surround
 typeset -A vimodes=( [vm]='visual' [im]='viins' [nm]='vicmd' [om]='viopp' )
@@ -20,7 +20,7 @@ vm p visual-put
 im '^[[13;5u' forward-word
 im '^[[27;2;32~' insert-space
 im ^V vi-put-before
-im ^I fzf_completion
+# im ^I fzf-completion
 im ^? backward-delete-char
 im ^N fzf-cd-widget
 im ^R fzf-history-widget
@@ -36,7 +36,7 @@ for c in {v,o}m\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
 set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
 goto-recent(){cd "$(eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS})";zle reset-prompt;zle zle-line-init}
 open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt; zle zle-line-init}
-open-git_wrap(){local k; read -k1 k; git_wrap $k -n -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
+open-git_wrap(){local k; read -k1 k; git_wrap $k -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
 insert-space() { LBUFFER+=" " }
 quit(){exit}
 vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|cb copy}

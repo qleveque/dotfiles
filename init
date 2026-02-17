@@ -1,47 +1,8 @@
-#!/usr/bin/bash
-# Set up environment
-export HOME=$(dirname "$PWD")
-[[ ! "$SHELL" == "/usr/bin/zsh" ]] && chsh -s '/usr/bin/zsh'
+#!bash
+sudo cp nix/configuration.nix /etc/nixos/configuration.nix
+sudo nixos-rebuild switch
 
-# Windows
-if grep -q Microsoft /proc/version; then
-  echo -Run \`wsl.exe -u root usermod -d \"${HOME}\" $USER\`&&read
-  # win32yank
-  winget.exe install --id=equalsraf.win32yank -e
-  # jq
-  winget.exe install jqlang.jq
-  # wudo
-  sudo wget 'raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py' -O '/usr/bin/wudo'
-  sudo chmod +x '/usr/bin/wudo'
-  # node
-  curl -ksL https://deb.nodesource.com/setup_22.x | sed 's|https://|http://|' | sudo -E bash -
-fi
-
-# Common packages
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y curl cmake vifm zsh tmux fzf qalc ripgrep fd-find xsel jq sd lsd nodejs bat g++
-
-# Neovim
-NVIM_URL='https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz'
-TMP=$(mktemp) && wget -O $TMP $NVIM_URL && tar xvzf $TMP -C $HOME
-sudo ln -fs $HOME/nvim-linux-x86_64/bin/nvim /usr/bin/nvim
-
-# vifm devicons
-wget 'raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm' -O "${HOME}/.favicons.vifm"
-
-# starship
-curl -sS https://starship.rs/install.sh | sh -s -- -y
-
-# zim
-export ZIM_HOME="${HOME}/.zim"
-wget -nv -P "${ZIM_HOME}" 'github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh'
-zsh "${ZIM_HOME}/zimfw.zsh" install -q
-
-# extract
-echo '#!/usr/bin/zsh
-source ~/.zim/modules/ohmyzsh/plugins/extract/extract.plugin.zsh
-extract $1' | sudo tee /usr/bin/extract > /dev/null
-sudo chmod +x "/usr/bin/extract"
-
-# Setup
-"${HOME}/dotfiles/setup"
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+nix-channel --update
+nix-shell '<home-manager>' -A install

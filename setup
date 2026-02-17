@@ -1,32 +1,7 @@
-#!/usr/bin/bash
-
-shopt -s dotglob
-lndir() { mkdir -p "$2" && for file in "$1/"*; do ln -f "$file" "$2/"; done }
-wf() { local f=$1 && shift && mkdir -p "$(dirname $f)" && "$@" > $f; }
-
-mkdir -p "${HOME}/bin"
-config="${HOME}/dotfiles/config"
-
-g++ "${config}/git_mergetool.cpp" -o "${HOME}/bin/git_mergetool" &
-wf "${HOME}/.config/nvim/init.lua" echo "dofile(\"${HOME}/.nvim.lua\")"
-wf "${HOME}/.config/vifm/vifmrc" echo "source ${HOME}/.vifmrc"
-
-lndir "${HOME}/dotfiles/dots" "${HOME}"
-
-if grep -q Microsoft /proc/version; then
-  appData="${HOME}/AppData/Roaming"
-
-  # VSCode
-  lndir "${config}/VSCode" "${appData}/Code/User"
-
-  # JetBrains
-  ln -f "${config}/JetBrains/.ideavimrc" "${HOME}/.ideavimrc"
-  for dir in $(find "${appData}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do
-    lndir "${config}/JetBrains/keymaps" "${dir}/keymaps"
-    lndir "${config}/JetBrains/tools" "${dir}/tools"
-  done
-
-  # glazewm + yasb
-  lndir "${config}/windows/glazewm" "${HOME}/.glzr/glazewm"
-  lndir "${config}/windows/yasb" "${HOME}/.config/yasb"
+#!zsh
+mkdir -p ~/.config/home-manager
+cp nix/home.nix ~/.config/home-manager/home.nix
+home-manager switch
+if grep -q microsoft /proc/version; then
+  ./windows/setup
 fi

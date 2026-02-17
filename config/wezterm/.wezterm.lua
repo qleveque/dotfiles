@@ -33,10 +33,12 @@ c.leader={key='b', mods='CTRL'}
 c.window_padding={left=0, right=0, top=0, bottom=0}
 c.adjust_window_size_when_changing_font_size=false
 c.keys={
-  {key='F11', action=a.ToggleFullScreen},
+  {key="h", mods="CTRL", action=a{ActivatePaneDirection="Left"}},
+  {key="l", mods="CTRL", action=a{ActivatePaneDirection="Right"}},
+  {key="k", mods="CTRL", action=a{ActivatePaneDirection="Up"}},
+  {key="j", mods="CTRL", action=a{ActivatePaneDirection="Down"}},
   {key='Tab', mods='CTRL', action=a{SendString='\x1b[27;5;9~'}},
   {key='Enter', mods='CTRL', action=a{SendString='\x1b[13;5u'}},
-  {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F13'}},
   {key='Tab', mods='CTRL|SHIFT', action=a{SendString='\x1b[27;6;9~'}},
   {key='Space', mods= 'SHIFT', action=a{SendString='\x1b[27;2;32~'}},
   {key=';', mods='CTRL', action=a.ActivateTabRelative(1)},
@@ -56,12 +58,10 @@ c.keys={
 }
 c.window_background_opacity = 1
 if wez.target_triple:match("windows") then
-  c.wsl_domains={{name='WSL:Ubuntu', distribution='Ubuntu-24.04'}}
-  c.default_domain='WSL:Ubuntu'
+  c.wsl_domains={{name='WSL:NixOS', distribution='NixOS'}}
+  c.default_domain='WSL:NixOS'
 end
 
-local smarts=wez.plugin.require('http://github.com/mrjones2014/smart-splits.nvim')
-smarts.apply_to_config(c,{direction_keys={'h','j','k','l'},modifiers={move='CTRL'}})
 local tabline=wez.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 local tabline_tab={{'tab', padding=1, icons_enabled=false}, { 'zoomed', padding=0 }}
 tabline.setup({sections={

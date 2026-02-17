@@ -1,5 +1,5 @@
 #!/bin/zsh
-alias cat='batcat --plain'
+alias cat='bat --plain'
 alias fd='fdfind'
 alias g='jump'
 alias glp='gitrs log -p'
@@ -10,3 +10,4 @@ alias rg='rg --smart-case'
 alias telnet='telnet -e ^C'
 alias xargs='xargs -i'
 alias zim="zsh ${ZIM_HOME}/zimfw.zsh"
+# alias git="~/dotfiles/git"

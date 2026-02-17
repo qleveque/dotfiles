@@ -1,0 +1,22 @@
+[user]
+  email = qleveque@hotmail.com
+  name = Quentin Leveque
+[core]
+  editor = nvim
+  ignorecase = true
+  whitespace = trailing-space
+  longpaths = true
+  filemode = false
+  excludesfile = ~/.gitignore
+[push]
+  autoSetupRemote = true
+[pull]
+  rebase = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[alias]
+  parent = "!h(){ hash=$(git merge-base $*) && git log -n1 $hash;};h"
+  pretty = "log --graph --pretty=\"%Cred%h%Creset %Cgreen%s%C(auto)%d %C(bold blue)%an %Cblue%cr%Creset\""

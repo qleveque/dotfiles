@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if grep -q Microsoft /proc/version; then
+if grep -q microsoft /proc/version; then
   wez='wezterm.exe' cwd="$(wslpath -m ${PWD})"
 else
   wez='wezterm' cwd="${PWD}"
@@ -32,8 +32,8 @@ case ${cmd} in
       NVIM_COPY=1 nvim -c "norm G3k^" $f
     fi
   ;;
-  split) ${wez} cli split-pane --bottom --cwd ${cwd} -- zsh -c "$1";;
-  new) ${wez} cli spawn --cwd ${cwd} -- zsh -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez_wrap kill";;
+  split) ${wez} cli split-pane --bottom --cwd ${cwd} -- ${SHELL} -c "$1";;
+  new) ${wez} cli spawn --cwd ${cwd} -- ${SHELL} -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez_wrap kill";;
   kill)
     pane=$(pane_id)
     ${wez} cli activate-tab --tab-index $(( $(tab_position ${pane}) - 2 ))
@@ -41,7 +41,7 @@ case ${cmd} in
   ;;
   nvim) ${wez} start --cwd="${cwd}" bash -c "nvim '$1' +$2";;
   cd)
-    if grep -q Microsoft /proc/version; then
+    if grep -q microsoft /proc/version; then
       wd="$(wslpath -w $1)"
     else
       wd="$1"

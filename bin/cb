@@ -2,7 +2,7 @@
 
 cmd=$1 && shift
 
-if grep -q Microsoft /proc/version; then
+if grep -q microsoft /proc/version; then
   case ${cmd} in
     copy) win32yank.exe -i --crlf;;
     paste) win32yank.exe -o --lf;;

@@ -11,5 +11,7 @@ ToggleDeepL() {
             WinSet, AlwaysOnTop, On, DeepL
         }
         return
+    } else {
+	Run, %A_AppData%\Roaming\Programs\ZeroInstall\0install-win.exe run https://appdownload.deepl.com/windows/0install/deepl.xml
     }
 }

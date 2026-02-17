@@ -23,58 +23,102 @@ vim.g.clipboard = {
 }
 
 -- Specific configs
-if os.getenv("NVIM_GITDIFF") then
-  local file = io.open(vim.fn.argv(0), "r")
-  if file then
-    if file:seek("end") > 50 * 1024 then vim.cmd('syntax off') end
-    file:close()
-  end
+if os.getenv("NVIM_COPY") then
   vim.cmd[[
-    nn gF :exe 'sil !wez_wrap new "file" "nvim "$FILE" +'.line('.').'"'<CR>
-    au BufRead /tmp/* setl noma
-    set ls=0
+    set ls=0 nonu stal=0
   ]]
-  local line = os.getenv("LINE")
-  if line and tonumber(line) then
-    if line == "0" then line = "1" end
-    vim.api.nvim_create_autocmd("VimEnter", {
-      pattern = '*',
-      command = "normal! "..line.."G",
-    })
-  end
-elseif os.getenv("NVIM_GITMERGE") then
+end
+local diff = os.getenv("NVIM_DIFF");
+if diff then
   vim.cmd[[
-    nn dp 1dp3dp:wa<CR>
-    nm doh 1dodp
-    nm dol 3dodp
-    au VimEnter * :winc h
-    set ls=0
-  ]]
-elseif os.getenv("NVIM_COPY") then
-  vim.cmd[[
-    set ls=0
-    set nonu
+    set ls=0 nonu stal=0
+    au VimEnter,BufEnter,BufRead diffview://* setlocal statusline=_
+    nnoremap + ]c
+    nnoremap - [c
   ]]
 end
 
+-- Git
+local function GitWrap()
+  local c = vim.fn.nr2char(vim.fn.getchar())
+  if c == "b" then
+    vim.cmd("BlameToggle")
+  else
+    local file = vim.fn.expand("%")
+    local line = vim.fn.line(".")
+    local cmd = "silent !git_wrap " .. c .. " -f" .. file .. " -l" .. line
+    vim.cmd(cmd)
+  end
+end
+vim.keymap.set("n", "<C-g>", GitWrap, { silent = true })
+
 nvim_plugins = {
+  {
+    "FabijanZulj/blame.nvim",
+    lazy = false,
+    config = function()
+      require('blame').setup {}
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "blame",
+        callback = function()
+          vim.keymap.set("n", "l", function()
+            vim.cmd("normal! ^yiw")
+            vim.cmd("!git_wrap o")
+          end, { buffer = true })
+        end,
+      })
+    end,
+    opts = {
+      blame_options = { '-w' },
+    },
+  },
+  {
+    "sindrets/diffview.nvim",
+    enabled = diff,
+    init = function()
+      local actions = require("diffview.actions")
+      require('diffview').setup({
+        enhanced_diff_hl = true,
+        show_help_hints = false,
+        option_mapping = false,
+        hooks = {
+          view_opened = function(view)
+            vim.defer_fn(function()
+              if view.class:name() == 'FileHistoryView' then
+                vim.keymap.set("n", "<c-f>", function() vim.api.nvim_input("<C-w>k<C-w>l") end, { buffer = true })
+              else
+                vim.keymap.set("n", "<c-f>", function() vim.api.nvim_input("<C-w>l<C-w>l") end, { buffer = true })
+              end
+            end, 200)
+          end,
+        },
+        keymaps = {
+          view = {
+            { "n", "<C-f>", actions.focus_files, { desc = "Bring focus to the file panel" } },
+            { "n", "<C-q>", function() vim.cmd('qa!') end },
+          },
+          file_panel = {
+            { "n", "<CR>", actions.select_entry },
+            { "n", "l", actions.focus_entry },
+            { "n", "<C-q>", function() vim.cmd('qa!') end },
+          },
+          file_history_panel = {
+            { "n", "<CR>", actions.select_entry },
+            { "n", "l", actions.focus_entry },
+            { "n", "<C-q>", function() vim.cmd('qa!') end },
+          },
+          option_panel = {
+            { "n", "<CR>", actions.select_entry, { desc = "Change the current option" } },
+          },
+        }
+      })
+    end
+  },
   "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
   "tpope/vim-sleuth",
   {"numToStr/Comment.nvim", opts={}},
-  {"petertriho/nvim-scrollbar", opts={set_highlights=false}},
-  {
-    'mrjones2014/smart-splits.nvim',
-    opts = {},
-    init = function()
-      vim.cmd[[
-        nn <C-h> :SmartCursorMoveLeft<CR>
-        nn <C-j> :SmartCursorMoveDown<CR>
-        nn <C-k> :SmartCursorMoveUp<CR>
-        nn <C-l> :SmartCursorMoveRight<CR>
-      ]]
-    end
-  },
+  {"petertriho/nvim-scrollbar", enabled=not diff, opts={set_highlights=false}},
   {
     "ggandor/leap.nvim",
     opts = { safe_labels = {} },
@@ -130,7 +174,7 @@ nvim_plugins = {
   },
   {
     "neoclide/coc.nvim",
-    enabled = not vim.opt.diff:get(),
+    enabled = not diff,
     branch = "release",
     init = function()
       vim.g.coc_user_config = {
@@ -212,7 +256,7 @@ nvim_plugins = {
   {
     "romgrk/barbar.nvim",
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    enabled = not vim.opt.diff:get(),
+    enabled = not diff,
     init = function()
       vim.cmd[[
         nn <C-S-Tab> <Cmd>BufferPrevious<CR>
@@ -310,9 +354,7 @@ nvim_plugins = {
           ['É']=function() vim.cmd('sil !wez_wrap split run') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
-          ['<C-g>']=function()
-            vim.cmd('sil !git_wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"')
-          end,
+          ['<C-g>']=function() vim.cmd('sil !git_wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"') end,
           ['Y']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb copy "'..filename()..'"') end,
           ['P']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb paste') end,
         }
