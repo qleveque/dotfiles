@@ -6,7 +6,7 @@
             "type": "process",
             "args": [
                 "-c",
-                "wez_wrap nvim ${fileBasename} ${lineNumber}"
+                "wez-wrap nvim ${fileBasename} ${lineNumber}"
             ],
             "command": "bash",
             "options": {

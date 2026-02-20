@@ -2,7 +2,7 @@
 # Open any file with the default program
 
 if [[ -z "$*" ]] then; set ${PWD}; fi
-if grep -q microsoft /proc/version; then
+if win; then
   cmd.exe /C START '""' "`wslpath -m "\""$(readlink -f $*)"\""`"
 else
   open "$*" 1>/dev/null 2>/dev/null &

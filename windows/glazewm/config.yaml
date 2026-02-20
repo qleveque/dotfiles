@@ -41,6 +41,7 @@ window_effects:
       enabled: true
       style: 'square'
 
+
 window_behavior:
   initial_state: 'tiling'
 

@@ -2,7 +2,7 @@
 
 cmd=$1 && shift
 
-if grep -q microsoft /proc/version; then
+if win; then
   case ${cmd} in
     paste) 
       powershell.exe -Command \

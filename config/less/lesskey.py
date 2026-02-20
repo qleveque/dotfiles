@@ -12,7 +12,7 @@ COMMIT_PATTERN = f"{commit_pattern}|{stash_pattern}|{reflog_pattern}|{graph_patt
 
 remove_colors = r"sed -r 's/\\x1B\\[[0-9;]*[mGK]//g'"
 BUFFER = f"|.^P{remove_colors}"
-COMMIT = f"{BUFFER}|git_wrap read-commit"
+COMMIT = f"{BUFFER}|git-wrap read-commit"
 UNTIL_COMMIT_LINE = rf"JK\eb?{COMMIT_PATTERN}\n|O^P{remove_colors}"
 
 print(rf'''#env
@@ -31,8 +31,8 @@ yy {NA} {BUFFER}|head -1|cb copy\n
 # Git
 c {NA} J/{COMMIT_PATTERN}\n{RESET_SEARCH}
 C {NA} \eb?{COMMIT_PATTERN}\n{RESET_SEARCH}
-l {NA} {COMMIT}|xargs git_wrap o -h\n
+l {NA} {COMMIT}|xargs git-wrap o -h\n
 yc {NA} {COMMIT}|cb copy\n
-gd {NA} {SAVE}{UNTIL_COMMIT_LINE}|git_wrap inlog\n{RESET_SEARCH}{RESTORE}
-yf {NA} {SAVE}{UNTIL_COMMIT_LINE}|git_wrap inlog copy\n{RESET_SEARCH}{RESTORE}
+gd {NA} {SAVE}{UNTIL_COMMIT_LINE}|git-wrap inlog\n{RESET_SEARCH}{RESTORE}
+yf {NA} {SAVE}{UNTIL_COMMIT_LINE}|git-wrap inlog copy\n{RESET_SEARCH}{RESTORE}
 ''')

@@ -34,6 +34,7 @@ in
     bc
     nodejs
     python3
+    ghostty
     (pkgs.writeScriptBin "wudo" ''
       ${builtins.readFile (pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py";
@@ -70,7 +71,7 @@ in
       source = "${dotfiles}/config/git/.gitconfig";
       force = true;
     };
-    ".config/git/.gitignore" = {
+    ".gitignore" = {
       source = "${dotfiles}/config/git/.gitignore";
       force = true;
     };

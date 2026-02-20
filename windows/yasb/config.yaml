@@ -64,7 +64,7 @@ widgets:
       label_alt: ""
       class_name: "windows"
       callbacks:
-        on_left: 'exec cmd /c start "" /b %USERPROFILE%\dotfiles\config\windows\twm-utils\toggle-taskbar.bat'
+        on_left: 'exec cmd /c start "" /b %USERPROFILE%\.twm\toggle-taskbar.bat'
   reload:
     type: "yasb.custom.CustomWidget"
     options:

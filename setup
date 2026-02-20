@@ -2,6 +2,4 @@
 mkdir -p ~/.config/home-manager
 cp nix/home.nix ~/.config/home-manager/home.nix
 home-manager switch
-if grep -q microsoft /proc/version; then
-  ./windows/setup
-fi
+[[ win ]] && ./windows/setup

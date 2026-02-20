@@ -1,45 +1,31 @@
 #!zsh
 setopt glob_dots
-lndir() { mkdir -p "$2" && for file in "$1/"*; do cp -f "$file" "$2/"; done }
 
 USERPROFILE=`wslpath "$(cmd.exe /c "echo %USERPROFILE%" | tr -d '\r')"`
 APPDATA=`wslpath "$(cmd.exe /c "echo %APPDATA%" | tr -d '\r')"`
-CURRENT="${HOME}/dotfiles"
+DOTS="$(git rev-parse --show-toplevel)"
+STARTUP_SCRIPT=$(wslpath -w "${USERPROFILE}/.twm/start.bat")
+PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq Git.Git wez.wezterm "AutoHotkey.AutoHotkey -v 1.1.37.02")
 
-# neovim
-cp -f "${CURRENT}/config/neovim/.vimrc" "${USERPROFILE}/.vimrc"
+cpdir() { mkdir -p "$2" && cp -rf "$1" "$2" }
 
-# git
-cp -f "${CURRENT}/config/git/.gitconfig" "${USERPROFILE}/.gitconfig"
-cp -f "${CURRENT}/config/git/.gitignore" "${USERPROFILE}/.config/git/.gitignore"
+cpdir "${DOTS}/windows/glazewm" "${USERPROFILE}/.glzr"
+cpdir "${DOTS}/windows/yasb" "${USERPROFILE}/.config"
+mkdir -p "${USERPROFILE}/.twm" && cp "${DOTS}/windows/twm/"* "${USERPROFILE}/.twm/"
+cpdir "${DOTS}/config/git" "${USERPROFILE}"
+cpdir "${DOTS}/config/VSCode/User" "${APPDATA}/Code"
+cp -f "${DOTS}/config/neovim/.vimrc" "${USERPROFILE}/.vimrc"
+cp -f "${DOTS}/config/wezterm/.wezterm.lua" "${USERPROFILE}/.wezterm.lua"
 
-# wezterm
-cp -f "${CURRENT}/config/wezterm/.wezterm.lua" "${USERPROFILE}/.wezterm.lua"
-
-# VSCode
-lndir "${CURRENT}/config/VSCode" "${APPDATA}/Code/User"
-
-# JetBrains
-cp -f "${CURRENT}/config/JetBrains/.ideavimrc" "${USERPROFILE}/.ideavimrc"
+cp -f "${DOTS}/config/JetBrains/.ideavimrc" "${USERPROFILE}/.ideavimrc"
 for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do
-  lndir "${CURRENT}/config/JetBrains/keymaps" "${dir}/keymaps"
-  lndir "${CURRENT}/config/JetBrains/tools" "${dir}/tools"
+  cpdir "${DOTS}/config/JetBrains/keymaps" "${dir}"
+  cpdir "${DOTS}/config/JetBrains/tools" "${dir}"
 done
 
-# glazewm + yasb
-lndir "${CURRENT}/windows/glazewm" "${USERPROFILE}/.glzr/glazewm"
-lndir "${CURRENT}/windows/yasb" "${USERPROFILE}/.config/yasb"
-
-###################################################################
-
-CURRENT_DIR=`realpath "$(dirname $0)"`
-STARTUP_SCRIPT=$(wslpath -m "${CURRENT_DIR}/twm/start.bat")
-PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq AutoHotkey.AutoHotkey)
-
-# Packages
-for package in "${PACKAGES[@]}"; do; winget.exe install --id=${package} -h -e &; done
+wudo schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"${STARTUP_SCRIPT}\"" /f
+cd ${USERPROFILE}
+cmd.exe /C "${STARTUP_SCRIPT}"
+for package in "${PACKAGES[@]}"; do; winget.exe install --id=${=package} -h -e &; done
 wait
-
-# Schedule and run startup tasks
-# python.exe wsl-sudo.py schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"echo\"" /ru "SYSTEM" /f
-cmd.exe /C ${STARTUP_SCRIPT}
+cd -

@@ -9,7 +9,7 @@ directory_changed_callback() {
   echo $1 >> ${DIRHIST}
   echo "$(cat ${DIRHIST} | tail -$N)" > ${DIRHIST}
   # Set wez working directory
-  wez_wrap cd $1
+  wez-wrap cd "${PWD}"
 }
 
 directory_changed_callback "$1" &

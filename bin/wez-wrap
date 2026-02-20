@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-if grep -q microsoft /proc/version; then
-  wez='wezterm.exe' cwd="$(wslpath -m ${PWD})"
+if win; then
+  wez='wezterm.exe'
 else
-  wez='wezterm' cwd="${PWD}"
+  wez='wezterm'
 fi
-cmd=$1 && shift
+cmd="$1" && shift
 
 # Hacks to spawn tab next to current one
 pane_id() {
@@ -23,29 +23,27 @@ move_tab_next() {
 
 case ${cmd} in
   copy)
-    [[ -n $1 ]] && pane_id="--pane-id $1"
+    cd /
+    [[ -n $1 ]] && pid="--pane-id $1"
     f=$(mktemp)
-    ${wez} cli get-text ${=pane_id} --start-line '-1000' | sd ' *\n' '\n' | sed ':a;/^\n*$/{$d;N;};/\n$/ba' > $f
+    ${wez} cli get-text ${=pid} --start-line '-1000' | sd ' *\n' '\n' | sed ':a;/^\n*$/{$d;N;};/\n$/ba' > $f
     if [[ -n $1 ]]; then
-      NVIM_COPY=1 wez_wrap new copy-mode "nvim -c 'norm G' $f"
+      PANE_ID=$1 wez-wrap new copy-mode "NVIM_COPY=1 nvim -c 'norm G' $f"
     else
       NVIM_COPY=1 nvim -c "norm G3k^" $f
     fi
   ;;
-  split) ${wez} cli split-pane --bottom --cwd ${cwd} -- ${SHELL} -c "$1";;
-  new) ${wez} cli spawn --cwd ${cwd} -- ${SHELL} -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez_wrap kill";;
+  split) ${wez} cli split-pane --bottom --cwd ${PWD} -- ${SHELL} -c "$1";;
+  new)
+    args=(--cwd ${PWD})
+    [[ -n ${PANE_ID} ]] && args+=(--pane-id "${PANE_ID}")
+    ${wez} cli spawn "${args[@]}" -- ${SHELL} -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez-wrap kill"
+  ;;
   kill)
     pane=$(pane_id)
     ${wez} cli activate-tab --tab-index $(( $(tab_position ${pane}) - 2 ))
     ${wez} cli kill-pane --pane-id ${pane} &
   ;;
-  nvim) ${wez} start --cwd="${cwd}" bash -c "nvim '$1' +$2";;
-  cd)
-    if grep -q microsoft /proc/version; then
-      wd="$(wslpath -w $1)"
-    else
-      wd="$1"
-    fi
-    ${wez} set-working-directory "${wd}"
-  ;;
+  nvim) ${wez} start --cwd="${PWD}" bash -c "nvim '$1' +$2";;
+  cd) printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "$1";;
 esac

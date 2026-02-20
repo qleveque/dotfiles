@@ -9,5 +9,6 @@ alias q='qalc'
 alias rg='rg --smart-case'
 alias telnet='telnet -e ^C'
 alias xargs='xargs -i'
-alias zim="zsh ${ZIM_HOME}/zimfw.zsh"
-# alias git="~/dotfiles/git"
+if win; then
+  alias git="git-win"
+fi

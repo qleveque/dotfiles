@@ -50,7 +50,7 @@ c.keys={
   {key='f', mods='LEADER', action=a.TogglePaneZoomState},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
   {key='a', mods='LEADER', action=wez.action_callback(function(w,p)
-      wez.run_child_process({ 'bash', '-c', '~/dotfiles/bin/wez_wrap copy '..p:pane_id() })
+      wez.run_child_process({ 'wsl.exe', 'wez-wrap', 'copy', p:pane_id() })
   end)},
   {key='r', mods='LEADER', action=a.PromptInputLine{action=wez.action_callback(
     function(w, p, t) w:active_tab():set_title(t) end

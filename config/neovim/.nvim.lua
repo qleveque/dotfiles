@@ -46,7 +46,7 @@ local function GitWrap()
   else
     local file = vim.fn.expand("%")
     local line = vim.fn.line(".")
-    local cmd = "silent !git_wrap " .. c .. " -f" .. file .. " -l" .. line
+    local cmd = "silent !git-wrap " .. c .. " -f" .. file .. " -l" .. line
     vim.cmd(cmd)
   end
 end
@@ -63,7 +63,7 @@ nvim_plugins = {
         callback = function()
           vim.keymap.set("n", "l", function()
             vim.cmd("normal! ^yiw")
-            vim.cmd("!git_wrap o")
+            vim.cmd("!git-wrap o")
           end, { buffer = true })
         end,
       })
@@ -120,7 +120,7 @@ nvim_plugins = {
   {"numToStr/Comment.nvim", opts={}},
   {"petertriho/nvim-scrollbar", enabled=not diff, opts={set_highlights=false}},
   {
-    "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     opts = { safe_labels = {} },
     keys = {
       {
@@ -149,8 +149,9 @@ nvim_plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = function()
-      require'nvim-treesitter.configs'.setup({
+      require'nvim-treesitter.config'.setup({
         highlight = { enable = true },
         indent = { enable = true },
         additional_vim_regex_highlighting = false
@@ -277,6 +278,7 @@ nvim_plugins = {
     lazy=true,
     cmd="AerialOpen",
     keys = { {'<C-z>', '<cmd>AerialOpen<CR>'} },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts={
       autojump = true,
       backends = {"treesitter"},
@@ -348,13 +350,13 @@ nvim_plugins = {
           end,
           ['p']=ta.fs.paste,
           ['l']=ta.node.open.edit,
-          ['e']=function() vim.cmd('sil !wez_wrap split "e \\"'..path()..'\\""') end,
+          ['e']=function() vim.cmd('sil !wez-wrap split "e \\"'..path()..'\\""') end,
           ['h']=ta.node.navigate.parent_close,
-          ['é']=function() vim.cmd('sil !wez_wrap split "run -p \\"'..path()..'\\""') end,
-          ['É']=function() vim.cmd('sil !wez_wrap split run') end,
+          ['é']=function() vim.cmd('sil !wez-wrap split "run -p \\"'..path()..'\\""') end,
+          ['É']=function() vim.cmd('sil !wez-wrap split run') end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
-          ['<C-g>']=function() vim.cmd('sil !git_wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"') end,
+          ['<C-g>']=function() vim.cmd('sil !git-wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"') end,
           ['Y']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb copy "'..filename()..'"') end,
           ['P']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb paste') end,
         }
