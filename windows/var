@@ -1,0 +1,7 @@
+#!zsh
+
+USERPROFILE=`wslpath "$(cmd.exe /c "echo %USERPROFILE%" | tr -d '\r')"`
+APPDATA=`wslpath "$(cmd.exe /c "echo %APPDATA%" | tr -d '\r')"`
+DOTS="$(git rev-parse --show-toplevel)"
+STARTUP_SCRIPT=$(wslpath -w "${USERPROFILE}/.twm/start.bat")
+PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq Git.Git wez.wezterm "AutoHotkey.AutoHotkey -v 1.1.37.02")

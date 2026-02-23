@@ -2,6 +2,7 @@
 
 if win; then
   wez='wezterm.exe'
+  [[ $PWD == /mnt/c/* ]] && PWD=$(wslpath -m ${PWD})
 else
   wez='wezterm'
 fi

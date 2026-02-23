@@ -1,11 +1,6 @@
 #!zsh
 setopt glob_dots
-
-USERPROFILE=`wslpath "$(cmd.exe /c "echo %USERPROFILE%" | tr -d '\r')"`
-APPDATA=`wslpath "$(cmd.exe /c "echo %APPDATA%" | tr -d '\r')"`
-DOTS="$(git rev-parse --show-toplevel)"
-STARTUP_SCRIPT=$(wslpath -w "${USERPROFILE}/.twm/start.bat")
-PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq Git.Git wez.wezterm "AutoHotkey.AutoHotkey -v 1.1.37.02")
+source "${0:A:h}/var"
 
 cpdir() { mkdir -p "$2" && cp -rf "$1" "$2" }
 
@@ -22,10 +17,3 @@ for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "Idea
   cpdir "${DOTS}/config/JetBrains/keymaps" "${dir}"
   cpdir "${DOTS}/config/JetBrains/tools" "${dir}"
 done
-
-wudo schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"${STARTUP_SCRIPT}\"" /f
-cd ${USERPROFILE}
-cmd.exe /C "${STARTUP_SCRIPT}"
-for package in "${PACKAGES[@]}"; do; winget.exe install --id=${=package} -h -e &; done
-wait
-cd -

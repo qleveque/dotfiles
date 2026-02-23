@@ -132,7 +132,13 @@ nvim_plugins = {
   },
   {
     "kylechui/nvim-surround",
-    opts = { keymaps = { normal = "s", normal_cur = "ss", visual = "s", } },
+    config = function()
+      vim.keymap.set("n", "s", "<Plug>(nvim-surround-normal)")
+      vim.keymap.set("n", "ss", "<Plug>(nvim-surround-normal-cur)")
+      vim.keymap.set("x", "s", "<Plug>(nvim-surround-visual)")
+      vim.keymap.set("n", "ds", "<Plug>(nvim-surround-delete)")
+      vim.keymap.set("n", "cs", "<Plug>(nvim-surround-change)")
+    end,
     version = "*",
     event = "VeryLazy",
   },

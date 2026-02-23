@@ -9,7 +9,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.zsh;
-    # home = "/mnt/c/Users/qleve";
     home = "/home/qle";
   };
 
