@@ -28,4 +28,3 @@ nn <silent> - :sil cprev<CR>
 nn <silent> + :sil cnext<CR>
 nn <silent> é :exe'sil !wez-wrap split "run -p \"'.expand('%').'\""'<CR>
 nn <silent> É :exe'sil !wez-wrap split run'<CR>
-nn <silent> <C-g> :exe'sil !git-wrap '.nr2char(getchar()).' -f'.expand('%').' -l'.line('.')<CR>

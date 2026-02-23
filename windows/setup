@@ -7,7 +7,9 @@ cpdir() { mkdir -p "$2" && cp -rf "$1" "$2" }
 cpdir "${DOTS}/windows/glazewm" "${USERPROFILE}/.glzr"
 cpdir "${DOTS}/windows/yasb" "${USERPROFILE}/.config"
 mkdir -p "${USERPROFILE}/.twm" && cp "${DOTS}/windows/twm/"* "${USERPROFILE}/.twm/"
-cpdir "${DOTS}/config/git" "${USERPROFILE}"
+cp -f "${DOTS}/config/git/.gitconfig" "${USERPROFILE}"
+cp -f "${DOTS}/config/git/.gitignore" "${USERPROFILE}"
+'/mnt/c/Program Files/Git/cmd/git.exe' config --global core.autocrlf true
 cpdir "${DOTS}/config/VSCode/User" "${APPDATA}/Code"
 cp -f "${DOTS}/config/neovim/.vimrc" "${USERPROFILE}/.vimrc"
 cp -f "${DOTS}/config/wezterm/.wezterm.lua" "${USERPROFILE}/.wezterm.lua"

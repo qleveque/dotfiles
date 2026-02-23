@@ -23,6 +23,8 @@ vim.g.clipboard = {
 }
 
 -- Specific configs
+local uname = vim.loop.os_uname()
+local is_wsl = uname.release:lower():match("microsoft") ~= nil
 if os.getenv("NVIM_COPY") then
   vim.cmd[[
     set ls=0 nonu stal=0
@@ -77,7 +79,15 @@ nvim_plugins = {
     enabled = diff,
     init = function()
       local actions = require("diffview.actions")
+      vim.api.nvim_create_autocmd("FocusGained", {
+        callback = function()
+          if vim.bo.filetype == "diffview" then
+            vim.cmd("DiffviewRefresh")
+          end
+        end,
+      })
       require('diffview').setup({
+        git_cmd = { is_wsl and "git-win" or "git" },
         enhanced_diff_hl = true,
         show_help_hints = false,
         option_mapping = false,

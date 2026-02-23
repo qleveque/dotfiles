@@ -8,6 +8,8 @@
   longpaths = true
   filemode = false
   excludesfile = ~/.gitignore
+  autocrlf = input
+  safecrlf = false
 [push]
   autoSetupRemote = true
 [pull]
@@ -19,4 +21,11 @@
   required = true
 [alias]
   parent = "!h(){ hash=$(git merge-base $*) && git log -n1 $hash;};h"
-  pretty = "log --graph --pretty=\"%Cred%h%Creset %Cgreen%s%C(auto)%d %C(bold blue)%an %Cblue%cr%Creset\""
+  logline = "log --graph --pretty=\"%Cred%h%Creset %Cgreen%s%C(auto)%d %C(bold blue)%an %Cblue%cr%Creset\""
+[advice]
+  detachedHead = false
+  diverging = false
+  statusHints = false
+  pushUpdateRejected = false
+  addIgnoredFile = false
+  pullUpdateInstead = false
