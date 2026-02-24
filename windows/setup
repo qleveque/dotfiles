@@ -7,15 +7,20 @@ cpdir() { mkdir -p "$2" && cp -rf "$1" "$2" }
 cpdir "${DOTS}/windows/glazewm" "${USERPROFILE}/.glzr"
 cpdir "${DOTS}/windows/yasb" "${USERPROFILE}/.config"
 mkdir -p "${USERPROFILE}/.twm" && cp "${DOTS}/windows/twm/"* "${USERPROFILE}/.twm/"
-cp -f "${DOTS}/config/git/.gitconfig" "${USERPROFILE}"
-cp -f "${DOTS}/config/git/.gitignore" "${USERPROFILE}"
-'/mnt/c/Program Files/Git/cmd/git.exe' config --global core.autocrlf true
 cpdir "${DOTS}/config/VSCode/User" "${APPDATA}/Code"
 cp -f "${DOTS}/config/neovim/.vimrc" "${USERPROFILE}/.vimrc"
 cp -f "${DOTS}/config/wezterm/.wezterm.lua" "${USERPROFILE}/.wezterm.lua"
+
+cp -f "${DOTS}/config/git/.gitconfig" "${USERPROFILE}"
+cp -f "${DOTS}/config/git/.gitignore" "${USERPROFILE}"
+GIT='/mnt/c/Program Files/Git/cmd/git.exe'
+${GIT} config --global core.autocrlf true
+${GIT} config --global core.editor 'e(){ wsl.exe nvim \`wslpath $1\`; clear; }; e'
 
 cp -f "${DOTS}/config/JetBrains/.ideavimrc" "${USERPROFILE}/.ideavimrc"
 for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do
   cpdir "${DOTS}/config/JetBrains/keymaps" "${dir}"
   cpdir "${DOTS}/config/JetBrains/tools" "${dir}"
 done
+
+python3 "${DOTS}/config/less/lesskey.py" wsl > "${USERPROFILE}/.lesskey"

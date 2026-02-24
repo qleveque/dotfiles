@@ -1,19 +1,17 @@
 #!/bin/python3
+import sys
+IS_WSL = len(sys.argv) > 1 and sys.argv[1] == 'wsl'
+C = lambda cmd: f'wsl -e sh -c "{cmd}"' if IS_WSL else cmd
+
 RESET_SEARCH = r'mS/^A^A\n\'S\emS'
 SAVE = 'mO'
 RESTORE = rf'\'O\emO'
 NA = 'noaction'
+REMOVE_COLORS = r"sed -r 's/\\x1B\\[[0-9;]*[mGK]//g'"
 
-commit_pattern = r'\^commit \\w{40}'
-stash_pattern = r'\^stash@\\{[0-9]\+\\}: '
-reflog_pattern = r'\^\\w{6} (\\(.*\\) )?HEAD@\\{[0-9]\+\\}: '
-graph_pattern = r'\^([\\|\\*] )+\\w{6} '
-COMMIT_PATTERN = f"{commit_pattern}|{stash_pattern}|{reflog_pattern}|{graph_pattern}"
-
-remove_colors = r"sed -r 's/\\x1B\\[[0-9;]*[mGK]//g'"
-BUFFER = f"|.^P{remove_colors}"
-COMMIT = f"{BUFFER}|git-wrap less-read-commit"
-UNTIL_COMMIT_LINE = rf"JK\eb?{COMMIT_PATTERN}\n|O^P{remove_colors}"
+BUFFER = f"|.^P{REMOVE_COLORS}"
+COMMIT_PATTERN = r'\^commit |\^stash@|HEAD@\\{[0-9]\+\\}: '
+UNTIL_COMMIT_LINE = rf"JK\eb?{COMMIT_PATTERN}\n|O^P{REMOVE_COLORS}"
 
 print(rf'''#env
 LESS = -irR --mouse --wheel-lines=1 +/\^
@@ -25,14 +23,13 @@ gg goto-line
 G goto-end \e\40
 zz back-scroll
 j forw-line-force
-^a {NA} {BUFFER}|nvim -c 'syn off' -c 'set ls=0' -c 'set nonu'\n
-yy {NA} {BUFFER}|head -1|cb copy\n
+yy {NA} {BUFFER}|{C("head -1|cb copy")}\n
 ^q quit
 # Git
 c {NA} J/{COMMIT_PATTERN}\n{RESET_SEARCH}
 C {NA} \eb?{COMMIT_PATTERN}\n{RESET_SEARCH}
-l {NA} {COMMIT}|xargs git-wrap o -h\n
-yc {NA} {COMMIT}|cb copy\n
-gd {NA} {SAVE}{UNTIL_COMMIT_LINE}|git-wrap less-read-logs\n{RESET_SEARCH}{RESTORE}
-yf {NA} {SAVE}{UNTIL_COMMIT_LINE}|git-wrap less-read-logs copy-file\n{RESET_SEARCH}{RESTORE}
+l {NA} {BUFFER}|{C("git-wrap less-read-commit|xargs git-wrap o -h")}\n
+yc {NA} {BUFFER}|{C("git-wrap less-read-commit|cb copy")}\n
+gd {NA} {SAVE}{UNTIL_COMMIT_LINE}|{C("git-wrap less-read-logs")}\n{RESET_SEARCH}{RESTORE}
+yf {NA} {SAVE}{UNTIL_COMMIT_LINE}|{C("git-wrap less-read-logs copy-file")}\n{RESET_SEARCH}{RESTORE}
 ''')
