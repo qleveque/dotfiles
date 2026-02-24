@@ -38,9 +38,10 @@ case $key in
   l) run "git log: $(basename `${GIT} rev-parse --show-toplevel`)" "NVIM_DIFF=1 nvim +:DiffviewFileHistory";;
   c) run "git commit" "${GIT} commit || read";;
   a) run "git commit amend" "${GIT} commit --amend || read";;
-  n) run "git commit amend no-edit" "${GIT} commit --amend --no-edit || read";;
-  p) run "git commit amend no-edit" "${GIT} push || read";;
-  N) run "git commit amend no-edit" "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
+  n) run "git commit no-edit" "${GIT} commit --amend --no-edit || read";;
+  p) run "git commit push" "${GIT} push || read";;
+  P) run "git commit push force" "${GIT} push --force || read";;
+  N) run "git commit no-edit push" "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
   o)
     [ -z $hash ] && hash=$(cb paste)
     run "git-show:${hash}" "; NVIM_DIFF=1 nvim +\":DiffviewOpen ${hash}^..${hash} -- $file \""

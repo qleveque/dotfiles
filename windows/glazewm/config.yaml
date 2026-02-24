@@ -2,10 +2,8 @@ general:
   focus_follows_cursor: false
   toggle_workspace_on_refocus: false
   show_all_in_taskbar: true
-
   cursor_jump:
-    enabled: true
-    trigger: 'monitor_focus'
+    enabled: false
 
 gaps:
   inner_gap: '0px'

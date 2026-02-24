@@ -2,7 +2,8 @@
 
 LINUX_PATTERNS=' (--help|hash-object|rev-parse|log|logline|show|reflog|stash list) '
 if [[ $PWD == /mnt/c/* && ! " $* " =~ ${LINUX_PATTERNS} ]]; then
+  [[ $1 == diff ]] && shift && git.exe diff --color "$@" | less && exit 0
   git.exe -c core.editor='e(){ wsl.exe nvim \`wslpath $1\`; clear; }; e' --no-pager "$@"
 else
-  /run/current-system/sw/bin/git "$@"
+  git "$@"
 fi
