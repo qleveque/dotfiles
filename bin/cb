@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!zsh
 
 cmd=$1 && shift
 

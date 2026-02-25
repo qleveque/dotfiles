@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!zsh
 # Run any program
 
 quit() { [[ ${PAUSE} == true ]] && read || echo; exit 0; }

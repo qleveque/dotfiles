@@ -1,4 +1,4 @@
-#zsh
+#!zsh
 
 win && GIT=git-win || GIT=git
 key="$1" && shift
@@ -40,7 +40,7 @@ case $key in
     case $1 in
       copy) echo ${hash} | cb copy;;
       open) title="show: ${hash}" git-wrap show -h "${hash}";;
-      echo) echo ${hash}
+      echo) echo ${hash};;
     esac
   ;;
   less-diff)

@@ -1,7 +1,7 @@
-#!/usr/bin/zsh
+#!zsh
 # Open any file with the default program
 
-if [[ -z "$*" ]] then; set ${PWD}; fi
+[[ -z "$*" ]] && set ${PWD}
 if win; then
   cmd.exe /C START '""' "`wslpath -m "\""$(readlink -f $*)"\""`"
 else

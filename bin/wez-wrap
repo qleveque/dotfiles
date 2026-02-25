@@ -1,11 +1,7 @@
-#!/bin/zsh
+#!zsh
 
-if win; then
-  wez='wezterm.exe'
-  [[ $PWD == /mnt/c/* ]] && PWD=$(wslpath -m ${PWD})
-else
-  wez='wezterm'
-fi
+win && wez='wezterm.exe' || wez='wezterm'
+win && [[ $PWD == /mnt/c/* ]] && PWD=$(wslpath -m ${PWD})
 cmd="$1" && shift
 
 # Hacks to spawn tab next to current one

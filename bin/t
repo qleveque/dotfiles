@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!zsh
 # Open a test file with the given extension
 
 win && tmp="${HOME}/AppData/Local/Temp" || tmp="/tmp"
