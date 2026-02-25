@@ -70,13 +70,6 @@ nnoremap \p :action ParameterInfo<CR>
 nnoremap \h :action TypeHierarchy<CR>
 nnoremap gF :action Tool_External Tools_Nvim<CR>
 
-" Git
-noremap <C-g>d :action Compare.LastVersion<CR>
-nnoremap <C-g>s :action Vcs.Show.Local.Changes<CR>
-nnoremap <C-g>f :action Vcs.ShowTabbedFileHistory<CR>
-nnoremap <C-g>l :action Vcs.Show.Log<CR>
-nnoremap <C-g>b :action Annotate<CR>
-
 " Debug
 nmap <Up> :action Resume<CR>
 nmap <Right> :action StepInto<CR>

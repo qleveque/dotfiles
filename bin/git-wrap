@@ -1,57 +1,55 @@
-#!/usr/bin/zsh
-key="$1"
-shift
+#zsh
 
 win && GIT=git-win || GIT=git
+key="$1" && shift
+run() { wez-wrap new "${title}" "$@" > /dev/null }
 
 while getopts "h:f:l:" opt; do case $opt in
-  f) file="$(realpath -s --relative-to="${PWD}" "${OPTARG}")" ;;
+  f) [[ -n "${OPTARG}" ]] && file="$(realpath -s --relative-to="${PWD}" "${OPTARG}")" ;;
   l) line="${OPTARG}";;
   h) hash="${OPTARG}";;
 esac; done
 shift $((OPTIND -1))
 
-run() {
-  tab_title="$1"
-  shift
-  wez-wrap new "${tab_title}" "$@" > /dev/null
-}
-
-read-commit-line() {
-  read line
-  if [[
-      "$line" =~ '^commit\ (\w+)' ||
-      "$line" =~ '(HEAD@\{[0-9]+\})' ||
-      "$line" =~ '(stash@\{[0-9]+\})' ||
-      "$line" =~ '^[*| ]* (\w+)'
-    ]]; then
-    echo "${match[1]}"
-    return
-  fi
-  echo NO_COMMIT
-}
+COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
 
 case $key in
-  d) run "git diff: ${file:t}" "NVIM_DIFF=1 nvim +\":DiffviewOpen -uno -- '${file}'\"";;
-  s) run "git status: $(basename `${GIT} rev-parse --show-toplevel`)" "NVIM_DIFF=1 nvim +:DiffviewOpen";;
-  f) run "git logfile:${file:t}" "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"";;
-  l) run "git log: $(basename `${GIT} rev-parse --show-toplevel`)" "NVIM_DIFF=1 nvim +:DiffviewFileHistory";;
-  c) run "git commit" "${GIT} commit || read";;
-  a) run "git commit amend" "${GIT} commit --amend || read";;
-  n) run "git commit no-edit" "${GIT} commit --amend --no-edit || read";;
-  p) run "git commit push" "${GIT} push || read";;
-  P) run "git commit push force" "${GIT} push --force || read";;
-  N) run "git commit no-edit push" "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
-  o)
-    [ -z $hash ] && hash=$(cb paste)
-    run "git-show:${hash}" "; NVIM_DIFF=1 nvim +\":DiffviewOpen ${hash}^..${hash} -- $file \""
+  o) [[ -z ${hash} ]] && hash=$(cb paste); title="show: ${hash}" git-wrap show -h "${hash}" -f "${file}";;
+  d) title="diff: ${file}" git-wrap show -f "${file}";;
+  s) title="status" git-wrap show;;
+  f) title="history: ${file}" git-wrap log -f "${file}";;
+  l) title="log: $(basename `${GIT} rev-parse --show-toplevel`)" git-wrap log;;
+  c) title="git commit" && run "${GIT} commit || read";;
+  a) title="git commit amend" && run "${GIT} commit --amend || read";;
+  n) title="git commit no-edit" && run "${GIT} commit --amend --no-edit || read";;
+  p) title="git commit push" && run "${GIT} push || read";;
+  P) title="git commit push force" && run "${GIT} push --force || read";;
+  N) title="git commit no-edit push" && run "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
+  #
+  show)
+    [[ -n ${hash} && ${hash} != diff ]] && revision="${hash}^..${hash}"
+    [[ -n ${file} ]] && params="-uno"
+    run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${params} ${revision} -- ${file} \""
   ;;
-  less-read-commit) read-commit-line;;
-  less-read-logs)
-    commit=$(read-commit-line)
+  log) run "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"";;
+  less-commit)
+    read line
+    for pat in ${COMMIT_PATTERNS}; do
+      [[ ${line} =~ ${pat} ]] && hash="${match[1]}" && break
+    done
+    case $1 in
+      copy) echo ${hash} | cb copy;;
+      open) title="show: ${hash}" git-wrap show -h "${hash}";;
+      echo) echo ${hash}
+    esac
+  ;;
+  less-diff)
+    commit=$(git-wrap less-commit echo)
     lines=$(cat)
-    file=$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}')
-    [[ $1 == copy-file ]] && echo ${file} | cb copy && exit 0
-    git-wrap o -h ${commit} ${file:+-f "$file"}
+    file=${$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}'):|}
+    case $1 in
+      copy-file) echo ${file} | cb copy;;
+      open-diff) title="show ${file} ${commit}" git-wrap show -h "${commit}" -f "${file}";;
+    esac
   ;;
 esac

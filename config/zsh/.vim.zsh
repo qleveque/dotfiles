@@ -20,7 +20,6 @@ vm p visual-put
 im '^[[13;5u' forward-word
 im '^[[27;2;32~' insert-space
 im ^V vi-put-before
-# im ^I fzf-completion
 im ^? backward-delete-char
 im ^N fzf-cd-widget
 im ^R fzf-history-widget

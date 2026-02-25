@@ -354,52 +354,6 @@
         }
       ]
     },
-    // Git
-    {
-      "before": [
-        "<C-g>",
-        "b"
-      ],
-      "commands": [
-        "gitlens.toggleFileBlame"
-      ]
-    },
-    {
-      "before": [
-        "<C-g>",
-        "d"
-      ],
-      "commands": [
-        "git.openChange"
-      ]
-    },
-    {
-      "before": [
-        "<C-g>",
-        "s"
-      ],
-      "commands": [
-        "workbench.scm.focus"
-      ]
-    },
-    {
-      "before": [
-        "<C-g>",
-        "f"
-      ],
-      "commands": [
-        "gitlens.views.fileHistory.focus"
-      ]
-    },
-    {
-      "before": [
-        "<C-g>",
-        "l"
-      ],
-      "commands": [
-        "gitlens.showCommitsView"
-      ]
-    },
     // Debug
     {
       "before": [

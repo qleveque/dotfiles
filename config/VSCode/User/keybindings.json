@@ -52,12 +52,6 @@
   // Debug
   { "key": "d d", "command": "debug.removeWatchExpression", "when": "watchExpressionsFocused && !expressionSelected" },
   { "key": "c w", "command": "debug.renameWatchExpression", "when": "watchExpressionsFocused  && !expressionSelected" },
-  // Diff
-  { "key": "g f", "command": "gitlens.openWorkingFile", "when": "isInDiffEditor && !operationInProgress" },
-  { "key": "d o", "command": "git.revertSelectedRanges", "when": "isInDiffEditor && !operationInProgress" },
-  { "key": "g g", "command": "cursorTop", "when": "isInDiffEditor && !operationInProgress" },
-  { "key": "shift+oem_plus", "command": "workbench.action.compareEditor.nextChange", "when": "textCompareEditorVisible" },
-  { "key": "shift+8", "command": "workbench.action.compareEditor.previousChange", "when": "textCompareEditorVisible" },
   // Breadcrumbs
   {
     "key": "l",

@@ -5,10 +5,12 @@
             "label": "Nvim",
             "type": "process",
             "args": [
-                "-c",
-                "wez-wrap nvim ${fileBasename} ${lineNumber}"
+                "wez-wrap",
+                "nvim",
+                "${fileBasename}",
+                "${lineNumber}"
             ],
-            "command": "bash",
+            "command": "wsl",
             "options": {
                 "cwd": "${fileDirname}"
             },
