@@ -1,7 +1,17 @@
 #!zsh
 
-USERPROFILE=`wslpath "$(cmd.exe /c "echo %USERPROFILE%" | tr -d '\r')"`
-APPDATA=`wslpath "$(cmd.exe /c "echo %APPDATA%" | tr -d '\r')"`
+USERPROFILE=`wslpath "$(cmd.exe /c "echo %USERPROFILE%" | tr -d '\r')"` 2>/dev/null
+APPDATA=`wslpath "$(cmd.exe /c "echo %APPDATA%" | tr -d '\r')"` 2>/dev/null
+STARTUP_SCRIPT=`wslpath -w "${USERPROFILE}/.twm/start.bat"` 2>/dev/null
 DOTS="$(git rev-parse --show-toplevel)"
-STARTUP_SCRIPT=$(wslpath -w "${USERPROFILE}/.twm/start.bat")
-PACKAGES=(AmN.yasb DeepL.DeepL equalsraf.win32yank jqlang.jq Git.Git wez.wezterm "AutoHotkey.AutoHotkey -v 1.1.37.02")
+PACKAGES=(
+  glzr-io.glazewm
+  AmN.yasb
+  Git.Git
+  "AutoHotkey.AutoHotkey -v 1.1.37.02"
+  equalsraf.win32yank
+  jqlang.jq
+  wez.wezterm
+  Flow-Launcher.Flow-Launcher
+  DeepL.DeepL
+)

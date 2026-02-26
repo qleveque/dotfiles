@@ -12,13 +12,6 @@ end
 
 local c=wez.config_builder()
 c.audible_bell='Disabled'
-if has_nvidia_driver() then
-  c.front_end='Software'
-else
-  c.front_end='WebGpu'
-  c.webgpu_power_preference = 'HighPerformance'
-end
-
 c.color_scheme='Catppuccin Mocha'
 c.inactive_pane_hsb = {
   saturation = 0.5,
@@ -50,13 +43,12 @@ c.keys={
   {key='f', mods='LEADER', action=a.TogglePaneZoomState},
   {key='l', mods='LEADER', action=a.Multiple{a.ClearScrollback'ScrollbackAndViewport',a.SendString'\x0c'}},
   {key='a', mods='LEADER', action=wez.action_callback(function(w,p)
-      wez.run_child_process({ 'wsl.exe', 'wez-wrap', 'copy', p:pane_id() })
+      wez.run_child_process({ 'wsl', 'wez-wrap', 'copy', p:pane_id() })
   end)},
   {key='r', mods='LEADER', action=a.PromptInputLine{action=wez.action_callback(
     function(w, p, t) w:active_tab():set_title(t) end
   )}},
 }
-c.window_background_opacity = 1
 if wez.target_triple:match("windows") then
   c.wsl_domains={{name='WSL:NixOS', distribution='NixOS'}}
   c.default_domain='WSL:NixOS'

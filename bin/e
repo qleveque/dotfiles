@@ -7,12 +7,12 @@ filetype=$(file --mime-type -b "$1")
 # Check if binary file
 [[ -s $1 ]]&&file -vi "$1"|grep -q 'application/\S\+; charset=binary$'&&ext='bin'
 
-return_if_matched() { [[ ${matched} == 0 ]] && matched=1 || exit 0 }
+exit_on_done() { [[ ${continue} == 1 ]] && continue=0 || exit 0 }
 
 case ${filetype} in
   application/vnd.sqlite3) lazysql "$1";;
-  *) matched=0;;
-esac && return_if_matched
+  *) continue=1;;
+esac && exit_on_done
 
 if win; then
   winrun() {
@@ -23,12 +23,12 @@ if win; then
     png|jpg|jpeg) winrun 'mspaint.exe' "$@";;
     mp3) winrun 'C:\Program Files\Audacity\Audacity.exe' "$@";;
     bin) winrun 'C:\Program Files\ImHex\imhex.exe' "$@";;
-    *) matched=0;;
-  esac && return_if_matched
+    *) continue=1;;
+  esac && exit_on_done
 else
   case ${ext} in
-    *) matched=0;;
-  esac && return_if_matched
+    *) continue=1;;
+  esac && exit_on_done
 fi
 
 nvim "$@"

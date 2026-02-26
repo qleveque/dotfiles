@@ -3,6 +3,7 @@
 win && GIT=git-win || GIT=git
 key="$1" && shift
 run() { wez-wrap new "${title}" "$@" > /dev/null }
+COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
 
 while getopts "h:f:l:" opt; do case $opt in
   f) [[ -n "${OPTARG}" ]] && file="$(realpath -s --relative-to="${PWD}" "${OPTARG}")" ;;
@@ -11,13 +12,11 @@ while getopts "h:f:l:" opt; do case $opt in
 esac; done
 shift $((OPTIND -1))
 
-COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
-
 case $key in
   o) [[ -z ${hash} ]] && hash=$(cb paste); title="show: ${hash}" git-wrap show -h "${hash}" -f "${file}";;
-  d) title="diff: ${file}" git-wrap show -f "${file}";;
+  d) title="diff: ${file:t}" git-wrap show -f "${file}";;
   s) title="status" git-wrap show;;
-  f) title="history: ${file}" git-wrap log -f "${file}";;
+  f) title="history: ${file:t}" git-wrap log -f "${file}";;
   l) title="log: $(basename `${GIT} rev-parse --show-toplevel`)" git-wrap log;;
   c) title="git commit" && run "${GIT} commit || read";;
   a) title="git commit amend" && run "${GIT} commit --amend || read";;
@@ -39,17 +38,17 @@ case $key in
     done
     case $1 in
       copy) echo ${hash} | cb copy;;
-      open) title="show: ${hash}" git-wrap show -h "${hash}";;
+      open) title="show: ${hash:0:6}" git-wrap show -h "${hash}";;
       echo) echo ${hash};;
     esac
   ;;
   less-diff)
-    commit=$(git-wrap less-commit echo)
+    hash=$(git-wrap less-commit echo)
     lines=$(cat)
     file=${$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}'):|}
     case $1 in
       copy-file) echo ${file} | cb copy;;
-      open-diff) title="show ${file} ${commit}" git-wrap show -h "${commit}" -f "${file}";;
+      open-diff) title="show ${file:t} ${hash:0:6}" git-wrap show -h "${hash}" -f "${file}";;
     esac
   ;;
 esac

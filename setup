@@ -3,4 +3,4 @@
 mkdir -p ~/.config/home-manager
 cp nix/home.nix ~/.config/home-manager/home.nix
 home-manager switch
-[[ win ]] && source "${0:A:h}/windows/setup"
+win && source "${0:A:h}/windows/setup"

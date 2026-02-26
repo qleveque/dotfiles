@@ -25,13 +25,6 @@
   <action id="CopyContentRootPath">
     <keyboard-shortcut first-keystroke="y" second-keystroke="w" />
   </action>
-  <action id="Diff.ApplyLeftSide">
-    <keyboard-shortcut first-keystroke="d" second-keystroke="o" />
-  </action>
-  <action id="Diff.FocusOppositePane" />
-  <action id="EditSource">
-    <keyboard-shortcut first-keystroke="g" second-keystroke="f" />
-  </action>
   <action id="Editor Copy">
     <keyboard-shortcut first-keystroke="y" second-keystroke="y" />
   </action>
@@ -53,7 +46,6 @@
   <action id="EditorChooseLookupItemReplace">
     <keyboard-shortcut first-keystroke="l" />
   </action>
-  <action id="EditorCompleteStatement" />
   <action id="EditorDown">
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="j" />
@@ -76,18 +68,15 @@
     <keyboard-shortcut first-keystroke="up" />
     <keyboard-shortcut first-keystroke="k" />
   </action>
-  <action id="Find" />
   <action id="FindInPath">
     <keyboard-shortcut first-keystroke="ctrl s" />
   </action>
-  <action id="FindNext" />
   <action id="FocusEditor">
     <keyboard-shortcut first-keystroke="escape" />
   </action>
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="shift ctrl p" />
   </action>
-  <action id="GotoClass" />
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="ctrl t" />
   </action>
@@ -108,9 +97,6 @@
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="j" />
   </action>
-  <action id="NextDiff">
-    <keyboard-shortcut first-keystroke="shift equals" />
-  </action>
   <action id="NextParameter">
     <keyboard-shortcut first-keystroke="l" />
   </action>
@@ -121,37 +107,28 @@
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="j" />
   </action>
-  <action id="PreviousDiff">
-    <keyboard-shortcut first-keystroke="shift 8" />
-  </action>
   <action id="PreviousTab">
     <keyboard-shortcut first-keystroke="shift ctrl tab" />
   </action>
-  <action id="QuickJavaDoc" />
   <action id="RecentFiles">
     <keyboard-shortcut first-keystroke="ctrl p" />
   </action>
   <action id="RenameElement">
     <keyboard-shortcut first-keystroke="c" second-keystroke="w" />
   </action>
-  <action id="SaveAll" />
   <action id="SearchEverywhere.CompleteCommand">
     <keyboard-shortcut first-keystroke="enter" />
   </action>
   <action id="SearchEverywhere.NextTab">
     <keyboard-shortcut first-keystroke="l" />
   </action>
-  <action id="SearchEverywhere.PrevTab" />
-  <action id="Switcher" />
   <action id="Table-selectNextRow">
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="j" />
   </action>
-  <action id="Terminal.ClearBuffer" />
   <action id="Terminal.CloseTab">
     <keyboard-shortcut first-keystroke="ctrl q" />
   </action>
-  <action id="Terminal.SmartCommandExecution.Debug" />
   <action id="Tree-scrollDownChangeSelection">
     <keyboard-shortcut first-keystroke="page_down" />
     <keyboard-shortcut first-keystroke="ctrl d" />
@@ -176,9 +153,6 @@
     <keyboard-shortcut first-keystroke="up" />
     <keyboard-shortcut first-keystroke="k" />
   </action>
-  <action id="Vcs.Log.FocusTextFilter" />
-  <action id="Vcs.Log.ShowTooltip" />
-  <action id="Vcs.UpdateProject" />
   <action id="XDebugger.SetValue">
     <keyboard-shortcut first-keystroke="c" second-keystroke="w" />
   </action>
@@ -188,5 +162,19 @@
   <action id="copilot.chat.show">
     <keyboard-shortcut first-keystroke="shift ctrl enter" />
   </action>
+  <action id="GotoClass" />
+  <action id="EditorCompleteStatement" />
   <action id="copilot.disposeInlays" />
+  <action id="Vcs.Log.FocusTextFilter" />
+  <action id="Vcs.Log.ShowTooltip" />
+  <action id="Vcs.UpdateProject" />
+  <action id="Diff.FocusOppositePane" />
+  <action id="Terminal.ClearBuffer" />
+  <action id="Terminal.SmartCommandExecution.Debug" />
+  <action id="Find" />
+  <action id="QuickJavaDoc" />
+  <action id="SaveAll" />
+  <action id="SearchEverywhere.PrevTab" />
+  <action id="Switcher" />
+  <action id="FindNext" />
 </keymap>

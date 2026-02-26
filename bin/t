@@ -1,7 +1,9 @@
 #!zsh
 # Open a test file with the given extension
 
-win && tmp="${HOME}/AppData/Local/Temp" || tmp="/tmp"
-test_file=$(mktemp -p "${tmp}")
-[[ -n $1 ]] && test_file="${test_file}.$1"
-nvim ${test_file}
+if win; then
+  tmp=`wslpath "$(cmd.exe /c 'echo %TEMP%\%RANDOM%' | tr -d '\r')"` 2>/dev/null
+else
+  tmp=$(mktemp)
+fi
+nvim "${tmp}.$1"
