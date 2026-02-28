@@ -50,7 +50,7 @@ window_behavior:
 
     fullscreen:
       maximized: true
-      shown_on_top: true
+      shown_on_top: false
 
 workspaces:
   - name: "1_any"

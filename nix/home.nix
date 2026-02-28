@@ -17,6 +17,7 @@ in
   };
 
   home.packages = with pkgs; [
+    unzip
     home-manager
     oh-my-zsh
     git

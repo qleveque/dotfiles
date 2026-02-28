@@ -111,6 +111,7 @@ nvim_plugins = {
             { "n", "<CR>", actions.select_entry },
             { "n", "l", actions.focus_entry },
             { "n", "<C-q>", function() vim.cmd('qa!') end },
+            { "n", "!", GitWrap }
           },
           file_history_panel = {
             { "n", "<CR>", actions.select_entry },

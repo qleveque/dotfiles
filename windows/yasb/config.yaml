@@ -3,6 +3,20 @@ watch_config: true
 show_systray: false
 debug: true
 bars:
+  background-bar:
+    class_name: "background-bar"
+    screens: ["**"]
+    alignment:
+      position: "bottom"
+    window_flags:
+      always_on_top: false
+      windows_app_bar: false
+      hide_on_fullscreen: true
+      hide_on_maximized: true
+    dimensions:
+      height: 10
+    animation:
+      enabled: false
   main-bar:
     screens: ["primary"]
     class_name: "main-bar"
@@ -12,6 +26,8 @@ bars:
     window_flags:
       always_on_top: true
       windows_app_bar: true
+      hide_on_fullscreen: true
+      hide_on_maximized: true
     padding:
       right: 3
       left: 3
@@ -22,6 +38,8 @@ bars:
     widgets:
       left: ["glazewm_workspaces"]
       right: ["group", "clock"]
+    animation:
+      enabled: false
   main-bar-secondary:
     screens: ["*"]
     class_name: "main-bar"
@@ -31,6 +49,8 @@ bars:
     window_flags:
       always_on_top: true
       windows_app_bar: true
+      hide_on_fullscreen: true
+      hide_on_maximized: true
     padding:
       right: 3
       left: 3
@@ -40,16 +60,8 @@ bars:
       top: -20
     widgets:
       left: ["glazewm_workspaces"]
-  background-bar:
-    class_name: "background-bar"
-    screens: ["**"]
-    alignment:
-      position: "bottom"
-    window_flags:
-      always_on_top: false
-      windows_app_bar: false
-    dimensions:
-      height: 10
+    animation:
+      enabled: false
 widgets:
   language:
     type: "yasb.language.LanguageWidget"
