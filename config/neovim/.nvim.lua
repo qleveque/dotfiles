@@ -357,9 +357,7 @@ nvim_plugins = {
           ['T']=ta.fs.create,
           ['M'] = function()
             local node = ta.tree.get_node_under_cursor()
-            local base_path = node.type == "directory"
-              and node.absolute_path
-              or vim.fn.fnamemodify(node.absolute_path, ":h")
+            local base_path = node.type == "directory" and path() or vim.fn.fnamemodify(path(), ":h")
             vim.ui.input({ prompt = "Create directory: " }, function(input)
               vim.fn.mkdir(base_path .. "/" .. input, "p")
               ta.tree.reload()
@@ -371,6 +369,7 @@ nvim_plugins = {
           ['h']=ta.node.navigate.parent_close,
           ['é']=function() vim.cmd('sil !wez-wrap split "run -p \\"'..path()..'\\""') end,
           ['É']=function() vim.cmd('sil !wez-wrap split run') end,
+          ['!']=function() vim.cmd('sil !' .. vim.fn.input('!') .. ' ' .. vim.fn.fnameescape(path())) end,
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
           ['<C-g>']=function() vim.cmd('sil !git-wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"') end,

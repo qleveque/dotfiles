@@ -24,3 +24,5 @@ for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "Idea
 done
 
 python3 "${DOTS}/config/less/lesskey.py" wsl > "${USERPROFILE}/.lesskey"
+
+cmd.exe /C "${STARTUP_SCRIPT}" 2>/dev/null &

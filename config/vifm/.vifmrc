@@ -23,9 +23,11 @@ nn U <C-r>
 nn A cw
 nn I cw<c-a>
 nn cw cw<c-u>
+nn ! :execute '!'.input('!').' '.expand('%f')<CR>
+vn ! :execute '!'.input('!').' '.expand('%l')<CR>
 nn <silent> s :sort<CR>
 nn <silent> T :touch<Space>
-nn M :mkdir<Space>
+nn <silent> M :mkdir<Space>
 nn <silent> yW :exe '!echo -n %c:p | cb copy'<CR>
 nn <silent> yM :exe '!printf "%%s" "$(wslpath -w %c:p)" | cb copy'<CR>
 nn <silent> yp :exe '!echo -n %d | cb copy'<CR>

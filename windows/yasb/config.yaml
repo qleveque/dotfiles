@@ -11,8 +11,8 @@ bars:
     window_flags:
       always_on_top: false
       windows_app_bar: false
-      hide_on_fullscreen: true
-      hide_on_maximized: true
+      hide_on_fullscreen: false
+      hide_on_maximized: false
     dimensions:
       height: 10
     animation:
