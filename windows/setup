@@ -16,6 +16,7 @@ cp -f "${DOTS}/config/git/.gitignore" "${USERPROFILE}"
 GIT='/mnt/c/Program Files/Git/cmd/git.exe'
 ${GIT} config --global core.autocrlf true
 ${GIT} config --global core.editor 'e(){ wsl.exe nvim \`wslpath $1\`; clear; }; e'
+${GIT} config --global core.excludesfile '~/.gitignore'
 
 cp -f "${DOTS}/config/JetBrains/.ideavimrc" "${USERPROFILE}/.ideavimrc"
 for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "IdeaIC*"); do

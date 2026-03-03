@@ -12,9 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Vimrc
-vim.cmd('source ~/.vimrc')
-
 -- Use cb for the clipboard
 vim.g.clipboard = {
   copy = { ['+'] = 'cb copy' },

@@ -7,7 +7,6 @@
   whitespace = trailing-space
   longpaths = true
   filemode = false
-  excludesfile = ~/.gitignore
   autocrlf = input
   safecrlf = false
 [push]

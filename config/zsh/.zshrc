@@ -7,10 +7,6 @@ eval "$(fzf --zsh)"
 cf() { cd "$(dirname $1)" }
 h() { "$@" --help | bat -l help --paging=always --style=plain }
 man() { /usr/bin/man "$@" | bat -l man --paging=always --style=plain }
-
-# Sources
-source "${HOME}/.config/zsh/.vim.zsh"
-source "${HOME}/.aliases"
 [[ -f "${HOME}/.init.zsh" ]] && source "${HOME}/.init.zsh"
 
 # On directory changed
