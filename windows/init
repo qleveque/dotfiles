@@ -4,6 +4,9 @@ source "${0:A:h}/var"
 wudo schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"${STARTUP_SCRIPT}\"" /f
 
 cd ${USERPROFILE}
-for package in "${PACKAGES[@]}"; do; winget.exe install --id=${=package} -h -e &; done
+for package in "${PACKAGES[@]}"; do
+  echo Installation of ${package}
+  winget.exe install --id=${=package} -h -e &
+done
 wait
 cd -

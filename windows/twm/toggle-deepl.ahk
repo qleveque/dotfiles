@@ -1,7 +1,10 @@
 DetectHiddenWindows, On
 
+DeepLOpen := false
+
 ToggleDeepL() {
-    if WinExist("DeepL") {
+    global DeepLOpen
+    if WinExist("DeepL") && DeeplOpen {
         if WinActive("DeepL") {
             WinMinimize, DeepL
             WinHide, DeepL
@@ -12,6 +15,7 @@ ToggleDeepL() {
         }
         return
     } else {
-	Run, %A_AppData%\Roaming\Programs\ZeroInstall\0install-win.exe run https://appdownload.deepl.com/windows/0install/deepl.xml
+        Run, "%A_AppData%\Programs\Zero Install\0install-win.exe" run https://appdownload.deepl.com/windows/0install/deepl.xml
+        DeepLOpen := true
     }
 }
