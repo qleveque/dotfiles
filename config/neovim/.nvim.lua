@@ -122,7 +122,6 @@ nvim_plugins = {
       })
     end
   },
-  "pocco81/auto-save.nvim",
   "tpope/vim-repeat",
   "tpope/vim-sleuth",
   {"numToStr/Comment.nvim", opts={}},

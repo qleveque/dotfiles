@@ -1,4 +1,4 @@
-set ic scs nu list udf cul et lz noswf nowb so=4 ch=0 shm+=I scl=number cb=unnamedplus ts=2 sw=0 lbr
+set ic scs nu list udf cul et lz noswf nowb so=4 ch=0 shm+=I scl=number cb=unnamedplus ts=2 sw=0 lbr awa
 set diffopt+=iwhite stl=%1*\ \%f%m%{reg_recording()!=''?'\ 󰑋\ '.reg_recording():''}\ %0*%= 
 
 " Vim "corrections"
@@ -28,3 +28,5 @@ nn <silent> - :sil cprev<CR>
 nn <silent> + :sil cnext<CR>
 nn <silent> é :exe'sil !wez-wrap split "run -p \"'.expand('%').'\""'<CR>
 nn <silent> É :exe'sil !wez-wrap split run'<CR>
+
+au FocusLost,BufLeave,VimLeavePre * if &modifiable && !&readonly | silent! update | endif
