@@ -20,6 +20,7 @@ LESS = -irR --mouse --wheel-lines=1 +/\^
 \e abort
 ^A up
 #command
+j forw-line-force
 gg goto-line
 G goto-end \e\40
 zz back-scroll

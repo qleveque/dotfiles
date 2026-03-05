@@ -26,24 +26,24 @@ read-commit() {
 }
 
 case $key in
-  o) [[ -z ${hash} ]] && hash=$(cb paste); title="show: ${hash}" show;;
-  d) title="diff: ${file:t}" hash= show;;
+  o) [[ -z ${hash} ]] && hash=$(cb paste); title="show ${hash:0:10}" show;;
+  d) title="diff ${file:t}" hash= show;;
   s) title="status" hash= file= show;;
-  f) title="history: ${file:t}" hash= log;;
-  l) title="log: $(basename `${GIT} rev-parse --show-toplevel`)" hash= file= log;;
-  c) title="git commit" && run "${GIT} commit || read";;
-  a) title="git commit amend" && run "${GIT} commit --amend || read";;
-  n) title="git commit no-edit" && run "${GIT} commit --amend --no-edit || read";;
-  p) title="git commit push" && run "${GIT} push || read";;
-  P) title="git commit push force" && run "${GIT} push --force || read";;
-  N) title="git commit no-edit push" && run "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
+  f) title="history ${file:t}" hash= log;;
+  l) title="log $(basename `${GIT} rev-parse --show-toplevel`)" hash= file= log;;
+  c) title="commit" && run "${GIT} commit || read";;
+  a) title="commit amend" && run "${GIT} commit --amend || read";;
+  n) title="commit no-edit" && run "${GIT} commit --amend --no-edit || read";;
+  p) title="commit push" && run "${GIT} push || read";;
+  P) title="commit push force" && run "${GIT} push --force || read";;
+  N) title="commit no-edit push" && run "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
 esac
 
 if [[ $key == less-commit ]]; then
   hash=$(read-commit)
   case $1 in
     copy) echo ${hash} | cb copy;;
-    open) title="show: ${hash:0:6}" file= show -h "${hash}";;
+    open) title="show ${hash:0:10}" file= show -h "${hash}";;
   esac
 elif [[ $key == less-diff ]]; then
   hash=$(read-commit)

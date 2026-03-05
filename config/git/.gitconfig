@@ -20,7 +20,7 @@
   required = true
 [alias]
   parent = "!h(){ hash=$(git merge-base $*) && git log -n1 $hash;};h"
-  logline = "log --graph --pretty=\"%Cred%h%Creset %Cgreen%s%C(auto)%d %C(bold blue)%an %Cblue%cr%Creset\""
+  line = "log --graph --pretty=\"%Cred%h%Creset %Cgreen%s%C(auto)%d %C(bold blue)%an %Cblue%cr%Creset\""
 [advice]
   detachedHead = false
   diverging = false

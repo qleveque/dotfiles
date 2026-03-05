@@ -5,6 +5,11 @@
     <nixos-wsl/modules>
   ];
 
+  time = {
+    hardwareClockInLocalTime = true;
+    timeZone = "Europe/Zurich";
+  };
+
   users.users.qle = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
