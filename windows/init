@@ -1,12 +1,22 @@
 #!zsh
-source "${0:A:h}/var"
-
-wudo schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"${STARTUP_SCRIPT}\"" /f
-
 cd ${USERPROFILE}
-for package in "${PACKAGES[@]}"; do
-  echo Installation of ${package}
-  winget.exe install --id=${=package} -h -e &
-done
-wait
+
+PACKAGES=(
+  glzr-io.glazewm
+  AmN.yasb
+  Git.Git
+  "AutoHotkey.AutoHotkey -v 1.1.37.02"
+  equalsraf.win32yank
+  jqlang.jq
+  wez.wezterm
+  Flow-Launcher.Flow-Launcher
+  DeepL.DeepL
+  gerardog.gsudo
+)
+for package in "${PACKAGES[@]}"; do winget.exe install --id=${=package} -h -e &; done; wait
+
+STARTUP_SCRIPT=`wslpath -w "${USERPROFILE}/.twm/start.bat"`
+wudo schtasks.exe /create /tn "mystartup" /sc onlogon /tr "cmd.exe /C \"${STARTUP_SCRIPT}\"" /f
+cmd.exe /C "${STARTUP_SCRIPT}" &
+
 cd -

@@ -1,0 +1,6 @@
+#!zsh
+if win; then
+ for WIN_VAR in USERPROFILE APPDATA; do
+   eval "export $WIN_VAR=$(wslpath `cmd.exe /c "echo %${WIN_VAR}%" 2>/dev/null | tr -d '\r'`)"
+ done
+fi

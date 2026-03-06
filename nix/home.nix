@@ -36,12 +36,6 @@ in
     nodejs
     python3
     wget
-    (pkgs.writeScriptBin "wudo" ''
-      ${builtins.readFile (pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/Chronial/wsl-sudo/master/wsl-sudo.py";
-        sha256 = "K/sQalNioRlhsFUhcXCXz8qM63rJp9Zamy++oUrd9rc=";
-      })}
-    '')
     (pkgs.writeScriptBin "extract" ''
       #!${pkgs.zsh}/bin/zsh
       source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/extract/extract.plugin.zsh
@@ -70,6 +64,7 @@ in
         ${builtins.readFile "${dotfiles}/config/zsh/.aliases"}
       '';
       envExtra = builtins.readFile "${dotfiles}/config/zsh/.zshenv";
+      loginExtra = builtins.readFile "${dotfiles}/config/zsh/.zshprofile";
     };
     git = {
       enable = true;

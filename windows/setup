@@ -1,6 +1,6 @@
 #!zsh
 setopt glob_dots
-source "${0:A:h}/var"
+DOTS="$(git rev-parse --show-toplevel)"
 
 cpdir() { mkdir -p "$2" && cp -rf "$1" "$2" }
 
@@ -25,5 +25,3 @@ for dir in $(find "${APPDATA}/JetBrains" -type d -name "PyCharm*" -o -name "Idea
 done
 
 python3 "${DOTS}/config/less/lesskey.py" wsl > "${USERPROFILE}/.lesskey"
-
-cmd.exe /C "${STARTUP_SCRIPT}" 2>/dev/null &

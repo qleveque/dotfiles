@@ -9,4 +9,5 @@ alias telnet='telnet -e ^C'
 alias xargs='xargs -i'
 if win; then
   alias git='git-win'
+  alias wudo='"/mnt/c/Program Files/gsudo/Current/sudo.exe"'
 fi
