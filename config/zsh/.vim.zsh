@@ -5,14 +5,14 @@ typeset -A vimodes=( [vm]='visual' [im]='viins' [nm]='vicmd' [om]='viopp' )
 for map in ${(k)vimodes}; do eval ${map}'(){bindkey -M'${vimodes[${map}]}' $*;}';done
 
 # Remapping
-nm s vi-surround
 nm c vi-change-wrap
 nm d vi-delete-wrap
 nm x vi-cut
-vm s vi-surround
 vm c vi-change
 vm d vi-delete
 vm x vi-cut
+nm s add-surround
+vm s add-surround
 nm U redo
 vm v visual-line-mode
 vm P vi-visual-swap
@@ -21,7 +21,6 @@ im '^[[13;5u' forward-word # Alt + Enter
 im ^V vi-put-before
 
 im ^N fzf-cd-widget
-im ^R fzf-history-widget
 im ^P fzf-recent-widget
 im ^F open-fm
 im ^G open-git-wrap
@@ -38,7 +37,7 @@ vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|cb copy}
 vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|cb copy}
 vi-put-before(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-before}
 vi-put-after(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-after}
-vi-wrapper(){read -k1 k;case $k in s)zle vi-surround;;*)zle -U $k&&zle .${WIDGET%-wrap};;esac}
+vi-wrapper(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .${WIDGET%-wrap};;esac}
 vi-visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|cb copy}
 vi-visual-put(){zle vi-delete; zle vi-put-before}
 set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
@@ -53,9 +52,9 @@ quit(){exit}
 wids=(
   vi-{cut,yank}
   vi-put-{before,after}
-  vi-surround:surround
   vi-visual-{put,swap}
   vi-{change,delete}-wrap:vi-wrapper
+  add-surround:surround
   open-{fm,git-wrap,copy-mode}
   fzf-recent-widget
   select-{bracketed,quoted}

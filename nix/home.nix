@@ -64,15 +64,14 @@ in
         ${builtins.readFile "${dotfiles}/config/zsh/.aliases"}
       '';
       envExtra = builtins.readFile "${dotfiles}/config/zsh/.zshenv";
-      loginExtra = builtins.readFile "${dotfiles}/config/zsh/.zshprofile";
     };
     git = {
       enable = true;
       includes = [
-        { path = "${dotfiles}/config/git/.gitconfig"; }
+        { path = "${dotfiles}/config/git/config"; }
       ];
       ignores = lib.splitString "\n"
-        (builtins.readFile "${dotfiles}/config/git/.gitignore");
+        (builtins.readFile "${dotfiles}/config/git/ignore");
     };
     neovim = {
       enable = true;

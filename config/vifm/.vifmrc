@@ -57,3 +57,4 @@ hi TopLineSel cterm=none ctermfg=yellow ctermbg=none
 hi Border cterm=none ctermfg=black ctermbg=none
 hi Directory cterm=bold ctermfg=green ctermbg=none
 hi Selected cterm=reverse ctermfg=blue ctermbg=default
+hi Link ctermfg=blue
