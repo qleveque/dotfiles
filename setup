@@ -3,4 +3,9 @@
 mkdir -p ~/.config/home-manager
 cp nix/home.nix ~/.config/home-manager/home.nix
 home-manager switch
-win && source "${0:A:h}/windows/setup"
+if win; then
+  tmp="$(cmd.exe /c 'echo %TEMP%\setup.bat' | tr -d '\r')" 2>/dev/null
+  cp windows/setup.bat `wslpath ${tmp}`
+  cmd.exe /c "${tmp}"
+fi
+
