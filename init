@@ -5,3 +5,11 @@ sudo nixos-rebuild switch
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
+source setup
+
+if win; then
+  tmp="$(cmd.exe /c 'echo %TEMP%\init.bat' 2>/dev/null | tr -d '\r')"
+  cp windows/init.bat `wslpath ${tmp}`
+  cd /mnt/c
+  cmd.exe /c start "" "${tmp}"
+fi

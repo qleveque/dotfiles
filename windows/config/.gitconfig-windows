@@ -1,3 +1,0 @@
-[core]
-  autocrlf = true
-  editor = "e(){ wsl.exe nvim `wslpath $1`; clear; }; e"

@@ -15,3 +15,4 @@ tasklist /FI "IMAGENAME eq glazewm.exe" | find /I "glazewm.exe" >nul
 if errorlevel 1 (
     start "" "%PROGRAMFILES%\glzr.io\GlazeWM\glazewm.exe"
 )
+exit

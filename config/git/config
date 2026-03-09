@@ -30,5 +30,3 @@
   pullUpdateInstead = false
 [pager]
   diff = "(echo diff; cat) | less"
-[include]
-  path = "~/.gitconfig-windows"
