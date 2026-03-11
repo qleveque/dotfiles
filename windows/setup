@@ -1,5 +1,6 @@
 #!zsh
 
 cp -rfL "${HOME}/dotfiles/windows/config/." "${USERPROFILE}"
+cp -rfL "${HOME}/dotfiles/windows/bin" "${HOME}/.local"
 cp -rfL "${USERPROFILE}/.config/Code" "${APPDATA}"
 python3 "${HOME}/dotfiles/config/less/lesskey.py" wsl > "${USERPROFILE}/.lesskey"

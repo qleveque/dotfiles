@@ -55,9 +55,9 @@ wids=(
   vi-visual-{put,swap}
   vi-{change,delete}-wrap:vi-wrapper
   add-surround:surround
+  select-{bracketed,quoted}
   open-{fm,git-wrap,copy-mode}
   fzf-recent-widget
-  select-{bracketed,quoted}
   quit
   insert-space
   zle-{keymap-select,line-{init,finish}}:set-cursor

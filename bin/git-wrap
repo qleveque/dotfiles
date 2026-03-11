@@ -1,6 +1,4 @@
 #!zsh
-
-win && GIT=git-win || GIT=git
 key="$1" && shift
 COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
 
@@ -30,13 +28,13 @@ case $key in
   d) title="diff ${file:t}" hash= show;;
   s) title="status" hash= file= show;;
   f) title="history ${file:t}" hash= log;;
-  l) title="log $(basename `${GIT} rev-parse --show-toplevel`)" hash= file= log;;
-  c) title="commit" && run "${GIT} commit || read";;
-  a) title="commit amend" && run "${GIT} commit --amend || read";;
-  n) title="commit no-edit" && run "${GIT} commit --amend --no-edit || read";;
-  p) title="commit push" && run "${GIT} push || read";;
-  P) title="commit push force" && run "${GIT} push --force || read";;
-  N) title="commit no-edit push" && run "(${GIT} commit --amend --no-edit && ${GIT} push --force) || read";;
+  l) title="log" hash= file= log;;
+  c) title="commit" && run "git commit || read";;
+  a) title="commit amend" && run "git commit --amend || read";;
+  n) title="commit no-edit" && run "git commit --amend --no-edit || read";;
+  p) title="commit push" && run "git push || read";;
+  P) title="commit push force" && run "git push --force || read";;
+  N) title="commit no-edit push" && run "(git commit --amend --no-edit && git push --force) || read";;
 esac
 
 if [[ $key == less-commit ]]; then

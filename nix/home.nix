@@ -23,7 +23,7 @@ in
     oh-my-zsh
     xsel
     sd
-    starship
+    pure-prompt
     ripgrep
     fd
     jq
@@ -95,5 +95,4 @@ in
       '');
     };
   };
-
 }

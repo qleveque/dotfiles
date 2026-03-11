@@ -3,5 +3,5 @@
 if [[ $PWD == /mnt/c/* && ! " $* " =~ " (--help|hash-object|rev-parse) " ]]; then
   git.exe "$@"
 else
-  git "$@"
+  "$HOME/.nix-profile/bin/git" "$@"
 fi

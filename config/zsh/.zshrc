@@ -2,7 +2,7 @@
 stty -ixon
 setopt histignorealldups sharehistory nonomatch promptsubst chase_links physical
 zstyle ':completion:*' fzf-search-display true
-eval "$(starship init zsh)"
+prompt pure
 eval "$(fzf --zsh)"
 cf() { cd "$(dirname $1)" }
 h() { "$@" --help | bat -l help --paging=always --style=plain }

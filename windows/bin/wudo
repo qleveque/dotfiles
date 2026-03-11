@@ -1,0 +1,2 @@
+#!zsh
+"/mnt/c/Program Files/gsudo/Current/sudo.exe" "$@"
