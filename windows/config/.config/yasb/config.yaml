@@ -25,7 +25,7 @@ bars:
       align: "left"
     window_flags:
       always_on_top: true
-      windows_app_bar: true
+      windows_app_bar: false
       hide_on_fullscreen: true
       hide_on_maximized: true
     padding:
@@ -48,7 +48,7 @@ bars:
       align: "left"
     window_flags:
       always_on_top: true
-      windows_app_bar: true
+      windows_app_bar: false
       hide_on_fullscreen: true
       hide_on_maximized: true
     padding:
