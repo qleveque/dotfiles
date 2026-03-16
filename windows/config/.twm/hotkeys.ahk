@@ -16,12 +16,7 @@ Insert::Send, #{PrintScreen}
 #Left::Send, {Media_Prev}
 
 ^!+t::Run, "C:\Program Files\WezTerm\wezterm-gui.exe"
-^!+w::
-    Run, "C:\Program Files\Zen Browser\zen.exe"
-    WinWaitActive, ahk_exe zen.exe
-    Sleep, 400
-    RunWait, glazewm.exe command wm-redraw,, Hide
-    return
+^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
 
 !Space::ToggleScratchPad()
 !+Space::ToggleDeepL()

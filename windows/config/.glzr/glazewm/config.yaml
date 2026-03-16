@@ -12,13 +12,13 @@ gaps:
     top: '0px'
     right: '0px'
     left: '0px'
-    bottom: '10px'
+    bottom: '0px'
 
   single_window_outer_gap:
     top: '0px'
     right: '0px'
     left: '0px'
-    bottom: '10px'
+    bottom: '0px'
 
 window_effects:
   focused_window:

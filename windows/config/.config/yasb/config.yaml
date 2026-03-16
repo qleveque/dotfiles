@@ -9,10 +9,7 @@ bars:
     alignment:
       position: "bottom"
     window_flags:
-      always_on_top: false
-      windows_app_bar: false
-      hide_on_fullscreen: false
-      hide_on_maximized: false
+      windows_app_bar: true
     dimensions:
       height: 10
     animation:
@@ -25,7 +22,7 @@ bars:
       align: "left"
     window_flags:
       always_on_top: true
-      windows_app_bar: false
+      windows_app_bar: true
       hide_on_fullscreen: true
       hide_on_maximized: true
     padding:
@@ -48,7 +45,7 @@ bars:
       align: "left"
     window_flags:
       always_on_top: true
-      windows_app_bar: false
+      windows_app_bar: true
       hide_on_fullscreen: true
       hide_on_maximized: true
     padding:
