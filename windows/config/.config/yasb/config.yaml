@@ -26,13 +26,12 @@ bars:
       windows_app_bar: true
       hide_on_fullscreen: true
       hide_on_maximized: true
-    padding:
-      right: 3
-      left: 3
     dimensions:
       height: 20
     padding:
-      top: -20
+      top: -10
+      right: 3
+      left: 3
     widgets:
       left: ["glazewm_workspaces"]
       right: ["group", "clock"]
@@ -49,13 +48,12 @@ bars:
       windows_app_bar: true
       hide_on_fullscreen: true
       hide_on_maximized: true
-    padding:
-      right: 3
-      left: 3
     dimensions:
       height: 20
     padding:
-      top: -20
+      top: -10
+      right: 3
+      left: 3
     widgets:
       left: ["glazewm_workspaces"]
     animation:
