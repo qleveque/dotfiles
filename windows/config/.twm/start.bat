@@ -14,5 +14,7 @@ if errorlevel 1 (
 tasklist /FI "IMAGENAME eq glazewm.exe" | find /I "glazewm.exe" >nul
 if errorlevel 1 (
     start "" "%PROGRAMFILES%\glzr.io\GlazeWM\glazewm.exe"
+) else (
+    start "" "%PROGRAMFILES%\glzr.io\GlazeWM\glazewm.exe" command wm-reload-config
 )
 exit

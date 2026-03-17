@@ -10,8 +10,7 @@
 return
 
 Insert::Send, #{PrintScreen}
-#Up::Send, {Volume_Up}
-#Down::Send, {Volume_Down}
+#Down::Send, {Media_Play_Pause}
 #Right::Send, {Media_Next}
 #Left::Send, {Media_Prev}
 

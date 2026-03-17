@@ -5,11 +5,11 @@ typeset -A vimodes=( [vm]='visual' [im]='viins' [nm]='vicmd' [om]='viopp' )
 for map in ${(k)vimodes}; do eval ${map}'(){bindkey -M'${vimodes[${map}]}' $*;}';done
 
 # Remapping
-nm c vi-change-wrap
-nm d vi-delete-wrap
+nm c change-wrap
+nm d delete-wrap
 nm x vi-cut
-vm c vi-change
-vm d vi-delete
+vm c change-wrap
+vm d delete-wrap
 vm x vi-cut
 nm s add-surround
 vm s add-surround
@@ -35,26 +35,25 @@ for c in {v,o}m\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
 # Functions
 vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|cb copy}
 vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|cb copy}
-vi-put-before(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-before}
-vi-put-after(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .vi-put-after}
-vi-wrapper(){read -k1 k;case $k in s)zle add-surround;;*)zle -U $k&&zle .${WIDGET%-wrap};;esac}
-vi-visual-swap(){zle vi-delete;local b="${CUTBUFFER}";zle vi-put-before;printf '%s' "${b}"|cb copy}
-vi-visual-put(){zle vi-delete; zle vi-put-before}
-set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
-open-fm(){cd "$(vifm -c :only --choose-dir - . < /dev/tty)";zle reset-prompt; zle zle-line-init}
+vi-put(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .${1:-$WIDGET}}
+vi-surround-wrapper(){read -k1 k;case $k in s)zle surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac}
+vi-visual-put(){zle vi-delete; vi-put vi-put-before}
+vi-visual-swap(){zle vi-delete;local b="${CUTBUFFER}";vi-put vi-put-before;printf '%s' "${b}"|cb copy}
+open-fm(){cd "$(vifm -c :only --choose-dir - . . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-git-wrap(){local k; read -k1 k; git-wrap $k -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
 open-copy-mode(){zle autosuggest-clear; wez-wrap copy}
 fzf-recent-widget(){cd "$(eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS})";zle reset-prompt;zle zle-line-init}
 insert-space() { LBUFFER+=" " }
 quit(){exit}
+set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
 
 # Widgets instantiation
-wids=(
+my_widgets=(
   vi-{cut,yank}
-  vi-put-{before,after}
+  vi-put-{before,after}:vi-put
   vi-visual-{put,swap}
-  vi-{change,delete}-wrap:vi-wrapper
-  add-surround:surround
+  {change,delete}-wrap:vi-surround-wrapper
+  {add-,}surround:surround
   select-{bracketed,quoted}
   open-{fm,git-wrap,copy-mode}
   fzf-recent-widget
@@ -62,4 +61,4 @@ wids=(
   insert-space
   zle-{keymap-select,line-{init,finish}}:set-cursor
 )
-for wid in "${wids[@]}"; do zle -N ${=wid//:/ }; done
+for widget in "${my_widgets[@]}"; do zle -N ${=widget//:/ }; done
