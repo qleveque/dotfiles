@@ -34,6 +34,7 @@ c.keys={
   {key='Enter', mods='CTRL', action=a{SendString='\x1b[13;5u'}},
   {key='Tab', mods='CTRL|SHIFT', action=a{SendString='\x1b[27;6;9~'}},
   {key='Space', mods= 'SHIFT', action=a{SendString='\x1b[27;2;32~'}},
+  {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F13'}},
   {key=';', mods='CTRL', action=a.ActivateTabRelative(1)},
   {key=',', mods='CTRL', action=a.ActivateTabRelative(-1)},
   {key='s', mods='LEADER', action=a.SplitVertical{}},

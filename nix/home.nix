@@ -6,17 +6,20 @@ let
   dotfiles = builtins.path {
     path = "${home}/dotfiles";
   };
-  scriptNames = builtins.attrNames (builtins.readDir "${dotfiles}/bin");
-in
-{
-
-  home = {
-    username = user;
-    homeDirectory = home;
-    stateVersion = "25.05";
-  };
-
-  home.packages = with pkgs; [
+  my-scripts = map (name:
+    pkgs.writeScriptBin name ''
+      #!${pkgs.zsh}/bin/zsh
+      ${builtins.readFile "${dotfiles}/bin/${name}"}
+    ''
+  ) (builtins.attrNames (builtins.readDir "${dotfiles}/bin"))
+  ++ [(pkgs.writeScriptBin "extract" ''
+    #!${pkgs.zsh}/bin/zsh
+    source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/extract/extract.plugin.zsh
+    extract "$@"
+  '')];
+  unstable = import <nixos-unstable> { config.allowUnfree = true; };
+  packages = with pkgs; [
+    unstable.opencode
     unzip
     zip
     home-manager
@@ -35,20 +38,18 @@ in
     bc
     nodejs
     python3
+    gnumake
     wget
-    (pkgs.writeScriptBin "extract" ''
-      #!${pkgs.zsh}/bin/zsh
-      source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/extract/extract.plugin.zsh
-      extract "$@"
-    '')
-  ] ++ (
-    map (name:
-      pkgs.writeScriptBin name ''
-        #!${pkgs.zsh}/bin/zsh
-        ${builtins.readFile "${dotfiles}/bin/${name}"}
-      ''
-    ) scriptNames
-  );
+  ] ++ my-scripts;
+in
+{
+
+  home = {
+    username = user;
+    homeDirectory = home;
+    stateVersion = "25.05";
+    packages = packages;
+  };
 
   programs = {
     zsh = {
