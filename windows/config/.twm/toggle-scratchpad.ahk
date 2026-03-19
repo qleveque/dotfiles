@@ -14,6 +14,7 @@ ToggleScratchPad() {
                 WinSetTitle, ahk_id %weztermID%, ,SCRATCHPAD
                 WinRestore, ahk_id %weztermID%
                 WinActivate, ahk_id %weztermID%
+                Send, {Esc}
                 WinSet, AlwaysOnTop, On, ahk_id %weztermID%
             }
             return

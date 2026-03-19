@@ -3,18 +3,6 @@ watch_config: true
 show_systray: false
 debug: true
 bars:
-  background-bar:
-    class_name: "background-bar"
-    screens: ["**"]
-    alignment:
-      position: "bottom"
-    window_flags:
-      always_on_top: false
-      windows_app_bar: false
-    dimensions:
-      height: 10
-    animation:
-      enabled: false
   main-bar:
     screens: ["primary"]
     class_name: "main-bar"
@@ -22,16 +10,10 @@ bars:
       position: "bottom"
       align: "left"
     window_flags:
-      always_on_top: true
-      windows_app_bar: true
       hide_on_fullscreen: true
       hide_on_maximized: true
     dimensions:
       height: 20
-    padding:
-      top: -10
-      right: 3
-      left: 3
     widgets:
       left: ["glazewm_workspaces"]
       right: ["group", "clock"]
@@ -44,16 +26,10 @@ bars:
       position: "bottom"
       align: "left"
     window_flags:
-      always_on_top: true
-      windows_app_bar: true
       hide_on_fullscreen: true
       hide_on_maximized: true
     dimensions:
       height: 20
-    padding:
-      top: -10
-      right: 3
-      left: 3
     widgets:
       left: ["glazewm_workspaces"]
     animation:

@@ -10,11 +10,8 @@
 }
 
 .main-bar {
-  background-color: transparent;
-  padding: 0px 2px;
-}
-.background-bar {
   background-color: var(--black);
+  padding: 1px 2px 0px 2px;
 }
 
 /* font sizes */
