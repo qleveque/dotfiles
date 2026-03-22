@@ -33,7 +33,8 @@
 .glazewm-workspaces .ws-btn,
 .toggle_group,
 .clock,
-.group {
+.group,
+.weather {
   background-color: var(--black);
   border: 1px solid var(--lightgrey);
   padding: 0 2px;
@@ -45,13 +46,6 @@
 .group .grouper-button {
   padding: 0px 2px;
   border: none;
-}
-
-/* weather */
-.weather {
-  border-right: 1px solid var(--lightgrey);
-  border-radius: 0px;
-  padding: 0 2px;
 }
 
 /* systray */

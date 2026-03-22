@@ -16,7 +16,7 @@ bars:
       height: 20
     widgets:
       left: ["glazewm_workspaces"]
-      right: ["group", "clock"]
+      right: ["group", "weather", "clock"]
     animation:
       enabled: false
   main-bar-secondary:
@@ -56,30 +56,30 @@ widgets:
       widgets: [
         "language",
         "bluetooth",
+        "wifi",
         "volume",
         "glazewm_tiling_direction",
-        "wifi",
         "home",
         "microphone",
         "power_plan",
         "windows",
-        "systray",
-        "weather"
+        "systray"
       ]
       collapse_options:
         enabled: true
         expanded_label: "📖"
         collapsed_label: "📕"
         label_position: "right"
-        exclude_widgets: ["language", "bluetooth", "volume", "glazewm_tiling_direction"]
+        exclude_widgets: ["language", "bluetooth", "wifi", "volume", "glazewm_tiling_direction"]
   systray:
     type: "yasb.systray.SystrayWidget"
     options:
-        class_name: "systray"
-        label_position: "left"
-        show_battery: true
-        show_unpinned_button: false
-        icon_size: 14
+      class_name: "systray"
+      label_position: "left"
+      show_battery: true
+      show_unpinned_button: false
+      icon_size: 14
+      use_hook: true
   power_plan:
     type: "yasb.power_plan.PowerPlanWidget"
     options:
@@ -124,15 +124,17 @@ widgets:
   wifi:
     type: "yasb.wifi.WifiWidget"
     options:
-      label: "🛜"
-      label_alt: "{wifi_name} {wifi_strength}%"
+      ethernet_icon: "🔌"
+      wifi_icons: [
+        "❌",
+        "🛜",
+        "🛜",
+        "🛜",
+        "🛜",
+      ]
       update_interval: 5000
       callbacks:
         on_left: "toggle_menu"
-      ethernet_label: "<span>{wifi_icon}</span>"
-      ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
-      ethernet_icon: "🪢"
-      get_exact_wifi_strength: false
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
