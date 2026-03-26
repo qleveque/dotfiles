@@ -76,6 +76,7 @@ in
     };
     neovim = {
       enable = true;
+      package = unstable.neovim-unwrapped;
       extraLuaConfig = lib.fileContents "${dotfiles}/config/neovim/.nvim.lua";
       extraConfig = lib.fileContents "${dotfiles}/config/neovim/.vimrc";
     };
