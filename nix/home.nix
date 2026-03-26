@@ -7,10 +7,7 @@ let
     path = "${home}/dotfiles";
   };
   my-scripts = map (name:
-    pkgs.writeScriptBin name ''
-      #!/usr/bin/env zsh
-      ${builtins.readFile "${dotfiles}/bin/${name}"}
-    ''
+    pkgs.writeScriptBin name (builtins.readFile "${dotfiles}/bin/${name}")
   ) (builtins.attrNames (builtins.readDir "${dotfiles}/bin"))
   ++ [(pkgs.writeScriptBin "extract" ''
     #!/usr/bin/env zsh
@@ -40,7 +37,7 @@ let
     python3
     gnumake
     wget
-  ] ++ my-scripts;
+  ];
 in
 {
 
@@ -48,7 +45,7 @@ in
     username = user;
     homeDirectory = home;
     stateVersion = "25.05";
-    packages = packages;
+    packages = packages ++ my-scripts;
   };
 
   programs = {
