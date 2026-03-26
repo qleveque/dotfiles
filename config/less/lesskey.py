@@ -26,6 +26,7 @@ G goto-end \e\40
 zz back-scroll
 yy {NA} {BUFFER}|{C("head -1|cb copy")}\n
 ^q quit
+^a {NA} |.^Pf="$(mktemp)" && cat > "$f"; NVIM_COPY=1 nvim "$f"\n
 # Git
 c {NA} J/{COMMIT_PATTERN}\n{RESET_SEARCH}
 C {NA} \eb?{COMMIT_PATTERN}\n{RESET_SEARCH}

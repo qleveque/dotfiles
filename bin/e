@@ -1,4 +1,4 @@
-#!zsh
+#!/usr/bin/env zsh
 # Edit any file
 
 full_path="$(readlink -f "$1")"

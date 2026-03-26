@@ -8,12 +8,12 @@ let
   };
   my-scripts = map (name:
     pkgs.writeScriptBin name ''
-      #!${pkgs.zsh}/bin/zsh
+      #!/usr/bin/env zsh
       ${builtins.readFile "${dotfiles}/bin/${name}"}
     ''
   ) (builtins.attrNames (builtins.readDir "${dotfiles}/bin"))
   ++ [(pkgs.writeScriptBin "extract" ''
-    #!${pkgs.zsh}/bin/zsh
+    #!/usr/bin/env zsh
     source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/extract/extract.plugin.zsh
     extract "$@"
   '')];

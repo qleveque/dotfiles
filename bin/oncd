@@ -1,4 +1,4 @@
-#!zsh
+#!/usr/bin/env zsh
 
 directory_changed_callback() {
   N=300

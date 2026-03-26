@@ -1,4 +1,4 @@
-#!zsh
+#!/usr/bin/env zsh
 
 win && wez='wezterm.exe' || wez='wezterm'
 win && [[ $PWD == /mnt/c/* ]] && PWD=$(wslpath -m ${PWD})

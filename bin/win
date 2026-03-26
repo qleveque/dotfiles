@@ -1,2 +1,2 @@
-#!zsh
+#!/usr/bin/env zsh
 grep -q microsoft /proc/version

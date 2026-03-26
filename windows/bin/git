@@ -1,4 +1,4 @@
-#!zsh
+#!/usr/bin/env zsh
 
 if [[ $PWD == /mnt/c/* && ! " $* " =~ " (--help|hash-object|rev-parse) " ]]; then
   git.exe "$@"

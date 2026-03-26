@@ -1,4 +1,4 @@
-#!zsh
+#!/usr/bin/env zsh
 key="$1" && shift
 COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
 
