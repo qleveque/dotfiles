@@ -9,7 +9,7 @@ while getopts "h:f:l:" opt; do case $opt in
 esac; done
 shift $((OPTIND -1))
 
-_run() { wez-wrap new "${title}" "$@" > /dev/null; exit 0 }
+_run() { zj-wrap new "${title}" "$@" > /dev/null; exit 0 }
 log() { _run "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"" } 
 show() {
   [[ -n ${hash} && ${hash} != diff ]] && revision="${hash}^..${hash}"

@@ -26,7 +26,7 @@ nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hls<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hls<CR>"_cgn
 nn <silent> - :sil cprev<CR>
 nn <silent> + :sil cnext<CR>
-nn <silent> é :exe'sil !wez-wrap split "run -p \"'.expand('%').'\""'<CR>
-nn <silent> É :exe'sil !wez-wrap split run'<CR>
+nn <silent> é :exe'sil !zj-wrap split "run -p \"'.expand('%').'\""'<CR>
+nn <silent> É :exe'sil !zj-wrap split run'<CR>
 
 au FocusLost,BufLeave,VimLeavePre * if &modifiable && !&readonly | silent! update | endif

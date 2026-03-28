@@ -41,7 +41,7 @@ vi-visual-put(){zle .vi-delete; vi-put vi-put-before}
 vi-visual-swap(){zle .vi-delete;local b="${CUTBUFFER}";vi-put vi-put-before;printf '%s' "${b}"|cb copy}
 open-fm(){cd "$(vifm -c :only --choose-dir - . . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-git-wrap(){local k; read -k1 k; git-wrap $k -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
-open-copy-mode(){zle autosuggest-clear; wez-wrap copy}
+open-copy-mode(){zle autosuggest-clear; zj-wrap copy}
 fzf-recent-widget(){cd "$(eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS})";zle reset-prompt;zle zle-line-init}
 insert-space() { LBUFFER+=" " }
 quit(){exit}

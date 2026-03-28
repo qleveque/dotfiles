@@ -2,7 +2,7 @@
   <tool name="Nvim" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="false">
     <exec>
       <option name="COMMAND" value="wsl" />
-      <option name="PARAMETERS" value="wez-wrap nvim '$FileName$' '$LineNumber$'" />
+      <option name="PARAMETERS" value="zj-wrap nvim '$FileName$' '$LineNumber$'" />
       <option name="WORKING_DIRECTORY" value="$FileDir$" />
     </exec>
   </tool>

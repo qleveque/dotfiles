@@ -18,8 +18,8 @@ case ${cmd} in
   ;;
   new)
     shift
-    wez-wrap split "$1"
+    zj-wrap split "$1"
     zellij action toggle-fullscreen
   ;;
-  nvim) wez-wrap new "sh -c \"nvim '$1' +$2\"";;
+  nvim) zj-wrap new "sh -c \"nvim '$1' +$2\"";;
 esac

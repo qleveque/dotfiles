@@ -16,7 +16,7 @@ keybinds clear-defaults=true {
     bind "q" { CloseFocus; SwitchToMode "normal"; }
     bind "a" {
       DumpScreen "/tmp/.screen"
-      Run "zsh" "-c" "wez-wrap copy-screen /tmp/.screen" {
+      Run "zsh" "-c" "zj-wrap copy-screen /tmp/.screen" {
         close_on_exit true; in_place true; name "Copy";
       }
       SwitchToMode "normal"
