@@ -1,0 +1,39 @@
+theme "blade-runner"
+default_layout "compact"
+disable_tips true
+pane_frames true
+show_startup_tips false
+keybinds clear-defaults=true {
+  renametab {
+    bind "esc" { UndoRenameTab; SwitchToMode "normal"; }
+  }
+  tmux {
+    bind "s" { NewPane "down"; SwitchToMode "normal"; }
+    bind "v" { NewPane "right"; SwitchToMode "normal"; }
+    bind "r" { SwitchToMode "renametab"; }
+    bind "n" { NewTab; SwitchToMode "normal"; }
+    bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
+    bind "q" { CloseFocus; SwitchToMode "normal"; }
+    bind "a" {
+      DumpScreen "/tmp/.screen"
+      Run "zsh" "-c" "wez-wrap copy-screen /tmp/.screen" {
+        close_on_exit true; in_place true; name "Copy";
+      }
+      SwitchToMode "normal"
+    }
+  }
+  shared_among "tmux" "locked" {
+    bind "esc" { SwitchToMode "normal"; }
+  }
+  shared_among "normal" "locked" {
+    bind "F7" { GoToPreviousTab; }
+    bind "F8" { GoToNextTab; }
+    bind "Ctrl b" { SwitchToMode "tmux"; }
+  }
+  normal {
+    bind "Ctrl h" {MoveFocus "Left"; }
+    bind "Ctrl j" {MoveFocus "Down"; }
+    bind "Ctrl k" {MoveFocus "Up"; }
+    bind "Ctrl l" {MoveFocus "Right"; }
+  }
+}

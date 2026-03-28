@@ -95,4 +95,11 @@ in
       '');
     };
   };
+
+  home.file = {
+    ".config/zellij/config.kdl" = {
+      text = lib.fileContents "${dotfiles}/config/zellij/config.kdl";
+    };
+  };
+
 }

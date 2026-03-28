@@ -8,8 +8,8 @@ for map in ${(k)vimodes}; do eval ${map}'(){bindkey -M'${vimodes[${map}]}' $*;}'
 nm c change-wrap
 nm d delete-wrap
 nm x vi-cut
-vm c change-wrap
-vm d delete-wrap
+vm c .vi-change
+vm d .vi-delete
 vm x vi-cut
 nm s add-surround
 vm s add-surround
@@ -37,8 +37,8 @@ vi-cut(){zle .vi-delete; printf '%s' "${CUTBUFFER}"|cb copy}
 vi-yank(){zle .vi-yank;zle set-mark-command -n -1;printf '%s' "${CUTBUFFER}"|cb copy}
 vi-put(){CUTBUFFER="$(cb paste 2>/dev/null||echo ${CUTBUFFER})";zle .${1:-$WIDGET}}
 vi-surround-wrapper(){read -k1 k;case $k in s)zle surround;;*)zle -U $k&&zle .vi-${WIDGET%-wrap};;esac}
-vi-visual-put(){zle vi-delete; vi-put vi-put-before}
-vi-visual-swap(){zle vi-delete;local b="${CUTBUFFER}";vi-put vi-put-before;printf '%s' "${b}"|cb copy}
+vi-visual-put(){zle .vi-delete; vi-put vi-put-before}
+vi-visual-swap(){zle .vi-delete;local b="${CUTBUFFER}";vi-put vi-put-before;printf '%s' "${b}"|cb copy}
 open-fm(){cd "$(vifm -c :only --choose-dir - . . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-git-wrap(){local k; read -k1 k; git-wrap $k -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
 open-copy-mode(){zle autosuggest-clear; wez-wrap copy}

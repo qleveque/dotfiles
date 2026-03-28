@@ -10,21 +10,16 @@ case ${cmd} in
   ;;
   copy)
     f=$(mktemp)
-    zellij action dump-screen -f $f
+    zellij action dump-screen -f --path $f
     NVIM_COPY=1 nvim -c 'norm G3k^' $f
   ;;
   split)
     zellij action new-pane --cwd "${PWD}" --name "" -c -- zsh -c "$1"
   ;;
   new)
-    zellij action new-pane --cwd "${PWD}" --name "" -c -- zsh -c "$2"
+    shift
+    wez-wrap split "$1"
     zellij action toggle-fullscreen
   ;;
-  kill)
-    pane=$(pane_id)
-    ${wez} cli activate-tab --tab-index $(( $(tab_position ${pane}) - 2 ))
-    ${wez} cli kill-pane --pane-id ${pane} &
-  ;;
-  nvim) ${wez} start --cwd="${PWD}" sh -c "nvim '$1' +$2";;
-  cd) printf "\033]7;file://%s%s\033\\" "${HOSTNAME}" "$1";;
+  nvim) wez-wrap new "sh -c \"nvim '$1' +$2\"";;
 esac
