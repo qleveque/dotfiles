@@ -17,14 +17,15 @@ let
   unstable = import <nixos-unstable> { config.allowUnfree = true; };
   packages = with pkgs; [
     unstable.opencode
+    unstable.zellij
     unzip
     zip
     home-manager
     oh-my-zsh
     xsel
     sd
-    pure-prompt
     ripgrep
+    starship
     fd
     jq
     bat

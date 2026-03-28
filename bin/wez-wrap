@@ -1,40 +1,24 @@
 #!/usr/bin/env zsh
 
-win && wez='wezterm.exe' || wez='wezterm'
-win && [[ $PWD == /mnt/c/* ]] && PWD=$(wslpath -m ${PWD})
 cmd="$1" && shift
 
-# Hacks to spawn tab next to current one
-pane_id() {
-  ${wez} cli list-clients --format json|jq -r '.[0].focused_pane_id'
-}
-tab_position() {
-  list=$(${wez} cli list --format json)
-  tab_id=$(jq -r ".[]|select(.pane_id == $1)|.tab_id" <<< "${list}")
-  window_id=$(jq -r ".[]|select(.pane_id == $1)|.window_id" <<< "${list}")
-  jq -r ".[]|select(.window_id == ${window_id})|.tab_id" <<< "${list}"|uniq|grep -n ${tab_id}|cut -d: -f1
-}
-move_tab_next() {
-  echo 'printf "\033]1337;SetUserVar=%s=%s\007"' MOVE_TAB $(echo -n $(tab_position $(pane_id))|base64)
-}
-
 case ${cmd} in
-  copy)
-    cd /
-    [[ -n $1 ]] && pid="--pane-id $1"
+  copy-screen)
     f=$(mktemp)
-    ${wez} cli get-text ${=pid} --start-line '-1000' | sd ' *\n' '\n' | sed ':a;/^\n*$/{$d;N;};/\n$/ba' > $f
-    if [[ -n $1 ]]; then
-      PANE_ID=$1 wez-wrap new copy-mode "NVIM_COPY=1 nvim -c 'norm G' $f"
-    else
-      NVIM_COPY=1 nvim -c "norm G3k^" $f
-    fi
+    cp $1 $f
+    NVIM_COPY=1 nvim $f
   ;;
-  split) ${wez} cli split-pane --bottom --cwd ${PWD} -- ${SHELL} -c "$1";;
+  copy)
+    f=$(mktemp)
+    zellij action dump-screen -f $f
+    NVIM_COPY=1 nvim -c 'norm G3k^' $f
+  ;;
+  split)
+    zellij action new-pane --cwd "${PWD}" --name "" -c -- zsh -c "$1"
+  ;;
   new)
-    args=(--cwd ${PWD})
-    [[ -n ${PANE_ID} ]] && args+=(--pane-id "${PANE_ID}")
-    ${wez} cli spawn "${args[@]}" -- ${SHELL} -c "$(move_tab_next) &; ${wez} cli set-tab-title '$1' &; $2; wez-wrap kill"
+    zellij action new-pane --cwd "${PWD}" --name "" -c -- zsh -c "$2"
+    zellij action toggle-fullscreen
   ;;
   kill)
     pane=$(pane_id)

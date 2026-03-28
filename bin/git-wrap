@@ -9,12 +9,12 @@ while getopts "h:f:l:" opt; do case $opt in
 esac; done
 shift $((OPTIND -1))
 
-run() { wez-wrap new "${title}" "$@" > /dev/null; exit 0 }
-log() { run "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"" } 
+_run() { wez-wrap new "${title}" "$@" > /dev/null; exit 0 }
+log() { _run "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"" } 
 show() {
   [[ -n ${hash} && ${hash} != diff ]] && revision="${hash}^..${hash}"
   [[ -n ${file} ]] && params="-uno"
-  run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${params} ${revision} -- ${file} \""
+  _run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${params} ${revision} -- ${file} \""
 }
 read-commit() {
   read line
@@ -29,12 +29,12 @@ case $key in
   s) title="status" hash= file= show;;
   f) title="history ${file:t}" hash= log;;
   l) title="log" hash= file= log;;
-  c) title="commit" && run "git commit || read";;
-  a) title="commit amend" && run "git commit --amend || read";;
-  n) title="commit no-edit" && run "git commit --amend --no-edit || read";;
-  p) title="commit push" && run "git push || read";;
-  P) title="commit push force" && run "git push --force || read";;
-  N) title="commit no-edit push" && run "(git commit --amend --no-edit && git push --force) || read";;
+  c) title="commit" && _run "git commit || read";;
+  a) title="commit amend" && _run "git commit --amend || read";;
+  n) title="commit no-edit" && _run "git commit --amend --no-edit || read";;
+  p) title="commit push" && _run "git push || read";;
+  P) title="commit push force" && _run "git push --force || read";;
+  N) title="commit no-edit push" && _run "(git commit --amend --no-edit && git push --force) || read";;
 esac
 
 if [[ $key == less-commit ]]; then

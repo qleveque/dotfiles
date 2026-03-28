@@ -17,7 +17,7 @@ nm U redo
 vm v visual-line-mode
 vm P vi-visual-swap
 vm p vi-visual-put
-im '^[[13;5u' forward-word # Alt + Enter
+im '\e[26~' forward-word # Ctrl + Enter
 im ^V vi-put-before
 
 im ^N fzf-cd-widget

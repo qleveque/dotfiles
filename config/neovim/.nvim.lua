@@ -51,6 +51,36 @@ vim.keymap.set("n", "<C-g>", GitWrap, { silent = true })
 
 nvim_plugins = {
   {
+    "mrjones2014/smart-splits.nvim",
+    init = function()
+      vim.cmd[[
+        nn <silent> <C-h> :SmartCursorMoveLeft<CR>
+        nn <silent> <C-j> :SmartCursorMoveDown<CR>
+        nn <silent> <C-k> :SmartCursorMoveUp<CR>
+        nn <silent> <C-l> :SmartCursorMoveRight<CR>
+      ]]
+      function send_to_zellij(msg)
+        vim.fn.jobstart({ "zellij", "pipe", "-n", "nvim_hook", msg }, { detach = true })
+      end
+      send_to_zellij("open")
+      local nvim_zellij_focused = true
+      vim.api.nvim_create_autocmd("FocusLost", {
+        callback = function()
+          nvim_zellij_focused = false
+          send_to_zellij("close")
+        end,
+      })
+      vim.api.nvim_create_autocmd("FocusGained", {
+          callback = function()
+            nvim_zellij_focused = true
+            vim.defer_fn(function()
+              send_to_zellij("open")
+            end, 100)
+          end
+      })
+    end
+  },
+  {
     "FabijanZulj/blame.nvim",
     lazy = false,
     config = function()
@@ -270,8 +300,8 @@ nvim_plugins = {
     enabled = not diff,
     init = function()
       vim.cmd[[
-        nn <C-S-Tab> <Cmd>BufferPrevious<CR>
-        nn <C-Tab> <Cmd>BufferNext<CR>
+        nn <F15> <Cmd>BufferNext<CR>
+        nn <F16> <Cmd>BufferPrevious<CR>
         nn Q <Cmd>BufferClose<CR>
         nn X <Cmd>BufferCloseAllButVisible<CR>
       ]]

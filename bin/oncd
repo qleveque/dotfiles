@@ -5,11 +5,9 @@ directory_changed_callback() {
   DIRHIST=${HOME}/.dirhist
   # Add the current directory to the directory history
   touch ${DIRHIST}
-  sed -i "\#^$1\$#d" ${DIRHIST}
+  sed -i "\#^${WD}\$#d" ${DIRHIST}
   echo $1 >> ${DIRHIST}
   echo "$(cat ${DIRHIST} | tail -$N)" > ${DIRHIST}
-  # Set wez working directory
-  wez-wrap cd "${PWD}"
 }
 
-directory_changed_callback "$1" &
+directory_changed_callback &
