@@ -59,24 +59,20 @@ nvim_plugins = {
         nn <silent> <C-k> :SmartCursorMoveUp<CR>
         nn <silent> <C-l> :SmartCursorMoveRight<CR>
       ]]
-      function send_to_zellij(msg)
-        vim.fn.jobstart({ "zellij", "pipe", "-n", "nvim_hook", msg }, { detach = true })
+      function send_to_zellij(mode)
+        vim.fn.jobstart({ "zellij", "action", "switch-mode", mode }, { detach = true })
       end
-      send_to_zellij("open")
-      local nvim_zellij_focused = true
-      vim.api.nvim_create_autocmd("FocusLost", {
-        callback = function()
-          nvim_zellij_focused = false
-          send_to_zellij("close")
-        end,
-      })
-      vim.api.nvim_create_autocmd("FocusGained", {
+      vim.api.nvim_create_autocmd({"FocusGained", "VimEnter"}, {
           callback = function()
-            nvim_zellij_focused = true
             vim.defer_fn(function()
-              send_to_zellij("open")
-            end, 100)
+              send_to_zellij("locked")
+            end, 50)
           end
+      })
+      vim.api.nvim_create_autocmd({ "FocusLost", "VimLeavePre" }, {
+        callback = function()
+          send_to_zellij("normal")
+        end,
       })
     end
   },
