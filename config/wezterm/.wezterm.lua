@@ -15,7 +15,7 @@ c.window_padding={left=0, right=0, top=0, bottom=0}
 c.adjust_window_size_when_changing_font_size=false
 c.keys={
   {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F13'}},
-  {key='Enter', mods='CTRL', action=a.SendKey{key='F14'}},
+  {key='Enter', mods='CTRL', action=a.SendKey{key='F9'}},
   {key='Tab', mods='CTRL', action=a.SendKey{key='F15'}},
   {key='Tab', mods='CTRL|SHIFT', action=a.SendKey{key='F16'}},
   {key=',', mods='CTRL', action=a.SendKey{key='F7'}},

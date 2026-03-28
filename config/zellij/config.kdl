@@ -8,6 +8,7 @@ keybinds clear-defaults=true {
     bind "esc" { UndoRenameTab; SwitchToMode "normal"; }
   }
   tmux {
+    bind "esc" { SwitchToMode "normal"; }
     bind "s" { NewPane "down"; SwitchToMode "normal"; }
     bind "v" { NewPane "right"; SwitchToMode "normal"; }
     bind "r" { SwitchToMode "renametab"; }
@@ -21,9 +22,6 @@ keybinds clear-defaults=true {
       }
       SwitchToMode "normal"
     }
-  }
-  shared_among "tmux" "locked" {
-    bind "esc" { SwitchToMode "normal"; }
   }
   shared_among "normal" "locked" {
     bind "F7" { GoToPreviousTab; }

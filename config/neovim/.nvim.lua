@@ -415,10 +415,10 @@ nvim_plugins = {
 
 if os.getenv("USE_GITHUB_COPILOT") then
   vim.g.copilot_no_tab_map = true
-  -- <F13> is <C-S-CR>
+  -- <F9> is <C-S-CR>
   vim.keymap.set('n', '<F13>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
   vim.keymap.set('v', '<F13>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("")', { expr = true, silent = true })
+  vim.api.nvim_set_keymap("i", "<F9>", 'copilot#Accept("")', { expr = true, silent = true })
   table.insert(nvim_plugins, {
     "github/copilot.vim",
     {
