@@ -100,6 +100,9 @@ in
     ".config/zellij/config.kdl" = {
       text = lib.fileContents "${dotfiles}/config/zellij/config.kdl";
     };
+    ".config/zellij/layouts/layout.kdl" = {
+      text = lib.fileContents "${dotfiles}/config/zellij/layout.kdl";
+    };
   };
 
 }

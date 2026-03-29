@@ -3,23 +3,9 @@
 cmd="$1" && shift
 
 case ${cmd} in
-  copy-screen)
-    f=$(mktemp)
-    cp $1 $f
-    NVIM_COPY=1 nvim $f
-  ;;
-  copy)
-    f=$(mktemp)
-    zellij action dump-screen -f --path $f
-    NVIM_COPY=1 nvim -c 'norm G3k^' $f
-  ;;
-  split)
-    zellij action new-pane --cwd "${PWD}" --name "" -c -- zsh -c "$1"
-  ;;
-  new)
-    shift
-    zj-wrap split "$1"
-    zellij action toggle-fullscreen
-  ;;
+  copy-screen) f=$(mktemp); cp $1 $f; NVIM_COPY=1 nvim $f;;
+  copy) f=$(mktemp); zellij action dump-screen -f --path $f; NVIM_COPY=1 nvim -c 'norm G3k^' $f;;
+  split) zellij action new-pane --cwd "${PWD}" --name "" --close-on-exit -- zsh -c "$1" ;;
+  new) zellij action new-tab --cwd "${PWD}" --close-on-exit -- zsh -c "zellij action rename-pane '$1'; $2";;
   nvim) zj-wrap new "sh -c \"nvim '$1' +$2\"";;
 esac

@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 key="$1" && shift
-COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
 
 while getopts "h:f:l:" opt; do case $opt in
   f) [[ -n "${OPTARG}" ]] && file="$(realpath -s --relative-to="${PWD}" "${OPTARG}")" ;;
@@ -15,12 +14,6 @@ show() {
   [[ -n ${hash} && ${hash} != diff ]] && revision="${hash}^..${hash}"
   [[ -n ${file} ]] && params="-uno"
   _run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${params} ${revision} -- ${file} \""
-}
-read-commit() {
-  read line
-  for pat in ${COMMIT_PATTERNS}; do
-    [[ ${line} =~ ${pat} ]] && { echo "${match[1]}" && return }
-  done
 }
 
 case $key in
@@ -37,18 +30,17 @@ case $key in
   N) title="commit no-edit push" && _run "(git commit --amend --no-edit && git push --force) || read";;
 esac
 
+COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
+read-commit() {
+  read line
+  for pat in ${COMMIT_PATTERNS}; do
+    [[ ${line} =~ ${pat} ]] && { echo "${match[1]}" && return }
+  done
+}
 if [[ $key == less-commit ]]; then
   hash=$(read-commit)
   case $1 in
     copy) echo ${hash} | cb copy;;
     open) title="show ${hash:0:10}" file= show -h "${hash}";;
-  esac
-elif [[ $key == less-diff ]]; then
-  hash=$(read-commit)
-  lines=$(cat)
-  file=${$(print -r -- $lines | grep '^diff --git' | tail -n1 | awk '{match($0, / b\/(.*)$/, arr); print arr[1]}'):|}
-  case $1 in
-    copy-file) echo ${file} | cb copy;;
-    open-diff) title="show ${file:t} ${hash:0:6}" show;;
   esac
 fi

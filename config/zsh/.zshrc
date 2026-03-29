@@ -10,8 +10,6 @@ man() { /usr/bin/man "$@" | bat -l man --paging=always --style=plain }
 [[ -f "${HOME}/.init.zsh" ]] && source "${HOME}/.init.zsh"
 export g="${MARKPATH}"
 
-echo -n -e "\033]0;\007"
-
 # On directory changed
 _on_dir_changed() { export WD="$PWD"; oncd }
 _on_dir_changed

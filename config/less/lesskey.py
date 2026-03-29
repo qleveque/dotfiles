@@ -30,7 +30,5 @@ yy {NA} {BUFFER}|{C("head -1|cb copy")}\n
 c {NA} J/{COMMIT_PATTERN}\n{RESET_SEARCH}
 C {NA} \eb?{COMMIT_PATTERN}\n{RESET_SEARCH}
 l {NA} {BUFFER}|{GIT("less-commit open")}\n
-d {NA} {SAVE}{UNTIL_COMMIT_LINE}|{GIT("less-diff open-diff")}\n{RESET_SEARCH}{RESTORE}
 yc {NA} {BUFFER}|{GIT("less-commit copy")}\n
-yf {NA} {SAVE}{UNTIL_COMMIT_LINE}|{GIT("less-diff copy-file")}\n{RESET_SEARCH}{RESTORE}
 ''')

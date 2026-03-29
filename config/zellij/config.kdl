@@ -1,17 +1,19 @@
 theme "blade-runner"
-default_layout "compact"
+default_layout "layout"
 disable_tips true
 pane_frames true
 show_startup_tips false
 keybinds clear-defaults=true {
   renametab {
     bind "esc" { UndoRenameTab; SwitchToMode "normal"; }
+    bind "enter" { SwitchToMode "normal"; }
   }
   tmux {
     bind "esc" { SwitchToMode "normal"; }
-    bind "s" { NewPane "down"; SwitchToMode "normal"; }
-    bind "v" { NewPane "right"; SwitchToMode "normal"; }
-    bind "r" { SwitchToMode "renametab"; }
+    bind "s" { Run "zsh" { close_on_exit true; name ""; direction "Down"; }; SwitchToMode "normal"; }
+    bind "v" { Run "zsh" { close_on_exit true; name ""; direction "Right"; }; SwitchToMode "normal"; }
+    bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
+    bind "l" { Clear; SwitchToMode "normal"; Write 13; }
     bind "n" { NewTab; SwitchToMode "normal"; }
     bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
     bind "q" { CloseFocus; SwitchToMode "normal"; }
@@ -20,7 +22,6 @@ keybinds clear-defaults=true {
       Run "zsh" "-c" "zj-wrap copy-screen /tmp/.screen" {
         close_on_exit true; in_place true; name "Copy";
       }
-      SwitchToMode "normal"
     }
   }
   shared_among "normal" "locked" {

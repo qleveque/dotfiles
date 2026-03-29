@@ -37,6 +37,7 @@ end
 
 -- Git
 local function GitWrap()
+  print("GitWrap")
   local c = vim.fn.nr2char(vim.fn.getchar())
   if c == "b" then
     vim.cmd("BlameToggle")
@@ -44,6 +45,7 @@ local function GitWrap()
     local file = vim.fn.expand("%")
     local line = vim.fn.line(".")
     local cmd = "silent !git-wrap " .. c .. " -f" .. file .. " -l" .. line
+    print(cmd)
     vim.cmd(cmd)
   end
 end
