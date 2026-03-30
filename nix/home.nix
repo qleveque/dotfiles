@@ -25,7 +25,6 @@ let
     xsel
     sd
     ripgrep
-    starship
     fd
     jq
     bat

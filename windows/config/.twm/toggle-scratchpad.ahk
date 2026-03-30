@@ -20,7 +20,7 @@ ToggleScratchPad() {
             return
         }
     }
-    Run, wezterm-gui.exe start --cwd %USERPROFILE%/.scratchpad /run/current-system/sw/bin/zsh -c "nvim index",,, weztermPID
+    Run, wezterm-gui.exe start wsl.exe zsh -c "cd ~/.scratchpad; nvim index",,, weztermPID
     WinWaitActive, ahk_pid %weztermPID%
     WinGet, weztermID, ID, ahk_pid %weztermPID%
     RunWait, glazewm.exe command set-floating,,Hide
