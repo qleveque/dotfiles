@@ -8,8 +8,8 @@ for map in ${(k)vimodes}; do eval ${map}'(){bindkey -M'${vimodes[${map}]}' $*;}'
 nm c change-wrap
 nm d delete-wrap
 nm x vi-cut
-vm c .vi-change
-vm d .vi-delete
+vm c vi-change
+vm d vi-delete
 vm x vi-cut
 nm s add-surround
 vm s add-surround
