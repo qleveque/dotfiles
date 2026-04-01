@@ -14,17 +14,16 @@ c.window_decorations="RESIZE"
 c.window_padding={left=0, right=0, top=0, bottom=0}
 c.adjust_window_size_when_changing_font_size=false
 c.keys={
-  {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F13'}},
-  {key='Enter', mods='CTRL', action=a.SendKey{key='F9'}},
-  {key='Tab', mods='CTRL', action=a.SendKey{key='F15'}},
-  {key='Tab', mods='CTRL|SHIFT', action=a.SendKey{key='F16'}},
+  {key='Tab', mods='CTRL', action=a.SendKey{key='F5'}},
+  {key='Tab', mods='CTRL|SHIFT', action=a.SendKey{key='F6'}},
   {key=',', mods='CTRL', action=a.SendKey{key='F7'}},
   {key=';', mods='CTRL', action=a.SendKey{key='F8'}},
+  {key='Enter', mods='CTRL', action=a.SendKey{key='F9'}},
+  {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F10'}},
   {key='Space', mods= 'SHIFT', action=a{SendString='\x1b[27;2;32~'}},
 }
 if wez.target_triple:match("windows") then
   c.default_prog = { 'wsl.exe', 'zellij' }
 end
-
 
 return c

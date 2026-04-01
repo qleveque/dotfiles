@@ -3,6 +3,7 @@ default_layout "layout"
 disable_tips true
 pane_frames true
 show_startup_tips false
+session_name "default"
 keybinds clear-defaults=true {
   renametab {
     bind "esc" { UndoRenameTab; SwitchToMode "normal"; }

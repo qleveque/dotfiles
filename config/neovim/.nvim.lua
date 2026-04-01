@@ -61,18 +61,23 @@ nvim_plugins = {
         nn <silent> <C-k> :SmartCursorMoveUp<CR>
         nn <silent> <C-l> :SmartCursorMoveRight<CR>
       ]]
+      local focused = true;
       function send_to_zellij(mode)
         vim.fn.jobstart({ "zellij", "action", "switch-mode", mode }, { detach = true })
       end
       vim.api.nvim_create_autocmd({"FocusGained", "VimEnter"}, {
           callback = function()
+            focused = true;
             vim.defer_fn(function()
-              send_to_zellij("locked")
-            end, 50)
+              if focused then
+                send_to_zellij("locked")
+              end
+            end, 200)
           end
       })
       vim.api.nvim_create_autocmd({ "FocusLost", "VimLeavePre" }, {
         callback = function()
+          focused = false;
           send_to_zellij("normal")
         end,
       })
@@ -82,7 +87,13 @@ nvim_plugins = {
     "FabijanZulj/blame.nvim",
     lazy = false,
     config = function()
-      require('blame').setup {}
+      require('blame').setup {
+        mappings = {
+            stack_push = "H",
+            stack_pop = "L",
+            copy_hash = "yc"
+        }
+      }
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "blame",
         callback = function()
@@ -133,7 +144,10 @@ nvim_plugins = {
             { "n", "<CR>", actions.select_entry },
             { "n", "l", actions.focus_entry },
             { "n", "<C-q>", function() vim.cmd('qa!') end },
-            { "n", "!", GitWrap }
+            { "n", "C", function() vim.cmd('sil !zj-wrap split "git commit || read"') end },
+            { "n", "A", function() vim.cmd('sil !zj-wrap split "git commit --amend || read"') end },
+            { "n", "N", function() vim.cmd('sil !zj-wrap split "git commit --amend --no-edit || read"') end },
+            { "n", "P", function() vim.cmd('sil !zj-wrap split "git push || read"') end },
           },
           file_history_panel = {
             { "n", "<CR>", actions.select_entry },
@@ -298,8 +312,8 @@ nvim_plugins = {
     enabled = not diff,
     init = function()
       vim.cmd[[
-        nn <F15> <Cmd>BufferNext<CR>
-        nn <F16> <Cmd>BufferPrevious<CR>
+        nn <F5> <Cmd>BufferNext<CR>
+        nn <F6> <Cmd>BufferPrevious<CR>
         nn Q <Cmd>BufferClose<CR>
         nn X <Cmd>BufferCloseAllButVisible<CR>
       ]]
@@ -418,8 +432,8 @@ nvim_plugins = {
 if os.getenv("USE_GITHUB_COPILOT") then
   vim.g.copilot_no_tab_map = true
   -- <F9> is <C-S-CR>
-  vim.keymap.set('n', '<F13>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
-  vim.keymap.set('v', '<F13>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<F10>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
+  vim.keymap.set('v', '<F10>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap("i", "<F9>", 'copilot#Accept("")', { expr = true, silent = true })
   table.insert(nvim_plugins, {
     "github/copilot.vim",

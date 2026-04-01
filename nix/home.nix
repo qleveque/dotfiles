@@ -88,6 +88,7 @@ in
       '';
     };
     less = {
+      package = unstable.less;
       enable = true;
       keys = builtins.readFile (pkgs.runCommand "lesskey" {} ''
         ${pkgs.python3}/bin/python3 "${dotfiles}/config/less/lesskey.py" > $out

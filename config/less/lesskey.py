@@ -2,17 +2,12 @@
 import sys
 IS_WSL = len(sys.argv) > 1 and sys.argv[1] == 'wsl'
 C = lambda cmd: f'wsl -e sh -c "{cmd}"' if IS_WSL else cmd
-GIT = lambda cmd: C(f'git-wrap {cmd}')
 
 RESET_SEARCH = r'mS/^A^A\n\'S\emS'
-SAVE = 'mO'
-RESTORE = rf'\'O\emO'
 NA = 'noaction'
 REMOVE_COLORS = r"sed -r 's/\\x1B\\[[0-9;]*[mGK]//g'"
-
 BUFFER = f"|.^P{REMOVE_COLORS}"
-COMMIT_PATTERN = r'\^commit |\^stash@|HEAD@\\{[0-9]\+\\}: |\^diff\$'
-UNTIL_COMMIT_LINE = rf"JK\eb?{COMMIT_PATTERN}\n|O^P{REMOVE_COLORS}"
+COMMIT_PATTERN = r'\^commit |stash@\\{|HEAD@\\{'
 
 print(rf'''#env
 LESS = -irR --mouse --wheel-lines=1 +/\^
@@ -28,7 +23,7 @@ yy {NA} {BUFFER}|{C("head -1|cb copy")}\n
 ^q quit
 # Git
 c {NA} J/{COMMIT_PATTERN}\n{RESET_SEARCH}
-C {NA} \eb?{COMMIT_PATTERN}\n{RESET_SEARCH}
-l {NA} {BUFFER}|{GIT("less-commit open")}\n
-yc {NA} {BUFFER}|{GIT("less-commit copy")}\n
+C {NA} J\ebK?{COMMIT_PATTERN}\n{RESET_SEARCH}
+l {NA} {BUFFER}|{C("git-wrap less-commit | xargs git-wrap o -h")}\n
+yc {NA} {BUFFER}|{C("git-wrap less-commit | cb copy")}\n
 ''')

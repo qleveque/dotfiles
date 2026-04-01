@@ -20,27 +20,13 @@ case $key in
   o) [[ -z ${hash} ]] && hash=$(cb paste); title="show ${hash:0:10}" show;;
   d) title="diff ${file:t}" hash= show;;
   s) title="status" hash= file= show;;
-  f) title="history ${file:t}" hash= log;;
+  h) title="history ${file:t}" hash= log;;
   l) title="log" hash= file= log;;
-  c) title="commit" && _run "git commit || read";;
-  a) title="commit amend" && _run "git commit --amend || read";;
-  n) title="commit no-edit" && _run "git commit --amend --no-edit || read";;
-  p) title="commit push" && _run "git push || read";;
-  P) title="commit push force" && _run "git push --force || read";;
-  N) title="commit no-edit push" && _run "(git commit --amend --no-edit && git push --force) || read";;
 esac
 
-COMMIT_PATTERNS=('^commit\ (\w+)' '(HEAD@\{[0-9]+\})' '(stash@\{[0-9]+\})' '^[*| ]* (\w+)' '^(diff)$')
-read-commit() {
-  read line
-  for pat in ${COMMIT_PATTERNS}; do
-    [[ ${line} =~ ${pat} ]] && { echo "${match[1]}" && return }
-  done
-}
 if [[ $key == less-commit ]]; then
-  hash=$(read-commit)
-  case $1 in
-    copy) echo ${hash} | cb copy;;
-    open) title="show ${hash:0:10}" file= show -h "${hash}";;
-  esac
+  read line
+  for pat in '^commit\ (\w+)' '((HEAD|stash)@\{[0-9]+\})' '^[*| ]*(\w+)'; do
+    [[ ${line} =~ ${pat} ]] && { echo "${match[1]}" && exit 0 }
+  done
 fi

@@ -30,5 +30,3 @@
   pushUpdateRejected = false
   addIgnoredFile = false
   pullUpdateInstead = false
-[pager]
-  diff = "(echo diff; cat) | less"
