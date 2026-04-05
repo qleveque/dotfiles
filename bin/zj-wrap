@@ -5,7 +5,7 @@ cmd="$1" && shift
 case ${cmd} in
   copy-screen) f=$(mktemp); cp $1 $f; NVIM_COPY=1 nvim $f;;
   copy) f=$(mktemp); zellij action dump-screen -f --path $f; NVIM_COPY=1 nvim -c 'norm G{k^' $f;;
-  split) zellij action new-pane --cwd "${PWD}" --name "" --close-on-exit -- zsh -c "$1" ;;
+  split) zellij action new-pane --cwd "${PWD}" --name "" --close-on-exit --floating -- zsh -c "$1" ;;
   new) zellij action new-tab --name "$1" --cwd "${PWD}" --close-on-exit -- zsh -c "zellij action rename-pane ''; $2";;
   nvim) zj-wrap new "sh -c \"nvim '$1' +$2\"";;
 esac

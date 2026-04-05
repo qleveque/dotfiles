@@ -14,13 +14,14 @@ c.window_decorations="RESIZE"
 c.window_padding={left=0, right=0, top=0, bottom=0}
 c.adjust_window_size_when_changing_font_size=false
 c.keys={
-  {key='Tab', mods='CTRL', action=a.SendKey{key='F5'}},
-  {key='Tab', mods='CTRL|SHIFT', action=a.SendKey{key='F6'}},
-  {key=',', mods='CTRL', action=a.SendKey{key='F7'}},
-  {key=';', mods='CTRL', action=a.SendKey{key='F8'}},
-  {key='Enter', mods='CTRL', action=a.SendKey{key='F9'}},
-  {key='Enter',mods='CTRL|SHIFT',action=a.SendKey{key='F10'}},
-  {key='Space', mods= 'SHIFT', action=a{SendString='\x1b[27;2;32~'}},
+  {mods='CTRL', key='Tab', action=a.SendKey{key='F5'}},
+  {mods='CTRL|SHIFT', key='Tab', action=a.SendKey{key='F6'}},
+  {mods='CTRL', key='Enter', action=a.SendKey{key='F9'}},
+  {mods='CTRL|SHIFT', key='Enter',action=a.SendKey{key='F10'}},
+  {mods='CTRL', key='Space', action=a.SendKey{key='F4'}},
+  {mods='CTRL', key='Backspace', action=a.SendKey{key='F3'}},
+  {mods='CTRL', key=',', action=a.SendKey{key='F7'}},
+  {mods='CTRL', key=';', action=a.SendKey{key='F8'}},
 }
 if wez.target_triple:match("windows") then
   c.default_prog = { 'wsl.exe', 'zellij' }
