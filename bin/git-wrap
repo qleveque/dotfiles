@@ -10,11 +10,7 @@ shift $((OPTIND -1))
 
 _run() { zj-wrap new "${title}" "$@" > /dev/null; exit 0 }
 log() { _run "NVIM_DIFF=1 nvim +\":DiffviewFileHistory ${file}\"" } 
-show() {
-  [[ -n ${hash} && ${hash} != diff ]] && revision="${hash}^..${hash}"
-  [[ -n ${file} ]] && params="-uno"
-  _run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${params} ${revision} -- ${file} \""
-}
+show() { _run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${file:+-uno} ${hash:+${hash}^..${hash}} -- $file \"" }
 
 case $key in
   o) [[ -z ${hash} ]] && hash=$(cb paste); title="show ${hash:0:10}" show;;

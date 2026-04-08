@@ -24,6 +24,9 @@ if os.getenv("NVIM_COPY") then
   vim.cmd[[
     set ls=0 nonu stal=0
   ]]
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function() vim.cmd('norm G{k^') end
+  })
 end
 local diff = os.getenv("NVIM_DIFF");
 if diff then
