@@ -5,6 +5,15 @@ general:
   cursor_jump:
     enabled: false
 
+animations:
+  window_move:
+    duration_ms: 180
+    easing: 'ease_in_out'
+    trigger_threshold: '10px'
+  window_open:
+    duration_ms: 180
+    easing: 'ease_out'
+
 gaps:
   inner_gap: '0px'
 
