@@ -1,0 +1,69 @@
+[window]
+dimensions = { columns = 100, lines = 40 }
+padding = { x = 0, y = 0 }
+decorations = "None"
+
+[font]
+size = 10.5
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[bell]
+duration = 0
+
+[terminal]
+shell = { program = "wsl.exe", args= ["--cd", "~", "/usr/bin/env", "zellij"] }
+
+[[keyboard.bindings]]
+key = "Tab"
+mods = "Control"
+chars = "\u001b[15~"
+
+[[keyboard.bindings]]
+key = "Tab"
+mods = "Control|Shift"
+chars = "\u001b[17~"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Control"
+chars = "\u001b[20~"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Control|Shift"
+chars = "\u001b[21~"
+
+[[keyboard.bindings]]
+key = "Space"
+mods = "Control"
+chars = "\u001bOS"
+
+[[keyboard.bindings]]
+key = "Back"
+mods = "Control"
+chars = "\u001bOR"
+
+[[keyboard.bindings]]
+key = "Comma"
+mods = "Control"
+chars = "\u001b[18~"
+
+[[keyboard.bindings]]
+key = "Semicolon"
+mods = "Control"
+chars = "\u001b[19~"
