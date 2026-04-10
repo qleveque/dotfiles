@@ -2,7 +2,7 @@
 dimensions = { columns = 100, lines = 40 }
 
 [font]
-size = 10
+size = 9
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"

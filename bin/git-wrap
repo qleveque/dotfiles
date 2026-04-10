@@ -14,8 +14,8 @@ show() { _run "NVIM_DIFF=1 nvim +\":DiffviewOpen ${file:+-uno} ${hash:+${hash}^.
 
 case $key in
   o) [[ -z ${hash} ]] && hash=$(cb paste); title="show ${hash:0:10}" show;;
-  d) title="diff ${file:t}" hash= show;;
-  s) title="status" hash= file= show;;
+  d|$'\x04') title="diff ${file:t}" hash= show;;
+  s|$'\x13') title="status" hash= file= show;;
   h) title="history ${file:t}" hash= log;;
   l) title="log" hash= file= log;;
   less-commit)
