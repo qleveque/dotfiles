@@ -1,34 +1,34 @@
-weztermID := false
+termID := false
 FileCreateDir, %USERPROFILE%/.scratchpad
 DetectHiddenWindows, On
 
 ToggleScratchPad() {
-    global weztermID
-    if (weztermID) {
-        if WinExist("ahk_id " . weztermID) {
-            if WinActive("ahk_id " . weztermID) {
+    global termID
+    if (termID) {
+        if WinExist("ahk_id " . termID) {
+            if WinActive("ahk_id " . termID) {
                 RunWait, glazewm.exe command ignore,,Hide
-                WinMinimize, ahk_id %weztermID%
-                WinHide, ahk_id %weztermID%
+                WinMinimize, ahk_id %termID%
+                WinHide, ahk_id %termID%
             } else {
-                WinSetTitle, ahk_id %weztermID%, ,SCRATCHPAD
-                WinRestore, ahk_id %weztermID%
-                WinActivate, ahk_id %weztermID%
-                Send, {Esc}
-                WinSet, AlwaysOnTop, On, ahk_id %weztermID%
+                WinSetTitle, ahk_id %termID%, ,SCRATCHPAD
+                WinRestore, ahk_id %termID%
+                WinActivate, ahk_id %termID%
+                WinSet, AlwaysOnTop, On, ahk_id %termID%
             }
             return
         }
     }
-    Run, wezterm-gui.exe start wsl.exe zsh -c "cd ~/.scratchpad; nvim index",,, weztermPID
-    WinWaitActive, ahk_pid %weztermPID%
-    WinGet, weztermID, ID, ahk_pid %weztermPID%
+
+    Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe --cd "~/.scratchpad" zsh -c 'nvim index',,, termPID
+    WinWaitActive, ahk_pid %termPID%
+    WinGet, termID, ID, ahk_pid %termPID%
     RunWait, glazewm.exe command set-floating,,Hide
 }
 
 CleanupScratchpad(ExitReason, ExitCode) {
-    global weztermID
-    WinGet, weztermPID, PID, ahk_id %weztermID%
-    Process, Close, %weztermPID%
+    global termID
+    WinGet, termPID, PID, ahk_id %termID%
+    Process, Close, %termPID%
 }
 OnExit("CleanupScratchpad")

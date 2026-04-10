@@ -18,6 +18,8 @@ let
   packages = with pkgs; [
     unstable.opencode
     unstable.zellij
+    alacritty
+    alacritty-theme
     unzip
     zip
     home-manager
@@ -102,6 +104,12 @@ in
     };
     ".config/zellij/layouts/layout.kdl" = {
       text = lib.fileContents "${dotfiles}/config/zellij/layout.kdl";
+    };
+    ".config/alacritty/alacritty.toml" = {
+      text = ''
+        ${lib.fileContents "${dotfiles}/config/alacritty/alacritty.toml"}
+        ${lib.fileContents "${pkgs.alacritty-theme}/share/alacritty-theme/catppuccin_macchiato.toml"}
+      '';
     };
   };
 

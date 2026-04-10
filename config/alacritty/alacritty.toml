@@ -1,32 +1,15 @@
 [window]
 dimensions = { columns = 100, lines = 40 }
-padding = { x = 0, y = 0 }
-decorations = "None"
 
 [font]
-size = 10.5
+size = 10
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
-[font.bold]
-family = "JetBrainsMono Nerd Font"
-style = "Bold"
-
-[font.italic]
-family = "JetBrainsMono Nerd Font"
-style = "Italic"
-
-[font.bold_italic]
-family = "JetBrainsMono Nerd Font"
-style = "Bold Italic"
-
 [bell]
 duration = 0
-
-[terminal]
-shell = { program = "wsl.exe", args= ["--cd", "~", "/usr/bin/env", "zellij"] }
 
 [[keyboard.bindings]]
 key = "Tab"
