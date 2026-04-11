@@ -21,7 +21,6 @@ im '\e[20~' forward-word # Ctrl + Enter
 im ^V vi-put-before
 
 im ^N fzf-cd-widget
-im ^P fzf-recent-widget
 im ^F open-fm
 im ^G open-git-wrap
 im ^A open-copy-mode
@@ -42,7 +41,6 @@ vi-visual-swap(){zle .vi-delete;local b="${CUTBUFFER}";vi-put vi-put-before;prin
 open-fm(){cd "$(vifm -c :only --choose-dir - . . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-git-wrap(){local k; read -k1 k; git-wrap $k -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
 open-copy-mode(){zle autosuggest-clear; zj-wrap copy}
-fzf-recent-widget(){cd "$(eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS})";zle reset-prompt;zle zle-line-init}
 insert-space() { LBUFFER+=" " }
 quit(){exit}
 set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}
@@ -56,7 +54,6 @@ my_widgets=(
   {add-,}surround:surround
   select-{bracketed,quoted}
   open-{fm,git-wrap,copy-mode}
-  fzf-recent-widget
   quit
   insert-space
   zle-{keymap-select,line-{init,finish}}:set-cursor

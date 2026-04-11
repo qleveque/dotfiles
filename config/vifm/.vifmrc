@@ -14,11 +14,9 @@ vn x d
 vn d "0d
 nn V ggvG
 cno <silent> <C-v> <C-r>=system('cb paste')<CR>
-map <silent> <C-i> :histnext|oncd<CR>
-map <silent> <C-o> :histprev|oncd<CR>
+map <silent> <C-i> :histnext<CR>
+map <silent> <C-o> :histprev<CR>
 nn <silent> <C-q> :quit<CR>
-nn <silent> l :exe('normal! l')|oncd<CR>
-nn <silent> h :exe('normal! h')|oncd<CR>
 nn U <C-r>
 nn A cw
 nn I cw<c-a>
@@ -37,15 +35,14 @@ nn <silent> É :!zj-wrap split run<CR>
 nn <silent> e :!e %f<CR>
 nn <silent> <CR> :!o %f<CR>
 nn <silent> <C-g> :exe'!read -k1 k && git-wrap $k -f"'.expand('%f').'"'<CR>
-nn <silent> <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo goto \"$g\"')|:oncd|:redr<CR>
-nn <silent> <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:oncd|:redr<CR>
-nn <silent> <C-p> :exe 'cd "'.system('eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS} 2>/dev/tty').'"'|:oncd|:redr<CR>
+nn <silent> <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo goto \"$g\"')|:redr<CR>
+nn <silent> <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:redr<CR>
+nn <silent> <C-p> :exe 'cd "'.system('eval ${FZF_CTRL_P_COMMAND}|fzf ${=FZF_CTRL_P_OPTS} 2>/dev/tty').'"'|:redr<CR>
 nn <silent> P :!filecb paste<CR>
 map <silent> Y :!filecb copy %f<CR>
 
 " Commands
 com! g :exe system('p=$(readlink "$HOME/.marks/%a") && echo cd \"$p\"')|oncd
-com! oncd :!oncd "%d"
 
 " Style
 hi Win cterm=none ctermfg=none ctermbg=none
