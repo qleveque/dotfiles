@@ -2,7 +2,7 @@
 
 cp -rfL "${HOME}/dotfiles/windows/config/." "${USERPROFILE}"
 cp -rfL "${HOME}/dotfiles/windows/appdata/." "${APPDATA}/.."
-cp -rfL "${HOME}/dotfiles/windows/bin" "${HOME}/.local"
+cp -rfL "${HOME}/dotfiles/windows/bin/." "${HOME}/.local/bin"
 
 python3 "${HOME}/dotfiles/config/less/lesskey.py" wsl > "${USERPROFILE}/.lesskey"
 cp -rfL "${HOME}/.config/alacritty" "${APPDATA}"

@@ -1,0 +1,3 @@
+autosuggest.hint = False
+clink.default_bindings = bash
+clink.logo = none
