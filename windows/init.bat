@@ -10,13 +10,18 @@ for %%P in (
   "AutoHotkey.AutoHotkey -v 1.1.37.02"
   equalsraf.win32yank
   jqlang.jq
-  wez.wezterm
   Flow-Launcher.Flow-Launcher
   DeepL.DeepL
   gerardog.gsudo
+  chrisant996.Clink
+  junegunn.fzf
+  Alacritty.Alacritty
 ) do (
   winget install --id %%~P -h -e
 )
+
+REM Fzf on cmd
+curl -L -o %LOCALAPPDATA%\clink\fzf.lua https://raw.githubusercontent.com/chrisant996/clink-fzf/refs/heads/main/fzf.lua
 
 REM Setup
 set WSLENV=USERPROFILE/p:APPDATA/p

@@ -1,0 +1,10 @@
+set keymap vi
+set editing-mode vi
+"\e[20~": forward-word
+"\C-v": clink-paste
+"\C-f": "luafunc:vifm"
+"\C-q": "luafunc:quit"
+"\C-t": "luafunc:fzf_file"
+"\C-r": "luafunc:fzf_history"
+"\C-n": "luafunc:fzf_directory"
+"\t": "luafunc:fzf_complete_force"

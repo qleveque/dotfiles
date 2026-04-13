@@ -44,7 +44,7 @@ nn <silent> P :!filecb paste<CR>
 map <silent> Y :!filecb copy %f<CR>
 
 " Commands
-com! g :exe system('p=$(readlink "$MARKPATH/%a") && echo cd \"$p\"')|oncd
+com! g :exe system('p=$(readlink "$HOME/.marks/%a") && echo cd \"$p\"')|oncd
 com! oncd :!oncd "%d"
 
 " Style
