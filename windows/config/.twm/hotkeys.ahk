@@ -14,7 +14,7 @@ Insert::Send, #{PrintScreen}
 #Right::Send, {Media_Next}
 #Left::Send, {Media_Prev}
 
-^!+t::Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe zsh -c zellij
+^!+t::Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe --cd ~ zsh -c zellij
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
 
 !Space::ToggleScratchPad()
