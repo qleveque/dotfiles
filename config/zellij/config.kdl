@@ -1,7 +1,7 @@
 theme "blade-runner"
 default_layout "layout"
+pane_frames false
 disable_tips true
-pane_frames true
 show_startup_tips false
 keybinds clear-defaults=true {
   renametab {
@@ -27,7 +27,7 @@ keybinds clear-defaults=true {
   shared_among "normal" "locked" {
     bind "F7" { GoToPreviousTab; SwitchToMode "normal"; }
     bind "F8" { GoToNextTab; SwitchToMode "normal"; }
-    bind "F4" { SwitchToMode "tmux"; }
+    bind "Ctrl space" { SwitchToMode "tmux"; }
     bind "F3" { ToggleFloatingPanes; }
   }
   normal {

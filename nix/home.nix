@@ -59,8 +59,8 @@ in
         source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/jump/jump.plugin.zsh
         source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
-        ${builtins.readFile "${dotfiles}/config/zsh/.zshrc"}
         ${builtins.readFile "${dotfiles}/config/zsh/.vim.zsh"}
+        ${builtins.readFile "${dotfiles}/config/zsh/.zshrc"}
         ${builtins.readFile "${dotfiles}/config/zsh/.aliases"}
       '';
       envExtra = builtins.readFile "${dotfiles}/config/zsh/.zshenv";

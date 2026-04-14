@@ -13,3 +13,31 @@ export g="${MARKPATH}"
 export PROMPT="
 %F{blue}%~%f
 ❯ "
+
+# Vim corrections
+vm c vi-change
+vm d vi-delete
+nm x vi-cut
+vm x vi-cut
+nm U redo
+vm v visual-line-mode
+vm P vi-visual-swap
+vm p vi-visual-put
+im ^V vi-put-before
+im '\e[20~' forward-word # Ctrl + Enter
+
+# Surround
+nm s add-surround
+vm s add-surround
+nm c change-surround
+nm d delete-surround
+for c in {vm,om}\ {a,i}${(s..)^:-'()[]{}<>'};do ${=c} select-bracketed;done
+for c in {vm,om}\ {a,i}${(s..)^:-\''"`_-\/,.;:|&'};do ${=c} select-quoted;done
+
+# Tools
+map ^E edit-command-line
+map ^N fzf-cd-widget
+map ^F open-fm
+map ^G open-git-wrap
+map ^A open-copy-mode
+map ^Q quit

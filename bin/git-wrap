@@ -16,6 +16,7 @@ case $key in
   o) [[ -z ${hash} ]] && hash=$(cb paste); title="show ${hash:0:10}" show;;
   d|$'\x04') title="diff ${file:t}" hash= show;;
   s|$'\x13') title="status" hash= file= show;;
+  w|$'\x17') title="show" hash=HEAD file= show;;
   h) title="history ${file:t}" hash= log;;
   l) title="log" hash= file= log;;
   less-commit)

@@ -32,11 +32,6 @@ mods = "Control|Shift"
 chars = "\u001b[21~"
 
 [[keyboard.bindings]]
-key = "Space"
-mods = "Control"
-chars = "\u001bOS"
-
-[[keyboard.bindings]]
 key = "Back"
 mods = "Control"
 chars = "\u001bOR"
