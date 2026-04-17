@@ -9,10 +9,7 @@ animations:
   window_move:
     duration_ms: 120
     easing: 'ease_out_cubic'
-    trigger_threshold: '10px'
-  window_open:
-    duration_ms: 120
-    easing: 'ease_out'
+    trigger_threshold: '0px'
 
 gaps:
   inner_gap: '0px'
@@ -103,7 +100,7 @@ window_rules:
       - window_title: { equals: 'SCRATCHPAD' }
       - window_title: { regex: 'Appel vocal.*' }
       - window_process: { equals: 'vncviewer' }
-      - window_title: { equals: 'Hue Sync' }
+      - window_title: { regex: '.*Hue Sync.*' }
 
   - commands: ['move --workspace 2_else']
     match:

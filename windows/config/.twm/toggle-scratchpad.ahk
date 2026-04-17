@@ -7,11 +7,9 @@ ToggleScratchPad() {
     if (termID) {
         if WinExist("ahk_id " . termID) {
             if WinActive("ahk_id " . termID) {
-                RunWait, glazewm.exe command ignore,,Hide
                 WinMinimize, ahk_id %termID%
                 WinHide, ahk_id %termID%
             } else {
-                WinSetTitle, ahk_id %termID%, ,SCRATCHPAD
                 WinRestore, ahk_id %termID%
                 WinActivate, ahk_id %termID%
                 WinSet, AlwaysOnTop, On, ahk_id %termID%
@@ -20,10 +18,14 @@ ToggleScratchPad() {
         }
     }
 
+    RunWait, glazewm.exe command wm-toggle-pause,,Hide
     Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe --cd "~/.scratchpad" zsh -c 'nvim index',,, termPID
     WinWaitActive, ahk_pid %termPID%
     WinGet, termID, ID, ahk_pid %termPID%
-    RunWait, glazewm.exe command set-floating,,Hide
+    WinSetTitle, ahk_id %termID%, ,SCRATCHPAD
+    WinHide, ahk_id %termID%
+    RunWait, glazewm.exe command wm-toggle-pause,,Hide
+    ToggleScratchPad()
 }
 
 CleanupScratchpad(ExitReason, ExitCode) {

@@ -38,10 +38,10 @@ Insert::Send, #{PrintScreen}
 !+k::RunWait, glazewm.exe command move --direction up,, Hide
 !+j::RunWait, glazewm.exe command move --direction down,, Hide
 
-!_::RunWait, glazewm.exe command resize --width -100,, Hide
-!=::RunWait, glazewm.exe command resize --width +100,, Hide
-!+_::RunWait, glazewm.exe command resize --height -100,, Hide
-!+=::RunWait, glazewm.exe command resize --height +100,, Hide
+!_::RunWait, glazewm.exe command resize --width -200,, Hide
+!=::RunWait, glazewm.exe command resize --width +200,, Hide
+!+_::RunWait, glazewm.exe command resize --height -200,, Hide
+!+=::RunWait, glazewm.exe command resize --height +200,, Hide
 
 !;::RunWait, glazewm.exe command focus --next-active-workspace-on-monitor,, Hide
 !,::RunWait, glazewm.exe command focus --prev-active-workspace-on-monitor,, Hide
