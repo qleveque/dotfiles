@@ -45,3 +45,8 @@ chars = "\u001b[18~"
 key = "Semicolon"
 mods = "Control"
 chars = "\u001b[19~"
+
+[[keyboard.bindings]]
+key = "I"
+mods = "Control"
+chars = "\u001b[23~"

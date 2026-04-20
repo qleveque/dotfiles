@@ -39,6 +39,7 @@ nn <silent> <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo g
 nn <silent> <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:redr<CR>
 nn <silent> P :!filecb paste<CR>
 map <silent> Y :!filecb copy %f<CR>
+map <F11> <C-I>
 
 " Commands
 com! g :exe system('p=$(readlink "$HOME/.marks/%a") && echo cd \"$p\"')|oncd

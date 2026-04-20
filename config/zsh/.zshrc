@@ -25,6 +25,8 @@ vm P vi-visual-swap
 vm p vi-visual-put
 im ^V vi-put-before
 im '\e[20~' forward-word # Ctrl + Enter
+map ^O dirhistory_zle_dirhistory_back
+map '\e[23~' dirhistory_zle_dirhistory_future # Ctrl + I
 
 # Surround
 nm s add-surround

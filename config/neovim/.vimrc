@@ -28,5 +28,6 @@ nn <silent> - :sil cprev<CR>
 nn <silent> + :sil cnext<CR>
 nn <silent> é :exe'sil !zj-wrap split "run -p \"'.expand('%').'\""'<CR>
 nn <silent> É :exe'sil !zj-wrap split run'<CR>
+map <F11> <C-I>
 
 au FocusLost,BufLeave,VimLeavePre * if &modifiable && !&readonly | silent! update | endif
