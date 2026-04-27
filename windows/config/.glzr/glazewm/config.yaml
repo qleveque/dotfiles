@@ -92,6 +92,7 @@ window_rules:
       - window_title: { regex: 'Affichage compact de réunion .*' }
       - window_class : { equals: 'VNCMDI_Window' }
       - window_title: { equals: 'DeepL' }
+      - window_process: { equals: 'ScreenToGif' }
 
   - commands: ['set-floating']
     match:
@@ -148,9 +149,9 @@ window_rules:
   - commands: ['set-floating']
     match:
       - window_process: { equals: 'ANTlab' }
-        window_title: { not_regex: '.*- ANT lab -.*' }
+        window_title: { not_regex: '.*\.al$' }
       - window_process: { equals: 'python' }
-        window_title: { not_regex: '.*- ANT lab -.*' }
+        window_title: { not_regex: '.*\.al$' }
 
   - commands: ['move --workspace 8_back']
     match:
