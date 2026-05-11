@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ $PWD == /mnt/c/* && ! " $* " =~ " (--help|hash-object|rev-parse|blame) " ]]; then
+if [[ $PWD == /mnt/c/* && ! " $* " =~ " (--help|hash-object|rev-parse|blame|log) " ]]; then
   git.exe "$@"
 else
   "$HOME/.nix-profile/bin/git" "$@"

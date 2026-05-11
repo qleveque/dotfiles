@@ -10,8 +10,8 @@ bars:
       position: "bottom"
       align: "left"
     window_flags:
-      hide_on_fullscreen: true
-      hide_on_maximized: true
+      hide_on_fullscreen: false
+      hide_on_maximized: false
     dimensions:
       height: 20
     widgets:
@@ -26,8 +26,8 @@ bars:
       position: "bottom"
       align: "left"
     window_flags:
-      hide_on_fullscreen: true
-      hide_on_maximized: true
+      hide_on_fullscreen: false
+      hide_on_maximized: false
     dimensions:
       height: 20
     widgets:
