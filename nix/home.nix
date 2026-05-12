@@ -18,6 +18,8 @@ let
   packages = with pkgs; [
     unstable.opencode
     unstable.zellij
+    libgcc
+    gcc
     alacritty
     alacritty-theme
     unzip
@@ -99,19 +101,19 @@ in
     };
   };
 
-  home.file = {
-    ".config/zellij/config.kdl" = {
-      text = lib.fileContents "${dotfiles}/config/zellij/config.kdl";
-    };
-    ".config/zellij/layouts/layout.kdl" = {
-      text = lib.fileContents "${dotfiles}/config/zellij/layout.kdl";
-    };
-    ".config/alacritty/alacritty.toml" = {
-      text = ''
-        ${lib.fileContents "${dotfiles}/config/alacritty/alacritty.toml"}
-        ${lib.fileContents "${pkgs.alacritty-theme}/share/alacritty-theme/catppuccin_macchiato.toml"}
+  xdg.configFile = {
+    "nvim/parser".source = "${pkgs.symlinkJoin {
+      name = "treesitter-parsers";
+      paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;
+    }}/parser";
+    "nvim/queries".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}/queries";
+    "zellij/config.kdl".text =
+      lib.fileContents "${dotfiles}/config/zellij/config.kdl";
+    "zellij/layouts/layout.kdl".text =
+      lib.fileContents "${dotfiles}/config/zellij/layout.kdl";
+    "alacritty/alacritty.toml".text = ''
+      ${lib.fileContents "${dotfiles}/config/alacritty/alacritty.toml"}
+      ${lib.fileContents "${pkgs.alacritty-theme}/share/alacritty-theme/catppuccin_macchiato.toml"}
       '';
     };
-  };
-
 }

@@ -54,6 +54,25 @@ local function GitWrap()
 end
 vim.keymap.set("n", "<C-g>", GitWrap, { silent = true })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gitcommit",
+  callback = function()
+    vim.api.nvim_set_hl(0, "CommitTooLong", { bg = "#ff0000" })
+    vim.w.first_line_cc = vim.fn.matchadd("CommitTooLong", [[\%1l\%>50v.\+]])
+    vim.opt_local.textwidth = 72
+  end,
+})
+
+-- Tree sitter
+vim.treesitter.language.register('bash', 'zsh')
+vim.treesitter.language.register('javascript', 'babel')
+vim.treesitter.language.register('xml', 'ant')
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
+
 nvim_plugins = {
   {
     "mrjones2014/smart-splits.nvim",
@@ -202,20 +221,6 @@ nvim_plugins = {
       })
     end
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require'nvim-treesitter.config'.setup({
-        highlight = { enable = true },
-        indent = { enable = true },
-        additional_vim_regex_highlighting = false
-      })
-      vim.treesitter.language.register('bash', 'zsh')
-      vim.treesitter.language.register('javascript', 'babel')
-      vim.treesitter.language.register('xml', 'ant')
-    end
-  },
   "farmergreg/vim-lastplace",
   "wellle/targets.vim",
   {"windwp/nvim-autopairs", event = "InsertEnter", opts = { map_cr = false }},
@@ -315,8 +320,8 @@ nvim_plugins = {
     enabled = not diff,
     init = function()
       vim.cmd[[
-        nn <F5> <Cmd>BufferNext<CR>
-        nn <F6> <Cmd>BufferPrevious<CR>
+        map <F5> <Cmd>BufferNext<CR>
+        map <F6> <Cmd>BufferPrevious<CR>
         nn Q <Cmd>BufferClose<CR>
         nn X <Cmd>BufferCloseAllButVisible<CR>
       ]]
@@ -434,9 +439,10 @@ nvim_plugins = {
 
 if os.getenv("USE_GITHUB_COPILOT") then
   vim.g.copilot_no_tab_map = true
-  -- <F9> is <C-S-CR>
+  -- <F10> is <C-S-CR>
   vim.keymap.set('n', '<F10>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
   vim.keymap.set('v', '<F10>', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
+  -- <F9> is <C-CR>
   vim.api.nvim_set_keymap("i", "<F9>", 'copilot#Accept("")', { expr = true, silent = true })
   table.insert(nvim_plugins, {
     "github/copilot.vim",
