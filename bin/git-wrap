@@ -1,9 +1,8 @@
 #!/usr/bin/env zsh
 key="$1" && shift
 
-while getopts "h:f:l:" opt; do case $opt in
+while getopts "h:f:" opt; do case $opt in
   f) [[ -n "${OPTARG}" ]] && file="$(realpath -s --relative-to="${PWD}" "${OPTARG}")" ;;
-  l) line="${OPTARG}";;
   h) hash="${OPTARG}";;
 esac; done
 shift $((OPTIND -1))
