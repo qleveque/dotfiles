@@ -18,7 +18,7 @@ keybinds clear-defaults=true {
     bind "Ctrl f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
     bind "Ctrl q" { CloseFocus; SwitchToMode "normal"; }
     bind "Ctrl a" {
-      DumpScreen "/tmp/.screen"
+      DumpScreen "/tmp/.screen" { full true; }
       Run "zsh" "-c" "zj-wrap copy /tmp/.screen" {
         close_on_exit true; in_place true; name "Copy";
       }

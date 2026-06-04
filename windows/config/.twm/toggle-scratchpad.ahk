@@ -22,7 +22,7 @@ ToggleScratchPad() {
     Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe --cd "~/.scratchpad" zsh -c 'nvim index',,, termPID
     WinWaitActive, ahk_pid %termPID%
     WinGet, termID, ID, ahk_pid %termPID%
-    Sleep, 100
+    Sleep, 500
     WinSetTitle, ahk_id %termID%, ,SCRATCHPAD
     WinHide, ahk_id %termID%
     RunWait, glazewm.exe command wm-toggle-pause,,Hide
