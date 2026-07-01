@@ -17,7 +17,7 @@ vi-visual-swap(){zle .vi-delete;local b="${CUTBUFFER}";vi-put vi-put-before;prin
 vi-backward-delete-char(){zle .backward-delete-char}
 open-fm(){cd "$(vifm -c :only --choose-dir - . . < /dev/tty)";zle reset-prompt; zle zle-line-init}
 open-git-wrap(){local k; read -k1 k; git-wrap $k -f"${PWD}" < /dev/tty; zle reset-prompt; zle zle-line-init}
-open-copy-mode(){zle autosuggest-clear; zj-wrap copy}
+open-copy-mode(){zle autosuggest-clear; zellij action edit-scrollback}
 insert-space() { LBUFFER+=" " }
 quit(){exit}
 set-cursor(){local c=2;[[ ${KEYMAP} == main ]]&&c=6;printf $'\e[%d q' $c}

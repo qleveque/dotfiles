@@ -3,6 +3,7 @@ default_layout "layout"
 pane_frames false
 disable_tips true
 show_startup_tips false
+scrollback_editor "nvim -c autocmd\\ VimEnter\\ *\\ norm!\\ G3k^ -c set\\ ls=0\\ nonu\\ stal=0"
 keybinds clear-defaults=true {
   renametab {
     bind "esc" { UndoRenameTab; SwitchToMode "normal"; }
@@ -17,12 +18,7 @@ keybinds clear-defaults=true {
     bind "Ctrl t" { NewTab; SwitchToMode "normal"; }
     bind "Ctrl f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
     bind "Ctrl q" { CloseFocus; SwitchToMode "normal"; }
-    bind "Ctrl a" {
-      DumpScreen "/tmp/.screen" { full true; }
-      Run "zsh" "-c" "zj-wrap copy /tmp/.screen" {
-        close_on_exit true; in_place true; name "Copy";
-      }
-    }
+    bind "Ctrl a" { EditScrollback; }
   }
   shared_among "normal" "locked" {
     bind "F7" { GoToPreviousTab; SwitchToMode "normal"; }
@@ -31,9 +27,9 @@ keybinds clear-defaults=true {
     bind "F3" { ToggleFloatingPanes; }
   }
   normal {
-    bind "Ctrl h" {MoveFocus "Left"; }
-    bind "Ctrl j" {MoveFocus "Down"; }
-    bind "Ctrl k" {MoveFocus "Up"; }
-    bind "Ctrl l" {MoveFocus "Right"; }
+    bind "Ctrl h" { MoveFocus "Left"; }
+    bind "Ctrl j" { MoveFocus "Down"; }
+    bind "Ctrl k" { MoveFocus "Up"; }
+    bind "Ctrl l" { MoveFocus "Right"; }
   }
 }
