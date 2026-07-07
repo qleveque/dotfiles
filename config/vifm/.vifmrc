@@ -39,7 +39,7 @@ nn <silent> <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo g
 nn <silent> <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:redr<CR>
 nn <silent> P :exe "!filecb paste"|:redr<CR>
 map <silent> Y :!filecb copy %f<CR>
-map <silent> D :exe "!powershell.exe -Command 'Remove-Item ".expand('%f')." -Recurse'"|:redr<CR>
+map <silent> D :exe '!filecb delete '.expand('%f')|:redr<CR>
 map <F11> <C-I>
 
 " Commands

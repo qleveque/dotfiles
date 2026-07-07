@@ -4,7 +4,7 @@ cmd=$1 && shift
 
 if win; then
   case ${cmd} in
-    paste) 
+    paste)
       powershell.exe -Command \
         'Get-Clipboard -Format FileDropList | `
         ForEach-Object { `
@@ -21,6 +21,14 @@ if win; then
           $c.Add($fullPath) `
         };`
         [System.Windows.Forms.Clipboard]::SetFileDropList($c);'
+    ;;
+    delete)
+      for a in "$@"; do echo "$a"; done | powershell.exe -Command \
+      '$input -split "\n" | `
+      ForEach-Object { `
+        $fullPath = Join-Path (Get-Location) $_;`
+        Remove-Item "$fullPath" -Recurse `
+      };'
     ;;
   esac
 fi
