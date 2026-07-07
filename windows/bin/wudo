@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-"/mnt/c/Program Files/gsudo/Current/sudo.exe" "$@"
+"/mnt/c/Program Files/gsudo/Current/sudo.exe" wsl.exe "$@"

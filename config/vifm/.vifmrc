@@ -37,8 +37,9 @@ nn <silent> <CR> :!o %f<CR>
 nn <silent> <C-g> :exe'!read -k1 k && git-wrap $k -f"'.expand('%f').'"'<CR>
 nn <silent> <C-t> :exe system('g=$(${FZF_CTRL_T_COMMAND}|fzf 2>/dev/tty)&&echo goto \"$g\"')|:redr<CR>
 nn <silent> <C-n> :exe 'cd "./'.system('eval ${FZF_ALT_C_COMMAND}|fzf 2>/dev/tty').'"'|:redr<CR>
-nn <silent> P :!filecb paste<CR>
+nn <silent> P :exe "!filecb paste"|:redr<CR>
 map <silent> Y :!filecb copy %f<CR>
+map <silent> D :exe "!powershell.exe -Command 'Remove-Item ".expand('%f')." -Recurse'"|:redr<CR>
 map <F11> <C-I>
 
 " Commands
