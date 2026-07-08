@@ -41,6 +41,7 @@ let
     python3
     gnumake
     wget
+    dos2unix
   ];
 in
 {

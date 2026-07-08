@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+# Edit any file
+
+full_path="$(readlink -f "$1")"
+wfile="$(wslpath -w -- "$1")"
+case ${full_path:t:e} in
+  png|jpg|jpeg) 'mspaint.exe' "$wfile";;
+  mp3) '/mnt/c/Program Files/Audacity/Audacity.exe' "$wfile";;
+  exe|bin) '/mnt/c/Program Files/ImHex/imhex.exe' "$wfile";;
+  *) $(whence -ap e | uniq | sed -n '2p') "$@";;
+esac

@@ -408,8 +408,6 @@ nvim_plugins = {
           ['<CR>']=function() vim.cmd('sil !o "'..path()..'"') end,
           ['<C-f>']=function() vim.cmd('wincmd p') end,
           ['<C-g>']=function() vim.cmd('sil !git-wrap '..vim.fn.nr2char(vim.fn.getchar())..' -f"'..path()..'"') end,
-          ['Y']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb copy "'..filename()..'"') end,
-          ['P']=function() vim.cmd('sil !cd $(dirname "'..path()..'") && filecb paste') end,
         }
         for k, v in pairs(arr) do
           vim.keymap.set('n',k,v,{buffer=bufnr,silent=true,nowait=true})

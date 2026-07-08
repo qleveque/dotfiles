@@ -2,33 +2,8 @@
 # Edit any file
 
 full_path="$(readlink -f "$1")"
-ext="${full_path:t:e}"
-filetype=$(file --mime-type -b "$1")
-# Check if binary file
-[[ -s $1 ]]&&file -vi "$1"|grep -q 'application/\S\+; charset=binary$'&&ext='bin'
 
-exit_on_done() { [[ ${continue} == 1 ]] && continue=0 || exit 0 }
-
-case ${filetype} in
-  application/vnd.sqlite3) lazysql "$1";;
-  *) continue=1;;
-esac && exit_on_done
-
-if win; then
-  winrun() {
-    prog=$1 && shift
-    for f in "$@"; do cmd.exe /C start '' "${prog}" "$(wslpath -w -- "${f}")"; done
-  }
-  case ${ext} in
-    png|jpg|jpeg) winrun 'mspaint.exe' "$@";;
-    mp3) winrun 'C:\Program Files\Audacity\Audacity.exe' "$@";;
-    bin) winrun 'C:\Program Files\ImHex\imhex.exe' "$@";;
-    *) continue=1;;
-  esac && exit_on_done
-else
-  case ${ext} in
-    *) continue=1;;
-  esac && exit_on_done
-fi
-
-nvim "$@"
+case ${full_path:t:e} in
+  sql) lazysql "$1";;
+  *) nvim "$@";;
+esac

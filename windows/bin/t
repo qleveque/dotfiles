@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+# Open a test file with the given extension
+
+tmp=`wslpath "$(cmd.exe /c 'echo %TEMP%\%RANDOM%' | tr -d '\r')"` 2>/dev/null
+nvim "${tmp}.$1"

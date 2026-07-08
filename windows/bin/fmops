@@ -1,0 +1,64 @@
+#!/usr/bin/env zsh
+
+cmd=$1 && shift
+
+case ${cmd} in
+  paste)
+    powershell.exe -Command \
+      'Add-Type -AssemblyName System.Windows.Forms; `
+      $dataObject = [System.Windows.Forms.Clipboard]::GetDataObject(); `
+      $files = $dataObject.GetData([System.Windows.Forms.DataFormats]::FileDrop); `
+      $dropEffect = 1; `
+      if ($dataObject.GetDataPresent("Preferred DropEffect")) { `
+        $effectData = $dataObject.GetData("Preferred DropEffect"); `
+        if ($effectData -is [System.IO.MemoryStream]) { `
+          $bytes = $effectData.ToArray(); `
+          if ($bytes.Length -ge 4) { $dropEffect = [BitConverter]::ToInt32($bytes, 0) } `
+        } elseif ($effectData -is [byte[]]) { `
+          if ($effectData.Length -ge 4) { $dropEffect = [BitConverter]::ToInt32($effectData, 0) } `
+        } `
+      } `
+      $files | ForEach-Object { `
+        if ($dropEffect -eq 2) { `
+          Move-Item $_ -Destination . -Force `
+        } else { `
+          Copy-Item $_ -Destination . -Recurse -Force `
+        } `
+      }'
+  ;;
+  copy)
+    for a in "$@"; do echo "$a"; done | powershell.exe -Command \
+      'Add-Type -AssemblyName System.Windows.Forms; `
+      $c = New-Object Collections.Specialized.StringCollection; `
+      $input -split "\n" | `
+      ForEach-Object { `
+        $fullPath = Join-Path (Get-Location) $_;`
+        $c.Add($fullPath) `
+      };`
+      [System.Windows.Forms.Clipboard]::SetFileDropList($c);'
+  ;;
+  cut)
+    for a in "$@"; do echo "$a"; done | powershell.exe -Command \
+      'Add-Type -AssemblyName System.Windows.Forms; `
+      $c = New-Object Collections.Specialized.StringCollection; `
+      $input -split "\n" | `
+      ForEach-Object { `
+        $fullPath = Join-Path (Get-Location) $_;`
+        $c.Add($fullPath) `
+      };`
+      $data = New-Object System.Windows.Forms.DataObject; `
+      $data.SetFileDropList($c); `
+      $bytes = [byte[]](2,0,0,0); `
+      $stream = New-Object System.IO.MemoryStream(,$bytes); `
+      $data.SetData("Preferred DropEffect", $stream); `
+      [System.Windows.Forms.Clipboard]::SetDataObject($data, $true);'
+  ;;
+  delete)
+    for a in "$@"; do echo "$a"; done | powershell.exe -Command \
+    '$input -split "\n" | `
+    ForEach-Object { `
+      $fullPath = Join-Path (Get-Location) $_;`
+      Remove-Item "$fullPath" -Recurse `
+    };'
+  ;;
+esac

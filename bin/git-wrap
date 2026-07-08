@@ -18,10 +18,4 @@ case $key in
   w|$'\x17') title="show" hash=HEAD file= show;;
   h) title="history ${file:t}" hash= log;;
   l) title="log" hash= file= log;;
-  less-commit)
-    read line
-    for pat in '^commit\ (\w+)' '((HEAD|stash)@\{[0-9]+\})' '^[*| ]*(\w+)'; do
-      [[ ${line} =~ ${pat} ]] && { echo "${match[1]}" && exit 0 }
-    done
-  ;;
 esac

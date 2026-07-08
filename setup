@@ -4,7 +4,7 @@ mkdir -p ~/.config/home-manager
 cp nix/home.nix ~/.config/home-manager/home.nix
 home-manager switch
 
-if win; then
+if grep -q microsoft /proc/version; then
   zsh windows/setup
 fi
 

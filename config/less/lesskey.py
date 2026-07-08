@@ -7,6 +7,7 @@ RESET_SEARCH = r'mS/^A^A\n\'S\emS'
 NA = 'noaction'
 REMOVE_COLORS = r"sed -r 's/\\x1B\\[[0-9;]*[mGK]//g'"
 BUFFER = f"|.^P{REMOVE_COLORS}"
+GET_COMMIT = r"head -1 | sed 's/:/ /g' | sed 's/\\(commit\\)\\?[* |]*//' | cut -d' ' -f1"
 COMMIT_PATTERN = r'\^commit |stash@\\{|HEAD@\\{'
 
 print(rf'''#env
@@ -24,6 +25,6 @@ yy {NA} {BUFFER}|{C("head -1|cb copy")}\n
 # Git
 c {NA} J/{COMMIT_PATTERN}\n{RESET_SEARCH}
 C {NA} J\ebK?{COMMIT_PATTERN}\n{RESET_SEARCH}
-l {NA} {BUFFER}|{C("git-wrap less-commit | xargs git-wrap o -h")}\n
-yc {NA} {BUFFER}|{C("git-wrap less-commit | cb copy")}\n
+l {NA} {BUFFER}|{GET_COMMIT}|{C("xargs git-wrap o -h")}\n
+yc {NA} {BUFFER}|{GET_COMMIT}|{C("cb copy")}\n
 ''')

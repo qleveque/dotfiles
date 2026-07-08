@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+case $1 in
+  copy) win32yank.exe -i --crlf;;
+  paste) win32yank.exe -o --lf;;
+esac
