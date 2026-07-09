@@ -33,7 +33,7 @@ chars = "\u001b[21~"
 
 [[keyboard.bindings]]
 key = "Back"
-mods = "Control"
+mods = "Control|Shift"
 chars = "\u001bOR"
 
 [[keyboard.bindings]]

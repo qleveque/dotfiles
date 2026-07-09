@@ -3,7 +3,7 @@ default_layout "layout"
 pane_frames false
 disable_tips true
 show_startup_tips false
-scrollback_editor "nvim -c autocmd\\ VimEnter\\ *\\ norm!\\ G3k^ -c set\\ ls=0\\ nonu\\ stal=0"
+scrollback_editor "nvim -c autocmd\\ VimEnter\\ *\\ norm!\\ G{k^ -c set\\ ls=0\\ nonu\\ stal=0"
 keybinds clear-defaults=true {
   renametab {
     bind "esc" { UndoRenameTab; SwitchToMode "normal"; }

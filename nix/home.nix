@@ -42,6 +42,8 @@ let
     gnumake
     wget
     dos2unix
+    vifm
+    libqalculate
   ];
 in
 {
@@ -83,16 +85,6 @@ in
       extraLuaConfig = lib.fileContents "${dotfiles}/config/neovim/.nvim.lua";
       extraConfig = lib.fileContents "${dotfiles}/config/neovim/.vimrc";
     };
-    vifm = {
-      enable = true;
-      extraConfig = ''
-        ${lib.fileContents "${dotfiles}/config/vifm/.vifmrc"}
-        ${lib.fileContents (pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm";
-          sha256 = "sha256-2DFwYMZEh/FLNU5LYhCqmtCPlfk66hdnmi9X0YuPB1I=";
-        })}
-      '';
-    };
     less = {
       package = unstable.less;
       enable = true;
@@ -116,5 +108,12 @@ in
       ${lib.fileContents "${dotfiles}/config/alacritty/alacritty.toml"}
       ${lib.fileContents "${pkgs.alacritty-theme}/share/alacritty-theme/catppuccin_macchiato.toml"}
       '';
+    "vifm/vifmrc".text = ''
+      ${lib.fileContents "${dotfiles}/config/vifm/.vifmrc"}
+      ${lib.fileContents (pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/thimc/vifm_devicons/master/favicons.vifm";
+        sha256 = "sha256-2DFwYMZEh/FLNU5LYhCqmtCPlfk66hdnmi9X0YuPB1I=";
+      })}
+    '';
     };
 }

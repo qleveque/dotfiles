@@ -27,6 +27,7 @@ im ^V vi-put-before
 im '\e[20~' forward-word # Ctrl + Enter
 map ^O dirhistory_zle_dirhistory_back
 map '\e[23~' dirhistory_zle_dirhistory_future # Ctrl + I
+im ^H backward-kill-word # Ctrl + Backspace
 
 # Surround
 nm s add-surround

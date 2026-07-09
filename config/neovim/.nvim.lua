@@ -468,7 +468,7 @@ local theme = {
       integrations = { nvimtree = false, barbar = true, coc_nvim = true, leap = true },
       custom_highlights = function(C)
         return {
-          User1 = { bg = C.surface1 },
+          User1 = { fg = C.text, bg = C.surface1 },
           WinSeparator = { bg = C.mantle, fg = C.surface2 },
           StatusLine = { bg = None, fg = C.surface2, underline = true },
           StatusLineNC = { bg = None, fg = C.surface2, underline = true },

@@ -4,61 +4,65 @@ cmd=$1 && shift
 
 case ${cmd} in
   paste)
-    powershell.exe -Command \
-      'Add-Type -AssemblyName System.Windows.Forms; `
-      $dataObject = [System.Windows.Forms.Clipboard]::GetDataObject(); `
-      $files = $dataObject.GetData([System.Windows.Forms.DataFormats]::FileDrop); `
-      $dropEffect = 1; `
-      if ($dataObject.GetDataPresent("Preferred DropEffect")) { `
-        $effectData = $dataObject.GetData("Preferred DropEffect"); `
-        if ($effectData -is [System.IO.MemoryStream]) { `
-          $bytes = $effectData.ToArray(); `
-          if ($bytes.Length -ge 4) { $dropEffect = [BitConverter]::ToInt32($bytes, 0) } `
-        } elseif ($effectData -is [byte[]]) { `
-          if ($effectData.Length -ge 4) { $dropEffect = [BitConverter]::ToInt32($effectData, 0) } `
-        } `
-      } `
-      $files | ForEach-Object { `
-        if ($dropEffect -eq 2) { `
-          Move-Item $_ -Destination . -Force `
-        } else { `
-          Copy-Item $_ -Destination . -Recurse -Force `
-        } `
-      }'
+    # Same behavior as Ctrl+V in Explorer (uses Explorer's Paste verb in current directory)
+    powershell.exe -NoProfile -Command \
+      '$shell = New-Object -ComObject Shell.Application; `
+      $destPath = (Get-Location).Path; `
+      $dest = $shell.Namespace($destPath); `
+      if (-not $dest) { throw "Cannot access destination folder: $destPath" } `
+      $dest.Self.InvokeVerb("paste")'
   ;;
+
   copy)
-    for a in "$@"; do echo "$a"; done | powershell.exe -Command \
+    # Same clipboard format as Ctrl+C in Explorer
+    for a in "$@"; do echo "$a"; done | powershell.exe -NoProfile -Command \
       'Add-Type -AssemblyName System.Windows.Forms; `
+      $paths = $input -split "`n" | Where-Object { $_ -and $_.Trim() -ne "" }; `
       $c = New-Object Collections.Specialized.StringCollection; `
-      $input -split "\n" | `
-      ForEach-Object { `
-        $fullPath = Join-Path (Get-Location) $_;`
-        $c.Add($fullPath) `
-      };`
-      [System.Windows.Forms.Clipboard]::SetFileDropList($c);'
-  ;;
-  cut)
-    for a in "$@"; do echo "$a"; done | powershell.exe -Command \
-      'Add-Type -AssemblyName System.Windows.Forms; `
-      $c = New-Object Collections.Specialized.StringCollection; `
-      $input -split "\n" | `
-      ForEach-Object { `
-        $fullPath = Join-Path (Get-Location) $_;`
-        $c.Add($fullPath) `
-      };`
+      $paths | ForEach-Object { `
+        $fullPath = (Resolve-Path -LiteralPath (Join-Path (Get-Location) $_)).Path; `
+        [void]$c.Add($fullPath) `
+      }; `
       $data = New-Object System.Windows.Forms.DataObject; `
       $data.SetFileDropList($c); `
-      $bytes = [byte[]](2,0,0,0); `
+      $bytes = [BitConverter]::GetBytes([int]5); `
       $stream = New-Object System.IO.MemoryStream(,$bytes); `
       $data.SetData("Preferred DropEffect", $stream); `
-      [System.Windows.Forms.Clipboard]::SetDataObject($data, $true);'
+      [System.Windows.Forms.Clipboard]::SetDataObject($data, $true)'
   ;;
+
+  cut)
+    # Same clipboard format as Ctrl+X in Explorer
+    for a in "$@"; do echo "$a"; done | powershell.exe -NoProfile -Command \
+      'Add-Type -AssemblyName System.Windows.Forms; `
+      $paths = $input -split "`n" | Where-Object { $_ -and $_.Trim() -ne "" }; `
+      $c = New-Object Collections.Specialized.StringCollection; `
+      $paths | ForEach-Object { `
+        $fullPath = (Resolve-Path -LiteralPath (Join-Path (Get-Location) $_)).Path; `
+        [void]$c.Add($fullPath) `
+      }; `
+      $data = New-Object System.Windows.Forms.DataObject; `
+      $data.SetFileDropList($c); `
+      $bytes = [BitConverter]::GetBytes([int]2); `
+      $stream = New-Object System.IO.MemoryStream(,$bytes); `
+      $data.SetData("Preferred DropEffect", $stream); `
+      [System.Windows.Forms.Clipboard]::SetDataObject($data, $true)'
+  ;;
+
   delete)
-    for a in "$@"; do echo "$a"; done | powershell.exe -Command \
-    '$input -split "\n" | `
-    ForEach-Object { `
-      $fullPath = Join-Path (Get-Location) $_;`
-      Remove-Item "$fullPath" -Recurse `
-    };'
+    # Same behavior as Delete in Explorer (Shell delete verb, typically to Recycle Bin)
+    for a in "$@"; do echo "$a"; done | powershell.exe -NoProfile -Command \
+      '$shell = New-Object -ComObject Shell.Application; `
+      $paths = $input -split "`n" | Where-Object { $_ -and $_.Trim() -ne "" }; `
+      $paths | ForEach-Object { `
+        $fullPath = (Resolve-Path -LiteralPath (Join-Path (Get-Location) $_)).Path; `
+        $parent = [System.IO.Path]::GetDirectoryName($fullPath); `
+        $leaf = [System.IO.Path]::GetFileName($fullPath); `
+        $folder = $shell.Namespace($parent); `
+        if ($folder) { `
+          $item = $folder.ParseName($leaf); `
+          if ($item) { $item.InvokeVerb("delete") } `
+        } `
+      }'
   ;;
 esac
