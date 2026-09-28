@@ -31,7 +31,7 @@ run_file() {
   # Extension
   local f="${file}" n="${file:r}" && [[ $f =~ "[() ]" ]] && f="\"$f\"" n="\"$n\""
   case ${file:e} in
-    ahk) run_cmd cmd.exe /C "autohotkey.exe $f";;
+    ahk) run_cmd cmd.exe /C "C:/Program\ Files/AutoHotkey/AutoHotkeyU64.exe $f";;
     asm) run_cmd "nasm -f elf64 $f && ld -s -o $n.out $n.o && ./$n.out";;
     bash|sh) run_cmd "bash $f";;
     bat|cmd) run_cmd cmd.exe /C "$f";;
