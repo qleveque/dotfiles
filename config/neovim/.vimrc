@@ -14,6 +14,10 @@ nn cc "_cc
 no d "_d
 nn dd "_dd
 no x d
+vn <Tab> >
+vn <S-Tab> <
+nn <Tab> >
+nn <S-Tab> <
 
 " Easy life
 map <C-q> ZQ

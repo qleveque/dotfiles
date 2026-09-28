@@ -1,0 +1,37 @@
+^!+t::Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe --cd ~ zsh -c zellij
+^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
+
+!Space::ToggleScratchPad()
+!+Space::ToggleDeepL()
+!Enter::RunWait, %A_ScriptDir%\move-workspace.bat,, Hide
+!Backspace::RunWait, glazewm.exe command wm-cycle-focus,, Hide
+!+Backspace::RunWait, %A_ScriptDir%\switch-minimized.bat,, Hide
+!f::RunWait, %A_ScriptDir%\toggle-floating.bat,, Hide
+!+f::RunWait, glazewm.exe command toggle-fullscreen,, Hide
+!x::RunWait, glazewm.exe command set-minimized,, Hide
+!+x::RunWait, %A_ScriptDir%\unminimize.bat,, Hide
+!v::RunWait, glazewm.exe command toggle-tiling-direction,, Hide
+!q::WinClose, A
+
+!h::RunWait, glazewm.exe command focus --direction left,, Hide
+!l::RunWait, glazewm.exe command focus --direction right,, Hide
+!k::RunWait, glazewm.exe command focus --direction up,, Hide
+!j::RunWait, glazewm.exe command focus --direction down,, Hide
+!+h::RunWait, glazewm.exe command move --direction left,, Hide
+!+l::RunWait, glazewm.exe command move --direction right,, Hide
+!+k::RunWait, glazewm.exe command move --direction up,, Hide
+!+j::RunWait, glazewm.exe command move --direction down,, Hide
+
+!_::RunWait, glazewm.exe command resize --width -200,, Hide
+!=::RunWait, glazewm.exe command resize --width +200,, Hide
+!+_::RunWait, glazewm.exe command resize --height -200,, Hide
+!+=::RunWait, glazewm.exe command resize --height +200,, Hide
+
+!;::RunWait, glazewm.exe command focus --next-active-workspace-on-monitor,, Hide
+!,::RunWait, glazewm.exe command focus --prev-active-workspace-on-monitor,, Hide
+
+!z::RunWait, glazewm.exe command focus --recent-workspace,, Hide
+!+z::
+    RunWait, glazewm.exe command move --recent-workspace,, Hide
+    RunWait, glazewm.exe command focus --recent-workspace,, Hide
+    return
