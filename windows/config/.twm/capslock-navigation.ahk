@@ -13,7 +13,7 @@ CapsLock Up::
     capsDownTime := 0
 return
 
-#If GetKeyState("CapsLock","P")
+#If GetKeyState("CapsLock","P") && (A_TickCount - capsDownTime > 50)
 H::Send, {Left}
 J::Send, {Down}
 K::Send, {Up}
