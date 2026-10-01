@@ -6,7 +6,7 @@
 normalMode := false
 downTime := 0
 action := false
-optionTextObject := false
+textObject := false
 
 Gui, +AlwaysOnTop -Caption +ToolWindow +E0x20 +HwndModeGuiHwnd
 Gui, Color, 005F00
@@ -19,40 +19,17 @@ Gui, Show, Hide NA
 SetTimer, UpdateModeIndicator, 200
 return
 
-UpdateModeIndicator:
-    if (!normalMode && !action) {
-        Gui, Hide
-        return
+~LShift Up::
+    if (A_PriorKey = "LShift") {
+        if (normalMode) {
+            normalMode := false
+            Send, {Shift up}
+        } else {
+            normalMode := true
+        }
     }
-
-    WinGetPos, winX, winY,,, A
-    if (winX = "" || winY = "")
-        return
-
-    if (GetKeyState("Shift")) {
-        Gui, Color, 875FD7
-        GuiControl,, ModeText, VISUAL
-    } else {
-        Gui, Color, 7CFC90
-        GuiControl,, ModeText, NORMAL
-    }
-
-    Gui, Show, x%winX% y%winY% NA
-    return
-
-#If !normalMode && !action
-SC029::
-    if (downTime > 0)
-        return
-    downTime := A_TickCount
-    normalMode := true
     return
 #If normalMode
-SC029 Up::
-    if ((A_TickCount - downTime) > 200)
-        normalMode := false
-    downTime := 0
-    return
 I::
 A::
 Escape::
@@ -97,7 +74,7 @@ g::
     action := A_ThisHotkey
     return
 
-#If action != false && optionTextObject = false
+#If action != false && textObject = false
 h::
 j::
 k::
@@ -105,29 +82,29 @@ l::
 b::
 w::
 e::
-    optionBack := action
+    actionBk := action
     action := false
     normalMode := true
     Send, {Shift down}
     SendLevel, 1
     Send, % A_ThisHotkey
-    Send, % optionBack
+    Send, % actionBk
     SendLevel, 0
     return
 i::
 a::
-    optionTextObject := A_ThisHotkey
+    textObject := A_ThisHotkey
     return
 c::
 d::
 y::
-    optionBack := action
+    actionBk := action
     action := false
     normalMode := true
-    if (optionBack = A_ThisHotkey) {
+    if (actionBk = A_ThisHotkey) {
         SendLevel, 1
         Send, {Home}{Shift down}{End}
-        Send, % optionBack
+        Send, % actionBk
         Send, {Shift up}
         SendLevel, 0
     }
@@ -139,23 +116,43 @@ g::
         normalMode := true
     }
     return
-#If action != false && optionTextObject != false
+#If action != false && textObject != false
 w::
-    optionBack := action
+    actionBk := action
     action := false
     normalMode := true
-    optionTextObjectBack := optionTextObject
-    optionTextObject := false
+    textObjectBk := textObject
+    textObject := false
 
-        SendLevel, 1
-    if (optionTextObjectBack = "i") {
+    SendLevel, 1
+    if (textObjectBk = "i") {
         Send, ^{Right}{Left}{Shift down}^{Left}
-    } else if (optionTextObjectBack = "a") {
+    } else if (textObjectBk = "a") {
         Send, ^{Right}{Shift down}^{Left}
     }
-        Send, % optionBack
-        Send, {Shift up}
-        SendLevel, 0
-        return
+    Send, % actionBk
+    Send, {Shift up}
+    SendLevel, 0
     return
 #If
+
+UpdateModeIndicator:
+    if (!normalMode && !action) {
+        Gui, Hide
+        return
+    }
+
+    WinGetPos, winX, winY,,, A
+    if (winX = "" || winY = "")
+        return
+
+    if (GetKeyState("Shift")) {
+        Gui, Color, 875FD7
+        GuiControl,, ModeText, VISUAL
+    } else {
+        Gui, Color, 7CFC90
+        GuiControl,, ModeText, NORMAL
+    }
+
+    Gui, Show, x%winX% y%winY% NA
+    return
