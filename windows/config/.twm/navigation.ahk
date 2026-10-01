@@ -6,7 +6,6 @@
 normalMode := false
 downTime := 0
 action := false
-textObject := false
 
 Gui, +AlwaysOnTop -Caption +ToolWindow +E0x20 +HwndModeGuiHwnd
 Gui, Color, 005F00
@@ -19,8 +18,8 @@ Gui, Show, Hide NA
 SetTimer, UpdateModeIndicator, 200
 return
 
-~LShift Up::
-    if (A_PriorKey = "LShift") {
+~LControl Up::
+    if (A_PriorKey = "LControl") {
         if (normalMode) {
             normalMode := false
             Send, {Shift up}
@@ -52,7 +51,7 @@ p::Send, ^v
 
 V::Send, {Shift down}
 +Escape::Send, {Shift up}{Right}
-+V::Send, {Shift up}{Home}{Shift down}{End}
++V::Send, {Shift up}^{Home}{Shift down}^{End}
 +X::Send, {Shift up}^x
 +D::Send, {Shift up}{Backspace}
 +C::
@@ -74,7 +73,7 @@ g::
     action := A_ThisHotkey
     return
 
-#If action != false && textObject = false
+#If action != false
 h::
 j::
 k::
@@ -94,6 +93,23 @@ e::
 i::
 a::
     textObject := A_ThisHotkey
+    actionBk := action
+    action := false
+    Input, key, L1
+    if (key != "w")
+        return
+    normalMode := true
+
+    SendLevel, 1
+    if (textObject = "i") {
+        Send, ^{Right}{Left}{Shift down}^{Left}
+    } else if (textObject = "a") {
+        Send, ^{Right}{Shift down}^{Left}
+    }
+    Send, % actionBk
+    Send, {Shift up}
+    SendLevel, 0
+    action := false
     return
 c::
 d::
@@ -115,24 +131,6 @@ g::
         action := false
         normalMode := true
     }
-    return
-#If action != false && textObject != false
-w::
-    actionBk := action
-    action := false
-    normalMode := true
-    textObjectBk := textObject
-    textObject := false
-
-    SendLevel, 1
-    if (textObjectBk = "i") {
-        Send, ^{Right}{Left}{Shift down}^{Left}
-    } else if (textObjectBk = "a") {
-        Send, ^{Right}{Shift down}^{Left}
-    }
-    Send, % actionBk
-    Send, {Shift up}
-    SendLevel, 0
     return
 #If
 
