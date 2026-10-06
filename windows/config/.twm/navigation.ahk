@@ -29,9 +29,17 @@ return
     }
     return
 #If normalMode
-I::
-A::
+i::
+a::
 Escape::
+    normalMode := false
+    return
++i::
+    Send, {Home}
+    normalMode := false
+    return
++a::
+    Send, {End}
     normalMode := false
     return
 Enter::
@@ -39,31 +47,31 @@ Enter::
     Send, {Enter}
     return
 p::Send, ^v
-*H::Send, {Left}
-*J::Send, {Down}
-*K::Send, {Up}
-*L::Send, {Right}
-*W::Send, ^{Right}
-*E::Send, {Right}^{Right}{Left}
-*B::Send, ^{Left}
+*h::Send, {Left}
+*j::Send, {Down}
+*k::Send, {Up}
+*l::Send, {Right}
+*w::Send, ^{Right}
+*e::Send, {Right}^{Right}{Left}
+*b::Send, ^{Left}
 *SC01B::Send, {End}
 *^!SC00A::Send, {Home}
 
-V::Send, {Shift down}
+v::Send, {Shift down}
 +Escape::Send, {Shift up}{Right}
-+V::Send, {Shift up}^{Home}{Shift down}^{End}
-+X::Send, {Shift up}^x
-+D::Send, {Shift up}{Backspace}
-+C::
++v::Send, {Shift up}^{Home}{Shift down}^{End}
++x::Send, {Shift up}^x
++d::Send, {Shift up}{Backspace}
++c::
     normalMode := false
     Send, {Shift up}{Backspace}
     return
-+Y::Send, {Shift up}^c{Right}
++y::Send, {Shift up}^c{Right}
 
-U::Send, ^z
-+U::Send, ^y
+u::Send, ^z
++u::Send, ^y
 
-+G::Send, ^{End}
++g::Send, ^{End}
 
 c::
 d::
