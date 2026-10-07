@@ -53,10 +53,10 @@
   "TimeFormat": "hh:mm tt",
   "DateFormat": "MM\u0027/\u0027dd ddd",
   "FirstLaunch": false,
-  "SettingWindowWidth": 940,
-  "SettingWindowHeight": 748,
-  "SettingWindowTop": -924,
-  "SettingWindowLeft": 184,
+  "SettingWindowWidth": 1326,
+  "SettingWindowHeight": 624,
+  "SettingWindowTop": 62,
+  "SettingWindowLeft": 20,
   "SettingWindowState": 0,
   "ShowPlaceholder": true,
   "PlaceholderText": "",
@@ -146,8 +146,8 @@
   "AlwaysStartEn": false,
   "QuerySearchPrecision": "Regular",
   "AutoUpdates": false,
-  "WindowLeft": 304,
-  "WindowTop": -821,
+  "WindowLeft": 333,
+  "WindowTop": 181.5,
   "PreviousScreenWidth": 0,
   "PreviousScreenHeight": 0,
   "PreviousDpiX": 0,
@@ -156,7 +156,7 @@
   "CustomWindowTop": 0,
   "KeepMaxResults": false,
   "MaxResultsToShow": 5,
-  "ActivateTimes": 5854,
+  "ActivateTimes": 5902,
   "CustomPluginHotkeys": [],
   "CustomShortcuts": [],
   "DontPromptUpdateMsg": false,
@@ -357,10 +357,22 @@
         "Disabled": false,
         "HomeDisabled": false
       },
-      "BB55C11CB9FB4AAF81B670D9FF0BFBEE": {
-        "ID": "BB55C11CB9FB4AAF81B670D9FF0BFBEE",
-        "Name": "Search Unicode \u2013 Emoji",
-        "Version": "1.3.0",
+      "82df0b26-6ed3-1c0d-460f-99789fd5d0c4": {
+        "ID": "82df0b26-6ed3-1c0d-460f-99789fd5d0c4",
+        "Name": "MultiTranslate",
+        "Version": "0.2.6",
+        "ActionKeywords": [
+          "tr"
+        ],
+        "Priority": 0,
+        "SearchDelayTime": null,
+        "Disabled": false,
+        "HomeDisabled": false
+      },
+      "d50362aa29f04cd59032bb44a5d5f7e5": {
+        "ID": "d50362aa29f04cd59032bb44a5d5f7e5",
+        "Name": "Emoji Finder",
+        "Version": "1.2.0",
         "ActionKeywords": [
           "e"
         ],
@@ -369,36 +381,12 @@
         "Disabled": false,
         "HomeDisabled": false
       },
-      "10DB6EB0939443BCA556ACCF93AA98BF": {
-        "ID": "10DB6EB0939443BCA556ACCF93AA98BF",
-        "Name": "Search Unicode \u2013 Search",
-        "Version": "1.3.0",
+      "88312EF0-3300-4D7E-999C-50212CF8F3C8": {
+        "ID": "88312EF0-3300-4D7E-999C-50212CF8F3C8",
+        "Name": "Unicode Finder",
+        "Version": "1.0.0",
         "ActionKeywords": [
           "u"
-        ],
-        "Priority": 0,
-        "SearchDelayTime": null,
-        "Disabled": false,
-        "HomeDisabled": false
-      },
-      "B9EE77F84A9141C3850BB329D45B8D9A": {
-        "ID": "B9EE77F84A9141C3850BB329D45B8D9A",
-        "Name": "Search Unicode \u2013 Identify",
-        "Version": "1.3.1",
-        "ActionKeywords": [
-          "uid"
-        ],
-        "Priority": 0,
-        "SearchDelayTime": null,
-        "Disabled": false,
-        "HomeDisabled": false
-      },
-      "82df0b26-6ed3-1c0d-460f-99789fd5d0c4": {
-        "ID": "82df0b26-6ed3-1c0d-460f-99789fd5d0c4",
-        "Name": "MultiTranslate",
-        "Version": "0.2.6",
-        "ActionKeywords": [
-          "tr"
         ],
         "Priority": 0,
         "SearchDelayTime": null,

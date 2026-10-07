@@ -2,7 +2,6 @@
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
 
 !Space::ToggleScratchPad()
-!+Space::ToggleDeepL()
 !Enter::RunWait, %A_ScriptDir%\move-workspace.bat,, Hide
 !Backspace::RunWait, glazewm.exe command wm-cycle-focus,, Hide
 !+Backspace::RunWait, %A_ScriptDir%\switch-minimized.bat,, Hide

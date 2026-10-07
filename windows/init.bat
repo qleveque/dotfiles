@@ -11,7 +11,6 @@ for %%P in (
   equalsraf.win32yank
   jqlang.jq
   Flow-Launcher.Flow-Launcher
-  DeepL.DeepL
   gerardog.gsudo
   Alacritty.Alacritty
 ) do (

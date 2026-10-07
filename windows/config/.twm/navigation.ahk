@@ -98,27 +98,6 @@ e::
     Send, % actionBk
     SendLevel, 0
     return
-i::
-a::
-    textObject := A_ThisHotkey
-    actionBk := action
-    action := false
-    Input, key, L1
-    if (key != "w")
-        return
-    normalMode := true
-
-    SendLevel, 1
-    if (textObject = "i") {
-        Send, ^{Right}{Left}{Shift down}^{Left}
-    } else if (textObject = "a") {
-        Send, ^{Right}{Shift down}^{Left}
-    }
-    Send, % actionBk
-    Send, {Shift up}
-    SendLevel, 0
-    action := false
-    return
 c::
 d::
 y::
