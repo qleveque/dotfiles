@@ -57,11 +57,7 @@ widgets:
         "language",
         "bluetooth",
         "wifi",
-        "volume",
-        "glazewm_tiling_direction",
-        "home",
-        "microphone",
-        "power_plan",
+        "control_center",
         "windows",
         "systray"
       ]
@@ -70,7 +66,87 @@ widgets:
         expanded_label: "📖"
         collapsed_label: "📕"
         label_position: "right"
-        exclude_widgets: ["language", "bluetooth", "wifi", "volume", "glazewm_tiling_direction"]
+        exclude_widgets: ["language", "bluetooth", "wifi", "control_center"]
+  control_center:
+    type: "yasb.control_center.ControlCenterWidget"
+    options:
+      label: "⚙️"
+      tooltip: true
+      sections_order:
+        - "system_controls"
+        - "quick_actions"
+        - "sliders"
+        - "power"
+        - "media"
+      popup:
+        alignment: "center"
+        direction: "down"
+        border_color: System
+        round_corners: true
+        round_corners_type: normal
+        offset_top: 8
+      sections:
+        system_controls:
+          profile_image_size: 28
+          power_icon: "\uE7E8"
+          lock_icon: "\uE72E"
+          settings_icon: "\uE713"
+        quick_actions:
+          show: true
+          columns: 3
+          label_position: "default"
+          actions:
+            - id: "toggle_dnd"
+              label: "Do Not Disturb"
+              icon: "\uf285"
+            - id: "toggle_mute"
+              label: "Mute"
+              icon: "\ue74f"
+            - id: "toggle_mic_mute"
+              label: "Mic Mute"
+              icon: "\uF12E"
+            - id: "screenshot"
+              label: "Screenshot"
+              icon: "\ue91b"
+            - id: "touch_keyboard"
+              label: "Keyboard"
+              icon: "\uE765"
+            - id: "toggle_theme"
+              label: "Dark Mode"
+              icon: "\uE708"
+        sliders:
+          show: true
+          brightness:
+            show_slider: true
+            icon: "\uE706"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+          volume:
+            show_slider: true
+            icon: "\uE767"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+          microphone:
+            show_slider: true
+            icon: "\uE720"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+        media:
+          show: true
+          thumbnail_size: 36
+          thumbnail_radius: 4
+          icons:
+            prev_track: "\ue622"
+            next_track: "\ue623"
+            play: "\uf5b0"
+            pause: "\ue62e"
+        power:
+          show: true
+          power_plan_title: "Power Plan"
+          power_mode_title: "Power Mode"
+          button_menu_icon: "\ue76c"
+      callbacks:
+        on_left: "toggle_menu"
   systray:
     type: "yasb.systray.SystrayWidget"
     options:
@@ -80,23 +156,6 @@ widgets:
       show_unpinned_button: false
       icon_size: 14
       use_hook: true
-  power_plan:
-    type: "yasb.power_plan.PowerPlanWidget"
-    options:
-      label: "🚂"
-      label_alt: "<span>\uf0e7</span> Power Plan {active_plan}"
-      update_interval: 5000
-  microphone:
-    type: "yasb.microphone.MicrophoneWidget"
-    options:
-      label: "🎙️"
-      label_alt: "<span>{icon}</span> {level}"
-      mute_text: "mute"
-  glazewm_tiling_direction:
-    type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
-    options:
-      horizontal_label: "⏩"
-      vertical_label: "⏬"
   glazewm_workspaces:
     type: "glazewm.workspaces.GlazewmWorkspacesWidget"
     options:
@@ -107,24 +166,10 @@ widgets:
         enabled_populated: true
         enabled_active: true
         size: 12
-  home:
-    type: "yasb.home.HomeWidget"
-    options:
-      label: "⚙️"
-      system_menu: true
-      power_menu: true
-      blur: true
-      round_corners: true
-      round_corners_type: "normal"
-      border_color: "System"
-      offset_top: 6
-      offset_left: 0
-      alignment: "left"
-      direction: "down"
   wifi:
     type: "yasb.wifi.WifiWidget"
     options:
-      ethernet_icon: "🔌"
+      ethernet_icon: "📶"
       wifi_icons: [
         "❌",
         "🛜",
@@ -138,24 +183,113 @@ widgets:
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
-      class_name: "bluetooth"
       label: "<span>{icon}</span>"
-      callbacks:
-        on_left: "exec cmd.exe /c start ms-settings:bluetooth"
+      label_alt: "<span>{icon}</span>"
+      class_name: ""
+      label_no_device: "No devices connected"
+      label_device_separator: ", "
+      max_length: null
+      max_length_ellipsis: "..."
+      tooltip: true
       icons:
         bluetooth_on: "🌱"
-        bluetooth_off: "🔴"
+        bluetooth_off: "🍁"
         bluetooth_connected: "🌳"
+      device_aliases: []
+      keybindings: []
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        labels:
+          title: "Bluetooth"
+          your_devices: "Your devices"
+          new_devices: "New devices"
+          not_connected: "Not connected"
+          connected: "Connected"
+          more_settings: "More Bluetooth settings"
+          connect: "Connect"
+          disconnect: "Disconnect"
+          connecting: "Connecting"
+          disconnecting: "Disconnecting"
+          pair: "Pair"
+          manage: "Manage"
+          power_on: "On"
+          power_off: "Off"
+        device_icons:
+          headphones: "\ue7f6"
+          headset: "\ue95b"
+          speaker: "\ue7f5"
+          phone: "\ue8ea"
+          tablet: "\ue70a"
+          laptop: "\ue7f8"
+          computer: "\ue950"
+          keyboard: "\ue765"
+          mouse: "\ue962"
+          controller: "\ue7fc"
+          watch: "\ue918"
+          camera: "\ue722"
+          generic: "\ue702"
+          battery:
+            empty: "\ueba0"
+            low: "\ueba2"
+            medium: "\ueba5"
+            high: "\ueba8"
+            full: "\uebaa"
+          scan: "\ue72c"
   clock:
     type: "yasb.clock.ClockWidget"
     options:
       class_name: "clock"
-      tooltip: false
       label: "{📅%d/%m⌚%H:%M}"
-      label_alt: ""
+      label_alt: "\uf017 {%d-%m-%y %H:%M:%S}"
+      locale: ""
+      update_interval: 1000
+      timezones: []
+      icons:
+        clock_01 : "\udb85\udc3f"
+        clock_02 : "\udb85\udc40"
+        clock_03 : "\udb85\udc41"
+        clock_04 : "\udb85\udc42"
+        clock_05 : "\udb85\udc43"
+        clock_06 : "\udb85\udc44"
+        clock_07 : "\udb85\udc45"
+        clock_08 : "\udb85\udc46"
+        clock_09 : "\udb85\udc47"
+        clock_10 : "\udb85\udc48"
+        clock_11 : "\udb85\udc49"
+        clock_12 : "\udb85\udc4a"
+        clock_16 : "SNACK TIME !"
+        clock_21 : "Zzz..."
+        clock_22 : "Zzz..."
+        clock_23 : "Zzz..."
+      calendar: 
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_holidays: false
+        show_week_numbers: true
+        show_years: true
+        country_code: "AR"
+        extended: false
       callbacks:
         on_left: "toggle_calendar"
-        on_right: "do_nothing"
+        on_middle: "next_timezone"
+        on_right: "toggle_label"
   weather:
     type: "yasb.weather.WeatherWidget"
     options:
@@ -185,20 +319,3 @@ widgets:
         current_line_color: "#8EAEE8"
         current_line_width: 1
         current_line_style: "dot"
-  volume:
-    type: "yasb.volume.VolumeWidget"
-    options:
-      label: "{icon}"
-      volume_icons:
-        - "🔇"
-        - "🔈"
-        - "🔈"
-        - "🔉"
-        - "🔊"
-      audio_menu:
-        show_apps: true
-        show_app_icons: true
-        show_apps_expanded: true
-      callbacks:
-        on_left: "toggle_mute"
-        on_right: "toggle_volume_menu"
