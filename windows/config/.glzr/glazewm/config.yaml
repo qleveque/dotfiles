@@ -93,6 +93,7 @@ window_rules:
       - window_class : { equals: 'VNCMDI_Window' }
       - window_title: { equals: 'DeepL' }
       - window_process: { equals: 'ScreenToGif' }
+      - window_title: { regex: '.*Hue.*' }
 
   - commands: ['set-floating']
     match:
@@ -101,7 +102,6 @@ window_rules:
       - window_title: { equals: 'SCRATCHPAD' }
       - window_title: { regex: 'Appel vocal.*' }
       - window_process: { equals: 'vncviewer' }
-      - window_title: { regex: '.*Hue Sync.*' }
 
   - commands: ['move --workspace 2_else']
     match:
