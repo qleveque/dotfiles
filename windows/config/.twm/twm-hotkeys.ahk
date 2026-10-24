@@ -1,5 +1,6 @@
 ^!+t::Run, "C:\Program Files\Alacritty\alacritty.exe" -e wsl.exe --cd ~ zsh -c zellij
 ^!+w::Run, "C:\Program Files\Zen Browser\zen.exe"
+Insert::Send, #{PrintScreen}
 
 !Space::ToggleScratchPad()
 !Enter::RunWait, %A_ScriptDir%\move-workspace.bat,, Hide

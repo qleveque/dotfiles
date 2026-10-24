@@ -18,15 +18,8 @@ Gui, Show, Hide NA
 SetTimer, UpdateModeIndicator, 200
 return
 
-~LControl Up::
-    if (A_PriorKey = "LControl") {
-        if (normalMode) {
-            normalMode := false
-            Send, {Shift up}
-        } else {
-            normalMode := true
-        }
-    }
+LShift & RShift::
+    normalMode := !normalMode
     return
 #If normalMode
 i::
