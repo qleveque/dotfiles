@@ -44,6 +44,7 @@ let
     dos2unix
     vifm
     libqalculate
+    m4
   ];
 in
 {
