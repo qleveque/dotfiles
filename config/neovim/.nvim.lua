@@ -67,7 +67,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 nvim_plugins = {
   {
-    "mrjones2014/smart-splits.nvim",
+    "smart-splits-nvim/smart-splits.nvim",
+    version = "^3.0.0",
+    dependencies = {
+      {
+        "smart-splits-nvim/backend-zellij-lua",
+        main = "smart-splits-backend-zellij-lua",
+      },
+    },
+    opts = {
+      mux = { backend = "smart-splits-backend-zellij-lua" },
+    },
     init = function()
       vim.cmd[[
         nn <silent> <C-h> :SmartCursorMoveLeft<CR>
@@ -178,7 +188,11 @@ nvim_plugins = {
   "tpope/vim-repeat",
   "tpope/vim-sleuth",
   {"numToStr/Comment.nvim", opts={}},
-  {"petertriho/nvim-scrollbar", enabled=not diff, opts={set_highlights=false}},
+  {"petertriho/nvim-scrollbar",
+    branch = "refactor/v2",
+    enabled=not diff,
+    opts={set_highlights=false},
+  },
   {
     url = "https://codeberg.org/andyg/leap.nvim",
     opts = { safe_labels = {} },

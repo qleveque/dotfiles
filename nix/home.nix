@@ -18,6 +18,7 @@ let
   packages = with pkgs; [
     unstable.opencode
     unstable.zellij
+    unstable.pi-coding-agent
     libgcc
     gcc
     alacritty
