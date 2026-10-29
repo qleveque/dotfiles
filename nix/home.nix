@@ -19,8 +19,6 @@ let
     unstable.opencode
     unstable.zellij
     unstable.pi-coding-agent
-    libgcc
-    gcc
     alacritty
     alacritty-theme
     unzip
@@ -38,14 +36,42 @@ let
     zsh-fzf-tab
     file
     bc
-    nodejs
-    python3
     gnumake
     wget
     dos2unix
     vifm
     libqalculate
     m4
+
+
+    # Programming languages
+    libgcc
+    gcc
+    nodejs
+    python3
+    typescript
+
+    # LSP servers
+    nil
+    pyright
+    rust-analyzer
+    lua-language-server
+    typescript-language-server
+    vtsls
+    vue-language-server
+    vscode-langservers-extracted
+    clang-tools
+
+    # Language-specific fixers/formatters
+    ruff
+    rustfmt
+    clippy
+    stylua
+    eslint_d
+    prettierd
+    nixfmt-rfc-style
+    deadnix
+    statix
   ];
 in
 {
@@ -97,6 +123,7 @@ in
   };
 
   xdg.configFile = {
+    "nvim/lua/user".source = "${dotfiles}/config/neovim/lua/user";
     "nvim/parser".source = "${pkgs.symlinkJoin {
       name = "treesitter-parsers";
       paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;

@@ -28,8 +28,8 @@ ino <C-v> <C-R>+
 cno <C-v> <C-R>+
 nn ç <Cmd>let @/='\V\C\<'.expand('<cword>').'\>'<bar>set hls<CR>"_cgn
 vn ç "xy<Cmd>let @/='\V\C'.escape(@x, '\\/')<bar>set hls<CR>"_cgn
-nn <silent> - :sil cprev<CR>
-nn <silent> + :sil cnext<CR>
+nn <silent> = :sil cnext<CR>
+nn <silent> + :sil cprev<CR>
 nn <silent> é :exe'sil !zj-wrap split "run -p \"'.expand('%').'\""'<CR>
 nn <silent> É :exe'sil !zj-wrap split run'<CR>
 map <F11> <C-I>
