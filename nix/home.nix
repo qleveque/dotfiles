@@ -79,7 +79,7 @@ in
   home = {
     username = user;
     homeDirectory = home;
-    stateVersion = "25.05";
+    stateVersion = "26.05";
     packages = packages ++ my-scripts;
   };
 
@@ -110,13 +110,13 @@ in
     neovim = {
       enable = true;
       package = unstable.neovim-unwrapped;
-      extraLuaConfig = lib.fileContents "${dotfiles}/config/neovim/.nvim.lua";
+      initLua = lib.fileContents "${dotfiles}/config/neovim/.nvim.lua";
       extraConfig = lib.fileContents "${dotfiles}/config/neovim/.vimrc";
     };
     less = {
       package = unstable.less;
       enable = true;
-      keys = builtins.readFile (pkgs.runCommand "lesskey" {} ''
+      config = builtins.readFile (pkgs.runCommand "lesskey" {} ''
         ${pkgs.python3}/bin/python3 "${dotfiles}/config/less/lesskey.py" > $out
       '');
     };
@@ -128,7 +128,7 @@ in
       name = "treesitter-parsers";
       paths = (pkgs.vimPlugins.nvim-treesitter.withAllGrammars).dependencies;
     }}/parser";
-    "nvim/queries".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}/queries";
+    "nvim/queries".source = "${pkgs.vimPlugins.nvim-treesitter.withAllGrammars}/runtime/queries";
     "zellij/config.kdl".text =
       lib.fileContents "${dotfiles}/config/zellij/config.kdl";
     "zellij/layouts/layout.kdl".text =
