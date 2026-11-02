@@ -42,7 +42,7 @@ mods = "Control"
 chars = "\u001b[18~"
 
 [[keyboard.bindings]]
-key = "Period"
+key = "Semicolon"
 mods = "Control"
 chars = "\u001b[19~"
 
