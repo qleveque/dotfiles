@@ -40,6 +40,7 @@ map <F11> <C-I>
 
 " WSL
 nn <silent> wyW :exe '!printf "%%s" "$(wslpath -w %c:p)" | cb copy'<CR>
+nn <silent> wyp :exe '!printf "%%s" "$(wslpath -w %d)" | cb copy'<CR>
 nn <silent> wp :exe "!fmops paste"|:redr<CR>
 map <silent> wyy :exe "!fmops copy ".expand("%f")<CR>
 map <silent> wdd :exe "!fmops delete ".expand("%f")|:redr<CR>

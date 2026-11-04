@@ -42,7 +42,8 @@ let
     vifm
     libqalculate
     m4
-
+    expect
+    inetutils # telnet
 
     # Programming languages
     libgcc
