@@ -1,10 +1,13 @@
 #!bash
 sudo cp nix/configuration.nix /etc/nixos/configuration.nix
+
+sudo nix-channel --add https://nixos.org/channels/nixos-26.05 nixos
+sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-26.05.tar.gz nixos-wsl
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+sudo nix-channel --update
 sudo nixos-rebuild switch
 
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
-nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-nix-channel --update
 nix-shell '<home-manager>' -A install
 source setup
 
