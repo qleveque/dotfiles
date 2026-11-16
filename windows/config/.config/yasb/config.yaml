@@ -16,7 +16,7 @@ bars:
       height: 20
     widgets:
       left: ["glazewm_workspaces"]
-      right: ["group", "weather", "clock"]
+      right: ["group", "weather", "clock", "notifications"]
     animation:
       enabled: false
   main-bar-secondary:
@@ -272,7 +272,7 @@ widgets:
         clock_21 : "Zzz..."
         clock_22 : "Zzz..."
         clock_23 : "Zzz..."
-      calendar: 
+      calendar:
         blur: true
         round_corners: true
         round_corners_type: "normal"
@@ -319,3 +319,24 @@ widgets:
         current_line_color: "#8EAEE8"
         current_line_width: 1
         current_line_style: "dot"
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      class_name: "notifications"
+      label: "🔔 {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: false
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        app_icon_size: 16
+      callbacks:
+        on_left: "toggle_menu"
+        on_right: "toggle_notification"

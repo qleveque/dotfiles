@@ -47,7 +47,7 @@ let
 
     # Programming languages
     libgcc
-    gcc
+    clang
     nodejs
     python3
     typescript
@@ -82,6 +82,10 @@ in
     homeDirectory = home;
     stateVersion = "26.05";
     packages = packages ++ my-scripts;
+    sessionVariables = {
+      CC = "clang";
+      CXX = "clang++";
+    };
   };
 
   programs = {

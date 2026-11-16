@@ -13,10 +13,22 @@ Insert::Send, #{PrintScreen}
 !v::RunWait, glazewm.exe command toggle-tiling-direction,, Hide
 !q::WinClose, A
 
-!h::RunWait, glazewm.exe command focus --direction left,, Hide
-!l::RunWait, glazewm.exe command focus --direction right,, Hide
-!k::RunWait, glazewm.exe command focus --direction up,, Hide
-!j::RunWait, glazewm.exe command focus --direction down,, Hide
+!h::
+    RunWait, glazewm.exe command set-tiling,, Hide
+    RunWait, glazewm.exe command focus --direction left,, Hide
+    return
+!l::
+    RunWait, glazewm.exe command set-tiling,, Hide
+    RunWait, glazewm.exe command focus --direction right,, Hide
+    return
+!k::
+    RunWait, glazewm.exe command set-tiling,, Hide
+    RunWait, glazewm.exe command focus --direction up,, Hide
+    return
+!j::
+    RunWait, glazewm.exe command set-tiling,, Hide
+    RunWait, glazewm.exe command focus --direction down,, Hide
+    return
 !+h::RunWait, glazewm.exe command move --direction left,, Hide
 !+l::RunWait, glazewm.exe command move --direction right,, Hide
 !+k::RunWait, glazewm.exe command move --direction up,, Hide

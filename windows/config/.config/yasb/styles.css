@@ -34,7 +34,8 @@
 .toggle_group,
 .clock,
 .group,
-.weather {
+.weather,
+.notifications {
   background-color: var(--black);
   border: 1px solid var(--lightgrey);
   padding: 0 2px;
@@ -1058,4 +1059,160 @@ which is 16 pixels same as the other sections. */
 }
 .active-alarm-window .button:hover {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Notifications */
+.notification-menu {
+    background-color: rgb(44, 44, 44);
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 640px;
+    max-height: 640px;
+}
+.notification-menu .header {
+    padding: 12px 12px 8px 16px;
+}
+.notification-menu .header .title {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.notification-menu .header .dnd,
+.notification-menu .header .clear-all {
+    color: #ffffff;
+    padding: 4px 10px;
+    margin-left: 4px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.notification-menu .header .dnd {
+    font-family: "JetBrainsMono NFP";
+    font-size: 14px;
+    padding: 6px 8px;
+}
+.notification-menu .header .clear-all {
+    font-family: "Segoe UI";
+    font-size: 12px;
+}
+.notification-menu .header .dnd.active {
+    color: #4cc2ff;
+}
+.notification-menu .header .dnd:hover,
+.notification-menu .header .clear-all:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.notification-menu .contents .section {
+    margin: 0 12px 12px 12px;
+}
+.notification-menu .contents .section-header {
+    padding: 4px 4px 8px 4px;
+}
+.notification-menu .contents .section-header .icon {
+    margin-right: 8px;
+}
+.notification-menu .contents .section-header .name {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.79);
+}
+.notification-menu .contents .section-header .clear-app,
+.notification-menu .contents .item .dismiss {
+    font-family: "JetBrainsMono NFP";
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.79);
+    padding: 4px;
+    border-radius: 4px;
+}
+.notification-menu .contents .section-header .clear-app:hover,
+.notification-menu .contents .item .dismiss:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.notification-menu .contents .item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 4px;
+}
+.notification-menu .contents .item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.notification-menu .contents .item .hero {
+    margin-bottom: 12px;
+}
+.notification-menu .contents .item .avatar {
+    margin-right: 12px;
+}
+.notification-menu .contents .item .title {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.notification-menu .contents .item .time {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.54);
+    margin-left: 8px;
+}
+.notification-menu .contents .item .dismiss {
+    margin-left: 8px;
+}
+.notification-menu .contents .item .body {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.79);
+    margin-top: 2px;
+    max-height: 57px;
+}
+.notification-menu .contents .item .attribution {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.54);
+    margin-top: 2px;
+}
+.notification-menu .contents .item .image {
+    margin-top: 12px;
+}
+.notification-menu .contents .more {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: #4cc2ff;
+    padding: 4px 4px 0 4px;
+}
+.notification-menu .contents .more:hover {
+    color: #40ace2;
+}
+.notification-menu .contents .empty {
+    padding: 48px 0;
+}
+.notification-menu .contents .empty .icon {
+    font-family: "JetBrainsMono NFP";
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.54);
+}
+.notification-menu .contents .empty .text {
+    font-family: "Segoe UI";
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.79);
+    margin-top: 12px;
+}
+.notification-menu .contents .empty .link {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: #4cc2ff;
+    margin-top: 8px;
+}
+.notification-menu .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 16px;
+}
+.notification-menu .footer .label {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    color: #4cc2ff;
+}
+.notification-menu .footer .label:hover {
+    color: #40ace2;
 }
