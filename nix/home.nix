@@ -44,6 +44,7 @@ let
     m4
     expect
     inetutils # telnet
+    uucp # com
 
     # Programming languages
     libgcc

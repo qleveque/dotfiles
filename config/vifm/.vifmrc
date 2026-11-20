@@ -49,6 +49,7 @@ com! wudo :!zellij action new-pane -i --close-on-exit -- wudo vifm "%d"
 
 " Commands
 com! g :exe system('p=$(readlink "$HOME/.marks/%a") && echo cd \"$p\"')|oncd
+com! zip :!zip -r "%f.zip" "%f"
 
 " Style
 hi Win cterm=none ctermfg=none ctermbg=none
