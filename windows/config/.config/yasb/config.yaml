@@ -1,6 +1,6 @@
 watch_stylesheet: true
 watch_config: true
-show_systray: false
+show_systray: true
 debug: true
 bars:
   main-bar:
@@ -41,14 +41,6 @@ widgets:
       label: "🔒"
       label_alt: "🔒"
       update_interval: 1
-  windows:
-    type: "yasb.custom.CustomWidget"
-    options:
-      label: "🪟"
-      label_alt: ""
-      class_name: "windows"
-      callbacks:
-        on_left: 'exec cmd /c start "" /b %USERPROFILE%\.twm\toggle-taskbar.bat'
   group:
     type: "yasb.grouper.GrouperWidget"
     options:
@@ -58,7 +50,6 @@ widgets:
         "bluetooth",
         "wifi",
         "control_center",
-        "windows",
         "systray"
       ]
       collapse_options:
